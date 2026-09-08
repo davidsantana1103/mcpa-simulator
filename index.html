@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MuleSoft Certified Platform Architect (MCPA) Exam Simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top App Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">M</div>
+        <div class="brand-text">
+          <h1>MCPA Exam Simulator</h1>
+          <p>MuleSoft Certified Platform Architect I Practice Bank</p>
+        </div>
+      </div>
+
+      <div class="header-nav">
+        <div class="mode-pills">
+          <button class="mode-btn active" id="mode-practice" title="Instant answer checking, explanations & study links">Practice Mode</button>
+          <button class="mode-btn" id="mode-exam" title="60-question timed exam simulation (120 mins)">Timed Exam (60Q)</button>
+        </div>
+
+        <button class="icon-btn" id="theme-btn" title="Toggle Dark/Light Mode" aria-label="Toggle theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+
+        <button class="icon-btn" id="reset-btn" title="Reset All Progress" aria-label="Reset progress">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Live Stats Bar -->
+  <div class="stats-bar">
+    <div class="stats-container">
+      <div class="stat-item">
+        <span>Score:</span>
+        <span class="stat-value" id="stat-score">0 / 0</span>
+      </div>
+      <div class="stat-item">
+        <span>Answered:</span>
+        <span class="stat-value" id="stat-answered">0 / 100</span>
+      </div>
+      <div class="stat-item">
+        <span>Accuracy:</span>
+        <span class="stat-value" id="stat-accuracy">0%</span>
+      </div>
+      <div class="progress-track" title="Overall Progress">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timed Exam Timer Bar -->
+  <div class="timer-bar" id="timer-bar">
+    ⏱️ Exam Time Remaining: <span id="timer-display">02:00:00</span>
+  </div>
+
+  <!-- Main Content Layout -->
+  <div class="main-wrapper">
+    
+    <!-- Question Center Stage -->
+    <main class="question-area" id="question-area">
+      <div class="question-card">
+        
+        <div class="card-top">
+          <div class="badges">
+            <span class="badge badge-qnum" id="badge-qnum">Q1 (1/100)</span>
+            <span class="badge badge-domain" id="badge-domain">Application Network Basics</span>
+            <div id="badge-topics" style="display: flex; gap: 0.35rem; flex-wrap: wrap;"></div>
+          </div>
+          <div class="card-actions">
+            <button class="flag-btn" id="flag-btn">☆ Flag</button>
+          </div>
+        </div>
+
+        <div class="question-prompt" id="question-prompt">
+          Loading question prompt...
+        </div>
+
+        <!-- Multiple Choice Options -->
+        <div class="options-list" id="options-list">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <!-- Explanation & Deep-Dive Links Box (Visible in Practice Mode after checking) -->
+        <div class="explanation-box" id="explanation-box">
+          <div class="exp-header" id="exp-header">
+            <span id="exp-header-text">✓ Correct Answer!</span>
+          </div>
+          <div class="exp-body" id="exp-body"></div>
+
+          <!-- Option-by-Option Rationales -->
+          <div class="rationales-container">
+            <h4 style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.2rem;">Option Breakdown & Rationale</h4>
+            <div id="rationales-list" style="display: flex; flex-direction: column; gap: 0.4rem;"></div>
+          </div>
+
+          <!-- Verified Study References (opens in new tab) -->
+          <div class="references-box" id="references-box">
+            <div class="ref-title">📚 Verified Deep-Dive Study References</div>
+            <div id="ref-links-container" style="display: flex; flex-direction: column; gap: 0.45rem;"></div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="card-footer">
+          <div>
+            <button class="btn btn-secondary" id="prev-btn" disabled>← Previous</button>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="btn btn-primary" id="check-btn" disabled>Check Answer</button>
+            <button class="btn btn-success" id="submit-exam-btn" style="display: none;">Submit Exam</button>
+            <button class="btn btn-secondary" id="next-btn">Next →</button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Exam Score Summary (Revealed after Exam submission) -->
+    <div class="result-view" id="result-view" style="display: none; grid-column: 1 / -1;"></div>
+
+    <!-- Sidebar / Question Navigation & Filters -->
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-title">
+          <span>Filter & Search</span>
+        </div>
+
+        <select class="filter-select" id="filter-domain" aria-label="Filter by domain">
+          <option value="all">All Domains</option>
+        </select>
+
+        <select class="filter-select" id="filter-status" aria-label="Filter by status">
+          <option value="all">All Questions</option>
+          <option value="unanswered">Unanswered</option>
+          <option value="correct">Answered Correct</option>
+          <option value="incorrect">Answered Incorrect</option>
+          <option value="flagged">Flagged Questions</option>
+        </select>
+
+        <input type="text" class="search-input" id="search-input" placeholder="Search keywords (e.g. mTLS, vCores, DLB)..." aria-label="Search questions">
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-title">
+          <span>Question Grid</span>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">100 Items</span>
+        </div>
+
+        <div class="q-grid" id="q-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 0.6rem;">
+          <span style="display: flex; align-items: center; gap: 3px;"><span style="display: inline-block; width: 8px; height: 8px; background: var(--success); border-radius: 2px;"></span> Correct</span>
+          <span style="display: flex; align-items: center; gap: 3px;"><span style="display: inline-block; width: 8px; height: 8px; background: var(--danger); border-radius: 2px;"></span> Incorrect</span>
+          <span style="display: flex; align-items: center; gap: 3px;"><span style="display: inline-block; width: 8px; height: 8px; background: var(--warning); border-radius: 50%;"></span> Flagged</span>
+        </div>
+      </div>
+
+      <!-- Quick Shortcuts Info -->
+      <div class="sidebar-card" style="font-size: 0.78rem; color: var(--text-muted);">
+        <strong>Keyboard Shortcuts:</strong>
+        <p style="margin-top: 0.25rem;">• <code>A</code> / <code>B</code> / <code>C</code> / <code>D</code> or <code>1</code>–<code>4</code> : Select Option</p>
+        <p>• <code>Enter</code> : Check Answer</p>
+        <p>• <code>←</code> / <code>→</code> or <code>P</code> / <code>N</code> : Previous / Next</p>
+        <p>• <code>F</code> : Flag Question</p>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Reusable Confirmation Modal -->
+  <div class="modal-overlay" id="confirm-modal">
+    <div class="modal-card">
+      <h3 class="modal-title" id="modal-title">Confirm Action</h3>
+      <p id="modal-msg" style="color: var(--text-muted); font-size: 0.92rem;"></p>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" id="modal-cancel-btn">Cancel</button>
+        <button class="btn btn-primary" id="modal-confirm-btn">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
