@@ -22,7 +22,14 @@
       <div class="header-nav">
         <div class="mode-pills">
           <button class="mode-btn active" id="mode-practice" title="Instant answer checking, explanations & study links">Practice Mode</button>
-          <button class="mode-btn" id="mode-exam" title="60-question timed exam simulation (120 mins)">Timed Exam (60Q)</button>
+          <button class="mode-btn" id="mode-exam" title="Timed exam simulation">Timed Exam (60Q)</button>
+          <select class="exam-count-select" id="exam-count-select" title="Choose question count for Timed Exam" aria-label="Exam Question Count">
+            <option value="20">20 Questions</option>
+            <option value="40">40 Questions</option>
+            <option value="60" selected>60 Questions</option>
+            <option value="80">80 Questions</option>
+            <option value="100">100 Questions</option>
+          </select>
         </div>
 
         <button class="icon-btn" id="theme-btn" title="Toggle Dark/Light Mode" aria-label="Toggle theme">
@@ -152,7 +159,7 @@
       <div class="sidebar-card">
         <div class="sidebar-title">
           <span>Question Grid</span>
-          <span style="font-size: 0.75rem; color: var(--text-muted);">100 Items</span>
+          <span id="grid-count-label" style="font-size: 0.75rem; color: var(--text-muted);">100 Items</span>
         </div>
 
         <div class="q-grid" id="q-grid">

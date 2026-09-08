@@ -144,6 +144,28 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
+.exam-count-select {
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.exam-count-select:hover {
+  border-color: var(--primary);
+}
+
+.exam-count-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-light);
+}
+
 .icon-btn {
   background: var(--bg-subtle);
   border: 1px solid var(--border);
