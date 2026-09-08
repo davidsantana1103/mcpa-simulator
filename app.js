@@ -9,6 +9,7 @@
     currentIndex: 0,
     filteredQuestions: [],
     mode: 'practice', // 'practice' | 'exam'
+    examQuestionCount: 60,
     filterType: 'all', // 'all' | 'unanswered' | 'correct' | 'incorrect' | 'flagged'
     filterDomain: 'all',
     searchQuery: '',
@@ -16,7 +17,7 @@
     // Stored in localStorage
     userAnswers: {}, // { qId: selectedLetter }
     flagged: new Set(), // Set of qIds
-    examSession: null, // { active: bool, questions: [], answers: {}, startTime: number, durationSec: number }
+    examSession: null, // { active: bool, questions: [], questionCount: number, answers: {}, startTime: number, durationSec: number }
     theme: 'light'
   };
 
@@ -25,6 +26,7 @@
     ANSWERS: 'mcpa_user_answers_v1',
     FLAGGED: 'mcpa_flagged_v1',
     EXAM: 'mcpa_exam_session_v1',
+    EXAM_COUNT: 'mcpa_exam_count_v1',
     THEME: 'mcpa_theme_v1',
     LAST_INDEX: 'mcpa_last_index_v1'
   };
@@ -35,6 +37,7 @@
     resetBtn: document.getElementById('reset-btn'),
     practiceModeBtn: document.getElementById('mode-practice'),
     examModeBtn: document.getElementById('mode-exam'),
+    examCountSelect: document.getElementById('exam-count-select'),
     timerBar: document.getElementById('timer-bar'),
     timerDisplay: document.getElementById('timer-display'),
     
@@ -89,7 +92,17 @@
   function init() {
     loadStorage();
     setupTheme();
+    if (dom.examCountSelect) {
+      dom.examCountSelect.value = state.examQuestionCount.toString();
+    }
+    updateExamBtnLabel();
     populateDomainFilter();
+    if (state.mode === 'exam' && state.examSession && state.examSession.active) {
+      dom.practiceModeBtn.classList.remove('active');
+      dom.examModeBtn.classList.add('active');
+      dom.timerBar.style.display = 'block';
+      startTimer();
+    }
     applyFilters();
     bindEvents();
     renderQuestion();
@@ -112,8 +125,24 @@
       const savedLastIndex = localStorage.getItem(STORAGE_KEYS.LAST_INDEX);
       if (savedLastIndex) state.currentIndex = parseInt(savedLastIndex, 10) || 0;
 
+      const savedExamCount = localStorage.getItem(STORAGE_KEYS.EXAM_COUNT);
+      if (savedExamCount) {
+        const parsedCount = parseInt(savedExamCount, 10);
+        if ([20, 40, 60, 80, 100].includes(parsedCount)) {
+          state.examQuestionCount = parsedCount;
+        }
+      }
+
       const savedExam = localStorage.getItem(STORAGE_KEYS.EXAM);
-      if (savedExam) state.examSession = JSON.parse(savedExam);
+      if (savedExam) {
+        state.examSession = JSON.parse(savedExam);
+        if (state.examSession && state.examSession.active) {
+          state.mode = 'exam';
+          if (state.examSession.questionCount) {
+            state.examQuestionCount = state.examSession.questionCount;
+          }
+        }
+      }
     } catch (e) {
       console.error('Failed to load localStorage', e);
     }
@@ -126,6 +155,7 @@
       localStorage.setItem(STORAGE_KEYS.FLAGGED, JSON.stringify(Array.from(state.flagged)));
       localStorage.setItem(STORAGE_KEYS.THEME, state.theme);
       localStorage.setItem(STORAGE_KEYS.LAST_INDEX, state.currentIndex.toString());
+      localStorage.setItem(STORAGE_KEYS.EXAM_COUNT, state.examQuestionCount.toString());
       if (state.examSession) {
         localStorage.setItem(STORAGE_KEYS.EXAM, JSON.stringify(state.examSession));
       } else {
@@ -133,6 +163,14 @@
       }
     } catch (e) {
       console.error('Failed to save localStorage', e);
+    }
+  }
+
+  // Update Exam button label
+  function updateExamBtnLabel() {
+    if (dom.examModeBtn) {
+      dom.examModeBtn.textContent = `Timed Exam (${state.examQuestionCount}Q)`;
+      dom.examModeBtn.title = `${state.examQuestionCount}-question timed exam simulation (${state.examQuestionCount * 2} mins)`;
     }
   }
 
@@ -421,20 +459,25 @@
 
   // Stats bar update
   function updateStats() {
-    const total = state.questions.length;
-    const answeredKeys = Object.keys(state.userAnswers);
-    const answeredCount = answeredKeys.length;
+    const isExamActive = state.mode === 'exam' && state.examSession && state.examSession.active;
+    const activeQuestions = isExamActive ? state.examSession.questions : state.questions;
+    const total = activeQuestions.length;
 
+    let answeredCount = 0;
     let correctCount = 0;
-    answeredKeys.forEach(qId => {
-      const q = state.questions.find(item => item.id === qId);
-      if (q && state.userAnswers[qId] === q.correctAnswer) {
-        correctCount++;
+
+    activeQuestions.forEach(q => {
+      const userAns = state.userAnswers[q.id];
+      if (userAns !== undefined) {
+        answeredCount++;
+        if (userAns === q.correctAnswer) {
+          correctCount++;
+        }
       }
     });
 
     const accuracy = answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
-    const progressPercent = Math.round((answeredCount / total) * 100);
+    const progressPercent = total > 0 ? Math.round((answeredCount / total) * 100) : 0;
 
     if (dom.statScore) dom.statScore.textContent = `${correctCount} / ${answeredCount}`;
     if (dom.statAnswered) dom.statAnswered.textContent = `${answeredCount} / ${total}`;
@@ -446,6 +489,11 @@
   function renderGrid() {
     if (!dom.qGrid) return;
     dom.qGrid.innerHTML = '';
+
+    const gridCountLabel = document.getElementById('grid-count-label');
+    if (gridCountLabel) {
+      gridCountLabel.textContent = `${state.filteredQuestions.length} Items`;
+    }
 
     const list = state.filteredQuestions;
     list.forEach((q, idx) => {
@@ -506,9 +554,11 @@
     if (state.mode === newMode) return;
     
     if (newMode === 'exam') {
+      const count = state.examQuestionCount;
+      const durationMin = count * 2;
       showConfirmModal(
-        'Start 60-Question Timed Exam',
-        'This will start a timed 120-minute exam simulation with 60 randomized questions. Answers and explanations will be hidden until you submit.',
+        `Start ${count}-Question Timed Exam`,
+        `This will start a timed ${durationMin}-minute exam simulation with ${count} randomized questions. Answers and explanations will be hidden until you submit.`,
         () => startExamMode()
       );
     } else {
@@ -518,6 +568,7 @@
       dom.practiceModeBtn.classList.add('active');
       dom.examModeBtn.classList.remove('active');
       dom.timerBar.style.display = 'none';
+      saveStorage();
       applyFilters();
       renderQuestion();
     }
@@ -529,14 +580,16 @@
     dom.practiceModeBtn.classList.remove('active');
     dom.examModeBtn.classList.add('active');
 
-    // Shuffle and pick 60 questions
-    const shuffled = [...state.questions].sort(() => 0.5 - Math.random()).slice(0, 60);
+    const count = state.examQuestionCount;
+    // Shuffle and pick `count` questions
+    const shuffled = [...state.questions].sort(() => 0.5 - Math.random()).slice(0, count);
     
     state.examSession = {
       active: true,
       questions: shuffled,
+      questionCount: count,
       startTime: Date.now(),
-      durationSec: 120 * 60 // 120 minutes
+      durationSec: count * 2 * 60 // 2 minutes per question
     };
 
     state.currentIndex = 0;
@@ -549,6 +602,7 @@
 
     dom.timerBar.style.display = 'block';
     startTimer();
+    saveStorage();
     applyFilters();
     renderQuestion();
   }
@@ -745,6 +799,26 @@
     // Mode Buttons
     dom.practiceModeBtn?.addEventListener('click', () => setMode('practice'));
     dom.examModeBtn?.addEventListener('click', () => setMode('exam'));
+
+    // Exam Question Count Dropdown
+    dom.examCountSelect?.addEventListener('change', (e) => {
+      const count = parseInt(e.target.value, 10) || 60;
+      state.examQuestionCount = count;
+      try {
+        localStorage.setItem(STORAGE_KEYS.EXAM_COUNT, count.toString());
+      } catch (err) {
+        console.error('Failed to save exam count', err);
+      }
+      updateExamBtnLabel();
+
+      if (state.mode === 'exam') {
+        showConfirmModal(
+          `Restart Exam with ${count} Questions?`,
+          `Changing the question count will start a new timed ${count * 2}-minute exam session with ${count} questions. Your active exam session will be reset.`,
+          () => startExamMode()
+        );
+      }
+    });
 
     // Question Actions
     dom.checkBtn?.addEventListener('click', checkAnswer);
