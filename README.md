@@ -4,7 +4,7 @@ A standalone, client-side web application designed to simulate the **Salesforce 
 
 ## Features
 
-- **100 Authentic Questions**: Complete question dataset with verified answers, full explanations, option-by-option rationales, and deep-dive documentation links.
+- **105 Authentic Questions**: Complete question dataset with verified answers, full explanations, option-by-option rationales, and deep-dive documentation links.
 - **Two Study Modes**:
   - **Practice Mode**: Instant feedback per question, detailed rationale breakdowns, and deep-dive study references with direct anchor links.
   - **Timed Exam Mode (60Q / 120 Min)**: Simulates the real test environment with 60 randomized questions and a 120-minute timer. Provides a final score, 70% pass/fail indicator, and domain performance breakdown.
