@@ -6308,8 +6308,8 @@ window.MCPA_QUESTIONS = [
   },
   "references": {
     "primary": {
-      "title": "Flex Gateway Deployment Models and Centralized Connected Management",
-      "url": "https://docs.mulesoft.com/gateway/latest/flex-gateway-deployment-models"
+      "title": "Flex Gateway Connected Mode",
+      "url": "https://docs.mulesoft.com/gateway/latest/#connected_mode"
     },
     "architectureGuide": {
       "title": "API Manager Overview \u2014 Centralized Policy Control and Analytics",
