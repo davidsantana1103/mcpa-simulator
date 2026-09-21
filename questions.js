@@ -6498,7 +6498,7 @@ window.MCPA_QUESTIONS = [
   "references": {
     "primary": {
       "title": "Anypoint Exchange Asset Lifecycle States",
-      "url": "https://docs.mulesoft.com/exchange/latest/lifecycle"
+      "url": "https://docs.mulesoft.com/exchange/lifecycle"
     },
     "architectureGuide": {
       "title": "Publishing Assets Using the Exchange API",
