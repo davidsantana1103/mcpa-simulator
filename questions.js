@@ -6160,7 +6160,7 @@ window.MCPA_QUESTIONS = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "An application network is the network of APIs and assets â discoverable in Exchange, governed in API Manager, and consumable by any team via contracts â that enables LoB self-service and reuse. It is not a flat list, a VPC, or a single product.",
+    "explanation": "An application network is the network of APIs and assets — discoverable in Exchange, governed in API Manager, and consumable by any team via contracts — that enables LoB self-service and reuse. It is not a flat list, a VPC, or a single product.",
     "rationales": {
       "A": {
         "type": "Incorrect",
