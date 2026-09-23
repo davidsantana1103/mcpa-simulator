@@ -457,7 +457,7 @@
 
     if (isCorrect) {
       dom.expHeader.className = 'exp-header correct';
-      dom.expHeaderText.textContent = '✓ Correct Answer!';
+      dom.expHeaderText.textContent = isMultiAnswerQuestion(q) ? '✓ Correct Answers!' : '✓ Correct Answer!';
     } else {
       dom.expHeader.className = 'exp-header incorrect';
       dom.expHeaderText.textContent = `✗ Incorrect (Correct ${isMultiAnswerQuestion(q) ? 'Answers' : 'Answer'}: ${formatCorrectAnswers(q)})`;
