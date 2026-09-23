@@ -92,6 +92,7 @@
   function init() {
     loadStorage();
     setupTheme();
+    initializeQuestionCountPlaceholders();
     if (dom.examCountSelect) {
       dom.examCountSelect.value = state.examQuestionCount.toString();
     }
@@ -108,6 +109,22 @@
     renderQuestion();
     updateStats();
     renderGrid();
+  }
+
+  function initializeQuestionCountPlaceholders() {
+    const totalQuestions = state.questions.length;
+
+    if (dom.statAnswered) {
+      dom.statAnswered.textContent = `0 / ${totalQuestions}`;
+    }
+    if (dom.badgeQnum) {
+      dom.badgeQnum.textContent = `Q1 (1/${totalQuestions})`;
+    }
+
+    const gridCountLabel = document.getElementById('grid-count-label');
+    if (gridCountLabel) {
+      gridCountLabel.textContent = `${totalQuestions} Items`;
+    }
   }
 
   // Load from localStorage
