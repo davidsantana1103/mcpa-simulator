@@ -218,11 +218,11 @@
 
     // Filter by status
     if (state.filterStatus === 'unanswered') {
-      list = list.filter(q => !state.userAnswers[q.id]);
+      list = list.filter(q => !hasAnswer(state.userAnswers[q.id]));
     } else if (state.filterStatus === 'correct') {
-      list = list.filter(q => state.userAnswers[q.id] && state.userAnswers[q.id] === q.correctAnswer);
+      list = list.filter(q => answersMatch(q, state.userAnswers[q.id]));
     } else if (state.filterStatus === 'incorrect') {
-      list = list.filter(q => state.userAnswers[q.id] && state.userAnswers[q.id] !== q.correctAnswer);
+      list = list.filter(q => hasAnswer(state.userAnswers[q.id]) && !answersMatch(q, state.userAnswers[q.id]));
     } else if (state.filterStatus === 'flagged') {
       list = list.filter(q => state.flagged.has(q.id));
     }
@@ -242,6 +242,39 @@
     if (state.currentIndex >= state.filteredQuestions.length) {
       state.currentIndex = Math.max(0, state.filteredQuestions.length - 1);
     }
+  }
+
+  function getCorrectAnswers(question) {
+    if (Array.isArray(question.correctAnswers)) {
+      return question.correctAnswers;
+    }
+    return question.correctAnswer ? [question.correctAnswer] : [];
+  }
+
+  function isMultiAnswerQuestion(question) {
+    return getCorrectAnswers(question).length > 1;
+  }
+
+  function hasAnswer(answer) {
+    return Array.isArray(answer) ? answer.length > 0 : answer !== undefined && answer !== null && answer !== '';
+  }
+
+  function isAnswerSelected(answer, letter) {
+    return Array.isArray(answer) ? answer.includes(letter) : answer === letter;
+  }
+
+  function answersMatch(question, answer) {
+    if (!hasAnswer(answer)) return false;
+
+    const correctAnswers = [...getCorrectAnswers(question)].sort();
+    const selectedAnswers = Array.isArray(answer) ? [...new Set(answer)].sort() : [answer];
+
+    return correctAnswers.length === selectedAnswers.length &&
+      correctAnswers.every((letter, idx) => letter === selectedAnswers[idx]);
+  }
+
+  function formatCorrectAnswers(question) {
+    return getCorrectAnswers(question).join(', ');
   }
 
   // Render current question
@@ -297,8 +330,9 @@
     // Render Options
     dom.optionsList.innerHTML = '';
     const selectedAnswer = state.userAnswers[q.id];
-    const isAnswered = selectedAnswer !== undefined;
+    const isAnswered = hasAnswer(selectedAnswer);
     const isPractice = state.mode === 'practice';
+    const correctAnswers = getCorrectAnswers(q);
 
     q.options.forEach((opt, idx) => {
       const item = document.createElement('div');
@@ -306,16 +340,16 @@
       item.dataset.letter = opt.letter;
 
       // Selection state
-      if (selectedAnswer === opt.letter) {
+      if (isAnswerSelected(selectedAnswer, opt.letter)) {
         item.classList.add('selected');
       }
 
       // If answered in practice mode, reveal feedback
       if (isPractice && isAnswered) {
         item.classList.add('disabled');
-        if (opt.letter === q.correctAnswer) {
+        if (correctAnswers.includes(opt.letter)) {
           item.classList.add('correct');
-        } else if (selectedAnswer === opt.letter) {
+        } else if (isAnswerSelected(selectedAnswer, opt.letter)) {
           item.classList.add('incorrect');
         }
       }
@@ -346,7 +380,8 @@
         renderExplanation(q, selectedAnswer);
       } else {
         dom.checkBtn.style.display = 'inline-flex';
-        dom.checkBtn.disabled = !selectedAnswer;
+        dom.checkBtn.textContent = isMultiAnswerQuestion(q) ? 'Check Answers' : 'Check Answer';
+        dom.checkBtn.disabled = !hasAnswer(selectedAnswer);
         dom.explanationBox.style.display = 'none';
       }
       dom.submitExamBtn.style.display = 'none';
@@ -368,12 +403,27 @@
 
   // Select Option
   function selectOption(qId, letter) {
-    state.userAnswers[qId] = letter;
+    const q = state.filteredQuestions[state.currentIndex] || state.questions.find(question => question.id === qId);
+    if (!q) return;
+    if (state.mode === 'practice' && dom.checkBtn.style.display === 'none' && hasAnswer(state.userAnswers[qId])) return;
+
+    if (isMultiAnswerQuestion(q)) {
+      const order = q.options.map(opt => opt.letter);
+      const currentAnswers = Array.isArray(state.userAnswers[qId]) ? [...state.userAnswers[qId]] : [];
+      const nextAnswers = currentAnswers.includes(letter)
+        ? currentAnswers.filter(item => item !== letter)
+        : [...currentAnswers, letter];
+
+      nextAnswers.sort((a, b) => order.indexOf(a) - order.indexOf(b));
+      state.userAnswers[qId] = nextAnswers;
+    } else {
+      state.userAnswers[qId] = letter;
+    }
     
     // Update selected styling in UI
     const optionItems = dom.optionsList.querySelectorAll('.option-item');
     optionItems.forEach(item => {
-      if (item.dataset.letter === letter) {
+      if (isAnswerSelected(state.userAnswers[qId], item.dataset.letter)) {
         item.classList.add('selected');
       } else {
         item.classList.remove('selected');
@@ -381,7 +431,7 @@
     });
 
     if (state.mode === 'practice') {
-      dom.checkBtn.disabled = false;
+      dom.checkBtn.disabled = !hasAnswer(state.userAnswers[qId]);
     } else {
       updateStats();
       renderGrid();
@@ -394,7 +444,7 @@
     const q = state.filteredQuestions[state.currentIndex];
     if (!q) return;
     const selected = state.userAnswers[q.id];
-    if (!selected) return;
+    if (!hasAnswer(selected)) return;
 
     renderQuestion();
   }
@@ -402,14 +452,15 @@
   // Render Explanation & Deep-Dive Links
   function renderExplanation(q, selected) {
     dom.explanationBox.style.display = 'flex';
-    const isCorrect = selected === q.correctAnswer;
+    const isCorrect = answersMatch(q, selected);
+    const rationaleContainer = dom.rationalesList.parentElement;
 
     if (isCorrect) {
       dom.expHeader.className = 'exp-header correct';
       dom.expHeaderText.textContent = '✓ Correct Answer!';
     } else {
       dom.expHeader.className = 'exp-header incorrect';
-      dom.expHeaderText.textContent = `✗ Incorrect (Correct Answer: ${q.correctAnswer})`;
+      dom.expHeaderText.textContent = `✗ Incorrect (Correct ${isMultiAnswerQuestion(q) ? 'Answers' : 'Answer'}: ${formatCorrectAnswers(q)})`;
     }
 
     dom.expBody.textContent = q.explanation;
@@ -425,17 +476,23 @@
         dom.rationalesList.appendChild(rItem);
       });
     }
+    if (rationaleContainer) {
+      rationaleContainer.style.display = dom.rationalesList.children.length > 0 ? 'block' : 'none';
+    }
 
     // Verified study references
     dom.refLinksContainer.innerHTML = '';
+    let hasReferences = false;
     if (q.references) {
       if (q.references.primary && q.references.primary.url) {
         const link = createRefLink(q.references.primary.title, q.references.primary.url, '📖 Primary Documentation');
         dom.refLinksContainer.appendChild(link);
+        hasReferences = true;
       }
       if (q.references.architectureGuide && q.references.architectureGuide.url) {
         const link = createRefLink(q.references.architectureGuide.title, q.references.architectureGuide.url, '🏛️ Architecture Guide / Standard');
         dom.refLinksContainer.appendChild(link);
+        hasReferences = true;
       }
       if (q.references.arc720 && q.references.arc720.lesson) {
         const lessonDiv = document.createElement('div');
@@ -443,8 +500,10 @@
         lessonDiv.style.color = 'var(--text-muted)';
         lessonDiv.innerHTML = `<span>🎓 <strong>ARC720 Alignment:</strong> ${q.references.arc720.lesson}</span>`;
         dom.refLinksContainer.appendChild(lessonDiv);
+        hasReferences = true;
       }
     }
+    dom.referencesBox.style.display = hasReferences ? 'block' : 'none';
   }
 
   function createRefLink(title, url, label) {
@@ -468,9 +527,9 @@
 
     activeQuestions.forEach(q => {
       const userAns = state.userAnswers[q.id];
-      if (userAns !== undefined) {
+      if (hasAnswer(userAns)) {
         answeredCount++;
-        if (userAns === q.correctAnswer) {
+        if (answersMatch(q, userAns)) {
           correctCount++;
         }
       }
@@ -506,9 +565,9 @@
       }
 
       const ans = state.userAnswers[q.id];
-      if (ans !== undefined) {
+      if (hasAnswer(ans)) {
         if (state.mode === 'practice') {
-          if (ans === q.correctAnswer) {
+          if (answersMatch(q, ans)) {
             btn.classList.add('correct');
           } else {
             btn.classList.add('incorrect');
@@ -651,9 +710,9 @@
       if (!domainScores[d]) domainScores[d] = { total: 0, correct: 0 };
       domainScores[d].total++;
 
-      if (userAns !== undefined) {
+      if (hasAnswer(userAns)) {
         answered++;
-        if (userAns === q.correctAnswer) {
+        if (answersMatch(q, userAns)) {
           correct++;
           domainScores[d].correct++;
         }
@@ -756,15 +815,15 @@
   function handleKeyDown(e) {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;
 
+    const q = state.filteredQuestions[state.currentIndex];
     const key = e.key.toUpperCase();
-    if (['A', 'B', 'C', 'D'].includes(key)) {
-      const q = state.filteredQuestions[state.currentIndex];
-      if (q) selectOption(q.id, key);
-    } else if (['1', '2', '3', '4'].includes(key)) {
-      const q = state.filteredQuestions[state.currentIndex];
-      const letters = ['A', 'B', 'C', 'D'];
+    if (e.shiftKey && key === 'F') {
+      toggleFlag();
+    } else if (q && ['A', 'B', 'C', 'D', 'E', 'F'].includes(key) && q.options.some(opt => opt.letter === key)) {
+      selectOption(q.id, key);
+    } else if (q && ['1', '2', '3', '4', '5', '6'].includes(key)) {
       const idx = parseInt(key, 10) - 1;
-      if (q && letters[idx]) selectOption(q.id, letters[idx]);
+      if (q.options[idx]) selectOption(q.id, q.options[idx].letter);
     } else if (e.key === 'Enter') {
       if (state.mode === 'practice' && !dom.checkBtn.disabled && dom.checkBtn.style.display !== 'none') {
         checkAnswer();
@@ -779,8 +838,6 @@
         state.currentIndex--;
         renderQuestion();
       }
-    } else if (e.key === 'f' || e.key === 'F') {
-      toggleFlag();
     }
   }
 
