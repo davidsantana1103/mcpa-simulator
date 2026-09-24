@@ -2314,11 +2314,7 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Design the API in RAML and use Mule Soft’s Hypermedia (HAL) module to automatically embed state‑transition links in responses, customizing link inclusion to stay under 5 K"
-      },
-      {
-        "letter": "B",
-        "text": ""
+        "text": "Design the API in RAML and use Mule Soft’s Hypermedia (HAL) module to automatically embed state‑transition links in responses, customizing link inclusion to stay under 5 KB."
       },
       {
         "letter": "B",
