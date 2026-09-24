@@ -1187,1313 +1187,1394 @@ window.MCPA_QUESTIONS = [
   {
     "id": "q-020",
     "number": 20,
-    "title": "Application Network Basics - A retail enterprise wants every customerfacing channel",
-    "domain": "Application Network Basics",
+    "title": "API Migration - A logistics company is migrating its on‑premises APIs to Anypoint",
+    "domain": "API Migration",
     "topics": [
-      "Three Layer Architecture",
-      "Api Led Connectivity"
+      "API Migration"
     ],
-    "prompt": "A retail enterprise wants every customer-facing channel team to assemble its own dashboards from System APIs without re-implementing core business logic. Which API layer should own the reusable cross-system business logic?",
+    "prompt": "A logistics company is migrating its on‑premises APIs to Anypoint Platform Cloud Hub and has a 48‑hour migration window. The migration must minimize downtime and preserve existing OAuth 2.0 security policies. Which TWO actions should be taken? (Select all correct answers)",
     "options": [
       {
         "letter": "A",
-        "text": "Experience APIs"
+        "text": "Delete the on‑premises APIs immediately and recreate them from scratch on Cloud Hub, then update the client applications to use the new endpoints."
       },
       {
         "letter": "B",
-        "text": "Process APIs"
+        "text": "Export the existing OAuth 2.0 provider configuration from the on‑premises environment and import it into Anypoint Access Management, then configure the Cloud Hub application to use the same client IDs and scopes."
       },
       {
         "letter": "C",
-        "text": "System APIs"
+        "text": "Enable the ‘Automatic Re‑deployer’ feature in Runtime Manager to push updates directly to the on‑premises servers during the migration window."
       },
       {
         "letter": "D",
-        "text": "API policies"
+        "text": "Deploy the API to Cloud Hub using a blue‑green deployment and configure a domain alias to switch traffic to the new version after health checks pass."
+      },
+      {
+        "letter": "E",
+        "text": "Replace OAuth 2.0 with Basic Authentication in the Cloud Hub deployment to simplify the migration."
+      },
+      {
+        "letter": "F",
+        "text": "Use Anypoint VPC peering to directly expose the on‑premises APIs over the internet without redeploying them."
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Process APIs orchestrate and combine data from multiple System APIs to encode business logic that channels can reuse. Experience APIs then shape that logic per channel. Putting business logic in Experience APIs forces re-implementation per channel; putting it in System APIs couples logic to systems of record.",
+    "explanation": "The question tests knowledge of best‑practice migration techniques for moving APIs to Cloud Hub while keeping security and availability intact. Preserving OAuth 2.0 requires moving the provider configuration into Anypoint Access Management so existing client credentials remain valid. Minimizing downtime is achieved with a blue‑green deployment and a domain alias switch, which allows traffic to be rerouted only after the new instance is proven healthy. Common misconceptions include deleting old APIs, changing the security model, or assuming on‑premises servers can be updated automatically from Cloud Hub. In real projects, architects combine security migration (OAuth config) with traffic‑routing strategies (blue‑green) to meet tight migration windows without impacting consumers.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Experience APIs adapt for a channel; placing business logic here forces duplication."
+        "text": "Delete the on‑premises APIs immediately and recreate them from scratch on Cloud Hub, then update the client applications to use the new endpoints.: This approach is incorrect because removing the existing APIs before the new ones are fully validated will cause an immediate service interruption, violating the requirement to minimize downtime. Re‑creating the APIs from scratch also discards the existing OAuth 2.0 configuration, forcing clients to obtain new credentials. In a real‑world migration, such a sudden cut‑over would lead to failed shipments and loss of partner trust."
       },
       "B": {
         "type": "Correct",
-        "text": "Process APIs"
+        "text": "Export the existing OAuth 2.0 provider configuration from the on‑premises environment and import it into Anypoint Access Management, then configure the Cloud Hub application to use the same client IDs and scopes.: This option is correct. By migrating the OAuth provider settings, the same client identifiers, secrets, and scopes remain valid, so external consumers do not need to change their authentication flow. Anypoint Access Management supports importing custom OAuth providers, allowing a seamless security hand‑off. In practice, partners can continue to request tokens without any code changes, preserving business continuity."
       },
       "C": {
         "type": "Incorrect",
-        "text": "System APIs unlock systems of record without encoding business logic."
+        "text": "Enable the ‘Automatic Re‑deployer’ feature in Runtime Manager to push updates directly to the on‑premises servers during the migration window.: This is incorrect because the Automatic Re‑deployer only works for applications already running on Cloud Hub; it cannot push changes to on‑premises servers. Moreover, it does not address traffic routing or OAuth migration, so downtime could still occur. Relying on this feature would give a false sense of safety and could leave the APIs in an inconsistent state."
       },
       "D": {
+        "type": "Correct",
+        "text": "Deploy the API to Cloud Hub using a blue‑green deployment and configure a domain alias to switch traffic to the new version after health checks pass.: This option is correct. A blue‑green strategy lets the original on‑premises version (blue) remain active while the Cloud Hub version (green) is warmed up and tested. Once the green deployment is verified, the domain alias is repointed, causing an instant cut‑over with no perceived downtime. This pattern is widely recommended for high‑availability migrations."
+      },
+      "E": {
         "type": "Incorrect",
-        "text": "Policies enforce non-functional concerns (security, throttling), not business logic."
+        "text": "Replace OAuth 2.0 with Basic Authentication in the Cloud Hub deployment to simplify the migration.: This is incorrect because swapping the security model violates the requirement to preserve existing OAuth 2.0 policies. Basic Authentication provides weaker security and would require all client applications to be re‑engineered, introducing risk and additional downtime. Organizations rarely downgrade security during a migration unless absolutely necessary, which is not the case here."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Use Anypoint VPC peering to directly expose the on‑premises APIs over the internet without redeploying them.: This option is incorrect. VPC peering allows private network connectivity but does not migrate the APIs to Cloud Hub, nor does it address the need to keep OAuth 2.0 policies intact on the new platform. It would leave the on‑premises APIs still in use, defeating the purpose of the migration and potentially creating latency issues. Proper migration requires redeploying the services to Cloud Hub."
       }
     },
-    "references": {
-      "primary": {
-        "title": "API-Led Connectivity — Process APIs Orchestrating Reusable Cross-System Business Logic",
-        "url": "https://docs.mulesoft.com/general/api-led-develop#step-3-2-understand-the-scaffolded-structure"
-      },
-      "architectureGuide": {
-        "title": "Martin Fowler — Bounded Context & Layered Domain Architecture",
-        "url": "https://martinfowler.com/bliki/BoundedContext.html"
-      },
-      "arc720": {
-        "lesson": "Lesson 5 — API identification, publication, and reuse",
-        "anchor": "ARC720-Course-Content.md#5-api-identification-publication-and-reuse"
-      }
-    }
+    "references": {},
+    "correctAnswers": [
+      "B",
+      "D"
+    ]
   },
   {
     "id": "q-021",
     "number": 21,
-    "title": "Deployment Options - Which deployment option lets you run Mule",
-    "domain": "Deployment Options",
+    "title": "API Versioning - A mid-sized finance firm is building a new API to expose customer",
+    "domain": "API Versioning",
     "topics": [
-      "Runtime Fabric"
+      "API Versioning"
     ],
-    "prompt": "Which deployment option lets you run Mule runtimes inside your own Kubernetes cluster while still managing them centrally from Anypoint?",
+    "prompt": "A mid-sized finance firm is building a new API to expose customer account balances. The solution must comply with PCI DSS, stay within a $50k budget, and support future mobile app integration. The architect must decide how to version the API to avoid breaking existing clients. Which option should the team choose?",
     "options": [
       {
         "letter": "A",
-        "text": "CloudHub"
+        "text": "Use URI versioning (e. g., /v1/accounts) and keep the version in the path for all future releases."
       },
       {
         "letter": "B",
-        "text": "Anypoint Runtime Fabric (RTF)"
+        "text": "Use query parameter versioning (e. g., /accounts? version=1) and increment the parameter value for new releases."
       },
       {
         "letter": "C",
-        "text": "Hybrid Mule Server"
+        "text": "Use HTTP header versioning (e. g., Accept: application/vnd. company. account+json; version=1) and default to the highest version if not supplied."
       },
       {
         "letter": "D",
-        "text": "Anypoint Service Mesh"
+        "text": "Deploy a new API instance with a different base URL for each version (e. g., https://api-v1. company. com) and keep the old instance running indefinitely."
+      },
+      {
+        "letter": "E",
+        "text": "Implement a single API with backward‑compatible changes only, avoiding explicit versioning altogether."
+      },
+      {
+        "letter": "F",
+        "text": "Use content‑type negotiation (media type versioning) combined with API gateway routing to map each version to a separate flow."
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Runtime Fabric runs containerized Mule runtimes on customer-managed Kubernetes (or self-managed RTF on VMs) while remaining managed from Anypoint Runtime Manager. CloudHub is fully managed by MuleSoft; Hybrid runs Mule on customer servers without containers; Service Mesh is for non-Mule services.",
+    "explanation": "The question tests knowledge of API versioning strategies in a regulated, budget‑constrained environment. URI versioning is the preferred approach because it is explicit, simple to implement, and easy for clients—including mobile apps—to use without extra headers or query parameters. It also allows each versioned endpoint to be secured and audited independently, satisfying PCI DSS requirements. The other options introduce hidden complexity, higher operational costs, or risk of breaking existing consumers, which are common misconceptions among developers unfamiliar with enterprise best practices. Remember that the most pragmatic versioning technique balances clarity, cost, and compliance, and URI versioning consistently meets those criteria in real‑world finance projects.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "CloudHub is MuleSoft-managed multi-tenant cloud; not a customer Kubernetes deployment."
+        "type": "Correct",
+        "text": "Use URI versioning (e. g., /v1/accounts) and keep the version in the path for all future releases.: This is the correct choice. Placing the version number in the URI makes it explicit, easy for client developers to understand, and requires no additional processing in the gateway, keeping implementation costs low – an important factor for a $50k budget. URI versioning also aligns well with PCI DSS audit requirements because each version can be individually secured and documented. Mobile apps can cache the full endpoint URL, simplifying integration and reducing the chance of accidental calls to an unintended version."
       },
       "B": {
-        "type": "Correct",
-        "text": "Anypoint Runtime Fabric (RTF)"
+        "type": "Incorrect",
+        "text": "Use query parameter versioning (e. g., /accounts? version=1) and increment the parameter value for new releases.: This option is incorrect. While query‑parameter versioning is technically possible, many caching layers and security tools ignore query strings when applying PCI‑DSS‑related controls, which can lead to inconsistent enforcement. It also adds parsing overhead in the API runtime, increasing operational cost and complexity. Mobile developers often forget to include the version parameter, causing unexpected breaking changes for existing users."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Hybrid uses standalone Mule servers, not Kubernetes."
+        "text": "Use HTTP header versioning (e. g., Accept: application/vnd. company. account+json; version=1) and default to the highest version if not supplied.: This option is incorrect for the given constraints. Header‑based versioning requires every client to set custom headers, which can be cumbersome for mobile SDKs and may be stripped by some proxies, breaking compliance checks. Defaulting to the highest version can unintentionally expose older clients to breaking changes, violating the requirement to avoid breaking existing consumers. Implementing and testing header negotiation also adds to development effort, pushing the budget beyond the limit."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Service Mesh extends API governance to existing Istio meshes; it does not host Mule apps."
+        "text": "Deploy a new API instance with a different base URL for each version (e. g., https://api-v1. company. com) and keep the old instance running indefinitely.: This option is incorrect. Maintaining separate infrastructure for each version dramatically increases operational cost, likely exceeding the $50k budget, and adds complexity to security monitoring required by PCI DSS. It also creates DNS management overhead and potential latency issues for mobile clients that need to discover the correct base URL. Keeping old instances running indefinitely can lead to unpatched legacy services, a compliance risk."
+      },
+      "E": {
+        "type": "Incorrect",
+        "text": "Implement a single API with backward‑compatible changes only, avoiding explicit versioning altogether.: This option is incorrect. Although backward‑compatible changes are ideal, the finance domain often requires schema modifications (e. g., adding new fields for regulatory reporting) that are not truly backward compatible for all clients. Without explicit versioning, you cannot guarantee that a future mobile app won't be impacted by subtle contract changes, violating the requirement to avoid breaking existing clients. Additionally, PCI DSS audit trails benefit from clear version identifiers to track which contract was used for each transaction."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Use content‑type negotiation (media type versioning) combined with API gateway routing to map each version to a separate flow.: This option is incorrect. Media‑type versioning demands that every client correctly set the Accept header with a specific vendor‑specific media type, which many mobile frameworks do not handle out of the box. The extra routing logic in the gateway adds processing overhead and increases the chance of misconfiguration, potentially compromising PCI DSS controls. The complexity and testing effort needed to support multiple media types typically exceed the modest budget and can lead to inadvertent breaking changes."
       }
     },
-    "references": {
-      "primary": {
-        "title": "Anypoint Runtime Fabric (RTF) — Kubernetes Architecture & Containerized Deployment",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/#how-application-deployments-work-in-anypoint-runtime-fabric"
-      },
-      "architectureGuide": {
-        "title": "Runtime Fabric Custom Ingress & Edge Policies",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/custom-ingress-configuration#how-ingress-resources-templates-work-in-runtime-fabric"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
-      }
-    }
+    "references": {},
+    "correctAnswer": "A"
   },
   {
     "id": "q-022",
     "number": 22,
-    "title": "Non Functional Requirements - What is the purpose of CloudHubs Object",
-    "domain": "Non Functional Requirements",
+    "title": "Integration Patterns - A regional healthcare provider needs to integrate its electronic",
+    "domain": "Integration Patterns",
     "topics": [
-      "Object Store V2"
+      "Integration Patterns"
     ],
-    "prompt": "What is the purpose of CloudHub's Object Store v2 versus the in-memory Object Store v1?",
+    "prompt": "A regional healthcare provider needs to integrate its electronic health record (EHR) system with a third‑party appointment scheduling service. The integration must be HIPAA‑compliant and be delivered within a two‑week sprint. Which integration pattern BEST meets the requirements?",
     "options": [
       {
         "letter": "A",
-        "text": "v2 is faster but non-persistent"
+        "text": "Secure API Proxy pattern – expose a protected API that forwards requests to the third‑party service while applying TLS, OAuth2, and audit logging."
       },
       {
         "letter": "B",
-        "text": "v2 is persistent, cluster-shared across workers, and managed by MuleSoft"
+        "text": "Batch processing pattern – collect appointment requests throughout the day and process them in a nightly batch job."
       },
       {
         "letter": "C",
-        "text": "v2 only works on Runtime Fabric"
+        "text": "Asynchronous messaging pattern using a JMS queue – place appointment requests on a queue for later consumption by the scheduling service."
       },
       {
         "letter": "D",
-        "text": "v2 is identical to v1 but with renamed APIs"
+        "text": "Direct HTTP request‑reply without mediation – the EHR system calls the third‑party service over HTTPS without any additional security layer."
+      },
+      {
+        "letter": "E",
+        "text": "Data Weave‑only transformation – use Data Weave to map EHR data to the third‑party format and send it directly."
+      },
+      {
+        "letter": "F",
+        "text": "Event‑driven Pub/Sub architecture with Kafka – publish appointment events to a topic that the scheduling service subscribes to."
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Object Store v2 is a managed, persistent, cluster-aware service with key/value semantics designed for sharing state across CloudHub workers. v1 is local in-memory storage scoped to one worker.",
+    "explanation": "The question tests the candidate's ability to match integration patterns to regulatory and delivery constraints. HIPAA compliance demands encryption, strong authentication, and auditability, which are most easily satisfied by a Secure API Proxy that can apply gateway policies without extensive custom development. The two‑week sprint constraint rules out heavyweight solutions such as batch jobs, asynchronous queues, or event‑driven architectures, which require additional infrastructure and testing. Common misconceptions include assuming that any HTTPS call is sufficient for HIPAA or that Data Weave alone provides integration capabilities. Best practice is to leverage the API gateway for security enforcement while keeping the integration simple and maintainable, ensuring both compliance and rapid delivery.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "v2 is durable; persistence is its main value."
+        "type": "Correct",
+        "text": "Secure API Proxy pattern – expose a protected API that forwards requests to the third‑party service while applying TLS, OAuth2, and audit logging.: This option is correct. A secure API proxy enables rapid implementation by reusing the API gateway and applying HIPAA‑required security policies such as encryption in transit, strong authentication, and detailed audit logs. Because the proxy merely forwards calls, development effort stays low enough to fit a two‑week sprint, and the provider retains control over data handling to stay compliant."
       },
       "B": {
-        "type": "Correct",
-        "text": "v2 is persistent, cluster-shared across workers, and managed by MuleSoft"
+        "type": "Incorrect",
+        "text": "Batch processing pattern – collect appointment requests throughout the day and process them in a nightly batch job.: This option is incorrect. Batch processing introduces latency that prevents real‑time scheduling, which is generally required for patient appointments. Additionally, storing PHI in intermediate files for batch jobs adds compliance risk unless extensive encryption and retention controls are added, increasing the effort beyond a two‑week timeline."
       },
       "C": {
         "type": "Incorrect",
-        "text": "v2 is a CloudHub managed service; on RTF, persistent stores are configured separately."
+        "text": "Asynchronous messaging pattern using a JMS queue – place appointment requests on a queue for later consumption by the scheduling service.: This option is incorrect. While asynchronous messaging can be secure, it adds complexity such as message durability, dead‑letter handling, and additional components that must also be hardened for HIPAA. The extra setup time and the potential for out‑of‑order processing make it unsuitable for a quick two‑week delivery and for scenarios that need immediate confirmation of appointments."
       },
       "D": {
         "type": "Incorrect",
-        "text": "v2 has different semantics (TTL behavior, cluster sharing) not just renamed APIs."
+        "text": "Direct HTTP request‑reply without mediation – the EHR system calls the third‑party service over HTTPS without any additional security layer.: This option is incorrect. Although HTTPS provides transport encryption, a direct call bypasses the organization’s ability to enforce consistent security policies, audit logging, and token management required by HIPAA. Without a mediation layer, any changes to the third‑party API could break the integration, leading to higher maintenance effort."
+      },
+      "E": {
+        "type": "Incorrect",
+        "text": "Data Weave‑only transformation – use Data Weave to map EHR data to the third‑party format and send it directly.: This option is incorrect. Data Weave is a transformation language, not an integration pattern, and it does not address security, governance, or protocol mediation. Relying solely on transformation would leave the integration exposed to compliance gaps and would not guarantee a rapid, managed delivery."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Event‑driven Pub/Sub architecture with Kafka – publish appointment events to a topic that the scheduling service subscribes to.: This option is incorrect. While event‑driven architectures are powerful, setting up a Kafka cluster, configuring topics, and ensuring HIPAA‑level encryption and access control is far beyond a two‑week sprint. The added operational overhead and the need for precise ordering make this pattern an over‑engineered solution for the given problem."
       }
     },
-    "references": {
-      "primary": {
-        "title": "Object Store v2 — Persistent Key-Value Store Across Cluster Workers",
-        "url": "https://docs.mulesoft.com/object-store/#object-store-v2-features"
-      },
-      "architectureGuide": {
-        "title": "Object Store v2 FAQ — Partitioning and TTL Expiration",
-        "url": "https://docs.mulesoft.com/object-store/osv2-faq"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
-      }
-    }
+    "references": {},
+    "correctAnswer": "A"
   },
   {
     "id": "q-023",
     "number": 23,
-    "title": "Non Functional Requirements - What does enabling Persistent Queues on a",
-    "domain": "Non Functional Requirements",
+    "title": "API-led Connectivity - A national retail chain wants to expose its product catalog to ex",
+    "domain": "API-led Connectivity",
     "topics": [
-      "Reliability Patterns",
-      "Cloudhub Deployment"
+      "API-led Connectivity"
     ],
-    "prompt": "What does enabling 'Persistent Queues' on a CloudHub app primarily provide?",
+    "prompt": "A national retail chain wants to expose its product catalog to external partners while enforcing throttling limits and keeping costs low. The team must choose an API‑led design that separates concerns and minimizes infrastructure spend. Which option should the team choose?",
     "options": [
       {
         "letter": "A",
-        "text": "Disk-backed buffering for VM queues that survives worker restarts"
+        "text": "Deploy a System API that directly exposes the catalog and configure throttling in API Manager."
       },
       {
         "letter": "B",
-        "text": "Cross-region replication of every Mule message"
+        "text": "Create an Experience API that proxies the System API, apply throttling policies on the Experience layer, and deploy on shared Cloud Hub workers."
       },
       {
         "letter": "C",
-        "text": "An external Anypoint MQ broker"
+        "text": "Build a Process API that aggregates catalog data, embed custom throttling logic in Data Weave, and run it on a dedicated runtime."
       },
       {
         "letter": "D",
-        "text": "Synchronous JMS bridging to on-prem brokers"
+        "text": "Publish the RAML definition on Anypoint Exchange and rely on Exchange's built‑in rate limiting for partners."
+      },
+      {
+        "letter": "E",
+        "text": "Use Anypoint VPN to expose the internal catalog directly to partners and apply network‑level throttling on the VPN gateway."
+      },
+      {
+        "letter": "F",
+        "text": "Host the product catalog as a static JSON file in Anypoint Object Store and let partners download it via SFTP."
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Persistent Queues for CloudHub use the worker's persistent storage to back VM queues so messages survive worker restarts and can be processed by another worker. They do not provide cross-region replication or external brokers; for global queueing, use Anypoint MQ.",
+    "explanation": "The question tests understanding of API‑led connectivity layers and cost‑effective deployment strategies. An Experience API is the appropriate outer layer for external partners; it can proxy a System API, enforce throttling via API Manager policies, and be hosted on shared Cloud Hub workers to keep infrastructure spend low. Common misconceptions include thinking that a System API alone can serve external partners, that custom code in a Process API should handle throttling, or that non‑API mechanisms like VPN or static files can replace the API‑led approach. These alternatives either blur layer responsibilities, increase complexity, or lack proper policy enforcement. Best practice dictates using the Experience‑System‑Process hierarchy to separate concerns, applying policies at the edge, and leveraging shared runtimes for economical scaling.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Disk-backed buffering for VM queues that survives worker restarts"
+        "type": "Incorrect",
+        "text": "Deploy a System API that directly exposes the catalog and configure throttling in API Manager.: This option is partially correct because a System API can indeed expose core system data and API Manager can enforce throttling. However, a System API is meant to provide a reusable façade for internal consumption, not to be the primary experience for external partners. Using it directly for partners mixes concerns and can lead to tighter coupling, making future changes harder and potentially increasing runtime costs if additional layers are needed later."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Cross-region replication is not what Persistent Queues offer."
+        "type": "Correct",
+        "text": "Create an Experience API that proxies the System API, apply throttling policies on the Experience layer, and deploy on shared Cloud Hub workers.: This is the correct answer. An Experience API is designed to be the outermost layer for external consumers, allowing you to enforce policies such as throttling without impacting the underlying System API. Deploying on shared Cloud Hub workers minimizes infrastructure spend while still providing isolation and scalability. This design cleanly separates concerns: the System API handles core data access, the Experience API handles partner‑specific contracts and policies."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Anypoint MQ is a separate managed broker, not equivalent to Persistent Queues."
+        "text": "Build a Process API that aggregates catalog data, embed custom throttling logic in Data Weave, and run it on a dedicated runtime.: While a Process API can aggregate data, embedding throttling logic in Data Weave is an anti‑pattern because throttling is a cross‑cutting concern best handled by API Manager policies. Moreover, using a dedicated runtime increases infrastructure cost, contradicting the requirement to keep spend low. This approach also adds unnecessary complexity for a simple catalog exposure scenario."
       },
       "D": {
         "type": "Incorrect",
-        "text": "JMS bridging requires the JMS connector and external configuration."
+        "text": "Publish the RAML definition on Anypoint Exchange and rely on Exchange's built‑in rate limiting for partners.: Exchange is a repository for API specifications, not an execution platform, and it does not provide runtime throttling capabilities. Partners would still need an actual runtime to invoke the API, and without API Manager policies the throttling requirement would not be enforced. This option therefore fails to meet both the policy enforcement and cost‑optimization goals."
+      },
+      "E": {
+        "type": "Incorrect",
+        "text": "Use Anypoint VPN to expose the internal catalog directly to partners and apply network‑level throttling on the VPN gateway.: Exposing a backend system through a VPN bypasses the API‑led approach entirely, eliminating the benefits of abstraction, versioning, and policy enforcement that APIs provide. Network‑level throttling is coarse‑grained and does not give the granularity required for per‑consumer limits. Additionally, managing VPN connections adds operational overhead and can increase costs, contrary to the stated objectives."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Host the product catalog as a static JSON file in Anypoint Object Store and let partners download it via SFTP.: Serving a static file via SFTP does not constitute an API and cannot enforce dynamic throttling limits per consumer. It also lacks the ability to evolve the contract, add authentication, or provide versioning, which are core benefits of an API‑led strategy. This solution would therefore not meet the requirement for controlled, partner‑centric exposure while also missing the separation‑of‑concerns principle."
       }
     },
-    "references": {
-      "primary": {
-        "title": "CloudHub Fabric — Persistent Queues for Inter-Worker Message Buffering",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#persistent-queues"
-      },
-      "architectureGuide": {
-        "title": "CloudHub Fabric & Worker Scale-Out Architecture",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#worker-scale-out"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    }
+    "references": {},
+    "correctAnswer": "B"
   },
   {
     "id": "q-024",
     "number": 24,
-    "title": "Non Functional Requirements - Which CloudHub feature distributes traffic across multiple",
-    "domain": "Non Functional Requirements",
+    "title": "Integration Patterns - A logistics company is orchestrating real‑time shipment tracking",
+    "domain": "Integration Patterns",
     "topics": [
-      "Ha Dr Architecture",
-      "Cloudhub Deployment"
+      "Integration Patterns"
     ],
-    "prompt": "Which CloudHub feature distributes traffic across multiple workers to provide horizontal scaling and high availability within a region?",
+    "prompt": "A logistics company is orchestrating real‑time shipment tracking across three carrier APIs. The solution must have the least operational overhead and run on a single Mule runtime. Which integration pattern should be selected?",
     "options": [
       {
         "letter": "A",
-        "text": "Static IP addressing"
+        "text": "API‑led connectivity with separate System, Process, and Experience APIs."
       },
       {
         "letter": "B",
-        "text": "Shared load balancer (SLB) and worker scaling"
+        "text": "Batch processing pattern to invoke the carrier APIs in scheduled chunks."
       },
       {
         "letter": "C",
-        "text": "Dedicated VPN tunnels"
+        "text": "Publish‑Subscribe pattern using Anypoint MQ topics."
       },
       {
         "letter": "D",
-        "text": "Object Store v2 replication"
+        "text": "Scatter‑Gather pattern within a single Mule flow to call the three carrier APIs in parallel and aggregate the responses."
+      },
+      {
+        "letter": "E",
+        "text": "Message Queue pattern with asynchronous processing via Anypoint MQ."
+      },
+      {
+        "letter": "F",
+        "text": "Streaming pattern using Data Weave to process large payloads from the carrier APIs."
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "CloudHub's shared load balancer routes inbound HTTPS to all workers of an app in a region, providing in-region HA and horizontal scaling. Static IPs and VPNs address connectivity, not load distribution; Object Store v2 stores state.",
+    "explanation": "The question tests knowledge of Mule Soft integration patterns and their suitability for real‑time, low‑overhead orchestrations. Scatter‑Gather is the ideal choice because it enables parallel API calls and response aggregation within a single flow, satisfying both the real‑time and single‑runtime constraints. API‑led connectivity, while powerful for reuse, adds layers and runtime footprints that increase operational effort. Batch processing and asynchronous queue‑based patterns are designed for delayed or bulk processing, which conflicts with immediate tracking needs. Publishing‑subscribe and streaming address different concerns—messaging decoupling and large data handling—neither of which aligns with the logistics company's requirements. Understanding when to apply each pattern is a best practice for designing efficient Mule applications.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Static IPs allow allow-listing on partner systems; they do not load balance."
+        "text": "API‑led connectivity with separate System, Process, and Experience APIs.: This option is incorrect because API‑led connectivity encourages the creation of multiple layered APIs, often deployed on separate runtimes to achieve reuse and governance. While it provides strong modularity, it introduces additional operational overhead and latency, which conflicts with the requirement for the simplest deployment on a single runtime. In a real‑time tracking scenario, the extra hops would increase response times and management complexity."
       },
       "B": {
-        "type": "Correct",
-        "text": "Shared load balancer (SLB) and worker scaling"
+        "type": "Incorrect",
+        "text": "Batch processing pattern to invoke the carrier APIs in scheduled chunks.: Batch processing is unsuitable here, making this option incorrect. The pattern is designed for high‑volume, non‑real‑time workloads that can be processed in scheduled batches, not for instant shipment status updates. Deploying a batch job would cause delays in delivering tracking information, defeating the real‑time objective."
       },
       "C": {
         "type": "Incorrect",
-        "text": "VPNs are network connectivity, not load balancers."
+        "text": "Publish‑Subscribe pattern using Anypoint MQ topics.: Although publish‑subscribe enables loose coupling, it is an asynchronous pattern and therefore incorrect for this use case. Real‑time tracking requires an immediate response to the caller, whereas publish‑subscribe introduces indeterminate latency as messages are consumed by subscribers at their own pace. Adding a messaging broker also raises operational overhead, contrary to the requirement."
       },
       "D": {
+        "type": "Correct",
+        "text": "Scatter‑Gather pattern within a single Mule flow to call the three carrier APIs in parallel and aggregate the responses.: This is the correct option. Scatter‑Gather allows the Mule flow to invoke all three carrier APIs concurrently, then combine the results into a single response, meeting the real‑time requirement while keeping the solution on one runtime. It introduces minimal additional components, thus delivering the lowest operational overhead among the presented choices."
+      },
+      "E": {
         "type": "Incorrect",
-        "text": "Object Store v2 stores state and is not a load distributor."
+        "text": "Message Queue pattern with asynchronous processing via Anypoint MQ.: Using a message queue adds asynchronous behavior and extra infrastructure, making this option incorrect for a low‑latency, real‑time scenario. Messages would be placed on a queue and processed later, which introduces delay and complexity that the logistics company wants to avoid. The operational overhead of managing queues contradicts the goal of a single‑runtime deployment."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Streaming pattern using Data Weave to process large payloads from the carrier APIs.: Streaming is intended for handling large data streams efficiently, not for orchestrating multiple service calls, so this option is incorrect. It does not provide parallel invocation or response aggregation needed for real‑time shipment tracking. Applying streaming would add unnecessary complexity without addressing the core requirement."
       }
     },
-    "references": {
-      "primary": {
-        "title": "CloudHub Architecture — Shared Load Balancers (SLB) & Multi-Worker Horizontal Scaling",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#worker-scale-out-and-data-center-redundancy"
-      },
-      "architectureGuide": {
-        "title": "CloudHub Architecture — Workers and Multitenancy",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#workers-and-multitenancy"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    }
+    "references": {},
+    "correctAnswer": "D"
   },
   {
     "id": "q-025",
     "number": 25,
-    "title": "Deployment Options - Which CloudHub configuration enables a managed customercontrolled",
-    "domain": "Deployment Options",
+    "title": "API Security - A federal government agency is securing an internal API that prov",
+    "domain": "API Security",
     "topics": [
-      "Cloudhub Deployment",
-      "Ha Dr Architecture"
+      "API Security"
     ],
-    "prompt": "Which CloudHub configuration enables a managed, customer-controlled load balancer with custom certificates, custom URLs, and IP allow-listing?",
+    "prompt": "A federal government agency is securing an internal API that provides classified data. The project has a strict compliance mandate and a $30k budget cap. Which security best practice provides the MOST secure method to protect the API? Which option should the team choose?",
     "options": [
       {
         "letter": "A",
-        "text": "Shared Load Balancer (SLB)"
+        "text": "Implement OAuth 2.0 client‑credentials flow with JWT access tokens and scopes."
       },
       {
         "letter": "B",
-        "text": "Dedicated Load Balancer (DLB)"
+        "text": "Use API keys passed in a custom header and validate them in a policy."
       },
       {
         "letter": "C",
-        "text": "Anypoint Service Mesh"
+        "text": "Restrict access to the API by configuring an IP whitelist on the firewall."
       },
       {
         "letter": "D",
-        "text": "Auto-discovery"
+        "text": "Enforce Mutual TLS (m TLS) on the API gateway, requiring each consumer to present a validated client certificate."
+      },
+      {
+        "letter": "E",
+        "text": "Apply Basic Authentication (username/password) over HTTPS."
+      },
+      {
+        "letter": "F",
+        "text": "Deploy a hardware security module (HSM) to encrypt data at rest and use token‑binding for requests."
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "A Dedicated Load Balancer is provisioned per Anypoint VPC and supports custom domains, customer-supplied TLS certificates, IP allow-listing, and custom URL mapping. The SLB shares MuleSoft-managed infrastructure and only supports cloudhub.io URLs and standard certificates.",
+    "explanation": "The question tests the candidate's understanding of the strongest, compliance‑driven authentication mechanism for protecting a classified internal API within a limited budget. Mutual TLS (m TLS) is the most secure method because it provides cryptographic, two‑way authentication that guarantees both the server and client identities, fulfilling strict federal mandates. Common misconceptions include assuming that OAuth, API keys, or IP whitelisting alone are sufficient; these methods either lack strong client proof, are vulnerable to secret leakage, or do not verify identity. Basic Auth is frequently mistaken as secure when used over HTTPS, but static credentials are still a weak link. An HSM is valuable for data‑at‑rest encryption but does not replace the need for strong transport‑layer authentication and may be cost‑prohibitive. Therefore, the best practice within the $30k cap is to enable m TLS on the API gateway.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "SLB is multi-tenant and limited to cloudhub.io URLs and standard TLS settings."
+        "text": "Implement OAuth 2.0 client‑credentials flow with JWT access tokens and scopes.: This option is incorrect for the given scenario. While OAuth 2.0 with JWTs provides token‑based authentication and fine‑grained scopes, the access tokens can be intercepted or replayed if not carefully protected, and the token issuance process adds complexity. For a classified internal API, the agency needs stronger, non‑repudiable client identity verification that OAuth alone does not guarantee."
       },
       "B": {
-        "type": "Correct",
-        "text": "Dedicated Load Balancer (DLB)"
+        "type": "Incorrect",
+        "text": "Use API keys passed in a custom header and validate them in a policy.: This option is also incorrect. API keys are static secrets that are difficult to rotate and can be copied or leaked, offering only a weak form of authentication. In a high‑security environment, relying solely on an API key does not satisfy compliance requirements for strong client authentication and auditability."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Service Mesh governs services in Istio; it is not a CloudHub load balancer option."
+        "text": "Restrict access to the API by configuring an IP whitelist on the firewall.: This choice is incorrect. IP whitelisting can limit exposure but it does not authenticate the requester; IP addresses can be spoofed or change due to network re‑architecture. Classified data requires assurance of the exact client identity, which IP filtering alone cannot provide."
       },
       "D": {
+        "type": "Correct",
+        "text": "Enforce Mutual TLS (m TLS) on the API gateway, requiring each consumer to present a validated client certificate.: This option is correct. Mutual TLS provides two‑way authentication by verifying both server and client certificates, ensuring that only trusted, credentialed applications can call the API. It meets strict compliance mandates, offers strong cryptographic assurance, and can be implemented within the $30k budget using Mule Soft’s API Manager and existing PKI infrastructure."
+      },
+      "E": {
         "type": "Incorrect",
-        "text": "Auto-discovery pairs apps with API records and is unrelated to load balancing."
+        "text": "Apply Basic Authentication (username/password) over HTTPS.: This option is incorrect. Basic Auth relies on static credentials that can be phished, reused, or brute‑forced, and it does not provide the same level of cryptographic binding as certificate‑based authentication. For classified data, the risk of credential compromise is too high, making Basic Auth an insufficient safeguard."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Deploy a hardware security module (HSM) to encrypt data at rest and use token‑binding for requests.: This answer is incorrect. While an HSM secures data at rest, it does not address authentication of API callers, and token‑binding adds complexity without guaranteeing client identity. Additionally, HSM solutions often exceed the modest $30k budget, making this approach impractical for the project constraints."
       }
     },
-    "references": {
-      "primary": {
-        "title": "CloudHub Dedicated Load Balancer (DLB) — SSL Certificates, Custom Domains & mTLS",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer#create-and-configure-a-dedicated-load-balancer"
-      },
-      "architectureGuide": {
-        "title": "Anypoint Virtual Private Cloud (VPC) Architecture & Peering",
-        "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept#vpc-peering"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
-      }
-    }
+    "references": {},
+    "correctAnswer": "D"
   },
   {
     "id": "q-026",
     "number": 26,
-    "title": "Api Policies - An architect needs to expose an API",
-    "domain": "Api Policies",
+    "title": "Event-Driven Architecture - A manufacturing firm is ingesting high‑velocity Io T sensor data",
+    "domain": "Event-Driven Architecture",
     "topics": [
-      "Api Contracts Sla Tiers",
-      "Rate Limiting Throttling"
+      "Event-Driven Architecture"
     ],
-    "prompt": "An architect needs to expose an API to partners with strict client identification requirements but no need for end-user OAuth. Which policy combination is most appropriate?",
+    "prompt": "A manufacturing firm is ingesting high‑velocity Io T sensor data into its ERP system. The team has limited Mule Soft expertise and must deliver a solution that processes events in near real‑time. Which architectural style should be adopted? Which option should the team choose?",
     "options": [
       {
         "letter": "A",
-        "text": "Only IP allow-list"
+        "text": "Batch processing architecture with scheduled Mule Soft jobs"
       },
       {
         "letter": "B",
-        "text": "Client ID enforcement plus rate-limiting SLA-based"
+        "text": "Synchronous request‑response API‑led connectivity"
       },
       {
         "letter": "C",
-        "text": "JWT validation only"
+        "text": "Event‑driven architecture using Mule Soft streaming and asynchronous messaging"
       },
       {
         "letter": "D",
-        "text": "No policies (rely on the partner)"
+        "text": "Microservices architecture with heavyweight orchestration layer"
+      },
+      {
+        "letter": "E",
+        "text": "Point‑to‑point synchronous flows using HTTP connectors"
+      },
+      {
+        "letter": "F",
+        "text": "File‑based ingestion followed by periodic bulk loads"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Client ID enforcement uniquely identifies each partner app and enables per-client SLA tiers and rate limiting. Combining the two is the standard pattern for partner B2B APIs that do not require user-context OAuth flows.",
+    "explanation": "The question tests the candidate's understanding of selecting an appropriate integration architectural style for high‑velocity, near‑real‑time Io T data with limited Mule Soft resources. Event‑driven architecture is the optimal choice because it decouples producers and consumers, leverages asynchronous messaging, and allows Mule Soft's streaming features to handle large data volumes efficiently. Common misconceptions include assuming batch or synchronous API‑led approaches can meet low‑latency needs, or that a full microservices stack is always the best solution regardless of team expertise. Those alternatives either add latency, operational overhead, or scalability challenges that conflict with the scenario's constraints. Best practice is to choose the simplest pattern that satisfies performance requirements—event‑driven flows with managed queues or streaming—while keeping the implementation lightweight for teams new to Mule Soft.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "IP allow-listing alone cannot identify which client made each call or apply per-client limits."
+        "text": "Batch processing architecture with scheduled Mule Soft jobs: This option is incorrect. Batch processing groups records into large sets and runs them on a schedule, which introduces latency that is incompatible with near‑real‑time requirements. Using batch jobs for Io T sensor streams would cause data to be stale and could lead to missed alerts or delayed operational decisions."
       },
       "B": {
-        "type": "Correct",
-        "text": "Client ID enforcement plus rate-limiting SLA-based"
+        "type": "Incorrect",
+        "text": "Synchronous request‑response API‑led connectivity: This option is incorrect. A synchronous request‑response model forces the producer to wait for a response, creating back‑pressure when the data velocity is high. For Io T streams, this can quickly overwhelm the ERP system and the limited Mule Soft team would struggle to manage throttling and timeouts."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "JWT validation typically expects user-context tokens issued by an IdP, not partner client identification."
+        "type": "Correct",
+        "text": "Event‑driven architecture using Mule Soft streaming and asynchronous messaging: This option is correct. An event‑driven approach decouples producers from consumers, allowing sensor events to be ingested, buffered, and processed as they arrive, meeting near real‑time SLAs. Mule Soft provides streaming capabilities and connectors to Anypoint MQ or Kafka, which require minimal custom code and are well suited for teams with limited expertise."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Relying on partners for governance violates basic API security and SLA practice."
+        "text": "Microservices architecture with heavyweight orchestration layer: This option is incorrect. While microservices can handle real‑time data, adding a heavyweight orchestration layer (e. g., a BPM engine) adds complexity and operational overhead that a team with limited Mule Soft experience would find difficult to manage. The extra latency from orchestration also contradicts the near‑real‑time goal."
+      },
+      "E": {
+        "type": "Incorrect",
+        "text": "Point‑to‑point synchronous flows using HTTP connectors: This option is incorrect. Point‑to‑point synchronous flows block resources while waiting for each HTTP call to complete, which does not scale for high‑velocity Io T streams. The resulting bottleneck would cause dropped messages and could require extensive tuning beyond the team's current skill set."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "File‑based ingestion followed by periodic bulk loads: This option is incorrect. Writing sensor data to files and loading them in bulk introduces significant delay and defeats the purpose of near‑real‑time processing. Moreover, managing file lifecycle and error handling adds complexity without delivering the required responsiveness."
       }
     },
-    "references": {
-      "primary": {
-        "title": "API Manager — Client ID Enforcement and Rate Limiting on Client Application Contracts",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/client-id-based-policies#how-this-policy-works"
-      },
-      "architectureGuide": {
-        "title": "Defining SLA Tiers and Consumer Tiers in API Manager",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/defining-sla-tiers#defining-a-tier"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
-      }
-    }
+    "references": {},
+    "correctAnswer": "C"
   },
   {
     "id": "q-027",
     "number": 27,
-    "title": "Monitoring Analyzing - Which Anypoint capability stores Mule application logs",
-    "domain": "Monitoring Analyzing",
+    "title": "Mule Soft Certified Platform Architect (MCPA) - A financial services company is exposing a loan‑application API t",
+    "domain": "Mule Soft Certified Platform Architect (MCPA)",
     "topics": [
-      "Anypoint Monitoring",
-      "Log Aggregation"
+      "Mule Soft Certified Platform Architect (MCPA)"
     ],
-    "prompt": "Which Anypoint capability stores Mule application logs centrally for the last 30 days (default) and supports searching across applications?",
+    "prompt": "A financial services company is exposing a loan‑application API that must support versioning without disrupting existing corporate clients. The API must also meet a regulatory audit requirement within six months. Which versioning strategy is the MOST appropriate? Which option should the team choose?",
     "options": [
       {
         "letter": "A",
-        "text": "Anypoint Visualizer"
+        "text": "Version the API using a query‑string parameter, e. g., /loan‑application? version=2"
       },
       {
         "letter": "B",
-        "text": "Anypoint Monitoring (Log Search)"
+        "text": "Version the API through a custom HTTP header such as X‑API‑Version: 2"
       },
       {
         "letter": "C",
-        "text": "API Manager"
+        "text": "Version the API in the URI path, for example /v2/loan‑application, while keeping /v1/ for existing consumers"
       },
       {
         "letter": "D",
-        "text": "Exchange"
+        "text": "Apply versioning through content negotiation using the Accept header (e. g., Accept: application/vnd. company. loan‑v2+json)"
+      },
+      {
+        "letter": "E",
+        "text": "Do not version the API; instead, make all changes backward‑compatible within the same contract"
+      },
+      {
+        "letter": "F",
+        "text": "Create separate API instances per client and manage versions individually for each client"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Anypoint Monitoring's Log Search aggregates and indexes app logs centrally with default retention (around 30 days for the included tier; longer with paid tiers). Visualizer shows topology, API Manager governs APIs, Exchange is the asset catalog.",
+    "explanation": "The question tests knowledge of API versioning strategies in an enterprise, regulated context. URI path versioning is the preferred approach because it provides a clear, immutable version identifier that is easy to route, log, and audit, ensuring no disruption to existing clients while allowing new functionality to be introduced. Header, query‑string, and content‑negotiation methods are often attractive but can be broken by corporate network policies, client limitations, or insufficient logging for compliance. Declaring no versioning or per‑client instances may seem to simplify development but introduces risk of breaking changes and operational complexity, which are unacceptable in financial services. Best practice is to version at the URL level, maintain parallel versions, and ensure all version information is captured in logs for audit purposes.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Visualizer renders application network topology and dependencies."
+        "text": "Version the API using a query‑string parameter, e. g., /loan‑application? version=2: This option is incorrect. Query‑string versioning can work technically, but many corporate firewalls and caching layers strip or ignore query parameters, leading to unpredictable routing. In a regulated financial environment, reliance on query parameters may cause audit trails to miss version information, complicating compliance reporting."
       },
       "B": {
-        "type": "Correct",
-        "text": "Anypoint Monitoring (Log Search)"
+        "type": "Incorrect",
+        "text": "Version the API through a custom HTTP header such as X‑API‑Version: 2: This option is incorrect. Header‑based versioning keeps URLs clean, yet it requires every client to modify request headers, which is a breaking change for existing corporate integrations that may not support custom headers. Moreover, headers are often omitted from logs used for audits, making it harder to demonstrate which API version processed each transaction."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "API Manager configures policies and contracts; it is not a log search tool."
+        "type": "Correct",
+        "text": "Version the API in the URI path, for example /v2/loan‑application, while keeping /v1/ for existing consumers: This option is correct. URI path versioning creates a clear, immutable contract that can be routed by the API gateway without affecting existing client code that points to /v1/. It also ensures that version information is captured in access logs and audit trails, satisfying regulatory requirements. Financial institutions commonly adopt this strategy because it isolates changes and enables parallel support of multiple versions."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Exchange catalogs design-time assets, not runtime logs."
+        "text": "Apply versioning through content negotiation using the Accept header (e. g., Accept: application/vnd. company. loan‑v2+json): This option is incorrect. Content negotiation adds complexity to client implementations and can be problematic with legacy corporate systems that have rigid HTTP client libraries. Additionally, many logging and monitoring tools do not record Accept header values, which can hinder auditability of which version served a request."
+      },
+      "E": {
+        "type": "Incorrect",
+        "text": "Do not version the API; instead, make all changes backward‑compatible within the same contract: This option is incorrect. While backward‑compatible changes avoid version proliferation, the requirement to support a new loan‑application process within six months may introduce breaking changes that cannot be safely added to the existing contract. Without versioning, any inadvertent breaking change could disrupt existing corporate clients and violate audit traceability."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Create separate API instances per client and manage versions individually for each client: This option is incorrect. Managing a distinct API instance for every corporate client dramatically increases operational overhead and makes it difficult to maintain a consistent audit log across instances. In a regulated setting, this approach can lead to fragmented compliance evidence and higher risk of configuration drift."
       }
     },
-    "references": {
-      "primary": {
-        "title": "Searching Aggregated Logs in Anypoint Monitoring & Log Retention",
-        "url": "https://docs.mulesoft.com/monitoring/logs-search-hf#query-logs-from-the-search-bar"
-      },
-      "architectureGuide": {
-        "title": "Using Search Filters in Anypoint Monitoring Logs",
-        "url": "https://docs.mulesoft.com/monitoring/logs-search-hf#use-search-filters"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
-      }
-    }
+    "references": {},
+    "correctAnswer": "C"
   },
   {
     "id": "q-028",
     "number": 28,
-    "title": "Api Implementation Design - What is the recommended approach to manage",
-    "domain": "Api Implementation Design",
+    "title": "Mule Soft Certified Platform Architect (MCPA) - A healthcare startup must secure its patient data APIs to satisfy",
+    "domain": "Mule Soft Certified Platform Architect (MCPA)",
     "topics": [
-      "Reliability Patterns"
+      "Mule Soft Certified Platform Architect (MCPA)"
     ],
-    "prompt": "What is the recommended approach to manage secrets like database passwords used by Mule applications across environments?",
+    "prompt": "A healthcare startup must secure its patient data APIs to satisfy both GDPR and HIPAA while operating with a small security team and a $20k budget. Which TWO actions should be taken? (Select all correct answers)",
     "options": [
       {
         "letter": "A",
-        "text": "Hardcode them in mule-app.properties"
+        "text": "Purchase an enterprise‑grade Web Application Firewall (WAF) and host it on dedicated hardware."
       },
       {
         "letter": "B",
-        "text": "Use secure properties (encrypted) with environment-specific values resolved at deploy time"
+        "text": "Enable TLS/HTTPS for all API traffic to encrypt data in transit."
       },
       {
         "letter": "C",
-        "text": "Commit them to Git in plain text"
+        "text": "Store patient records in an unencrypted S3 bucket to reduce storage costs."
       },
       {
         "letter": "D",
-        "text": "Pass them via the URL on each request"
+        "text": "Require developers to embed API keys directly in client‑side Java Script."
+      },
+      {
+        "letter": "E",
+        "text": "Apply out‑of‑the‑box API Manager security policies such as OAuth 2.0 client‑credentials, IP whitelisting, and request throttling."
+      },
+      {
+        "letter": "F",
+        "text": "Perform manual quarterly penetration testing without any automated scanning tools."
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Mule supports secure (encrypted) properties so values are stored encrypted in version control and decrypted at runtime using a key supplied per environment. This separates configuration from code while keeping secrets out of plain text.",
+    "explanation": "The question tests understanding of cost‑effective API security measures that satisfy stringent regulations such as GDPR and HIPAA. Encryption of data in transit (TLS/HTTPS) and the use of built‑in API gateway security policies (OAuth 2.0, IP whitelisting, throttling) are essential controls that can be implemented with minimal expense and operational overhead, making them the correct choices. Common misconceptions include assuming that expensive hardware appliances or insecure practices like client‑side API keys provide adequate protection; these either exceed budget constraints or create compliance gaps. Storing data unencrypted or neglecting automated security testing also fails to meet regulatory requirements and exposes the organization to risk. Best practice for small teams is to leverage platform‑provided security features, enable encryption both at rest and in transit, and apply fine‑grained access controls while maintaining audit logs for compliance reporting.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Hardcoding leaks secrets and prevents per-environment overrides."
+        "text": "Purchase an enterprise‑grade Web Application Firewall (WAF) and host it on dedicated hardware.: This option is incorrect because a dedicated hardware WAF typically exceeds a $20k budget and requires specialized staff to manage it, which the small security team cannot support. While a WAF can add a layer of protection, the cost and operational overhead make it unsuitable for a startup with limited resources. Investing in built‑in gateway policies provides comparable protection at a fraction of the cost."
       },
       "B": {
         "type": "Correct",
-        "text": "Use secure properties (encrypted) with environment-specific values resolved at deploy time"
+        "text": "Enable TLS/HTTPS for all API traffic to encrypt data in transit.: This option is correct. Encrypting data in transit with TLS/HTTPS is a fundamental requirement under both GDPR and HIPAA to protect personal health information from interception. Implementing TLS is inexpensive, often included out‑of‑the‑box with API platforms, and can be managed by a small team, satisfying the budget and compliance constraints."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Plain-text Git secrets are an immediate security failure."
+        "text": "Store patient records in an unencrypted S3 bucket to reduce storage costs.: This option is incorrect because storing protected health information (PHI) or personal data without encryption directly violates GDPR and HIPAA mandates for data at rest protection. An unencrypted bucket exposes data to accidental leaks and unauthorized access, leading to severe fines and loss of trust. Encryption at rest is a low‑cost control that should be enabled instead."
       },
       "D": {
         "type": "Incorrect",
-        "text": "URL-based secrets leak in logs and proxies."
+        "text": "Require developers to embed API keys directly in client‑side Java Script.: This option is incorrect. Embedding API keys in client‑side code makes them easily discoverable, breaking the principle of least privilege and opening the APIs to abuse. HIPAA and GDPR require strong authentication mechanisms that cannot be exposed publicly; a server‑side token exchange such as OAuth 2.0 is required instead."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "Apply out‑of‑the‑box API Manager security policies such as OAuth 2.0 client‑credentials, IP whitelisting, and request throttling.: This option is correct. Using built‑in API Manager policies provides robust authentication, authorization, and threat protection without additional licensing or complex implementation. Features like OAuth 2.0 enforce scoped access, IP whitelisting limits exposure, and throttling prevents denial‑of‑service attacks, all of which help meet GDPR and HIPAA requirements within the $20k budget."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Perform manual quarterly penetration testing without any automated scanning tools.: This option is incorrect. While periodic penetration testing is valuable, relying solely on manual testing is inefficient for a small team and may miss many automated vulnerability checks. Moreover, the cost and effort of comprehensive manual testing can quickly exceed the limited budget, and it does not replace the need for continuous, automated security controls."
       }
     },
-    "references": {
-      "primary": {
-        "title": "Mule Runtime — Secure Encrypted Properties Across Environments",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/mmp-concept#configure-shared-libraries"
-      },
-      "architectureGuide": {
-        "title": "Access Management Environments and Secure Configuration Management",
-        "url": "https://docs.mulesoft.com/access-management/environments#types-of-environments"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
-      }
-    }
+    "references": {},
+    "correctAnswers": [
+      "B",
+      "E"
+    ]
   },
   {
     "id": "q-029",
     "number": 29,
-    "title": "Api Policies - Which builtin policy can validate a JSON",
-    "domain": "Api Policies",
+    "title": "Application Migration - A retail chain is migrating from a legacy ESB to Anypoint Platfor",
+    "domain": "Application Migration",
     "topics": [
-      "Jwt Validation"
+      "Application Migration"
     ],
-    "prompt": "Which built-in policy can validate a JSON Web Token's signature, issuer, audience, and expiration before the request reaches the implementation?",
+    "prompt": "A retail chain is migrating from a legacy ESB to Anypoint Platform under a tight deadline, needs to reuse existing integration logic, and must minimize downtime. Which THREE options meet the requirements? (Select all correct answers)",
     "options": [
       {
         "letter": "A",
-        "text": "JWT Validation"
+        "text": "Deploy the converted Mule applications on Runtime Fabric in a hybrid model while keeping the legacy ESB running, then switch traffic using a load balancer (blue‑green deployment)."
       },
       {
         "letter": "B",
-        "text": "Client ID enforcement"
+        "text": "Use Mule Soft's Migration Assistant to automatically convert Mule 3 projects to Mule 4."
       },
       {
         "letter": "C",
-        "text": "IP allow-list"
+        "text": "Rewrite all integration logic from scratch using Data Weave 2.0 and Mule 4."
       },
       {
         "letter": "D",
-        "text": "Mutual TLS"
+        "text": "Use API‑led connectivity by wrapping existing services in API specifications and managing versions with API Manager, allowing incremental cut‑over."
+      },
+      {
+        "letter": "E",
+        "text": "Migrate the legacy ESB directly to Cloud Hub without any testing, assuming compatibility."
+      },
+      {
+        "letter": "F",
+        "text": "Replace the ESB's message routing with Anypoint MQ, requiring a complete redesign of flows."
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "The JWT Validation policy checks signature against a JWKS or shared secret, plus issuer, audience, expiration, and required claims. It runs in API Manager-managed policies before traffic reaches the implementation flow.",
+    "explanation": "The question tests the candidate's understanding of migration strategies that balance reuse of existing integration assets with minimal service interruption. The correct answers (1, 2, and 4) each provide a practical path: Runtime Fabric hybrid deployment enables side‑by‑side operation and blue‑green traffic shifts; the Migration Assistant accelerates code conversion while preserving logic; and API‑led connectivity lets the organization expose legacy services as APIs and migrate traffic gradually. The incorrect options illustrate common misconceptions: rebuilding everything from scratch ignores reuse and extends timelines; blind migration to Cloud Hub skips essential validation and risk mitigation; and swapping the ESB for Anypoint MQ demands a full redesign, which contradicts the fast‑track, low‑downtime goal. In real projects, a combination of automated migration tools, hybrid runtimes, and API management is considered best practice to achieve rapid, reliable transitions.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "JWT Validation"
+        "text": "Deploy the converted Mule applications on Runtime Fabric in a hybrid model while keeping the legacy ESB running, then switch traffic using a load balancer (blue‑green deployment).: This option is correct because a hybrid Runtime Fabric deployment allows the organization to run Mule runtimes alongside the existing ESB, preserving current integrations. By using a load balancer or blue‑green strategy, traffic can be shifted gradually, ensuring near‑zero downtime. It also leverages the existing logic after conversion, meeting both the reuse and deadline constraints."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Client ID enforcement validates app credentials, not JWT claims."
+        "type": "Correct",
+        "text": "Use Mule Soft's Migration Assistant to automatically convert Mule 3 projects to Mule 4.: This option is correct. The Migration Assistant automates much of the code translation from Mule 3 to Mule 4, preserving the bulk of the integration logic and dramatically reducing manual effort. Because the conversion happens quickly, it aligns with the tight timeline while still allowing the legacy assets to be reused."
       },
       "C": {
         "type": "Incorrect",
-        "text": "IP allow-listing filters by source IP and cannot validate tokens."
+        "text": "Rewrite all integration logic from scratch using Data Weave 2.0 and Mule 4.: This option is incorrect. Re‑engineering every flow defeats the goal of reusing existing logic and would require extensive development and testing, extending the migration window. It also increases risk of introducing bugs, which could cause significant downtime during cut‑over."
       },
       "D": {
+        "type": "Correct",
+        "text": "Use API‑led connectivity by wrapping existing services in API specifications and managing versions with API Manager, allowing incremental cut‑over.: This option is correct. By exposing the legacy services as APIs and governing them through API Manager, the retailer can route a portion of traffic to the new Mule implementations while the rest continues on the ESB. This incremental approach minimizes downtime and leverages existing business logic encapsulated in the services."
+      },
+      "E": {
         "type": "Incorrect",
-        "text": "Mutual TLS authenticates at the transport layer with X.509 certs."
+        "text": "Migrate the legacy ESB directly to Cloud Hub without any testing, assuming compatibility.: This option is incorrect. Deploying to Cloud Hub without validation can expose compatibility gaps, leading to runtime failures and unplanned outages. Moreover, it does not address the need to reuse existing integration assets in a controlled manner, nor does it provide a strategy for minimizing downtime."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Replace the ESB's message routing with Anypoint MQ, requiring a complete redesign of flows.: This option is incorrect. While Anypoint MQ is a powerful messaging service, swapping the entire routing layer would necessitate redesigning all integration flows, violating the requirement to reuse existing logic. Such a radical change would also increase migration risk and likely cause extended downtime."
       }
     },
-    "references": {
-      "primary": {
-        "title": "JWT Validation Policy Configuration & Token Signature Verification in API Manager",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/policy-mule4-jwt-validation#how-this-policy-works"
-      },
-      "architectureGuide": {
-        "title": "IETF RFC 7517 — JSON Web Key (JWKS) Specification",
-        "url": "https://datatracker.ietf.org/doc/html/rfc7517"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
-      }
-    }
+    "references": {},
+    "correctAnswers": [
+      "A",
+      "B",
+      "D"
+    ]
   },
   {
     "id": "q-030",
     "number": 30,
-    "title": "Deploying Managing Apis - What is the Mule Maven Plugin used",
-    "domain": "Deploying Managing Apis",
+    "title": "API Monitoring - A logistics company with a 99.9% SLA requirement and a limited mo",
+    "domain": "API Monitoring",
     "topics": [
-      "Cicd Maven"
+      "API Monitoring"
     ],
-    "prompt": "What is the Mule Maven Plugin used for in CI/CD pipelines?",
+    "prompt": "A logistics company with a 99.9% SLA requirement and a limited monitoring budget needs to ensure API health and receive timely alerts for performance degradation. Which TWO actions should be taken? (Select all correct answers)",
     "options": [
       {
         "letter": "A",
-        "text": "Drawing API specifications"
+        "text": "Create an SLA policy in API Manager with response‑time and error‑rate thresholds and configure email notifications."
       },
       {
         "letter": "B",
-        "text": "Packaging and deploying Mule applications to CloudHub, RTF, or Hybrid"
+        "text": "Deploy a third‑party APM solution such as New Relic and integrate it with the APIs."
       },
       {
         "letter": "C",
-        "text": "Browsing Exchange assets"
+        "text": "Enable Anypoint Monitoring (standard tier) and set up alerts for latency and throughput metrics."
       },
       {
         "letter": "D",
-        "text": "Running the design-time mocking service"
+        "text": "Increase the number of runtime instances to achieve higher redundancy."
+      },
+      {
+        "letter": "E",
+        "text": "Schedule a nightly log‑analysis job to parse API logs for performance issues."
+      },
+      {
+        "letter": "F",
+        "text": "Configure automatic scaling rules based on CPU usage in Cloud Hub."
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "The Mule Maven Plugin packages Mule projects into deployable archives and deploys them to CloudHub, Runtime Fabric, Hybrid, or standalone runtimes from a CI/CD pipeline (Jenkins, Azure DevOps, GitHub Actions, etc.).",
+    "explanation": "The question tests knowledge of cost‑effective monitoring and alerting strategies within the Mule Soft platform for high‑availability SLAs. API Manager SLA policies and the standard tier of Anypoint Monitoring together provide threshold‑based alerts for latency, error rates, and throughput, delivering real‑time visibility without extra licensing costs, which aligns with the limited budget. Common misconceptions include assuming that adding more instances or scaling automatically resolves monitoring needs, or that third‑party APM tools are required; these approaches either add cost or fail to provide timely alerts. Nightly log analysis and manual scaling do not meet the near‑real‑time detection required for a 99.9% SLA. Best practice is to leverage the native SLA policy and monitoring features, configure appropriate thresholds, and route alerts to the operations team through email or other integrated channels.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "API design is done in Design Center, not the Maven plugin."
+        "type": "Correct",
+        "text": "Create an SLA policy in API Manager with response‑time and error‑rate thresholds and configure email notifications.: This is correct. API Manager’s SLA policies let you define quantitative thresholds such as latency and error percentage, and the platform can automatically send alerts when those thresholds are breached. With a 99.9% SLA, early notification of degradation helps the operations team remediate before the SLA is violated, and the feature is included in the standard subscription, keeping costs low."
       },
       "B": {
-        "type": "Correct",
-        "text": "Packaging and deploying Mule applications to CloudHub, RTF, or Hybrid"
+        "type": "Incorrect",
+        "text": "Deploy a third‑party APM solution such as New Relic and integrate it with the APIs.: This is incorrect. While third‑party APM tools provide deep insights, they typically require additional licensing fees that exceed a limited monitoring budget. Moreover, Mule Soft already offers built‑in monitoring and alerting capabilities that are tightly integrated with API Manager, making an external tool redundant for basic SLA enforcement."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Exchange has its own UI and Maven repository for asset publication; the deploy plugin is separate."
+        "type": "Correct",
+        "text": "Enable Anypoint Monitoring (standard tier) and set up alerts for latency and throughput metrics.: This is correct. The standard tier of Anypoint Monitoring is included with most subscriptions and allows you to create real‑time dashboards and threshold‑based alerts for key performance indicators. Timely alerts on latency or throughput spikes give the team the visibility needed to act quickly and protect the 99.9% SLA without incurring extra cost."
       },
       "D": {
         "type": "Incorrect",
-        "text": "The mocking service runs inside Design Center."
+        "text": "Increase the number of runtime instances to achieve higher redundancy.: This is incorrect. Adding more instances can improve availability but does not provide any mechanism for detecting or alerting on performance degradation. Without monitoring and alerts, you would still be unaware of SLA breaches, and the additional instances increase operational cost, which conflicts with the limited budget constraint."
+      },
+      "E": {
+        "type": "Incorrect",
+        "text": "Schedule a nightly log‑analysis job to parse API logs for performance issues.: This is incorrect. Nightly batch processing introduces a significant delay; performance problems could go undetected for many hours, potentially causing SLA violations. Real‑time alerting is essential for a 99.9% SLA, and Mule Soft’s built‑in monitoring offers instantaneous notifications far more effective than delayed log analysis."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Configure automatic scaling rules based on CPU usage in Cloud Hub.: This is incorrect. Automatic scaling helps maintain capacity under load but does not generate alerts about API latency or error‑rate degradation. Scaling alone cannot guarantee SLA compliance; without monitoring thresholds and alerts, the team may miss subtle performance regressions that do not trigger scaling events."
       }
     },
-    "references": {
-      "primary": {
-        "title": "Mule Maven Plugin (MMP) — Automated Deployment Targets in CI/CD",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/mmp-concept#deploy-goal"
-      },
-      "architectureGuide": {
-        "title": "MUnit Testing Framework & Test Coverage in Maven",
-        "url": "https://docs.mulesoft.com/munit/latest/#test-coverage"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    }
+    "references": {},
+    "correctAnswers": [
+      "A",
+      "C"
+    ]
   },
   {
     "id": "q-031",
     "number": 31,
-    "title": "Non Functional Requirements - An organization needs failover for a CloudHub",
-    "domain": "Non Functional Requirements",
+    "title": "API Versioning - A mid‑size financial services firm is designing a new account‑man",
+    "domain": "API Versioning",
     "topics": [
-      "Ha Dr Architecture"
+      "API Versioning"
     ],
-    "prompt": "An organization needs failover for a CloudHub app across two AWS regions in case of a region-wide outage. Which approach is correct?",
+    "prompt": "A mid‑size financial services firm is designing a new account‑management API that must remain backward compatible for existing mobile apps while staying within a $50,000 budget and a two‑month deadline; the team is debating between using URI versioning, header versioning, or a separate subdomain. Which option should the team choose?",
     "options": [
       {
         "letter": "A",
-        "text": "Increase worker count in one region"
+        "text": "Implement header versioning, e. g., require clients to send an X‑API‑Version header with each request."
       },
       {
         "letter": "B",
-        "text": "Deploy the same app to two regions with appropriate DNS or DLB strategy"
+        "text": "Create a separate subdomain such as api‑v2. company. com to host the new version of the API."
       },
       {
         "letter": "C",
-        "text": "Enable Persistent Queues only"
+        "text": "Use URI versioning, for example expose the new version at /v2/accounts while keeping the existing /v1/accounts endpoint operational."
       },
       {
         "letter": "D",
-        "text": "Switch to the Shared Load Balancer"
+        "text": "Add a version query parameter, such as /accounts? version=2, to indicate the API version."
+      },
+      {
+        "letter": "E",
+        "text": "Adopt media‑type versioning, requiring clients to request a versioned MIME type in the Accept header."
+      },
+      {
+        "letter": "F",
+        "text": "Do not version the API at all and add new fields to the existing endpoints, relying on optional parameters for new functionality."
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Region failover requires deploying the application to a second region and using DNS routing (e.g., latency-based or health-checked failover) or a Dedicated Load Balancer strategy to redirect traffic when the primary region fails. Worker count, persistent queues, and SLB are all in-region tactics.",
+    "explanation": "The question tests the candidate's understanding of practical API versioning strategies under real‑world constraints such as budget, schedule, and backward compatibility. URI (path) versioning is the recommended approach because it requires the least amount of code change, introduces no new infrastructure, and preserves existing endpoints for legacy clients, aligning perfectly with the firm’s tight deadline and limited budget. Header, subdomain, query‑parameter, and media‑type versioning each add layers of complexity—whether through client modifications, extra DNS/SSL costs, caching concerns, or sophisticated content negotiation—that are unnecessary for a mid‑size organization seeking a quick, cost‑effective solution. Not versioning at all jeopardizes existing mobile apps and creates future maintenance challenges, a common misconception that developers avoid only when resources are abundant. Best practice is to choose the simplest versioning mechanism that meets compatibility needs, and in most constrained projects URI versioning provides that balance.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "More workers in one region cannot survive a region-wide outage."
+        "text": "Implement header versioning, e. g., require clients to send an X‑API‑Version header with each request.: This option is incorrect. Header versioning forces every client, including existing mobile apps, to modify the HTTP request to include a custom header, which adds development and testing effort beyond the tight two‑month schedule. Additionally, older clients that cannot be updated immediately will break, violating the backward‑compatibility requirement and potentially increasing support costs, which conflicts with the limited $50,000 budget."
       },
       "B": {
-        "type": "Correct",
-        "text": "Deploy the same app to two regions with appropriate DNS or DLB strategy"
+        "type": "Incorrect",
+        "text": "Create a separate subdomain such as api‑v2. company. com to host the new version of the API.: This option is incorrect. Deploying a new subdomain introduces DNS configuration, SSL certificate procurement, and possible load‑balancer changes, all of which increase both time and cost. For a mid‑size firm with a $50,000 cap, the extra infrastructure expenses are unnecessary, and the approach does not provide a clear advantage for backward compatibility compared to simpler methods."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Persistent Queues survive worker restarts within a region, not region loss."
+        "type": "Correct",
+        "text": "Use URI versioning, for example expose the new version at /v2/accounts while keeping the existing /v1/accounts endpoint operational.: This option is correct. URI versioning is the simplest to implement; it only requires adding a new path segment, leaving existing endpoints untouched, which preserves backward compatibility for current mobile apps. It incurs minimal development effort, avoids extra infrastructure costs, and can be rolled out well within a two‑month timeframe and the $50,000 budget, making it the most pragmatic choice."
       },
       "D": {
         "type": "Incorrect",
-        "text": "The SLB operates within a single region."
+        "text": "Add a version query parameter, such as /accounts? version=2, to indicate the API version.: This option is incorrect. While query‑parameter versioning works, it can interfere with caching layers and URL routing rules, potentially causing performance issues. Implementing and testing proper handling of query parameters adds complexity that is unnecessary given the tighter schedule and budget constraints."
+      },
+      "E": {
+        "type": "Incorrect",
+        "text": "Adopt media‑type versioning, requiring clients to request a versioned MIME type in the Accept header.: This option is incorrect. Media‑type versioning demands changes to both client and server code to negotiate and parse custom MIME types, which is a sophisticated approach typically reserved for large, mature APIs. The extra development and testing effort would likely exceed the two‑month deadline and strain the $50,000 budget, making it an impractical choice for this scenario."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Do not version the API at all and add new fields to the existing endpoints, relying on optional parameters for new functionality.: This option is incorrect. Adding new fields to the current API without versioning risks breaking existing mobile applications that expect a specific contract, violating the backward‑compatibility requirement. Moreover, it makes future changes harder to manage and can lead to technical debt, which contradicts the need for a clear, low‑risk rollout within limited resources."
       }
     },
-    "references": {
-      "primary": {
-        "title": "CloudHub Fabric — Multi-Worker High Availability & Regional Failover Strategies",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#how-ha-is-implemented"
-      },
-      "architectureGuide": {
-        "title": "CloudHub Architecture — Global Worker Clouds and Regional Resiliency",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#global-worker-clouds"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    }
+    "references": {},
+    "correctAnswer": "C"
   },
   {
     "id": "q-032",
     "number": 32,
-    "title": "Designing Sharing Apis - Which artifact does Anypoint Exchange version when",
-    "domain": "Designing Sharing Apis",
+    "title": "API-led Connectivity - A regional healthcare provider needs to aggregate patient records",
+    "domain": "API-led Connectivity",
     "topics": [
-      "Api Versioning",
-      "Exchange Asset Management"
+      "API-led Connectivity"
     ],
-    "prompt": "Which artifact does Anypoint Exchange version when a RAML API specification changes in a backwards-compatible way?",
+    "prompt": "A regional healthcare provider needs to aggregate patient records from three heterogeneous EHR systems in real‑time to support a new telemedicine portal, must comply with HIPAA, has a small development team, and requires the lowest possible latency. What is the MOST appropriate action?",
     "options": [
       {
         "letter": "A",
-        "text": "A new major version"
+        "text": "Create a batch Mule application that runs every 15 minutes to pull patient data from each EHR and write the results to a central database."
       },
       {
         "letter": "B",
-        "text": "A new minor or patch version under the same asset"
+        "text": "Develop custom Java services that perform synchronous SOAP calls to each EHR system and host them on an on‑premises server."
       },
       {
         "letter": "C",
-        "text": "A new asset entirely"
+        "text": "Use Anypoint MQ to collect change events from each EHR and process them asynchronously in a Mule flow."
       },
       {
         "letter": "D",
-        "text": "Nothing â Exchange overwrites the existing spec"
+        "text": "Build a real‑time composite API on Anypoint Platform using streaming Data Weave, apply HIPAA‑compliant security policies, and deploy it in a dedicated VPC or on‑premises runtime."
+      },
+      {
+        "letter": "E",
+        "text": "Adopt a third‑party ETL tool to extract, transform, and load patient records nightly into a data warehouse for the portal to query."
+      },
+      {
+        "letter": "F",
+        "text": "Implement a Mule Soft batch job that runs every 5 minutes, using Data Weave transformations to normalize records before storing them centrally."
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Backwards-compatible changes (additive fields, new optional parameters) increment the minor or patch version under the same Exchange asset. Major versions are reserved for breaking changes; new assets are reserved for new APIs entirely.",
+    "explanation": "The question tests the learner's understanding of designing low‑latency, HIPAA‑compliant integrations using Mule Soft's API‑led connectivity. A real‑time composite API with streaming transformations, secured by API‑gateway policies, and deployed in a controlled runtime environment meets all constraints: immediate data aggregation, minimal processing overhead, and strict security. Common misconceptions include assuming batch or asynchronous messaging automatically solves integration needs, or that custom code is always the fastest path, both of which ignore maintainability and compliance concerns. Best practice is to leverage the Anypoint Platform's built‑in capabilities—streaming, secure policies, and managed runtimes—to reduce development effort while satisfying regulatory and performance requirements.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Major version bumps signal breaking changes."
+        "text": "Create a batch Mule application that runs every 15 minutes to pull patient data from each EHR and write the results to a central database.: This option is incorrect because batch execution introduces significant latency, violating the real‑time requirement of the telemedicine portal. Batch jobs also temporarily store large amounts of protected health information, increasing the risk of HIPAA non‑compliance. In practice, patients would experience delays in seeing up‑to‑date records, undermining the portal’s purpose."
       },
       "B": {
-        "type": "Correct",
-        "text": "A new minor or patch version under the same asset"
+        "type": "Incorrect",
+        "text": "Develop custom Java services that perform synchronous SOAP calls to each EHR system and host them on an on‑premises server.: Although synchronous SOAP calls can provide low latency, writing and maintaining custom Java integration code places a heavy burden on a small development team. Additionally, ensuring HIPAA‑level security (encryption, audit logging, access control) is more complex without the built‑in policies of the Anypoint Platform. The effort and risk outweigh the marginal latency benefit compared to a managed solution."
       },
       "C": {
         "type": "Incorrect",
-        "text": "A new asset would lose history and confuse consumers."
+        "text": "Use Anypoint MQ to collect change events from each EHR and process them asynchronously in a Mule flow.: Anypoint MQ introduces an asynchronous, store‑and‑forward pattern that adds queuing latency, which conflicts with the requirement for the lowest possible latency. While MQ can help with decoupling, the telemedicine portal needs immediate visibility of patient data. Moreover, the extra component adds operational overhead for a small team."
       },
       "D": {
+        "type": "Correct",
+        "text": "Build a real‑time composite API on Anypoint Platform using streaming Data Weave, apply HIPAA‑compliant security policies, and deploy it in a dedicated VPC or on‑premises runtime.: This is the correct approach because a lightweight composite API can aggregate data from heterogeneous EHRs in real time with minimal processing overhead. Streaming Data Weave avoids loading entire payloads into memory, reducing latency. Deploying in a VPC or on‑premises runtime, combined with API‑gateway security policies (encryption, audit logging, access control), satisfies HIPAA requirements while keeping the solution manageable for a small development team."
+      },
+      "E": {
         "type": "Incorrect",
-        "text": "Exchange does not silently overwrite published versions."
+        "text": "Adopt a third‑party ETL tool to extract, transform, and load patient records nightly into a data warehouse for the portal to query.: An nightly ETL process does not meet the real‑time aggregation requirement and introduces a full day of latency, making the portal’s data stale. ETL tools also often require additional licensing and operational expertise that a small team may lack. HIPAA compliance can be achieved, but the latency makes this option unsuitable."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Implement a Mule Soft batch job that runs every 5 minutes, using Data Weave transformations to normalize records before storing them centrally.: Running a batch job every 5 minutes still fails to provide true real‑time data, and the repeated polling adds unnecessary load on the source EHR systems. While Data Weave can handle transformations, the batch paradigm is not optimal for low‑latency requirements. The solution also adds scheduling complexity without delivering the needed immediacy."
       }
     },
-    "references": {
-      "primary": {
-        "title": "Anypoint Exchange — Semantic Versioning (Minor/Patch Backwards-Compatible Changes)",
-        "url": "https://docs.mulesoft.com/exchange/#view-assets-by-business-group"
-      },
-      "architectureGuide": {
-        "title": "Managing API Versions in API Manager",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/defining-sla-tiers#deprecate-a-tier"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
-      }
-    }
+    "references": {},
+    "correctAnswer": "D"
   },
   {
     "id": "q-033",
     "number": 33,
-    "title": "Org Platform Foundations - Which entitlement model determines how many vCores",
-    "domain": "Org Platform Foundations",
+    "title": "PCI-DSS Compliance - An online retail company must protect credit‑card information flo",
+    "domain": "PCI-DSS Compliance",
     "topics": [
-      "Business Groups Environments",
-      "Vcores Capacity"
+      "PCI-DSS Compliance"
     ],
-    "prompt": "Which entitlement model determines how many vCores a business group can deploy to CloudHub?",
+    "prompt": "An online retail company must protect credit‑card information flowing through its checkout API to satisfy PCI‑DSS, has a tight operational budget, and wants the solution that adds the least overhead to request processing. Which approach BEST meets the requirements?",
     "options": [
       {
         "letter": "A",
-        "text": "The vCore allocation assigned to the business group by the master organization"
+        "text": "Enable end‑to‑end TLS on the checkout API and configure a Mule Soft policy that encrypts the credit‑card fields using the Secure Property Placeholder."
       },
       {
         "letter": "B",
-        "text": "The number of users in the business group"
+        "text": "Use a Mule Soft Data Weave transformation to mask the credit‑card number before any further processing, then log the masked value."
       },
       {
         "letter": "C",
-        "text": "The number of APIs published in Exchange"
+        "text": "Deploy an API‑gateway policy that tokenizes the credit‑card number using Mule Soft's Tokenization policy, then route the token downstream."
       },
       {
         "letter": "D",
-        "text": "The Mule runtime version"
+        "text": "Forward the checkout request directly to a PCI‑DSS‑validated external payment service and never store or process the card data within Mule, using only TLS for transport."
+      },
+      {
+        "letter": "E",
+        "text": "Store the credit‑card data in an encrypted Mule Soft Object Store and retrieve it only when needed for settlement."
+      },
+      {
+        "letter": "F",
+        "text": "Use a custom Java component that performs RSA encryption on the card number before passing it to downstream services."
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "vCore entitlements are assigned by the master organization to business groups (and within them to environments). Apps deployed cannot exceed the business group's allocation. Users, published APIs, and runtime versions do not change vCore entitlement.",
+    "explanation": "The question tests knowledge of PCI‑DSS compliance strategies that minimize processing overhead in a Mule Soft integration scenario. The optimal approach is to avoid handling credit‑card data within Mule entirely by delegating the transaction to a PCI‑DSS‑validated external payment service, securing the transport with TLS only. This eliminates the need for internal encryption, tokenization, or storage, thereby reducing CPU load, simplifying key management, and keeping costs low. Options involving payload encryption, masking, tokenization, or custom cryptography all introduce extra processing steps or compliance burdens, which are common misconceptions when designers think any encryption satisfies PCI‑DSS without considering performance impact. Learners should remember that the best practice is to reduce the scope of PCI‑DSS by keeping card data out of the internal environment whenever possible.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "The vCore allocation assigned to the business group by the master organization"
+        "type": "Incorrect",
+        "text": "Enable end‑to‑end TLS on the checkout API and configure a Mule Soft policy that encrypts the credit‑card fields using the Secure Property Placeholder.: This option encrypts the card data in transit with TLS, which is required by PCI‑DSS, but using the Secure Property Placeholder to encrypt payload fields still forces Mule to decrypt and re‑encrypt the data for every request. The additional cryptographic processing adds measurable latency and CPU usage, which conflicts with the requirement for minimal overhead. While it meets compliance, it is not the most efficient solution for a tight budget."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Users and entitlements are independent allocations."
+        "text": "Use a Mule Soft Data Weave transformation to mask the credit‑card number before any further processing, then log the masked value.: Masking the number removes visible digits, but the original card data is still present in memory and potentially logged before masking, violating PCI‑DSS requirements to protect sensitive data at rest and in use. The transformation itself consumes processing time, increasing request latency. This approach gives a false sense of security and does not eliminate the need for proper encryption or tokenization."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Published assets in Exchange do not change vCore allocation."
+        "text": "Deploy an API‑gateway policy that tokenizes the credit‑card number using Mule Soft's Tokenization policy, then route the token downstream.: Tokenization replaces the PAN with a non‑sensitive token, which aligns with PCI‑DSS best practices and reduces exposure of raw card data. However, the tokenization policy introduces extra processing steps—lookup, token generation, and storage—which add overhead to each API call. For an organization seeking the least impact on performance and cost, this added processing may be unnecessary if the card data can be avoided altogether."
       },
       "D": {
+        "type": "Correct",
+        "text": "Forward the checkout request directly to a PCI‑DSS‑validated external payment service and never store or process the card data within Mule, using only TLS for transport.: By sending the raw credit‑card payload directly to a compliant third‑party payment processor, the Mule runtime never touches the sensitive data, eliminating the need for internal encryption, tokenization, or storage. TLS protects the data in transit, satisfying PCI‑DSS transmission requirements, while avoiding any additional CPU cycles for cryptographic operations inside Mule. This approach meets compliance, keeps operational costs low, and adds virtually no processing overhead, making it the optimal solution."
+      },
+      "E": {
         "type": "Incorrect",
-        "text": "Runtime versions are properties of deployed apps, not entitlements."
+        "text": "Store the credit‑card data in an encrypted Mule Soft Object Store and retrieve it only when needed for settlement.: Storing card data, even in an encrypted object store, introduces significant compliance responsibilities, such as key management, access controls, and audit logging, which increase operational complexity and cost. Retrieval of the data for settlement adds extra latency to each transaction flow. Therefore, this method does not satisfy the requirement for minimal overhead and is generally discouraged unless the business absolutely must retain card data."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Use a custom Java component that performs RSA encryption on the card number before passing it to downstream services.: Custom RSA encryption provides strong protection but requires key management, careful implementation, and considerable CPU resources for each encryption operation, leading to higher latency. Maintaining custom code also raises operational costs and risks of security flaws. Consequently, this solution does not align with the budget‑conscious, low‑overhead goal."
       }
     },
-    "references": {
-      "primary": {
-        "title": "Access Management — Business Group Entitlements & vCore Allocations",
-        "url": "https://docs.mulesoft.com/access-management/business-groups#business-group-hierarchy"
-      },
-      "architectureGuide": {
-        "title": "CloudHub Architecture — Sizing Worker vCores for Delivery Teams",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#cloudhub-workers"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
-      }
-    }
+    "references": {},
+    "correctAnswer": "D"
   },
   {
     "id": "q-034",
     "number": 34,
-    "title": "Org Platform Foundations - Which Anypoint Platform component governs which users",
-    "domain": "Org Platform Foundations",
+    "title": "API Governance - A logistics startup plans to launch a public shipment‑tracking AP",
+    "domain": "API Governance",
     "topics": [
-      "Rbac Permissions"
+      "API Governance"
     ],
-    "prompt": "Which Anypoint Platform component governs which users can deploy applications, manage APIs, or configure environments?",
+    "prompt": "A logistics startup plans to launch a public shipment‑tracking API within four weeks, needs built‑in request throttling to prevent abuse, and the team is more familiar with OAS than RAML. What should be done FIRST?",
     "options": [
       {
         "letter": "A",
-        "text": "Access Management roles and permissions"
+        "text": "Develop the Mule flow first, then add throttling later using a custom Java component."
       },
       {
         "letter": "B",
-        "text": "Anypoint MQ ACLs"
+        "text": "Convert the OAS definition to RAML, then design the API in Design Center using RAML."
       },
       {
         "letter": "C",
-        "text": "RAML traits"
+        "text": "Create the API specification using OAS in Design Center, publish it to API Manager, and apply a rate‑limiting policy."
       },
       {
         "letter": "D",
-        "text": "Object Store keys"
+        "text": "Deploy the API to Cloud Hub without registering it in API Manager, then configure throttling on the load balancer."
+      },
+      {
+        "letter": "E",
+        "text": "Use an external third‑party gateway for throttling and bypass Anypoint API Manager entirely."
+      },
+      {
+        "letter": "F",
+        "text": "Skip throttling for the initial launch and monitor usage manually after release."
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Access Management defines users, groups, roles (built-in like Organization Administrator, Environment Administrator, plus custom roles), and permissions per business group and environment. MQ ACLs control queue access only; RAML traits are spec-level reuse; Object Store keys are app-level data.",
+    "explanation": "The question tests knowledge of API governance sequencing in Anypoint Platform, especially when a team prefers Open API Specification. The recommended first action is to author the API contract using OAS in Design Center, then publish it to API Manager where a throttling policy can be applied immediately, ensuring the public API is protected from the start. Common misconceptions include believing that implementation must precede governance, that OAS must be converted to RAML, or that external solutions are needed for rate limiting. Each of these distractors overlooks Mule Soft's native support for OAS and its built‑in policy engine, which provide a faster, more maintainable path to a secure API. Best practice is to establish the contract and governance (including throttling) early, then develop the integration logic, which aligns with rapid delivery goals and reduces operational risk.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Access Management roles and permissions"
+        "type": "Incorrect",
+        "text": "Develop the Mule flow first, then add throttling later using a custom Java component.: This option is incorrect. While building the implementation is essential, Mule Soft best practice is to govern the API before writing integration logic. Adding throttling later with custom code defeats the purpose of using API Manager policies, which provide out‑of‑the‑box, configurable rate limiting and easier maintenance."
       },
       "B": {
         "type": "Incorrect",
-        "text": "MQ ACLs only govern message-broker access, not platform RBAC."
+        "text": "Convert the OAS definition to RAML, then design the API in Design Center using RAML.: This option is incorrect. Converting OAS to RAML adds unnecessary effort and risk of losing details, especially when the team is already comfortable with OAS. Mule Soft supports OAS natively, so you can import the OAS directly into Design Center, avoiding a conversion step and speeding up delivery."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Traits describe API behavior in RAML, not user permissions."
+        "type": "Correct",
+        "text": "Create the API specification using OAS in Design Center, publish it to API Manager, and apply a rate‑limiting policy.: This option is correct. The first step aligns with the team's OAS expertise and establishes governance early by defining the contract in Design Center. Publishing the spec to API Manager enables you to attach a throttling (rate‑limiting) policy immediately, ensuring the public API is protected from abuse before any implementation is deployed."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Object Store keys are application data, not RBAC subjects."
+        "text": "Deploy the API to Cloud Hub without registering it in API Manager, then configure throttling on the load balancer.: This option is incorrect. Deploying without API Manager bypasses the built‑in policy framework, forcing you to manage throttling outside Mule Soft. Using a load balancer for rate limiting is possible but more complex, less flexible, and does not provide the analytics and developer portal capabilities of API Manager."
+      },
+      "E": {
+        "type": "Incorrect",
+        "text": "Use an external third‑party gateway for throttling and bypass Anypoint API Manager entirely.: This option is incorrect. Introducing a third‑party gateway adds integration overhead, licensing costs, and fragments the governance model. Anypoint API Manager already offers robust throttling policies, so leveraging the native solution simplifies operations and keeps the API lifecycle unified."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Skip throttling for the initial launch and monitor usage manually after release.: This option is incorrect. Ignoring throttling exposes the public API to potential abuse, which can degrade performance or cause denial of service. Manual monitoring is reactive and cannot prevent abuse in real time; proactive rate‑limiting via API Manager is the recommended approach."
       }
     },
-    "references": {
-      "primary": {
-        "title": "Access Management — Roles, Scopes, and Permissions Configuration",
-        "url": "https://docs.mulesoft.com/access-management/roles#default-roles-and-permission-scopes"
-      },
-      "architectureGuide": {
-        "title": "Single Sign-On (SSO) & External Identity Providers in Anypoint Platform",
-        "url": "https://docs.mulesoft.com/access-management/external-identity#managing-users-external-identity"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
-      }
-    }
+    "references": {},
+    "correctAnswer": "C"
   },
   {
     "id": "q-035",
     "number": 35,
-    "title": "Application Network Basics - When designing System APIs which rule of",
-    "domain": "Application Network Basics",
+    "title": "Integration Architecture - A federal agency is orchestrating an approvals workflow that span",
+    "domain": "Integration Architecture",
     "topics": [
-      "Three Layer Architecture"
+      "Integration Architecture"
     ],
-    "prompt": "When designing System APIs, which rule of thumb best preserves their reuse value?",
+    "prompt": "A federal agency is orchestrating an approvals workflow that spans a legacy mainframe, a cloud‑based document store, and a third‑party identity service, must meet Fed RAMP requirements, and has a limited integration budget. Which option should the team choose?",
     "options": [
       {
         "letter": "A",
-        "text": "Embed business logic so consumers do not need to learn the system"
+        "text": "Deploy Mule runtime on the legacy mainframe using a custom connector and manage all integrations locally."
       },
       {
         "letter": "B",
-        "text": "Expose the system's data model directly with no abstraction"
+        "text": "Use a third‑party i Paa S that is not Fed RAMP certified to connect the systems via pre‑built adapters."
       },
       {
         "letter": "C",
-        "text": "Provide a stable, abstracted, consumer-agnostic interface that hides backend specifics"
+        "text": "Leverage Anypoint Platform for Government (Cloud Hub) hosted in a Fed RAMP‑authorized region to orchestrate the workflow."
       },
       {
         "letter": "D",
-        "text": "Tightly couple them to one Process API"
+        "text": "Build a bespoke Java microservice suite and host it on a non‑Fed RAMP public cloud, then connect to the mainframe via VPN."
+      },
+      {
+        "letter": "E",
+        "text": "Install Mule runtime on‑premises in the agency data center and manually certify the environment for Fed RAMP compliance."
+      },
+      {
+        "letter": "F",
+        "text": "Deploy Mule Runtime Fabric on a private cloud that is not Fed RAMP authorized and connect to the cloud document store via public internet."
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "System APIs should present a stable, abstracted interface so backend changes do not ripple to consumers. They should not contain business logic (that belongs in Process APIs) and should not be coupled to a single consumer.",
+    "explanation": "The question tests knowledge of how federal agencies must balance compliance, integration complexity, and cost when selecting an integration platform. Fed RAMP certification is mandatory for any cloud component handling federal data, and Mule Soft’s Anypoint Platform for Government provides a ready‑made, Fed RAMP‑authorized environment that reduces both development effort and operational overhead. The correct choice leverages pre‑built connectors for the mainframe, document store, and identity service while offering a consumption‑based pricing model suitable for limited budgets. Common misconceptions include assuming that on‑premises or custom‑built solutions automatically meet compliance or are cheaper; in reality, the authorization process and ongoing maintenance often outweigh any perceived savings. Best practice is to select a managed, Fed RAMP‑approved integration platform that aligns with existing integration patterns and budget constraints.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Business logic in System APIs blocks reuse and creates lock-in."
+        "text": "Deploy Mule runtime on the legacy mainframe using a custom connector and manage all integrations locally.: This option is incorrect. While a custom connector can enable communication with the mainframe, running Mule on the mainframe itself is not supported and would require extensive development effort. Moreover, it does not address the Fed RAMP compliance requirement for cloud‑based components, and the cost of custom development would exceed a limited budget."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Exposing raw schemas couples consumers to backend changes."
+        "text": "Use a third‑party i Paa S that is not Fed RAMP certified to connect the systems via pre‑built adapters.: This option is incorrect. An i Paa S lacking Fed RAMP certification cannot be used for federal data, exposing the agency to compliance violations. Even if the adapters are pre‑built, the agency would still need to invest in security assessments and possibly additional tooling to achieve the required security posture, driving up costs."
       },
       "C": {
         "type": "Correct",
-        "text": "Provide a stable, abstracted, consumer-agnostic interface that hides backend specifics"
+        "text": "Leverage Anypoint Platform for Government (Cloud Hub) hosted in a Fed RAMP‑authorized region to orchestrate the workflow.: This option is correct. Anypoint Platform for Government provides a Fed RAMP‑authorized Cloud Hub environment, satisfying the agency’s compliance mandate out‑of‑the‑box. It also reduces integration costs by offering pre‑built connectors, managed runtime, and scalable consumption‑based pricing, which aligns with the limited budget constraints."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Coupling to one Process API destroys reuse."
+        "text": "Build a bespoke Java microservice suite and host it on a non‑Fed RAMP public cloud, then connect to the mainframe via VPN.: This option is incorrect. Although building custom microservices could technically integrate the systems, hosting them on a non‑Fed RAMP cloud violates federal compliance rules. Additionally, the development and ongoing maintenance effort would be significant, making it an expensive choice for a constrained budget."
+      },
+      "E": {
+        "type": "Incorrect",
+        "text": "Install Mule runtime on‑premises in the agency data center and manually certify the environment for Fed RAMP compliance.: This option is incorrect. While on‑premises deployment gives control over the environment, achieving Fed RAMP compliance would require a costly and time‑consuming authorization process that the agency likely cannot afford. The approach also forfeits the economic benefits of a managed Saa S offering."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Deploy Mule Runtime Fabric on a private cloud that is not Fed RAMP authorized and connect to the cloud document store via public internet.: This option is incorrect. Runtime Fabric on a non‑Fed RAMP private cloud does not satisfy the mandated security controls, and exposing the document store over the public internet increases risk. The agency would still need to invest in additional security layers, negating any budget advantage."
       }
     },
-    "references": {
-      "primary": {
-        "title": "API-Led Connectivity — Designing Stable, Abstracted, Consumer-Agnostic System APIs",
-        "url": "https://docs.mulesoft.com/general/api-led-develop#step-3-1-create-the-implementation-project"
-      },
-      "architectureGuide": {
-        "title": "Martin Fowler — Bounded Context & System Abstraction Patterns",
-        "url": "https://martinfowler.com/bliki/BoundedContext.html"
-      },
-      "arc720": {
-        "lesson": "Lesson 5 — API identification, publication, and reuse",
-        "anchor": "ARC720-Course-Content.md#5-api-identification-publication-and-reuse"
-      }
-    }
+    "references": {},
+    "correctAnswer": "C"
   },
   {
     "id": "q-036",
     "number": 36,
-    "title": "Deployment Options - An organization wants to enforce API policies",
-    "domain": "Deployment Options",
+    "title": "Io T Security - A manufacturing plant wants to secure MQTT telemetry from its Io",
+    "domain": "Io T Security",
     "topics": [
-      "Anypoint Service Mesh"
+      "Io T Security"
     ],
-    "prompt": "An organization wants to enforce API policies on services that are NOT Mule-based but are deployed in an existing Istio service mesh. Which Anypoint product fits?",
+    "prompt": "A manufacturing plant wants to secure MQTT telemetry from its Io T sensors to the Mule runtime, must adhere to IEC 62443, and the network can only support minimal encryption overhead. What is the MOST appropriate action?",
     "options": [
       {
         "letter": "A",
-        "text": "Anypoint Runtime Fabric"
+        "text": "Deploy MQTT over TLS 1.3 with RSA certificates for both client and server authentication."
       },
       {
         "letter": "B",
-        "text": "Anypoint Service Mesh"
+        "text": "Use plain MQTT and rely on network segmentation per IEC 62443 zone concepts."
       },
       {
         "letter": "C",
-        "text": "Anypoint MQ"
+        "text": "Implement MQTT over TLS with mutual X.509 certificate authentication."
       },
       {
         "letter": "D",
-        "text": "Anypoint Visualizer"
+        "text": "Use MQTT over TLS with pre‑shared key (PSK) cipher suites to minimize handshake overhead."
+      },
+      {
+        "letter": "E",
+        "text": "Enable MQTT over DTLS with AES‑256‑GCM and full certificate chain validation."
+      },
+      {
+        "letter": "F",
+        "text": "Apply MQTT over an IPsec tunnel between sensors and Mule runtime."
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Anypoint Service Mesh extends Anypoint API governance and policies (rate limiting, security, monitoring) to non-Mule microservices running in an Istio mesh. RTF is a Mule runtime; MQ is messaging; Visualizer is topology.",
+    "explanation": "The question tests the candidate's ability to balance IEC 62443 security mandates with the performance constraints of resource‑limited Io T devices. IEC 62443 requires confidentiality, integrity, and authentication for telemetry traffic, but the plant's network can only tolerate minimal encryption overhead. TLS with pre‑shared keys (PSK) delivers the needed security while avoiding expensive asymmetric cryptographic operations, making it the optimal solution. Options that rely on full X.509 certificates, high‑strength ciphers, or additional tunneling mechanisms introduce unnecessary processing load, leading to latency or device strain. Understanding when to use lightweight TLS‑PSK is a best practice for securing MQTT in constrained industrial Io T deployments.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Runtime Fabric runs Mule runtimes, not arbitrary microservices governed by API Manager."
+        "text": "Deploy MQTT over TLS 1.3 with RSA certificates for both client and server authentication.: This option provides strong security but uses RSA certificates, which involve costly asymmetric cryptographic operations during the TLS handshake. The high computational load contradicts the requirement for minimal encryption overhead on constrained Io T devices. While it would satisfy IEC 62443, the performance impact makes it unsuitable for this scenario."
       },
       "B": {
-        "type": "Correct",
-        "text": "Anypoint Service Mesh"
+        "type": "Incorrect",
+        "text": "Use plain MQTT and rely on network segmentation per IEC 62443 zone concepts.: Relying solely on network segmentation leaves the telemetry data unencrypted, exposing it to interception or tampering if the segmentation is breached. IEC 62443 mandates confidentiality and integrity controls, not just logical separation. Therefore this approach does not meet the security requirements despite low overhead."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Anypoint MQ is queue-based messaging, not policy enforcement."
+        "text": "Implement MQTT over TLS with mutual X.509 certificate authentication.: Mutual X.509 authentication offers robust identity verification, but each device must store and process full certificate chains, increasing memory and CPU usage. The handshake involves full asymmetric cryptography, which adds significant overhead on low‑power sensors. Consequently, it fails the minimal overhead constraint while still being compliant with IEC 62443."
       },
       "D": {
+        "type": "Correct",
+        "text": "Use MQTT over TLS with pre‑shared key (PSK) cipher suites to minimize handshake overhead.: TLS‑PSK replaces asymmetric operations with a symmetric pre‑shared key, dramatically reducing CPU and memory consumption during the handshake while still providing confidentiality, integrity, and authentication as required by IEC 62443. This approach meets the plant's low‑overhead network limitation and maintains a compliant security posture. It is the most appropriate balance of security and performance for constrained Io T sensors."
+      },
+      "E": {
         "type": "Incorrect",
-        "text": "Visualizer renders network graphs but does not enforce policies."
+        "text": "Enable MQTT over DTLS with AES‑256‑GCM and full certificate chain validation.: DTLS adds encryption suitable for UDP, but the use of AES‑256‑GCM and full certificate validation again introduces heavy cryptographic processing. The larger key size and certificate handling increase latency and resource usage, conflicting with the minimal overhead requirement. Although secure, it is not the optimal choice for this environment."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Apply MQTT over an IPsec tunnel between sensors and Mule runtime.: IPsec provides strong layer‑3 protection but requires additional encapsulation and negotiation overhead, often exceeding the capabilities of lightweight Io T devices. Implementing and managing IPsec tunnels adds complexity and can degrade network performance. Hence, it does not satisfy the constraint of minimal encryption overhead."
       }
     },
-    "references": {
-      "primary": {
-        "title": "Runtime Fabric — Custom Ingress & Governing Non-Mule Microservices in Service Mesh",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/custom-ingress-configuration#how-ingress-resources-templates-work-in-runtime-fabric"
-      },
-      "architectureGuide": {
-        "title": "Runtime Fabric Architecture Overview",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/#how-application-deployments-work-in-anypoint-runtime-fabric"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
-      }
-    }
+    "references": {},
+    "correctAnswer": "D"
   },
   {
     "id": "q-037",
     "number": 37,
-    "title": "Designing Sharing Apis - Which approach best supports introducing a breaking",
-    "domain": "Designing Sharing Apis",
+    "title": "Hypermedia APIs - A fintech startup is building a hypermedia‑driven loan‑applicatio",
+    "domain": "Hypermedia APIs",
     "topics": [
-      "Api Versioning",
-      "Api Lifecycle"
+      "Hypermedia APIs"
     ],
-    "prompt": "Which approach best supports introducing a breaking change to an active Process API without disrupting current consumers?",
+    "prompt": "A fintech startup is building a hypermedia‑driven loan‑application API to enable clients to navigate state transitions, must keep payload size under 5 KB, has a one‑month launch window, and the developers are proficient in RAML but not in HAL. Which approach BEST meets the requirements?",
     "options": [
       {
         "letter": "A",
-        "text": "Edit the running API in place"
+        "text": "Design the API in RAML and use Mule Soft’s Hypermedia (HAL) module to automatically embed state‑transition links in responses, customizing link inclusion to stay under 5 K"
       },
       {
         "letter": "B",
-        "text": "Publish a new major version, run both versions in parallel, and migrate consumers"
+        "text": ""
+      },
+      {
+        "letter": "B",
+        "text": "Switch to Open API Specification, then use Mule’s API Designer to generate a Siren‑based hypermedia API, training developers on Siren concepts."
       },
       {
         "letter": "C",
-        "text": "Force consumers to upgrade within 24 hours"
+        "text": "Build a custom HAL serializer from scratch in Java, manually adding links in each flow to meet hypermedia requirements."
       },
       {
         "letter": "D",
-        "text": "Delete the old version once the new one is published"
+        "text": "Abandon hypermedia and expose a simple CRUD REST API described in RAML, relying on client‑side logic for state navigation."
+      },
+      {
+        "letter": "E",
+        "text": "Use RAML to define the API and adopt JSON:API format for hypermedia, assuming JSON:API provides smaller payloads and easier implementation."
+      },
+      {
+        "letter": "F",
+        "text": "Implement Graph QL with schema stitching to handle state transitions, eliminating the need for hypermedia links."
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Run-both-versions during migration is the standard MuleSoft pattern: publish v2 with the breaking change, keep v1 running, and migrate consumers in their own time before retiring v1. Editing in place breaks consumers immediately.",
+    "explanation": "The question tests knowledge of selecting an implementation strategy that balances hypermedia requirements, payload constraints, developer expertise, and project timeline. Using Mule Soft’s Hypermedia (HAL) module directly from RAML is the optimal choice because it leverages the team’s existing RAML skills, automatically generates HAL links, and allows fine‑grained control over which links are included to keep payloads under 5 KB. Alternatives that involve switching specifications, building custom serializers, or abandoning hypermedia either introduce steep learning curves, consume excessive time, or fail to meet the business requirement. Common misconceptions include assuming any JSON‑based format (like JSON:API) provides hypermedia navigation or that Graph QL can replace hypermedia, both of which ignore the distinct purpose of hypermedia controls. Best practice is to reuse platform‑provided hypermedia extensions whenever possible to accelerate delivery while adhering to standards.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "In-place edits silently break clients and bypass governance."
+        "type": "Correct",
+        "text": "Design the API in RAML and use Mule Soft’s Hypermedia (HAL) module to automatically embed state‑transition links in responses, customizing link inclusion to stay under 5 KB.: This option is correct. Mule Soft provides a Hypermedia (HAL) module that can be configured from RAML to add _links and _embedded sections without the team needing deep HAL expertise. Because the module handles link generation centrally, the payload can be trimmed by selecting only the necessary links, satisfying the 5 KB limit and the one‑month timeline."
       },
       "B": {
-        "type": "Correct",
-        "text": "Publish a new major version, run both versions in parallel, and migrate consumers"
+        "type": "Incorrect",
+        "text": "Switch to Open API Specification, then use Mule’s API Designer to generate a Siren‑based hypermedia API, training developers on Siren concepts.: This option is incorrect. Moving from RAML to Open API adds unnecessary conversion work and learning curve, which jeopardizes the one‑month launch window. Additionally, Siren is a less common hypermedia format than HAL, so the team would need extensive training, and there is no guarantee that Siren payloads will be smaller than 5 KB."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Forcing 24-hour migration is operationally risky and rarely realistic."
+        "text": "Build a custom HAL serializer from scratch in Java, manually adding links in each flow to meet hypermedia requirements.: This option is incorrect. Writing a custom serializer is time‑intensive and error‑prone, especially given the one‑month deadline. Manual link insertion in every flow also makes it difficult to enforce the payload size constraint consistently across the API."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Deleting prior versions before consumers migrate is a guaranteed outage."
+        "text": "Abandon hypermedia and expose a simple CRUD REST API described in RAML, relying on client‑side logic for state navigation.: This option is incorrect because the business requirement explicitly calls for a hypermedia‑driven API that guides clients through state transitions. Without hypermedia, clients must hard‑code URLs and state logic, which defeats the purpose of a discoverable API and can lead to tighter coupling and more maintenance overhead."
+      },
+      "E": {
+        "type": "Incorrect",
+        "text": "Use RAML to define the API and adopt JSON:API format for hypermedia, assuming JSON:API provides smaller payloads and easier implementation.: This option is incorrect. JSON:API is primarily a convention for structuring JSON resources and does not provide the link‑driven navigation model required for hypermedia state transitions. Moreover, adopting JSON:API would still require learning its own set of conventions, adding unnecessary effort within the tight schedule."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Implement Graph QL with schema stitching to handle state transitions, eliminating the need for hypermedia links.: This option is incorrect because Graph QL does not use hypermedia links; it relies on query specifications to retrieve data. Switching to Graph QL would require a completely different architectural approach, extensive developer up‑skilling, and would not satisfy the explicit hypermedia‑driven requirement."
       }
     },
-    "references": {
-      "primary": {
-        "title": "Anypoint Exchange — Managing Breaking Changes & Parallel API Major Versions",
-        "url": "https://docs.mulesoft.com/exchange/#view-assets-by-business-group"
-      },
-      "architectureGuide": {
-        "title": "API Manager — Deprecating and Deleting API Versions",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/defining-sla-tiers#deprecate-a-tier"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
-      }
-    }
+    "references": {},
+    "correctAnswer": "A"
   },
   {
     "id": "q-038",
     "number": 38,
-    "title": "Deployment Options - Which is a TRUE statement about CloudHub",
-    "domain": "Deployment Options",
+    "title": "Integration Architecture - A healthcare analytics team must integrate a lab‑result REST API,",
+    "domain": "Integration Architecture",
     "topics": [
-      "Cloudhub Deployment"
+      "Integration Architecture"
     ],
-    "prompt": "Which is a TRUE statement about CloudHub Shared Load Balancer (SLB)?",
+    "prompt": "A healthcare analytics team must integrate a lab‑result REST API, a patient‑portal SOAP service, and a billing system while staying under a $30,000 budget, achieving eventual consistency, and complying with GDPR; they are considering data replication, event‑driven choreography, batch synchronization, and API‑level caching. Which TWO actions should be taken? (Select all correct answers)",
     "options": [
       {
         "letter": "A",
-        "text": "It supports custom certificates and custom domain names"
+        "text": "Implement event‑driven choreography using Mule Soft's Anypoint MQ to propagate lab results and billing updates asynchronously."
       },
       {
         "letter": "B",
-        "text": "It only supports cloudhub.io URLs and MuleSoft-managed certificates"
+        "text": "Enable API‑level caching for the patient‑portal SOAP service responses with a short TTL to reduce repeated calls."
       },
       {
         "letter": "C",
-        "text": "It provides region failover automatically"
+        "text": "Perform full data replication of all lab and billing data into a central data lake without encryption."
       },
       {
         "letter": "D",
-        "text": "It requires an Anypoint VPC to function"
+        "text": "Schedule nightly batch synchronization jobs between the REST API, SOAP service, and billing system."
+      },
+      {
+        "letter": "E",
+        "text": "Use data replication with field‑level encryption and GDPR‑compliant data‑subject access controls."
+      },
+      {
+        "letter": "F",
+        "text": "Disable any caching or replication and rely on direct synchronous calls to meet consistency."
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "The Shared Load Balancer is multi-tenant and limited to cloudhub.io URLs and MuleSoft-managed certificates. For custom domains, custom TLS certificates, IP allow-listing, and URL mapping, customers use a Dedicated Load Balancer in an Anypoint VPC.",
+    "explanation": "The question tests the candidate's ability to select integration patterns that balance cost, consistency, and data‑privacy requirements in a regulated healthcare environment. Event‑driven choreography and short‑TTL API caching are the optimal choices because they provide eventual consistency while minimizing infrastructure spend and can be secured to satisfy GDPR. Full data replication without protection, batch jobs, or exhaustive replication with encryption each either breach GDPR principles, exceed budget, or introduce unnecessary latency. Common misconceptions include assuming that any form of replication automatically solves consistency, or that batch synchronization is always the cheapest option; in reality, event‑driven approaches are both cost‑effective and align with modern cloud‑native best practices. Practitioners should always design for data minimisation, encrypted storage, and choose lightweight asynchronous patterns when budget and regulatory constraints coexist.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Custom certs/domains require the DLB."
+        "type": "Correct",
+        "text": "Implement event‑driven choreography using Mule Soft's Anypoint MQ to propagate lab results and billing updates asynchronously.: This option is correct. An event‑driven choreography decouples the three systems, allowing each to process updates at its own pace, which satisfies the eventual consistency requirement. Using a lightweight messaging service like Anypoint MQ keeps infrastructure costs low, helping the solution stay within the $30,000 budget, and it can be configured with encryption to meet GDPR mandates."
       },
       "B": {
         "type": "Correct",
-        "text": "It only supports cloudhub.io URLs and MuleSoft-managed certificates"
+        "text": "Enable API‑level caching for the patient‑portal SOAP service responses with a short TTL to reduce repeated calls.: This option is correct. Caching frequently requested SOAP responses reduces the number of calls to the legacy patient‑portal, cutting licensing and compute expenses and contributing to the budget constraint. By configuring a short time‑to‑live and ensuring that cached data is encrypted and does not retain personal identifiers longer than necessary, the approach remains GDPR‑compliant while still improving performance."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Region failover requires multi-region deployment with DNS or DLB strategy."
+        "text": "Perform full data replication of all lab and billing data into a central data lake without encryption.: This option is incorrect. Replicating all data without encryption violates GDPR's requirement for data protection at rest and exposes the organization to regulatory fines. Additionally, storing complete copies of the data inflates storage costs, likely exceeding the $30,000 budget, and provides no advantage for eventual consistency beyond what event‑driven approaches already deliver."
       },
       "D": {
         "type": "Incorrect",
-        "text": "The SLB does not require an Anypoint VPC; the DLB does."
+        "text": "Schedule nightly batch synchronization jobs between the REST API, SOAP service, and billing system.: This option is incorrect. While batch jobs can achieve eventual consistency, they introduce a 24‑hour latency window that may be unacceptable for timely analytics and patient care decisions. The operational overhead of managing nightly jobs adds complexity and can increase licensing and monitoring costs, making it less suitable for a strict budget, and it does not address GDPR concerns about data handling during transfer."
+      },
+      "E": {
+        "type": "Incorrect",
+        "text": "Use data replication with field‑level encryption and GDPR‑compliant data‑subject access controls.: This option is incorrect. Although field‑level encryption and access controls address GDPR, full replication still duplicates large volumes of data, driving up storage and processing expenses beyond the $30,000 limit. Moreover, replicating data that is not strictly necessary violates GDPR's data‑minimisation principle, exposing the project to compliance risk without delivering the required eventual consistency efficiently."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Disable any caching or replication and rely on direct synchronous calls to meet consistency.: This option is incorrect. Direct synchronous calls increase latency and load on each system, raising operational costs and potentially breaching the budget. Synchronous integration also makes it harder to achieve eventual consistency, as any downstream failure blocks the entire transaction, and it offers no built‑in mechanisms for GDPR‑aligned data protection."
       }
     },
-    "references": {
-      "primary": {
-        "title": "CloudHub Architecture — Shared Load Balancers (SLB) vs Dedicated Load Balancers",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#workers-and-multitenancy"
-      },
-      "architectureGuide": {
-        "title": "CloudHub Dedicated Load Balancer (DLB) Architecture & Custom Certificates",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer#create-and-configure-a-dedicated-load-balancer"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
-      }
-    }
+    "references": {},
+    "correctAnswers": [
+      "A",
+      "B"
+    ]
   },
   {
     "id": "q-039",
     "number": 39,
-    "title": "Api Policies - Which security control prevents a denialofservice from",
-    "domain": "Api Policies",
+    "title": "API Management - A national retail chain wants to expose its inventory catalog to",
+    "domain": "API Management",
     "topics": [
-      "Rate Limiting Throttling"
+      "API Management"
     ],
-    "prompt": "Which security control prevents a denial-of-service from a misbehaving client by capping requests per time window?",
+    "prompt": "A national retail chain wants to expose its inventory catalog to external partners, must enforce OAuth 2.0, support rate limiting, enable response caching, keep end‑to‑end latency under 200 ms, and cannot exceed a modest licensing cost; options include using a policy‑driven API proxy, implementing a dedicated caching layer, applying token introspection, configuring per‑client throttling, and enabling edge‑side compression. Which THREE options meet the requirements? (Select all correct answers)",
     "options": [
       {
         "letter": "A",
-        "text": "Rate-limiting policy"
+        "text": "Use a policy‑driven API proxy to enforce OAuth 2.0, apply throttling, and enable response caching."
       },
       {
         "letter": "B",
-        "text": "OAuth 2.0 token enforcement"
+        "text": "Deploy a dedicated external caching layer (e. g., Redis) behind the API proxy."
       },
       {
         "letter": "C",
-        "text": "JSON threat protection"
+        "text": "Apply token introspection for every request against the authorization server."
       },
       {
         "letter": "D",
-        "text": "Mutual TLS"
+        "text": "Configure per‑client throttling policies in the API manager."
+      },
+      {
+        "letter": "E",
+        "text": "Enable edge‑side compression to gzip responses."
+      },
+      {
+        "letter": "F",
+        "text": "Replace the API proxy with a full‑mesh ESB orchestration layer for all traffic."
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Rate-limiting policies cap request volume per client and per time window, defending against accidental or malicious traffic floods. OAuth, JSON threat protection, and mTLS each address different concerns (authentication, payload validation, transport identity).",
+    "explanation": "The question tests the candidate's ability to select the most cost‑effective, low‑latency solution set for exposing an API while meeting security, rate‑limiting, and caching requirements. Policy‑driven API proxies in Anypoint Platform deliver OAuth 2.0 enforcement, throttling, and caching as built‑in policies, keeping both licensing and operational overhead minimal. Adding a dedicated caching layer such as Redis further improves latency without significant cost, satisfying the response‑caching need. Per‑client throttling policies directly address the rate‑limiting requirement and are lightweight enough to stay under the latency budget. Options like token introspection, edge‑side compression, and a full‑mesh ESB are common misconceptions: they either add unnecessary latency, do not meet all functional requirements, or increase cost, making them poor choices for this scenario.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Rate-limiting policy"
+        "text": "Use a policy‑driven API proxy to enforce OAuth 2.0, apply throttling, and enable response caching.: This option is correct. An API proxy managed by Anypoint API Manager can apply OAuth 2.0 token validation, rate‑limiting, and response‑caching policies without additional infrastructure, keeping licensing costs low. Because the policies execute at the edge, latency stays well below 200 ms, making it an ideal choice for the scenario."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "OAuth proves identity; it does not cap throughput."
+        "type": "Correct",
+        "text": "Deploy a dedicated external caching layer (e. g., Redis) behind the API proxy.: This option is correct. A separate caching tier can store frequently requested catalog data, dramatically reducing backend calls and helping meet the sub‑200 ms latency goal. Open‑source solutions such as Redis have minimal licensing cost, satisfying the modest budget constraint while providing true response caching."
       },
       "C": {
         "type": "Incorrect",
-        "text": "JSON threat protection blocks malicious payload structures, not request volume."
+        "text": "Apply token introspection for every request against the authorization server.: This option is incorrect. Token introspection requires a network round‑trip to the authorization server for each request, adding latency that can easily exceed the 200 ms target. Additionally, the extra calls increase operational cost and do not provide caching or rate‑limiting capabilities, making it unsuitable for the given constraints."
       },
       "D": {
+        "type": "Correct",
+        "text": "Configure per‑client throttling policies in the API manager.: This option is correct. Per‑client throttling directly implements the required rate‑limiting function and is enforced by the API proxy, avoiding extra hardware or licensing. The policy is lightweight and runs at the edge, preserving the low‑latency requirement while staying within budget."
+      },
+      "E": {
         "type": "Incorrect",
-        "text": "mTLS authenticates the client at TLS time but does not cap call rate."
+        "text": "Enable edge‑side compression to gzip responses.: This option is incorrect. While compression reduces bandwidth usage, it does not satisfy the mandatory OAuth enforcement, rate‑limiting, or caching requirements. Moreover, compression adds CPU overhead that can increase response time, potentially jeopardizing the 200 ms latency goal without delivering the core functional needs."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Replace the API proxy with a full‑mesh ESB orchestration layer for all traffic.: This option is incorrect. An ESB orchestration layer introduces higher processing latency, greater operational complexity, and higher licensing costs compared to a lightweight API proxy. It does not inherently provide the policy‑driven OAuth, throttling, or caching features needed in a cost‑effective manner."
       }
     },
-    "references": {
-      "primary": {
-        "title": "Rate Limiting and Throttling Policy Reference in API Manager",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/rate-limiting-and-throttling#how-this-policy-works"
-      },
-      "architectureGuide": {
-        "title": "Defining SLA Tiers and Consumer Tiers in API Manager",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/defining-sla-tiers#defining-a-tier"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
-      }
-    }
+    "references": {},
+    "correctAnswers": [
+      "A",
+      "B",
+      "D"
+    ]
   },
   {
     "id": "q-040",
     "number": 40,
-    "title": "Api Policies - An architect wants ALL traffic to a",
-    "domain": "Api Policies",
+    "title": "WS-Security - A government tax department needs to secure a SOAP web service th",
+    "domain": "WS-Security",
     "topics": [
-      "Oauth2 Policy"
+      "WS-Security"
     ],
-    "prompt": "An architect wants ALL traffic to a Mule API to be authorized by a corporate identity provider's OAuth 2.0 access tokens. Which approach is most appropriate?",
+    "prompt": "A government tax department needs to secure a SOAP web service that exchanges taxpayer data with state agencies, must implement WS‑Security, satisfy NIST SP 800‑53 controls, and cannot add extra certificates due to policy restrictions; possible measures include using message‑level encryption, applying transport‑level TLS, employing Username Token with digests, configuring IP whitelisting, and enabling WS‑Secure Conversation. Which TWO actions should be taken? (Select all correct answers)",
     "options": [
       {
         "letter": "A",
-        "text": "Implement custom token validation in every flow"
+        "text": "Use message‑level encryption (WS‑Security) to protect the SOAP payload."
       },
       {
         "letter": "B",
-        "text": "Apply the OAuth 2.0 access-token enforcement policy in API Manager and integrate with the IdP"
+        "text": "Apply transport‑level TLS (HTTPS) for the service endpoint."
       },
       {
         "letter": "C",
-        "text": "Use IP allow-listing instead"
+        "text": "Employ a Username Token with password digests for authentication."
       },
       {
         "letter": "D",
-        "text": "Use Mutual TLS instead"
+        "text": "Configure IP whitelisting to restrict access to known agency addresses."
+      },
+      {
+        "letter": "E",
+        "text": "Enable WS‑Secure Conversation to establish a security context token."
+      },
+      {
+        "letter": "F",
+        "text": "Disable WS‑Security and rely solely on network firewalls."
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Apply the OAuth 2.0 access-token enforcement policy in API Manager and configure it against the corporate IdP (e.g., Okta, Ping, Azure AD via OpenAM, or external OAuth providers). Per-flow custom validation is brittle, duplicative, and bypasses governance.",
+    "explanation": "The question tests knowledge of applying WS‑Security controls in environments with strict certificate policies while meeting NIST SP 800‑53 security requirements. Message‑level encryption and a Username Token with password digests together provide confidentiality and authentication directly within the SOAP message, satisfying both WS‑Security and NIST mandates without needing additional certificates. Transport‑level TLS alone, IP whitelisting, and disabling WS‑Security are common misconceptions because they address only network security, not the message itself. WS‑Secure Conversation, while useful for performance, still depends on an initial certificate exchange and adds unnecessary complexity when certificates cannot be added. Best practice is to combine message‑level encryption with strong token‑based authentication to achieve end‑to‑end security that complies with federal standards.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Per-flow code duplicates logic and skips API Manager governance."
+        "type": "Correct",
+        "text": "Use message‑level encryption (WS‑Security) to protect the SOAP payload.: This is correct. Message‑level encryption encrypts the SOAP body inside the XML document, satisfying WS‑Security requirements and NIST confidentiality controls without requiring additional certificates if a shared secret or existing certificate is used. It ensures the data remains protected even if the transport layer is compromised, which is essential for highly sensitive taxpayer information."
       },
       "B": {
-        "type": "Correct",
-        "text": "Apply the OAuth 2.0 access-token enforcement policy in API Manager and integrate with the IdP"
+        "type": "Incorrect",
+        "text": "Apply transport‑level TLS (HTTPS) for the service endpoint.: This is incorrect as a sole measure. While TLS encrypts the channel, it does not provide the required WS‑Security constructs such as signed/encrypted SOAP elements and does not meet NIST mandates for message‑level protection. Relying only on TLS would leave the payload exposed to intermediaries that may terminate the TLS session, violating the policy of end‑to‑end security."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "IP allow-lists do not validate user-context tokens."
+        "type": "Correct",
+        "text": "Employ a Username Token with password digests for authentication.: This is correct. Username Token with a digest hashes the password before it is placed in the SOAP header, preventing clear‑text transmission and meeting authentication requirements without needing extra certificates. It aligns with WS‑Security standards and NIST controls for verifying the identity of the calling agency while respecting the certificate restriction."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Mutual TLS authenticates the transport endpoint, not the calling user."
+        "text": "Configure IP whitelisting to restrict access to known agency addresses.: This is incorrect. IP whitelisting is a network‑level control that does not provide encryption, integrity, or authentication of the SOAP message itself. Although it can reduce exposure, it does not satisfy WS‑Security or NIST requirements for protecting the data payload."
+      },
+      "E": {
+        "type": "Incorrect",
+        "text": "Enable WS‑Secure Conversation to establish a security context token.: This is incorrect in this scenario. WS‑Secure Conversation creates a security context after an initial handshake that typically relies on certificate‑based key exchange; without the ability to add new certificates, establishing the context becomes impractical. Moreover, it adds unnecessary complexity when message‑level encryption and Username Token already meet the required controls."
+      },
+      "F": {
+        "type": "Incorrect",
+        "text": "Disable WS‑Security and rely solely on network firewalls.: This is incorrect. Disabling WS‑Security directly contravenes the stated requirement to implement WS‑Security and would leave the SOAP messages unprotected at the application layer, violating NIST SP 800‑53 confidentiality and integrity safeguards. Firewalls cannot guarantee the protection of data once it traverses the network."
       }
     },
-    "references": {
-      "primary": {
-        "title": "External Identity Management & OAuth 2.0 Access Token Enforcement with Corporate IdP",
-        "url": "https://docs.mulesoft.com/access-management/external-identity#managing-users-external-identity"
-      },
-      "architectureGuide": {
-        "title": "IETF RFC 6749 — The OAuth 2.0 Authorization Framework",
-        "url": "https://datatracker.ietf.org/doc/html/rfc6749"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
-      }
-    }
+    "references": {},
+    "correctAnswers": [
+      "A",
+      "C"
+    ]
   },
   {
     "id": "q-041",
@@ -6258,321 +6339,321 @@ window.MCPA_QUESTIONS = [
       }
     }
   },
-{
-  "id": "q-101",
-  "number": 101,
-  "title": "Deploying Managing Apis - A platform team needs centralized policy control",
-  "domain": "Deploying Managing Apis",
-  "topics": [
-    "Flex Gateway",
-    "Connected Mode"
-  ],
-  "prompt": "A platform team needs Flex Gateway instances to receive policies from API Manager and publish analytics to Anypoint Platform. Which operating mode should they use?",
-  "options": [
-    {
-      "letter": "A",
-      "text": "Local mode with YAML-only configuration"
+  {
+    "id": "q-101",
+    "number": 101,
+    "title": "Deploying Managing Apis - A platform team needs centralized policy control",
+    "domain": "Deploying Managing Apis",
+    "topics": [
+      "Flex Gateway",
+      "Connected Mode"
+    ],
+    "prompt": "A platform team needs Flex Gateway instances to receive policies from API Manager and publish analytics to Anypoint Platform. Which operating mode should they use?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Local mode with YAML-only configuration"
+      },
+      {
+        "letter": "B",
+        "text": "Connected mode registered to Anypoint Platform"
+      },
+      {
+        "letter": "C",
+        "text": "Runtime Fabric sidecar mode"
+      },
+      {
+        "letter": "D",
+        "text": "VPN passthrough mode"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Connected mode lets Flex Gateway receive centrally managed API definitions and policies from API Manager and publish analytics to Anypoint Platform. Local mode is configured from local YAML files and is better suited to isolated or air-gapped use cases where centralized governance is not required.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Local mode is managed through local YAML files and does not provide central API Manager governance or Anypoint analytics."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Connected mode registered to Anypoint Platform"
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Runtime Fabric is a deployment target for Mule runtimes, not a Flex Gateway operating mode."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "VPN connectivity can complement gateway deployment, but it is not the gateway operating mode that enables API Manager control."
+      }
     },
-    {
-      "letter": "B",
-      "text": "Connected mode registered to Anypoint Platform"
-    },
-    {
-      "letter": "C",
-      "text": "Runtime Fabric sidecar mode"
-    },
-    {
-      "letter": "D",
-      "text": "VPN passthrough mode"
-    }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Connected mode lets Flex Gateway receive centrally managed API definitions and policies from API Manager and publish analytics to Anypoint Platform. Local mode is configured from local YAML files and is better suited to isolated or air-gapped use cases where centralized governance is not required.",
-  "rationales": {
-    "A": {
-      "type": "Incorrect",
-      "text": "Local mode is managed through local YAML files and does not provide central API Manager governance or Anypoint analytics."
-    },
-    "B": {
-      "type": "Correct",
-      "text": "Connected mode registered to Anypoint Platform"
-    },
-    "C": {
-      "type": "Incorrect",
-      "text": "Runtime Fabric is a deployment target for Mule runtimes, not a Flex Gateway operating mode."
-    },
-    "D": {
-      "type": "Incorrect",
-      "text": "VPN connectivity can complement gateway deployment, but it is not the gateway operating mode that enables API Manager control."
-    }
-  },
-  "references": {
-    "primary": {
-      "title": "Flex Gateway Connected Mode",
-      "url": "https://docs.mulesoft.com/gateway/latest/#connected_mode"
-    },
-    "architectureGuide": {
-      "title": "API Manager Overview \u2014 Centralized Policy Control and Analytics",
-      "url": "https://docs.mulesoft.com/api-manager/"
-    },
-    "arc720": {
-      "lesson": "Lesson 10 \u2014 Production",
-      "anchor": "ARC720-Course-Content.md#10-production"
-    }
-  }
-},
-{
-  "id": "q-102",
-  "number": 102,
-  "title": "Deployment Options - Which option exposes ingress inside a Private",
-  "domain": "Deployment Options",
-  "topics": [
-    "Private Spaces",
-    "Flex Gateway"
-  ],
-  "prompt": "In CloudHub 2.0, which option lets architects expose a public ingress endpoint into an isolated private network while still using a MuleSoft-managed gateway?",
-  "options": [
-    {
-      "letter": "A",
-      "text": "Deploy a Managed Flex Gateway in the Private Space and enable a public endpoint"
-    },
-    {
-      "letter": "B",
-      "text": "Use Anypoint MQ queues as the ingress layer"
-    },
-    {
-      "letter": "C",
-      "text": "Run Flex Gateway only in local mode on developer laptops"
-    },
-    {
-      "letter": "D",
-      "text": "Replace the Private Space with Visualizer"
-    }
-  ],
-  "correctAnswer": "A",
-  "explanation": "A Managed Flex Gateway deployed in a CloudHub 2.0 Private Space can front services with a public ingress endpoint while preserving the isolation and traffic controls of the private network. MQ is asynchronous messaging, local developer gateways are not production ingress, and Visualizer is an observability tool rather than a networking control plane.",
-  "rationales": {
-    "A": {
-      "type": "Correct",
-      "text": "Deploy a Managed Flex Gateway in the Private Space and enable a public endpoint"
-    },
-    "B": {
-      "type": "Incorrect",
-      "text": "Anypoint MQ is for messaging, not for exposing inbound HTTP ingress into a private space."
-    },
-    "C": {
-      "type": "Incorrect",
-      "text": "Local developer deployment does not provide managed production ingress or private-space controls."
-    },
-    "D": {
-      "type": "Incorrect",
-      "text": "Visualizer maps dependencies; it does not host or expose network endpoints."
+    "references": {
+      "primary": {
+        "title": "Flex Gateway Connected Mode",
+        "url": "https://docs.mulesoft.com/gateway/latest/#connected_mode"
+      },
+      "architectureGuide": {
+        "title": "API Manager Overview — Centralized Policy Control and Analytics",
+        "url": "https://docs.mulesoft.com/api-manager/"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
     }
   },
-  "references": {
-    "primary": {
-      "title": "Deploy a Managed Flex Gateway to CloudHub 2.0 Private Spaces",
-      "url": "https://docs.mulesoft.com/gateway/latest/flex-gateway-managed-set-up"
+  {
+    "id": "q-102",
+    "number": 102,
+    "title": "Deployment Options - Which option exposes ingress inside a Private",
+    "domain": "Deployment Options",
+    "topics": [
+      "Private Spaces",
+      "Flex Gateway"
+    ],
+    "prompt": "In CloudHub 2.0, which option lets architects expose a public ingress endpoint into an isolated private network while still using a MuleSoft-managed gateway?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Deploy a Managed Flex Gateway in the Private Space and enable a public endpoint"
+      },
+      {
+        "letter": "B",
+        "text": "Use Anypoint MQ queues as the ingress layer"
+      },
+      {
+        "letter": "C",
+        "text": "Run Flex Gateway only in local mode on developer laptops"
+      },
+      {
+        "letter": "D",
+        "text": "Replace the Private Space with Visualizer"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "A Managed Flex Gateway deployed in a CloudHub 2.0 Private Space can front services with a public ingress endpoint while preserving the isolation and traffic controls of the private network. MQ is asynchronous messaging, local developer gateways are not production ingress, and Visualizer is an observability tool rather than a networking control plane.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "Deploy a Managed Flex Gateway in the Private Space and enable a public endpoint"
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Anypoint MQ is for messaging, not for exposing inbound HTTP ingress into a private space."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Local developer deployment does not provide managed production ingress or private-space controls."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Visualizer maps dependencies; it does not host or expose network endpoints."
+      }
     },
-    "architectureGuide": {
-      "title": "CloudHub 2.0 Private Space Endpoints and Path Configuration",
-      "url": "https://docs.mulesoft.com/cloudhub-2/ch2-config-endpoints-paths"
-    },
-    "arc720": {
-      "lesson": "Lesson 10 \u2014 Production",
-      "anchor": "ARC720-Course-Content.md#10-production"
-    }
-  }
-},
-{
-  "id": "q-103",
-  "number": 103,
-  "title": "Org Platform Foundations - Which capability should gate API spec",
-  "domain": "Org Platform Foundations",
-  "topics": [
-    "Api Governance",
-    "Cicd Maven"
-  ],
-  "prompt": "A platform team wants every RAML or OAS change checked against enterprise standards before merge. Which MuleSoft capability should be integrated into the CI/CD pipeline?",
-  "options": [
-    {
-      "letter": "A",
-      "text": "Run Anypoint API Governance ruleset validation through the CLI or APIs as a pipeline gate"
-    },
-    {
-      "letter": "B",
-      "text": "Wait for Runtime Manager alerts after deployment"
-    },
-    {
-      "letter": "C",
-      "text": "Rely only on Exchange comments from reviewers"
-    },
-    {
-      "letter": "D",
-      "text": "Apply an SLA tier after the API is in production"
-    }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Anypoint API Governance can validate API specifications against organizational rulesets during CI/CD so non-compliant changes are blocked before publication or deployment. Runtime alerts, reviewer comments, and post-deployment SLA tiers are useful in other parts of the lifecycle but do not provide an automated pre-merge standards gate.",
-  "rationales": {
-    "A": {
-      "type": "Correct",
-      "text": "Run Anypoint API Governance ruleset validation through the CLI or APIs as a pipeline gate"
-    },
-    "B": {
-      "type": "Incorrect",
-      "text": "Runtime Manager surfaces operational events after deployment, not design-time standards conformance before merge."
-    },
-    "C": {
-      "type": "Incorrect",
-      "text": "Manual comments do not provide consistent, automated enforcement across every repository."
-    },
-    "D": {
-      "type": "Incorrect",
-      "text": "SLA tiers govern consumer access, not design-time API specification quality."
-    }
-  },
-  "references": {
-    "primary": {
-      "title": "CLI for API Governance \u2014 Automating Conformance Checks in CI/CD",
-      "url": "https://docs.mulesoft.com/anypoint-cli/latest/api-governance"
-    },
-    "architectureGuide": {
-      "title": "Anypoint API Governance Overview",
-      "url": "https://docs.mulesoft.com/api-governance/"
-    },
-    "arc720": {
-      "lesson": "Lesson 4 \u2014 Organizational and platform foundations",
-      "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
-    }
-  }
-},
-{
-  "id": "q-104",
-  "number": 104,
-  "title": "Designing Sharing Apis - Which Exchange lifecycle state signals an",
-  "domain": "Designing Sharing Apis",
-  "topics": [
-    "Exchange Asset Management",
-    "Lifecycle States"
-  ],
-  "prompt": "Which Anypoint Exchange lifecycle state should an asset version enter when it is ready for broad reuse and should no longer be overwritten?",
-  "options": [
-    {
-      "letter": "A",
-      "text": "Development"
-    },
-    {
-      "letter": "B",
-      "text": "Stable"
-    },
-    {
-      "letter": "C",
-      "text": "Deprecated"
-    },
-    {
-      "letter": "D",
-      "text": "Draft"
-    }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Stable is the lifecycle state used for an Exchange asset version that is ready for consumption by other teams and should not be republished or overwritten. Development is still mutable, deprecated signals retirement, and draft is not the lifecycle state used by Exchange for released assets.",
-  "rationales": {
-    "A": {
-      "type": "Incorrect",
-      "text": "Development is intended for in-progress work and can still be republished."
-    },
-    "B": {
-      "type": "Correct",
-      "text": "Stable"
-    },
-    "C": {
-      "type": "Incorrect",
-      "text": "Deprecated indicates the asset should be phased out, not newly promoted for broad reuse."
-    },
-    "D": {
-      "type": "Incorrect",
-      "text": "Draft is not the Exchange lifecycle state used to mark a reusable released version."
+    "references": {
+      "primary": {
+        "title": "Deploy a Managed Flex Gateway to CloudHub 2.0 Private Spaces",
+        "url": "https://docs.mulesoft.com/gateway/latest/flex-gateway-managed-set-up"
+      },
+      "architectureGuide": {
+        "title": "CloudHub 2.0 Private Space Endpoints and Path Configuration",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-config-endpoints-paths"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
     }
   },
-  "references": {
-    "primary": {
-      "title": "Anypoint Exchange Asset Lifecycle States",
-      "url": "https://docs.mulesoft.com/exchange/lifecycle"
+  {
+    "id": "q-103",
+    "number": 103,
+    "title": "Org Platform Foundations - Which capability should gate API spec",
+    "domain": "Org Platform Foundations",
+    "topics": [
+      "Api Governance",
+      "Cicd Maven"
+    ],
+    "prompt": "A platform team wants every RAML or OAS change checked against enterprise standards before merge. Which MuleSoft capability should be integrated into the CI/CD pipeline?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Run Anypoint API Governance ruleset validation through the CLI or APIs as a pipeline gate"
+      },
+      {
+        "letter": "B",
+        "text": "Wait for Runtime Manager alerts after deployment"
+      },
+      {
+        "letter": "C",
+        "text": "Rely only on Exchange comments from reviewers"
+      },
+      {
+        "letter": "D",
+        "text": "Apply an SLA tier after the API is in production"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Anypoint API Governance can validate API specifications against organizational rulesets during CI/CD so non-compliant changes are blocked before publication or deployment. Runtime alerts, reviewer comments, and post-deployment SLA tiers are useful in other parts of the lifecycle but do not provide an automated pre-merge standards gate.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "Run Anypoint API Governance ruleset validation through the CLI or APIs as a pipeline gate"
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Runtime Manager surfaces operational events after deployment, not design-time standards conformance before merge."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Manual comments do not provide consistent, automated enforcement across every repository."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "SLA tiers govern consumer access, not design-time API specification quality."
+      }
     },
-    "architectureGuide": {
-      "title": "Publishing Assets Using the Exchange API",
-      "url": "https://docs.mulesoft.com/exchange/publishing-assets-using-the-exchange-api"
-    },
-    "arc720": {
-      "lesson": "Lesson 5 \u2014 API identification, publication, and reuse",
-      "anchor": "ARC720-Course-Content.md#5-api-identification-publication-and-reuse"
-    }
-  }
-},
-{
-  "id": "q-105",
-  "number": 105,
-  "title": "Org Platform Foundations - Which API Governance capability provides portfoliowide",
-  "domain": "Org Platform Foundations",
-  "topics": [
-    "Api Governance",
-    "Compliance Reporting"
-  ],
-  "prompt": "Which Anypoint capability gives architects a portfolio-wide view of governance coverage, conformance rates, and downloadable compliance reports across services?",
-  "options": [
-    {
-      "letter": "A",
-      "text": "API Governance Dashboard"
-    },
-    {
-      "letter": "B",
-      "text": "Anypoint Visualizer"
-    },
-    {
-      "letter": "C",
-      "text": "Runtime Manager alerts"
-    },
-    {
-      "letter": "D",
-      "text": "Exchange comments"
-    }
-  ],
-  "correctAnswer": "A",
-  "explanation": "The API Governance Dashboard centralizes visibility into how much of the portfolio is covered by governance and how well services conform to the active rulesets. Visualizer shows dependency topology, Runtime Manager focuses on operations, and Exchange comments are collaboration artifacts rather than compliance reporting.",
-  "rationales": {
-    "A": {
-      "type": "Correct",
-      "text": "API Governance Dashboard"
-    },
-    "B": {
-      "type": "Incorrect",
-      "text": "Visualizer shows application and API relationships, not governance conformance metrics."
-    },
-    "C": {
-      "type": "Incorrect",
-      "text": "Runtime Manager alerts are operational notifications, not portfolio governance reports."
-    },
-    "D": {
-      "type": "Incorrect",
-      "text": "Exchange comments are manual discussions and cannot provide portfolio-wide compliance analytics."
+    "references": {
+      "primary": {
+        "title": "CLI for API Governance — Automating Conformance Checks in CI/CD",
+        "url": "https://docs.mulesoft.com/anypoint-cli/latest/api-governance"
+      },
+      "architectureGuide": {
+        "title": "Anypoint API Governance Overview",
+        "url": "https://docs.mulesoft.com/api-governance/"
+      },
+      "arc720": {
+        "lesson": "Lesson 4 — Organizational and platform foundations",
+        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+      }
     }
   },
-  "references": {
-    "primary": {
-      "title": "Anypoint API Governance Overview and Dashboard Metrics",
-      "url": "https://docs.mulesoft.com/api-governance/"
+  {
+    "id": "q-104",
+    "number": 104,
+    "title": "Designing Sharing Apis - Which Exchange lifecycle state signals an",
+    "domain": "Designing Sharing Apis",
+    "topics": [
+      "Exchange Asset Management",
+      "Lifecycle States"
+    ],
+    "prompt": "Which Anypoint Exchange lifecycle state should an asset version enter when it is ready for broad reuse and should no longer be overwritten?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Development"
+      },
+      {
+        "letter": "B",
+        "text": "Stable"
+      },
+      {
+        "letter": "C",
+        "text": "Deprecated"
+      },
+      {
+        "letter": "D",
+        "text": "Draft"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Stable is the lifecycle state used for an Exchange asset version that is ready for consumption by other teams and should not be republished or overwritten. Development is still mutable, deprecated signals retirement, and draft is not the lifecycle state used by Exchange for released assets.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Development is intended for in-progress work and can still be republished."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Stable"
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Deprecated indicates the asset should be phased out, not newly promoted for broad reuse."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Draft is not the Exchange lifecycle state used to mark a reusable released version."
+      }
     },
-    "architectureGuide": {
-      "title": "Getting Started with Anypoint API Governance",
-      "url": "https://docs.mulesoft.com/api-governance/get-started"
-    },
-    "arc720": {
-      "lesson": "Lesson 4 \u2014 Organizational and platform foundations",
-      "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+    "references": {
+      "primary": {
+        "title": "Anypoint Exchange Asset Lifecycle States",
+        "url": "https://docs.mulesoft.com/exchange/lifecycle"
+      },
+      "architectureGuide": {
+        "title": "Publishing Assets Using the Exchange API",
+        "url": "https://docs.mulesoft.com/exchange/publishing-assets-using-the-exchange-api"
+      },
+      "arc720": {
+        "lesson": "Lesson 5 — API identification, publication, and reuse",
+        "anchor": "ARC720-Course-Content.md#5-api-identification-publication-and-reuse"
+      }
     }
-  }
-},
+  },
+  {
+    "id": "q-105",
+    "number": 105,
+    "title": "Org Platform Foundations - Which API Governance capability provides portfoliowide",
+    "domain": "Org Platform Foundations",
+    "topics": [
+      "Api Governance",
+      "Compliance Reporting"
+    ],
+    "prompt": "Which Anypoint capability gives architects a portfolio-wide view of governance coverage, conformance rates, and downloadable compliance reports across services?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "API Governance Dashboard"
+      },
+      {
+        "letter": "B",
+        "text": "Anypoint Visualizer"
+      },
+      {
+        "letter": "C",
+        "text": "Runtime Manager alerts"
+      },
+      {
+        "letter": "D",
+        "text": "Exchange comments"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "The API Governance Dashboard centralizes visibility into how much of the portfolio is covered by governance and how well services conform to the active rulesets. Visualizer shows dependency topology, Runtime Manager focuses on operations, and Exchange comments are collaboration artifacts rather than compliance reporting.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "API Governance Dashboard"
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Visualizer shows application and API relationships, not governance conformance metrics."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Runtime Manager alerts are operational notifications, not portfolio governance reports."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Exchange comments are manual discussions and cannot provide portfolio-wide compliance analytics."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint API Governance Overview and Dashboard Metrics",
+        "url": "https://docs.mulesoft.com/api-governance/"
+      },
+      "architectureGuide": {
+        "title": "Getting Started with Anypoint API Governance",
+        "url": "https://docs.mulesoft.com/api-governance/get-started"
+      },
+      "arc720": {
+        "lesson": "Lesson 4 — Organizational and platform foundations",
+        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+      }
+    }
+  },
   {
     "id": "q-106",
     "number": 106,
