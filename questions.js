@@ -6258,321 +6258,321 @@ window.MCPA_QUESTIONS = [
       }
     }
   },
-  {
-    "id": "q-101",
-    "number": 101,
-    "title": "Deploying Managing Apis - A platform team needs centralized policy control",
-    "domain": "Deploying Managing Apis",
-    "topics": [
-      "Flex Gateway",
-      "Connected Mode"
-    ],
-    "prompt": "A platform team needs Flex Gateway instances to receive policies from API Manager and publish analytics to Anypoint Platform. Which operating mode should they use?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Local mode with YAML-only configuration"
-      },
-      {
-        "letter": "B",
-        "text": "Connected mode registered to Anypoint Platform"
-      },
-      {
-        "letter": "C",
-        "text": "Runtime Fabric sidecar mode"
-      },
-      {
-        "letter": "D",
-        "text": "VPN passthrough mode"
-      }
-    ],
-    "correctAnswer": "B",
-    "explanation": "Connected mode lets Flex Gateway receive centrally managed API definitions and policies from API Manager and publish analytics to Anypoint Platform. Local mode is configured from local YAML files and is better suited to isolated or air-gapped use cases where centralized governance is not required.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Local mode is managed through local YAML files and does not provide central API Manager governance or Anypoint analytics."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Connected mode registered to Anypoint Platform"
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Runtime Fabric is a deployment target for Mule runtimes, not a Flex Gateway operating mode."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "VPN connectivity can complement gateway deployment, but it is not the gateway operating mode that enables API Manager control."
-      }
+{
+  "id": "q-101",
+  "number": 101,
+  "title": "Deploying Managing Apis - A platform team needs centralized policy control",
+  "domain": "Deploying Managing Apis",
+  "topics": [
+    "Flex Gateway",
+    "Connected Mode"
+  ],
+  "prompt": "A platform team needs Flex Gateway instances to receive policies from API Manager and publish analytics to Anypoint Platform. Which operating mode should they use?",
+  "options": [
+    {
+      "letter": "A",
+      "text": "Local mode with YAML-only configuration"
     },
-    "references": {
-      "primary": {
-        "title": "Flex Gateway Connected Mode",
-        "url": "https://docs.mulesoft.com/gateway/latest/#connected_mode"
-      },
-      "architectureGuide": {
-        "title": "API Manager Overview — Centralized Policy Control and Analytics",
-        "url": "https://docs.mulesoft.com/api-manager/"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
+    {
+      "letter": "B",
+      "text": "Connected mode registered to Anypoint Platform"
+    },
+    {
+      "letter": "C",
+      "text": "Runtime Fabric sidecar mode"
+    },
+    {
+      "letter": "D",
+      "text": "VPN passthrough mode"
+    }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Connected mode lets Flex Gateway receive centrally managed API definitions and policies from API Manager and publish analytics to Anypoint Platform. Local mode is configured from local YAML files and is better suited to isolated or air-gapped use cases where centralized governance is not required.",
+  "rationales": {
+    "A": {
+      "type": "Incorrect",
+      "text": "Local mode is managed through local YAML files and does not provide central API Manager governance or Anypoint analytics."
+    },
+    "B": {
+      "type": "Correct",
+      "text": "Connected mode registered to Anypoint Platform"
+    },
+    "C": {
+      "type": "Incorrect",
+      "text": "Runtime Fabric is a deployment target for Mule runtimes, not a Flex Gateway operating mode."
+    },
+    "D": {
+      "type": "Incorrect",
+      "text": "VPN connectivity can complement gateway deployment, but it is not the gateway operating mode that enables API Manager control."
     }
   },
-  {
-    "id": "q-102",
-    "number": 102,
-    "title": "Deployment Options - Which option exposes ingress inside a Private",
-    "domain": "Deployment Options",
-    "topics": [
-      "Private Spaces",
-      "Flex Gateway"
-    ],
-    "prompt": "In CloudHub 2.0, which option lets architects expose a public ingress endpoint into an isolated private network while still using a MuleSoft-managed gateway?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Deploy a Managed Flex Gateway in the Private Space and enable a public endpoint"
-      },
-      {
-        "letter": "B",
-        "text": "Use Anypoint MQ queues as the ingress layer"
-      },
-      {
-        "letter": "C",
-        "text": "Run Flex Gateway only in local mode on developer laptops"
-      },
-      {
-        "letter": "D",
-        "text": "Replace the Private Space with Visualizer"
-      }
-    ],
-    "correctAnswer": "A",
-    "explanation": "A Managed Flex Gateway deployed in a CloudHub 2.0 Private Space can front services with a public ingress endpoint while preserving the isolation and traffic controls of the private network. MQ is asynchronous messaging, local developer gateways are not production ingress, and Visualizer is an observability tool rather than a networking control plane.",
-    "rationales": {
-      "A": {
-        "type": "Correct",
-        "text": "Deploy a Managed Flex Gateway in the Private Space and enable a public endpoint"
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "Anypoint MQ is for messaging, not for exposing inbound HTTP ingress into a private space."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Local developer deployment does not provide managed production ingress or private-space controls."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Visualizer maps dependencies; it does not host or expose network endpoints."
-      }
+  "references": {
+    "primary": {
+      "title": "Flex Gateway Connected Mode",
+      "url": "https://docs.mulesoft.com/gateway/latest/#connected_mode"
     },
-    "references": {
-      "primary": {
-        "title": "Deploy a Managed Flex Gateway to CloudHub 2.0 Private Spaces",
-        "url": "https://docs.mulesoft.com/gateway/latest/flex-gateway-managed-set-up"
-      },
-      "architectureGuide": {
-        "title": "CloudHub 2.0 Private Space Endpoints and Path Configuration",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-config-endpoints-paths"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
+    "architectureGuide": {
+      "title": "API Manager Overview \u2014 Centralized Policy Control and Analytics",
+      "url": "https://docs.mulesoft.com/api-manager/"
+    },
+    "arc720": {
+      "lesson": "Lesson 10 \u2014 Production",
+      "anchor": "ARC720-Course-Content.md#10-production"
+    }
+  }
+},
+{
+  "id": "q-102",
+  "number": 102,
+  "title": "Deployment Options - Which option exposes ingress inside a Private",
+  "domain": "Deployment Options",
+  "topics": [
+    "Private Spaces",
+    "Flex Gateway"
+  ],
+  "prompt": "In CloudHub 2.0, which option lets architects expose a public ingress endpoint into an isolated private network while still using a MuleSoft-managed gateway?",
+  "options": [
+    {
+      "letter": "A",
+      "text": "Deploy a Managed Flex Gateway in the Private Space and enable a public endpoint"
+    },
+    {
+      "letter": "B",
+      "text": "Use Anypoint MQ queues as the ingress layer"
+    },
+    {
+      "letter": "C",
+      "text": "Run Flex Gateway only in local mode on developer laptops"
+    },
+    {
+      "letter": "D",
+      "text": "Replace the Private Space with Visualizer"
+    }
+  ],
+  "correctAnswer": "A",
+  "explanation": "A Managed Flex Gateway deployed in a CloudHub 2.0 Private Space can front services with a public ingress endpoint while preserving the isolation and traffic controls of the private network. MQ is asynchronous messaging, local developer gateways are not production ingress, and Visualizer is an observability tool rather than a networking control plane.",
+  "rationales": {
+    "A": {
+      "type": "Correct",
+      "text": "Deploy a Managed Flex Gateway in the Private Space and enable a public endpoint"
+    },
+    "B": {
+      "type": "Incorrect",
+      "text": "Anypoint MQ is for messaging, not for exposing inbound HTTP ingress into a private space."
+    },
+    "C": {
+      "type": "Incorrect",
+      "text": "Local developer deployment does not provide managed production ingress or private-space controls."
+    },
+    "D": {
+      "type": "Incorrect",
+      "text": "Visualizer maps dependencies; it does not host or expose network endpoints."
     }
   },
-  {
-    "id": "q-103",
-    "number": 103,
-    "title": "Org Platform Foundations - Which capability should gate API spec",
-    "domain": "Org Platform Foundations",
-    "topics": [
-      "Api Governance",
-      "Cicd Maven"
-    ],
-    "prompt": "A platform team wants every RAML or OAS change checked against enterprise standards before merge. Which MuleSoft capability should be integrated into the CI/CD pipeline?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Run Anypoint API Governance ruleset validation through the CLI or APIs as a pipeline gate"
-      },
-      {
-        "letter": "B",
-        "text": "Wait for Runtime Manager alerts after deployment"
-      },
-      {
-        "letter": "C",
-        "text": "Rely only on Exchange comments from reviewers"
-      },
-      {
-        "letter": "D",
-        "text": "Apply an SLA tier after the API is in production"
-      }
-    ],
-    "correctAnswer": "A",
-    "explanation": "Anypoint API Governance can validate API specifications against organizational rulesets during CI/CD so non-compliant changes are blocked before publication or deployment. Runtime alerts, reviewer comments, and post-deployment SLA tiers are useful in other parts of the lifecycle but do not provide an automated pre-merge standards gate.",
-    "rationales": {
-      "A": {
-        "type": "Correct",
-        "text": "Run Anypoint API Governance ruleset validation through the CLI or APIs as a pipeline gate"
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "Runtime Manager surfaces operational events after deployment, not design-time standards conformance before merge."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Manual comments do not provide consistent, automated enforcement across every repository."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "SLA tiers govern consumer access, not design-time API specification quality."
-      }
+  "references": {
+    "primary": {
+      "title": "Deploy a Managed Flex Gateway to CloudHub 2.0 Private Spaces",
+      "url": "https://docs.mulesoft.com/gateway/latest/flex-gateway-managed-set-up"
     },
-    "references": {
-      "primary": {
-        "title": "CLI for API Governance — Automating Conformance Checks in CI/CD",
-        "url": "https://docs.mulesoft.com/anypoint-cli/latest/api-governance"
-      },
-      "architectureGuide": {
-        "title": "Anypoint API Governance Overview",
-        "url": "https://docs.mulesoft.com/api-governance/"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
-      }
+    "architectureGuide": {
+      "title": "CloudHub 2.0 Private Space Endpoints and Path Configuration",
+      "url": "https://docs.mulesoft.com/cloudhub-2/ch2-config-endpoints-paths"
+    },
+    "arc720": {
+      "lesson": "Lesson 10 \u2014 Production",
+      "anchor": "ARC720-Course-Content.md#10-production"
+    }
+  }
+},
+{
+  "id": "q-103",
+  "number": 103,
+  "title": "Org Platform Foundations - Which capability should gate API spec",
+  "domain": "Org Platform Foundations",
+  "topics": [
+    "Api Governance",
+    "Cicd Maven"
+  ],
+  "prompt": "A platform team wants every RAML or OAS change checked against enterprise standards before merge. Which MuleSoft capability should be integrated into the CI/CD pipeline?",
+  "options": [
+    {
+      "letter": "A",
+      "text": "Run Anypoint API Governance ruleset validation through the CLI or APIs as a pipeline gate"
+    },
+    {
+      "letter": "B",
+      "text": "Wait for Runtime Manager alerts after deployment"
+    },
+    {
+      "letter": "C",
+      "text": "Rely only on Exchange comments from reviewers"
+    },
+    {
+      "letter": "D",
+      "text": "Apply an SLA tier after the API is in production"
+    }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Anypoint API Governance can validate API specifications against organizational rulesets during CI/CD so non-compliant changes are blocked before publication or deployment. Runtime alerts, reviewer comments, and post-deployment SLA tiers are useful in other parts of the lifecycle but do not provide an automated pre-merge standards gate.",
+  "rationales": {
+    "A": {
+      "type": "Correct",
+      "text": "Run Anypoint API Governance ruleset validation through the CLI or APIs as a pipeline gate"
+    },
+    "B": {
+      "type": "Incorrect",
+      "text": "Runtime Manager surfaces operational events after deployment, not design-time standards conformance before merge."
+    },
+    "C": {
+      "type": "Incorrect",
+      "text": "Manual comments do not provide consistent, automated enforcement across every repository."
+    },
+    "D": {
+      "type": "Incorrect",
+      "text": "SLA tiers govern consumer access, not design-time API specification quality."
     }
   },
-  {
-    "id": "q-104",
-    "number": 104,
-    "title": "Designing Sharing Apis - Which Exchange lifecycle state signals an",
-    "domain": "Designing Sharing Apis",
-    "topics": [
-      "Exchange Asset Management",
-      "Lifecycle States"
-    ],
-    "prompt": "Which Anypoint Exchange lifecycle state should an asset version enter when it is ready for broad reuse and should no longer be overwritten?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Development"
-      },
-      {
-        "letter": "B",
-        "text": "Stable"
-      },
-      {
-        "letter": "C",
-        "text": "Deprecated"
-      },
-      {
-        "letter": "D",
-        "text": "Draft"
-      }
-    ],
-    "correctAnswer": "B",
-    "explanation": "Stable is the lifecycle state used for an Exchange asset version that is ready for consumption by other teams and should not be republished or overwritten. Development is still mutable, deprecated signals retirement, and draft is not the lifecycle state used by Exchange for released assets.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Development is intended for in-progress work and can still be republished."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Stable"
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Deprecated indicates the asset should be phased out, not newly promoted for broad reuse."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Draft is not the Exchange lifecycle state used to mark a reusable released version."
-      }
+  "references": {
+    "primary": {
+      "title": "CLI for API Governance \u2014 Automating Conformance Checks in CI/CD",
+      "url": "https://docs.mulesoft.com/anypoint-cli/latest/api-governance"
     },
-    "references": {
-      "primary": {
-        "title": "Anypoint Exchange Asset Lifecycle States",
-        "url": "https://docs.mulesoft.com/exchange/lifecycle"
-      },
-      "architectureGuide": {
-        "title": "Publishing Assets Using the Exchange API",
-        "url": "https://docs.mulesoft.com/exchange/publishing-assets-using-the-exchange-api"
-      },
-      "arc720": {
-        "lesson": "Lesson 5 — API identification, publication, and reuse",
-        "anchor": "ARC720-Course-Content.md#5-api-identification-publication-and-reuse"
-      }
+    "architectureGuide": {
+      "title": "Anypoint API Governance Overview",
+      "url": "https://docs.mulesoft.com/api-governance/"
+    },
+    "arc720": {
+      "lesson": "Lesson 4 \u2014 Organizational and platform foundations",
+      "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+    }
+  }
+},
+{
+  "id": "q-104",
+  "number": 104,
+  "title": "Designing Sharing Apis - Which Exchange lifecycle state signals an",
+  "domain": "Designing Sharing Apis",
+  "topics": [
+    "Exchange Asset Management",
+    "Lifecycle States"
+  ],
+  "prompt": "Which Anypoint Exchange lifecycle state should an asset version enter when it is ready for broad reuse and should no longer be overwritten?",
+  "options": [
+    {
+      "letter": "A",
+      "text": "Development"
+    },
+    {
+      "letter": "B",
+      "text": "Stable"
+    },
+    {
+      "letter": "C",
+      "text": "Deprecated"
+    },
+    {
+      "letter": "D",
+      "text": "Draft"
+    }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Stable is the lifecycle state used for an Exchange asset version that is ready for consumption by other teams and should not be republished or overwritten. Development is still mutable, deprecated signals retirement, and draft is not the lifecycle state used by Exchange for released assets.",
+  "rationales": {
+    "A": {
+      "type": "Incorrect",
+      "text": "Development is intended for in-progress work and can still be republished."
+    },
+    "B": {
+      "type": "Correct",
+      "text": "Stable"
+    },
+    "C": {
+      "type": "Incorrect",
+      "text": "Deprecated indicates the asset should be phased out, not newly promoted for broad reuse."
+    },
+    "D": {
+      "type": "Incorrect",
+      "text": "Draft is not the Exchange lifecycle state used to mark a reusable released version."
     }
   },
-  {
-    "id": "q-105",
-    "number": 105,
-    "title": "Org Platform Foundations - Which API Governance capability provides portfoliowide",
-    "domain": "Org Platform Foundations",
-    "topics": [
-      "Api Governance",
-      "Compliance Reporting"
-    ],
-    "prompt": "Which Anypoint capability gives architects a portfolio-wide view of governance coverage, conformance rates, and downloadable compliance reports across services?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "API Governance Dashboard"
-      },
-      {
-        "letter": "B",
-        "text": "Anypoint Visualizer"
-      },
-      {
-        "letter": "C",
-        "text": "Runtime Manager alerts"
-      },
-      {
-        "letter": "D",
-        "text": "Exchange comments"
-      }
-    ],
-    "correctAnswer": "A",
-    "explanation": "The API Governance Dashboard centralizes visibility into how much of the portfolio is covered by governance and how well services conform to the active rulesets. Visualizer shows dependency topology, Runtime Manager focuses on operations, and Exchange comments are collaboration artifacts rather than compliance reporting.",
-    "rationales": {
-      "A": {
-        "type": "Correct",
-        "text": "API Governance Dashboard"
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "Visualizer shows application and API relationships, not governance conformance metrics."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Runtime Manager alerts are operational notifications, not portfolio governance reports."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Exchange comments are manual discussions and cannot provide portfolio-wide compliance analytics."
-      }
+  "references": {
+    "primary": {
+      "title": "Anypoint Exchange Asset Lifecycle States",
+      "url": "https://docs.mulesoft.com/exchange/lifecycle"
     },
-    "references": {
-      "primary": {
-        "title": "Anypoint API Governance Overview and Dashboard Metrics",
-        "url": "https://docs.mulesoft.com/api-governance/"
-      },
-      "architectureGuide": {
-        "title": "Getting Started with Anypoint API Governance",
-        "url": "https://docs.mulesoft.com/api-governance/get-started"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
-      }
+    "architectureGuide": {
+      "title": "Publishing Assets Using the Exchange API",
+      "url": "https://docs.mulesoft.com/exchange/publishing-assets-using-the-exchange-api"
+    },
+    "arc720": {
+      "lesson": "Lesson 5 \u2014 API identification, publication, and reuse",
+      "anchor": "ARC720-Course-Content.md#5-api-identification-publication-and-reuse"
+    }
+  }
+},
+{
+  "id": "q-105",
+  "number": 105,
+  "title": "Org Platform Foundations - Which API Governance capability provides portfoliowide",
+  "domain": "Org Platform Foundations",
+  "topics": [
+    "Api Governance",
+    "Compliance Reporting"
+  ],
+  "prompt": "Which Anypoint capability gives architects a portfolio-wide view of governance coverage, conformance rates, and downloadable compliance reports across services?",
+  "options": [
+    {
+      "letter": "A",
+      "text": "API Governance Dashboard"
+    },
+    {
+      "letter": "B",
+      "text": "Anypoint Visualizer"
+    },
+    {
+      "letter": "C",
+      "text": "Runtime Manager alerts"
+    },
+    {
+      "letter": "D",
+      "text": "Exchange comments"
+    }
+  ],
+  "correctAnswer": "A",
+  "explanation": "The API Governance Dashboard centralizes visibility into how much of the portfolio is covered by governance and how well services conform to the active rulesets. Visualizer shows dependency topology, Runtime Manager focuses on operations, and Exchange comments are collaboration artifacts rather than compliance reporting.",
+  "rationales": {
+    "A": {
+      "type": "Correct",
+      "text": "API Governance Dashboard"
+    },
+    "B": {
+      "type": "Incorrect",
+      "text": "Visualizer shows application and API relationships, not governance conformance metrics."
+    },
+    "C": {
+      "type": "Incorrect",
+      "text": "Runtime Manager alerts are operational notifications, not portfolio governance reports."
+    },
+    "D": {
+      "type": "Incorrect",
+      "text": "Exchange comments are manual discussions and cannot provide portfolio-wide compliance analytics."
     }
   },
+  "references": {
+    "primary": {
+      "title": "Anypoint API Governance Overview and Dashboard Metrics",
+      "url": "https://docs.mulesoft.com/api-governance/"
+    },
+    "architectureGuide": {
+      "title": "Getting Started with Anypoint API Governance",
+      "url": "https://docs.mulesoft.com/api-governance/get-started"
+    },
+    "arc720": {
+      "lesson": "Lesson 4 \u2014 Organizational and platform foundations",
+      "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+    }
+  }
+},
   {
     "id": "q-106",
     "number": 106,
@@ -8955,11 +8955,7 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Design the API in RAML and use Mule Soft’s Hypermedia (HAL) module to automatically embed state‑transition links in responses, customizing link inclusion to stay under 5 K"
-      },
-      {
-        "letter": "B",
-        "text": ""
+        "text": "Design the API in RAML and use Mule Soft’s Hypermedia (HAL) module to automatically embed state‑transition links in responses, customizing link inclusion to stay under 5 KB."
       },
       {
         "letter": "B",
