@@ -10703,23 +10703,23 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Correct",
-        "text": "Integrate SonarQube (or Anypoint Code Analyzer) to perform static code analysis and enforce a quality gate before deployment.: This is correct. Static code analysis catches maintainability and security issues before they reach production, and enforcing a quality gate in the pipeline directly satisfies the requirement to enforce code quality without adding significant licensing cost."
+        "text": "Integrate Sonar Qube (or Anypoint Code Analyzer) to perform static code analysis and enforce a quality gate before deployment.: This is correct. Static analysis tools such as Sonar Qube or the native Anypoint Code Analyzer detect code smells, security issues, and rule violations, ensuring that only high-quality code proceeds through the pipeline. Using the built-in analyzer incurs no extra fees, aligning with the strict quarterly budget constraint."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Deploy directly from the Anypoint Platform UI for each commit, bypassing any CI automation.: This is incorrect. Manual deployments skip automated testing and quality checks entirely, which contradicts the requirement to support automated testing and enforce code quality in the pipeline."
+        "text": "Deploy directly from the Anypoint Platform UI for each commit, bypassing any CI automation.: This is incorrect. Deploying manually from the UI does not provide automated testing or code-quality enforcement, and it introduces human error and inconsistent deployment practices. Additionally, the lack of automation can increase operational overhead, indirectly raising costs contrary to the budget goal."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Purchase a premium third-party test management suite and require its license for every build.: This is incorrect. Adding an expensive third-party licensing requirement for every build conflicts with the strict quarterly budget constraint and is unnecessary when MUnit and static analysis already cover the testing and quality needs."
+        "text": "Purchase a premium third-party test management suite and require its license for every build.: This is incorrect. While a third-party suite might offer advanced features, its licensing fees would likely exceed the bank's quarterly budget, violating the cost-restriction requirement. Moreover, Mule Soft already provides native testing tools (MUnit) that are sufficient for most CI/CD needs."
       },
       "E": {
         "type": "Incorrect",
-        "text": "Enable automatic scaling for all Cloud Hub applications to handle peak load during each deployment.: This is incorrect. Automatic scaling is a runtime operational concern and has no bearing on enforcing code quality or automated testing within the CI/CD pipeline."
+        "text": "Enable automatic scaling for all Cloud Hub applications to handle peak load during each deployment.: This is incorrect. Automatic scaling is an operational runtime setting, not a CI/CD pipeline action, and it can increase consumption-based charges, potentially breaching the budget limit. It also does not address code-quality enforcement or automated testing."
       },
       "F": {
         "type": "Incorrect",
-        "text": "Store secret credentials in plain text within the source repository to simplify pipeline scripts.: This is incorrect and dangerous. Storing secrets in plain text in the repository is a serious security violation and has nothing to do with enforcing code quality or automated testing."
+        "text": "Store secret credentials in plain text within the source repository to simplify pipeline scripts.: This is incorrect. Storing secrets in clear text violates security best practices and can lead to credential leakage, which is unrelated to code quality or testing. Remediation would likely require additional security tooling or processes, adding cost and complexity."
       }
     },
     "references": {},
