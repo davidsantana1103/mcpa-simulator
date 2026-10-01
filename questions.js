@@ -5442,7 +5442,7 @@ window.MCPA_QUESTIONS = [
   {
     "id": "q-088",
     "number": 88,
-    "title": "Deployment Options - Which is a TRUE statement about CloudHub",
+    "title": "Deployment Options - Which CloudHub region minimizes latency for APAC consumers",
     "domain": "Deployment Options",
     "topics": [
       "Cloudhub Deployment",
