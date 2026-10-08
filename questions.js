@@ -3,7 +3,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-001",
     "number": 1,
     "title": "Application Network Basics - Which API layer in MuleSofts APIled connectivity",
-    "domain": "Application Network Basics",
+    "domain": "Explaining application network basics",
     "topics": [
       "Three Layer Architecture",
       "Api Led Connectivity"
@@ -66,7 +66,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-002",
     "number": 2,
     "title": "Application Network Basics - What is the primary purpose of a",
-    "domain": "Application Network Basics",
+    "domain": "Explaining application network basics",
     "topics": [
       "C4E"
     ],
@@ -128,7 +128,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-003",
     "number": 3,
     "title": "Designing Sharing Apis - Which Anypoint Platform component is used to",
-    "domain": "Designing Sharing Apis",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "Raml Oas Design"
     ],
@@ -190,7 +190,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-004",
     "number": 4,
     "title": "Designing Sharing Apis - Which Anypoint Platform component is the marketplace",
-    "domain": "Designing Sharing Apis",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "Exchange Asset Management"
     ],
@@ -252,7 +252,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-005",
     "number": 5,
     "title": "Api Policies - What is the recommended way to expose",
-    "domain": "Api Policies",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Api Contracts Sla Tiers",
       "Rate Limiting Throttling"
@@ -315,7 +315,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-006",
     "number": 6,
     "title": "Org Platform Foundations - In Anypoint Platform what is the purpose",
-    "domain": "Org Platform Foundations",
+    "domain": "Establishing organizational and platform foundations",
     "topics": [
       "Business Groups Environments"
     ],
@@ -377,7 +377,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-007",
     "number": 7,
     "title": "Deployment Options - Which Anypoint deployment option is a fully",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Cloudhub Deployment"
     ],
@@ -439,7 +439,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-008",
     "number": 8,
     "title": "Non Functional Requirements - What is the unit of compute capacity",
-    "domain": "Non Functional Requirements",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Vcores Capacity",
       "Worker Sizing"
@@ -502,7 +502,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-009",
     "number": 9,
     "title": "Deploying Managing Apis - Which feature in API Manager pairs a",
-    "domain": "Deploying Managing Apis",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Auto Discovery"
     ],
@@ -564,7 +564,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-010",
     "number": 10,
     "title": "Api Policies - Which Anypoint policy enforces mutual TLS for",
-    "domain": "Api Policies",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Mtls Policy"
     ],
@@ -626,7 +626,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-011",
     "number": 11,
     "title": "Designing Sharing Apis - Which approach is recommended for sharing common",
-    "domain": "Designing Sharing Apis",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "Raml Oas Design",
       "Exchange Asset Management"
@@ -689,7 +689,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-012",
     "number": 12,
     "title": "Designing Sharing Apis - What is the recommended order of major",
-    "domain": "Designing Sharing Apis",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "Api Lifecycle"
     ],
@@ -751,7 +751,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-013",
     "number": 13,
     "title": "Monitoring Analyzing - Which Anypoint Platform feature provides a realtime",
-    "domain": "Monitoring Analyzing",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Visualizer"
     ],
@@ -813,7 +813,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-014",
     "number": 14,
     "title": "Non Functional Requirements - Which Anypoint capability provides reliable asynchronous queuebased",
-    "domain": "Non Functional Requirements",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Anypoint Mq",
       "Reliability Patterns"
@@ -876,7 +876,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-015",
     "number": 15,
     "title": "Non Functional Requirements - Where should durable clustershared keyvalue state be",
-    "domain": "Non Functional Requirements",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Object Store V2"
     ],
@@ -938,7 +938,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-016",
     "number": 16,
     "title": "Designing Sharing Apis - When applying breaking changes to an API",
-    "domain": "Designing Sharing Apis",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "Api Versioning"
     ],
@@ -1000,7 +1000,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-017",
     "number": 17,
     "title": "Designing Sharing Apis - A development team wants to mock and",
-    "domain": "Designing Sharing Apis",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "Api Lifecycle",
       "Raml Oas Design"
@@ -1063,7 +1063,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-018",
     "number": 18,
     "title": "Api Policies - Which statement about prebuilt MuleSoft API policies",
-    "domain": "Api Policies",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Custom Policies"
     ],
@@ -1125,7 +1125,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-019",
     "number": 19,
     "title": "Deploying Managing Apis - Which testing tool is built specifically for",
-    "domain": "Deploying Managing Apis",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Munit",
       "Cicd Maven"
@@ -1188,7 +1188,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-020",
     "number": 20,
     "title": "Application Network Basics - A retail enterprise wants every customerfacing channel",
-    "domain": "Application Network Basics",
+    "domain": "Explaining application network basics",
     "topics": [
       "Three Layer Architecture",
       "Api Led Connectivity"
@@ -1251,7 +1251,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-021",
     "number": 21,
     "title": "Deployment Options - Which deployment option lets you run Mule",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Runtime Fabric"
     ],
@@ -1313,7 +1313,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-022",
     "number": 22,
     "title": "Non Functional Requirements - What is the purpose of CloudHubs Object",
-    "domain": "Non Functional Requirements",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Object Store V2"
     ],
@@ -1375,7 +1375,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-023",
     "number": 23,
     "title": "Non Functional Requirements - What does enabling Persistent Queues on a",
-    "domain": "Non Functional Requirements",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Reliability Patterns",
       "Cloudhub Deployment"
@@ -1438,7 +1438,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-024",
     "number": 24,
     "title": "Non Functional Requirements - Which CloudHub feature distributes traffic across multiple",
-    "domain": "Non Functional Requirements",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Ha Dr Architecture",
       "Cloudhub Deployment"
@@ -1501,7 +1501,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-025",
     "number": 25,
     "title": "Deployment Options - Which CloudHub configuration enables a managed customercontrolled",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Cloudhub Deployment",
       "Ha Dr Architecture"
@@ -1564,7 +1564,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-026",
     "number": 26,
     "title": "Api Policies - An architect needs to expose an API",
-    "domain": "Api Policies",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Api Contracts Sla Tiers",
       "Rate Limiting Throttling"
@@ -1627,7 +1627,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-027",
     "number": 27,
     "title": "Monitoring Analyzing - Which Anypoint capability stores Mule application logs",
-    "domain": "Monitoring Analyzing",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Anypoint Monitoring",
       "Log Aggregation"
@@ -1690,7 +1690,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-028",
     "number": 28,
     "title": "Api Implementation Design - What is the recommended approach to manage",
-    "domain": "Api Implementation Design",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Reliability Patterns"
     ],
@@ -1752,7 +1752,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-029",
     "number": 29,
     "title": "Api Policies - Which builtin policy can validate a JSON",
-    "domain": "Api Policies",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Jwt Validation"
     ],
@@ -1814,7 +1814,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-030",
     "number": 30,
     "title": "Deploying Managing Apis - What is the Mule Maven Plugin used",
-    "domain": "Deploying Managing Apis",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Cicd Maven"
     ],
@@ -1876,7 +1876,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-031",
     "number": 31,
     "title": "Non Functional Requirements - An organization needs failover for a CloudHub",
-    "domain": "Non Functional Requirements",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Ha Dr Architecture"
     ],
@@ -1938,7 +1938,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-032",
     "number": 32,
     "title": "Designing Sharing Apis - Which artifact does Anypoint Exchange version when",
-    "domain": "Designing Sharing Apis",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "Api Versioning",
       "Exchange Asset Management"
@@ -2001,7 +2001,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-033",
     "number": 33,
     "title": "Org Platform Foundations - Which entitlement model determines how many vCores",
-    "domain": "Org Platform Foundations",
+    "domain": "Establishing organizational and platform foundations",
     "topics": [
       "Business Groups Environments",
       "Vcores Capacity"
@@ -2064,7 +2064,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-034",
     "number": 34,
     "title": "Org Platform Foundations - Which Anypoint Platform component governs which users",
-    "domain": "Org Platform Foundations",
+    "domain": "Establishing organizational and platform foundations",
     "topics": [
       "Rbac Permissions"
     ],
@@ -2126,7 +2126,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-035",
     "number": 35,
     "title": "Application Network Basics - When designing System APIs which rule of",
-    "domain": "Application Network Basics",
+    "domain": "Explaining application network basics",
     "topics": [
       "Three Layer Architecture"
     ],
@@ -2188,7 +2188,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-036",
     "number": 36,
     "title": "Deployment Options - An organization wants to enforce API policies",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Anypoint Service Mesh"
     ],
@@ -2250,7 +2250,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-037",
     "number": 37,
     "title": "Designing Sharing Apis - Which approach best supports introducing a breaking",
-    "domain": "Designing Sharing Apis",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "Api Versioning",
       "Api Lifecycle"
@@ -2313,7 +2313,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-038",
     "number": 38,
     "title": "Deployment Options - Which is a TRUE statement about CloudHub",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Cloudhub Deployment"
     ],
@@ -2375,7 +2375,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-039",
     "number": 39,
     "title": "Api Policies - Which security control prevents a denialofservice from",
-    "domain": "Api Policies",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Rate Limiting Throttling"
     ],
@@ -2437,7 +2437,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-040",
     "number": 40,
     "title": "Api Policies - An architect wants ALL traffic to a",
-    "domain": "Api Policies",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Oauth2 Policy"
     ],
@@ -2499,7 +2499,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-041",
     "number": 41,
     "title": "Monitoring Analyzing - Which Anypoint Monitoring artifact lets architects build",
-    "domain": "Monitoring Analyzing",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Anypoint Monitoring"
     ],
@@ -2561,7 +2561,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-042",
     "number": 42,
     "title": "Deployment Options - Which scenario is the strongest case for",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Runtime Fabric",
       "Hybrid Deployment"
@@ -2624,7 +2624,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-043",
     "number": 43,
     "title": "Api Implementation Design - A longrunning batch process consumes far more",
-    "domain": "Api Implementation Design",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Reliability Patterns",
       "Worker Sizing"
@@ -2687,7 +2687,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-044",
     "number": 44,
     "title": "Designing Sharing Apis - Which is the MOST appropriate way to",
-    "domain": "Designing Sharing Apis",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "Exchange Asset Management"
     ],
@@ -2749,7 +2749,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-045",
     "number": 45,
     "title": "Monitoring Analyzing - Which capability is provided by Anypoint Visualizer",
-    "domain": "Monitoring Analyzing",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Visualizer",
       "Anypoint Monitoring"
@@ -2812,7 +2812,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-046",
     "number": 46,
     "title": "Application Network Basics - Which is the recommended placement of business",
-    "domain": "Application Network Basics",
+    "domain": "Explaining application network basics",
     "topics": [
       "Three Layer Architecture"
     ],
@@ -2874,7 +2874,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-047",
     "number": 47,
     "title": "Monitoring Analyzing - Which feature provides automatic notification when CloudHub",
-    "domain": "Monitoring Analyzing",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Anypoint Monitoring"
     ],
@@ -2936,7 +2936,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-048",
     "number": 48,
     "title": "Api Policies - Which Anypoint capability lets organizations build custom",
-    "domain": "Api Policies",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Custom Policies"
     ],
@@ -2998,7 +2998,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-049",
     "number": 49,
     "title": "Non Functional Requirements - Which CloudHub configuration property controls whether outbound",
-    "domain": "Non Functional Requirements",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Cloudhub Deployment",
       "Reliability Patterns"
@@ -3061,7 +3061,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-050",
     "number": 50,
     "title": "Non Functional Requirements - What is the primary goal of an",
-    "domain": "Non Functional Requirements",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Cloudhub Deployment",
       "Reliability Patterns"
@@ -3124,7 +3124,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-051",
     "number": 51,
     "title": "Api Policies - An architect is asked to enforce that",
-    "domain": "Api Policies",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Mtls Policy"
     ],
@@ -3186,7 +3186,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-052",
     "number": 52,
     "title": "Api Implementation Design - Which is the BEST place to handle",
-    "domain": "Api Implementation Design",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Three Layer Architecture"
     ],
@@ -3248,7 +3248,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-053",
     "number": 53,
     "title": "Deploying Managing Apis - Which strategy best supports rolling out CloudHub",
-    "domain": "Deploying Managing Apis",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Cloudhub Deployment",
       "Cicd Maven"
@@ -3311,7 +3311,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-054",
     "number": 54,
     "title": "Non Functional Requirements - What is the impact of selecting a",
-    "domain": "Non Functional Requirements",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Worker Sizing",
       "Vcores Capacity"
@@ -3374,7 +3374,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-055",
     "number": 55,
     "title": "Api Policies - Which control in API Manager records the",
-    "domain": "Api Policies",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Api Contracts Sla Tiers"
     ],
@@ -3436,7 +3436,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-056",
     "number": 56,
     "title": "Designing Sharing Apis - Which artifact lets developers consume a published",
-    "domain": "Designing Sharing Apis",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "Exchange Asset Management",
       "Cicd Maven"
@@ -3499,7 +3499,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-057",
     "number": 57,
     "title": "Api Policies - Which Anypoint Platform option enforces API policies",
-    "domain": "Api Policies",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Custom Policies",
       "Rate Limiting Throttling"
@@ -3562,7 +3562,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-058",
     "number": 58,
     "title": "Org Platform Foundations - What is the correct interpretation of an",
-    "domain": "Org Platform Foundations",
+    "domain": "Establishing organizational and platform foundations",
     "topics": [
       "Business Groups Environments"
     ],
@@ -3624,7 +3624,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-059",
     "number": 59,
     "title": "Monitoring Analyzing - Which Anypoint feature is most useful for",
-    "domain": "Monitoring Analyzing",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Visualizer"
     ],
@@ -3686,7 +3686,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-060",
     "number": 60,
     "title": "Deploying Managing Apis - Which combination is recommended for a CICD",
-    "domain": "Deploying Managing Apis",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Cicd Maven",
       "Munit"
@@ -3749,7 +3749,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-061",
     "number": 61,
     "title": "Non Functional Requirements - An architect must support 200 requests per",
-    "domain": "Non Functional Requirements",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Vcores Capacity",
       "Worker Sizing"
@@ -3812,7 +3812,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-062",
     "number": 62,
     "title": "Api Implementation Design - Which Mule capability enables transactional reliability for",
-    "domain": "Api Implementation Design",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Reliability Patterns"
     ],
@@ -3874,7 +3874,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-063",
     "number": 63,
     "title": "Non Functional Requirements - Which architectural pattern best protects a downstream",
-    "domain": "Non Functional Requirements",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Anypoint Mq",
       "Reliability Patterns"
@@ -3937,7 +3937,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-064",
     "number": 64,
     "title": "Api Policies - An API Manager policy is configured for",
-    "domain": "Api Policies",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Business Groups Environments"
     ],
@@ -3999,7 +3999,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-065",
     "number": 65,
     "title": "Application Network Basics - Which is a key difference between a",
-    "domain": "Application Network Basics",
+    "domain": "Explaining application network basics",
     "topics": [
       "Three Layer Architecture",
       "Api Led Connectivity"
@@ -4062,7 +4062,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-066",
     "number": 66,
     "title": "Deploying Managing Apis - Which combination is correct for promoting a",
-    "domain": "Deploying Managing Apis",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Cicd Maven",
       "Business Groups Environments"
@@ -4125,7 +4125,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-067",
     "number": 67,
     "title": "Monitoring Analyzing - Which feature in CloudHub measures and exposes",
-    "domain": "Monitoring Analyzing",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Anypoint Monitoring"
     ],
@@ -4187,7 +4187,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-068",
     "number": 68,
     "title": "Api Implementation Design - Which is the correct reading of a",
-    "domain": "Api Implementation Design",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Three Layer Architecture",
       "Reliability Patterns"
@@ -4250,7 +4250,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-069",
     "number": 69,
     "title": "Api Implementation Design - A Process API frequently refetches the same",
-    "domain": "Api Implementation Design",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Caching Patterns",
       "Object Store V2"
@@ -4313,7 +4313,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-070",
     "number": 70,
     "title": "Org Platform Foundations - Which Anypoint Platform mechanism lets a single",
-    "domain": "Org Platform Foundations",
+    "domain": "Establishing organizational and platform foundations",
     "topics": [
       "Exchange Asset Management",
       "Rbac Permissions"
@@ -4376,7 +4376,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-071",
     "number": 71,
     "title": "Deploying Managing Apis - Which is the correct understanding of API",
-    "domain": "Deploying Managing Apis",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Auto Discovery"
     ],
@@ -4438,7 +4438,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-072",
     "number": 72,
     "title": "Api Policies - Which response best describes how to model",
-    "domain": "Api Policies",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Api Contracts Sla Tiers",
       "Rate Limiting Throttling"
@@ -4501,7 +4501,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-073",
     "number": 73,
     "title": "Deploying Managing Apis - Which is true about MUnit coverage in",
-    "domain": "Deploying Managing Apis",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Munit",
       "Cicd Maven"
@@ -4564,7 +4564,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-074",
     "number": 74,
     "title": "Application Network Basics - Which Anypoint Platform persona is typically responsible",
-    "domain": "Application Network Basics",
+    "domain": "Explaining application network basics",
     "topics": [
       "C4E"
     ],
@@ -4626,7 +4626,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-075",
     "number": 75,
     "title": "Non Functional Requirements - Which action increases the maximum throughput of",
-    "domain": "Non Functional Requirements",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Vcores Capacity",
       "Worker Sizing"
@@ -4689,7 +4689,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-076",
     "number": 76,
     "title": "Api Policies - Which artifact in API Manager allows applying",
-    "domain": "Api Policies",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Custom Policies",
       "Rate Limiting Throttling"
@@ -4752,7 +4752,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-077",
     "number": 77,
     "title": "Api Implementation Design - An architect must minimize round trips for",
-    "domain": "Api Implementation Design",
+    "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
       "Three Layer Architecture",
       "Caching Patterns"
@@ -4815,7 +4815,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-078",
     "number": 78,
     "title": "Designing Sharing Apis - Which Anypoint Platform feature provides a registrystyle",
-    "domain": "Designing Sharing Apis",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "Exchange Asset Management",
       "Api Contracts Sla Tiers"
@@ -4878,7 +4878,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-079",
     "number": 79,
     "title": "Deployment Options - An organization wants Mule applications running in",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Runtime Fabric"
     ],
@@ -4940,7 +4940,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-080",
     "number": 80,
     "title": "Api Implementation Design - Which approach lets an architect provide consistent",
-    "domain": "Api Implementation Design",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "Raml Oas Design",
       "Reliability Patterns"
@@ -5003,7 +5003,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-081",
     "number": 81,
     "title": "Non Functional Requirements - Which is a true statement about Anypoint",
-    "domain": "Non Functional Requirements",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Anypoint Mq",
       "Reliability Patterns"
@@ -5066,7 +5066,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-082",
     "number": 82,
     "title": "Non Functional Requirements - Which choice best supports horizontal scaling of",
-    "domain": "Non Functional Requirements",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Ha Dr Architecture",
       "Reliability Patterns"
@@ -5129,7 +5129,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-083",
     "number": 83,
     "title": "Org Platform Foundations - Which combination is correct about API instances",
-    "domain": "Org Platform Foundations",
+    "domain": "Establishing organizational and platform foundations",
     "topics": [
       "Business Groups Environments",
       "Api Lifecycle"
@@ -5192,7 +5192,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-084",
     "number": 84,
     "title": "Api Policies - Which is the correct way to authenticate",
-    "domain": "Api Policies",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Oauth2 Policy",
       "Api Contracts Sla Tiers"
@@ -5255,7 +5255,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-085",
     "number": 85,
     "title": "Api Policies - Which Anypoint capability lets architects create and",
-    "domain": "Api Policies",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Jwt Validation"
     ],
@@ -5317,7 +5317,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-086",
     "number": 86,
     "title": "Application Network Basics - Which is a key responsibility of the",
-    "domain": "Application Network Basics",
+    "domain": "Explaining application network basics",
     "topics": [
       "C4E",
       "Three Layer Architecture"
@@ -5380,7 +5380,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-087",
     "number": 87,
     "title": "Api Policies - Which approach is valid for keeping access",
-    "domain": "Api Policies",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Mtls Policy",
       "Api Contracts Sla Tiers"
@@ -5443,7 +5443,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-088",
     "number": 88,
     "title": "Deployment Options - Which CloudHub region minimizes latency for APAC consumers",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Cloudhub Deployment",
       "Ha Dr Architecture"
@@ -5506,7 +5506,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-089",
     "number": 89,
     "title": "Monitoring Analyzing - Which is the recommended way to expose",
-    "domain": "Monitoring Analyzing",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Log Aggregation",
       "Anypoint Monitoring"
@@ -5569,7 +5569,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-090",
     "number": 90,
     "title": "Non Functional Requirements - Which design choice is MOST important for",
-    "domain": "Non Functional Requirements",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Caching Patterns",
       "Reliability Patterns",
@@ -5633,7 +5633,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-091",
     "number": 91,
     "title": "Non Functional Requirements - Which Mule pattern provides bulkheadstyle isolation when",
-    "domain": "Non Functional Requirements",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Reliability Patterns",
       "Anypoint Mq"
@@ -5696,7 +5696,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-092",
     "number": 92,
     "title": "Org Platform Foundations - Which is the correct understanding of API",
-    "domain": "Org Platform Foundations",
+    "domain": "Establishing organizational and platform foundations",
     "topics": [
       "C4E",
       "Exchange Asset Management"
@@ -5759,7 +5759,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-093",
     "number": 93,
     "title": "Api Implementation Design - An architect wants the SAME RAML spec",
-    "domain": "Api Implementation Design",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Raml Oas Design",
       "Api Lifecycle"
@@ -5822,7 +5822,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-094",
     "number": 94,
     "title": "Designing Sharing Apis - Which approach BEST allows architects to compose",
-    "domain": "Designing Sharing Apis",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "Raml Oas Design",
       "Exchange Asset Management"
@@ -5885,7 +5885,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-095",
     "number": 95,
     "title": "Deployment Options - Which statement about Mule Hybrid deployment is",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Hybrid Deployment"
     ],
@@ -5947,7 +5947,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-096",
     "number": 96,
     "title": "Api Implementation Design - Which strategy best handles credentials for Mule",
-    "domain": "Api Implementation Design",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Reliability Patterns"
     ],
@@ -6009,7 +6009,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-097",
     "number": 97,
     "title": "Deploying Managing Apis - Which option BEST describes the role of",
-    "domain": "Deploying Managing Apis",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Auto Discovery",
       "Api Contracts Sla Tiers"
@@ -6072,7 +6072,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-098",
     "number": 98,
     "title": "Non Functional Requirements - An architect must design an asynchronous notification",
-    "domain": "Non Functional Requirements",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Anypoint Mq"
     ],
@@ -6134,7 +6134,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-099",
     "number": 99,
     "title": "Application Network Basics - Which is the correct interpretation of application",
-    "domain": "Application Network Basics",
+    "domain": "Explaining application network basics",
     "topics": [
       "Api Led Connectivity",
       "Three Layer Architecture",
@@ -6198,7 +6198,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-100",
     "number": 100,
     "title": "Non Functional Requirements - Which approach BEST addresses both regulatory dataresidency",
-    "domain": "Non Functional Requirements",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Cloudhub Deployment",
       "Runtime Fabric",
@@ -6262,7 +6262,7 @@ window.MCPA_QUESTIONS = [
   "id": "q-101",
   "number": 101,
   "title": "Deploying Managing Apis - A platform team needs centralized policy control",
-  "domain": "Deploying Managing Apis",
+  "domain": "Architecting and deploying API implementations",
   "topics": [
     "Flex Gateway",
     "Connected Mode"
@@ -6325,7 +6325,7 @@ window.MCPA_QUESTIONS = [
   "id": "q-102",
   "number": 102,
   "title": "Deployment Options - Which option exposes ingress inside a Private",
-  "domain": "Deployment Options",
+  "domain": "Deploying API implementations to CloudHub",
   "topics": [
     "Private Spaces",
     "Flex Gateway"
@@ -6388,7 +6388,7 @@ window.MCPA_QUESTIONS = [
   "id": "q-103",
   "number": 103,
   "title": "Org Platform Foundations - Which capability should gate API spec",
-  "domain": "Org Platform Foundations",
+  "domain": "Establishing organizational and platform foundations",
   "topics": [
     "Api Governance",
     "Cicd Maven"
@@ -6451,7 +6451,7 @@ window.MCPA_QUESTIONS = [
   "id": "q-104",
   "number": 104,
   "title": "Designing Sharing Apis - Which Exchange lifecycle state signals an",
-  "domain": "Designing Sharing Apis",
+  "domain": "Designing and sharing APIs",
   "topics": [
     "Exchange Asset Management",
     "Lifecycle States"
@@ -6514,7 +6514,7 @@ window.MCPA_QUESTIONS = [
   "id": "q-105",
   "number": 105,
   "title": "Org Platform Foundations - Which API Governance capability provides portfoliowide",
-  "domain": "Org Platform Foundations",
+  "domain": "Establishing organizational and platform foundations",
   "topics": [
     "Api Governance",
     "Compliance Reporting"
@@ -6577,7 +6577,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-106",
     "number": 106,
     "title": "API-led Connectivity - A fast‑growing fintech startup is building a new mobile banking",
-    "domain": "API-led Connectivity",
+    "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
       "API-led Connectivity"
     ],
@@ -6642,7 +6642,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-107",
     "number": 107,
     "title": "API Security - A regional healthcare provider must expose patient appointment",
-    "domain": "API Security",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "API Security"
     ],
@@ -6707,7 +6707,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-108",
     "number": 108,
     "title": "Runtime Auto-Scaling - An online retailer expects a 3× traffic surge during holiday",
-    "domain": "Runtime Auto-Scaling",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Runtime Auto-Scaling"
     ],
@@ -6772,7 +6772,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-109",
     "number": 109,
     "title": "API Monitoring - A logistics company needs to track API latency and usage across",
-    "domain": "API Monitoring",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "API Monitoring"
     ],
@@ -6837,7 +6837,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-110",
     "number": 110,
     "title": "API Governance - A federal agency is consolidating multiple legacy services into a",
-    "domain": "API Governance",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "API Governance"
     ],
@@ -6902,7 +6902,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-111",
     "number": 111,
     "title": "Asset Management - A mid‑size manufacturing firm wants to create reusable Mule Soft",
-    "domain": "Asset Management",
+    "domain": "Establishing organizational and platform foundations",
     "topics": [
       "Asset Management"
     ],
@@ -6967,7 +6967,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-112",
     "number": 112,
     "title": "Runtime Deployment - A Saa S startup plans to deploy Mule runtime on a Kubernetes",
-    "domain": "Runtime Deployment",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Runtime Deployment"
     ],
@@ -7032,7 +7032,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-113",
     "number": 113,
     "title": "Security and Governance - A healthcare network is integrating a patient portal with an",
-    "domain": "Security and Governance",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Security and Governance"
     ],
@@ -7100,7 +7100,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-114",
     "number": 114,
     "title": "API-led Migration - A large financial institution is migrating legacy SOAP services",
-    "domain": "API-led Migration",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "API-led Migration"
     ],
@@ -7169,7 +7169,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-115",
     "number": 115,
     "title": "API Governance and Access Management - A national retail chain is adopting Anypoint Platform to enable",
-    "domain": "API Governance and Access Management",
+    "domain": "Establishing organizational and platform foundations",
     "topics": [
       "API Governance and Access Management"
     ],
@@ -7237,7 +7237,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-116",
     "number": 116,
     "title": "API-led Connectivity - A mid‑size financial services firm is consolidating its legacy",
-    "domain": "API-led Connectivity",
+    "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
       "API-led Connectivity"
     ],
@@ -7302,7 +7302,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-117",
     "number": 117,
     "title": "API Security - A regional healthcare provider must expose patient data through",
-    "domain": "API Security",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "API Security"
     ],
@@ -7367,7 +7367,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-118",
     "number": 118,
     "title": "Runtime Deployment - A national retail chain processes 10,000 orders per minute and",
-    "domain": "Runtime Deployment",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Runtime Deployment"
     ],
@@ -7432,7 +7432,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-119",
     "number": 119,
     "title": "API Design - A logistics startup with a three‑person Dev Ops team needs to",
-    "domain": "API Design",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "API Design"
     ],
@@ -7497,7 +7497,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-120",
     "number": 120,
     "title": "API Governance - A federal agency follows a strict change‑control process and must",
-    "domain": "API Governance",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "API Governance"
     ],
@@ -7562,7 +7562,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-121",
     "number": 121,
     "title": "Monitoring - A manufacturing company wants real‑time visibility into",
-    "domain": "Monitoring",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Monitoring"
     ],
@@ -7627,7 +7627,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-122",
     "number": 122,
     "title": "State Management - A fintech startup plans to run Mule runtimes on a Kubernetes",
-    "domain": "State Management",
+    "domain": "Meeting API quality goals",
     "topics": [
       "State Management"
     ],
@@ -7692,7 +7692,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-123",
     "number": 123,
     "title": "HL7 Integration - A healthcare network is integrating three EMR systems that use",
-    "domain": "HL7 Integration",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "HL7 Integration"
     ],
@@ -7760,7 +7760,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-124",
     "number": 124,
     "title": "Scalability and Observability - An e‑commerce retailer expects a 300% traffic surge during the",
-    "domain": "Scalability and Observability",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Scalability and Observability"
     ],
@@ -7829,7 +7829,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-125",
     "number": 125,
     "title": "API Migration - A logistics company is migrating its on‑premises APIs to Anypoint",
-    "domain": "API Migration",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "API Migration"
     ],
@@ -7897,7 +7897,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-126",
     "number": 126,
     "title": "API Versioning - A mid-sized finance firm is building a new API to expose customer",
-    "domain": "API Versioning",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "API Versioning"
     ],
@@ -7962,7 +7962,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-127",
     "number": 127,
     "title": "Integration Patterns - A regional healthcare provider needs to integrate its electronic",
-    "domain": "Integration Patterns",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Integration Patterns"
     ],
@@ -8027,7 +8027,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-128",
     "number": 128,
     "title": "API-led Connectivity - A national retail chain wants to expose its product catalog to ex",
-    "domain": "API-led Connectivity",
+    "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
       "API-led Connectivity"
     ],
@@ -8092,7 +8092,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-129",
     "number": 129,
     "title": "Integration Patterns - A logistics company is orchestrating real‑time shipment tracking",
-    "domain": "Integration Patterns",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Integration Patterns"
     ],
@@ -8157,7 +8157,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-130",
     "number": 130,
     "title": "API Security - A federal government agency is securing an internal API that prov",
-    "domain": "API Security",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "API Security"
     ],
@@ -8222,7 +8222,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-131",
     "number": 131,
     "title": "Event-Driven Architecture - A manufacturing firm is ingesting high‑velocity Io T sensor data",
-    "domain": "Event-Driven Architecture",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Event-Driven Architecture"
     ],
@@ -8287,7 +8287,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-132",
     "number": 132,
     "title": "Mule Soft Certified Platform Architect (MCPA) - A financial services company is exposing a loan‑application API t",
-    "domain": "Mule Soft Certified Platform Architect (MCPA)",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "Mule Soft Certified Platform Architect (MCPA)"
     ],
@@ -8352,7 +8352,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-133",
     "number": 133,
     "title": "Mule Soft Certified Platform Architect (MCPA) - A healthcare startup must secure its patient data APIs to satisfy",
-    "domain": "Mule Soft Certified Platform Architect (MCPA)",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Mule Soft Certified Platform Architect (MCPA)"
     ],
@@ -8420,7 +8420,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-134",
     "number": 134,
     "title": "Application Migration - A retail chain is migrating from a legacy ESB to Anypoint Platfor",
-    "domain": "Application Migration",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Application Migration"
     ],
@@ -8489,7 +8489,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-135",
     "number": 135,
     "title": "API Monitoring - A logistics company with a 99.9% SLA requirement and a limited mo",
-    "domain": "API Monitoring",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "API Monitoring"
     ],
@@ -8557,7 +8557,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-136",
     "number": 136,
     "title": "API Versioning - A mid‑size financial services firm is designing a new account‑man",
-    "domain": "API Versioning",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "API Versioning"
     ],
@@ -8622,7 +8622,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-137",
     "number": 137,
     "title": "API-led Connectivity - A regional healthcare provider needs to aggregate patient records",
-    "domain": "API-led Connectivity",
+    "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
       "API-led Connectivity"
     ],
@@ -8687,7 +8687,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-138",
     "number": 138,
     "title": "PCI-DSS Compliance - An online retail company must protect credit‑card information flo",
-    "domain": "PCI-DSS Compliance",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "PCI-DSS Compliance"
     ],
@@ -8752,7 +8752,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-139",
     "number": 139,
     "title": "API Governance - A logistics startup plans to launch a public shipment‑tracking AP",
-    "domain": "API Governance",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "API Governance"
     ],
@@ -8817,7 +8817,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-140",
     "number": 140,
     "title": "Integration Architecture - A federal agency is orchestrating an approvals workflow that span",
-    "domain": "Integration Architecture",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Integration Architecture"
     ],
@@ -8882,7 +8882,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-141",
     "number": 141,
     "title": "Io T Security - A manufacturing plant wants to secure MQTT telemetry from its Io",
-    "domain": "Io T Security",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Io T Security"
     ],
@@ -8947,7 +8947,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-142",
     "number": 142,
     "title": "Hypermedia APIs - A fintech startup is building a hypermedia‑driven loan‑applicatio",
-    "domain": "Hypermedia APIs",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "Hypermedia APIs"
     ],
@@ -9012,7 +9012,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-143",
     "number": 143,
     "title": "Integration Architecture - A healthcare analytics team must integrate a lab‑result REST API,",
-    "domain": "Integration Architecture",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Integration Architecture"
     ],
@@ -9080,7 +9080,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-144",
     "number": 144,
     "title": "API Management - A national retail chain wants to expose its inventory catalog to",
-    "domain": "API Management",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "API Management"
     ],
@@ -9149,7 +9149,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-145",
     "number": 145,
     "title": "WS-Security - A government tax department needs to secure a SOAP web service th",
-    "domain": "WS-Security",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "WS-Security"
     ],
@@ -9217,7 +9217,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-146",
     "number": 146,
     "title": "API Versioning - A mid‑size bank is exposing a new customer‑profile service on Any",
-    "domain": "API Versioning",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "API Versioning"
     ],
@@ -9282,7 +9282,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-147",
     "number": 147,
     "title": "Integration Patterns - A regional healthcare provider is integrating patient‑record syst",
-    "domain": "Integration Patterns",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Integration Patterns"
     ],
@@ -9347,7 +9347,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-148",
     "number": 148,
     "title": "API Security - A global retail chain is rolling out a loyalty API that will be c",
-    "domain": "API Security",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "API Security"
     ],
@@ -9412,7 +9412,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-149",
     "number": 149,
     "title": "Mule Soft Certified Platform Architect (MCPA) - A logistics startup needs to expose a shipment‑tracking API that ",
-    "domain": "Mule Soft Certified Platform Architect (MCPA)",
+    "domain": "Establishing organizational and platform foundations",
     "topics": [
       "Mule Soft Certified Platform Architect (MCPA)"
     ],
@@ -9477,7 +9477,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-150",
     "number": 150,
     "title": "API Security - A government agency is publishing a confidential document‑exchang",
-    "domain": "API Security",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "API Security"
     ],
@@ -9545,7 +9545,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-151",
     "number": 151,
     "title": "Integration Design Patterns - A manufacturing company is designing an integration solution to s",
-    "domain": "Integration Design Patterns",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Integration Design Patterns"
     ],
@@ -9614,7 +9614,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-152",
     "number": 152,
     "title": "Deployment Choices - A mid‑size financial services firm must migrate its core payment ",
-    "domain": "Deployment Choices",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Deployment Choices"
     ],
@@ -9679,7 +9679,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-153",
     "number": 153,
     "title": "Monitoring - A regional healthcare provider handling protected patient data ne",
-    "domain": "Monitoring",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Monitoring"
     ],
@@ -9744,7 +9744,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-154",
     "number": 154,
     "title": "Deployment Strategy - A national retail chain plans to launch a new omnichannel experie",
-    "domain": "Deployment Strategy",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Deployment Strategy"
     ],
@@ -9809,7 +9809,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-155",
     "number": 155,
     "title": "Logging Configuration - A logistics startup with a small Dev Ops crew discovers that erro",
-    "domain": "Logging Configuration",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Logging Configuration"
     ],
@@ -9874,7 +9874,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-156",
     "number": 156,
     "title": "Monitoring Deployment - A federal government agency is required to store all monitoring d",
-    "domain": "Monitoring Deployment",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Monitoring Deployment"
     ],
@@ -9939,7 +9939,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-157",
     "number": 157,
     "title": "Monitoring - A manufacturing plant’s ERP integration shows intermittent latenc",
-    "domain": "Monitoring",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Monitoring"
     ],
@@ -10004,7 +10004,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-158",
     "number": 158,
     "title": "API Monitoring - A fintech startup wants to set up real‑time alerts for API SLA br",
-    "domain": "API Monitoring",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "API Monitoring"
     ],
@@ -10069,7 +10069,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-159",
     "number": 159,
     "title": "API Analytics - A large retail enterprise is rolling out API analytics across its",
-    "domain": "API Analytics",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "API Analytics"
     ],
@@ -10137,7 +10137,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-160",
     "number": 160,
     "title": "Observability - A healthcare integration team must configure logging to retain au",
-    "domain": "Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Observability"
     ],
@@ -10206,7 +10206,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-161",
     "number": 161,
     "title": "Cloud Hub Deployment - A logistics company is migrating its on‑premise Mule runtimes to ",
-    "domain": "Cloud Hub Deployment",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Cloud Hub Deployment"
     ],
@@ -10274,7 +10274,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-162",
     "number": 162,
     "title": "Deployment Models - A mid-sized financial services firm is migrating its core loan‑or",
-    "domain": "Deployment Models",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Deployment Models"
     ],
@@ -10339,7 +10339,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-163",
     "number": 163,
     "title": "Audit Logging - A regional healthcare provider operates a patient‑record API that",
-    "domain": "Audit Logging",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Audit Logging"
     ],
@@ -10404,7 +10404,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-164",
     "number": 164,
     "title": "Logging and Monitoring - A large retail chain’s order‑processing flow has started returnin",
-    "domain": "Logging and Monitoring",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Logging and Monitoring"
     ],
@@ -10469,7 +10469,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-165",
     "number": 165,
     "title": "API Versioning - A logistics startup needs to roll out a new shipment-tracking API",
-    "domain": "API Versioning",
+    "domain": "Designing and sharing APIs",
     "topics": [
       "API Versioning"
     ],
@@ -10534,7 +10534,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-166",
     "number": 166,
     "title": "API Analytics - A federal agency is deploying a citizen-service portal on Anypoin",
-    "domain": "API Analytics",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "API Analytics"
     ],
@@ -10599,7 +10599,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-167",
     "number": 167,
     "title": "Performance Monitoring - A manufacturing company's ERP integration is experiencing latency",
-    "domain": "Performance Monitoring",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Performance Monitoring"
     ],
@@ -10664,7 +10664,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-168",
     "number": 168,
     "title": "CI/CD Pipelines - A multinational bank is standardizing its CI/CD pipeline for Mule",
-    "domain": "CI/CD Pipelines",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "CI/CD Pipelines"
     ],
@@ -10732,7 +10732,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-169",
     "number": 169,
     "title": "API Monitoring & Governance - A hospital network runs dozens of APIs for patient data exchange ",
-    "domain": "API Monitoring & Governance",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "API Monitoring & Governance"
     ],
@@ -10801,7 +10801,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-170",
     "number": 170,
     "title": "Logging and Error Handling - A fashion retailer's mobile app backend is generating frequent va",
-    "domain": "Logging and Error Handling",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Logging and Error Handling"
     ],
@@ -10869,7 +10869,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-171",
     "number": 171,
     "title": "API Security - A mid-sized financial services firm is launching a new mobile ban",
-    "domain": "API Security",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "API Security"
     ],
@@ -10934,7 +10934,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-172",
     "number": 172,
     "title": "HL7 Integration - A regional healthcare provider must integrate its legacy HL7 mess",
-    "domain": "HL7 Integration",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "HL7 Integration"
     ],
@@ -10999,7 +10999,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-173",
     "number": 173,
     "title": "API Monitoring - A national retail chain wants real-time visibility into API usage",
-    "domain": "API Monitoring",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "API Monitoring"
     ],
@@ -11064,7 +11064,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-174",
     "number": 174,
     "title": "Runtime Deployment - A logistics startup plans to host its Mule runtime in a public cl",
-    "domain": "Runtime Deployment",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Runtime Deployment"
     ],
@@ -11129,7 +11129,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-175",
     "number": 175,
     "title": "API Security Governance - A federal government agency is publishing citizen services APIs t",
-    "domain": "API Security Governance",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "API Security Governance"
     ],
@@ -11194,7 +11194,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-176",
     "number": 176,
     "title": "Monitoring and Observability - Visualizer topology and policy troubleshooting",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Anypoint Visualizer", "API Manager Policies"],
     "prompt": "An organization wants to view the dependencies between its Experience, Process, and System APIs in real time. It also needs to troubleshoot whether a Rate Limiting policy applied to the Experience API is causing failures. Which Anypoint Platform tool should the architect recommend?",
     "options": [
@@ -11217,7 +11217,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-177",
     "number": 177,
     "title": "Monitoring and Observability - CloudHub worker CPU alert",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Runtime Manager Alerts", "CloudHub"],
     "prompt": "A Mule application deployed to CloudHub 1.0 requires an email alert if a worker's CPU utilization exceeds 80% for more than 10 minutes. Where must this alert be configured?",
     "options": [
@@ -11240,7 +11240,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-178",
     "number": 178,
     "title": "Monitoring and Observability - External compliant application logging",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Logging", "CloudHub"],
     "prompt": "A company requires all Mule application logs to go directly to its enterprise Splunk system and prohibits logs from being visible or stored in Anypoint Platform. How should the architect design logging for CloudHub applications?",
     "options": [
@@ -11263,7 +11263,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-179",
     "number": 179,
     "title": "Monitoring and Observability - Scheduled external API tests",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Anypoint Functional Monitoring", "API Testing"],
     "prompt": "An organization needs to test a public Experience API every five minutes by sending a specific JSON payload from an external geographic location such as US-East and asserting that the response is HTTP 200. Which tool provides this capability?",
     "options": [
@@ -11286,7 +11286,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-180",
     "number": 180,
     "title": "Monitoring and Observability - Assigning Visualizer architecture layers",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Anypoint Visualizer", "API-led Connectivity"],
     "prompt": "An organization wants Mule applications to appear automatically in the Experience, Process, and System layers in Anypoint Visualizer. How should the applications be configured when deployed to CloudHub?",
     "options": [
@@ -11309,7 +11309,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-181",
     "number": 181,
     "title": "Monitoring and Observability - Alerting on API client quota violations",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["API Manager Alerts", "Rate Limiting"],
     "prompt": "An operations team needs an email notification if a specific API client, identified by `client_id`, exceeds its request quota under a Rate Limiting SLA policy. Where must the alert be configured?",
     "options": [
@@ -11332,7 +11332,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-182",
     "number": 182,
     "title": "Monitoring and Observability - Geographic functional testing",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Anypoint Functional Monitoring", "API Testing"],
     "prompt": "An integration team needs continuous tests of public Experience APIs from multiple geographic locations outside its AWS VPC. Tests must send JSON payloads and assert HTTP 200 responses. Which capability meets this requirement?",
     "options": [
@@ -11355,7 +11355,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-183",
     "number": 183,
     "title": "Monitoring and Observability - Custom business-logic notifications",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Runtime Manager Alerts", "CloudHub Connector"],
     "prompt": "A Mule application on a CloudHub 1.0 worker needs to alert when a specific business-logic error occurs inside a Choice router, such as an invalid third-party payload. How can this custom alert be achieved?",
     "options": [
@@ -11378,7 +11378,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-184",
     "number": 184,
     "title": "Monitoring and Observability - Long-term CloudHub log retention",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Logging", "CloudHub"],
     "prompt": "A company must retain application logs for one year for compliance. Its APIs run on CloudHub 1.0. What is the most architecturally sound way to meet this requirement?",
     "options": [
@@ -11401,7 +11401,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-185",
     "number": 185,
     "title": "Monitoring and Observability - Cross-application metrics dashboard",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Anypoint Monitoring", "Custom Dashboards"],
     "prompt": "An architect wants one dashboard showing CPU utilization of a System API, memory utilization of a Process API, and average response time of an Experience API side by side. Which Anypoint Platform feature provides this capability?",
     "options": [
@@ -11424,7 +11424,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-186",
     "number": 186,
     "title": "Monitoring and Observability - Environment visibility in Visualizer",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Anypoint Visualizer", "Runtime Manager Permissions"],
     "prompt": "A developer can see QA dependencies in Anypoint Visualizer but cannot see production dependencies for a set of APIs. What is the most likely reason?",
     "options": [
@@ -11447,7 +11447,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-187",
     "number": 187,
     "title": "Monitoring and Observability - BDD API tests in CI/CD",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["BAT CLI", "CI/CD", "API Testing"],
     "prompt": "A DevSecOps pipeline must run standard BDD test suites against newly deployed QA APIs before production deployment. Which tool is designed to execute these tests from the command line in CI/CD?",
     "options": [
@@ -11470,7 +11470,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-188",
     "number": 188,
     "title": "Monitoring and Observability - Troubleshooting cascading API failures",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Anypoint Visualizer", "Troubleshooting"],
     "prompt": "An Experience API intermittently returns 502 Bad Gateway errors. The architect wants to quickly determine whether the Experience API or a downstream Process or System API is failing. Which tool gives the fastest visual representation of the failure chain?",
     "options": [
@@ -11493,7 +11493,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-189",
     "number": 189,
     "title": "Monitoring and Observability - Monitoring customer-hosted runtimes",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Anypoint Monitoring Agent", "Customer-Hosted Runtimes"],
     "prompt": "An organization runs customer-hosted Mule runtimes on local VMs and wants to view API metrics and custom dashboards in Anypoint Monitoring. What is required?",
     "options": [
@@ -11516,7 +11516,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-190",
     "number": 190,
     "title": "Monitoring and Observability - Tracking application deletion",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Access Management", "Audit Logs"],
     "prompt": "An administrator needs to determine which user deleted a critical Mule application from the CloudHub Production environment yesterday. Which Anypoint Platform feature provides this historical tracking information?",
     "options": [
@@ -11539,7 +11539,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-191",
     "number": 191,
     "title": "Monitoring and Observability - Supported Runtime Manager alert conditions",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Runtime Manager Alerts", "CloudHub"],
     "prompt": "An architect is configuring an alert in Runtime Manager for a CloudHub worker. Which condition is natively supported by Runtime Manager Alerts?",
     "options": [
@@ -11562,7 +11562,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-192",
     "number": 192,
     "title": "Monitoring and Observability - Dynamic request logging without redeployment",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["API Manager Policies", "Message Logging"],
     "prompt": "Without changing Mule application source code, an operations team needs to temporarily log incoming HTTP headers and payloads to troubleshoot a production issue. How can this be accomplished?",
     "options": [
@@ -11585,7 +11585,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-193",
     "number": 193,
     "title": "Monitoring and Observability - Runtime Fabric cluster log forwarding",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Runtime Fabric", "Logging"],
     "prompt": "A company runs multiple APIs on Runtime Fabric and requires all application logs to be sent to a centralized third-party system such as Splunk or ELK. What is the recommended approach?",
     "options": [
@@ -11608,7 +11608,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-194",
     "number": 194,
     "title": "Monitoring and Observability - Diagnosing HTTP 429 responses",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Anypoint Monitoring", "API Manager Policies"],
     "prompt": "An API's Anypoint Monitoring built-in dashboard shows many HTTP 429 (Too Many Requests) errors. What is the most likely cause?",
     "options": [
@@ -11631,7 +11631,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-195",
     "number": 195,
     "title": "Monitoring and Observability - Custom Visualizer labels",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Anypoint Visualizer", "Application Metadata"],
     "prompt": "A team wants to assign custom labels to APIs in Anypoint Visualizer to distinguish Internal traffic from External partner traffic. Which application property should be configured?",
     "options": [
@@ -11654,7 +11654,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-196",
     "number": 196,
     "title": "Monitoring and Observability - Titanium log search capability",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Anypoint Monitoring", "Subscription Tiers"],
     "prompt": "A company is evaluating Anypoint Titanium. Which capability is explicitly provided by the Titanium tier compared with the Base tier in Anypoint Monitoring?",
     "options": [
@@ -11677,7 +11677,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-197",
     "number": 197,
     "title": "Monitoring and Observability - CloudHub worker unresponsiveness",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Runtime Manager Alerts", "CloudHub"],
     "prompt": "A CloudHub 1.0 application occasionally becomes unresponsive, and the team configures a Runtime Manager Worker Unresponsive alert. How does Runtime Manager determine that a worker is unresponsive?",
     "options": [
@@ -11700,7 +11700,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-198",
     "number": 198,
     "title": "Monitoring and Observability - Visualizer error indicator",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["Anypoint Visualizer", "Troubleshooting"],
     "prompt": "In an Anypoint Visualizer canvas, a Process API node has a bold red circle around it. What does this indicator mean in the troubleshooting and metrics view?",
     "options": [
@@ -11723,7 +11723,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-199",
     "number": 199,
     "title": "Monitoring and Observability - Registering an implementation with API Manager",
-    "domain": "Monitoring and Observability",
+    "domain": "Monitoring and analyzing application networks",
     "topics": ["API Autodiscovery", "API Manager"],
     "prompt": "A team needs its CloudHub API implementation to register with API Manager so that analytics and policy enforcement are activated. Which configuration is mandatory in the Mule application?",
     "options": [
@@ -11746,7 +11746,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-200",
     "number": 200,
     "title": "Deployment Options - CloudHub custom-domain HTTPS with mTLS",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["CloudHub 1.0", "Dedicated Load Balancer", "mTLS"],
     "prompt": "An organization requires a Mule application deployed to CloudHub 1.0 to expose an HTTPS endpoint using a custom domain (`api.company.com`). The security team also mandates that the endpoint must enforce two-way mTLS authentication with external clients. Which CloudHub network component is strictly required to fulfill this requirement?",
     "options": [
@@ -11769,7 +11769,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-201",
     "number": 201,
     "title": "Deployment Options - Scheduler behavior across CloudHub workers",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["CloudHub 1.0", "Scheduler", "Multiple Workers"],
     "prompt": "A developer deploys a Mule application to two CloudHub 1.0 workers. The application contains a Scheduler component set to trigger every 5 minutes to read records from a database. How does CloudHub handle the execution of this Scheduler across the multiple workers?",
     "options": [
@@ -11792,7 +11792,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-202",
     "number": 202,
     "title": "Deployment Options - Runtime behavior during control plane outage",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["Hybrid Deployment", "Control Plane", "Runtime Plane"],
     "prompt": "An integration architect is designing a hybrid deployment. The Mule runtime engines are installed on customer-hosted virtual machines within an enterprise data center. A network outage completely disconnects the data center from the Anypoint Platform Control Plane for 4 hours. What happens to the running Mule applications during this outage?",
     "options": [
@@ -11815,7 +11815,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-203",
     "number": 203,
     "title": "Deployment Options - Object Store v2 sharing between applications",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["CloudHub 1.0", "Object Store v2", "Application State"],
     "prompt": "A Mule application deployed to CloudHub 1.0 exposes a System API. A completely separate Mule application deployed to the same CloudHub environment exposes a Process API. Both applications need to share a temporary caching state (e.g., a counter). The developer attempts to use the Object Store v2 (OSv2) Connector to share this state. What is the expected behavior?",
     "options": [
@@ -11838,7 +11838,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-204",
     "number": 204,
     "title": "Deployment Options - Internal CloudHub worker URL",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["CloudHub 1.0", "VPC", "Internal Routing"],
     "prompt": "An organization is deploying Mule applications to a CloudHub 1.0 VPC. A System API is deployed to listen on port 8081. An internal Process API needs to call this System API securely over the internal VPC network without routing traffic out to the public internet. What URL format should the Process API use to make this internal call?",
     "options": [
@@ -11861,7 +11861,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-205",
     "number": 205,
     "title": "Deployment Options - Persistent VM queues across workers",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["CloudHub 1.0", "VM Queues", "Persistent Queues"],
     "prompt": "An API implementation must process a high volume of large asynchronous messages. To ensure zero message loss in the event of a worker crash, the architect decides to use VM queues. The application is deployed to three CloudHub 1.0 workers. How must the application and deployment be configured to guarantee that a message published to a VM queue on Worker 1 can be consumed and processed by Worker 2?",
     "options": [
@@ -11884,7 +11884,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-206",
     "number": 206,
     "title": "Deployment Options - Private connectivity to on-premises data centers",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["CloudHub 1.0", "VPC", "VPN", "Direct Connect"],
     "prompt": "A company mandates that all on-premises legacy databases must only be accessed by Mule applications via highly secure, private network connections. The Mule applications will be deployed to CloudHub 1.0. Which technology allows a CloudHub VPC to connect securely and privately to a customer's on-premises data center?",
     "options": [
@@ -11907,7 +11907,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-207",
     "number": 207,
     "title": "Deployment Options - Masking secure properties in Runtime Manager",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["CloudHub 1.0", "Secure Properties", "Runtime Manager"],
     "prompt": "An organization is deploying Mule applications to CloudHub 1.0. They configure the passwords in a secure properties file (`secure-dev.yaml`) and encrypt them. When deploying via the Runtime Manager UI, they enter the decryption key in the Properties tab. To ensure the decryption key is not visible in plain text to other administrators viewing the Runtime Manager UI, what must the team do?",
     "options": [
@@ -11930,7 +11930,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-208",
     "number": 208,
     "title": "Deployment Options - Runtime Fabric ingress controller",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["Runtime Fabric", "Ingress", "Traffic Routing"],
     "prompt": "A company is moving its Mule applications from Customer-Hosted standalone servers to Runtime Fabric (RTF) installed on their own Self-Managed Kubernetes (BYOK). In a standalone environment, an external load balancer routed HTTP traffic directly to the Mule runtimes on port 8081. In the RTF architecture, what component is responsible for receiving the external HTTP traffic and routing it to the correct Mule application replicas?",
     "options": [
@@ -11953,7 +11953,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-209",
     "number": 209,
     "title": "Deployment Options - CloudHub worker size for large payloads",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["CloudHub 1.0", "Worker Sizing", "Memory"],
     "prompt": "An architect is sizing a CloudHub 1.0 worker for a Mule application that needs to load an 800 MB JSON payload entirely into memory to perform a complex DataWeave transformation. What is the minimum CloudHub worker size (vCore) required to ensure the application does not throw an `OutOfMemoryError`?",
     "options": [
@@ -11976,7 +11976,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-210",
     "number": 210,
     "title": "Deployment Options - DLB mapping rules for API routing",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["CloudHub 1.0", "Dedicated Load Balancer", "Mapping Rules"],
     "prompt": "An enterprise is using a CloudHub Dedicated Load Balancer (DLB) to route traffic to multiple Experience APIs. The company wants requests made to `https://api.company.com/v1/orders` to be routed to a Mule application named `exp-orders-api-v1`. How is this routing achieved on the DLB?",
     "options": [
@@ -11999,7 +11999,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-211",
     "number": 211,
     "title": "Deployment Options - Static outbound IP for CloudHub",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["CloudHub 1.0", "Static IP", "Outbound Networking"],
     "prompt": "A customer requires a Mule application to maintain a static outbound IP address. A third-party SaaS provider mandates that all incoming API calls must originate from a whitelisted IP address. The Mule application is deployed to CloudHub 1.0. How can the architect satisfy this requirement?",
     "options": [
@@ -12022,7 +12022,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-212",
     "number": 212,
     "title": "Deployment Options - CloudHub worker availability zones",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["CloudHub 1.0", "High Availability", "Availability Zones"],
     "prompt": "An integration requires strict SLA guarantees. The architect decides to deploy a Mule application to multiple CloudHub 1.0 workers to achieve High Availability (HA). How does the CloudHub architecture support this HA deployment?",
     "options": [
@@ -12045,7 +12045,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-213",
     "number": 213,
     "title": "Deployment Options - HTTP traffic in an active-active cluster",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["Customer-Hosted", "Clustering", "HTTP Listener"],
     "prompt": "A Mule application is deployed to a Customer-Hosted, multi-node active-active cluster. The application contains an HTTP Listener configured to listen on port `8081`. An external F5 load balancer is placed in front of the cluster to distribute traffic. Which node in the cluster will receive and process an incoming HTTP POST request?",
     "options": [
@@ -12068,7 +12068,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-214",
     "number": 214,
     "title": "Deployment Options - Runtime Fabric controller node role",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["Runtime Fabric", "Controller Nodes", "Cluster Architecture"],
     "prompt": "An architect is designing an infrastructure migration from CloudHub 1.0 to Runtime Fabric (RTF) on VMs / Bare Metal. The architect must provision the infrastructure to support the Anypoint platform architecture. In RTF, what is the primary role of the Controller nodes?",
     "options": [
@@ -12091,7 +12091,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-215",
     "number": 215,
     "title": "Deployment Options - CloudHub deployment traffic handling",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["CloudHub 1.0", "Deployment", "Availability"],
     "prompt": "A developer pushes a critical update to a Mule application deployed on a single CloudHub 1.0 worker. During the deployment of the new package via Runtime Manager, what happens to the incoming HTTP requests sent to the application's public URL?",
     "options": [
@@ -12114,7 +12114,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-216",
     "number": 216,
     "title": "Deployment Options - CloudHub ephemeral local files",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["CloudHub 1.0", "Worker Lifecycle", "Ephemeral Storage"],
     "prompt": "A Mule application deployed to CloudHub 1.0 writes temporary files to the local file system (`/tmp`) during the execution of a batch process. The application is manually restarted by an administrator from the Runtime Manager console to apply a new property configuration. What happens to the files stored in the `/tmp` directory after the restart?",
     "options": [
@@ -12137,7 +12137,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-217",
     "number": 217,
     "title": "Deployment Options - CloudHub VPC network diagnostics",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["CloudHub 1.0", "VPN", "Network Diagnostics"],
     "prompt": "An organization has deployed a Mule application that connects to an internal corporate network using an IPsec VPN tunnel terminating at their CloudHub VPC. The network team notices that the Mule application cannot reach a specific internal IP address. Which platform tool should the architect use to verify network connectivity directly from the CloudHub worker to the internal IP?",
     "options": [
@@ -12160,7 +12160,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-218",
     "number": 218,
     "title": "Deployment Options - Dedicated Load Balancer high availability",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["CloudHub 1.0", "Dedicated Load Balancer", "High Availability"],
     "prompt": "An organization requires that their CloudHub Dedicated Load Balancer (DLB) is highly available to prevent a single point of failure. How is High Availability (HA) achieved for a DLB in CloudHub?",
     "options": [
@@ -12183,7 +12183,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-219",
     "number": 219,
     "title": "Deployment Options - Runtime Fabric replica load balancing",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": ["Runtime Fabric", "Ingress", "Load Balancing"],
     "prompt": "A company deploys an API implementation to Runtime Fabric (RTF) with 3 replicas. The application exposes an HTTP endpoint. How does the RTF architecture distribute incoming HTTP requests among these 3 replicas?",
     "options": [
@@ -12206,7 +12206,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-220",
     "number": 220,
     "title": "Messaging - What requirement prevents using Anypoint MQ as the messaging broker fo",
-    "domain": "Messaging",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Messaging"
     ],
@@ -12255,7 +12255,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-221",
     "number": 221,
     "title": "Deployment Options - A company is modernizing its legacy systems to accelerate access to ap",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Deployment Options"
     ],
@@ -12304,7 +12304,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-222",
     "number": 222,
     "title": "Integration Interfaces - An airline is architecting an API-led connectivity project to integrat",
-    "domain": "Integration Interfaces",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Integration Interfaces"
     ],
@@ -12353,7 +12353,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-223",
     "number": 223,
     "title": "Messaging - A Mule solution implements an Experience API and System API as Mule ap",
-    "domain": "Messaging",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Messaging"
     ],
@@ -12402,7 +12402,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-224",
     "number": 224,
     "title": "Deployment Options - An insurance company is designing a hybrid, load-balanced, single-clus",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Deployment Options"
     ],
@@ -12451,7 +12451,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-225",
     "number": 225,
     "title": "Performance - A marketing organization is designing a Mule application to process ca",
-    "domain": "Performance",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Performance"
     ],
@@ -12500,7 +12500,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-226",
     "number": 226,
     "title": "Security - A new Mule application has been deployed through Runtime Manager to Cl",
-    "domain": "Security",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Security"
     ],
@@ -12549,7 +12549,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-227",
     "number": 227,
     "title": "Application Design - An organization has built a large monolithic application over the year",
-    "domain": "Application Design",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Application Design"
     ],
@@ -12598,7 +12598,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-228",
     "number": 228,
     "title": "Reliability - An architect is designing a Mule application to meet the following two",
-    "domain": "Reliability",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Reliability"
     ],
@@ -12647,7 +12647,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-229",
     "number": 229,
     "title": "Deployment Options - Refer to the exhibit.",
-    "domain": "Deployment Options",
+    "domain": "Deploying API implementations to CloudHub",
     "topics": [
       "Deployment Options"
     ],
@@ -12697,7 +12697,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-230",
     "number": 230,
     "title": "Security - A Mule application is designed to call the Google Maps API to perform",
-    "domain": "Security",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "Security"
     ],
@@ -12746,7 +12746,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-231",
     "number": 231,
     "title": "Performance - A bank is implementing a REST API in a Mule application to receive an",
-    "domain": "Performance",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Performance"
     ],
@@ -12795,7 +12795,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-232",
     "number": 232,
     "title": "Messaging - A manufacturing company wants to share inventory updates with dealers",
-    "domain": "Messaging",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Messaging"
     ],
@@ -12844,7 +12844,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-233",
     "number": 233,
     "title": "CI/CD - An organization is in the process of building automated deployments us",
-    "domain": "CI/CD",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "CI/CD"
     ],
@@ -12893,7 +12893,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-234",
     "number": 234,
     "title": "Transactions - How does a timeout attribute in a configured transaction manager help",
-    "domain": "Transactions",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Transactions"
     ],
@@ -12942,7 +12942,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-235",
     "number": 235,
     "title": "API Governance - Following MuleSoft's recommended best practices for API governance and",
-    "domain": "API Governance",
+    "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
       "API Governance"
     ],
@@ -12991,7 +12991,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-236",
     "number": 236,
     "title": "Connectors - Which Salesforce API is invoked to deploy, retrieve, create, update, o",
-    "domain": "Connectors",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Connectors"
     ],
@@ -13040,7 +13040,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-237",
     "number": 237,
     "title": "Application Design - Why would an Enterprise Architect use a single enterprise-wide canonic",
-    "domain": "Application Design",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "Application Design"
     ],
@@ -13089,7 +13089,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-238",
     "number": 238,
     "title": "Performance - Refer to the exhibit.",
-    "domain": "Performance",
+    "domain": "Meeting API quality goals",
     "topics": [
       "Performance"
     ],
@@ -13142,7 +13142,7 @@ window.MCPA_QUESTIONS = [
     "id": "q-239",
     "number": 239,
     "title": "CI/CD - An organization is using MuleSoft to develop APIs and automatically de",
-    "domain": "CI/CD",
+    "domain": "Architecting and deploying API implementations",
     "topics": [
       "CI/CD"
     ],
