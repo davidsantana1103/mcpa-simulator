@@ -11741,5 +11741,465 @@ window.MCPA_QUESTIONS = [
     },
     "references": {},
     "correctAnswer": "B"
+  },
+  {
+    "id": "q-200",
+    "number": 200,
+    "title": "Deployment Options - CloudHub custom-domain HTTPS with mTLS",
+    "domain": "Deployment Options",
+    "topics": ["CloudHub 1.0", "Dedicated Load Balancer", "mTLS"],
+    "prompt": "An organization requires a Mule application deployed to CloudHub 1.0 to expose an HTTPS endpoint using a custom domain (`api.company.com`). The security team also mandates that the endpoint must enforce two-way mTLS authentication with external clients. Which CloudHub network component is strictly required to fulfill this requirement?",
+    "options": [
+      {"letter": "A", "text": "The CloudHub Shared Load Balancer (SLB)"},
+      {"letter": "B", "text": "A CloudHub Dedicated Load Balancer (DLB)"},
+      {"letter": "C", "text": "Anypoint API Manager with an automated mTLS policy"},
+      {"letter": "D", "text": "Anypoint VPC Peering"}
+    ],
+    "explanation": "The Shared Load Balancer does not support custom certificates or two-way mTLS. A Dedicated Load Balancer must be provisioned within a VPC to handle custom DNS domains and terminate or enforce mTLS connections.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "The Shared Load Balancer does not support custom certificates or two-way mTLS."},
+      "B": {"type": "Correct", "text": "A Dedicated Load Balancer supports custom domains and two-way mTLS termination."},
+      "C": {"type": "Incorrect", "text": "An API Manager policy alone does not provide the required CloudHub network component for custom-domain TLS termination."},
+      "D": {"type": "Incorrect", "text": "VPC Peering connects VPCs; it does not provide custom-domain TLS termination or mTLS enforcement."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-201",
+    "number": 201,
+    "title": "Deployment Options - Scheduler behavior across CloudHub workers",
+    "domain": "Deployment Options",
+    "topics": ["CloudHub 1.0", "Scheduler", "Multiple Workers"],
+    "prompt": "A developer deploys a Mule application to two CloudHub 1.0 workers. The application contains a Scheduler component set to trigger every 5 minutes to read records from a database. How does CloudHub handle the execution of this Scheduler across the multiple workers?",
+    "options": [
+      {"letter": "A", "text": "The Scheduler triggers on both workers simultaneously, so the developer must implement an Idempotent Message Validator to prevent duplicate processing."},
+      {"letter": "B", "text": "CloudHub automatically triggers the Scheduler on only one worker at a time (the primary node) to prevent duplicate processing."},
+      {"letter": "C", "text": "The execution is round-robined between the two workers, meaning each worker triggers every 10 minutes."},
+      {"letter": "D", "text": "Schedulers are not supported in multi-worker deployments; a separate external cron job must be used to trigger an HTTP endpoint."}
+    ],
+    "explanation": "In CloudHub, MuleSoft automatically coordinates polling event sources like Schedulers, SFTP, and Database polling across multiple workers so that only one worker executes the poll at any scheduled time.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "CloudHub coordinates the polling event source rather than requiring simultaneous polling and duplicate suppression."},
+      "B": {"type": "Correct", "text": "Only one worker executes the scheduled poll at a time to prevent duplicate processing."},
+      "C": {"type": "Incorrect", "text": "CloudHub does not round-robin scheduled executions to double the interval."},
+      "D": {"type": "Incorrect", "text": "Schedulers are supported in multi-worker deployments."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-202",
+    "number": 202,
+    "title": "Deployment Options - Runtime behavior during control plane outage",
+    "domain": "Deployment Options",
+    "topics": ["Hybrid Deployment", "Control Plane", "Runtime Plane"],
+    "prompt": "An integration architect is designing a hybrid deployment. The Mule runtime engines are installed on customer-hosted virtual machines within an enterprise data center. A network outage completely disconnects the data center from the Anypoint Platform Control Plane for 4 hours. What happens to the running Mule applications during this outage?",
+    "options": [
+      {"letter": "A", "text": "The applications continue to process traffic normally, but log forwarding and metric reporting to Anypoint Platform are temporarily suspended."},
+      {"letter": "B", "text": "The applications immediately stop accepting new HTTP requests until communication with the Control Plane is restored."},
+      {"letter": "C", "text": "The applications continue running, but any API Manager policies applied to the endpoints are bypassed."},
+      {"letter": "D", "text": "The Mule runtime gracefully shuts down the applications to prevent data inconsistency."}
+    ],
+    "explanation": "The Runtime Plane processes traffic independently of the Control Plane. If the Control Plane is unreachable, apps keep running and enforcing already-downloaded policies; administrative tasks and telemetry are paused until the connection is restored.",
+    "rationales": {
+      "A": {"type": "Correct", "text": "Running applications continue handling traffic with their existing configuration; platform connectivity and telemetry are interrupted."},
+      "B": {"type": "Incorrect", "text": "A Control Plane outage does not immediately stop the Runtime Plane from processing requests."},
+      "C": {"type": "Incorrect", "text": "Already-downloaded policies continue to be enforced while the Control Plane is unavailable."},
+      "D": {"type": "Incorrect", "text": "The runtime does not shut down applications solely because of a Control Plane connection outage."}
+    },
+    "references": {},
+    "correctAnswer": "A"
+  },
+  {
+    "id": "q-203",
+    "number": 203,
+    "title": "Deployment Options - Object Store v2 sharing between applications",
+    "domain": "Deployment Options",
+    "topics": ["CloudHub 1.0", "Object Store v2", "Application State"],
+    "prompt": "A Mule application deployed to CloudHub 1.0 exposes a System API. A completely separate Mule application deployed to the same CloudHub environment exposes a Process API. Both applications need to share a temporary caching state (e.g., a counter). The developer attempts to use the Object Store v2 (OSv2) Connector to share this state. What is the expected behavior?",
+    "options": [
+      {"letter": "A", "text": "The applications can seamlessly share the data by configuring both Object Store connectors with the same Object Store name."},
+      {"letter": "B", "text": "OSv2 does not allow data sharing between different Mule applications natively; the data is strictly partitioned by application."},
+      {"letter": "C", "text": "Data sharing is only possible if both applications are deployed to the same AWS region and VPC."},
+      {"letter": "D", "text": "The developer must configure an Anypoint MQ queue to synchronize the Object Store states between the two applications."}
+    ],
+    "explanation": "CloudHub Object Store v2 does not natively share data between different Mule applications through the connector. An app can expose an API for state access, or the applications can use an external caching system such as Redis.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "Using the same Object Store name does not make one application's OSv2 data accessible to another."},
+      "B": {"type": "Correct", "text": "OSv2 data is partitioned by application and is not shared across applications through the connector."},
+      "C": {"type": "Incorrect", "text": "Sharing a region and VPC does not remove the application-level data partitioning."},
+      "D": {"type": "Incorrect", "text": "Anypoint MQ could be used to exchange messages, but it is not required to synchronize OSv2 states."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-204",
+    "number": 204,
+    "title": "Deployment Options - Internal CloudHub worker URL",
+    "domain": "Deployment Options",
+    "topics": ["CloudHub 1.0", "VPC", "Internal Routing"],
+    "prompt": "An organization is deploying Mule applications to a CloudHub 1.0 VPC. A System API is deployed to listen on port 8081. An internal Process API needs to call this System API securely over the internal VPC network without routing traffic out to the public internet. What URL format should the Process API use to make this internal call?",
+    "options": [
+      {"letter": "A", "text": "`http://mule-worker-internal-<app-name>.region.cloudhub.io:8081`"},
+      {"letter": "B", "text": "`http://<app-name>.region.cloudhub.io:80`"},
+      {"letter": "C", "text": "`http://mule-worker-<app-name>.region.cloudhub.io:8081`"},
+      {"letter": "D", "text": "`https://<app-name>.internal.region.cloudhub.io`"}
+    ],
+    "explanation": "To route traffic internally within a VPC directly to a worker, bypassing the public Shared Load Balancer, use the `mule-worker-internal-` prefix and the worker's listener port.",
+    "rationales": {
+      "A": {"type": "Correct", "text": "The internal worker hostname and listener port route the call within the VPC directly to the worker."},
+      "B": {"type": "Incorrect", "text": "This hostname uses the public application endpoint and port 80 rather than direct internal worker routing."},
+      "C": {"type": "Incorrect", "text": "The hostname lacks the `internal-` segment used for the internal worker endpoint."},
+      "D": {"type": "Incorrect", "text": "This is not the CloudHub internal worker URL format."}
+    },
+    "references": {},
+    "correctAnswer": "A"
+  },
+  {
+    "id": "q-205",
+    "number": 205,
+    "title": "Deployment Options - Persistent VM queues across workers",
+    "domain": "Deployment Options",
+    "topics": ["CloudHub 1.0", "VM Queues", "Persistent Queues"],
+    "prompt": "An API implementation must process a high volume of large asynchronous messages. To ensure zero message loss in the event of a worker crash, the architect decides to use VM queues. The application is deployed to three CloudHub 1.0 workers. How must the application and deployment be configured to guarantee that a message published to a VM queue on Worker 1 can be consumed and processed by Worker 2?",
+    "options": [
+      {"letter": "A", "text": "Enable the \"Persistent Queues\" checkbox in the Runtime Manager deployment settings."},
+      {"letter": "B", "text": "Configure an Anypoint MQ connector instead, as VM queues cannot span multiple CloudHub workers."},
+      {"letter": "C", "text": "Deploy the application to a Customer-Hosted cluster instead, as CloudHub does not support distributed memory."},
+      {"letter": "D", "text": "Configure a CloudHub Dedicated Load Balancer to round-robin the VM queue traffic."}
+    ],
+    "explanation": "In CloudHub 1.0, enabling Persistent Queues at deployment time changes VM queue behavior so that messages published by one worker can be picked up by another worker in the same application.",
+    "rationales": {
+      "A": {"type": "Correct", "text": "Persistent Queues enable the distributed VM queue behavior needed to share messages across workers."},
+      "B": {"type": "Incorrect", "text": "Anypoint MQ is an alternative messaging service, but the stated CloudHub configuration supports cross-worker VM queue consumption."},
+      "C": {"type": "Incorrect", "text": "A customer-hosted cluster is not required to enable CloudHub persistent VM queues."},
+      "D": {"type": "Incorrect", "text": "A load balancer routes network traffic; it does not distribute VM queue messages."}
+    },
+    "references": {},
+    "correctAnswer": "A"
+  },
+  {
+    "id": "q-206",
+    "number": 206,
+    "title": "Deployment Options - Private connectivity to on-premises data centers",
+    "domain": "Deployment Options",
+    "topics": ["CloudHub 1.0", "VPC", "VPN", "Direct Connect"],
+    "prompt": "A company mandates that all on-premises legacy databases must only be accessed by Mule applications via highly secure, private network connections. The Mule applications will be deployed to CloudHub 1.0. Which technology allows a CloudHub VPC to connect securely and privately to a customer's on-premises data center?",
+    "options": [
+      {"letter": "A", "text": "Anypoint VPC Peering"},
+      {"letter": "B", "text": "IPsec VPN tunnel or AWS Direct Connect"},
+      {"letter": "C", "text": "CloudHub Dedicated Load Balancer (DLB)"},
+      {"letter": "D", "text": "CloudHub Shared Load Balancer (SLB) with mTLS"}
+    ],
+    "explanation": "VPC Peering connects a CloudHub VPC to another AWS VPC. To connect a CloudHub VPC to an on-premises data center, configure an IPsec VPN, AWS Direct Connect, or AWS Transit Gateway.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "VPC Peering is for connecting AWS VPCs, not directly connecting to an on-premises data center."},
+      "B": {"type": "Correct", "text": "An IPsec VPN or AWS Direct Connect provides private connectivity between the CloudHub VPC and the data center."},
+      "C": {"type": "Incorrect", "text": "A DLB routes application traffic but does not establish private connectivity to an on-premises network."},
+      "D": {"type": "Incorrect", "text": "An SLB with mTLS does not provide a private network connection to the data center."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-207",
+    "number": 207,
+    "title": "Deployment Options - Masking secure properties in Runtime Manager",
+    "domain": "Deployment Options",
+    "topics": ["CloudHub 1.0", "Secure Properties", "Runtime Manager"],
+    "prompt": "An organization is deploying Mule applications to CloudHub 1.0. They configure the passwords in a secure properties file (`secure-dev.yaml`) and encrypt them. When deploying via the Runtime Manager UI, they enter the decryption key in the Properties tab. To ensure the decryption key is not visible in plain text to other administrators viewing the Runtime Manager UI, what must the team do?",
+    "options": [
+      {"letter": "A", "text": "Store the decryption key in Anypoint Vault."},
+      {"letter": "B", "text": "Declare the property name in the `secureProperties` array inside the `mule-artifact.json` file."},
+      {"letter": "C", "text": "Prefix the property name with `hidden.secure.` in the Runtime Manager UI."},
+      {"letter": "D", "text": "Define the decryption key as an environment variable directly inside the CloudHub worker via an SSH session."}
+    ],
+    "explanation": "Including a property name in the `secureProperties` list inside `mule-artifact.json` instructs Runtime Manager to mask that property's value in the platform UI.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "The question asks how to mask a Runtime Manager property value; the `secureProperties` declaration provides that behavior."},
+      "B": {"type": "Correct", "text": "Declaring the key's property name in `secureProperties` causes Runtime Manager to mask its value."},
+      "C": {"type": "Incorrect", "text": "The `hidden.secure.` prefix is not the mechanism Runtime Manager uses to mask a property."},
+      "D": {"type": "Incorrect", "text": "This is not the CloudHub configuration mechanism for masking properties in Runtime Manager."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-208",
+    "number": 208,
+    "title": "Deployment Options - Runtime Fabric ingress controller",
+    "domain": "Deployment Options",
+    "topics": ["Runtime Fabric", "Ingress", "Traffic Routing"],
+    "prompt": "A company is moving its Mule applications from Customer-Hosted standalone servers to Runtime Fabric (RTF) installed on their own Self-Managed Kubernetes (BYOK). In a standalone environment, an external load balancer routed HTTP traffic directly to the Mule runtimes on port 8081. In the RTF architecture, what component is responsible for receiving the external HTTP traffic and routing it to the correct Mule application replicas?",
+    "options": [
+      {"letter": "A", "text": "The Anypoint Monitoring Agent"},
+      {"letter": "B", "text": "The RTF Ingress Controller"},
+      {"letter": "C", "text": "The CloudHub Dedicated Load Balancer"},
+      {"letter": "D", "text": "The RTF Ops Center"}
+    ],
+    "explanation": "In Runtime Fabric, traffic reaches the Ingress Controller, which acts as the internal load balancer and reverse proxy and routes requests to the appropriate application replicas.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "The Monitoring Agent supports observability and does not route inbound application requests."},
+      "B": {"type": "Correct", "text": "The Ingress Controller receives inbound traffic and routes it to the correct application replicas."},
+      "C": {"type": "Incorrect", "text": "The CloudHub DLB is a CloudHub component, not the traffic-routing component in Runtime Fabric."},
+      "D": {"type": "Incorrect", "text": "Ops Center is not the RTF ingress and request-routing component."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-209",
+    "number": 209,
+    "title": "Deployment Options - CloudHub worker size for large payloads",
+    "domain": "Deployment Options",
+    "topics": ["CloudHub 1.0", "Worker Sizing", "Memory"],
+    "prompt": "An architect is sizing a CloudHub 1.0 worker for a Mule application that needs to load an 800 MB JSON payload entirely into memory to perform a complex DataWeave transformation. What is the minimum CloudHub worker size (vCore) required to ensure the application does not throw an `OutOfMemoryError`?",
+    "options": [
+      {"letter": "A", "text": "0.1 vCores"},
+      {"letter": "B", "text": "0.2 vCores"},
+      {"letter": "C", "text": "1.0 vCores"},
+      {"letter": "D", "text": "0.05 vCores"}
+    ],
+    "explanation": "A 0.1 vCore worker provides 500 MB of heap memory, while a 0.2 vCore worker provides 1 GB of heap memory, the minimum listed size above the 800 MB payload requirement.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "The 500 MB heap is smaller than the 800 MB payload."},
+      "B": {"type": "Correct", "text": "The stated 1 GB heap is the minimum listed size that can accommodate the 800 MB payload."},
+      "C": {"type": "Incorrect", "text": "A 1.0 vCore worker provides more capacity than the minimum option stated in the question."},
+      "D": {"type": "Incorrect", "text": "A 0.05 vCore worker provides less capacity than the 800 MB payload requires."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-210",
+    "number": 210,
+    "title": "Deployment Options - DLB mapping rules for API routing",
+    "domain": "Deployment Options",
+    "topics": ["CloudHub 1.0", "Dedicated Load Balancer", "Mapping Rules"],
+    "prompt": "An enterprise is using a CloudHub Dedicated Load Balancer (DLB) to route traffic to multiple Experience APIs. The company wants requests made to `https://api.company.com/v1/orders` to be routed to a Mule application named `exp-orders-api-v1`. How is this routing achieved on the DLB?",
+    "options": [
+      {"letter": "A", "text": "By configuring Mapping Rules on the DLB."},
+      {"letter": "B", "text": "By adding a CloudHub network routing policy in API Manager."},
+      {"letter": "C", "text": "By deploying an API Proxy application to act as a router before the DLB."},
+      {"letter": "D", "text": "By modifying the `mule-artifact.json` file of the `exp-orders-api-v1` application to register the `/v1/orders` path."}
+    ],
+    "explanation": "Dedicated Load Balancer Mapping Rules translate a vanity domain and URI path, such as `/v1/orders`, into the internal worker URL of the target Mule application.",
+    "rationales": {
+      "A": {"type": "Correct", "text": "DLB Mapping Rules route requests for the configured host and path to the target application."},
+      "B": {"type": "Incorrect", "text": "API Manager policies do not configure DLB host-and-path routing."},
+      "C": {"type": "Incorrect", "text": "A separate API Proxy is not required to configure routing on the DLB."},
+      "D": {"type": "Incorrect", "text": "The application artifact file does not register a DLB path mapping."}
+    },
+    "references": {},
+    "correctAnswer": "A"
+  },
+  {
+    "id": "q-211",
+    "number": 211,
+    "title": "Deployment Options - Static outbound IP for CloudHub",
+    "domain": "Deployment Options",
+    "topics": ["CloudHub 1.0", "Static IP", "Outbound Networking"],
+    "prompt": "A customer requires a Mule application to maintain a static outbound IP address. A third-party SaaS provider mandates that all incoming API calls must originate from a whitelisted IP address. The Mule application is deployed to CloudHub 1.0. How can the architect satisfy this requirement?",
+    "options": [
+      {"letter": "A", "text": "Deploy the application to a CloudHub VPC; all applications in a VPC automatically share a single static outbound IP."},
+      {"letter": "B", "text": "Assign a Static IP to the Mule application through the Runtime Manager deployment settings."},
+      {"letter": "C", "text": "Route all outbound traffic from the Mule application through a CloudHub Dedicated Load Balancer."},
+      {"letter": "D", "text": "Use the CloudHub Object Store to persist the IP address across restarts."}
+    ],
+    "explanation": "CloudHub worker IPs are dynamic by default. To satisfy third-party firewall whitelisting requirements, allocate and assign a Static IP to the application in Runtime Manager.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "A VPC alone does not mean all applications share one static outbound IP."},
+      "B": {"type": "Correct", "text": "Assigning a Static IP through Runtime Manager provides the stable outbound address needed for whitelisting."},
+      "C": {"type": "Incorrect", "text": "A DLB handles inbound routing and does not provide the application's static outbound IP."},
+      "D": {"type": "Incorrect", "text": "Object Store persists data, not network addresses."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-212",
+    "number": 212,
+    "title": "Deployment Options - CloudHub worker availability zones",
+    "domain": "Deployment Options",
+    "topics": ["CloudHub 1.0", "High Availability", "Availability Zones"],
+    "prompt": "An integration requires strict SLA guarantees. The architect decides to deploy a Mule application to multiple CloudHub 1.0 workers to achieve High Availability (HA). How does the CloudHub architecture support this HA deployment?",
+    "options": [
+      {"letter": "A", "text": "CloudHub automatically deploys the workers into different AWS Availability Zones (AZs) within the selected region."},
+      {"letter": "B", "text": "CloudHub creates a Hazelcast cluster across the workers to synchronize memory state instantly."},
+      {"letter": "C", "text": "CloudHub replicates the application to a secondary failover region automatically."},
+      {"letter": "D", "text": "CloudHub requires the customer to manually provision an external AWS Application Load Balancer to distribute traffic between the workers."}
+    ],
+    "explanation": "When an application is deployed to two or more CloudHub workers, CloudHub provisions the workers in different underlying Availability Zones so the application can remain available if an AZ fails.",
+    "rationales": {
+      "A": {"type": "Correct", "text": "Distributing multiple workers across Availability Zones protects the application from a single-AZ outage."},
+      "B": {"type": "Incorrect", "text": "CloudHub does not automatically create a Hazelcast cluster that synchronizes all worker memory."},
+      "C": {"type": "Incorrect", "text": "Multiple workers in a region do not automatically replicate the application to another region."},
+      "D": {"type": "Incorrect", "text": "CloudHub handles traffic distribution for its workers; a customer-provisioned AWS load balancer is not required for this purpose."}
+    },
+    "references": {},
+    "correctAnswer": "A"
+  },
+  {
+    "id": "q-213",
+    "number": 213,
+    "title": "Deployment Options - HTTP traffic in an active-active cluster",
+    "domain": "Deployment Options",
+    "topics": ["Customer-Hosted", "Clustering", "HTTP Listener"],
+    "prompt": "A Mule application is deployed to a Customer-Hosted, multi-node active-active cluster. The application contains an HTTP Listener configured to listen on port `8081`. An external F5 load balancer is placed in front of the cluster to distribute traffic. Which node in the cluster will receive and process an incoming HTTP POST request?",
+    "options": [
+      {"letter": "A", "text": "Only the Primary Node receives HTTP traffic."},
+      {"letter": "B", "text": "Whichever node the F5 load balancer routes the request to."},
+      {"letter": "C", "text": "The request is received by the Primary Node and then replicated to all other nodes before processing."},
+      {"letter": "D", "text": "All nodes receive the HTTP request simultaneously, but Hazelcast elects one to process it."}
+    ],
+    "explanation": "In an active-active cluster, HTTP Listeners are active on all nodes concurrently. The external load balancer determines which node receives the request; polling connectors are restricted to the Primary Node.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "The Primary Node restriction applies to polling connectors, not HTTP Listeners in an active-active cluster."},
+      "B": {"type": "Correct", "text": "The F5 load balancer selects the cluster node that receives the HTTP request."},
+      "C": {"type": "Incorrect", "text": "The request is not first received by the Primary Node and then replicated to all nodes."},
+      "D": {"type": "Incorrect", "text": "The cluster does not broadcast every HTTP request to all nodes for Hazelcast to select a processor."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-214",
+    "number": 214,
+    "title": "Deployment Options - Runtime Fabric controller node role",
+    "domain": "Deployment Options",
+    "topics": ["Runtime Fabric", "Controller Nodes", "Cluster Architecture"],
+    "prompt": "An architect is designing an infrastructure migration from CloudHub 1.0 to Runtime Fabric (RTF) on VMs / Bare Metal. The architect must provision the infrastructure to support the Anypoint platform architecture. In RTF, what is the primary role of the Controller nodes?",
+    "options": [
+      {"letter": "A", "text": "They run the actual Mule application replicas and process business data."},
+      {"letter": "B", "text": "They manage the cluster state, run the internal registry, and handle communication with the Anypoint Control Plane."},
+      {"letter": "C", "text": "They host the Anypoint Platform web console so it can run fully air-gapped on-premises."},
+      {"letter": "D", "text": "They act as external load balancers for inbound HTTP traffic."}
+    ],
+    "explanation": "In an appliance-based RTF cluster, Controller nodes handle the Kubernetes control plane, internal Docker registry, Ingress Controller, and communication with MuleSoft. Worker nodes run the Mule applications.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "Worker nodes run the Mule application replicas that process business data."},
+      "B": {"type": "Correct", "text": "Controller nodes manage cluster services and communication with the Anypoint Control Plane."},
+      "C": {"type": "Incorrect", "text": "Controller nodes do not host the Anypoint Platform web console."},
+      "D": {"type": "Incorrect", "text": "They host ingress components, but are not themselves external load balancers."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-215",
+    "number": 215,
+    "title": "Deployment Options - CloudHub deployment traffic handling",
+    "domain": "Deployment Options",
+    "topics": ["CloudHub 1.0", "Deployment", "Availability"],
+    "prompt": "A developer pushes a critical update to a Mule application deployed on a single CloudHub 1.0 worker. During the deployment of the new package via Runtime Manager, what happens to the incoming HTTP requests sent to the application's public URL?",
+    "options": [
+      {"letter": "A", "text": "Requests are dropped with a 503 Service Unavailable error until the new worker fully starts."},
+      {"letter": "B", "text": "CloudHub achieves Zero Downtime Deployment by keeping the old worker running and routing traffic to it until the new worker is fully started and passes health checks."},
+      {"letter": "C", "text": "CloudHub automatically queues the HTTP requests in an Anypoint MQ exchange and replays them once the new application is ready."},
+      {"letter": "D", "text": "The deployment fails if there is active traffic; the developer must stop the application first."}
+    ],
+    "explanation": "CloudHub uses Zero Downtime Deployments by starting a parallel worker with the new code. Traffic continues to the old worker until the new worker is ready, after which traffic shifts and the old worker is gracefully terminated.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "CloudHub keeps the old worker serving traffic while the replacement is starting."},
+      "B": {"type": "Correct", "text": "The old worker serves traffic until the new worker is ready and the traffic switch can occur."},
+      "C": {"type": "Incorrect", "text": "CloudHub does not automatically queue incoming HTTP requests in Anypoint MQ during deployment."},
+      "D": {"type": "Incorrect", "text": "A deployment does not require stopping the application merely because it has active traffic."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-216",
+    "number": 216,
+    "title": "Deployment Options - CloudHub ephemeral local files",
+    "domain": "Deployment Options",
+    "topics": ["CloudHub 1.0", "Worker Lifecycle", "Ephemeral Storage"],
+    "prompt": "A Mule application deployed to CloudHub 1.0 writes temporary files to the local file system (`/tmp`) during the execution of a batch process. The application is manually restarted by an administrator from the Runtime Manager console to apply a new property configuration. What happens to the files stored in the `/tmp` directory after the restart?",
+    "options": [
+      {"letter": "A", "text": "The files are securely backed up to Object Store v2 and restored."},
+      {"letter": "B", "text": "The files are retained because the same underlying AWS EC2 instance is reused."},
+      {"letter": "C", "text": "The files are permanently lost."},
+      {"letter": "D", "text": "The files are automatically moved to a Persistent VM queue."}
+    ],
+    "explanation": "CloudHub local storage is ephemeral. When an application is restarted or redeployed and its worker instance is replaced, files written to local disk such as `/tmp` are lost.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "CloudHub does not automatically back up local files to Object Store v2."},
+      "B": {"type": "Incorrect", "text": "Local files are not guaranteed to survive a worker restart or replacement."},
+      "C": {"type": "Correct", "text": "Files on the worker's ephemeral local disk are lost when that worker is replaced."},
+      "D": {"type": "Incorrect", "text": "CloudHub does not automatically transfer local files into a VM queue."}
+    },
+    "references": {},
+    "correctAnswer": "C"
+  },
+  {
+    "id": "q-217",
+    "number": 217,
+    "title": "Deployment Options - CloudHub VPC network diagnostics",
+    "domain": "Deployment Options",
+    "topics": ["CloudHub 1.0", "VPN", "Network Diagnostics"],
+    "prompt": "An organization has deployed a Mule application that connects to an internal corporate network using an IPsec VPN tunnel terminating at their CloudHub VPC. The network team notices that the Mule application cannot reach a specific internal IP address. Which platform tool should the architect use to verify network connectivity directly from the CloudHub worker to the internal IP?",
+    "options": [
+      {"letter": "A", "text": "Anypoint Monitoring Network Dashboards"},
+      {"letter": "B", "text": "The Network Tools application provided by MuleSoft support (or the built-in VPC diagnostic tool in Runtime Manager)"},
+      {"letter": "C", "text": "Visualizer Troubleshooting View"},
+      {"letter": "D", "text": "API Manager Health Checks"}
+    ],
+    "explanation": "MuleSoft's built-in VPC diagnostic tool or a Network Tools utility application can run connectivity checks such as ping and traceroute from within the CloudHub VPC.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "Anypoint Monitoring dashboards do not run direct network connectivity tests from a worker."},
+      "B": {"type": "Correct", "text": "The VPC diagnostic tool or Network Tools application can test connectivity from the CloudHub network."},
+      "C": {"type": "Incorrect", "text": "Visualizer shows application topology and metrics, not direct IP connectivity."},
+      "D": {"type": "Incorrect", "text": "API Manager health checks do not verify network connectivity from a CloudHub worker to an internal IP."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-218",
+    "number": 218,
+    "title": "Deployment Options - Dedicated Load Balancer high availability",
+    "domain": "Deployment Options",
+    "topics": ["CloudHub 1.0", "Dedicated Load Balancer", "High Availability"],
+    "prompt": "An organization requires that their CloudHub Dedicated Load Balancer (DLB) is highly available to prevent a single point of failure. How is High Availability (HA) achieved for a DLB in CloudHub?",
+    "options": [
+      {"letter": "A", "text": "The architect must manually configure an AWS Network Load Balancer in front of the DLB."},
+      {"letter": "B", "text": "HA is not possible; DLBs are single-instance bottlenecks."},
+      {"letter": "C", "text": "By default, a DLB is deployed with at least two workers in different Availability Zones (AZs) within the region."},
+      {"letter": "D", "text": "The DLB automatically fails over to the Shared Load Balancer (SLB) if it crashes."}
+    ],
+    "explanation": "CloudHub provisions a Dedicated Load Balancer across a minimum of two instances in separate Availability Zones to provide high availability.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "A customer does not need to add an AWS Network Load Balancer in front of the DLB for its built-in HA."},
+      "B": {"type": "Incorrect", "text": "The DLB is not a single-instance bottleneck; it is deployed redundantly."},
+      "C": {"type": "Correct", "text": "Multiple DLB instances in separate Availability Zones provide high availability."},
+      "D": {"type": "Incorrect", "text": "Automatic failover to the Shared Load Balancer is not the DLB's HA mechanism."}
+    },
+    "references": {},
+    "correctAnswer": "C"
+  },
+  {
+    "id": "q-219",
+    "number": 219,
+    "title": "Deployment Options - Runtime Fabric replica load balancing",
+    "domain": "Deployment Options",
+    "topics": ["Runtime Fabric", "Ingress", "Load Balancing"],
+    "prompt": "A company deploys an API implementation to Runtime Fabric (RTF) with 3 replicas. The application exposes an HTTP endpoint. How does the RTF architecture distribute incoming HTTP requests among these 3 replicas?",
+    "options": [
+      {"letter": "A", "text": "The Anypoint VPC SLB distributes the traffic."},
+      {"letter": "B", "text": "The internal RTF Ingress controller uses round-robin or least-connections routing to distribute traffic across the pods."},
+      {"letter": "C", "text": "The Primary Node receives all HTTP traffic and replicates the payloads via Hazelcast."},
+      {"letter": "D", "text": "A DLB must be deployed within the RTF cluster to enable load balancing."}
+    ],
+    "explanation": "In Runtime Fabric, the built-in Ingress Controller manages internal routing and load balancing of incoming external traffic to the application's replicas (pods).",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "The Anypoint VPC Shared Load Balancer is a CloudHub component, not the RTF replica load balancer."},
+      "B": {"type": "Correct", "text": "The RTF Ingress Controller routes incoming requests across the application's replicas."},
+      "C": {"type": "Incorrect", "text": "RTF does not use a Primary Node to receive and replicate all HTTP payloads via Hazelcast."},
+      "D": {"type": "Incorrect", "text": "A CloudHub DLB is not required or deployed inside the RTF cluster for replica load balancing."}
+    },
+    "references": {},
+    "correctAnswer": "B"
   }
 ];
