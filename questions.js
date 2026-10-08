@@ -11189,5 +11189,557 @@ window.MCPA_QUESTIONS = [
     },
     "references": {},
     "correctAnswer": "D"
+  },
+  {
+    "id": "q-176",
+    "number": 176,
+    "title": "Monitoring and Observability - Visualizer topology and policy troubleshooting",
+    "domain": "Monitoring and Observability",
+    "topics": ["Anypoint Visualizer", "API Manager Policies"],
+    "prompt": "An organization wants to view the dependencies between its Experience, Process, and System APIs in real time. It also needs to troubleshoot whether a Rate Limiting policy applied to the Experience API is causing failures. Which Anypoint Platform tool should the architect recommend?",
+    "options": [
+      {"letter": "A", "text": "Anypoint Monitoring Custom Dashboards"},
+      {"letter": "B", "text": "Anypoint Visualizer"},
+      {"letter": "C", "text": "API Manager Analytics"},
+      {"letter": "D", "text": "Anypoint Functional Monitoring"}
+    ],
+    "explanation": "Anypoint Visualizer maps application network dependencies and can display policy information on API nodes, helping identify where a policy such as Rate Limiting is affecting traffic.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "Custom dashboards display metrics such as latency and utilization, but do not automatically map API dependencies."},
+      "B": {"type": "Correct", "text": "Visualizer displays the application network topology and supports policy views for troubleshooting API nodes."},
+      "C": {"type": "Incorrect", "text": "API Manager Analytics provides API usage analytics rather than an application dependency map."},
+      "D": {"type": "Incorrect", "text": "Functional Monitoring runs external tests; it is not used to view internal application dependencies."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-177",
+    "number": 177,
+    "title": "Monitoring and Observability - CloudHub worker CPU alert",
+    "domain": "Monitoring and Observability",
+    "topics": ["Runtime Manager Alerts", "CloudHub"],
+    "prompt": "A Mule application deployed to CloudHub 1.0 requires an email alert if a worker's CPU utilization exceeds 80% for more than 10 minutes. Where must this alert be configured?",
+    "options": [
+      {"letter": "A", "text": "Anypoint Monitoring Alerts"},
+      {"letter": "B", "text": "API Manager Alerts"},
+      {"letter": "C", "text": "Runtime Manager Alerts"},
+      {"letter": "D", "text": "CloudHub Connector"}
+    ],
+    "explanation": "Runtime Manager alerts cover CloudHub worker infrastructure conditions, including CPU, memory, worker unresponsiveness, and custom application notifications.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "Anypoint Monitoring alerts focus on API and application performance metrics such as response time and HTTP errors."},
+      "B": {"type": "Incorrect", "text": "API Manager alerts address API contracts and policy events such as SLA quota violations."},
+      "C": {"type": "Correct", "text": "Worker CPU utilization is an infrastructure condition configured in Runtime Manager."},
+      "D": {"type": "Incorrect", "text": "The CloudHub Connector can emit application notifications, but it is not where worker CPU alerts are configured."}
+    },
+    "references": {},
+    "correctAnswer": "C"
+  },
+  {
+    "id": "q-178",
+    "number": 178,
+    "title": "Monitoring and Observability - External compliant application logging",
+    "domain": "Monitoring and Observability",
+    "topics": ["Logging", "CloudHub"],
+    "prompt": "A company requires all Mule application logs to go directly to its enterprise Splunk system and prohibits logs from being visible or stored in Anypoint Platform. How should the architect design logging for CloudHub applications?",
+    "options": [
+      {"letter": "A", "text": "Configure an Anypoint Monitoring log forwarder and disable the Runtime Manager log viewer."},
+      {"letter": "B", "text": "Configure a custom Log4j2 appender in the Mule application and select “Disable CloudHub logs” in the Runtime Manager deployment settings."},
+      {"letter": "C", "text": "Ask MuleSoft Support to reroute all logs to Splunk and bypass CloudHub storage."},
+      {"letter": "D", "text": "Use the Splunk Connector in an asynchronous Mule flow."}
+    ],
+    "explanation": "A custom Log4j2 appender forwards logs from the application to the external SIEM. Disabling CloudHub logs prevents the platform from retaining its default application logs.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "Anypoint Monitoring does not provide the described native third-party log forwarder, and hiding the viewer would not prevent log storage."},
+      "B": {"type": "Correct", "text": "The custom appender sends logs to Splunk, while disabling CloudHub logs addresses the requirement not to store them in CloudHub."},
+      "C": {"type": "Incorrect", "text": "The proposed support rerouting is not the standard application logging configuration."},
+      "D": {"type": "Incorrect", "text": "Sending logs through a flow connector couples log delivery to application processing and is not the standard infrastructure logging approach."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-179",
+    "number": 179,
+    "title": "Monitoring and Observability - Scheduled external API tests",
+    "domain": "Monitoring and Observability",
+    "topics": ["Anypoint Functional Monitoring", "API Testing"],
+    "prompt": "An organization needs to test a public Experience API every five minutes by sending a specific JSON payload from an external geographic location such as US-East and asserting that the response is HTTP 200. Which tool provides this capability?",
+    "options": [
+      {"letter": "A", "text": "Anypoint Functional Monitoring"},
+      {"letter": "B", "text": "Anypoint Monitoring Alerts"},
+      {"letter": "C", "text": "API Manager automated policies"},
+      {"letter": "D", "text": "Runtime Manager Server Health Check"}
+    ],
+    "explanation": "Anypoint Functional Monitoring runs scheduled, black-box tests from external locations, allowing test payloads and response assertions.",
+    "rationales": {
+      "A": {"type": "Correct", "text": "Functional Monitoring supports scheduled tests, request payloads, assertions, and geographically distributed execution."},
+      "B": {"type": "Incorrect", "text": "Monitoring alerts react to observed traffic and metrics; they do not inject synthetic requests."},
+      "C": {"type": "Incorrect", "text": "API Manager policies enforce API behavior but do not run scheduled geographic tests."},
+      "D": {"type": "Incorrect", "text": "A health check verifies service availability but does not send the required payload or assert the response."}
+    },
+    "references": {},
+    "correctAnswer": "A"
+  },
+  {
+    "id": "q-180",
+    "number": 180,
+    "title": "Monitoring and Observability - Assigning Visualizer architecture layers",
+    "domain": "Monitoring and Observability",
+    "topics": ["Anypoint Visualizer", "API-led Connectivity"],
+    "prompt": "An organization wants Mule applications to appear automatically in the Experience, Process, and System layers in Anypoint Visualizer. How should the applications be configured when deployed to CloudHub?",
+    "options": [
+      {"letter": "A", "text": "Add the applications to a specific Business Group in Access Management."},
+      {"letter": "B", "text": "Set the property `anypoint.platform.visualizer.layer` in application or Runtime Manager deployment properties."},
+      {"letter": "C", "text": "Apply an automated API Manager policy targeting the API layer."},
+      {"letter": "D", "text": "Configure an API layer tag in Anypoint Exchange and link it to the implementation."}
+    ],
+    "explanation": "The reserved `anypoint.platform.visualizer.layer` property categorizes applications into the Visualizer architectural layers.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "Business Group membership does not assign an application's Visualizer architecture layer."},
+      "B": {"type": "Correct", "text": "The Visualizer layer property assigns the application to its Experience, Process, or System layer."},
+      "C": {"type": "Incorrect", "text": "API Manager policies enforce API behavior; they do not set Visualizer layer metadata."},
+      "D": {"type": "Incorrect", "text": "Exchange metadata does not substitute for the runtime Visualizer layer property."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-181",
+    "number": 181,
+    "title": "Monitoring and Observability - Alerting on API client quota violations",
+    "domain": "Monitoring and Observability",
+    "topics": ["API Manager Alerts", "Rate Limiting"],
+    "prompt": "An operations team needs an email notification if a specific API client, identified by `client_id`, exceeds its request quota under a Rate Limiting SLA policy. Where must the alert be configured?",
+    "options": [
+      {"letter": "A", "text": "Runtime Manager Alerts"},
+      {"letter": "B", "text": "Anypoint Monitoring Alerts"},
+      {"letter": "C", "text": "API Manager Alerts"},
+      {"letter": "D", "text": "Access Management Audit Logs"}
+    ],
+    "explanation": "API Manager is responsible for alerts involving API contracts, policies, SLAs, and client violations.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "Runtime Manager alerts cover runtime and worker conditions, not API client quotas."},
+      "B": {"type": "Incorrect", "text": "Anypoint Monitoring alerts address observed API or application metrics rather than policy quota violations."},
+      "C": {"type": "Correct", "text": "The event is a client violation of a Rate Limiting SLA policy, which is configured in API Manager."},
+      "D": {"type": "Incorrect", "text": "Audit logs record platform activity but do not configure quota-violation notifications."}
+    },
+    "references": {},
+    "correctAnswer": "C"
+  },
+  {
+    "id": "q-182",
+    "number": 182,
+    "title": "Monitoring and Observability - Geographic functional testing",
+    "domain": "Monitoring and Observability",
+    "topics": ["Anypoint Functional Monitoring", "API Testing"],
+    "prompt": "An integration team needs continuous tests of public Experience APIs from multiple geographic locations outside its AWS VPC. Tests must send JSON payloads and assert HTTP 200 responses. Which capability meets this requirement?",
+    "options": [
+      {"letter": "A", "text": "Anypoint Monitoring Custom Dashboards"},
+      {"letter": "B", "text": "API Manager Health Checks"},
+      {"letter": "C", "text": "Runtime Manager Server Alerts"},
+      {"letter": "D", "text": "Anypoint Functional Monitoring"}
+    ],
+    "explanation": "Anypoint Functional Monitoring schedules black-box API tests from public geographic locations and validates their results.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "Custom dashboards visualize metrics but do not send test requests or assert responses."},
+      "B": {"type": "Incorrect", "text": "API Manager health checks do not provide the described distributed scheduled payload testing."},
+      "C": {"type": "Incorrect", "text": "Runtime Manager alerts monitor runtime conditions rather than externally testing API functionality."},
+      "D": {"type": "Correct", "text": "Functional Monitoring provides scheduled tests from external geographic locations with payloads and response assertions."}
+    },
+    "references": {},
+    "correctAnswer": "D"
+  },
+  {
+    "id": "q-183",
+    "number": 183,
+    "title": "Monitoring and Observability - Custom business-logic notifications",
+    "domain": "Monitoring and Observability",
+    "topics": ["Runtime Manager Alerts", "CloudHub Connector"],
+    "prompt": "A Mule application on a CloudHub 1.0 worker needs to alert when a specific business-logic error occurs inside a Choice router, such as an invalid third-party payload. How can this custom alert be achieved?",
+    "options": [
+      {"letter": "A", "text": "Create an API Manager alert based on HTTP 400 responses."},
+      {"letter": "B", "text": "Use the CloudHub Connector to emit a Custom Application Notification and configure a Runtime Manager alert for it."},
+      {"letter": "C", "text": "Configure an Anypoint Monitoring alert to scan logs for a DataWeave error string."},
+      {"letter": "D", "text": "Define a custom metric in Anypoint Visualizer to highlight the application node."}
+    ],
+    "explanation": "A Mule flow can emit a Custom Application Notification through the CloudHub Connector, and Runtime Manager can alert on that notification.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "An HTTP status alert does not directly represent the specified internal business-logic condition."},
+      "B": {"type": "Correct", "text": "The connector emits the custom notification from the flow, and Runtime Manager handles the notification alert."},
+      "C": {"type": "Incorrect", "text": "The described alert cannot be configured by scanning application logs for an arbitrary error string."},
+      "D": {"type": "Incorrect", "text": "Visualizer displays network topology and metrics; it does not create business-condition alerts."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-184",
+    "number": 184,
+    "title": "Monitoring and Observability - Long-term CloudHub log retention",
+    "domain": "Monitoring and Observability",
+    "topics": ["Logging", "CloudHub"],
+    "prompt": "A company must retain application logs for one year for compliance. Its APIs run on CloudHub 1.0. What is the most architecturally sound way to meet this requirement?",
+    "options": [
+      {"letter": "A", "text": "Download logs manually from Runtime Manager every 30 days and store them in S3."},
+      {"letter": "B", "text": "Purchase Anypoint Titanium, which natively extends CloudHub log retention to one year."},
+      {"letter": "C", "text": "Configure a custom Log4j2 appender to forward logs to an external SIEM, and optionally disable CloudHub logging."},
+      {"letter": "D", "text": "Use Object Store to save log payloads to a persistent Object Store v2."}
+    ],
+    "explanation": "Forwarding logs to an external SIEM provides durable, centrally managed retention beyond CloudHub's application log retention limits.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "Manual periodic downloads are operationally fragile and do not provide a sound continuous archival strategy."},
+      "B": {"type": "Incorrect", "text": "A subscription tier does not guarantee one-year CloudHub log retention for compliance archives."},
+      "C": {"type": "Correct", "text": "An external SIEM can retain forwarded application logs for the required period; CloudHub logging can also be disabled if needed."},
+      "D": {"type": "Incorrect", "text": "Object Store is not an appropriate mechanism for capturing and archiving application logs."}
+    },
+    "references": {},
+    "correctAnswer": "C"
+  },
+  {
+    "id": "q-185",
+    "number": 185,
+    "title": "Monitoring and Observability - Cross-application metrics dashboard",
+    "domain": "Monitoring and Observability",
+    "topics": ["Anypoint Monitoring", "Custom Dashboards"],
+    "prompt": "An architect wants one dashboard showing CPU utilization of a System API, memory utilization of a Process API, and average response time of an Experience API side by side. Which Anypoint Platform feature provides this capability?",
+    "options": [
+      {"letter": "A", "text": "Anypoint Monitoring Custom Dashboards"},
+      {"letter": "B", "text": "Anypoint Monitoring Built-in Dashboards"},
+      {"letter": "C", "text": "Anypoint Visualizer"},
+      {"letter": "D", "text": "API Manager Analytics"}
+    ],
+    "explanation": "Custom dashboards correlate metrics from multiple applications in one view, while built-in dashboards focus on individual applications.",
+    "rationales": {
+      "A": {"type": "Correct", "text": "Custom dashboards can combine the requested metrics from multiple APIs and applications in a single view."},
+      "B": {"type": "Incorrect", "text": "Built-in dashboards show application-specific metrics and do not provide the requested cross-application composition."},
+      "C": {"type": "Incorrect", "text": "Visualizer maps application topology rather than serving as a customizable metrics dashboard."},
+      "D": {"type": "Incorrect", "text": "API Manager Analytics focuses on API usage analytics, not the combined infrastructure and response-time metrics described."}
+    },
+    "references": {},
+    "correctAnswer": "A"
+  },
+  {
+    "id": "q-186",
+    "number": 186,
+    "title": "Monitoring and Observability - Environment visibility in Visualizer",
+    "domain": "Monitoring and Observability",
+    "topics": ["Anypoint Visualizer", "Runtime Manager Permissions"],
+    "prompt": "A developer can see QA dependencies in Anypoint Visualizer but cannot see production dependencies for a set of APIs. What is the most likely reason?",
+    "options": [
+      {"letter": "A", "text": "The Visualizer layer property is missing from the production applications."},
+      {"letter": "B", "text": "The developer lacks Visualizer Editor permission in the production Business Group."},
+      {"letter": "C", "text": "The developer lacks Read Applications permission for the production environment in Runtime Manager."},
+      {"letter": "D", "text": "Visualizer does not automatically support multiple environments."}
+    ],
+    "explanation": "Visualizer visibility respects Runtime Manager environment permissions, so a user needs read access to the production applications.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "A missing layer property can affect classification but does not explain environment-specific access to dependencies."},
+      "B": {"type": "Incorrect", "text": "The issue described is read visibility, not editing the Visualizer canvas."},
+      "C": {"type": "Correct", "text": "Without Read Applications permission in production, the user's production nodes and dependencies are not visible."},
+      "D": {"type": "Incorrect", "text": "Visualizer can display applications from multiple environments when the user has the necessary access."}
+    },
+    "references": {},
+    "correctAnswer": "C"
+  },
+  {
+    "id": "q-187",
+    "number": 187,
+    "title": "Monitoring and Observability - BDD API tests in CI/CD",
+    "domain": "Monitoring and Observability",
+    "topics": ["BAT CLI", "CI/CD", "API Testing"],
+    "prompt": "A DevSecOps pipeline must run standard BDD test suites against newly deployed QA APIs before production deployment. Which tool is designed to execute these tests from the command line in CI/CD?",
+    "options": [
+      {"letter": "A", "text": "MUnit Maven Plugin"},
+      {"letter": "B", "text": "BAT (Behavioral Analytics Tool) CLI"},
+      {"letter": "C", "text": "Anypoint CLI"},
+      {"letter": "D", "text": "API Manager CLI"}
+    ],
+    "explanation": "The BAT CLI executes BDD-style API test suites from a local environment or CI/CD pipeline; MUnit primarily tests Mule application code.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "MUnit tests Mule application code and is not the described deployed-API BDD test runner."},
+      "B": {"type": "Correct", "text": "BAT CLI executes the functional test suites against deployed APIs from command-line pipelines."},
+      "C": {"type": "Incorrect", "text": "Anypoint CLI manages platform resources but is not the BDD API test execution tool."},
+      "D": {"type": "Incorrect", "text": "API Manager CLI does not execute the specified BDD test suites."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-188",
+    "number": 188,
+    "title": "Monitoring and Observability - Troubleshooting cascading API failures",
+    "domain": "Monitoring and Observability",
+    "topics": ["Anypoint Visualizer", "Troubleshooting"],
+    "prompt": "An Experience API intermittently returns 502 Bad Gateway errors. The architect wants to quickly determine whether the Experience API or a downstream Process or System API is failing. Which tool gives the fastest visual representation of the failure chain?",
+    "options": [
+      {"letter": "A", "text": "Runtime Manager Dashboard"},
+      {"letter": "B", "text": "Anypoint Visualizer"},
+      {"letter": "C", "text": "API Manager Alerts"},
+      {"letter": "D", "text": "Access Management Audit Logging"}
+    ],
+    "explanation": "Visualizer maps dependencies and provides troubleshooting views that help locate failing nodes in an API call chain.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "Runtime Manager provides runtime status and metrics but not the visual dependency chain requested."},
+      "B": {"type": "Correct", "text": "Visualizer shows API dependencies and troubleshooting metrics to help identify where errors originate."},
+      "C": {"type": "Incorrect", "text": "API Manager alerts notify about API or policy conditions but do not visually trace downstream dependencies."},
+      "D": {"type": "Incorrect", "text": "Audit logging tracks platform actions and does not diagnose request failures across APIs."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-189",
+    "number": 189,
+    "title": "Monitoring and Observability - Monitoring customer-hosted runtimes",
+    "domain": "Monitoring and Observability",
+    "topics": ["Anypoint Monitoring Agent", "Customer-Hosted Runtimes"],
+    "prompt": "An organization runs customer-hosted Mule runtimes on local VMs and wants to view API metrics and custom dashboards in Anypoint Monitoring. What is required?",
+    "options": [
+      {"letter": "A", "text": "Deploy an API Proxy in CloudHub to route traffic to the on-premises VMs."},
+      {"letter": "B", "text": "Install and configure the Anypoint Monitoring Agent on the on-premises runtime hosts."},
+      {"letter": "C", "text": "Purchase Anypoint Titanium because on-premises monitoring is otherwise disabled."},
+      {"letter": "D", "text": "Set `anypoint.platform.analytics_base_uri` in `wrapper.conf`."}
+    ],
+    "explanation": "Customer-hosted Mule runtimes require the Anypoint Monitoring Agent to collect and send metrics to the cloud monitoring plane.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "A CloudHub proxy is not required to enable monitoring of customer-hosted runtimes."},
+      "B": {"type": "Correct", "text": "The monitoring agent must be installed and configured on the customer-hosted runtime environment."},
+      "C": {"type": "Incorrect", "text": "The stated requirement is to install the agent; Titanium alone does not install or configure it."},
+      "D": {"type": "Incorrect", "text": "This property is not the stated mechanism for enabling customer-hosted Anypoint Monitoring."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-190",
+    "number": 190,
+    "title": "Monitoring and Observability - Tracking application deletion",
+    "domain": "Monitoring and Observability",
+    "topics": ["Access Management", "Audit Logs"],
+    "prompt": "An administrator needs to determine which user deleted a critical Mule application from the CloudHub Production environment yesterday. Which Anypoint Platform feature provides this historical tracking information?",
+    "options": [
+      {"letter": "A", "text": "Runtime Manager Alerts"},
+      {"letter": "B", "text": "Anypoint Monitoring Logs"},
+      {"letter": "C", "text": "Access Management Audit Logs"},
+      {"letter": "D", "text": "API Manager Analytics"}
+    ],
+    "explanation": "Access Management audit logs record user actions across the platform, including resource deletion.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "Runtime Manager alerts report configured runtime events and do not provide the user-action history needed."},
+      "B": {"type": "Incorrect", "text": "Application logs do not serve as the authoritative record of which platform user deleted an application."},
+      "C": {"type": "Correct", "text": "Audit Logs provide historical records of platform actions and identify the user who performed them."},
+      "D": {"type": "Incorrect", "text": "API Manager Analytics reports API usage, not administrative deletion activity."}
+    },
+    "references": {},
+    "correctAnswer": "C"
+  },
+  {
+    "id": "q-191",
+    "number": 191,
+    "title": "Monitoring and Observability - Supported Runtime Manager alert conditions",
+    "domain": "Monitoring and Observability",
+    "topics": ["Runtime Manager Alerts", "CloudHub"],
+    "prompt": "An architect is configuring an alert in Runtime Manager for a CloudHub worker. Which condition is natively supported by Runtime Manager Alerts?",
+    "options": [
+      {"letter": "A", "text": "API response time exceeds 2000 milliseconds."},
+      {"letter": "B", "text": "HTTP 500 error rate exceeds 5% in the last hour."},
+      {"letter": "C", "text": "Worker CPU utilization exceeds 90%."},
+      {"letter": "D", "text": "The API receives a request with an invalid OAuth token."}
+    ],
+    "explanation": "Runtime Manager alerts cover worker infrastructure conditions such as CPU, memory, worker unresponsiveness, and custom notifications.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "API response-time thresholds are monitored through Anypoint Monitoring."},
+      "B": {"type": "Incorrect", "text": "API error-rate thresholds are monitored through Anypoint Monitoring."},
+      "C": {"type": "Correct", "text": "Worker CPU utilization is an infrastructure metric supported by Runtime Manager alerts."},
+      "D": {"type": "Incorrect", "text": "Invalid-token and policy events are associated with API Manager rather than worker alerts."}
+    },
+    "references": {},
+    "correctAnswer": "C"
+  },
+  {
+    "id": "q-192",
+    "number": 192,
+    "title": "Monitoring and Observability - Dynamic request logging without redeployment",
+    "domain": "Monitoring and Observability",
+    "topics": ["API Manager Policies", "Message Logging"],
+    "prompt": "Without changing Mule application source code, an operations team needs to temporarily log incoming HTTP headers and payloads to troubleshoot a production issue. How can this be accomplished?",
+    "options": [
+      {"letter": "A", "text": "Enable Verbose Logging in Runtime Manager application settings."},
+      {"letter": "B", "text": "Apply a Message Logging policy to the API in API Manager."},
+      {"letter": "C", "text": "Add a custom appender to `log4j2.xml` through the Runtime Manager UI."},
+      {"letter": "D", "text": "Use the Anypoint Visualizer troubleshooting overlay."}
+    ],
+    "explanation": "The API Manager Message Logging policy can inject runtime logging for API requests without modifying or redeploying the Mule application.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "Runtime Manager does not provide the described verbose request and payload logging switch."},
+      "B": {"type": "Correct", "text": "Message Logging can log selected request information dynamically at the API policy layer."},
+      "C": {"type": "Incorrect", "text": "The described Runtime Manager UI mechanism for editing application Log4j configuration is not available."},
+      "D": {"type": "Incorrect", "text": "Visualizer troubleshooting views display topology and metrics, not request headers or payloads."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-193",
+    "number": 193,
+    "title": "Monitoring and Observability - Runtime Fabric cluster log forwarding",
+    "domain": "Monitoring and Observability",
+    "topics": ["Runtime Fabric", "Logging"],
+    "prompt": "A company runs multiple APIs on Runtime Fabric and requires all application logs to be sent to a centralized third-party system such as Splunk or ELK. What is the recommended approach?",
+    "options": [
+      {"letter": "A", "text": "Configure log forwarding at the Runtime Fabric cluster level to forward container standard output to the external system."},
+      {"letter": "B", "text": "Modify the `log4j2.xml` of every Mule application on the cluster."},
+      {"letter": "C", "text": "Install the Splunk Connector in every Mule application."},
+      {"letter": "D", "text": "Use BAT CLI to extract logs periodically."}
+    ],
+    "explanation": "Runtime Fabric container logs are emitted to standard output; cluster-level log forwarding provides centralized collection without per-application changes.",
+    "rationales": {
+      "A": {"type": "Correct", "text": "Cluster-level forwarding centralizes standard-output collection and delivery to the external logging system."},
+      "B": {"type": "Incorrect", "text": "Editing every application's logging configuration is more operationally costly than forwarding at the cluster level."},
+      "C": {"type": "Incorrect", "text": "A connector in every application is not the recommended infrastructure-level log collection method."},
+      "D": {"type": "Incorrect", "text": "BAT CLI runs functional tests and is not a log collection or forwarding tool."}
+    },
+    "references": {},
+    "correctAnswer": "A"
+  },
+  {
+    "id": "q-194",
+    "number": 194,
+    "title": "Monitoring and Observability - Diagnosing HTTP 429 responses",
+    "domain": "Monitoring and Observability",
+    "topics": ["Anypoint Monitoring", "API Manager Policies"],
+    "prompt": "An API's Anypoint Monitoring built-in dashboard shows many HTTP 429 (Too Many Requests) errors. What is the most likely cause?",
+    "options": [
+      {"letter": "A", "text": "The CloudHub Shared Load Balancer is dropping connections because of high traffic."},
+      {"letter": "B", "text": "An API Manager Rate Limiting or Spike Control policy is rejecting requests."},
+      {"letter": "C", "text": "The downstream System API is timing out."},
+      {"letter": "D", "text": "The worker has run out of memory."}
+    ],
+    "explanation": "HTTP 429 is typically returned when API Manager enforcement rejects a client request for exceeding a Rate Limiting or Spike Control policy.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "Load balancer connection drops do not typically produce policy-related HTTP 429 responses."},
+      "B": {"type": "Correct", "text": "Rate Limiting and Spike Control policies return 429 when request limits are exceeded."},
+      "C": {"type": "Incorrect", "text": "A downstream timeout generally produces a timeout or gateway error rather than a rate-limit response."},
+      "D": {"type": "Incorrect", "text": "Out-of-memory conditions are not the likely cause of HTTP 429 responses."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-195",
+    "number": 195,
+    "title": "Monitoring and Observability - Custom Visualizer labels",
+    "domain": "Monitoring and Observability",
+    "topics": ["Anypoint Visualizer", "Application Metadata"],
+    "prompt": "A team wants to assign custom labels to APIs in Anypoint Visualizer to distinguish Internal traffic from External partner traffic. Which application property should be configured?",
+    "options": [
+      {"letter": "A", "text": "`anypoint.platform.visualizer.layer=External`"},
+      {"letter": "B", "text": "`anypoint.platform.visualizer.tags=External`"},
+      {"letter": "C", "text": "`anypoint.platform.client_id`"},
+      {"letter": "D", "text": "`anypoint.platform.visualizer.group=External`"}
+    ],
+    "explanation": "The Visualizer tags property adds custom metadata for filtering and grouping; the layer property represents the System, Process, or Experience tier.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "The layer property identifies an architectural tier, not an arbitrary custom traffic label."},
+      "B": {"type": "Correct", "text": "The tags property adds custom labels such as Internal or External for Visualizer filtering."},
+      "C": {"type": "Incorrect", "text": "The client ID property is unrelated to Visualizer custom labels."},
+      "D": {"type": "Incorrect", "text": "The proposed visualizer.group property is not the custom tags property."}
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-196",
+    "number": 196,
+    "title": "Monitoring and Observability - Titanium log search capability",
+    "domain": "Monitoring and Observability",
+    "topics": ["Anypoint Monitoring", "Subscription Tiers"],
+    "prompt": "A company is evaluating Anypoint Titanium. Which capability is explicitly provided by the Titanium tier compared with the Base tier in Anypoint Monitoring?",
+    "options": [
+      {"letter": "A", "text": "Viewing basic CPU and memory metrics in Runtime Manager."},
+      {"letter": "B", "text": "Using Anypoint Visualizer to map dependencies."},
+      {"letter": "C", "text": "Searching logs across all applications in a specific environment simultaneously."},
+      {"letter": "D", "text": "Applying SLA-based Rate Limiting policies."}
+    ],
+    "explanation": "Titanium provides advanced log management, including cross-application log search within an environment.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "Basic runtime CPU and memory metrics are not the distinguishing cross-application log feature."},
+      "B": {"type": "Incorrect", "text": "Visualizer availability is not the capability identified as differentiating Titanium log management."},
+      "C": {"type": "Correct", "text": "Titanium supports searching logs across multiple applications in an environment."},
+      "D": {"type": "Incorrect", "text": "SLA-based Rate Limiting is an API Manager policy capability, not the Titanium monitoring distinction."}
+    },
+    "references": {},
+    "correctAnswer": "C"
+  },
+  {
+    "id": "q-197",
+    "number": 197,
+    "title": "Monitoring and Observability - CloudHub worker unresponsiveness",
+    "domain": "Monitoring and Observability",
+    "topics": ["Runtime Manager Alerts", "CloudHub"],
+    "prompt": "A CloudHub 1.0 application occasionally becomes unresponsive, and the team configures a Runtime Manager Worker Unresponsive alert. How does Runtime Manager determine that a worker is unresponsive?",
+    "options": [
+      {"letter": "A", "text": "It pings the application's `/api/status` endpoint every 10 seconds."},
+      {"letter": "B", "text": "It monitors the internal Hazelcast cluster heartbeat."},
+      {"letter": "C", "text": "CloudHub infrastructure monitors the underlying AWS instance and Mule Agent heartbeats from the worker."},
+      {"letter": "D", "text": "It checks whether worker CPU has remained at 100% for more than five minutes."}
+    ],
+    "explanation": "CloudHub relies on infrastructure health and Mule Agent heartbeats; loss of the worker ping or an impaired instance can cause an unresponsive status.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "The alert does not depend on repeatedly requesting an application-specific status endpoint."},
+      "B": {"type": "Incorrect", "text": "The described worker-health determination is not based on a Hazelcast cluster heartbeat."},
+      "C": {"type": "Correct", "text": "CloudHub infrastructure and Mule Agent heartbeats provide the signals used to detect worker unresponsiveness."},
+      "D": {"type": "Incorrect", "text": "High CPU can be monitored separately; it is not the definition of worker unresponsiveness."}
+    },
+    "references": {},
+    "correctAnswer": "C"
+  },
+  {
+    "id": "q-198",
+    "number": 198,
+    "title": "Monitoring and Observability - Visualizer error indicator",
+    "domain": "Monitoring and Observability",
+    "topics": ["Anypoint Visualizer", "Troubleshooting"],
+    "prompt": "In an Anypoint Visualizer canvas, a Process API node has a bold red circle around it. What does this indicator mean in the troubleshooting and metrics view?",
+    "options": [
+      {"letter": "A", "text": "The API's CPU utilization is above 90%."},
+      {"letter": "B", "text": "The application has crashed and its CloudHub worker is offline."},
+      {"letter": "C", "text": "The API has experienced failing requests, such as HTTP 5xx responses, in the selected time range."},
+      {"letter": "D", "text": "The API is missing an active Autodiscovery configuration."}
+    ],
+    "explanation": "The red indicator highlights request failures in the selected time range, rather than worker health, CPU thresholds, or Autodiscovery configuration.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "The red ring represents failing requests, not a specified CPU threshold."},
+      "B": {"type": "Incorrect", "text": "The indicator does not specifically mean the worker is offline or the application has crashed."},
+      "C": {"type": "Correct", "text": "The red ring marks API request failures such as 5xx responses during the selected period."},
+      "D": {"type": "Incorrect", "text": "Visualizer's red error indicator is not an Autodiscovery configuration warning."}
+    },
+    "references": {},
+    "correctAnswer": "C"
+  },
+  {
+    "id": "q-199",
+    "number": 199,
+    "title": "Monitoring and Observability - Registering an implementation with API Manager",
+    "domain": "Monitoring and Observability",
+    "topics": ["API Autodiscovery", "API Manager"],
+    "prompt": "A team needs its CloudHub API implementation to register with API Manager so that analytics and policy enforcement are activated. Which configuration is mandatory in the Mule application?",
+    "options": [
+      {"letter": "A", "text": "Add the Anypoint Monitoring Agent to the `pom.xml`."},
+      {"letter": "B", "text": "Configure the API Autodiscovery global element with the API Manager API ID."},
+      {"letter": "C", "text": "Set `anypoint.platform.analytics_base_uri` to `true`."},
+      {"letter": "D", "text": "Configure a custom Log4j2 appender to send data to API Manager."}
+    ],
+    "explanation": "API Autodiscovery binds a running Mule application to its API Manager instance, enabling policy enforcement and API analytics.",
+    "rationales": {
+      "A": {"type": "Incorrect", "text": "The monitoring agent is not the mechanism that registers an API implementation with API Manager."},
+      "B": {"type": "Correct", "text": "The Autodiscovery global element and correct API ID bind the running application to its API Manager API instance."},
+      "C": {"type": "Incorrect", "text": "This property is not a replacement for configuring API Autodiscovery."},
+      "D": {"type": "Incorrect", "text": "Log4j2 appenders send logs, not API registration or policy enforcement metadata."}
+    },
+    "references": {},
+    "correctAnswer": "B"
   }
 ];
