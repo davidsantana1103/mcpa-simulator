@@ -343,6 +343,13 @@
 
     // Prompt
     dom.questionPrompt.textContent = q.prompt;
+    if (q.image) {
+      const img = document.createElement('img');
+      img.src = q.image;
+      img.alt = 'Question exhibit';
+      img.className = 'question-image';
+      dom.questionPrompt.appendChild(img);
+    }
 
     // Render Options
     dom.optionsList.innerHTML = '';

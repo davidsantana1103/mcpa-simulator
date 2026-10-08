@@ -12201,5 +12201,990 @@ window.MCPA_QUESTIONS = [
     },
     "references": {},
     "correctAnswer": "B"
+  },
+  {
+    "id": "q-220",
+    "number": 220,
+    "title": "Messaging - What requirement prevents using Anypoint MQ as the messaging broker fo",
+    "domain": "Messaging",
+    "topics": [
+      "Messaging"
+    ],
+    "prompt": "What requirement prevents using Anypoint MQ as the messaging broker for a Mule application?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "When the payload sent through the message broker must be encrypted"
+      },
+      {
+        "letter": "B",
+        "text": "When the messaging broker must be deployed on-premises"
+      },
+      {
+        "letter": "C",
+        "text": "When the payload sent through the message broker must use XML format"
+      },
+      {
+        "letter": "D",
+        "text": "When the messaging broker must support point-to-point messaging"
+      }
+    ],
+    "explanation": "Correct answer: B.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      }
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-221",
+    "number": 221,
+    "title": "Deployment Options - A company is modernizing its legacy systems to accelerate access to ap",
+    "domain": "Deployment Options",
+    "topics": [
+      "Deployment Options"
+    ],
+    "prompt": "A company is modernizing its legacy systems to accelerate access to applications and data while supporting the adoption of new technologies. The key to achieving this business goal is unlocking the company's systems and data, including a set of existing services hosted on-premises that can be accessed by authorized external clients. The IT staff is mainly experienced only with supporting its legacy systems. Considering the current aggressive backlog and the project delivery requirements, the company wants to take a strategic approach in the first phase of its transformation projects by quickly deploying APIs in Mule runtimes that are able to scale, connect to on-premises systems, and migrate as needed. Following MuleSoft best practices, what MuleSoft runtime deployment option best meets the company's goals to begin its digital transformation journey?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Customer-hosted self-provisioned runtimes"
+      },
+      {
+        "letter": "B",
+        "text": "CloudHub runtimes"
+      },
+      {
+        "letter": "C",
+        "text": "Runtime Fabric on VMs/bare metal"
+      },
+      {
+        "letter": "D",
+        "text": "Customer-hosted runtimes provisioned by a MuleSoft services partner"
+      }
+    ],
+    "explanation": "Correct answer: B.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      }
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-222",
+    "number": 222,
+    "title": "Integration Interfaces - An airline is architecting an API-led connectivity project to integrat",
+    "domain": "Integration Interfaces",
+    "topics": [
+      "Integration Interfaces"
+    ],
+    "prompt": "An airline is architecting an API-led connectivity project to integrate its flight data into an online aggregation website. The connections must allow for secured communication, high performance, and asynchronous message exchange. What are suitable interface technologies for the connectors in this integration assuming that MuleSoft fully supports those technologies and that Anypoint Connectors exist for these interfaces?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "SOAP over HTTPS, HOP over TLS, gRPC over HTTPS"
+      },
+      {
+        "letter": "B",
+        "text": "AsyncAPI over SQS, AMQP with RabbitMQ, JSON/REST over HTTPS"
+      },
+      {
+        "letter": "C",
+        "text": "XML over ActiveMQ, XML over FTP, XML/REST over HTTPS"
+      },
+      {
+        "letter": "D",
+        "text": "CSV over FTP, YAML over TLS, JSON over HTTPS"
+      }
+    ],
+    "explanation": "Correct answer: B.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      }
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-223",
+    "number": 223,
+    "title": "Messaging - A Mule solution implements an Experience API and System API as Mule ap",
+    "domain": "Messaging",
+    "topics": [
+      "Messaging"
+    ],
+    "prompt": "A Mule solution implements an Experience API and System API as Mule applications that process messages in this order:\n1. The Experience API receives a request Anypoint MQ message (REQU) with a payload containing a variable-length list of request objects.\n2. The Experience API uses a For Each scope to split the list into individual objects and sends each object as a REQU_OBJECT message to an Anypoint MQ queue named REQUEST.\n3. The System API listens on the REQUEST queue, processes each message independently of all other messages, and sends a response message to a response queue named RESPONSE_OBJECT. The System API processing times can vary and are occasionally fairly long.\n4. The Experience API listens on the RESPONSE_OBJECT queue and receives, transforms, and accumulates each response.\n5. After receiving all the responses corresponding to the original REQU message, the Experience API creates and publishes a response Anypoint MQ message (RESP) to an Anypoint MQ queue named RESPONSE with a payload containing the list of responses returned by the System API, organized in the same order as the request objects originally sent in the REQU message.\nAssume successful response messages are returned by Experience API to the RESPONSE queue for all REQU messages. What is required so the Experience API can ensure the length and order of the list of objects in RESP and REQU match, while at the same time maximizing message throughput?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "After the For Each scope, add a second For Each scope configured with a persistent object store to collect response messages in the order in which they arrive, and then send the RESP message using this list of responses."
+      },
+      {
+        "letter": "B",
+        "text": "Use a persistent object store to keep track of the list length and all object indexes in the REQU message, both in the For Each scope and in all communication involving the System API. Set the maxConcurrency parameter for the receiving flow in the Experience API to a value greater than 1."
+      },
+      {
+        "letter": "C",
+        "text": "Use a Scatter-Gather within the For Each scope to ensure response message order. Configure the Scatter-Gather with a persistent object store."
+      },
+      {
+        "letter": "D",
+        "text": "Perform all communication involving the System API synchronously from within the For Each scope so that responses in RESPONSE_OBJECT are in the exact same order as request objects in the RESP message. Within the For Each scope, use an Async scope configured with a persistent object store."
+      }
+    ],
+    "explanation": "Correct answer: B.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      }
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-224",
+    "number": 224,
+    "title": "Deployment Options - An insurance company is designing a hybrid, load-balanced, single-clus",
+    "domain": "Deployment Options",
+    "topics": [
+      "Deployment Options"
+    ],
+    "prompt": "An insurance company is designing a hybrid, load-balanced, single-cluster runtime production environment. Due to performance Service Level Agreement (SLA) goals, it is looking into running the Mule applications in an active-active multi-node cluster configuration. What should be considered when running its Mule applications in this type of environment?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Although the cluster environment is fully installed, configured, and running, it will not process any requests until an outage condition is detected by the primary node in the cluster"
+      },
+      {
+        "letter": "B",
+        "text": "A Mule application deployed to multiple nodes runs in isolation from the other nodes in the cluster"
+      },
+      {
+        "letter": "C",
+        "text": "All event sources, regardless of type, can be configured as the target source by the primary node in the cluster"
+      },
+      {
+        "letter": "D",
+        "text": "An external load balancer is required to distribute incoming TCP/HTTP requests throughout the cluster nodes"
+      }
+    ],
+    "explanation": "Correct answer: D.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      }
+    },
+    "references": {},
+    "correctAnswer": "D"
+  },
+  {
+    "id": "q-225",
+    "number": 225,
+    "title": "Performance - A marketing organization is designing a Mule application to process ca",
+    "domain": "Performance",
+    "topics": [
+      "Performance"
+    ],
+    "prompt": "A marketing organization is designing a Mule application to process campaign data. The Mule application will periodically check for a file in an SFTP location and process the records in the file. The size of the file can vary from 10MB to 5GB. Due to the limited availability of vCores, the Mule application is deployed to a single CloudHub worker/replica configured with vCore size 0.2. The application must transform and send different formats of this file to three different downstream SFTP locations. What is the most direct way to configure the SFTP operations or event sources to process the large files to support these deployment requirements?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Use a file-stored repeatable stream"
+      },
+      {
+        "letter": "B",
+        "text": "Use a file-stored nonrepeatable stream"
+      },
+      {
+        "letter": "C",
+        "text": "Use an in-memory repeatable stream"
+      },
+      {
+        "letter": "D",
+        "text": "Use an in-memory nonrepeatable stream"
+      }
+    ],
+    "explanation": "Correct answer: A.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      }
+    },
+    "references": {},
+    "correctAnswer": "A"
+  },
+  {
+    "id": "q-226",
+    "number": 226,
+    "title": "Security - A new Mule application has been deployed through Runtime Manager to Cl",
+    "domain": "Security",
+    "topics": [
+      "Security"
+    ],
+    "prompt": "A new Mule application has been deployed through Runtime Manager to CloudHub 1.0 using a CI/CD pipeline with sensitive properties set as cleartext. The Runtime Manager Administrator opened a high priority incident ticket about this violation of their security requirements indicating these sensitive properties values must not be stored or visible in Runtime Manager but should be changeable in Runtime Manager by Administrators with proper permissions. How can the Mule application be deployed while safely hiding the sensitive properties?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Add encrypted versions of the sensitive properties as global configuration properties in the Mule application"
+      },
+      {
+        "letter": "B",
+        "text": "Add a new wrapper.java.additional.XX parameter for each sensitive property in the wrapper.conf file used by the CI/CD pipeline scripts"
+      },
+      {
+        "letter": "C",
+        "text": "Create a variable for each sensitive property and declare them as hidden in the CI/CD pipeline scripts"
+      },
+      {
+        "letter": "D",
+        "text": "Add an ArrayList of all the sensitive properties' names in the mule-artifact.json file of the application"
+      }
+    ],
+    "explanation": "Correct answer: D.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      }
+    },
+    "references": {},
+    "correctAnswer": "D"
+  },
+  {
+    "id": "q-227",
+    "number": 227,
+    "title": "Application Design - An organization has built a large monolithic application over the year",
+    "domain": "Application Design",
+    "topics": [
+      "Application Design"
+    ],
+    "prompt": "An organization has built a large monolithic application over the years and is currently looking to transition to a microservices architecture. During this transition phase, it has built some System APIs as Mule applications that provide access to different pieces of functionality of the monolithic application. The System APIs are deployed to Mule runtimes in a customer-hosted EC2 instance in AWS. The System APIs communicate directly with one database used by the monolithic application. Currently, a Database connector and configuration for that connector must be built into every project. There is a plan to partition this database into various smaller data stores in the future. What is the MuleSoft-recommended best practice to share the connector and configuration information among the APIs?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Build a separate Mule domain project for each API, and configure each of them to use a file on a shared file store to load the configuration information dynamically"
+      },
+      {
+        "letter": "B",
+        "text": "Create an API proxy for each System API and share the Database connector configuration with all the API proxies via an automated policy"
+      },
+      {
+        "letter": "C",
+        "text": "Build another System API that connects to the database, and refactor all the other APIs to make requests through the new System API to access the database"
+      },
+      {
+        "letter": "D",
+        "text": "Build a Mule domain project, add the Database connector and configuration to it, and reference this one domain project from each System API"
+      }
+    ],
+    "explanation": "Correct answer: D.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      }
+    },
+    "references": {},
+    "correctAnswer": "D"
+  },
+  {
+    "id": "q-228",
+    "number": 228,
+    "title": "Reliability - An architect is designing a Mule application to meet the following two",
+    "domain": "Reliability",
+    "topics": [
+      "Reliability"
+    ],
+    "prompt": "An architect is designing a Mule application to meet the following two requirements:\n1. The application must process files asynchronously and reliably from an FTPS server to a back-end database using VM intermediary queues for load-balancing Mule events.\n2. The application must process a medium rate of records from a source to a target system using a Batch Job scope.\nTo make the Mule application more reliable, the Mule application will be deployed to two CloudHub 1.0 workers. Following MuleSoft-recommended best practices, how should the Mule application deployment typically be configured in Runtime Manager to best support the performance and reliability goals of both the Batch Job scope and the file processing VM queues?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "In the Runtime Manager Properties tab, enable persistent VM queues for the FTPS connector"
+      },
+      {
+        "letter": "B",
+        "text": "Check the Non-persistent VM queues checkbox in the application deployment configuration"
+      },
+      {
+        "letter": "C",
+        "text": "In the Runtime Manager Properties tab, disable persistent VM queues for Batch Job scopes"
+      },
+      {
+        "letter": "D",
+        "text": "Check the Persistent VM queues checkbox in the application deployment configuration"
+      }
+    ],
+    "explanation": "Correct answer: D.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      }
+    },
+    "references": {},
+    "correctAnswer": "D"
+  },
+  {
+    "id": "q-229",
+    "number": 229,
+    "title": "Deployment Options - Refer to the exhibit.",
+    "domain": "Deployment Options",
+    "topics": [
+      "Deployment Options"
+    ],
+    "prompt": "Refer to the exhibit.\nA customer is running Mule applications on Runtime Fabric for Self-Managed Kubernetes (RTF-BYOK8) in a multi-cloud environment. Based on this configuration, how do Agents and Runtime Manager communicate, and what is exchanged between them?",
+    "image": "images/q229.svg",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Agents communicate with Runtime Manager to provide updates on cluster status, download images, and update Mule applications (automatically when available) from the container registry"
+      },
+      {
+        "letter": "B",
+        "text": "Agents communicate with Runtime Manager to provide updates on cluster status, download images, and update Mule applications (when available and chosen to do so by customer) from the container registry"
+      },
+      {
+        "letter": "C",
+        "text": "Runtime Manager initiates traffic to Agents to check the status of clusters and auto-deploys new images when updates to Mule applications are available"
+      },
+      {
+        "letter": "D",
+        "text": "Runtime Manager communicates with Agents to provide updates on cluster status, download images, and update Mule applications (when available and chosen to do so by customer) from the container registry"
+      }
+    ],
+    "explanation": "Correct answer: B.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      }
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-230",
+    "number": 230,
+    "title": "Security - A Mule application is designed to call the Google Maps API to perform",
+    "domain": "Security",
+    "topics": [
+      "Security"
+    ],
+    "prompt": "A Mule application is designed to call the Google Maps API to perform a distance computation, and is deployed to CloudHub. At a minimum, what (if anything) should be configured in the TLS context of the HTTP Request configuration to meet these requirements?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Download the Google public certificate from a browser, generate a JKS file from it, and add it in TrustStore as part of the TLS context"
+      },
+      {
+        "letter": "B",
+        "text": "The configuration is built-in and nothing extra is required for the TLS context"
+      },
+      {
+        "letter": "C",
+        "text": "Request a private key from Google, create a PKCS#12 file with it, and add it in KeyStore as part of the TLS context"
+      },
+      {
+        "letter": "D",
+        "text": "Download the Google public certificate from a browser, generate a JKS file from it, and add it in KeyStore as part of the TLS context"
+      }
+    ],
+    "explanation": "Correct answer: B.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      }
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-231",
+    "number": 231,
+    "title": "Performance - A bank is implementing a REST API in a Mule application to receive an",
+    "domain": "Performance",
+    "topics": [
+      "Performance"
+    ],
+    "prompt": "A bank is implementing a REST API in a Mule application to receive an array of accounts from an online banking platform user interface (UI), retrieve account balances for those accounts from a backend Finance system, and then return the account balances so they can be displayed in the online banking platform UI. As part of the processing, the MuleSoft API also needs to insert the retrieved account data into an Audit Database for auditing purposes, the auditing process should not add latency to the account balance retrieval response back to the online banking platform UI. The retrieveBalances flow in the Mule application is designed to use an operation in a connector to the Finance system (the Finance operation) that can only look up one account record at a time, and a operation from a different connector to the Audit system (the Audit operation) that can only insert one account record at a time. To best meet the performance-related requirements, what scope or scopes should be used and how should they be used to incorporate the Finance operation and Audit operation into the retrieveBalances flow?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Wrap both connector operations in a Async scope."
+      },
+      {
+        "letter": "B",
+        "text": "Wrap both connector operations in a For-Each scope."
+      },
+      {
+        "letter": "C",
+        "text": "Wrap the Finance operation in a Until-Successful scope. Wrap the Audit operation in a Try-Catch scope."
+      },
+      {
+        "letter": "D",
+        "text": "Wrap the Finance operation in a Parallel For-Each scope. Wrap the Audit operation in a Async scope."
+      }
+    ],
+    "explanation": "Correct answer: D.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      }
+    },
+    "references": {},
+    "correctAnswer": "D"
+  },
+  {
+    "id": "q-232",
+    "number": 232,
+    "title": "Messaging - A manufacturing company wants to share inventory updates with dealers",
+    "domain": "Messaging",
+    "topics": [
+      "Messaging"
+    ],
+    "prompt": "A manufacturing company wants to share inventory updates with dealers D1 and D2 asynchronously and concurrently via Queues Q1 and Q2. Dealer D1 must consume the messages from the Queue Q1, and Dealer D2 must consume the messages from the Queue Q2. Dealer D1 has implemented a retry mechanism to reprocess the transaction in case of any errors while processing the inventory updates. Dealer D2 has not implemented any retry mechanism. How should the dealers acknowledge the message to avoid message loss and minimize impact on the current implementation?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Dealer D1 can use AUTO acknowledgement and Dealer D2 must use MANUAL acknowledgment and acknowledge the message after successful processing"
+      },
+      {
+        "letter": "B",
+        "text": "Dealer D1 and Dealer D2 must use AUTO acknowledgement and acknowledge the message after successful processing"
+      },
+      {
+        "letter": "C",
+        "text": "Dealer D1 can use AUTO acknowledgement and Dealer D2 can use IMMEDIATE acknowledgment and acknowledge the message after successful processing"
+      },
+      {
+        "letter": "D",
+        "text": "Dealer D2 must use AUTO acknowledgement and Dealer D1 can use MANUAL acknowledgment and acknowledge the message after successful processing"
+      }
+    ],
+    "explanation": "Correct answer: A.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      }
+    },
+    "references": {},
+    "correctAnswer": "A"
+  },
+  {
+    "id": "q-233",
+    "number": 233,
+    "title": "CI/CD - An organization is in the process of building automated deployments us",
+    "domain": "CI/CD",
+    "topics": [
+      "CI/CD"
+    ],
+    "prompt": "An organization is in the process of building automated deployments using a CI/CD process. As a part of automated deployments, it wants to apply policies to API instances. What tool can the organization use to promote and deploy API Manager policies?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Runtime Manager agent"
+      },
+      {
+        "letter": "B",
+        "text": "Mule Maven plugin"
+      },
+      {
+        "letter": "C",
+        "text": "MUnit Maven plugin"
+      },
+      {
+        "letter": "D",
+        "text": "Anypoint CLI"
+      }
+    ],
+    "explanation": "Correct answer: D.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      }
+    },
+    "references": {},
+    "correctAnswer": "D"
+  },
+  {
+    "id": "q-234",
+    "number": 234,
+    "title": "Transactions - How does a timeout attribute in a configured transaction manager help",
+    "domain": "Transactions",
+    "topics": [
+      "Transactions"
+    ],
+    "prompt": "How does a timeout attribute in a configured transaction manager help inform design decisions while using a JMS connector listening for incoming messages in an extended Architecture (XA) transaction managed by the transaction manager?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The timeout defines the time that is allowed to pass without the transaction ending explicitly, and after the timeout expires, the transaction rolls back"
+      },
+      {
+        "letter": "B",
+        "text": "The time allowed to pass between committing the transaction and the completion of the Mule flow, and then after the timeout, flow processing triggers an error"
+      },
+      {
+        "letter": "C",
+        "text": "After the timeout is exceeded, stale JMS consumer threads are destroyed and new threads are created"
+      },
+      {
+        "letter": "D",
+        "text": "The timeout specifies the time allowed to pass between receiving JMS messages on the same JMS connection, and then after the timeout, a new JMS connection is established"
+      }
+    ],
+    "explanation": "Correct answer: A.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      }
+    },
+    "references": {},
+    "correctAnswer": "A"
+  },
+  {
+    "id": "q-235",
+    "number": 235,
+    "title": "API Governance - Following MuleSoft's recommended best practices for API governance and",
+    "domain": "API Governance",
+    "topics": [
+      "API Governance"
+    ],
+    "prompt": "Following MuleSoft's recommended best practices for API governance and API policies, a project team has used RAML specifications to document and publish functional requirements and detailed design definitions of its APIs. These API specifications have been used by various stakeholders to implement APIs. Later, the project team requires all API specifications to be augmented with an additional non-functional requirement (NFR) to protect the backend services from a high rate of requests, according to defined service-level agreements (SLAs). The NFR's SLAs are based on a new tiered subscription level \"Gold\", \"Silver\", or \"Platinum\" that must be tied to a new parameter that is being added to the Accounts object in their enterprise data model. Following MuleSoft's recommended best practices, how should the project team now convey the necessary non-functional requirement to stakeholders?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Create and deploy API proxies in API Manager for the NFR, change the baseUrl in each API specification to the corresponding API proxy implementation endpoint, and publish each modified API specification to Exchange"
+      },
+      {
+        "letter": "B",
+        "text": "Create a shared RAML fragment required to implement the NFR, list each API implementation endpoint in the RAML fragment, and publish the RAML fragment to Exchange"
+      },
+      {
+        "letter": "C",
+        "text": "Update each API specification with a shared RAML fragment required to implement the NFR and publish the RAML fragment and each modified API specification to Exchange"
+      },
+      {
+        "letter": "D",
+        "text": "Update each API specification with comments about the NFR's SLAs and publish each modified API specification to Exchange"
+      }
+    ],
+    "explanation": "Correct answer: C.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      }
+    },
+    "references": {},
+    "correctAnswer": "C"
+  },
+  {
+    "id": "q-236",
+    "number": 236,
+    "title": "Connectors - Which Salesforce API is invoked to deploy, retrieve, create, update, o",
+    "domain": "Connectors",
+    "topics": [
+      "Connectors"
+    ],
+    "prompt": "Which Salesforce API is invoked to deploy, retrieve, create, update, or delete customization information, such as custom object definitions using Mule Salesforce Connectors in a Mule application?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "sObject Platform Action API"
+      },
+      {
+        "letter": "B",
+        "text": "User Interface API"
+      },
+      {
+        "letter": "C",
+        "text": "Metadata API"
+      },
+      {
+        "letter": "D",
+        "text": "Process Rules API"
+      }
+    ],
+    "explanation": "Correct answer: C.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      }
+    },
+    "references": {},
+    "correctAnswer": "C"
+  },
+  {
+    "id": "q-237",
+    "number": 237,
+    "title": "Application Design - Why would an Enterprise Architect use a single enterprise-wide canonic",
+    "domain": "Application Design",
+    "topics": [
+      "Application Design"
+    ],
+    "prompt": "Why would an Enterprise Architect use a single enterprise-wide canonical data model (CDM) when designing an integration solution using Anypoint Platform?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "To automate AI-enabled API implementation generation based on normalized backend databases from separate vendors"
+      },
+      {
+        "letter": "B",
+        "text": "To reduce dependencies when integrating multiple systems that use different data formats"
+      },
+      {
+        "letter": "C",
+        "text": "To remove the need to perform data transformation when processing message payloads in Mule applications"
+      },
+      {
+        "letter": "D",
+        "text": "To leverage a data abstraction layer that shields existing Mule applications from non-backward compatible changes to the model's data structure"
+      }
+    ],
+    "explanation": "Correct answer: B.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      }
+    },
+    "references": {},
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-238",
+    "number": 238,
+    "title": "Performance - Refer to the exhibit.",
+    "domain": "Performance",
+    "topics": [
+      "Performance"
+    ],
+    "prompt": "Refer to the exhibit.\nA manufacturing company is developing a new set of APIs for its retail business. One of the APIs is a Master Look Up API, which is a System API. The API uses a persistent object-store. This API will be used by almost all other APIs to provide master lookup data. The Master Look Up API is deployed on two CloudHub workers of 0.1 vCore each because there is a lot of master data to be cached. Most of the master lookup data is stored as a key-value pair. The cache gets refreshed if the key is not found in the cache. During performance testing, it was determined that the Master Look Up API has a high response time due to the latency of database queries executed to fetch the master lookup data. What two methods can be used to resolve these performance issues? (Select all correct answers)",
+    "image": "images/q238.svg",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Implement locking to synchronize access to the Object Store"
+      },
+      {
+        "letter": "B",
+        "text": "Upgrade the vCore size from 0.1 vCore to 0.2 vCore"
+      },
+      {
+        "letter": "C",
+        "text": "Implement the HTTP caching policy for all GET endpoints for the Master Look Up API"
+      },
+      {
+        "letter": "D",
+        "text": "Implement an HTTP caching policy for all GET endpoints in the Master Look Up API"
+      }
+    ],
+    "explanation": "Correct answer: B, D.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      }
+    },
+    "references": {},
+    "correctAnswers": [
+      "B",
+      "D"
+    ]
+  },
+  {
+    "id": "q-239",
+    "number": 239,
+    "title": "CI/CD - An organization is using MuleSoft to develop APIs and automatically de",
+    "domain": "CI/CD",
+    "topics": [
+      "CI/CD"
+    ],
+    "prompt": "An organization is using MuleSoft to develop APIs and automatically deploy them to both CloudHub and on-premises targets. Recently, it has decided to include Runtime Fabric deployment targets as well, and Mule infrastructure is set up for this option. What can now be used to automate deploying Mule applications to all three types of deployment targets?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The Object Store v2 REST API"
+      },
+      {
+        "letter": "B",
+        "text": "The Mule Maven plugin"
+      },
+      {
+        "letter": "C",
+        "text": "Anypoint Monitoring agent configuration file"
+      },
+      {
+        "letter": "D",
+        "text": "The Runtime Manager agent configuration file"
+      }
+    ],
+    "explanation": "Correct answer: B.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "This is the correct answer."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "This option does not satisfy the requirements."
+      }
+    },
+    "references": {},
+    "correctAnswer": "B"
   }
 ];
