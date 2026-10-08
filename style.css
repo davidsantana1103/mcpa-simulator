@@ -767,3 +767,14 @@ body {
   padding-bottom: 0.3rem;
   border-bottom: 1px solid var(--border);
 }
+
+.question-prompt { white-space: pre-line; }
+
+.question-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-top: 1rem;
+  border-radius: 6px;
+  background: #fff;
+}
