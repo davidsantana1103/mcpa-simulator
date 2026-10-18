@@ -13186,5 +13186,321 @@ window.MCPA_QUESTIONS = [
     },
     "references": {},
     "correctAnswer": "B"
+  },
+  {
+    "id": "q-240",
+    "number": 240,
+    "title": "Anypoint Visualizer - Which application property sets a",
+    "domain": "Anypoint Visualizer",
+    "topics": [
+      "Anypoint Visualizer",
+      "Application Metadata"
+    ],
+    "prompt": "An architect wants the node for the Orders System API to show a friendly, readable title on the Anypoint Visualizer canvas instead of its deployed application name. Which application property should be configured?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "anypoint.platform.visualizer.layer=Orders System API"
+      },
+      {
+        "letter": "B",
+        "text": "anypoint.platform.visualizer.displayName=Orders System API"
+      },
+      {
+        "letter": "C",
+        "text": "anypoint.platform.visualizer.tags=Orders System API"
+      },
+      {
+        "letter": "D",
+        "text": "anypoint.platform.client_id=Orders System API"
+      }
+    ],
+    "explanation": "The application property anypoint.platform.visualizer.displayName=<name> sets the display name shown for a node on the API Visualizer canvas. It is an application property, not a server property, so it can be supplied at deployment time through Runtime Manager, CI/CD, or the platform API. The layer property controls layer assignment and the tags property controls tag filters; neither changes the node's displayed title.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "anypoint.platform.visualizer.layer assigns the node to a layer; it does not change the node's displayed name."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "anypoint.platform.visualizer.displayName=<name> sets the readable title displayed for the node on the canvas."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "anypoint.platform.visualizer.tags adds tags used for filtering views; it does not rename the node."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "anypoint.platform.client_id identifies a client application for policy and tracking purposes; it is not a Visualizer display-name property."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Customize the API Visualizer Canvas — Display Name",
+        "url": "https://docs.mulesoft.com/visualizer/customize-your-canvas"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Visualizer — Customizing Node Metadata via Runtime Properties",
+        "url": "https://docs.mulesoft.com/visualizer/architecture-visualization"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-241",
+    "number": 241,
+    "title": "Anypoint Visualizer - In the Policy visualization an API node",
+    "domain": "Anypoint Visualizer",
+    "topics": [
+      "Anypoint Visualizer",
+      "Policy Compliance"
+    ],
+    "prompt": "In the Anypoint Visualizer Policy visualization, an architect selects several InfoSec policies in the Policies card. One API node on the canvas turns green. What does this indicate?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The API has no policies applied to it at all."
+      },
+      {
+        "letter": "B",
+        "text": "The API is compliant with all of the selected policies."
+      },
+      {
+        "letter": "C",
+        "text": "The API's failure rate is above the configured threshold."
+      },
+      {
+        "letter": "D",
+        "text": "The API has been promoted to the production environment."
+      }
+    ],
+    "explanation": "Compliance mode becomes active when you select one or more policies in the Policies card. The number shown on an API node represents how many of the selected policies it complies with, and an API that complies with all of the selected policies turns green. A fraction, such as 2/3, signals partial compliance, and failure rate or promotion status are unrelated to this indicator.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "A node with no policies applied does not comply with the selected policies, so it would not turn green."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "In compliance mode, an API that complies with all of the selected policies turns green."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Failure rate is a metric in the Troubleshooting visualization, not a Policy visualization compliance indicator."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Environment promotion is not represented by the green compliance state; the Policy visualization reports policy compliance."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Viewing Policies in API Visualizer — Compliance Mode",
+        "url": "https://docs.mulesoft.com/visualizer/policy-visualization"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Platform Governance — Policy Compliance in the Application Network",
+        "url": "https://docs.mulesoft.com/visualizer/policy-visualization"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-242",
+    "number": 242,
+    "title": "Anypoint Visualizer - A team assigns the tag partner-external to",
+    "domain": "Anypoint Visualizer",
+    "topics": [
+      "Anypoint Visualizer",
+      "Tags"
+    ],
+    "prompt": "A team assigns the tag partner-external to a Mule application using the anypoint.platform.visualizer.tags application property at deployment time. What is the effect of this configuration in the Anypoint Visualizer UI?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The tag can be renamed and removed from the Customization section in the UI."
+      },
+      {
+        "letter": "B",
+        "text": "The tag appears on the node but cannot be modified or overridden in the UI; it must be changed in the application properties."
+      },
+      {
+        "letter": "C",
+        "text": "The tag is applied only to the production environment and must be re-added for sandbox."
+      },
+      {
+        "letter": "D",
+        "text": "The tag replaces the node's layer assignment."
+      }
+    ],
+    "explanation": "Tags set through the anypoint.platform.visualizer.tags property are controlled by the application properties. You can add tags in the UI, but you cannot override or modify a tag that was assigned through properties; it must be changed in the application's properties file. Tags and layers are independent, and tags are not restricted to a single environment.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Tags assigned via properties cannot be modified or removed from the UI; they must be changed in the application properties."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Property-assigned tags are shown on the node but cannot be overridden in the UI and must be edited in the application properties."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "The tags property is not scoped to production; a tag is applied wherever the application is deployed."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Tags and layers are separate customizations; assigning a tag does not change the node's layer."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Using Tags in API Visualizer — Set the Tag Using Properties",
+        "url": "https://docs.mulesoft.com/visualizer/use-tags-in-visualizer"
+      },
+      "architectureGuide": {
+        "title": "Customize the API Visualizer Canvas — Tags",
+        "url": "https://docs.mulesoft.com/visualizer/customize-your-canvas"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-243",
+    "number": 243,
+    "title": "Anypoint Visualizer - An architect notices that a connection is",
+    "domain": "Anypoint Visualizer",
+    "topics": [
+      "Anypoint Visualizer",
+      "Troubleshooting"
+    ],
+    "prompt": "An architect notices that a connection (edge) is displayed between a Process API and a System API on the Anypoint Visualizer canvas, but another pair of APIs defined in the same project shows no edge. What is the most likely explanation?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Visualizer only draws edges between APIs assigned to the same layer."
+      },
+      {
+        "letter": "B",
+        "text": "Edges are drawn only when there has been traffic between the applications in the past seven days."
+      },
+      {
+        "letter": "C",
+        "text": "Edges require an API Manager policy to be applied to both APIs."
+      },
+      {
+        "letter": "D",
+        "text": "Edges are hidden until the Anypoint Monitoring agent is disabled."
+      }
+    ],
+    "explanation": "Connections between nodes in API Visualizer are based on traffic that occurred between the applications or APIs in the last seven days. Edges shown between services are therefore active edges; nonactive app edges do not appear on the canvas. Layers, policies, and the Monitoring agent do not gate whether an edge is drawn.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Edges reflect actual traffic between services, not layer membership; APIs in different layers routinely show edges."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Edges are drawn from observed traffic in the past seven days; without traffic in that window, no edge is displayed."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Policies are not a prerequisite for drawing an edge; edges come from traffic data."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Disabling the Monitoring agent would remove metrics, not reveal edges; edges derive from traffic data."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Troubleshooting App Visualization — Connections and Traffic",
+        "url": "https://docs.mulesoft.com/visualizer/troubleshooting-visualization"
+      },
+      "architectureGuide": {
+        "title": "API Visualizer Overview — How Connections Are Determined",
+        "url": "https://docs.mulesoft.com/visualizer/"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-244",
+    "number": 244,
+    "title": "Anypoint Visualizer - A platform architect wants to create a saved",
+    "domain": "Anypoint Visualizer",
+    "topics": [
+      "Anypoint Visualizer",
+      "Views",
+      "Permissions"
+    ],
+    "prompt": "A platform architect wants to create a saved, auto-discoverable view in Anypoint Visualizer so that all team members who have access to the included environments see the same filtered topology. Which permission is required to create this defined view?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Organization Administrator"
+      },
+      {
+        "letter": "B",
+        "text": "API Manager Policy Editor"
+      },
+      {
+        "letter": "C",
+        "text": "Visualizer Editor"
+      },
+      {
+        "letter": "D",
+        "text": "Runtime Manager CloudHub Network Viewer"
+      }
+    ],
+    "explanation": "Only users with the Visualizer Editor permission can create, rename, edit, and delete defined views. Once saved, a defined view is auto-discoverable and available to any API Visualizer user who has permission for the included environments. Organization Administrator, Policy Editor, and CloudHub Network Viewer grant other capabilities and do not by themselves allow creating defined views.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Organization Administrator is a broad platform role; it is not the specific permission that grants view authoring in Visualizer."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "API Manager Policy Editor manages policies; it does not grant the ability to create Visualizer views."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "The Visualizer Editor permission is required to create and save defined views that other users can discover."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "CloudHub Network Viewer affects visibility of network information, not the creation of saved Visualizer views."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Defining a View in API Visualizer — Create a Defined View",
+        "url": "https://docs.mulesoft.com/visualizer/view"
+      },
+      "architectureGuide": {
+        "title": "Troubleshooting API Visualizer — Permissions",
+        "url": "https://docs.mulesoft.com/visualizer/troubleshoot-visualizer"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
+    "correctAnswer": "C"
   }
 ];
