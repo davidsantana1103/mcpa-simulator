@@ -13190,8 +13190,8 @@ window.MCPA_QUESTIONS = [
   {
     "id": "q-240",
     "number": 240,
-    "title": "Anypoint Visualizer - Which application property sets a",
-    "domain": "Anypoint Visualizer",
+    "title": "Monitoring and Observability - Configuring the Visualizer node display name",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Anypoint Visualizer",
       "Application Metadata"
@@ -13240,7 +13240,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/visualizer/customize-your-canvas"
       },
       "architectureGuide": {
-        "title": "Anypoint Visualizer — Customizing Node Metadata via Runtime Properties",
+        "title": "API Visualizer Architecture Visualization — Customization",
         "url": "https://docs.mulesoft.com/visualizer/architecture-visualization"
       },
       "arc720": {
@@ -13253,11 +13253,11 @@ window.MCPA_QUESTIONS = [
   {
     "id": "q-241",
     "number": 241,
-    "title": "Anypoint Visualizer - In the Policy visualization an API node",
-    "domain": "Anypoint Visualizer",
+    "title": "Monitoring and Observability - Visualizer policy compliance indicator",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Anypoint Visualizer",
-      "Policy Compliance"
+      "API Manager Policies"
     ],
     "prompt": "In the Anypoint Visualizer Policy visualization, an architect selects several InfoSec policies in the Policies card. One API node on the canvas turns green. What does this indicate?",
     "options": [
@@ -13278,7 +13278,7 @@ window.MCPA_QUESTIONS = [
         "text": "The API has been promoted to the production environment."
       }
     ],
-    "explanation": "Compliance mode becomes active when you select one or more policies in the Policies card. The number shown on an API node represents how many of the selected policies it complies with, and an API that complies with all of the selected policies turns green. A fraction, such as 2/3, signals partial compliance, and failure rate or promotion status are unrelated to this indicator.",
+    "explanation": "Compliance mode becomes active when you select one or more policies in the Policies card. The number shown on an API node represents how many of the selected policies it complies with, and an API that complies with all of the selected policies turns green. A fraction, such as 2/3, signals partial compliance. Failure rate is a metric in the Troubleshooting visualization, and environment promotion is not represented by this indicator.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -13303,8 +13303,8 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/visualizer/policy-visualization"
       },
       "architectureGuide": {
-        "title": "Anypoint Platform Governance — Policy Compliance in the Application Network",
-        "url": "https://docs.mulesoft.com/visualizer/policy-visualization"
+        "title": "Troubleshooting API Visualizer — Permissions and Metrics",
+        "url": "https://docs.mulesoft.com/visualizer/troubleshoot-visualizer"
       },
       "arc720": {
         "lesson": "Lesson 11 — Application network behavior",
@@ -13316,8 +13316,8 @@ window.MCPA_QUESTIONS = [
   {
     "id": "q-242",
     "number": 242,
-    "title": "Anypoint Visualizer - A team assigns the tag partner-external to",
-    "domain": "Anypoint Visualizer",
+    "title": "Monitoring and Observability - Visualizer tags set via application properties",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Anypoint Visualizer",
       "Tags"
@@ -13341,7 +13341,7 @@ window.MCPA_QUESTIONS = [
         "text": "The tag replaces the node's layer assignment."
       }
     ],
-    "explanation": "Tags set through the anypoint.platform.visualizer.tags property are controlled by the application properties. You can add tags in the UI, but you cannot override or modify a tag that was assigned through properties; it must be changed in the application's properties file. Tags and layers are independent, and tags are not restricted to a single environment.",
+    "explanation": "Tags set through the anypoint.platform.visualizer.tags property are controlled by the application properties. You can add tags in the UI, but you cannot override or modify a tag that was assigned through properties; it must be changed in the application's properties file. Tags and layers are independent customizations, and a tag is applied wherever the application is deployed rather than being scoped to a single environment.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -13379,8 +13379,8 @@ window.MCPA_QUESTIONS = [
   {
     "id": "q-243",
     "number": 243,
-    "title": "Anypoint Visualizer - An architect notices that a connection is",
-    "domain": "Anypoint Visualizer",
+    "title": "Monitoring and Observability - Visualizer edges based on recent traffic",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Anypoint Visualizer",
       "Troubleshooting"
@@ -13442,12 +13442,12 @@ window.MCPA_QUESTIONS = [
   {
     "id": "q-244",
     "number": 244,
-    "title": "Anypoint Visualizer - A platform architect wants to create a saved",
-    "domain": "Anypoint Visualizer",
+    "title": "Monitoring and Observability - Visualizer Editor permission for defined views",
+    "domain": "Monitoring and analyzing application networks",
     "topics": [
       "Anypoint Visualizer",
       "Views",
-      "Permissions"
+      "Rbac Permissions"
     ],
     "prompt": "A platform architect wants to create a saved, auto-discoverable view in Anypoint Visualizer so that all team members who have access to the included environments see the same filtered topology. Which permission is required to create this defined view?",
     "options": [
