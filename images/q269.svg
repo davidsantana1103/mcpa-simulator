@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" font-family="Arial,sans-serif" font-size="13">
+<rect width="720" height="360" fill="#fff"/>
+<defs><marker id="a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#333"/></marker></defs>
+
+<text x="20" y="28" font-size="15" font-weight="bold">Alternative A — Governance embedded in the Mule runtime</text>
+<rect x="20" y="40" width="320" height="130" rx="8" fill="#f3f7ff" stroke="#2a8fd8"/>
+<rect x="40" y="70" width="120" height="46" fill="#cfe2ff" stroke="#555"/><text x="100" y="90" text-anchor="middle">Mule app</text><text x="100" y="107" text-anchor="middle" font-size="11">(Mule Gateway</text><text x="100" y="120" text-anchor="middle" font-size="11">embedded)</text>
+<rect x="200" y="70" width="120" height="46" fill="#eee" stroke="#555"/><text x="260" y="98" text-anchor="middle" font-size="12">Mule APIs only</text>
+<line x1="160" y1="93" x2="198" y2="93" stroke="#333" marker-end="url(#a)"/>
+<text x="100" y="150" text-anchor="middle" font-size="11">Runtime: Mule 4 (CloudHub / RTF / hybrid)</text>
+
+<text x="380" y="28" font-size="15" font-weight="bold">Alternative B — Dedicated Flex Gateway in front</text>
+<rect x="380" y="40" width="320" height="130" rx="8" fill="#f3fff5" stroke="#3aa655"/>
+<rect x="400" y="70" width="110" height="46" fill="#d6f5de" stroke="#555"/><text x="455" y="90" text-anchor="middle">Flex Gateway</text><text x="455" y="107" text-anchor="middle" font-size="11">(Envoy-based)</text>
+<rect x="545" y="58" width="140" height="30" fill="#cfe2ff" stroke="#555"/><text x="615" y="78" text-anchor="middle" font-size="11">Mule APIs</text>
+<rect x="545" y="98" width="140" height="30" fill="#eee" stroke="#555"/><text x="615" y="118" text-anchor="middle" font-size="11">Non-Mule services</text>
+<line x1="510" y1="73" x2="543" y2="73" stroke="#333" marker-end="url(#a)"/>
+<line x1="510" y1="113" x2="543" y2="113" stroke="#333" marker-end="url(#a)"/>
+<text x="545" y="150" text-anchor="middle" font-size="11">Runs anywhere: K8s, on-prem, cloud</text>
+
+<rect x="20" y="195" width="680" height="145" rx="8" fill="#fffbe8" stroke="#e8913a"/>
+<text x="40" y="222" font-weight="bold">Requirement</text>
+<text x="40" y="245">• Protect both Mule and non-Mule APIs</text>
+<text x="40" y="268">• Deployed in Kubernetes and on-premises</text>
+<text x="40" y="291">• High availability and high performance</text>
+<text x="40" y="314">• Centralized policy management in API Manager</text>
+<text x="420" y="222" font-weight="bold">Notes</text>
+<text x="420" y="245" font-size="12">Mule Gateway = embedded in Mule runtime</text>
+<text x="420" y="268" font-size="12">Flex Gateway = Envoy-based, runs anywhere</text>
+<text x="420" y="291" font-size="12">Custom policies are not portable between them</text>
+</svg>
