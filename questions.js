@@ -13834,7 +13834,7 @@ window.MCPA_QUESTIONS = [
       "Mapping Rules",
       "DNS"
     ],
-    "prompt": "An enterprise owns the domain example.com and wants requests to https://myapp.example.com to reach a CloudHub 1.0 application named myapp, without exposing the cloudhub.io domain to consumers. Which two mechanisms, used together, accomplish this? (Select all correct answers)",
+    "prompt": "An enterprise owns the domain example.com and wants requests to https://myapp.example.com to reach a CloudHub 1.0 application named myapp, without exposing the cloudhub.io domain to consumers. The DLB is already configured with an SSL endpoint whose certificate is valid for myapp.example.com. Which two mechanisms, used together, accomplish the DNS routing and hostname mapping? (Select all correct answers)",
     "options": [
       {
         "letter": "A",
@@ -13857,11 +13857,11 @@ window.MCPA_QUESTIONS = [
       "A",
       "B"
     ],
-    "explanation": "The DLB exposes an external domain name that resolves to public IP addresses. You set a CNAME record in your corporate DNS nameserver to mask the DLB's anypointdns.net address with your company's vanity domain, and you configure DLB mapping rules that use the HTTP Host header to identify the matching rule and forward the request to a different Mule application name and domain. DNS and mapping rules together hide the CloudHub domain from consumers. SLA tiers govern access/consumption, and VPC firewall rules control port access, not hostname translation.",
+    "explanation": "The DLB exposes an external domain name that resolves to public IP addresses. You set a CNAME record in your corporate DNS nameserver to mask the DLB's anypointdns.net address with your company's vanity domain, and you configure DLB mapping rules that use the HTTP Host header to identify the matching rule and forward the request to a different Mule application name and domain. DNS and mapping rules together hide the CloudHub domain from consumers. For HTTPS, the DLB must also present a certificate valid for the vanity hostname: a CNAME only changes DNS resolution and does not change the hostname the client validates during the TLS handshake, so the DLB needs an SSL endpoint whose certificate (common name or SAN) covers myapp.example.com. SLA tiers govern access/consumption, and VPC firewall rules control port access, not hostname translation.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "A CNAME record routes the vanity domain to the DLB's anypointdns.net address, hiding the CloudHub domain."
+        "text": "A CNAME record routes the vanity domain to the DLB's anypointdns.net address, hiding the CloudHub domain. On its own it does not make HTTPS work: the DLB must also serve a certificate valid for the vanity hostname."
       },
       "B": {
         "type": "Correct",
@@ -14364,11 +14364,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "The public DNS name, app.uniq-id.shard.region.cloudhub.io, because private spaces have no internal DNS."
+        "text": "The public DNS name, app.space-id.region.cloudhub.io, because private spaces have no internal DNS."
       },
       {
         "letter": "B",
-        "text": "The internal DNS name, app.uniq-id.internal-shard.region.cloudhub.io, because traffic using it remains within the private space network."
+        "text": "The internal DNS name, app.internal-space-id.region.cloudhub.io, because traffic using it remains within the private space network."
       },
       {
         "letter": "C",
@@ -14380,7 +14380,7 @@ window.MCPA_QUESTIONS = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Each application deployed to CloudHub 2.0 has both default public and internal DNS records that refer to the load balancer: a public record (...cloudhub.io) and an internal record (.internal-...cloudhub.io). If you use the internal DNS name, traffic remains within the private space network, and you can delete or omit the externally exposed endpoint when deploying an application to a private space. The mule-worker-internal record is a CloudHub 1.0 construct.",
+    "explanation": "Each application deployed to CloudHub 2.0 has both default public and internal DNS records that refer to the load balancer: a public record (<app>.<space-id>.<region>.cloudhub.io) and an internal record (<app>.internal-<space-id>.<region>.cloudhub.io, for example app.internal-sxjsip.aus-s1.cloudhub.io). The internal record inserts the internal- label between the app name and the space ID; it does not append an extra label. If you use the internal DNS name, traffic remains within the private space network, and you can delete or omit the externally exposed endpoint when deploying an application to a private space. The mule-worker-internal record is a CloudHub 1.0 construct.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -14388,7 +14388,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Correct",
-        "text": "The internal DNS name keeps traffic within the private space network."
+        "text": "The internal DNS name (<app>.internal-<space-id>.<region>.cloudhub.io) keeps traffic within the private space network."
       },
       "C": {
         "type": "Incorrect",
@@ -15069,7 +15069,7 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Alternative A, because Mule Gateway can protect any API regardless of where it runs."
+        "text": "Alternative A, because embedding governance in the Mule runtime is the recommended choice for high-availability, high-performance non-Mule APIs running anywhere."
       },
       {
         "letter": "B",
@@ -15085,11 +15085,11 @@ window.MCPA_QUESTIONS = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Mule Gateway is embedded in the Mule runtime engine and applies governance capabilities to Mule APIs; MuleSoft recommends it for Mule applications on CloudHub that do not require managing and maintaining underlying infrastructure. Flex Gateway (Omni Gateway) is an Envoy-based, ultrafast lightweight API gateway designed to manage and secure APIs running anywhere, and MuleSoft recommends it for high-availability and high-performance Mule and non-Mule applications. Because the requirement spans Mule and non-Mule APIs across Kubernetes and on-premises, Flex Gateway is the better alternative.",
+    "explanation": "Mule Gateway is embedded in the Mule runtime engine and applies governance capabilities to Mule APIs; MuleSoft recommends it for Mule applications on CloudHub that do not require managing and maintaining underlying infrastructure. Note that Mule Gateway can also protect a non-Mule backend: because it runs as a Mule proxy application, you can configure Mule in Runtime Manager as a CloudHub proxy application protecting multiple backends, so a non-Mule backend does not have to be rewritten. Flex Gateway (Omni Gateway) is an Envoy-based, ultrafast lightweight API gateway designed to manage and secure APIs running anywhere, and MuleSoft recommends it for high-availability and high-performance Mule and non-Mule applications. Because the stated requirement emphasizes high availability and high performance across Mule and non-Mule APIs deployed in Kubernetes and on-premises, Flex Gateway is the better alternative.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Mule Gateway is embedded in the Mule runtime; it is intended for Mule applications rather than arbitrary non-Mule services."
+        "text": "Mule Gateway can protect a non-Mule backend through a Mule-hosted proxy application, but it is embedded in the Mule runtime and does not match the stated high-availability/high-performance requirement across Kubernetes and on-premises as well as Flex Gateway."
       },
       "B": {
         "type": "Correct",
@@ -15097,7 +15097,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "Non-Mule APIs do not need to be rewritten to be governed; Flex Gateway can protect them."
+        "text": "Non-Mule APIs do not need to be rewritten: Flex Gateway can protect them directly, and Mule Gateway can protect them through a Mule proxy application."
       },
       "D": {
         "type": "Incorrect",
@@ -15204,7 +15204,7 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Create a TLS context on the private space with the company certificate, and point a DNS record (for example, a CNAME) at the application's public endpoint."
+        "text": "Create a TLS context on the private space with the company certificate, add api.company.com as an external endpoint in the app's Ingress settings, and point a DNS CNAME at the private space's public DNS target."
       },
       {
         "letter": "C",
@@ -15216,7 +15216,7 @@ window.MCPA_QUESTIONS = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "CloudHub 2.0 uses TLS contexts to encrypt inbound traffic to the private space, and TLS contexts enable your apps to be reached at custom domains. Each private space includes one default TLS context for cloudhub.io that cannot be removed, and you can create additional TLS contexts with your own keystore. CloudHub 2.0 parses the CN and SAN lists from the certificate and makes those domains available when deploying applications, and you configure a DNS record (CNAME) to point the custom domain at the application's public endpoint. There is no DLB to create for a private space.",
+    "explanation": "CloudHub 2.0 uses TLS contexts to encrypt inbound traffic to the private space, and TLS contexts enable your apps to be reached at custom domains. Each private space includes one default TLS context for cloudhub.io that cannot be removed, and you can create additional TLS contexts with your own keystore. CloudHub 2.0 parses the CN and SAN lists from the certificate and makes those domains available when deploying applications. A TLS context and a CNAME alone are not sufficient to route the hostname: you must also configure api.company.com as an external endpoint in the app's Ingress settings (the administrator sets up the TLS context first, then the endpoint is selected from the Domain drop-down on the Ingress tab), and the CNAME must point at the private space's public DNS target. There is no DLB to create for a private space.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -15224,7 +15224,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Correct",
-        "text": "A private space TLS context plus a DNS record maps the custom domain to the app over HTTPS."
+        "text": "A private space TLS context plus an external endpoint for the domain in the app's Ingress settings plus a DNS CNAME to the private space's public DNS target maps the custom domain to the app over HTTPS."
       },
       "C": {
         "type": "Incorrect",
