@@ -13502,5 +13502,1817 @@ window.MCPA_QUESTIONS = [
       }
     },
     "correctAnswer": "C"
+  },
+  {
+    "id": "q-245",
+    "number": 245,
+    "title": "Deployment Options - CloudHub 1.0 vs CloudHub 2.0 shared and private spaces",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "CloudHub 1.0",
+      "CloudHub 2.0",
+      "Private Spaces"
+    ],
+    "prompt": "An architect must recommend a CloudHub deployment model for a team that wants MuleSoft to manage the runtime while running APIs in a fully managed, multi-tenant cloud, and that may later need an isolated, single-tenant network boundary. Which statement correctly describes the CloudHub 2.0 deployment spaces that satisfy both requirements?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Apps deploy only to private spaces; a shared space is a billing concept with no runtime."
+      },
+      {
+        "letter": "B",
+        "text": "Apps can deploy to a shared space (multi-tenant, shared infrastructure) or to a private space (single-tenant, isolated network boundary created in a specific region)."
+      },
+      {
+        "letter": "C",
+        "text": "Apps deploy to a CloudHub 1.0 VPC, and a CloudHub 2.0 private space is only a naming alias for that VPC."
+      },
+      {
+        "letter": "D",
+        "text": "Apps deploy to a shared space only after a Dedicated Load Balancer (DLB) is created and attached to it."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "CloudHub 2.0 lets you deploy Mule apps to either a shared space or a private space. A private space is a virtual, private, and isolated logical space in CloudHub 2.0 in which to run your apps, and you can create multiple private spaces in the same or different regions. In CloudHub 2.0, private spaces function as improved VPCs from CloudHub 1.0: you can automatically assign a private network for the applications in a private space, and a private ingress load balancer is provided and auto-scales with traffic. There is no DLB to create for a private space, and a shared space is a real deployment target, not a billing alias.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Both shared and private spaces are real deployment targets in CloudHub 2.0; you choose one at deploy time."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Apps can be deployed to a shared (multi-tenant) space or to a single-tenant private space that provides an isolated network boundary in a chosen region."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "A private space is a CloudHub 2.0 construct, not an alias for a CloudHub 1.0 VPC. You cannot create a VPN connection between a CloudHub 1.0 VPC and a CloudHub 2.0 private space."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "CloudHub 2.0 automatically provisions a fully managed ingress load balancer for each private space; there is no DLB to create for shared spaces."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub 2.0 for CloudHub 1.0 Users — Private Spaces vs VPCs",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-comparison"
+      },
+      "architectureGuide": {
+        "title": "Private Spaces — Virtual, Private, and Isolated Space in CloudHub 2.0",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-private-space-about"
+      },
+      "arc720": {
+        "lesson": "Lesson 8 — Effective API implementations",
+        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+      }
+    }
+  },
+  {
+    "id": "q-246",
+    "number": 246,
+    "title": "Deployment Options - CloudHub 2.0 private space fully managed ingress load balancer",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "CloudHub 2.0",
+      "Private Spaces",
+      "Dedicated Load Balancer"
+    ],
+    "prompt": "A platform architect is migrating APIs from CloudHub 1.0, where a Dedicated Load Balancer (DLB) was created inside an Anypoint VPC, to CloudHub 2.0 private spaces. The architect wants to know what replaces the manually configured DLB. What does CloudHub 2.0 provide instead?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Nothing; the architect must still create a DLB inside the private space."
+      },
+      {
+        "letter": "B",
+        "text": "A fully managed ingress load balancer provisioned automatically for each private space, which auto-scales to accommodate traffic."
+      },
+      {
+        "letter": "C",
+        "text": "The CloudHub 1.0 Shared Load Balancer (SLB) is reused across all private spaces."
+      },
+      {
+        "letter": "D",
+        "text": "A customer-managed NGINX controller that the architect deploys as a Mule application."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "CloudHub 2.0 automatically provides a fully managed ingress load balancer for each private space with a simplified architecture that removes the need to select or create load balancers. The private space provides load balancing to balance inbound traffic to apps across multiple replicas, and the ingress load balancer auto-scales to accommodate traffic. This replaces the CloudHub 1.0 model, where a Shared Load Balancer (SLB) is provided by default and a Dedicated Load Balancer (DLB) is optional and created within the VPC.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "CloudHub 2.0 removes the need to create a DLB; the ingress load balancer is provisioned automatically per private space."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Each private space gets an automatically provisioned, fully managed ingress load balancer that auto-scales with traffic."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "The CloudHub 1.0 Shared Load Balancer is a CloudHub 1.0 construct; CloudHub 2.0 uses a per-private-space ingress load balancer."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "The ingress load balancer is MuleSoft-managed; no customer-deployed NGINX controller is required."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub to CloudHub 2.0 Migration Configuration — Load Balancing",
+        "url": "https://docs.mulesoft.com/cloudhub/ch-ch2-migration-configuration"
+      },
+      "architectureGuide": {
+        "title": "CloudHub 2.0 Networking Architecture — HTTP Load Balancer",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-networking-guide"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    }
+  },
+  {
+    "id": "q-247",
+    "number": 247,
+    "title": "Deployment Options - CloudHub 1.0 port mapping for HTTP and HTTPS",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "CloudHub 1.0",
+      "Port Mapping",
+      "HTTP Listener"
+    ],
+    "prompt": "A Mule 4 application is deployed to a single CloudHub 1.0 worker and must expose an HTTPS endpoint through the shared load balancer on the standard port 443. Which configuration is correct?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Configure the HTTP Listener on host 0.0.0.0 and reference the reserved property ${https.port}; CloudHub maps port 443 on the application domain to ${https.port} (8082) on the worker."
+      },
+      {
+        "letter": "B",
+        "text": "Configure the HTTP Listener to bind directly to port 443 on the worker's public IP address."
+      },
+      {
+        "letter": "C",
+        "text": "Configure the HTTP Listener to bind to port 80 and set the CloudHub property https.port to 80."
+      },
+      {
+        "letter": "D",
+        "text": "Configure the HTTP Listener on host localhost and reference the property ${http.private.port}."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "On CloudHub 1.0, applications must listen on host 0.0.0.0 and to either the HTTP port (${http.port}) or the HTTPS port (${https.port}). CloudHub's load balancer automatically proxies http.port :80 to port :8081 for HTTP and https.port :443 to :8082 for HTTPS. Any other values specified for http.port and https.port in mule-app.properties are overwritten at deployment time, so the listener must reference the reserved properties rather than hard-coded ports.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "CloudHub requires host 0.0.0.0 and the reserved ${https.port} property; port 443 on the application domain is proxied to ${https.port} (8082)."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Mule apps on CloudHub cannot bind directly to privileged ports such as 443; CloudHub assigns and proxies the port."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "http.port is set to 8081 and https.port to 8082; values in mule-app.properties are overwritten at deployment time."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "CloudHub requires host 0.0.0.0; ${http.private.port} (8091) is used for internal VPC traffic via a DLB, not for public HTTPS on 443."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub Networking Guide — Port Mapping and Load Balancing",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide"
+      },
+      "architectureGuide": {
+        "title": "Develop Applications for CloudHub — Provide an External HTTP/HTTPS Port",
+        "url": "https://docs.mulesoft.com/cloudhub/developing-applications-for-cloudhub"
+      },
+      "arc720": {
+        "lesson": "Lesson 8 — Effective API implementations",
+        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+      }
+    }
+  },
+  {
+    "id": "q-248",
+    "number": 248,
+    "title": "Deployment Options - DLB internal ports 8091 and 8092",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "CloudHub 1.0",
+      "Dedicated Load Balancer",
+      "Port Mapping"
+    ],
+    "prompt": "An organization wants a CloudHub 1.0 Dedicated Load Balancer (DLB) to be the only entry point to an API, so that the default public application URL (myapp.region.cloudhub.io) is not publicly reachable. On which ports must the Mule application listen for the DLB to route traffic to it?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "8081 for HTTP and 8082 for HTTPS"
+      },
+      {
+        "letter": "B",
+        "text": "80 for HTTP and 443 for HTTPS"
+      },
+      {
+        "letter": "C",
+        "text": "8091 for HTTP and 8092 for HTTPS (the private ports)"
+      },
+      {
+        "letter": "D",
+        "text": "8083 for HTTP and 8084 for HTTPS"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "A CloudHub DLB provides an alternative domain name to route HTTP requests to Mule applications listening on port 8091 and HTTPS requests to Mule applications listening on port 8092. To hide the default public URL, you also remove the Anypoint VPC firewall rules for ports 8081 and 8082 so the Shared Load Balancer path is closed. The DLB itself listens on 80/443 externally and forwards to the private ports on the worker.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "8081 and 8082 are the ports used by the shared load balancer path; leaving them open keeps the app publicly reachable."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "80 and 443 are the DLB's external listener ports, not the ports on which the worker app must listen."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "The DLB routes HTTP to 8091 and HTTPS to 8092 on the Mule application."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "8083 and 8084 are not CloudHub worker ports."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Dedicated Load Balancer Architecture — Routing External Requests",
+        "url": "https://docs.mulesoft.com/cloudhub/lb-architecture"
+      },
+      "architectureGuide": {
+        "title": "CloudHub Networking Guide — Avoid Public Discoverability",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    }
+  },
+  {
+    "id": "q-249",
+    "number": 249,
+    "title": "Deployment Options - DLB SSL endpoint and custom certificate configuration",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "CloudHub 1.0",
+      "Dedicated Load Balancer",
+      "SSL/TLS"
+    ],
+    "prompt": "A security team requires an API exposed through a CloudHub 1.0 Dedicated Load Balancer (DLB) to present a company-issued certificate for api.company.com instead of the default cloudhub.io wildcard certificate. What must the architect configure on the DLB?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "An SSL endpoint on the DLB with a PEM-encoded certificate and its unencrypted private key; a DLB can have multiple independent SSL endpoints, each identified by the certificate's common name."
+      },
+      {
+        "letter": "B",
+        "text": "A keystore inside the Mule application's mule-artifact.json, because the DLB always uses the platform wildcard certificate."
+      },
+      {
+        "letter": "C",
+        "text": "An SSH key pair, because DLB certificates must be provisioned through the Anypoint CLI only."
+      },
+      {
+        "letter": "D",
+        "text": "A JKS truststore on the shared load balancer, since custom certificates are only supported on the SLB."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "A DLB must have at least one certificate associated with it. To serve a custom domain you configure an SSL endpoint by uploading a certificate and private key pair (PEM-encoded, with a passphrase-less private key). A load balancer can have multiple and independent SSL endpoints, each identified by its server certificate common name, which is how a single DLB can host multiple custom domains.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "SSL endpoints on the DLB carry the certificate/private-key pair, and each endpoint is identified by its certificate common name."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "The DLB terminates TLS with its own certificate; the app cannot override the platform wildcard certificate for the DLB."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "SSH keys are unrelated to DLB TLS; certificates and keys are uploaded as PEM files via Runtime Manager or the CLI."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Custom certificates are a DLB capability; the Shared Load Balancer uses the platform wildcard certificate and cannot serve custom certificates."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Add Certificates to a Dedicated Load Balancer",
+        "url": "https://docs.mulesoft.com/cloudhub/lb-cert-upload"
+      },
+      "architectureGuide": {
+        "title": "Certificate Validation in Dedicated Load Balancers",
+        "url": "https://docs.mulesoft.com/cloudhub/lb-cert-validation"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    }
+  },
+  {
+    "id": "q-250",
+    "number": 250,
+    "title": "Deployment Options - DLB mapping rules and DNS CNAME for vanity domains",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "CloudHub 1.0",
+      "Dedicated Load Balancer",
+      "Mapping Rules",
+      "DNS"
+    ],
+    "prompt": "An enterprise owns the domain example.com and wants requests to https://myapp.example.com to reach a CloudHub 1.0 application named myapp, without exposing the cloudhub.io domain to consumers. The DLB is already configured with an SSL endpoint whose certificate is valid for myapp.example.com. Which two mechanisms, used together, accomplish the DNS routing and hostname mapping? (Select all correct answers)",
+    "options": [
+      {
+        "letter": "A",
+        "text": "A CNAME record in the corporate DNS that maps myapp.example.com to the DLB's anypointdns.net address"
+      },
+      {
+        "letter": "B",
+        "text": "A DLB mapping rule that matches the incoming Host header/URI and forwards it to the target Mule application and path"
+      },
+      {
+        "letter": "C",
+        "text": "An API Manager SLA tier that rewrites the request host header before it reaches the DLB"
+      },
+      {
+        "letter": "D",
+        "text": "A firewall rule on the Anypoint VPC that translates the vanity domain into the worker IP address"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "B"
+    ],
+    "explanation": "The DLB exposes an external domain name that resolves to public IP addresses. You set a CNAME record in your corporate DNS nameserver to mask the DLB's anypointdns.net address with your company's vanity domain, and you configure DLB mapping rules that use the HTTP Host header to identify the matching rule and forward the request to a different Mule application name and domain. DNS and mapping rules together hide the CloudHub domain from consumers. For HTTPS, the DLB must also present a certificate valid for the vanity hostname: a CNAME only changes DNS resolution and does not change the hostname the client validates during the TLS handshake, so the DLB needs an SSL endpoint whose certificate (common name or SAN) covers myapp.example.com. SLA tiers govern access/consumption, and VPC firewall rules control port access, not hostname translation.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "A CNAME record routes the vanity domain to the DLB's anypointdns.net address, hiding the CloudHub domain. On its own it does not make HTTPS work: the DLB must also serve a certificate valid for the vanity hostname."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Mapping rules forward requests received by the DLB to a different Mule application name and domain based on the Host header."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "SLA tiers define consumption/access levels; they do not rewrite host headers or perform DLB routing."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "VPC firewall rules control which ports are reachable; they do not map domains to worker IP addresses."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Dedicated Load Balancer Mapping Rules",
+        "url": "https://docs.mulesoft.com/cloudhub/lb-mapping-rules"
+      },
+      "architectureGuide": {
+        "title": "Dedicated Load Balancer Architecture — CNAME and Vanity Domains",
+        "url": "https://docs.mulesoft.com/cloudhub/lb-architecture"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    }
+  },
+  {
+    "id": "q-251",
+    "number": 251,
+    "title": "Deployment Options - Dedicated Load Balancer high availability and units",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "CloudHub 1.0",
+      "Dedicated Load Balancer",
+      "High Availability"
+    ],
+    "prompt": "An architect must ensure a CloudHub 1.0 Dedicated Load Balancer (DLB) is not a single point of failure. Which statement about DLB high availability is correct?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "A DLB is a single-instance component and cannot be made highly available."
+      },
+      {
+        "letter": "B",
+        "text": "Each DLB unit is the equivalent of two workers; you can assign up to four load balancer units (eight workers) to a DLB for high availability and load distribution."
+      },
+      {
+        "letter": "C",
+        "text": "DLB HA requires a customer-managed AWS Network Load Balancer in front of the DLB."
+      },
+      {
+        "letter": "D",
+        "text": "DLB HA is achieved only by deploying the same application to more than one Anypoint VPC."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Each DLB unit that you purchase is the equivalent of two workers handling load balancing between CloudHub workers, and you can assign up to four load balancer units to a DLB. A DLB with four load balancer units assigned therefore has eight workers, which provides high availability and load distribution. The Shared Load Balancer provides fully managed high availability with no customer configuration required.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "A DLB can be provisioned with multiple load balancer units (workers) for HA."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Each DLB unit equals two workers, and up to four units (eight workers) can be assigned per DLB."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "MuleSoft manages the DLB instances; a customer-managed NLB is not part of the supported HA model."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "A DLB is assigned to a single Anypoint VPC; HA comes from multiple load balancer units, not multiple VPCs."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Dedicated Load Balancers — DLB Licensing and Units",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
+      },
+      "architectureGuide": {
+        "title": "CloudHub to CloudHub 2.0 Migration Configuration — Load Balancer HA",
+        "url": "https://docs.mulesoft.com/cloudhub/ch-ch2-migration-configuration"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    }
+  },
+  {
+    "id": "q-252",
+    "number": 252,
+    "title": "Deployment Options - CloudHub 1.0 high availability with multiple workers and persistent queues",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "CloudHub 1.0",
+      "High Availability",
+      "Availability Zones",
+      "Persistent Queues"
+    ],
+    "prompt": "An integration is under heavy processing load and must both distribute that load across instances and guarantee zero message loss if an availability zone (AZ) fails. Which CloudHub 1.0 configuration best satisfies both requirements?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Deploy to a single worker with persistent queues enabled."
+      },
+      {
+        "letter": "B",
+        "text": "Deploy to two or more workers with persistent queues enabled, so the workload is distributed and the persistent queue ensures zero message loss during failover."
+      },
+      {
+        "letter": "C",
+        "text": "Deploy to a single worker with persistent queues disabled, relying on in-memory queues."
+      },
+      {
+        "letter": "D",
+        "text": "Deploy to a Dedicated Load Balancer only, because the DLB stores messages during an outage."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "CloudHub HA features are powered by the scalable load-balancing service, worker scale-out, and persistent queues, and HA is enabled per application in Runtime Manager. The documented HA configurations pair worker count with queue persistence: to distribute processing load across instances, deploy two or more workers so that if one data center experiences an outage, workers remain available in a different data center. To protect against message loss, enable persistent queues, which ensure zero message loss if the data center hosting the worker fails and CloudHub migrates the application to another availability zone. Combining multiple workers with persistent queues satisfies both the load-distribution and zero-message-loss requirements.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "A single worker with persistent queues protects messages but does not distribute the heavy processing load across instances."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Multiple workers with persistent queues combine workload distribution with zero message loss during AZ failover."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "With persistent queues disabled, a single worker can lose messages during an AZ outage."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "A DLB balances and routes traffic; it does not store messages or provide message durability."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub High Availability Features — Worker Scale-Out and Persistent Queues",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
+      },
+      "architectureGuide": {
+        "title": "Deployment Options — High Availability by Deployment Target",
+        "url": "https://docs.mulesoft.com/runtime-manager/deployment-strategies"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    }
+  },
+  {
+    "id": "q-253",
+    "number": 253,
+    "title": "Deployment Options - CloudHub 2.0 high availability across replicas and AZs",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "CloudHub 2.0",
+      "High Availability",
+      "Availability Zones",
+      "Replicas"
+    ],
+    "prompt": "An architect is deploying an API to a CloudHub 2.0 private space and wants high availability without manually distributing instances across zones. How does CloudHub 2.0 provide high availability?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The architect must manually pin each replica to a specific availability zone."
+      },
+      {
+        "letter": "B",
+        "text": "CloudHub 2.0 deploys multiple replicas across two or more availability zones by default; if an AZ fails, CloudHub 2.0 automatically restarts the application in a different AZ."
+      },
+      {
+        "letter": "C",
+        "text": "High availability requires a customer-managed Dedicated Load Balancer spanning two AWS regions."
+      },
+      {
+        "letter": "D",
+        "text": "High availability is provided only when the application is deployed to a shared space."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "CloudHub 2.0 builds high availability into the platform through mechanisms MuleSoft manages automatically. With multiple-replica deployment, CloudHub 2.0 deploys replicas across two or more availability zones (AZs) by default, and if an AZ fails, it automatically restarts the application in a different AZ to maintain availability. A minimum of two replicas is required for high availability, and the platform automatically distributes replicas across two or more AZs.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "CloudHub 2.0 distributes replicas across AZs automatically; no manual pinning is required."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Multiple replicas are spread across two or more AZs by default, with automatic restart in another AZ on failure."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "CloudHub 2.0 provides HA within a region using replicas and AZs; no customer-managed DLB or multi-region setup is required for HA."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "HA applies to apps in both shared and private spaces when multiple replicas are configured."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub 2.0 High Availability and Disaster Recovery",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-ha-dr"
+      },
+      "architectureGuide": {
+        "title": "Deploying Apps to Private Spaces — Replica Count for HA",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-deploy-private-space"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    }
+  },
+  {
+    "id": "q-254",
+    "number": 254,
+    "title": "Deployment Options - Multi-region disaster recovery and Object Store v2 scope",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "CloudHub 2.0",
+      "Object Store v2",
+      "High Availability",
+      "Disaster Recovery"
+    ],
+    "prompt": "A company deploys the same API to CloudHub 2.0 private spaces in two AWS regions for disaster recovery. The API caches OAuth tokens in Object Store v2 and expects the secondary region to read the same cached tokens after a regional failover. What is the expected behavior?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Object Store v2 automatically replicates the cached tokens to the secondary region."
+      },
+      {
+        "letter": "B",
+        "text": "Object Store v2 is a regional service that runs in the same region as the application and provides no region failover; you must bring your own external storage to share or back up data across regions."
+      },
+      {
+        "letter": "C",
+        "text": "Object Store v2 stores tokens in a global namespace accessible from any region."
+      },
+      {
+        "letter": "D",
+        "text": "Object Store v2 replicates data across regions only when the application runs in Runtime Fabric."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Object Store v2 is a regional service that runs in the same region as the application and provides no region failover. An application deployed in a different region cannot access it, so caching in the object store is region-specific and cannot be transferred to a secondary region. CloudHub 2.0 runs on Amazon AWS, and if an Amazon region goes down, applications in that region become unavailable and CloudHub 2.0 does not automatically replicate them to other regions. For cross-region data access or backup, bring your own external storage.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Object Store v2 does not replicate across regions and provides no region failover."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Object Store v2 is region-specific; cross-region data requires external storage."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Object Store v2 data is localized to the region of the deployed app, not a global namespace."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Region scoping is independent of the runtime target; Runtime Fabric does not make Object Store v2 global."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub 2.0 High Availability and Disaster Recovery — Object Store v2",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-ha-dr"
+      },
+      "architectureGuide": {
+        "title": "Object Store v2 Overview — Regions and Notes",
+        "url": "https://docs.mulesoft.com/object-store"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    }
+  },
+  {
+    "id": "q-255",
+    "number": 255,
+    "title": "Deployment Options - Object Store v2 with multi-worker applications",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "CloudHub 1.0",
+      "Object Store v2",
+      "Clustering"
+    ],
+    "prompt": "A Mule application deployed to multiple CloudHub workers uses Object Store v2 to update a shared counter. During load testing, several updates fail when multiple components try to update the same key at the same time. What is the cause and the recommended remedy?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Object Store v2 does not support multi-worker applications at all; the only remedy is a single worker."
+      },
+      {
+        "letter": "B",
+        "text": "Distributed Locking is not available in CloudHub when working with Object Store v2, so simultaneous updates can fail; use a distributed key-value store as a lock to synchronize access."
+      },
+      {
+        "letter": "C",
+        "text": "The failures are caused by exceeding the 30-day data retention limit, so increase the TTL."
+      },
+      {
+        "letter": "D",
+        "text": "The remedy is to enable persistent queues on the application."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Using Object Store v2 with multi-worker CloudHub applications might result in data discrepancies or key clashes. This occurs because the Distributed Locking feature is not available in CloudHub and CloudHub 2.0 when working with Object Store v2, so under certain conditions, when multiple Mule components attempt to update Object Store v2 tables simultaneously, such calls may fail. To avoid these issues, use a distributed key-value store as a lock to synchronize access to Object Store v2.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Object Store v2 is supported with multi-worker apps, but it can produce data discrepancies or key clashes without external locking."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Distributed Locking is unavailable with Object Store v2 on CloudHub, so an external distributed lock is recommended."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "The 30-day retention limit governs data persistence, not concurrent update failures."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Persistent queues protect messages in VM queues; they do not provide locking for Object Store v2 keys."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Object Store v2 Overview — Multi-Worker and Distributed Locking",
+        "url": "https://docs.mulesoft.com/object-store"
+      },
+      "architectureGuide": {
+        "title": "Deployment Options — Object Store per Deployment Target",
+        "url": "https://docs.mulesoft.com/runtime-manager/deployment-strategies"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    }
+  },
+  {
+    "id": "q-256",
+    "number": 256,
+    "title": "Deployment Options - Connecting CloudHub to on-premises and private networks",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "CloudHub 1.0",
+      "VPC",
+      "VPN",
+      "Direct Connect"
+    ],
+    "prompt": "An organization runs APIs on CloudHub 1.0 that must reach databases in an on-premises data center and, separately, resources in a private AWS VPC owned by the company. Which connectivity options are valid for an Anypoint VPC? (Select all correct answers)",
+    "options": [
+      {
+        "letter": "A",
+        "text": "An IPsec VPN tunnel to the on-premises data center"
+      },
+      {
+        "letter": "B",
+        "text": "AWS Direct Connect to the on-premises data center or private AWS VPC"
+      },
+      {
+        "letter": "C",
+        "text": "VPC peering to connect to a private AWS VPC"
+      },
+      {
+        "letter": "D",
+        "text": "A Dedicated Load Balancer, which provides outbound connectivity to on-premises systems"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "An Anypoint VPC can connect to on-premises data centers through a secured IPsec VPN tunnel, a transit gateway attachment, or AWS Direct Connect, and it can connect to a private AWS VPC through VPC peering or AWS Direct Connect. A Dedicated Load Balancer routes inbound HTTP/HTTPS traffic to workers; it is not an outbound connectivity mechanism to on-premises systems.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "IPsec VPN provides a secured tunnel from the Anypoint VPC to on-premises networks."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "AWS Direct Connect provides dedicated private connectivity to on-premises or private AWS networks."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "VPC peering connects an Anypoint VPC to another private AWS VPC."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "A DLB handles inbound traffic routing; it does not provide outbound on-premises connectivity."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Virtual Private Cloud — Connecting to On-Premises and Private Networks",
+        "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
+      },
+      "architectureGuide": {
+        "title": "Anypoint VPN — Two Tunnels and High Availability",
+        "url": "https://docs.mulesoft.com/cloudhub/vpn-about"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    }
+  },
+  {
+    "id": "q-257",
+    "number": 257,
+    "title": "Deployment Options - CloudHub 2.0 private space ingress ports and firewall rules",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "CloudHub 2.0",
+      "Private Spaces",
+      "Port Mapping"
+    ],
+    "prompt": "A platform architect is hardening a CloudHub 2.0 private space. Which statements about its networking defaults are correct? (Select all correct answers)",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Inbound traffic is allowed by default on ports 80 (HTTP) and 443 (HTTPS) from anywhere (0.0.0.0/0)."
+      },
+      {
+        "letter": "B",
+        "text": "Non-HTTP ingress is closed by default; a fixed list of TCP ports (30500-32500) can be opened and is reachable only from within the private space or from a VPN or transit gateway."
+      },
+      {
+        "letter": "C",
+        "text": "Outbound traffic from the private space is blocked by default and must be explicitly allowed per port."
+      },
+      {
+        "letter": "D",
+        "text": "The private space includes a built-in Web Application Firewall (WAF) and Layer 7 DDoS protection by default."
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "B"
+    ],
+    "explanation": "By default, CloudHub 2.0 allows inbound traffic to the private space on ports 80 (HTTP) and 443 (HTTPS) from anywhere (0.0.0.0/0); you configure firewall rules to allow connections through specified ports, remove ports, or restrict the source. By default no non-HTTP ports are open, but you can open a fixed list of TCP ports (30500-32500) that are reachable only from within the private space or originated from a VPN or a transit gateway (TGW). By default, CloudHub 2.0 allows all outbound traffic from the private space to destinations outside the private space; you configure firewall rules to restrict it. Private spaces do not include a built-in WAF or Layer 7 DDoS protection; you implement these externally if needed.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "Ports 80 and 443 are open inbound by default from 0.0.0.0/0."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Non-HTTP ports are closed by default; TCP 30500-32500 can be opened and are reachable only internally, via VPN, or via TGW."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Outbound traffic is allowed by default; you must remove the default rule to restrict egress."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Private spaces do not include a built-in WAF or Layer 7 DDoS protection; those must be implemented externally."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub 2.0 Networking Architecture — Mule Application Ports and Ingress",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-networking-guide"
+      },
+      "architectureGuide": {
+        "title": "Private Spaces — Firewall Rules (Inbound and Outbound)",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-private-space-about"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    }
+  },
+  {
+    "id": "q-258",
+    "number": 258,
+    "title": "Deployment Options - CloudHub 2.0 public and internal DNS records",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "CloudHub 2.0",
+      "DNS",
+      "Internal Routing"
+    ],
+    "prompt": "An architect deploys an API to a CloudHub 2.0 private space and wants internal callers to reach it without leaving the private space network. Which DNS record should the internal callers use, and what is its format?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The public DNS name, app.space-id.region.cloudhub.io, because private spaces have no internal DNS."
+      },
+      {
+        "letter": "B",
+        "text": "The internal DNS name, app.internal-space-id.region.cloudhub.io, because traffic using it remains within the private space network."
+      },
+      {
+        "letter": "C",
+        "text": "The DLB mapping rule hostname internal-lb.anypointdns.net, because CloudHub 2.0 requires a DLB for internal routing."
+      },
+      {
+        "letter": "D",
+        "text": "The worker DNS record mule-worker-internal-app.region.cloudhub.io, as in CloudHub 1.0."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Each application deployed to CloudHub 2.0 has both default public and internal DNS records that refer to the load balancer: a public record (<app>.<space-id>.<region>.cloudhub.io) and an internal record (<app>.internal-<space-id>.<region>.cloudhub.io, for example app.internal-sxjsip.aus-s1.cloudhub.io). The internal record inserts the internal- label between the app name and the space ID; it does not append an extra label. If you use the internal DNS name, traffic remains within the private space network, and you can delete or omit the externally exposed endpoint when deploying an application to a private space. The mule-worker-internal record is a CloudHub 1.0 construct.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "CloudHub 2.0 apps have both public and internal DNS records; the public record routes traffic externally."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "The internal DNS name (<app>.internal-<space-id>.<region>.cloudhub.io) keeps traffic within the private space network."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "CloudHub 2.0 uses a managed ingress load balancer per private space, not a DLB."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "mule-worker-internal-... is the CloudHub 1.0 worker DNS record format."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub 2.0 Networking Architecture — DNS Records",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-networking-guide"
+      },
+      "architectureGuide": {
+        "title": "Configuring Endpoints and Paths for Apps in a Private Space",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-config-endpoints-paths"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    }
+  },
+  {
+    "id": "q-259",
+    "number": 259,
+    "title": "Deployment Options - CloudHub 2.0 private space TLS context and custom domains",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "CloudHub 2.0",
+      "Private Spaces",
+      "SSL/TLS",
+      "DNS"
+    ],
+    "prompt": "An architect must serve a CloudHub 2.0 private space application on the custom domain api.company.com with the company's own certificate. Which statement is correct?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Upload the certificate and key as a TLS context on the private space; CloudHub 2.0 parses the CN and SAN lists and makes those domains available when deploying apps, and a default TLS context for cloudhub.io is always present."
+      },
+      {
+        "letter": "B",
+        "text": "Custom domains are supported only on shared spaces, not private spaces."
+      },
+      {
+        "letter": "C",
+        "text": "The certificate must be uploaded to a Dedicated Load Balancer attached to the private space."
+      },
+      {
+        "letter": "D",
+        "text": "The default cloudhub.io TLS context can be removed once a custom TLS context is added."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "CloudHub 2.0 uses Transport Layer Security (TLS) contexts to encrypt inbound traffic to the private space. TLS contexts enable your apps to be reached at custom domains. Each private space includes one TLS context by default (for traffic to cloudhub.io), which cannot be removed; the default certificate renews automatically. You can create additional TLS contexts with your own keystore (and optional truststore), and CloudHub 2.0 parses the CN and SAN lists from the certificate and makes those domains available when deploying applications.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "TLS contexts on the private space carry the custom certificate; the default cloudhub.io context always remains."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "CloudHub 2.0 supports customizing endpoints only for apps deployed to private spaces, not shared spaces."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "CloudHub 2.0 private spaces use a managed ingress load balancer and TLS contexts; there is no DLB."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "The default TLS context for cloudhub.io cannot be removed."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Configuring Domains and Certificates (TLS Context) for a Private Space",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ps-config-domains"
+      },
+      "architectureGuide": {
+        "title": "CloudHub 2.0 Networking Architecture — Custom Certificates and CNAME",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-networking-guide"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    }
+  },
+  {
+    "id": "q-260",
+    "number": 260,
+    "title": "Deployment Options - CloudHub 2.0 differences from CloudHub 1.0",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "CloudHub 1.0",
+      "CloudHub 2.0",
+      "VPC",
+      "Private Spaces"
+    ],
+    "prompt": "A platform architect is planning a migration from CloudHub 1.0 to CloudHub 2.0. Which statements accurately describe differences between the two platforms? (Select all correct answers)",
+    "options": [
+      {
+        "letter": "A",
+        "text": "CloudHub 1.0 VPC peering and Direct Connect are deprecated in CloudHub 2.0; transit gateway attachments are used instead."
+      },
+      {
+        "letter": "B",
+        "text": "Unlike a CloudHub 1.0 VPC, a CloudHub 2.0 private space can be associated with multiple environments based on environment type (for example, sandbox or production)."
+      },
+      {
+        "letter": "C",
+        "text": "You cannot create a VPN connection between a CloudHub 1.0 VPC and a CloudHub 2.0 private space."
+      },
+      {
+        "letter": "D",
+        "text": "To move an application to a different region in CloudHub 2.0, you can simply change its region setting in place."
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "CloudHub 1.0 VPC peering and Direct Connect have been deprecated in CloudHub 2.0; you now use transit gateway attachments, and when you delete a private space that has a transit gateway attached, the transit gateway is preserved for reuse. Unlike VPCs in CloudHub 1.0, you can associate a private space with multiple environments based only on the type of the environment, such as sandbox or production. You cannot create a VPN connection between a CloudHub 1.0 VPC and a CloudHub 2.0 private space. To move applications between regions, you must redeploy the application to another shared or private space in a different region; you cannot move the app to a different region once deployed.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "VPC peering and Direct Connect are deprecated in CloudHub 2.0 in favor of transit gateway attachments."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "A private space can be shared across multiple environments by environment type."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "A VPN connection cannot be created between a CloudHub 1.0 VPC and a CloudHub 2.0 private space."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "You cannot change an application's region in place; you must redeploy it to a space in another region."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub 2.0 for CloudHub 1.0 Users",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-comparison"
+      },
+      "architectureGuide": {
+        "title": "CloudHub VPC to CloudHub 2.0 Private Space Upgrade",
+        "url": "https://docs.mulesoft.com/cloudhub/vpc-upgrade"
+      },
+      "arc720": {
+        "lesson": "Lesson 8 — Effective API implementations",
+        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+      }
+    }
+  },
+  {
+    "id": "q-261",
+    "number": 261,
+    "title": "Api Policies - Automated policies scope and priority in API Manager",
+    "domain": "Governing web APIs on Anypoint Platform",
+    "topics": [
+      "API Governance",
+      "Custom Policies"
+    ],
+    "prompt": "A security architect must guarantee that every API deployed to a production environment enforces an IP allowlist, without relying on individual teams to attach the policy to each API. Which API Manager capability should the architect use, and what is its scope?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Automated policies, applied to all APIs running in an environment; they have priority over the same types of policies already applied to a specific API proxy."
+      },
+      {
+        "letter": "B",
+        "text": "A custom policy applied individually to each API instance by each team."
+      },
+      {
+        "letter": "C",
+        "text": "An SLA tier configured on each API instance."
+      },
+      {
+        "letter": "D",
+        "text": "An API Governance ruleset that blocks deployment of non-conforming APIs."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Automated policies enforce security and logging requirements by applying the same policies to all APIs running in an environment, so a target environment automatically enforces critical policies and an administrator no longer needs to remember to insert a policy manually. You can configure all included policies and custom policies as automated policies. Automated policies have priority over the same types of policies already applied to a specific API proxy, and since automated policies have priority over API-level policies, conflicts are detected and must be resolved before proceeding. They are available for Mule 4 APIs using a MuleSoft-hosted control plane and support all runtime deployment targets (CloudHub, Runtime Fabric, and hybrid).",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "Automated policies apply environment-wide and take priority over the same policy types at the API level."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Relying on each team to attach a policy manually is exactly what automation removes."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "SLA tiers govern consumption levels, not environment-wide policy enforcement."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "API Governance tests conformance to rulesets but does not enforce runtime traffic policies."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Automated Policies — Mule Gateway",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-automated-overview"
+      },
+      "architectureGuide": {
+        "title": "Applying Automated Policies — Conflict Management",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-automated-applying"
+      },
+      "arc720": {
+        "lesson": "Lesson 7 — Effective APIs",
+        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+      }
+    }
+  },
+  {
+    "id": "q-262",
+    "number": 262,
+    "title": "Api Policies - Mule Gateway versus Flex Gateway policy reuse",
+    "domain": "Governing web APIs on Anypoint Platform",
+    "topics": [
+      "Custom Policies",
+      "Flex Gateway",
+      "API Management"
+    ],
+    "prompt": "An organization has built a custom policy on Mule Gateway and now wants to reuse the exact same custom policy on a Flex Gateway instance managing non-Mule APIs. What does MuleSoft documentation state about this reuse?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The policy can be reused unchanged because all Anypoint gateways share one policy runtime."
+      },
+      {
+        "letter": "B",
+        "text": "A Mule Gateway policy cannot be reused in Flex Gateway and vice versa, because the underlying architectures are fundamentally different; Flex Gateway custom policies are built with Envoy-provided Rust WASM SDKs."
+      },
+      {
+        "letter": "C",
+        "text": "The policy can be reused only after it is published to Anypoint Exchange as a REST asset."
+      },
+      {
+        "letter": "D",
+        "text": "The policy can be reused only when both gateways run in Local Mode."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Building custom policies on Mule Gateway is similar to building an application with Java using the Mule DSL, while building a custom policy in Flex Gateway is based on Envoy-provided Rust WASM SDKs. A Mule Gateway policy cannot be reused in Flex Gateway and vice versa because the underlying architectures are fundamentally different. MuleSoft recommends Flex Gateway for high-availability and high-performance Mule and non-Mule applications, and Mule Gateway for Mule applications on CloudHub that do not require managing underlying infrastructure.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Mule Gateway (Spring/Mule DSL based) and Flex Gateway (Envoy based) use different policy runtimes."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Custom policies are not portable between Mule Gateway and Flex Gateway due to their fundamentally different architectures."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Publishing to Exchange does not make a Mule Gateway policy executable on an Envoy-based gateway."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Deployment mode (Local or Connected) does not change policy portability."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint Platform Gateways Overview — Custom Policy Architectures",
+        "url": "https://docs.mulesoft.com/gateway-home"
+      },
+      "architectureGuide": {
+        "title": "Omni Gateway (formerly Flex Gateway) Overview",
+        "url": "https://docs.mulesoft.com/gateway/latest"
+      },
+      "arc720": {
+        "lesson": "Lesson 7 — Effective APIs",
+        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+      }
+    }
+  },
+  {
+    "id": "q-263",
+    "number": 263,
+    "title": "Api Policies - JWT Validation policy signature and claims validation",
+    "domain": "Governing web APIs on Anypoint Platform",
+    "topics": [
+      "Jwt Validation",
+      "API Security"
+    ],
+    "prompt": "An architect must protect an API so that only requests carrying a valid, signed JWT with an unexpired exp claim and an audience matching the API are accepted. Which statement about the JWT Validation policy is correct?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The policy validates the signature of a JWS-format JWT and asserts claim values such as aud, exp, and nbf; it does not validate JWTs that use JWE."
+      },
+      {
+        "letter": "B",
+        "text": "The policy generates JWTs and issues them to client applications after validating their credentials."
+      },
+      {
+        "letter": "C",
+        "text": "The policy validates both JWS and JWE tokens and always enforces the aud claim as mandatory."
+      },
+      {
+        "letter": "D",
+        "text": "The policy validates only the token signature; claim values such as exp and aud are ignored."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "The JWT Validation policy validates the signature of the token and asserts the values of the claims of all incoming requests by using a JWT with JWS format; it does not validate JWTs that use JWE. Registered claim validations provided by default include aud (the token is rejected if it does not contain at least one of the defined values), exp (rejected if past the validation date), and nbf (rejected if the validation time is before the token's time). Each claim validation can be defined as mandatory or non-mandatory: if a claim is mandatory and not present, the token is rejected, and if a claim is present its value is always validated.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "The policy validates JWS-format signatures and asserts claims such as aud, exp, and nbf, but not JWE."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "The policy validates tokens; it does not generate or issue them."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "The policy does not validate JWE, and aud can be configured as mandatory or non-mandatory."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Claim validations such as aud, exp, and nbf are core behavior, not ignored."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "JWT Validation Policy — Mule Gateway",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-jwt-validation"
+      },
+      "architectureGuide": {
+        "title": "JWT Validation Policy — Omni Gateway",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-jwt-validation"
+      },
+      "arc720": {
+        "lesson": "Lesson 6 — NFRs at the API-invocation level",
+        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+      }
+    }
+  },
+  {
+    "id": "q-264",
+    "number": 264,
+    "title": "Api Policies - OpenID Connect OAuth 2.0 token enforcement with external client management",
+    "domain": "Governing web APIs on Anypoint Platform",
+    "topics": [
+      "Oauth2 Policy",
+      "API Security"
+    ],
+    "prompt": "An organization uses an external OpenID Connect identity provider as its client-management solution and wants API Manager to accept only OAuth 2.0 tokens issued to registered client applications. Which policy and configuration combination is correct?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Apply the OAuth 2.0 Access Token Enforcement Using Mule OAuth Provider policy, which validates tokens issued by the Anypoint Mule OAuth provider."
+      },
+      {
+        "letter": "B",
+        "text": "Apply the OpenID Connect OAuth 2.0 Token Enforcement policy, which is available only to an organization configured to use OpenID Connect dynamic client registration as a client-management solution."
+      },
+      {
+        "letter": "C",
+        "text": "Apply the JWT Validation policy alone, because it performs client-management lookups against the identity provider."
+      },
+      {
+        "letter": "D",
+        "text": "Apply the Client ID Enforcement policy, which validates the OAuth 2.0 access token signature."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "The OpenID Connect Access Token Enforcement policy restricts access to a protected resource to only those HTTP requests that provide a valid OAuth 2 token belonging to a client application with API access, and it does not generate tokens but only validates them. It is available only to an organization that is configured to use the OpenID Connect dynamic client registration as a client-management solution. The policy extracts the token from the request, sends it to the validation endpoint, receives token metadata including the client ID, and then uses a local database updated with contracts obtained from Anypoint Platform to verify whether the client ID has access to the API.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "The Mule OAuth Provider policy validates tokens issued by the Mule OAuth provider, not an external OpenID Connect IdP."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "The OpenID Connect OAuth 2.0 Token Enforcement policy is designed for organizations using OpenID Connect dynamic client registration."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "JWT Validation checks the token signature and claims; it does not perform client-management lookups."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Client ID Enforcement validates a client ID header, not an OAuth 2.0 access token."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "OpenID Connect OAuth 2.0 Token Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-openid-token-enforcement"
+      },
+      "architectureGuide": {
+        "title": "Configuring OpenID Connect Client Management in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/configure-client-management-openid-task"
+      },
+      "arc720": {
+        "lesson": "Lesson 6 — NFRs at the API-invocation level",
+        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+      }
+    }
+  },
+  {
+    "id": "q-265",
+    "number": 265,
+    "title": "Api Policies - External identity providers for client management",
+    "domain": "Governing web APIs on Anypoint Platform",
+    "topics": [
+      "API Security",
+      "Oauth2 Policy"
+    ],
+    "prompt": "An organization wants Anypoint Platform API portals to dynamically register client applications with an external identity provider that supports the OpenID Connect Dynamic Client Registration (DCR) standard. Which providers does MuleSoft documentation identify as supported for this external client-management configuration?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Any HTTP server that can issue JSON Web Tokens."
+      },
+      {
+        "letter": "B",
+        "text": "Providers supporting the OpenID Connect Dynamic Client Registration standard, such as Salesforce, Okta, or OpenAM."
+      },
+      {
+        "letter": "C",
+        "text": "Only MuleSoft's built-in Anypoint Platform identity provider."
+      },
+      {
+        "letter": "D",
+        "text": "Only providers that use SAML 2.0 for client registration."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "You configure an external OpenID Connect (OIDC) identity provider (IdP) to handle client management for your Anypoint Platform APIs using providers that support the OIDC Dynamic Client Registration (DCR) standard, such as Salesforce, Okta, or OpenAM. API portals then dynamically register client applications with the chosen external IdP when requesting access. After configuration, you apply the OpenID Connect OAuth Token Enforcement policy to your API gateways through API Manager.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "The IdP must support the OpenID Connect Dynamic Client Registration standard, not merely issue JWTs."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Salesforce, Okta, and OpenAM are examples of supported OIDC DCR providers."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "The configuration is specifically for an external IdP as the client-management solution."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Client registration for this configuration uses OpenID Connect DCR, not SAML."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Configuring OpenID Connect Client Management in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/configure-client-management-openid-task"
+      },
+      "architectureGuide": {
+        "title": "Configuring Identity Management in Anypoint Platform — Supported Providers",
+        "url": "https://docs.mulesoft.com/access-management/external-identity"
+      },
+      "arc720": {
+        "lesson": "Lesson 6 — NFRs at the API-invocation level",
+        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+      }
+    }
+  },
+  {
+    "id": "q-266",
+    "number": 266,
+    "title": "Api Policies - Anypoint Service Mesh for non-Mule microservices",
+    "domain": "Governing web APIs on Anypoint Platform",
+    "topics": [
+      "Anypoint Service Mesh",
+      "API Management"
+    ],
+    "prompt": "An organization runs non-Mule microservices in a Kubernetes cluster with an Istio service mesh and wants to discover, manage, and secure those services through Anypoint Platform without rewriting them. Which approach fits, and how is it implemented?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Anypoint Service Mesh, which installs a MuleSoft adapter within the Istio service mesh and uses Envoy-based sidecar proxies to apply policies to Mule and non-Mule services."
+      },
+      {
+        "letter": "B",
+        "text": "Runtime Fabric, which converts non-Mule microservices into Mule applications at deploy time."
+      },
+      {
+        "letter": "C",
+        "text": "Anypoint MQ, which exposes microservices as queues with policies attached."
+      },
+      {
+        "letter": "D",
+        "text": "API Functional Monitoring, which intercepts service traffic and enforces policies."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Anypoint Service Mesh extends Anypoint Platform to any microservice, Mule and non-Mule, by using Istio. It is implemented by installing the Mule adapter within the Istio service mesh, and a sidecar proxy (Envoy-based, running within the same pod) handles service-to-service communication. The Mule adapter connects Kubernetes components to Anypoint Platform so existing microservices can be discovered as APIs and managed within API Manager. Runtime Fabric is a Mule runtime; Anypoint MQ is messaging; API Functional Monitoring tests APIs rather than enforcing policies.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "Anypoint Service Mesh uses Istio plus a MuleSoft adapter and Envoy sidecars to govern Mule and non-Mule microservices."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Runtime Fabric runs Mule applications; it does not transform non-Mule microservices."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Anypoint MQ is a messaging service and does not apply API policies to microservices."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "API Functional Monitoring verifies API behavior; it is not a policy enforcement layer."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Service Mesh 101 — What is a service mesh?",
+        "url": "https://www.mulesoft.com/api/what-is-a-service-mesh"
+      },
+      "architectureGuide": {
+        "title": "Anypoint API Manager — Service Mesh Integration with Istio and Envoy",
+        "url": "https://www.mulesoft.com/platform/api/manager"
+      },
+      "arc720": {
+        "lesson": "Lesson 7 — Effective APIs",
+        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+      }
+    }
+  },
+  {
+    "id": "q-267",
+    "number": 267,
+    "title": "Api Policies - Choosing between Mule Gateway and Flex Gateway",
+    "domain": "Governing web APIs on Anypoint Platform",
+    "topics": [
+      "Flex Gateway",
+      "API Management",
+      "Custom Policies"
+    ],
+    "prompt": "An architect must protect a mix of Mule and non-Mule APIs running in Kubernetes and on-premises, and needs high availability and high performance across all of them. Which gateway choice does MuleSoft recommend?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Mule Gateway, because it is the only gateway that can protect non-Mule APIs."
+      },
+      {
+        "letter": "B",
+        "text": "Flex Gateway (Omni Gateway), because MuleSoft recommends it for high-availability and high-performance Mule and non-Mule applications."
+      },
+      {
+        "letter": "C",
+        "text": "Anypoint MQ, because it can front any API protocol."
+      },
+      {
+        "letter": "D",
+        "text": "API Governance, because it enforces runtime traffic policies on any API."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Flex Gateway (Omni Gateway) is an Envoy-based, ultrafast lightweight API gateway designed to manage and secure APIs running anywhere, and MuleSoft recommends you choose it for high-availability and high-performance Mule and non-Mule applications. Mule runtime engine includes an embedded Mule Gateway, and you can leverage API Manager governance capabilities to apply throttling, security, caching, and logging to your APIs; MuleSoft recommends Mule Gateway for protecting Mule applications on CloudHub that do not require managing and maintaining underlying infrastructure.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Flex Gateway protects non-Mule APIs; Mule Gateway is embedded in the Mule runtime for Mule apps."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "MuleSoft recommends Flex Gateway for high-availability and high-performance Mule and non-Mule applications."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Anypoint MQ is a messaging service, not an API gateway."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "API Governance validates conformance to rulesets; it does not enforce runtime traffic policies."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint Platform Gateways Overview — Gateway Recommendations",
+        "url": "https://docs.mulesoft.com/gateway-home"
+      },
+      "architectureGuide": {
+        "title": "Omni Gateway (formerly Flex Gateway) Overview",
+        "url": "https://docs.mulesoft.com/gateway/latest"
+      },
+      "arc720": {
+        "lesson": "Lesson 7 — Effective APIs",
+        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+      }
+    }
+  },
+  {
+    "id": "q-268",
+    "number": 268,
+    "title": "Api Policies - Applying a policy at the organization or environment level",
+    "domain": "Governing web APIs on Anypoint Platform",
+    "topics": [
+      "API Governance",
+      "Business Groups Environments"
+    ],
+    "prompt": "A security architect wants to enforce a logging and security standard across every API in a specific environment with the least administrative effort, while still allowing teams to add API-specific policies. Which approach should the architect take?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Configure the policy as an automated policy for the environment, because automated policies apply to all APIs running in the environment and have priority over the same policy types at the API level."
+      },
+      {
+        "letter": "B",
+        "text": "Ask each team to apply the policy manually to every API instance."
+      },
+      {
+        "letter": "C",
+        "text": "Create an API group and require every team to publish APIs only into that group, which automatically applies policies."
+      },
+      {
+        "letter": "D",
+        "text": "Apply the policy to a single API instance and rely on API Manager to replicate it to all other APIs."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Automated policies are designed to be applied to all APIs within an environment, and they have priority over API-level policies. Policy automation enables security architects and administrators to secure and govern every API running in an environment, and you can configure all included policies and custom policies as automated policies. Teams can still add API-specific policies, but where the same policy type exists at both levels, the automated policy prevails, and a conflict is detected if an automated policy is added that is already applied at the API level.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "Automated policies enforce standards across an entire environment and take priority over the same API-level policy types."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Manual per-API application is error-prone and is what automation replaces."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "API groups publish API instances as a unit but are not the mechanism for environment-wide policy automation."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Policies are not replicated from one API instance to all others."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Automated Policies — Mule Gateway",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-automated-overview"
+      },
+      "architectureGuide": {
+        "title": "API Manager Overview — Policy Automation and Client Applications",
+        "url": "https://docs.mulesoft.com/api-manager/latest/latest-overview-concept"
+      },
+      "arc720": {
+        "lesson": "Lesson 4 — Organizational and platform foundations",
+        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+      }
+    }
+  },
+  {
+    "id": "q-269",
+    "number": 269,
+    "title": "Api Policies - Refer to the exhibit. Choosing the better gateway deployment",
+    "domain": "Governing web APIs on Anypoint Platform",
+    "topics": [
+      "Flex Gateway",
+      "Mule Gateway",
+      "API Management"
+    ],
+    "prompt": "Refer to the exhibit.\nAn architect is comparing two ways to govern the same set of APIs: (A) embed governance in the Mule runtime with Mule Gateway, or (B) front the APIs with a dedicated Flex Gateway instance. Based on the exhibit and MuleSoft guidance, which alternative is the better choice for an organization that must protect both Mule and non-Mule APIs in Kubernetes and on-premises, with high availability and high performance?",
+    "image": "images/q269.svg",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Alternative A, because embedding governance in the Mule runtime is the recommended choice for high-availability, high-performance non-Mule APIs running anywhere."
+      },
+      {
+        "letter": "B",
+        "text": "Alternative B, because Flex Gateway is an Envoy-based gateway that MuleSoft recommends for high-availability and high-performance Mule and non-Mule applications."
+      },
+      {
+        "letter": "C",
+        "text": "Alternative A, because non-Mule APIs must be rewritten as Mule applications before policies can be applied."
+      },
+      {
+        "letter": "D",
+        "text": "Neither; API governance rulesets are the only way to protect non-Mule APIs."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Mule Gateway is embedded in the Mule runtime engine and applies governance capabilities to Mule APIs; MuleSoft recommends it for Mule applications on CloudHub that do not require managing and maintaining underlying infrastructure. Note that Mule Gateway can also protect a non-Mule backend: because it runs as a Mule proxy application, you can configure Mule in Runtime Manager as a CloudHub proxy application protecting multiple backends, so a non-Mule backend does not have to be rewritten. Flex Gateway (Omni Gateway) is an Envoy-based, ultrafast lightweight API gateway designed to manage and secure APIs running anywhere, and MuleSoft recommends it for high-availability and high-performance Mule and non-Mule applications. Because the stated requirement emphasizes high availability and high performance across Mule and non-Mule APIs deployed in Kubernetes and on-premises, Flex Gateway is the better alternative.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Mule Gateway can protect a non-Mule backend through a Mule-hosted proxy application, but it is embedded in the Mule runtime and does not match the stated high-availability/high-performance requirement across Kubernetes and on-premises as well as Flex Gateway."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Flex Gateway is the recommended Envoy-based gateway for high-availability and high-performance Mule and non-Mule APIs anywhere."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Non-Mule APIs do not need to be rewritten: Flex Gateway can protect them directly, and Mule Gateway can protect them through a Mule proxy application."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "API Governance checks conformance to rulesets and is not a runtime policy enforcement gateway."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint Platform Gateways Overview — Gateway Selection Guidance",
+        "url": "https://docs.mulesoft.com/gateway-home"
+      },
+      "architectureGuide": {
+        "title": "Omni Gateway (formerly Flex Gateway) Overview",
+        "url": "https://docs.mulesoft.com/gateway/latest"
+      },
+      "arc720": {
+        "lesson": "Lesson 7 — Effective APIs",
+        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+      }
+    }
+  },
+  {
+    "id": "q-270",
+    "number": 270,
+    "title": "Api Policies - Refer to the exhibit. OAuth 2.0 token validation with an external provider",
+    "domain": "Governing web APIs on Anypoint Platform",
+    "topics": [
+      "Oauth2 Policy",
+      "API Security",
+      "Jwt Validation"
+    ],
+    "prompt": "Refer to the exhibit.\nAn organization's API portal registers client applications dynamically with an external OpenID Connect identity provider. Based on the exhibit, which policy should be applied to the API gateway so that only requests presenting a valid OAuth 2.0 access token issued to a registered client application are accepted?",
+    "image": "images/q270.svg",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The OpenID Connect OAuth 2.0 Token Enforcement policy"
+      },
+      {
+        "letter": "B",
+        "text": "The OAuth 2.0 Access Token Enforcement Using Mule OAuth Provider policy"
+      },
+      {
+        "letter": "C",
+        "text": "The IP Allowlist policy"
+      },
+      {
+        "letter": "D",
+        "text": "The JSON Threat Protection policy"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "The OpenID Connect OAuth 2.0 Token Enforcement policy restricts access to a protected resource to only those HTTP requests that provide a valid OAuth 2 token belonging to a client application with API access. It is available only to an organization configured to use the OpenID Connect dynamic client registration as a client-management solution. The policy extracts the token, sends it to the validation endpoint, receives token metadata including the client ID, and then verifies against a local database updated with contracts obtained from Anypoint Platform that the client ID has access to the API. The Mule OAuth Provider variant validates tokens issued by the Mule OAuth provider instead of an external IdP.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "This policy validates OAuth 2.0 tokens for organizations using OpenID Connect dynamic client registration with an external IdP."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "The Mule OAuth Provider policy validates tokens from the Mule OAuth provider, not an external OIDC IdP."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "IP Allowlist filters by source IP address, not by OAuth 2.0 token validity."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "JSON Threat Protection guards against malicious JSON payloads, not token validation."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "OpenID Connect OAuth 2.0 Token Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-openid-token-enforcement"
+      },
+      "architectureGuide": {
+        "title": "Configuring OpenID Connect Client Management in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/configure-client-management-openid-task"
+      },
+      "arc720": {
+        "lesson": "Lesson 6 — NFRs at the API-invocation level",
+        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+      }
+    }
+  },
+  {
+    "id": "q-271",
+    "number": 271,
+    "title": "Api Policies - Refer to the exhibit. CloudHub 2.0 private space ingress with TLS",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "CloudHub 2.0",
+      "Private Spaces",
+      "SSL/TLS",
+      "DNS"
+    ],
+    "prompt": "Refer to the exhibit.\nA company deploys an API to a CloudHub 2.0 private space and wants external clients to reach it at the custom domain api.company.com over HTTPS. Based on the exhibit, which alternative correctly describes how this is achieved?",
+    "image": "images/q271.svg",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Create a Dedicated Load Balancer in the private space and upload the certificate to it."
+      },
+      {
+        "letter": "B",
+        "text": "Create a TLS context on the private space with the company certificate, add api.company.com as an external endpoint in the app's Ingress settings, and point a DNS CNAME at the private space's public DNS target."
+      },
+      {
+        "letter": "C",
+        "text": "Remove the default cloudhub.io TLS context and rely only on the custom certificate."
+      },
+      {
+        "letter": "D",
+        "text": "Deploy the API to a shared space, because private spaces do not support custom domains."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "CloudHub 2.0 uses TLS contexts to encrypt inbound traffic to the private space, and TLS contexts enable your apps to be reached at custom domains. Each private space includes one default TLS context for cloudhub.io that cannot be removed, and you can create additional TLS contexts with your own keystore. CloudHub 2.0 parses the CN and SAN lists from the certificate and makes those domains available when deploying applications. A TLS context and a CNAME alone are not sufficient to route the hostname: you must also configure api.company.com as an external endpoint in the app's Ingress settings (the administrator sets up the TLS context first, then the endpoint is selected from the Domain drop-down on the Ingress tab), and the CNAME must point at the private space's public DNS target. There is no DLB to create for a private space.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "CloudHub 2.0 private spaces use a managed ingress load balancer, not a customer-created DLB."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "A private space TLS context plus an external endpoint for the domain in the app's Ingress settings plus a DNS CNAME to the private space's public DNS target maps the custom domain to the app over HTTPS."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "The default cloudhub.io TLS context cannot be removed."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Custom domains are supported only on private spaces, not shared spaces."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Configuring Domains and Certificates (TLS Context) for a Private Space",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ps-config-domains"
+      },
+      "architectureGuide": {
+        "title": "CloudHub 2.0 Networking Architecture — Custom Certificates and CNAME",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-networking-guide"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    }
+  },
+  {
+    "id": "q-272",
+    "number": 272,
+    "title": "Api Policies - Refer to the exhibit. Routing with service mesh versus gateway policies",
+    "domain": "Governing web APIs on Anypoint Platform",
+    "topics": [
+      "Anypoint Service Mesh",
+      "API Management",
+      "Flex Gateway"
+    ],
+    "prompt": "Refer to the exhibit.\nAn architect is deciding where to enforce API policies for a Kubernetes microservices estate. The exhibit contrasts an Envoy sidecar service mesh inside the cluster with a central gateway in front of the cluster. Based on MuleSoft guidance, which alternative is the better fit for applying policies to east-west traffic between non-Mule microservices?",
+    "image": "images/q272.svg",
+    "options": [
+      {
+        "letter": "A",
+        "text": "A central Mule Gateway in front of the cluster, because it can intercept all east-west traffic."
+      },
+      {
+        "letter": "B",
+        "text": "Anypoint Service Mesh, because it uses Envoy-based sidecar proxies within the Istio mesh and a Mule adapter to bring non-Mule services under Anypoint governance."
+      },
+      {
+        "letter": "C",
+        "text": "Anypoint MQ, because queues sit between microservices and can enforce policies."
+      },
+      {
+        "letter": "D",
+        "text": "API Functional Monitoring, because it intercepts service-to-service calls."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Anypoint Service Mesh brings complete lifecycle API management capabilities to microservices, whether built with Mule or not, and operates by installing the Mule adapter within the Istio service mesh. A sidecar proxy (Envoy-based, running within the same pod/container group as the service) handles service-to-service communication, so policies are enforced for east-west traffic inside the cluster. A central gateway typically governs north-south traffic entering the cluster and cannot see all east-west calls between pods.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "A central gateway governs north-south traffic entering the cluster; it cannot intercept all pod-to-pod east-west calls."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Anypoint Service Mesh uses Envoy sidecars and the Mule adapter to govern Mule and non-Mule microservices, including east-west traffic."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Anypoint MQ is asynchronous messaging and does not apply API policies to service calls."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "API Functional Monitoring tests APIs; it does not intercept or govern service-to-service calls."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Service Mesh 101 — What is a service mesh?",
+        "url": "https://www.mulesoft.com/api/what-is-a-service-mesh"
+      },
+      "architectureGuide": {
+        "title": "Anypoint API Manager — Service Mesh Integration with Istio and Envoy",
+        "url": "https://www.mulesoft.com/platform/api/manager"
+      },
+      "arc720": {
+        "lesson": "Lesson 7 — Effective APIs",
+        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+      }
+    }
   }
-];
+]
