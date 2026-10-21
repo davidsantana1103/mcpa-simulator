@@ -5,7 +5,7 @@ questions has a correct answer that depends on a feature, capability, or limit t
 verified on the official MuleSoft documentation (docs.mulesoft.com). Per the task instructions, no
 documentation link was invented for these questions. They are listed here for manual review.
 
-Total questions left without a documentation link: **17**
+Total questions left without a documentation link: **19**
 
 ---
 
@@ -210,6 +210,40 @@ Total questions left without a documentation link: **17**
 - **D:** Publish the APIs through Anypoint API Manager, configure TLS with FIPS-140-validated cipher suites, and enforce an access-review approval workflow in Anypoint Access Management.
 
 **Why no documentation link:** Correct answer relies on an "access-review approval workflow" in Anypoint Access Management. MuleSoft documentation describes roles and permissions, but not a formal access-review approval workflow.
+
+---
+
+## q-198 — Monitoring and analyzing application networks
+
+**Prompt:** In an Anypoint Visualizer canvas, a Process API node has a bold red circle around it. What does this indicator mean in the troubleshooting and metrics view?
+
+**Correct answer(s):**
+
+- **C:** The API has experienced failing requests, such as HTTP 5xx responses, in the selected time range.
+
+**Why no documentation link:** The correct answer describes a specific Visualizer node indicator — a *bold red circle* meaning failing requests / 5xx responses. The Anypoint Visualizer documentation set does not describe this indicator: searching the full Visualizer documentation returns no occurrences of "circle", "bold", or "5xx", and the metrics-notation page only covers unit prefixes (for example `66.7m TPM`). The specific indicator the question tests is not documented.
+
+**Candidate pages reviewed (indicator not described):**
+
+- `https://docs.mulesoft.com/visualizer/troubleshooting-visualization#metrics-notation` — covers number formatting only, not node indicators.
+- `https://docs.mulesoft.com/visualizer/troubleshooting-visualization#view-metrics-for-one-service-in-your-network` — describes how to open metrics for one service, not the red-ring indicator semantics.
+
+---
+
+## q-214 — Deploying API implementations to CloudHub
+
+**Prompt:** An architect is designing an infrastructure migration from CloudHub 1.0 to Runtime Fabric (RTF) on VMs / Bare Metal. The architect must provision the infrastructure to support the Anypoint platform architecture. In RTF, what is the primary role of the Controller nodes?
+
+**Correct answer(s):**
+
+- **B:** They manage the cluster state, run the internal registry, and handle communication with the Anypoint Control Plane.
+
+**Why no documentation link:** The correct answer defines the *primary role of Controller nodes*. The Runtime Fabric documentation mentions controller nodes only incidentally — as the node where you apply the Mule license (`rtfctl apply mule-license`) and as the hardware used for performance benchmarks — and never defines their role. Searching the full Runtime Fabric documentation returns no description of controller nodes managing cluster state or running the internal registry. The role as stated is not documented.
+
+**Candidate pages reviewed (controller-node role not defined):**
+
+- `https://docs.mulesoft.com/runtime-fabric/latest/index-vm-bare-metal#change-for-appliance-users` — covers migration for appliance utility users.
+- `https://docs.mulesoft.com/runtime-fabric/latest/` — the Runtime Fabric overview describes the Runtime Fabric agent and cluster components, not controller-node responsibilities.
 
 ---
 

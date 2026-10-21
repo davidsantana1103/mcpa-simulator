@@ -7856,12 +7856,12 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Object Store v2 Overview — Persistent, Shared State Storage",
-        "url": "https://docs.mulesoft.com/object-store/#object-store-v2-features"
+        "title": "Runtime Fabric High Availability and Disaster Recovery — Best Practices (Externalize State)",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/rtf-ha-dr#best-practices"
       },
       "architectureGuide": {
-        "title": "Object Store v2 — Rate Limiting, Billing, and Usage",
-        "url": "https://docs.mulesoft.com/object-store/osv2-usage#rate-limiting"
+        "title": "CloudHub to CloudHub 2.0 Migration — Application Differences (External Shared State)",
+        "url": "https://docs.mulesoft.com/cloudhub/ch-ch2-migration-configuration#application-differences"
       },
       "arc720": {
         "lesson": "Lesson 10 — Production",
@@ -8256,12 +8256,12 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Deploying an API Proxy for Mediation and Security",
-        "url": "https://docs.mulesoft.com/api-manager/latest/proxy-latest-concept#deploy-your-api-proxy"
+        "title": "API Manager — Reviewing API Proxy Benefits and Impacts (Governance and Policy Enforcement)",
+        "url": "https://docs.mulesoft.com/api-manager/latest/proxy-advantages#benefits"
       },
       "architectureGuide": {
-        "title": "API Manager — TLS Policy and Mutual Authentication Enforcement",
-        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-tls#summary"
+        "title": "Mule Gateway — OAuth 2.0 Access Token Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-oauth-access-token-enforcement#summary"
       },
       "arc720": {
         "lesson": "Lesson 6 — NFRs at the API-invocation level",
@@ -9111,12 +9111,12 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — API Proxy Advantages and Mediation",
-        "url": "https://docs.mulesoft.com/api-manager/latest/proxy-advantages#benefits"
+        "title": "Omni Gateway — TLS Policy for Transport Encryption of API Traffic",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-tls#summary"
       },
       "architectureGuide": {
-        "title": "API Manager — TLS Policy for Transport Encryption",
-        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-tls#summary"
+        "title": "Salesforce Compliance — PCI Attestation of Compliance (AoC) for MuleSoft / Anypoint Platform",
+        "url": "https://compliance.salesforce.com/en/documents/a005A00000mkLDhQAM"
       },
       "arc720": {
         "lesson": "Lesson 6 — NFRs at the API-invocation level",
@@ -11817,8 +11817,8 @@ window.MCPA_QUESTIONS = [
             "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#cloudhub-workers"
       },
       "architectureGuide": {
-            "title": "CloudHub — Configuring Autoscaling Policies for Applications",
-            "url": "https://docs.mulesoft.com/cloudhub/autoscaling-in-cloudhub#configure-autoscaling"
+            "title": "CloudHub High Availability Features — Worker Scale-out and Cost of Additional Workers",
+            "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#use-cases"
       },
       "arc720": {
             "lesson": "Lesson 10 — Production",
@@ -12704,20 +12704,7 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Correct", "text": "The red ring marks API request failures such as 5xx responses during the selected period."},
       "D": {"type": "Incorrect", "text": "Visualizer's red error indicator is not an Autodiscovery configuration warning."}
     },
-    "references": {
-      "primary": {
-        "title": "Anypoint Visualizer — Metrics Notation and Troubleshooting Views",
-        "url": "https://docs.mulesoft.com/visualizer/troubleshooting-visualization#metrics-notation"
-      },
-      "architectureGuide": {
-        "title": "Anypoint Visualizer — View Metrics for One Service in Your Network",
-        "url": "https://docs.mulesoft.com/visualizer/troubleshooting-visualization#view-metrics-for-one-service-in-your-network"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
-      }
-    },
+    "references": {},
     "correctAnswer": "C"
   },
   {
@@ -12814,12 +12801,12 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Scheduler Endpoint — Architecture and Clustering Behavior",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/scheduler-concept#architecture"
+        "title": "CloudHub — Manage Schedules (Multi-Worker Execution on a Single Worker)",
+        "url": "https://docs.mulesoft.com/cloudhub/managing-schedules#considerations-and-limitations"
       },
       "architectureGuide": {
-        "title": "CloudHub — View and Manage Application Schedules in Runtime Manager",
-        "url": "https://docs.mulesoft.com/cloudhub/managing-schedules#view-and-manage-application-schedules-in-runtime-manager"
+        "title": "Scheduler Endpoint — Cluster and Multi-Worker Behavior",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/scheduler-concept"
       },
       "arc720": {
         "lesson": "Lesson 10 — Production",
@@ -12850,12 +12837,12 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Runtime Fabric Security Architecture — Runtime Fabric Data Flow",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/security-architecture#runtime-fabric-data-flow"
+        "title": "Runtime Fabric Security Architecture — Management Flow (Apps and Gateways Continue When Agent Loses Connectivity)",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/security-architecture#management-flow"
       },
       "architectureGuide": {
-        "title": "Deployment Options — Security for Hybrid Deployments",
-        "url": "https://docs.mulesoft.com/runtime-manager/deployment-strategies#security-for-hybrid-deployments"
+        "title": "CloudHub High Availability and Disaster Recovery — Considerations (Runtime Plane Continues, Log/Telemetry Buffered)",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-hadr#considerations-and-limitations"
       },
       "arc720": {
         "lesson": "Lesson 10 — Production",
@@ -13280,20 +13267,7 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "Controller nodes do not host the Anypoint Platform web console."},
       "D": {"type": "Incorrect", "text": "They host ingress components, but are not themselves external load balancers."}
     },
-    "references": {
-      "primary": {
-        "title": "Runtime Fabric — Preparing Your VM/Bare Metal Cluster for Installation",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/index-vm-bare-metal#change-for-appliance-users"
-      },
-      "architectureGuide": {
-        "title": "Runtime Fabric Overview — Runtime Fabric Core Services",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/#runtime-fabric-core-services"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
+    "references": {},
     "correctAnswer": "B"
   },
   {
@@ -14508,8 +14482,8 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/salesforce-connector/latest/#apis"
       },
       "architectureGuide": {
-        "title": "Salesforce Connector — Configurations and Examples",
-        "url": "https://docs.mulesoft.com/salesforce-connector/latest/salesforce-connector-config-topics#invoke-apex-rest-method"
+        "title": "Salesforce Connector Reference — Create, Update, Delete, Deploy, and Retrieve Metadata",
+        "url": "https://docs.mulesoft.com/salesforce-connector/latest/salesforce-connector-reference#deployMetadata"
       },
       "arc720": {
         "lesson": "Lesson 8 — Effective API implementations",
