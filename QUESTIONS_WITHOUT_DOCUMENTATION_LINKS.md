@@ -5,7 +5,7 @@ questions has a correct answer that depends on a feature, capability, or limit t
 verified on the official MuleSoft documentation (docs.mulesoft.com). Per the task instructions, no
 documentation link was invented for these questions. They are listed here for manual review.
 
-Total questions left without a documentation link: **16**
+Total questions left without a documentation link: **17**
 
 ---
 
@@ -211,3 +211,22 @@ Total questions left without a documentation link: **16**
 
 **Why no documentation link:** Correct answer relies on an "access-review approval workflow" in Anypoint Access Management. MuleSoft documentation describes roles and permissions, but not a formal access-review approval workflow.
 
+---
+
+## q-219 — Deployment Options - Runtime Fabric replica load balancing
+
+**Prompt:** A company deploys an API implementation to Runtime Fabric (RTF) with 3 replicas. The application exposes an HTTP endpoint. How does the RTF architecture distribute incoming HTTP requests among these 3 replicas?
+
+**Correct answer(s):**
+
+- **B:** The internal RTF Ingress controller uses round-robin or least-connections routing to distribute traffic across the pods.
+
+**Why no documentation link:** The MuleSoft Runtime Fabric documentation describes the ingress controller, ingress resource templates, and the fact that multiple replicas are spread across nodes and availability zones, but it does **not** state the specific routing algorithm used to distribute requests across replicas. The claim in the correct answer — "round-robin or least-connections routing" — is a property of the underlying Kubernetes ingress controller / service (kube-proxy), not something the MuleSoft documentation asserts. Rather than cite a page whose content does not actually confirm the answer's specific wording, the `references` field was left empty for manual review.
+
+**Candidate pages reviewed (routing algorithm not stated):**
+
+- `https://docs.mulesoft.com/runtime-fabric/latest/custom-ingress-configuration` — describes how ingress resource templates work and how an IT admin configures the ingress controller, but not the distribution algorithm.
+- `https://docs.mulesoft.com/runtime-fabric/latest/rtf-ha-dr` — states that RTF "uses topology spread constraints to distribute Mule application replicas evenly" across nodes/zones, but says nothing about per-request routing across those replicas.
+- `https://docs.mulesoft.com/runtime-fabric/latest/configure-ingress` and `configure-ingress-endpoints` — cover exposing endpoints, not load-balancing behavior.
+
+**Note for the reviewer:** If the question wording is relaxed (for example, to "the RTF ingress controller load-balances requests across the replicas" without naming a specific algorithm), the RTF HA/DR page above would support it. As written, the specific algorithm cannot be confirmed in the official MuleSoft documentation.

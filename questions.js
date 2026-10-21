@@ -13460,20 +13460,7 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "RTF does not use a Primary Node to receive and replicate all HTTP payloads via Hazelcast."},
       "D": {"type": "Incorrect", "text": "A CloudHub DLB is not required or deployed inside the RTF cluster for replica load balancing."}
     },
-    "references": {
-      "primary": {
-            "title": "Runtime Fabric — Configuring Ingress Resource Template (Routing Requests to App Endpoints)",
-            "url": "https://docs.mulesoft.com/runtime-fabric/latest/custom-ingress-configuration#how-ingress-resources-templates-work-in-runtime-fabric"
-      },
-      "architectureGuide": {
-            "title": "Runtime Fabric — High Availability and Disaster Recovery (Multiple Replicas and Failover)",
-            "url": "https://docs.mulesoft.com/runtime-fabric/latest/rtf-ha-dr#high-availability-in-runtime-fabric"
-      },
-      "arc720": {
-            "lesson": "Lesson 10 — Production",
-            "anchor": "ARC720-Course-Content.md#10-production"
-      }
-},
+    "references": {},
     "correctAnswer": "B"
   },
   {
