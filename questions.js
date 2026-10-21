@@ -14209,33 +14209,33 @@ window.MCPA_QUESTIONS = [
         "text": "Dealer D2 must use AUTO acknowledgement and Dealer D1 can use MANUAL acknowledgment and acknowledge the message after successful processing"
       }
     ],
-    "explanation": "Correct answer: A.",
+    "explanation": "Correct answer: A. The acknowledgment mode determines when the broker removes a message from the queue, and therefore whether a failed processing attempt can lose the update.\n\nAUTO acknowledges the message automatically, but only after the flow execution finishes successfully. If an error propagates out of the flow, the message is not acknowledged and is returned to the queue for redelivery. Dealer D1 already implements its own retry mechanism, so AUTO is enough: on failure the message comes back and D1 reprocesses it, which also avoids changing D1's current implementation.\n\nMANUAL delegates the acknowledgment decision to the application logic, which issues an explicit ACK (or NACK). Dealer D2 has no retry mechanism, so it must take control of the acknowledgment and ACK only after processing has succeeded. If processing fails, no ACK is sent and the message stays in-flight until the acknowledgment timeout, after which it returns to the queue, so no inventory update is lost.\n\nIMMEDIATE is unsuitable here because it acknowledges the message as it is consumed, before any processing. The message is deleted from the queue and is not redelivered if processing later fails, which risks losing updates.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "Dealer D1 (has its own retry mechanism) can rely on AUTO: the message is acknowledged only when the flow succeeds, and on failure it is redelivered for D1 to reprocess. Dealer D2 (no retry mechanism) must use MANUAL and ACK only after processing succeeds, so a failed attempt leaves the message in-flight for redelivery instead of losing it."
       },
       "B": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Using AUTO for both ignores Dealer D2's lack of a retry mechanism: D2 would depend entirely on the runtime's automatic acknowledgment behavior and would have no explicit control to guarantee the message is acknowledged only after successful processing."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "IMMEDIATE acknowledges the message before it is processed, so the message is removed from the queue and is not redelivered if processing fails. For Dealer D2, which has no retry mechanism, this can lose inventory updates."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "This reverses the correct assignment. Dealer D2 (no retry mechanism) is given AUTO while Dealer D1 (which has a retry mechanism) is given MANUAL. It does not protect D2 against message loss and adds an unnecessary change for D1."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint MQ ACK and NACK — Acknowledgment Modes",
-        "url": "https://docs.mulesoft.com/anypoint-mq-connector/latest/anypoint-mq-ack#acknowledgment-modes"
+        "title": "Mule Runtime — ACK Mode Parameter (AUTO, MANUAL, IMMEDIATE)",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/tuning-app-design#ack-mode-parameter"
       },
       "architectureGuide": {
-        "title": "Anypoint MQ ACK and NACK — Manual Acknowledgment and ACK Operation",
-        "url": "https://docs.mulesoft.com/anypoint-mq-connector/latest/anypoint-mq-ack#ack-operation-manual-acknowledgement-mode"
+        "title": "Mule Runtime — Reliability Patterns: Reliable Messaging",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/reliability-patterns#reliable-messaging"
       },
       "arc720": {
         "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
