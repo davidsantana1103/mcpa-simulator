@@ -6637,18 +6637,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API-Led Connectivity — Design, Develop, and Deploy Reusable APIs",
-        "url": "https://docs.mulesoft.com/general/api-led-overview"
+            "title": "MuleSoft Accelerators — API-Led Connectivity Approach and Reusable Assets",
+            "url": "https://docs.mulesoft.com/accelerators-home/simplifying-assets#simplify-accelerator-assets"
       },
       "architectureGuide": {
-        "title": "CloudHub Overview — Managed iPaaS Runtime for Fast API Delivery",
-        "url": "https://docs.mulesoft.com/cloudhub/#deploy-your-application-to-cloudhub"
+            "title": "CloudHub Overview — Deploy Your Application to CloudHub",
+            "url": "https://docs.mulesoft.com/cloudhub/#deploy-your-application-to-cloudhub"
       },
       "arc720": {
-        "lesson": "Lesson 5 — API identification, publication, and reuse",
-        "anchor": "ARC720-Course-Content.md#5-api-identification-publication-and-reuse"
+            "lesson": "Lesson 5 — API identification, publication, and reuse",
+            "anchor": "ARC720-Course-Content.md#5-api-identification-publication-and-reuse"
       }
-    },
+},
     "correctAnswer": "B"
   },
   {
@@ -7388,18 +7388,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API-Led Connectivity — Reusing Connectors and Accelerators",
-        "url": "https://docs.mulesoft.com/general/api-led-develop#developer-deep-dive"
+            "title": "MuleSoft Accelerators — API-Led Connectivity Approach and Reusable Assets",
+            "url": "https://docs.mulesoft.com/accelerators-home/simplifying-assets#simplify-accelerator-assets"
       },
       "architectureGuide": {
-        "title": "Anypoint Exchange — Reusable Assets and Accelerators",
-        "url": "https://docs.mulesoft.com/exchange/#mulesoft-assets"
+            "title": "Anypoint Exchange — MuleSoft Assets and Reusable Connectors",
+            "url": "https://docs.mulesoft.com/exchange/#mulesoft-assets"
       },
       "arc720": {
-        "lesson": "Lesson 5 — API identification, publication, and reuse",
-        "anchor": "ARC720-Course-Content.md#5-api-identification-publication-and-reuse"
+            "lesson": "Lesson 5 — API identification, publication, and reuse",
+            "anchor": "ARC720-Course-Content.md#5-api-identification-publication-and-reuse"
       }
-    },
+},
     "correctAnswer": "F"
   },
   {
@@ -7622,18 +7622,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Design Center — Creating and Publishing API Specifications",
-        "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-specs#share-in-exchange-and-api-manager"
+            "title": "Design Center — Creating and Publishing an API Specification (Share in Exchange)",
+            "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-specs#share-in-exchange-and-api-manager"
       },
       "architectureGuide": {
-        "title": "Design Center — Best Practices when Using API Designer",
-        "url": "https://docs.mulesoft.com/design-center/design-best-practices#api-designer-best-practices"
+            "title": "Design Center — Best Practices when Using API Designer",
+            "url": "https://docs.mulesoft.com/design-center/design-best-practices#api-designer-best-practices"
       },
       "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+            "lesson": "Lesson 7 — Effective APIs",
+            "anchor": "ARC720-Course-Content.md#7-effective-apis"
       }
-    },
+},
     "correctAnswer": "C"
   },
   {
@@ -7934,18 +7934,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "HL7 EDI Connector — Schema Validation and Message Transformation",
-        "url": "https://docs.mulesoft.com/hl7-connector/4.3/#before-you-begin"
+            "title": "HL7 EDI Connector — Before You Begin (Schema and Version Support)",
+            "url": "https://docs.mulesoft.com/hl7-connector/latest/#before-you-begin"
       },
       "architectureGuide": {
-        "title": "Mule Error Handling — Global Error Handlers and On-Error Scopes",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/error-handling#global_error_handler"
+            "title": "Mule Error Handling — Global Error Handlers and On-Error Scopes",
+            "url": "https://docs.mulesoft.com/mule-runtime/latest/error-handling#global_error_handler"
       },
       "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+            "lesson": "Lesson 8 — Effective API implementations",
+            "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
       }
-    },
+},
     "correctAnswers": [
       "B",
       "D"
@@ -8015,18 +8015,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Configuring Autoscaling Policies for Applications",
-        "url": "https://docs.mulesoft.com/cloudhub/autoscaling-in-cloudhub#configure-autoscaling"
+            "title": "CloudHub — Configuring Autoscaling Policies for Applications",
+            "url": "https://docs.mulesoft.com/cloudhub/autoscaling-in-cloudhub#configure-autoscaling"
       },
       "architectureGuide": {
-        "title": "MUnit Overview — Automated Unit and Integration Testing",
-        "url": "https://docs.mulesoft.com/munit/latest/#munit-dependencies"
+            "title": "Runtime Fabric — Configuring Horizontal Pod Autoscaling (HPA) for Deployments",
+            "url": "https://docs.mulesoft.com/runtime-fabric/latest/configure-horizontal-autoscaling#configure-horizontal-pod-autoscaling"
       },
       "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+            "lesson": "Lesson 10 — Production",
+            "anchor": "ARC720-Course-Content.md#10-production"
       }
-    },
+},
     "correctAnswers": [
       "A",
       "C",
@@ -8178,18 +8178,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Managing API Instance Versions",
-        "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
+            "title": "Anypoint Exchange — Best Practices for API Versioning",
+            "url": "https://docs.mulesoft.com/exchange/to-change-raml-version#best-practices-api-versioning"
       },
       "architectureGuide": {
-        "title": "Design Center — Best Practices when Using API Designer",
-        "url": "https://docs.mulesoft.com/design-center/design-best-practices#api-designer-best-practices"
+            "title": "API Experience Hub — API Versioning (Breaking Changes and Previous Versions)",
+            "url": "https://docs.mulesoft.com/api-experience-hub/api-versioning-in-api-experience-hub"
       },
       "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+            "lesson": "Lesson 7 — Effective APIs",
+            "anchor": "ARC720-Course-Content.md#7-effective-apis"
       }
-    },
+},
     "correctAnswer": "A"
   },
   {
@@ -8646,18 +8646,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Managing API Instance Versions",
-        "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
+            "title": "Anypoint Exchange — API Version in the Application URL",
+            "url": "https://docs.mulesoft.com/exchange/to-change-raml-version#api-version-in-application-url"
       },
       "architectureGuide": {
-        "title": "Anypoint Exchange — Asset Versions and Lifecycle States",
-        "url": "https://docs.mulesoft.com/exchange/lifecycle#stable-state"
+            "title": "Anypoint Exchange — Asset Versions and Semantic Versioning",
+            "url": "https://docs.mulesoft.com/exchange/asset-versions#choose-a-version-number-when-publishing"
       },
       "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+            "lesson": "Lesson 7 — Effective APIs",
+            "anchor": "ARC720-Course-Content.md#7-effective-apis"
       }
-    },
+},
     "correctAnswer": "C"
   },
   {
@@ -8955,18 +8955,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Managing API Instance Versions",
-        "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
+            "title": "Anypoint Exchange — API Version Naming Conventions (v Prefix, Major Version in URL)",
+            "url": "https://docs.mulesoft.com/exchange/to-change-raml-version#naming-conventions"
       },
       "architectureGuide": {
-        "title": "Design Center — Best Practices when Using API Designer",
-        "url": "https://docs.mulesoft.com/design-center/design-best-practices#api-designer-best-practices"
+            "title": "API Experience Hub — API Versioning (Breaking Changes and Previous Versions)",
+            "url": "https://docs.mulesoft.com/api-experience-hub/api-versioning-in-api-experience-hub"
       },
       "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+            "lesson": "Lesson 7 — Effective APIs",
+            "anchor": "ARC720-Course-Content.md#7-effective-apis"
       }
-    },
+},
     "correctAnswer": "C"
   },
   {
@@ -9033,18 +9033,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API-Led Connectivity — Experience, Process, and System API Layers",
-        "url": "https://docs.mulesoft.com/general/api-led-overview#tutorial-steps"
+            "title": "MuleSoft Accelerators — Experience, Process, and System API Layers",
+            "url": "https://docs.mulesoft.com/accelerators-home/simplifying-assets#simplify-accelerator-assets"
       },
       "architectureGuide": {
-        "title": "CloudHub Networking Guide — VPC, Load Balancing, and Firewall Rules",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide#overview"
+            "title": "CloudHub Networking Guide — VPC, Load Balancing, and Firewall Rules",
+            "url": "https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide#overview"
       },
       "arc720": {
-        "lesson": "Lesson 5 — API identification, publication, and reuse",
-        "anchor": "ARC720-Course-Content.md#5-api-identification-publication-and-reuse"
+            "lesson": "Lesson 5 — API identification, publication, and reuse",
+            "anchor": "ARC720-Course-Content.md#5-api-identification-publication-and-reuse"
       }
-    },
+},
     "correctAnswer": "D"
   },
   {
@@ -9189,18 +9189,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Design Center — Creating and Publishing API Specifications (RAML and OAS)",
-        "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-specs#share-in-exchange-and-api-manager"
+            "title": "Design Center — Creating and Publishing an API Specification (Share in Exchange)",
+            "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-specs#share-in-exchange-and-api-manager"
       },
       "architectureGuide": {
-        "title": "API Manager — Rate Limiting and Throttling Policy",
-        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-rate-limiting#summary"
+            "title": "API Manager — Rate Limiting and Throttling Policy",
+            "url": "https://docs.mulesoft.com/gateway/latest/policies-included-rate-limiting#summary"
       },
       "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+            "lesson": "Lesson 6 — NFRs at the API-invocation level",
+            "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
       }
-    },
+},
     "correctAnswer": "C"
   },
   {
@@ -9719,18 +9719,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Managing API Instance Versions",
-        "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
+            "title": "Anypoint Exchange — When to Change Version Numbers (Backward-Compatible vs. Major)",
+            "url": "https://docs.mulesoft.com/exchange/to-change-raml-version#when-to-change-version-numbers"
       },
       "architectureGuide": {
-        "title": "Design Center — Best Practices when Using API Designer",
-        "url": "https://docs.mulesoft.com/design-center/design-best-practices#api-designer-best-practices"
+            "title": "Anypoint Exchange — Asset Versions and Semantic Versioning",
+            "url": "https://docs.mulesoft.com/exchange/asset-versions#choose-a-version-number-when-publishing"
       },
       "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+            "lesson": "Lesson 7 — Effective APIs",
+            "anchor": "ARC720-Course-Content.md#7-effective-apis"
       }
-    },
+},
     "correctAnswer": "A"
   },
   {
@@ -10636,18 +10636,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Configuring Alerts in Anypoint Monitoring — Alert Metrics and Thresholds",
-        "url": "https://docs.mulesoft.com/monitoring/alerts-hf#metrics"
+            "title": "API Manager — Instance Alerts for APIs (Response Time and Response Code Alerts with Email Notifications)",
+            "url": "https://docs.mulesoft.com/api-manager/latest/using-api-alerts#instance-alerts"
       },
       "architectureGuide": {
-        "title": "Configuring Alerts in Anypoint Monitoring — Email Notification Variables",
-        "url": "https://docs.mulesoft.com/monitoring/alerts-hf#variables"
+            "title": "API Manager — Reviewing SLA Tiers Concepts (Monitoring SLA Performance)",
+            "url": "https://docs.mulesoft.com/api-manager/latest/defining-sla-tiers#preamble"
       },
       "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+            "lesson": "Lesson 11 — Application network behavior",
+            "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
-    },
+},
     "correctAnswer": "A"
   },
   {
@@ -11153,18 +11153,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Design Center — Creating and Publishing API Specifications",
-        "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-specs#share-in-exchange-and-api-manager"
+            "title": "Design Center — Creating and Publishing API Specifications",
+            "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-specs#share-in-exchange-and-api-manager"
       },
       "architectureGuide": {
-        "title": "API Manager — Managing API Instance Versions",
-        "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
+            "title": "Anypoint Exchange — Best Practices for API Versioning",
+            "url": "https://docs.mulesoft.com/exchange/to-change-raml-version#best-practices-api-versioning"
       },
       "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+            "lesson": "Lesson 7 — Effective APIs",
+            "anchor": "ARC720-Course-Content.md#7-effective-apis"
       }
-    },
+},
     "correctAnswer": "A"
   },
   {
@@ -11374,18 +11374,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MUnit Overview — Automated Testing in CI/CD Pipelines",
-        "url": "https://docs.mulesoft.com/munit/latest/#munit-dependencies"
+            "title": "MUnit Coverage in Maven — Set Up a Minimum Coverage Level (Fail the Build)",
+            "url": "https://docs.mulesoft.com/munit/latest/coverage-maven-concept#set-up-a-minimum-coverage-level"
       },
       "architectureGuide": {
-        "title": "Mule Maven Plugin — Automating Build, Test, and Deployment",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept#mule-maven-plugin-goals"
+            "title": "MUnit Maven Plugin — Enable Sonar Reports (SonarQube Static Analysis)",
+            "url": "https://docs.mulesoft.com/munit/latest/munit-maven-plugin#enable-sonar-reports"
       },
       "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+            "lesson": "Lesson 8 — Effective API implementations",
+            "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
       }
-    },
+},
     "correctAnswers": [
       "A",
       "B"
@@ -11657,18 +11657,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "HL7 EDI Connector — Before You Begin and Exchange Templates",
-        "url": "https://docs.mulesoft.com/hl7-connector/4.3/#exchange-templates-and-examples"
+            "title": "HL7 EDI Connector — Exchange Templates and Examples (Reusable HL7 Assets)",
+            "url": "https://docs.mulesoft.com/hl7-connector/latest/#exchange-templates-and-examples"
       },
       "architectureGuide": {
-        "title": "MuleSoft Accelerator for Healthcare — Prerequisites and HL7 Assets",
-        "url": "https://docs.mulesoft.com/healthcare/latest/#use-cases"
+            "title": "MuleSoft Accelerator for Healthcare — Use Cases and HL7 Assets",
+            "url": "https://docs.mulesoft.com/healthcare/latest/#use-cases"
       },
       "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+            "lesson": "Lesson 4 — Organizational and platform foundations",
+            "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
       }
-    },
+},
     "correctAnswer": "C"
   },
   {
@@ -11735,18 +11735,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Monitoring — Anypoint Insights API Implementation Metrics",
-        "url": "https://docs.mulesoft.com/monitoring/anypoint-insights#entity-metrics-api-requests"
+            "title": "Anypoint Insights — Built-in API Dashboards and Request Metrics",
+            "url": "https://docs.mulesoft.com/monitoring/anypoint-insights#api-charts"
       },
       "architectureGuide": {
-        "title": "Configuring Alerts in Anypoint Monitoring — Create an Alert",
-        "url": "https://docs.mulesoft.com/monitoring/alerts-hf#create"
+            "title": "Anypoint Monitoring — Create an Alert and Configure Email Notifications",
+            "url": "https://docs.mulesoft.com/monitoring/alerts-hf#create"
       },
       "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+            "lesson": "Lesson 11 — Application network behavior",
+            "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
-    },
+},
     "correctAnswer": "C"
   },
   {
@@ -11813,18 +11813,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Worker Size and vCores",
-        "url": "https://docs.mulesoft.com/cloudhub/deploying-to-cloudhub#worker-size-and-vcores"
+            "title": "CloudHub Architecture — CloudHub Workers (Worker Sizes and vCores)",
+            "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#cloudhub-workers"
       },
       "architectureGuide": {
-        "title": "CloudHub — Autoscaling Tab Settings",
-        "url": "https://docs.mulesoft.com/cloudhub/deploying-to-cloudhub#autoscaling-tab-settings"
+            "title": "CloudHub — Configuring Autoscaling Policies for Applications",
+            "url": "https://docs.mulesoft.com/cloudhub/autoscaling-in-cloudhub#configure-autoscaling"
       },
       "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+            "lesson": "Lesson 10 — Production",
+            "anchor": "ARC720-Course-Content.md#10-production"
       }
-    },
+},
     "correctAnswer": "C"
   },
   {
@@ -12886,18 +12886,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Object Store v2 Overview — Features and Permissions",
-        "url": "https://docs.mulesoft.com/object-store/#object-store-v2-features"
+            "title": "Object Store v2 FAQ — Sharing an Object Store Between Two Mule Apps",
+            "url": "https://docs.mulesoft.com/object-store/osv2-faq#can-an-app-deployed-to-cloudhub-access-the-object-store-of-another-cloudhub-app"
       },
       "architectureGuide": {
-        "title": "Mule Object Stores — Configure a Global Object Store",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores#object-store-config"
+            "title": "Object Store Connector — Object Store Limitations and the Default (Per-App) Object Store",
+            "url": "https://docs.mulesoft.com/object-store-connector/latest/#object-store-limitations"
       },
       "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+            "lesson": "Lesson 10 — Production",
+            "anchor": "ARC720-Course-Content.md#10-production"
       }
-    },
+},
     "correctAnswer": "B"
   },
   {
@@ -12922,18 +12922,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub Networking Guide — Internal DNS Records for VPC Communication",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide#dns-records"
+            "title": "CloudHub Networking Guide — Internal DNS Records for VPC Communication",
+            "url": "https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide#dns-records"
       },
       "architectureGuide": {
-        "title": "Anypoint VPC Architecture — Internal Worker DNS Resolution",
-        "url": "https://docs.mulesoft.com/cloudhub/vpc-architecture-concept#see-also"
+            "title": "Anypoint VPC Network Architecture — Internal Worker DNS Resolution",
+            "url": "https://docs.mulesoft.com/cloudhub/vpc-architecture-concept#preamble"
       },
       "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+            "lesson": "Lesson 10 — Production",
+            "anchor": "ARC720-Course-Content.md#10-production"
       }
-    },
+},
     "correctAnswer": "A"
   },
   {
@@ -13174,18 +13174,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Static IPs for Outbound Traffic",
-        "url": "https://docs.mulesoft.com/cloudhub/managing-applications-on-cloudhub#static-ips"
+            "title": "Runtime Manager — Assign Static IPs to a CloudHub Application",
+            "url": "https://docs.mulesoft.com/cloudhub/managing-applications-on-cloudhub#static-ips"
       },
       "architectureGuide": {
-        "title": "CloudHub Networking Guide — IP Ranges and Static IPs",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide#ip-ranges-and-static-ips"
+            "title": "CloudHub Networking Guide — IP Ranges and Static IPs",
+            "url": "https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide#ip-ranges-and-static-ips"
       },
       "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+            "lesson": "Lesson 10 — Production",
+            "anchor": "ARC720-Course-Content.md#10-production"
       }
-    },
+},
     "correctAnswer": "B"
   },
   {
@@ -13246,18 +13246,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Runtime Manager — Multicast vs Unicast Clusters",
-        "url": "https://docs.mulesoft.com/runtime-manager/cluster-about#multicast-vs-unicast-clusters"
+            "title": "On-Premises Mule Runtime HA Cluster — Add a Load Balancer (Distributing Requests Across Cluster Nodes)",
+            "url": "https://docs.mulesoft.com/on-premises/latest/mule-high-availability-ha-clusters#clustering-and-load-balancing"
       },
       "architectureGuide": {
-        "title": "Mule Runtime — Distributed Locking for Clustered Applications",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/distributed-locking#create-a-lock"
+            "title": "On-Premises Mule Runtime HA Cluster — Understand the Primary Node",
+            "url": "https://docs.mulesoft.com/on-premises/latest/mule-high-availability-ha-clusters#understand-the-primary-node"
       },
       "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+            "lesson": "Lesson 10 — Production",
+            "anchor": "ARC720-Course-Content.md#10-production"
       }
-    },
+},
     "correctAnswer": "B"
   },
   {
@@ -13462,18 +13462,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Runtime Fabric — Configure a Public Endpoint for the Application",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/deploy-to-runtime-fabric#configure-a-public-endpoint-for-the-application"
+            "title": "Runtime Fabric — Configuring Ingress Resource Template (Routing Requests to App Endpoints)",
+            "url": "https://docs.mulesoft.com/runtime-fabric/latest/custom-ingress-configuration#how-ingress-resources-templates-work-in-runtime-fabric"
       },
       "architectureGuide": {
-        "title": "Runtime Fabric — Verify Inbound Traffic for Deployed Applications",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/deploy-to-runtime-fabric#verify-inbound-traffic-for-deployed-applications"
+            "title": "Runtime Fabric — High Availability and Disaster Recovery (Multiple Replicas and Failover)",
+            "url": "https://docs.mulesoft.com/runtime-fabric/latest/rtf-ha-dr#high-availability-in-runtime-fabric"
       },
       "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+            "lesson": "Lesson 10 — Production",
+            "anchor": "ARC720-Course-Content.md#10-production"
       }
-    },
+},
     "correctAnswer": "B"
   },
   {
@@ -13648,18 +13648,18 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint MQ Overview — Asynchronous Messaging Interfaces",
-        "url": "https://docs.mulesoft.com/mq/#anypoint-mq-features"
+            "title": "Design Center — AsyncAPI Specifications (Messaging Interfaces and Transports such as RabbitMQ)",
+            "url": "https://docs.mulesoft.com/design-center/design-async-api"
       },
       "architectureGuide": {
-        "title": "Amazon SQS Connector — Common Use Cases and Queue Support",
-        "url": "https://docs.mulesoft.com/amazon-sqs-connector/latest/#common-use-cases-for-the-connector"
+            "title": "AMQP Connector — Connect to an AMQP 0.9.1-Compliant Broker",
+            "url": "https://docs.mulesoft.com/amqp-connector/latest/#connect-to-a-broker"
       },
       "arc720": {
-        "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
-        "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
+            "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
+            "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
       }
-    },
+},
     "correctAnswer": "B"
   },
   {
