@@ -14023,33 +14023,33 @@ window.MCPA_QUESTIONS = [
         "text": "Runtime Manager communicates with Agents to provide updates on cluster status, download images, and update Mule applications (when available and chosen to do so by customer) from the container registry"
       }
     ],
-    "explanation": "Correct answer: B.",
+    "explanation": "Correct answer: B. Runtime Fabric agents initiate the outbound connection to Runtime Manager over an mTLS tunnel and send cluster and application status updates. Runtime Manager does not push updates to agents: images and Mule application updates are pulled from the container registry only when the customer chooses, not automatically.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Says updates happen automatically when available, but all newer image pulls are triggered by the customer only."
       },
       "B": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "Agents initiate communication to Runtime Manager, and image and Mule application updates happen only when the customer chooses."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Says Runtime Manager initiates traffic to the Agents, but the Runtime Fabric agent initiates and controls the mTLS tunnel."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Reverses the direction: it says Runtime Manager provides the updates to the Agents, but agents communicate outward to Runtime Manager."
       }
     },
     "references": {
       "primary": {
-        "title": "Runtime Fabric Security Architecture — Management Flow",
+        "title": "Runtime Fabric Security Architecture — Management Flow: \"Runtime Fabric agent initiates and control the tunnel.\"",
         "url": "https://docs.mulesoft.com/runtime-fabric/latest/security-architecture#management-flow"
       },
       "architectureGuide": {
-        "title": "Runtime Fabric Overview — How Application Deployments Work",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/#how-application-deployments-work-in-anypoint-runtime-fabric"
+        "title": "Runtime Fabric Overview — Runtime Fabric Core Services: \"The Runtime Fabric agent is deployed as a pod in the cluster and communicates with the control plane via an mTLS outbound connection established at startup.\"",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/#runtime-fabric-core-services"
       },
       "arc720": {
         "lesson": "Lesson 10 — Production",
