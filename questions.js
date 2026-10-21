@@ -12886,12 +12886,12 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-            "title": "Object Store v2 FAQ — Sharing an Object Store Between Two Mule Apps",
+            "title": "Object Store v2 FAQ — Object Store v2 Isn't Designed for App-to-App Communication (Data Is Partitioned per App)",
             "url": "https://docs.mulesoft.com/object-store/osv2-faq#can-an-app-deployed-to-cloudhub-access-the-object-store-of-another-cloudhub-app"
       },
       "architectureGuide": {
-            "title": "Object Store Connector — Object Store Limitations and the Default (Per-App) Object Store",
-            "url": "https://docs.mulesoft.com/object-store-connector/latest/#object-store-limitations"
+            "title": "Object Store Connector — Each Mule App Has Its Own Default Object Store",
+            "url": "https://docs.mulesoft.com/object-store-connector/latest/#use-the-default-object-store"
       },
       "arc720": {
             "lesson": "Lesson 10 — Production",
