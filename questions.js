@@ -14579,12 +14579,12 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Enterprise Integration Patterns — Canonical Data Model",
-        "url": "https://www.enterpriseintegrationpatterns.com/patterns/messaging/CanonicalDataModel.html"
+        "title": "MuleSoft Accelerators — Cloud Information Model (CIM)",
+        "url": "https://docs.mulesoft.com/accelerators-cim/#preamble"
       },
       "architectureGuide": {
-        "title": "MuleSoft Accelerators — Cloud Information Model (CIM)",
-        "url": "https://docs.mulesoft.com/accelerators-cim/#organization"
+        "title": "MuleSoft Accelerators — Considerations for Simplifying Accelerator Assets",
+        "url": "https://docs.mulesoft.com/accelerators-home/simplifying-assets#simplify-accelerator-assets"
       },
       "arc720": {
         "lesson": "Lesson 7 — Effective APIs",
