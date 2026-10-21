@@ -6635,7 +6635,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option is incorrect as batch file transfers are slow, error‑prone, and do not meet the real‑time expectations of a modern mobile banking app. They also require custom scripts for file generation, transfer, and parsing, adding to development effort. In production, such a solution often leads to data latency issues and poor user experience."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "MuleSoft Accelerators — API-Led Connectivity Approach and Reusable Assets",
+            "url": "https://docs.mulesoft.com/accelerators-home/simplifying-assets#simplify-accelerator-assets"
+      },
+      "architectureGuide": {
+            "title": "CloudHub Overview — Deploy Your Application to CloudHub",
+            "url": "https://docs.mulesoft.com/cloudhub/#deploy-your-application-to-cloudhub"
+      },
+      "arc720": {
+            "lesson": "Lesson 5 — API identification, publication, and reuse",
+            "anchor": "ARC720-Course-Content.md#5-api-identification-publication-and-reuse"
+      }
+},
     "correctAnswer": "B"
   },
   {
@@ -6700,7 +6713,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option is incorrect because disabling TLS means data is sent in clear text, directly breaching HIPAA’s encryption‑in‑transit requirement. Client certificates for internal calls do not protect external traffic from partner clinics, leaving PHI exposed. An on‑premises deployment without proper TLS and API‑level policies fails to provide the comprehensive security framework needed for regulated healthcare data."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "API Manager — TLS Policy and Mutual Authentication (mTLS) Enforcement",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-tls#apply-mtls-inbound-configuration-to-a-specific-api-instance"
+      },
+      "architectureGuide": {
+        "title": "Access Management — Role-Based Access Control for APIs and Environments",
+        "url": "https://docs.mulesoft.com/access-management/roles#assign-api-permissions-to-a-custom-role"
+      },
+      "arc720": {
+        "lesson": "Lesson 6 — NFRs at the API-invocation level",
+        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -6765,7 +6791,20 @@ window.MCPA_QUESTIONS = [
         "text": "Moving to on‑premise infrastructure adds significant operational responsibility, including hardware provisioning, capacity planning, and monitoring. Scheduled batch jobs cannot react in real time to sudden traffic spikes, and they do not provide the elasticity required for a three‑fold surge. This option directly contradicts the requirement for automatic scaling with limited operational staff."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub — Configuring Autoscaling Policies for Applications",
+        "url": "https://docs.mulesoft.com/cloudhub/autoscaling-in-cloudhub#configure-autoscaling"
+      },
+      "architectureGuide": {
+        "title": "CloudHub Fabric — Worker Scale-Out and High Availability",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#worker-scale-out"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -6830,7 +6869,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option is incorrect. Runtime Manager alerts are designed for threshold‑based notifications, not for systematic collection of latency and usage data. Manually aggregating alerts would be time‑consuming, error‑prone, and unlikely to produce the comprehensive metrics needed for a formal two‑week report."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint Monitoring — Metrics, Dashboards, and Alerting Overview",
+        "url": "https://docs.mulesoft.com/monitoring/#features"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Monitoring — Anypoint Insights Performance Metrics",
+        "url": "https://docs.mulesoft.com/monitoring/anypoint-insights#insights-chart-reference"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -6960,7 +7012,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option is incorrect. Runtime Fabric still requires an Enterprise subscription for platform capabilities, so subscription fees are not avoided. Sharing assets via a file share lacks version control, policy enforcement, and the collaborative features of Exchange, leading to higher operational overhead and potential compliance issues."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint Exchange — Discovering, Publishing, and Reusing Assets",
+        "url": "https://docs.mulesoft.com/exchange/#view-assets-by-business-group"
+      },
+      "architectureGuide": {
+        "title": "Access Management — Business Groups and Shared Resource Governance",
+        "url": "https://docs.mulesoft.com/access-management/business-groups#business-group-ownership"
+      },
+      "arc720": {
+        "lesson": "Lesson 4 — Organizational and platform foundations",
+        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+      }
+    },
     "correctAnswer": "C"
   },
   {
@@ -7025,7 +7090,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option is incorrect. Anypoint Service Mesh is designed for advanced traffic management and security between services, not for simplifying cluster management. It adds extra licensing costs and architectural complexity, which the startup wants to avoid. Organizations that mistakenly use Service Mesh as a replacement for basic orchestration often over‑engineer their solution and increase both operational and financial overhead."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub 2.0 Overview — Fully Managed, Containerized iPaaS",
+        "url": "https://docs.mulesoft.com/cloudhub-2/#why-deploy-on-cloudhub-2-0"
+      },
+      "architectureGuide": {
+        "title": "Deployment Options — CloudHub 2.0 vs Runtime Fabric vs Hybrid",
+        "url": "https://docs.mulesoft.com/runtime-manager/deployment-strategies#cloudhub-2-0"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -7227,7 +7305,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option is incorrect. While external Id Ps can be federated, bypassing Anypoint’s native role model eliminates the granular access needed for self‑service and conflicts with the security office’s demand for role‑based controls. Assigning a single role defeats the purpose of segregation of duties."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Access Management — Creating Business Groups and Role-Based Permissions",
+        "url": "https://docs.mulesoft.com/access-management/managing-business-groups#create-business-group"
+      },
+      "architectureGuide": {
+        "title": "Access Management — Using Roles to Manage Permissions",
+        "url": "https://docs.mulesoft.com/access-management/roles#create-a-custom-role"
+      },
+      "arc720": {
+        "lesson": "Lesson 4 — Organizational and platform foundations",
+        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+      }
+    },
     "correctAnswers": [
       "A",
       "E"
@@ -7295,7 +7386,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option is correct because it capitalizes on Mule Soft’s ready‑made connectors and accelerators, dramatically reducing development effort and allowing delivery within the 6‑week sprint. The API‑Led Connectivity approach promotes reusable assets, governance, and scalability while staying well within the $75,000 budget due to lower licensing and reduced custom coding. In real deployments, firms using this method have achieved integration go‑live in under a month with predictable costs and robust monitoring."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "MuleSoft Accelerators — API-Led Connectivity Approach and Reusable Assets",
+            "url": "https://docs.mulesoft.com/accelerators-home/simplifying-assets#simplify-accelerator-assets"
+      },
+      "architectureGuide": {
+            "title": "Anypoint Exchange — MuleSoft Assets and Reusable Connectors",
+            "url": "https://docs.mulesoft.com/exchange/#mulesoft-assets"
+      },
+      "arc720": {
+            "lesson": "Lesson 5 — API identification, publication, and reuse",
+            "anchor": "ARC720-Course-Content.md#5-api-identification-publication-and-reuse"
+      }
+},
     "correctAnswer": "F"
   },
   {
@@ -7360,7 +7464,20 @@ window.MCPA_QUESTIONS = [
         "text": "A BAA is necessary for HIPAA but does not replace technical safeguards like encryption. Transmitting unencrypted PHI violates the HIPAA Security Rule, regardless of contractual agreements. In practice, this could lead to audit findings and hefty fines despite the signed BAA."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "API Manager — TLS Policy for Transport Encryption at the Gateway",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-tls#summary"
+      },
+      "architectureGuide": {
+        "title": "Object Store v2 — Encrypted, Persistent Key-Value Storage",
+        "url": "https://docs.mulesoft.com/object-store/#object-store-v2-features"
+      },
+      "arc720": {
+        "lesson": "Lesson 6 — NFRs at the API-invocation level",
+        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+      }
+    },
     "correctAnswer": "C"
   },
   {
@@ -7425,7 +7542,20 @@ window.MCPA_QUESTIONS = [
         "text": "A hybrid approach introduces an additional network hop between the Cloud Hub API gateway and the on‑premises runtime, increasing latency and complexity. While it may be useful for certain integration scenarios, it is not optimal for sub‑second checkout APIs that demand minimal round‑trip time. Thus, this option does not best meet the performance requirement."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Runtime Fabric — Configuring Horizontal Pod Autoscaling (HPA)",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/configure-horizontal-autoscaling#configure-horizontal-pod-autoscaling"
+      },
+      "architectureGuide": {
+        "title": "Runtime Fabric Overview — Core Services and Deployment Model",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/#runtime-fabric-core-services"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "E"
   },
   {
@@ -7490,7 +7620,20 @@ window.MCPA_QUESTIONS = [
         "text": "Generating code from a Swagger file assumes the specification already exists, which is not the case here. Additionally, the team prefers graphical tools, and the autogeneration wizard still produces code that must be manually refined. This step would come after a contract is created, not before, making it an incorrect first action."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "Design Center — Creating and Publishing an API Specification (Share in Exchange)",
+            "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-specs#share-in-exchange-and-api-manager"
+      },
+      "architectureGuide": {
+            "title": "Design Center — Best Practices when Using API Designer",
+            "url": "https://docs.mulesoft.com/design-center/design-best-practices#api-designer-best-practices"
+      },
+      "arc720": {
+            "lesson": "Lesson 7 — Effective APIs",
+            "anchor": "ARC720-Course-Content.md#7-effective-apis"
+      }
+},
     "correctAnswer": "C"
   },
   {
@@ -7555,7 +7698,20 @@ window.MCPA_QUESTIONS = [
         "text": "This is incorrect because source‑code versioning does not provide runtime governance. Tags in Git capture design changes but do not automatically apply or monitor usage policies when the API is invoked. Without API Manager, the agency cannot centrally enforce or audit policies required by federal regulations."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "API Manager Overview — API Instances, Contracts, Policies, and SLA Tiers",
+        "url": "https://docs.mulesoft.com/api-manager/latest/latest-overview-concept#api-manager-components-concepts-and-features"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Exchange — Asset Versions and Lifecycle States",
+        "url": "https://docs.mulesoft.com/exchange/lifecycle#stable-state"
+      },
+      "arc720": {
+        "lesson": "Lesson 6 — NFRs at the API-invocation level",
+        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -7620,7 +7776,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option is incorrect. While logging can capture events, writing logs to a file system requires manual parsing and does not deliver real‑time metrics or alerts. The lack of centralized, searchable dashboards makes it unsuitable for meeting strict uptime requirements."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Configuring Alerts in Anypoint Monitoring",
+        "url": "https://docs.mulesoft.com/monitoring/alerts-hf#create"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Monitoring — Anypoint Insights Performance Metrics",
+        "url": "https://docs.mulesoft.com/monitoring/anypoint-insights#charts-performance"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "D"
   },
   {
@@ -7685,7 +7854,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option is incorrect because cookies have size limitations, pose security risks, and are unsuitable for complex transactional state. Relying on the client to maintain critical business state can lead to data loss if the cookie is cleared or tampered with. In a fintech scenario, this approach would violate compliance and reliability requirements."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Runtime Fabric High Availability and Disaster Recovery — Best Practices (Externalize State)",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/rtf-ha-dr#best-practices"
+      },
+      "architectureGuide": {
+        "title": "CloudHub to CloudHub 2.0 Migration — Application Differences (External Shared State)",
+        "url": "https://docs.mulesoft.com/cloudhub/ch-ch2-migration-configuration#application-differences"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -7750,7 +7932,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option is incorrect. While rate limiting can protect services, omitting logging eliminates the audit trail needed for HIPAA compliance and hampers troubleshooting. Logging does not significantly impact performance when configured properly, and it is essential for forensic analysis after an incident. Organizations that skipped logging struggled to demonstrate compliance during audits."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "HL7 EDI Connector — Before You Begin (Schema and Version Support)",
+            "url": "https://docs.mulesoft.com/hl7-connector/latest/#before-you-begin"
+      },
+      "architectureGuide": {
+            "title": "Mule Error Handling — Global Error Handlers and On-Error Scopes",
+            "url": "https://docs.mulesoft.com/mule-runtime/latest/error-handling#global_error_handler"
+      },
+      "arc720": {
+            "lesson": "Lesson 8 — Effective API implementations",
+            "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+      }
+},
     "correctAnswers": [
       "B",
       "D"
@@ -7818,7 +8013,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option is incorrect. On‑premises infrastructure cannot elastically scale to a 300% traffic increase, making high availability unlikely. Requiring the QA team to create new test cases for each scenario exceeds the 20% capacity limit and lacks the automation needed for rapid regression testing."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "CloudHub — Configuring Autoscaling Policies for Applications",
+            "url": "https://docs.mulesoft.com/cloudhub/autoscaling-in-cloudhub#configure-autoscaling"
+      },
+      "architectureGuide": {
+            "title": "Runtime Fabric — Configuring Horizontal Pod Autoscaling (HPA) for Deployments",
+            "url": "https://docs.mulesoft.com/runtime-fabric/latest/configure-horizontal-autoscaling#configure-horizontal-pod-autoscaling"
+      },
+      "arc720": {
+            "lesson": "Lesson 10 — Production",
+            "anchor": "ARC720-Course-Content.md#10-production"
+      }
+},
     "correctAnswers": [
       "A",
       "C",
@@ -7887,7 +8095,20 @@ window.MCPA_QUESTIONS = [
         "text": "Use Anypoint VPC peering to directly expose the on‑premises APIs over the internet without redeploying them.: This option is incorrect. VPC peering allows private network connectivity but does not migrate the APIs to Cloud Hub, nor does it address the need to keep OAuth 2.0 policies intact on the new platform. It would leave the on‑premises APIs still in use, defeating the purpose of the migration and potentially creating latency issues. Proper migration requires redeploying the services to Cloud Hub."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "API Manager — OAuth 2.0 Protected Resource and Token Enforcement",
+        "url": "https://docs.mulesoft.com/api-manager/latest/about-configure-api-for-oauth#platform-and-runtime-prerequisites"
+      },
+      "architectureGuide": {
+        "title": "CloudHub — Zero Downtime Updates with Blue-Green Deployment",
+        "url": "https://docs.mulesoft.com/cloudhub/managing-applications-on-cloudhub#zero-downtime-updates-with-cloudhub"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswers": [
       "B",
       "D"
@@ -7955,7 +8176,20 @@ window.MCPA_QUESTIONS = [
         "text": "Use content‑type negotiation (media type versioning) combined with API gateway routing to map each version to a separate flow.: This option is incorrect. Media‑type versioning demands that every client correctly set the Accept header with a specific vendor‑specific media type, which many mobile frameworks do not handle out of the box. The extra routing logic in the gateway adds processing overhead and increases the chance of misconfiguration, potentially compromising PCI DSS controls. The complexity and testing effort needed to support multiple media types typically exceed the modest budget and can lead to inadvertent breaking changes."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "Anypoint Exchange — Best Practices for API Versioning",
+            "url": "https://docs.mulesoft.com/exchange/to-change-raml-version#best-practices-api-versioning"
+      },
+      "architectureGuide": {
+            "title": "API Experience Hub — API Versioning (Breaking Changes and Previous Versions)",
+            "url": "https://docs.mulesoft.com/api-experience-hub/api-versioning-in-api-experience-hub"
+      },
+      "arc720": {
+            "lesson": "Lesson 7 — Effective APIs",
+            "anchor": "ARC720-Course-Content.md#7-effective-apis"
+      }
+},
     "correctAnswer": "A"
   },
   {
@@ -8020,7 +8254,20 @@ window.MCPA_QUESTIONS = [
         "text": "Event‑driven Pub/Sub architecture with Kafka – publish appointment events to a topic that the scheduling service subscribes to.: This option is incorrect. While event‑driven architectures are powerful, setting up a Kafka cluster, configuring topics, and ensuring HIPAA‑level encryption and access control is far beyond a two‑week sprint. The added operational overhead and the need for precise ordering make this pattern an over‑engineered solution for the given problem."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "API Manager — Reviewing API Proxy Benefits and Impacts (Governance and Policy Enforcement)",
+        "url": "https://docs.mulesoft.com/api-manager/latest/proxy-advantages#benefits"
+      },
+      "architectureGuide": {
+        "title": "Mule Gateway — OAuth 2.0 Access Token Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-oauth-access-token-enforcement#summary"
+      },
+      "arc720": {
+        "lesson": "Lesson 6 — NFRs at the API-invocation level",
+        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -8085,7 +8332,20 @@ window.MCPA_QUESTIONS = [
         "text": "Host the product catalog as a static JSON file in Anypoint Object Store and let partners download it via SFTP.: Serving a static file via SFTP does not constitute an API and cannot enforce dynamic throttling limits per consumer. It also lacks the ability to evolve the contract, add authentication, or provide versioning, which are core benefits of an API‑led strategy. This solution would therefore not meet the requirement for controlled, partner‑centric exposure while also missing the separation‑of‑concerns principle."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "API Manager — Rate Limiting and Throttling Policy",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-rate-limiting#how-this-policy-works"
+      },
+      "architectureGuide": {
+        "title": "API Manager — Defining SLA Tiers and Enforcing a Tier",
+        "url": "https://docs.mulesoft.com/api-manager/latest/defining-sla-tiers#enforcing-a-tier"
+      },
+      "arc720": {
+        "lesson": "Lesson 7 — Effective APIs",
+        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -8150,7 +8410,20 @@ window.MCPA_QUESTIONS = [
         "text": "Streaming pattern using Data Weave to process large payloads from the carrier APIs.: Streaming is intended for handling large data streams efficiently, not for orchestrating multiple service calls, so this option is incorrect. It does not provide parallel invocation or response aggregation needed for real‑time shipment tracking. Applying streaming would add unnecessary complexity without addressing the core requirement."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Scatter-Gather — Parallel Processing and Response Aggregation",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/scatter-gather-concept#result"
+      },
+      "architectureGuide": {
+        "title": "Parallel For Each — Differences from For Each Scope",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/parallel-foreach-scope#differences-between-for-each-and-parallel-for-each-scopes"
+      },
+      "arc720": {
+        "lesson": "Lesson 8 — Effective API implementations",
+        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+      }
+    },
     "correctAnswer": "D"
   },
   {
@@ -8215,7 +8488,20 @@ window.MCPA_QUESTIONS = [
         "text": "Deploy a hardware security module (HSM) to encrypt data at rest and use token‑binding for requests.: This answer is incorrect. While an HSM secures data at rest, it does not address authentication of API callers, and token‑binding adds complexity without guaranteeing client identity. Additionally, HSM solutions often exceed the modest $30k budget, making this approach impractical for the project constraints."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "API Manager — TLS Policy and mTLS Inbound Configuration",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-tls#apply-mtls-inbound-configuration-to-a-specific-api-instance"
+      },
+      "architectureGuide": {
+        "title": "Mule TLS Configuration — Keystores, Truststores, and Two-Way Auth",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/tls-configuration#example-configuring-tls-for-two-way-authentication"
+      },
+      "arc720": {
+        "lesson": "Lesson 6 — NFRs at the API-invocation level",
+        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+      }
+    },
     "correctAnswer": "D"
   },
   {
@@ -8280,7 +8566,20 @@ window.MCPA_QUESTIONS = [
         "text": "File‑based ingestion followed by periodic bulk loads: This option is incorrect. Writing sensor data to files and loading them in bulk introduces significant delay and defeats the purpose of near‑real‑time processing. Moreover, managing file lifecycle and error handling adds complexity without delivering the required responsiveness."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint MQ Overview — Cloud-Based Asynchronous Messaging",
+        "url": "https://docs.mulesoft.com/mq/#anypoint-mq-features"
+      },
+      "architectureGuide": {
+        "title": "Streaming in Mule — Streaming Strategies for Large Payloads",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/streaming-about#streaming-strategies"
+      },
+      "arc720": {
+        "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
+        "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
+      }
+    },
     "correctAnswer": "C"
   },
   {
@@ -8345,7 +8644,20 @@ window.MCPA_QUESTIONS = [
         "text": "Create separate API instances per client and manage versions individually for each client: This option is incorrect. Managing a distinct API instance for every corporate client dramatically increases operational overhead and makes it difficult to maintain a consistent audit log across instances. In a regulated setting, this approach can lead to fragmented compliance evidence and higher risk of configuration drift."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "Anypoint Exchange — API Version in the Application URL",
+            "url": "https://docs.mulesoft.com/exchange/to-change-raml-version#api-version-in-application-url"
+      },
+      "architectureGuide": {
+            "title": "Anypoint Exchange — Asset Versions and Semantic Versioning",
+            "url": "https://docs.mulesoft.com/exchange/asset-versions#choose-a-version-number-when-publishing"
+      },
+      "arc720": {
+            "lesson": "Lesson 7 — Effective APIs",
+            "anchor": "ARC720-Course-Content.md#7-effective-apis"
+      }
+},
     "correctAnswer": "C"
   },
   {
@@ -8410,7 +8722,20 @@ window.MCPA_QUESTIONS = [
         "text": "Perform manual quarterly penetration testing without any automated scanning tools.: This option is incorrect. While periodic penetration testing is valuable, relying solely on manual testing is inefficient for a small team and may miss many automated vulnerability checks. Moreover, the cost and effort of comprehensive manual testing can quickly exceed the limited budget, and it does not replace the need for continuous, automated security controls."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "API Manager — Client ID Enforcement and Client Application Credentials",
+        "url": "https://docs.mulesoft.com/api-manager/latest/client-id-based-policies#how-this-policy-works"
+      },
+      "architectureGuide": {
+        "title": "API Manager — IP Allowlist Policy for Restricting Access",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-ip-allowlist#summary"
+      },
+      "arc720": {
+        "lesson": "Lesson 6 — NFRs at the API-invocation level",
+        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+      }
+    },
     "correctAnswers": [
       "B",
       "E"
@@ -8547,7 +8872,20 @@ window.MCPA_QUESTIONS = [
         "text": "Configure automatic scaling rules based on CPU usage in Cloud Hub.: This is incorrect. Automatic scaling helps maintain capacity under load but does not generate alerts about API latency or error‑rate degradation. Scaling alone cannot guarantee SLA compliance; without monitoring thresholds and alerts, the team may miss subtle performance regressions that do not trigger scaling events."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint Monitoring — Compare Anypoint Monitoring and Runtime Manager Alerts",
+        "url": "https://docs.mulesoft.com/monitoring/alerts-hf#compare-anypoint-monitoring-alerts-and-runtime-manager-alerts"
+      },
+      "architectureGuide": {
+        "title": "API Manager — SLA Tiers and Client Application Contracts",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-contracts-landing-page#client-application-credentials"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswers": [
       "A",
       "C"
@@ -8615,7 +8953,20 @@ window.MCPA_QUESTIONS = [
         "text": "Do not version the API at all and add new fields to the existing endpoints, relying on optional parameters for new functionality.: This option is incorrect. Adding new fields to the current API without versioning risks breaking existing mobile applications that expect a specific contract, violating the backward‑compatibility requirement. Moreover, it makes future changes harder to manage and can lead to technical debt, which contradicts the need for a clear, low‑risk rollout within limited resources."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "Anypoint Exchange — API Version Naming Conventions (v Prefix, Major Version in URL)",
+            "url": "https://docs.mulesoft.com/exchange/to-change-raml-version#naming-conventions"
+      },
+      "architectureGuide": {
+            "title": "API Experience Hub — API Versioning (Breaking Changes and Previous Versions)",
+            "url": "https://docs.mulesoft.com/api-experience-hub/api-versioning-in-api-experience-hub"
+      },
+      "arc720": {
+            "lesson": "Lesson 7 — Effective APIs",
+            "anchor": "ARC720-Course-Content.md#7-effective-apis"
+      }
+},
     "correctAnswer": "C"
   },
   {
@@ -8680,7 +9031,20 @@ window.MCPA_QUESTIONS = [
         "text": "Implement a Mule Soft batch job that runs every 5 minutes, using Data Weave transformations to normalize records before storing them centrally.: Running a batch job every 5 minutes still fails to provide true real‑time data, and the repeated polling adds unnecessary load on the source EHR systems. While Data Weave can handle transformations, the batch paradigm is not optimal for low‑latency requirements. The solution also adds scheduling complexity without delivering the needed immediacy."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "MuleSoft Accelerators — Experience, Process, and System API Layers",
+            "url": "https://docs.mulesoft.com/accelerators-home/simplifying-assets#simplify-accelerator-assets"
+      },
+      "architectureGuide": {
+            "title": "CloudHub Networking Guide — VPC, Load Balancing, and Firewall Rules",
+            "url": "https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide#overview"
+      },
+      "arc720": {
+            "lesson": "Lesson 5 — API identification, publication, and reuse",
+            "anchor": "ARC720-Course-Content.md#5-api-identification-publication-and-reuse"
+      }
+},
     "correctAnswer": "D"
   },
   {
@@ -8745,7 +9109,20 @@ window.MCPA_QUESTIONS = [
         "text": "Use a custom Java component that performs RSA encryption on the card number before passing it to downstream services.: Custom RSA encryption provides strong protection but requires key management, careful implementation, and considerable CPU resources for each encryption operation, leading to higher latency. Maintaining custom code also raises operational costs and risks of security flaws. Consequently, this solution does not align with the budget‑conscious, low‑overhead goal."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Omni Gateway — TLS Policy for Transport Encryption of API Traffic",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-tls#summary"
+      },
+      "architectureGuide": {
+        "title": "Salesforce Compliance — PCI Attestation of Compliance (AoC) for MuleSoft / Anypoint Platform",
+        "url": "https://compliance.salesforce.com/en/documents/a005A00000mkLDhQAM"
+      },
+      "arc720": {
+        "lesson": "Lesson 6 — NFRs at the API-invocation level",
+        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+      }
+    },
     "correctAnswer": "D"
   },
   {
@@ -8810,7 +9187,20 @@ window.MCPA_QUESTIONS = [
         "text": "Skip throttling for the initial launch and monitor usage manually after release.: This option is incorrect. Ignoring throttling exposes the public API to potential abuse, which can degrade performance or cause denial of service. Manual monitoring is reactive and cannot prevent abuse in real time; proactive rate‑limiting via API Manager is the recommended approach."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "Design Center — Creating and Publishing an API Specification (Share in Exchange)",
+            "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-specs#share-in-exchange-and-api-manager"
+      },
+      "architectureGuide": {
+            "title": "API Manager — Rate Limiting and Throttling Policy",
+            "url": "https://docs.mulesoft.com/gateway/latest/policies-included-rate-limiting#summary"
+      },
+      "arc720": {
+            "lesson": "Lesson 6 — NFRs at the API-invocation level",
+            "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+      }
+},
     "correctAnswer": "C"
   },
   {
@@ -8875,7 +9265,20 @@ window.MCPA_QUESTIONS = [
         "text": "Deploy Mule Runtime Fabric on a private cloud that is not Fed RAMP authorized and connect to the cloud document store via public internet.: This option is incorrect. Runtime Fabric on a non‑Fed RAMP private cloud does not satisfy the mandated security controls, and exposing the document store over the public internet increases risk. The agency would still need to invest in additional security layers, negating any budget advantage."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "MuleSoft Government Cloud Overview — FedRAMP-Authorized Anypoint Platform",
+        "url": "https://docs.mulesoft.com/gov-cloud/#features-included-in-government-cloud"
+      },
+      "architectureGuide": {
+        "title": "Security in MuleSoft Government Cloud — FedRAMP Compliance",
+        "url": "https://docs.mulesoft.com/gov-cloud/gov-cloud-security#fedramp-compliance"
+      },
+      "arc720": {
+        "lesson": "Lesson 4 — Organizational and platform foundations",
+        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+      }
+    },
     "correctAnswer": "C"
   },
   {
@@ -9070,7 +9473,20 @@ window.MCPA_QUESTIONS = [
         "text": "Disable any caching or replication and rely on direct synchronous calls to meet consistency.: This option is incorrect. Direct synchronous calls increase latency and load on each system, raising operational costs and potentially breaching the budget. Synchronous integration also makes it harder to achieve eventual consistency, as any downstream failure blocks the entire transaction, and it offers no built‑in mechanisms for GDPR‑aligned data protection."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint MQ Overview — Cloud-Based Asynchronous Messaging",
+        "url": "https://docs.mulesoft.com/mq/#anypoint-mq-features"
+      },
+      "architectureGuide": {
+        "title": "HTTP Caching Policy — Caching API Responses at the Gateway",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-http-caching#how-this-policy-works"
+      },
+      "arc720": {
+        "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
+        "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
+      }
+    },
     "correctAnswers": [
       "A",
       "B"
@@ -9138,7 +9554,20 @@ window.MCPA_QUESTIONS = [
         "text": "Replace the API proxy with a full‑mesh ESB orchestration layer for all traffic.: This option is incorrect. An ESB orchestration layer introduces higher processing latency, greater operational complexity, and higher licensing costs compared to a lightweight API proxy. It does not inherently provide the policy‑driven OAuth, throttling, or caching features needed in a cost‑effective manner."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "API Manager — Rate Limiting and Throttling Policy",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-rate-limiting#how-this-policy-works"
+      },
+      "architectureGuide": {
+        "title": "HTTP Caching Policy — Reducing Backend Load with Response Caching",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-http-caching#summary"
+      },
+      "arc720": {
+        "lesson": "Lesson 6 — NFRs at the API-invocation level",
+        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+      }
+    },
     "correctAnswers": [
       "A",
       "B",
@@ -9207,7 +9636,20 @@ window.MCPA_QUESTIONS = [
         "text": "Disable WS‑Security and rely solely on network firewalls.: This is incorrect. Disabling WS‑Security directly contravenes the stated requirement to implement WS‑Security and would leave the SOAP messages unprotected at the application layer, violating NIST SP 800‑53 confidentiality and integrity safeguards. Firewalls cannot guarantee the protection of data once it traverses the network."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "WS-Security Policy — Message-Level Security for SOAP Services",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-web-services-security#how-the-ws-security-policy-works"
+      },
+      "architectureGuide": {
+        "title": "WS-Security Policy — Supported Algorithms and Certificate Requirements",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-web-services-security#supported-algorithms"
+      },
+      "arc720": {
+        "lesson": "Lesson 6 — NFRs at the API-invocation level",
+        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+      }
+    },
     "correctAnswers": [
       "A",
       "C"
@@ -9275,7 +9717,20 @@ window.MCPA_QUESTIONS = [
         "text": "Adopt header‑based versioning (e. g., X-API-Version) without changing the contract, and deprecate the old version after 12 months.: This option is incorrect. Header‑based versioning without contract changes does not guarantee backward compatibility, because any new required fields could still break existing clients. Deprecating the old version after only 12 months falls short of the 18‑month stability window mandated by the business."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "Anypoint Exchange — When to Change Version Numbers (Backward-Compatible vs. Major)",
+            "url": "https://docs.mulesoft.com/exchange/to-change-raml-version#when-to-change-version-numbers"
+      },
+      "architectureGuide": {
+            "title": "Anypoint Exchange — Asset Versions and Semantic Versioning",
+            "url": "https://docs.mulesoft.com/exchange/asset-versions#choose-a-version-number-when-publishing"
+      },
+      "arc720": {
+            "lesson": "Lesson 7 — Effective APIs",
+            "anchor": "ARC720-Course-Content.md#7-effective-apis"
+      }
+},
     "correctAnswer": "A"
   },
   {
@@ -9340,7 +9795,20 @@ window.MCPA_QUESTIONS = [
         "text": "Deploy an API gateway that terminates TLS, then forwards plain HTTP requests to each clinic sequentially.: Although the API gateway secures the external entry point, the downstream plain HTTP calls still violate HIPAA because patient data travels unencrypted between the gateway and clinics. Additionally, sequential forwarding does not address the latency requirement. The design therefore does not satisfy both key constraints."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Scatter-Gather — Handle Timeout Errors in a Scatter-Gather",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/scatter-gather-concept#handle-timeout-errors-in-a-scatter-gather"
+      },
+      "architectureGuide": {
+        "title": "Mule TLS Configuration — Configuring TLS for a Client",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/tls-configuration#example-configuring-tls-for-a-client"
+      },
+      "arc720": {
+        "lesson": "Lesson 8 — Effective API implementations",
+        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+      }
+    },
     "correctAnswer": "C"
   },
   {
@@ -9405,7 +9873,20 @@ window.MCPA_QUESTIONS = [
         "text": "Create a proprietary token store in a relational database and write custom middleware to check token validity on every request.: This option is incorrect. Building a custom token store introduces complexity, requires developers to implement scope enforcement and rapid revocation logic, and is error‑prone. It also deviates from Mule Soft’s recommended best practices, increasing the likelihood of security gaps."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "API Manager — Mule OAuth 2.0 Provider Endpoints, Scopes, and Token Revocation",
+        "url": "https://docs.mulesoft.com/api-manager/latest/mule-oauth-provider-landing-page#endpoints"
+      },
+      "architectureGuide": {
+        "title": "API Manager — OAuth 2.0 Access Token Enforcement and Validation",
+        "url": "https://docs.mulesoft.com/api-manager/latest/oauth-dance-about"
+      },
+      "arc720": {
+        "lesson": "Lesson 6 — NFRs at the API-invocation level",
+        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+      }
+    },
     "correctAnswer": "D"
   },
   {
@@ -9470,7 +9951,20 @@ window.MCPA_QUESTIONS = [
         "text": "Publish the API to Exchange as a draft before agreeing on a common data type strategy.: This option is incorrect; publishing a draft API without a shared type library can mislead consumers and create fragmented expectations. It also bypasses the essential step of establishing reusable data definitions, which are critical for consistency across multiple APIs. Early publishing may necessitate frequent re‑publishing, confusing stakeholders and eroding trust."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Design Center — Creating and Publishing Reusable API Fragments",
+        "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-fragment#procedure"
+      },
+      "architectureGuide": {
+        "title": "Design Center — Best Practices when Using API Designer",
+        "url": "https://docs.mulesoft.com/design-center/design-best-practices#api-designer-best-practices"
+      },
+      "arc720": {
+        "lesson": "Lesson 7 — Effective APIs",
+        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -9603,7 +10097,20 @@ window.MCPA_QUESTIONS = [
         "text": "Run the integration on a single Cloud Hub worker and rely on in‑memory variables to store inventory state between calls, without any persistent storage or clustering.: This option is incorrect. In‑memory state is lost if the worker restarts or the network drops, so the solution cannot tolerate intermittent outages. Additionally, a single worker offers no high‑availability or scaling for the nightly batch volume, and it cannot guarantee delivery of real‑time alerts, making it an inadequate design."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint MQ — Queues, Dead Letter Queues, and Durable Messaging",
+        "url": "https://docs.mulesoft.com/mq/mq-queues#dead-letter-queues"
+      },
+      "architectureGuide": {
+        "title": "Batch Processing — Architecture and Error Handling",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/batch-processing-concept#architecture"
+      },
+      "arc720": {
+        "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
+        "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
+      }
+    },
     "correctAnswers": [
       "A",
       "B",
@@ -9672,7 +10179,20 @@ window.MCPA_QUESTIONS = [
         "text": "Deploy the APIs on Runtime Fabric but use Mule Soft’s managed Runtime Fabric offering (cloud‑managed).: This option is incorrect. Managed Runtime Fabric is a newer service that still carries higher per‑hour pricing than Cloud Hub dedicated workers and may require additional onboarding steps. For a firm with a tight three‑month window and a strict $150,000 cap, the extra cost and potential delays make it less suitable than a straightforward Cloud Hub deployment."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub Architecture — Workers and Multitenancy",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#workers-and-multitenancy"
+      },
+      "architectureGuide": {
+        "title": "Deployment Options — CloudHub vs Runtime Fabric vs Hybrid",
+        "url": "https://docs.mulesoft.com/runtime-manager/deployment-strategies#cloudhub"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -9737,7 +10257,20 @@ window.MCPA_QUESTIONS = [
         "text": "Enable API Manager analytics for all APIs and use its export feature to send data to a third‑party compliance reporting tool.: This option is incorrect; API Manager analytics focuses on usage statistics and performance, not on the comprehensive audit trail needed for HIPAA. Exporting analytics data does not substitute for the required access and change logs. Moreover, it adds complexity and potential licensing for the third‑party tool, violating the cost‑minimization objective."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Access Management — Audit Logging and Audit Log Contents",
+        "url": "https://docs.mulesoft.com/access-management/audit-logging#audit-log-content"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Monitoring — Exporting Telemetry Data to Third-Party Systems",
+        "url": "https://docs.mulesoft.com/monitoring/telemetry-exporter#before-you-begin"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -9802,7 +10335,20 @@ window.MCPA_QUESTIONS = [
         "text": "Rely solely on Anypoint API Community Manager to expose APIs without deploying any runtime, assuming the platform will handle execution.: API Community Manager is a portal and governance tool; it does not execute Mule applications. Without a runtime, there is no engine to process requests, making this option technically invalid. Attempting to use only the community manager would result in non‑functional APIs and a failed omnichannel launch."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub — Configuring Autoscaling Policies for Applications",
+        "url": "https://docs.mulesoft.com/cloudhub/autoscaling-in-cloudhub#configure-autoscaling"
+      },
+      "architectureGuide": {
+        "title": "CloudHub Overview — Easy Scalability and Multi-Region Deployment",
+        "url": "https://docs.mulesoft.com/cloudhub/#easy-scalability"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "D"
   },
   {
@@ -9867,7 +10413,20 @@ window.MCPA_QUESTIONS = [
         "text": "Enable the Log Masking feature to hide sensitive data, assuming that will reduce the amount of log output displayed.: Log masking only obscures sensitive fields; it does not affect the number of log statements generated. The console will still be saturated with the same volume of messages, making it harder to identify critical events. This option addresses data privacy, not log verbosity."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Logging in Mule — Changing the Log Level and Configuring Logging",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/logging-in-mule#change-the-log-level"
+      },
+      "architectureGuide": {
+        "title": "Logging in Mule — Configuring Custom Logging Settings",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/logging-in-mule#configuring-custom-logging-settings"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "C"
   },
   {
@@ -9997,7 +10556,20 @@ window.MCPA_QUESTIONS = [
         "text": "Scale the deployment horizontally by adding more Cloud Hub workers without further analysis.: This option is incorrect. Adding workers may temporarily alleviate symptoms but does not address the root cause and incurs unnecessary cost. Scaling without diagnostics can also introduce new complexities, such as session affinity issues, while the underlying latency issue remains unresolved."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint Monitoring — Traces for End-to-End Request Visibility",
+        "url": "https://docs.mulesoft.com/monitoring/traces#trace-overview"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Monitoring — Anypoint Insights Flow Metrics",
+        "url": "https://docs.mulesoft.com/monitoring/anypoint-insights#entity-metrics-app-flows"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "D"
   },
   {
@@ -10062,7 +10634,20 @@ window.MCPA_QUESTIONS = [
         "text": "Purchase a dedicated on‑premises monitoring appliance that scrapes API metrics via JMX and raises alerts through an SNMP trap.: This option is incorrect. An on‑premises appliance entails a large upfront capital expense and ongoing maintenance, which far exceeds the $20,000 annual budget for a startup. Moreover, the approach adds unnecessary complexity compared to the cloud‑native monitoring already available in Anypoint."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "API Manager — Instance Alerts for APIs (Response Time and Response Code Alerts with Email Notifications)",
+            "url": "https://docs.mulesoft.com/api-manager/latest/using-api-alerts#instance-alerts"
+      },
+      "architectureGuide": {
+            "title": "API Manager — Reviewing SLA Tiers Concepts (Monitoring SLA Performance)",
+            "url": "https://docs.mulesoft.com/api-manager/latest/defining-sla-tiers#preamble"
+      },
+      "arc720": {
+            "lesson": "Lesson 11 — Application network behavior",
+            "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+},
     "correctAnswer": "A"
   },
   {
@@ -10264,7 +10849,20 @@ window.MCPA_QUESTIONS = [
         "text": "Enable Anypoint Monitoring in the default US‑based region and rely on its dashboards for compliance reporting.: This option is incorrect. Monitoring data stored in the US would itself be subject to data residency rules, potentially moving transaction metadata out of the EU. Additionally, using a US‑based monitoring service does not contribute to achieving zero downtime during the cutover."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub — Manage Regions for Data Residency",
+        "url": "https://docs.mulesoft.com/cloudhub/managing-cloudhub-specific-settings#manage-regions"
+      },
+      "architectureGuide": {
+        "title": "CloudHub — Zero Downtime Updates with Blue-Green Deployment",
+        "url": "https://docs.mulesoft.com/cloudhub/managing-applications-on-cloudhub#zero-downtime-updates-with-cloudhub"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswers": [
       "B",
       "E"
@@ -10332,7 +10930,20 @@ window.MCPA_QUESTIONS = [
         "text": "Expose the APIs through API Manager only, hosting the runtime on an external third‑party server.: This option is incorrect. API Manager alone does not provide a runtime; relying on an external server re‑introduces the need for on‑premise or unmanaged cloud infrastructure, which defeats the goal of avoiding a full‑scale data‑center and may not meet PCI‑DSS isolation requirements. Additionally, the firm would lose the operational benefits of Mule Soft‑managed runtimes such as scaling, monitoring, and support."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub Networking Guide — Dedicated Load Balancing and VPC Isolation",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide#dedicated-load-balancing-configurations"
+      },
+      "architectureGuide": {
+        "title": "CloudHub Architecture — Workers and Multitenancy",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#workers-and-multitenancy"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -10462,7 +11073,20 @@ window.MCPA_QUESTIONS = [
         "text": "Modify the flow to catch the exception and rethrow it as a custom Mule error type with a unique error code.: Defining a custom error type improves error classification for downstream handling, but it does not automatically surface the underlying stack trace or logger details needed for immediate debugging. The engineers would still need to locate where the custom error is logged, adding extra steps. This strategy is more appropriate for long‑term error management rather than rapid troubleshooting."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Logging in Mule — Change the Log Level for Specific Packages",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/logging-in-mule#change-the-log-level"
+      },
+      "architectureGuide": {
+        "title": "Correlation ID — Identifying a Request Across Logs",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/correlation-id#example-of-identifying-the-correlation-id-in-logs"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "C"
   },
   {
@@ -10527,7 +11151,20 @@ window.MCPA_QUESTIONS = [
         "text": "Immediately expose the new API through a public proxy without testing.: Exposing an untested API violates both quality and reliability best practices and risks introducing bugs into production, potentially causing downtime. Without functional and performance testing, the new endpoint could fail under load, especially across three regions, undermining the two-week timeline. Testing should follow the design phase, not precede it."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "Design Center — Creating and Publishing API Specifications",
+            "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-specs#share-in-exchange-and-api-manager"
+      },
+      "architectureGuide": {
+            "title": "Anypoint Exchange — Best Practices for API Versioning",
+            "url": "https://docs.mulesoft.com/exchange/to-change-raml-version#best-practices-api-versioning"
+      },
+      "arc720": {
+            "lesson": "Lesson 7 — Effective APIs",
+            "anchor": "ARC720-Course-Content.md#7-effective-apis"
+      }
+},
     "correctAnswer": "A"
   },
   {
@@ -10657,7 +11294,20 @@ window.MCPA_QUESTIONS = [
         "text": "Disable Anypoint Monitoring temporarily to reduce overhead and see if latency improves.: This option is incorrect because the overhead introduced by Anypoint Monitoring is negligible compared to the processing performed by the flows themselves. Disabling monitoring removes valuable visibility, making it harder to diagnose the issue rather than helping to solve it. In production environments, maintaining observability is a core best practice for performance troubleshooting."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint Monitoring — Anypoint Insights Flow Metrics",
+        "url": "https://docs.mulesoft.com/monitoring/anypoint-insights#entity-metrics-app-flows"
+      },
+      "architectureGuide": {
+        "title": "Runtime Manager — Flow Metrics for Hybrid Deployments",
+        "url": "https://docs.mulesoft.com/runtime-manager/flow-metrics#view-flow-metrics"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -10722,7 +11372,20 @@ window.MCPA_QUESTIONS = [
         "text": "Store secret credentials in plain text within the source repository to simplify pipeline scripts.: This is incorrect. Storing secrets in clear text violates security best practices and can lead to credential leakage, which is unrelated to code quality or testing. Remediation would likely require additional security tooling or processes, adding cost and complexity."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "MUnit Coverage in Maven — Set Up a Minimum Coverage Level (Fail the Build)",
+            "url": "https://docs.mulesoft.com/munit/latest/coverage-maven-concept#set-up-a-minimum-coverage-level"
+      },
+      "architectureGuide": {
+            "title": "MUnit Maven Plugin — Enable Sonar Reports (SonarQube Static Analysis)",
+            "url": "https://docs.mulesoft.com/munit/latest/munit-maven-plugin#enable-sonar-reports"
+      },
+      "arc720": {
+            "lesson": "Lesson 8 — Effective API implementations",
+            "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+      }
+},
     "correctAnswers": [
       "A",
       "B"
@@ -10992,7 +11655,20 @@ window.MCPA_QUESTIONS = [
         "text": "Build a custom Java service outside Mule Soft to translate HL7 messages to REST calls.: This option is incorrect. Developing a custom Java solution defeats the purpose of adopting Mule Soft, increases maintenance overhead, and bypasses the platform's monitoring, governance, and scalability features. It also creates a siloed codebase that is harder to integrate with other APIs and services in the future."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "HL7 EDI Connector — Exchange Templates and Examples (Reusable HL7 Assets)",
+            "url": "https://docs.mulesoft.com/hl7-connector/latest/#exchange-templates-and-examples"
+      },
+      "architectureGuide": {
+            "title": "MuleSoft Accelerator for Healthcare — Use Cases and HL7 Assets",
+            "url": "https://docs.mulesoft.com/healthcare/latest/#use-cases"
+      },
+      "arc720": {
+            "lesson": "Lesson 4 — Organizational and platform foundations",
+            "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+      }
+},
     "correctAnswer": "C"
   },
   {
@@ -11057,7 +11733,20 @@ window.MCPA_QUESTIONS = [
         "text": "Use the API Manager's Policy \"Rate Limiting\" to throttle usage and rely on the policy logs for visibility.: Rate limiting is a control mechanism, not a monitoring strategy. Policy logs show when throttling occurs but do not give comprehensive usage statistics across all APIs. Relying on these logs would give an incomplete picture and does not address the need for a real-time, consolidated dashboard."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "Anypoint Insights — Built-in API Dashboards and Request Metrics",
+            "url": "https://docs.mulesoft.com/monitoring/anypoint-insights#api-charts"
+      },
+      "architectureGuide": {
+            "title": "Anypoint Monitoring — Create an Alert and Configure Email Notifications",
+            "url": "https://docs.mulesoft.com/monitoring/alerts-hf#create"
+      },
+      "arc720": {
+            "lesson": "Lesson 11 — Application network behavior",
+            "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+},
     "correctAnswer": "C"
   },
   {
@@ -11122,7 +11811,20 @@ window.MCPA_QUESTIONS = [
         "text": "Choose the cheapest worker tier regardless of performance requirements.: Selecting the cheapest tier without evaluating performance can cause latency, failed transactions, and poor user experience during peak periods. The cost savings are illusory because the startup may need to add more workers or upgrade later, incurring additional expenses. Proper sizing balances cost with required throughput, which is essential for a logistics business handling variable loads."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "CloudHub Architecture — CloudHub Workers (Worker Sizes and vCores)",
+            "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#cloudhub-workers"
+      },
+      "architectureGuide": {
+            "title": "CloudHub High Availability Features — Worker Scale-out and Cost of Additional Workers",
+            "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#use-cases"
+      },
+      "arc720": {
+            "lesson": "Lesson 10 — Production",
+            "anchor": "ARC720-Course-Content.md#10-production"
+      }
+},
     "correctAnswer": "C"
   },
   {
@@ -11210,7 +11912,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "API Manager Analytics provides API usage analytics rather than an application dependency map."},
       "D": {"type": "Incorrect", "text": "Functional Monitoring runs external tests; it is not used to view internal application dependencies."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint Visualizer — Architecture Visualization and Access",
+        "url": "https://docs.mulesoft.com/visualizer/architecture-visualization#access-api-visualizer"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Visualizer — Policy Visualization",
+        "url": "https://docs.mulesoft.com/visualizer/policy-visualization#view-information-about-one-service-in-your-network"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -11233,7 +11948,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Correct", "text": "Worker CPU utilization is an infrastructure condition configured in Runtime Manager."},
       "D": {"type": "Incorrect", "text": "The CloudHub Connector can emit application notifications, but it is not where worker CPU alerts are configured."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Runtime Manager — Alert Conditions for CloudHub Applications",
+        "url": "https://docs.mulesoft.com/runtime-manager/alerts-on-runtime-manager#conditions-for-applications-deployed-to-cloudhub"
+      },
+      "architectureGuide": {
+        "title": "Runtime Manager — Compare Runtime Manager and Anypoint Monitoring Alerts",
+        "url": "https://docs.mulesoft.com/runtime-manager/alerts-on-runtime-manager#compare-runtime-manager-alerts-and-anypoint-monitoring-alerts"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "C"
   },
   {
@@ -11256,7 +11984,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "The proposed support rerouting is not the standard application logging configuration."},
       "D": {"type": "Incorrect", "text": "Sending logs through a flow connector couples log delivery to application processing and is not the standard infrastructure logging approach."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub — Custom Log Appender and Disabling CloudHub Logging",
+        "url": "https://docs.mulesoft.com/cloudhub/custom-log-appender#create-your-log4j-configuration"
+      },
+      "architectureGuide": {
+        "title": "CloudHub — Enable Custom Log4j Configurations in CloudHub",
+        "url": "https://docs.mulesoft.com/cloudhub/custom-log-appender#enable-custom-log4j-configurations-in-cloudhub"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -11279,7 +12020,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "API Manager policies enforce API behavior but do not run scheduled geographic tests."},
       "D": {"type": "Incorrect", "text": "A health check verifies service availability but does not send the required payload or assert the response."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "API Functional Monitoring — Monitors, Tests, and Schedules",
+        "url": "https://docs.mulesoft.com/api-functional-monitoring/#functional-monitoring-concepts"
+      },
+      "architectureGuide": {
+        "title": "API Functional Monitoring — Add a Schedule and Scheduling Limits",
+        "url": "https://docs.mulesoft.com/api-functional-monitoring/afm-add-schedule#scheduling-limits"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -11302,7 +12056,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "API Manager policies enforce API behavior; they do not set Visualizer layer metadata."},
       "D": {"type": "Incorrect", "text": "Exchange metadata does not substitute for the runtime Visualizer layer property."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint Visualizer — Set a Layer with Properties",
+        "url": "https://docs.mulesoft.com/visualizer/layers#set-a-layer-with-properties"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Visualizer — Architecture Visualization",
+        "url": "https://docs.mulesoft.com/visualizer/architecture-visualization#access-api-visualizer"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -11325,7 +12092,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Correct", "text": "The event is a client violation of a Rate Limiting SLA policy, which is configured in API Manager."},
       "D": {"type": "Incorrect", "text": "Audit logs record platform activity but do not configure quota-violation notifications."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "API Manager — Using API Alerts for Contracts and Clients",
+        "url": "https://docs.mulesoft.com/api-manager/latest/using-api-alerts#contracts-alerts"
+      },
+      "architectureGuide": {
+        "title": "API Manager — Defining SLA Tiers and Managing Applications",
+        "url": "https://docs.mulesoft.com/api-manager/latest/defining-sla-tiers#managing-applications"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "C"
   },
   {
@@ -11348,7 +12128,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "Runtime Manager alerts monitor runtime conditions rather than externally testing API functionality."},
       "D": {"type": "Correct", "text": "Functional Monitoring provides scheduled tests from external geographic locations with payloads and response assertions."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "API Functional Monitoring — Public and Private Locations",
+        "url": "https://docs.mulesoft.com/api-functional-monitoring/#afm-public-locations"
+      },
+      "architectureGuide": {
+        "title": "API Functional Monitoring — Testing Private APIs from Public Locations",
+        "url": "https://docs.mulesoft.com/api-functional-monitoring/afm-monitoring-public-apis#testing-private-apis-from-public-locations"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "D"
   },
   {
@@ -11371,7 +12164,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "The described alert cannot be configured by scanning application logs for an arbitrary error string."},
       "D": {"type": "Incorrect", "text": "Visualizer displays network topology and metrics; it does not create business-condition alerts."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub — Custom Application Alerts with CloudHub Connector",
+        "url": "https://docs.mulesoft.com/cloudhub/custom-application-alerts#configure-the-notification-in-cloudhub-connector"
+      },
+      "architectureGuide": {
+        "title": "CloudHub — Create a Custom Alert",
+        "url": "https://docs.mulesoft.com/cloudhub/custom-application-alerts#create-a-custom-alert"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -11394,7 +12200,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Correct", "text": "An external SIEM can retain forwarded application logs for the required period; CloudHub logging can also be disabled if needed."},
       "D": {"type": "Incorrect", "text": "Object Store is not an appropriate mechanism for capturing and archiving application logs."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub — Custom Log Appender Requirements and Restrictions",
+        "url": "https://docs.mulesoft.com/cloudhub/custom-log-appender#requirements-and-restrictions"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Monitoring — Data Storage and Retention",
+        "url": "https://docs.mulesoft.com/monitoring/#data-storage-retention"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "C"
   },
   {
@@ -11417,7 +12236,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "Visualizer maps application topology rather than serving as a customizable metrics dashboard."},
       "D": {"type": "Incorrect", "text": "API Manager Analytics focuses on API usage analytics, not the combined infrastructure and response-time metrics described."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint Monitoring — Custom Dashboards",
+        "url": "https://docs.mulesoft.com/monitoring/custom-dashboards#custom-dashboards"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Monitoring — Dashboard Configuration Reference",
+        "url": "https://docs.mulesoft.com/monitoring/dashboard-config-ref#metrics"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -11440,7 +12272,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Correct", "text": "Without Read Applications permission in production, the user's production nodes and dependencies are not visible."},
       "D": {"type": "Incorrect", "text": "Visualizer can display applications from multiple environments when the user has the necessary access."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint Visualizer — Troubleshooting Permissions Issues",
+        "url": "https://docs.mulesoft.com/visualizer/troubleshoot-visualizer#i-seem-to-have-permissions-issues"
+      },
+      "architectureGuide": {
+        "title": "Runtime Manager — Access and Permissions for Deployments",
+        "url": "https://docs.mulesoft.com/runtime-manager/deployment-strategies#runtime-manager-features"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "C"
   },
   {
@@ -11463,7 +12308,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "Anypoint CLI manages platform resources but is not the BDD API test execution tool."},
       "D": {"type": "Incorrect", "text": "API Manager CLI does not execute the specified BDD test suites."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "API Functional Monitoring — BAT CLI Commands",
+        "url": "https://docs.mulesoft.com/api-functional-monitoring/bat-command-reference#bat-commands"
+      },
+      "architectureGuide": {
+        "title": "API Functional Monitoring — Behavior Driven Development (BDD) Language",
+        "url": "https://docs.mulesoft.com/api-functional-monitoring/#afm-bdd"
+      },
+      "arc720": {
+        "lesson": "Lesson 8 — Effective API implementations",
+        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -11486,7 +12344,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "API Manager alerts notify about API or policy conditions but do not visually trace downstream dependencies."},
       "D": {"type": "Incorrect", "text": "Audit logging tracks platform actions and does not diagnose request failures across APIs."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint Visualizer — View Metrics for One Service in Your Network",
+        "url": "https://docs.mulesoft.com/visualizer/troubleshooting-visualization#view-metrics-for-one-service-in-your-network"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Visualizer — Choosing Your Metric",
+        "url": "https://docs.mulesoft.com/visualizer/troubleshooting-visualization#choosing-your-metric"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -11509,7 +12380,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "The stated requirement is to install the agent; Titanium alone does not install or configure it."},
       "D": {"type": "Incorrect", "text": "This property is not the stated mechanism for enabling customer-hosted Anypoint Monitoring."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint Monitoring — Install the Anypoint Monitoring Agent on On-Premises Hosts",
+        "url": "https://docs.mulesoft.com/monitoring/am-installing#install_ap_monitoring_onprem"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Monitoring — Verify the Anypoint Monitoring Agent is Running",
+        "url": "https://docs.mulesoft.com/monitoring/am-installing#verify-the-anypoint-monitoring-agent-is-running"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -11532,7 +12416,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Correct", "text": "Audit Logs provide historical records of platform actions and identify the user who performed them."},
       "D": {"type": "Incorrect", "text": "API Manager Analytics reports API usage, not administrative deletion activity."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Access Management — Audit Logging and Export Audit Logs",
+        "url": "https://docs.mulesoft.com/access-management/audit-logging#export-audit-logs"
+      },
+      "architectureGuide": {
+        "title": "Access Management — Audit Log Contents for Runtime Manager",
+        "url": "https://docs.mulesoft.com/access-management/audit-logging#runtime-manager"
+      },
+      "arc720": {
+        "lesson": "Lesson 4 — Organizational and platform foundations",
+        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+      }
+    },
     "correctAnswer": "C"
   },
   {
@@ -11555,7 +12452,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Correct", "text": "Worker CPU utilization is an infrastructure metric supported by Runtime Manager alerts."},
       "D": {"type": "Incorrect", "text": "Invalid-token and policy events are associated with API Manager rather than worker alerts."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Runtime Manager — Alert Conditions for Applications Deployed to CloudHub",
+        "url": "https://docs.mulesoft.com/runtime-manager/alerts-on-runtime-manager#conditions-for-applications-deployed-to-cloudhub"
+      },
+      "architectureGuide": {
+        "title": "Runtime Manager — Create an Alert",
+        "url": "https://docs.mulesoft.com/runtime-manager/alerts-on-runtime-manager#create-an-alert"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "C"
   },
   {
@@ -11578,7 +12488,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "The described Runtime Manager UI mechanism for editing application Log4j configuration is not available."},
       "D": {"type": "Incorrect", "text": "Visualizer troubleshooting views display topology and metrics, not request headers or payloads."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Message Logging Policy — Injecting Runtime Logging at the Gateway",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-message-logging#how-this-policy-works"
+      },
+      "architectureGuide": {
+        "title": "Message Logging Policy — About the Logging Format",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-message-logging#about-the-logging-format"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -11601,7 +12524,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "A connector in every application is not the recommended infrastructure-level log collection method."},
       "D": {"type": "Incorrect", "text": "BAT CLI runs functional tests and is not a log collection or forwarding tool."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Runtime Fabric — Enable and Configure Log Forwarding",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/use-anypoint-monitoring#logs"
+      },
+      "architectureGuide": {
+        "title": "Runtime Fabric — Log Forwarding Architecture",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/use-anypoint-monitoring#log-forwarding-architecture"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -11624,7 +12560,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "A downstream timeout generally produces a timeout or gateway error rather than a rate-limit response."},
       "D": {"type": "Incorrect", "text": "Out-of-memory conditions are not the likely cause of HTTP 429 responses."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Spike Control Policy — How This Policy Works",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-spike-control#how-this-policy-works"
+      },
+      "architectureGuide": {
+        "title": "API Manager — Rate Limiting and Throttling Policy",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-rate-limiting#how-this-policy-works"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -11647,7 +12596,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "The client ID property is unrelated to Visualizer custom labels."},
       "D": {"type": "Incorrect", "text": "The proposed visualizer.group property is not the custom tags property."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint Visualizer — Set the Tag Using Properties",
+        "url": "https://docs.mulesoft.com/visualizer/use-tags-in-visualizer#set-the-tag-using-properties"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Visualizer — Set a Layer with Properties",
+        "url": "https://docs.mulesoft.com/visualizer/layers#set-a-layer-with-properties"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -11670,7 +12632,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Correct", "text": "Titanium supports searching logs across multiple applications in an environment."},
       "D": {"type": "Incorrect", "text": "SLA-based Rate Limiting is an API Manager policy capability, not the Titanium monitoring distinction."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint Monitoring — Log Searches Across Applications",
+        "url": "https://docs.mulesoft.com/monitoring/logs-search-hf#search-logs"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Monitoring — Anypoint Platform Packages and Plans",
+        "url": "https://docs.mulesoft.com/monitoring/#billing"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "C"
   },
   {
@@ -11693,7 +12668,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Correct", "text": "CloudHub infrastructure and Mule Agent heartbeats provide the signals used to detect worker unresponsiveness."},
       "D": {"type": "Incorrect", "text": "High CPU can be monitored separately; it is not the definition of worker unresponsiveness."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub — How Application Monitoring Works and Automatic Restarts",
+        "url": "https://docs.mulesoft.com/cloudhub/worker-monitoring#how-application-monitoring-works"
+      },
+      "architectureGuide": {
+        "title": "Runtime Manager — Alert Conditions for CloudHub Applications",
+        "url": "https://docs.mulesoft.com/runtime-manager/alerts-on-runtime-manager#conditions-for-applications-deployed-to-cloudhub"
+      },
+      "arc720": {
+        "lesson": "Lesson 11 — Application network behavior",
+        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+      }
+    },
     "correctAnswer": "C"
   },
   {
@@ -11739,7 +12727,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "This property is not a replacement for configuring API Autodiscovery."},
       "D": {"type": "Incorrect", "text": "Log4j2 appenders send logs, not API registration or policy enforcement metadata."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "API Autodiscovery — Prerequisites and Proxy vs Basic Endpoint",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept#prerequisites"
+      },
+      "architectureGuide": {
+        "title": "API Manager — Autodiscovery Schemes",
+        "url": "https://docs.mulesoft.com/api-manager/latest/latest-overview-concept#autodiscovery-schemes"
+      },
+      "arc720": {
+        "lesson": "Lesson 6 — NFRs at the API-invocation level",
+        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -11762,7 +12763,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "An API Manager policy alone does not provide the required CloudHub network component for custom-domain TLS termination."},
       "D": {"type": "Incorrect", "text": "VPC Peering connects VPCs; it does not provide custom-domain TLS termination or mTLS enforcement."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub — Create and Configure a Dedicated Load Balancer",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer#create-and-configure-a-dedicated-load-balancer"
+      },
+      "architectureGuide": {
+        "title": "CloudHub — Routing External Requests to the Dedicated Load Balancer",
+        "url": "https://docs.mulesoft.com/cloudhub/lb-architecture#routing-external-requests-to-the-dedicated-load-balancer"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -11785,7 +12799,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "CloudHub does not round-robin scheduled executions to double the interval."},
       "D": {"type": "Incorrect", "text": "Schedulers are supported in multi-worker deployments."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub — Manage Schedules (Multi-Worker Execution on a Single Worker)",
+        "url": "https://docs.mulesoft.com/cloudhub/managing-schedules#considerations-and-limitations"
+      },
+      "architectureGuide": {
+        "title": "Scheduler Endpoint — Cluster and Multi-Worker Behavior",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/scheduler-concept"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -11808,7 +12835,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "Already-downloaded policies continue to be enforced while the Control Plane is unavailable."},
       "D": {"type": "Incorrect", "text": "The runtime does not shut down applications solely because of a Control Plane connection outage."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Runtime Fabric Security Architecture — Management Flow (Apps and Gateways Continue When Agent Loses Connectivity)",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/security-architecture#management-flow"
+      },
+      "architectureGuide": {
+        "title": "CloudHub High Availability and Disaster Recovery — Considerations (Runtime Plane Continues, Log/Telemetry Buffered)",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-hadr#considerations-and-limitations"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -11831,7 +12871,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "Sharing a region and VPC does not remove the application-level data partitioning."},
       "D": {"type": "Incorrect", "text": "Anypoint MQ could be used to exchange messages, but it is not required to synchronize OSv2 states."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "Object Store v2 FAQ — Object Store v2 Isn't Designed for App-to-App Communication (Data Is Partitioned per App)",
+            "url": "https://docs.mulesoft.com/object-store/osv2-faq#can-an-app-deployed-to-cloudhub-access-the-object-store-of-another-cloudhub-app"
+      },
+      "architectureGuide": {
+            "title": "Object Store Connector — Each Mule App Has Its Own Default Object Store",
+            "url": "https://docs.mulesoft.com/object-store-connector/latest/#use-the-default-object-store"
+      },
+      "arc720": {
+            "lesson": "Lesson 10 — Production",
+            "anchor": "ARC720-Course-Content.md#10-production"
+      }
+},
     "correctAnswer": "B"
   },
   {
@@ -11854,7 +12907,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "The hostname lacks the `internal-` segment used for the internal worker endpoint."},
       "D": {"type": "Incorrect", "text": "This is not the CloudHub internal worker URL format."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "CloudHub Networking Guide — Internal DNS Records for VPC Communication",
+            "url": "https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide#dns-records"
+      },
+      "architectureGuide": {
+            "title": "Anypoint VPC Network Architecture — Internal Worker DNS Resolution",
+            "url": "https://docs.mulesoft.com/cloudhub/vpc-architecture-concept#preamble"
+      },
+      "arc720": {
+            "lesson": "Lesson 10 — Production",
+            "anchor": "ARC720-Course-Content.md#10-production"
+      }
+},
     "correctAnswer": "A"
   },
   {
@@ -11877,7 +12943,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "A customer-hosted cluster is not required to enable CloudHub persistent VM queues."},
       "D": {"type": "Incorrect", "text": "A load balancer routes network traffic; it does not distribute VM queue messages."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub — Persistent Queues and Distributed VM Queues",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#persistent-queues"
+      },
+      "architectureGuide": {
+        "title": "CloudHub — Enable Queues and Batch Component Behavior",
+        "url": "https://docs.mulesoft.com/cloudhub/managing-queues#enable-queues"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -11900,7 +12979,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "A DLB routes application traffic but does not establish private connectivity to an on-premises network."},
       "D": {"type": "Incorrect", "text": "An SLB with mTLS does not provide a private network connection to the data center."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub — VPC Connectivity Methods: IPsec Tunnel and AWS Direct Connect",
+        "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept#ipsec-tunnel"
+      },
+      "architectureGuide": {
+        "title": "CloudHub — AWS Direct Connect and High Availability",
+        "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept#aws-direct-connect"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -11923,7 +13015,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "The `hidden.secure.` prefix is not the mechanism Runtime Manager uses to mask a property."},
       "D": {"type": "Incorrect", "text": "This is not the CloudHub configuration mechanism for masking properties in Runtime Manager."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub — Create Safely Hidden Application Properties",
+        "url": "https://docs.mulesoft.com/cloudhub/secure-application-properties#create-safely-hidden-application-properties"
+      },
+      "architectureGuide": {
+        "title": "Mule Artifact JSON — Fields Reference (secureProperties)",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-artifact-json#fields"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -11946,7 +13051,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "The CloudHub DLB is a CloudHub component, not the traffic-routing component in Runtime Fabric."},
       "D": {"type": "Incorrect", "text": "Ops Center is not the RTF ingress and request-routing component."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Runtime Fabric — Configuring Ingress in Runtime Fabric",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/configure-ingress"
+      },
+      "architectureGuide": {
+        "title": "Runtime Fabric — Configure a Public Endpoint for the Application",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/deploy-to-runtime-fabric#configure-a-public-endpoint-for-the-application"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -11969,7 +13087,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "A 1.0 vCore worker provides more capacity than the minimum option stated in the question."},
       "D": {"type": "Incorrect", "text": "A 0.05 vCore worker provides less capacity than the 800 MB payload requires."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub — Worker Size and vCores",
+        "url": "https://docs.mulesoft.com/cloudhub/deploying-to-cloudhub#worker-size-and-vcores"
+      },
+      "architectureGuide": {
+        "title": "Runtime Fabric — Calculating Memory Allocation on CloudHub and Runtime Fabric",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/deploy-resource-allocation-self-managed#calculating-memory-allocation-on-cloudhub-and-runtime-fabric"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -11992,7 +13123,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "A separate API Proxy is not required to configure routing on the DLB."},
       "D": {"type": "Incorrect", "text": "The application artifact file does not register a DLB path mapping."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub — Create Mapping Rules on the Dedicated Load Balancer",
+        "url": "https://docs.mulesoft.com/cloudhub/lb-mapping-rules#create-mapping-rules"
+      },
+      "architectureGuide": {
+        "title": "CloudHub — Use Patterns in Mapping Rules",
+        "url": "https://docs.mulesoft.com/cloudhub/lb-mapping-rules#use-patterns-in-mapping-rules"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -12015,7 +13159,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "A DLB handles inbound routing and does not provide the application's static outbound IP."},
       "D": {"type": "Incorrect", "text": "Object Store persists data, not network addresses."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "Runtime Manager — Assign Static IPs to a CloudHub Application",
+            "url": "https://docs.mulesoft.com/cloudhub/managing-applications-on-cloudhub#static-ips"
+      },
+      "architectureGuide": {
+            "title": "CloudHub Networking Guide — IP Ranges and Static IPs",
+            "url": "https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide#ip-ranges-and-static-ips"
+      },
+      "arc720": {
+            "lesson": "Lesson 10 — Production",
+            "anchor": "ARC720-Course-Content.md#10-production"
+      }
+},
     "correctAnswer": "B"
   },
   {
@@ -12038,7 +13195,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "Multiple workers in a region do not automatically replicate the application to another region."},
       "D": {"type": "Incorrect", "text": "CloudHub handles traffic distribution for its workers; a customer-provisioned AWS load balancer is not required for this purpose."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub Architecture — High Availability and Worker Scale Out",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#high-availability"
+      },
+      "architectureGuide": {
+        "title": "CloudHub Fabric — How HA is Implemented",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#how-ha-is-implemented"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -12061,7 +13231,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "The request is not first received by the Primary Node and then replicated to all nodes."},
       "D": {"type": "Incorrect", "text": "The cluster does not broadcast every HTTP request to all nodes for Hazelcast to select a processor."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "On-Premises Mule Runtime HA Cluster — Add a Load Balancer (Distributing Requests Across Cluster Nodes)",
+            "url": "https://docs.mulesoft.com/on-premises/latest/mule-high-availability-ha-clusters#clustering-and-load-balancing"
+      },
+      "architectureGuide": {
+            "title": "On-Premises Mule Runtime HA Cluster — Understand the Primary Node",
+            "url": "https://docs.mulesoft.com/on-premises/latest/mule-high-availability-ha-clusters#understand-the-primary-node"
+      },
+      "arc720": {
+            "lesson": "Lesson 10 — Production",
+            "anchor": "ARC720-Course-Content.md#10-production"
+      }
+},
     "correctAnswer": "B"
   },
   {
@@ -12107,7 +13290,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "CloudHub does not automatically queue incoming HTTP requests in Anypoint MQ during deployment."},
       "D": {"type": "Incorrect", "text": "A deployment does not require stopping the application merely because it has active traffic."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub — Zero Downtime Updates with CloudHub",
+        "url": "https://docs.mulesoft.com/cloudhub/managing-applications-on-cloudhub#zero-downtime-updates-with-cloudhub"
+      },
+      "architectureGuide": {
+        "title": "CloudHub Architecture — Zero-Downtime Updates",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#zero-downtime-updates"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -12130,7 +13326,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Correct", "text": "Files on the worker's ephemeral local disk are lost when that worker is replaced."},
       "D": {"type": "Incorrect", "text": "CloudHub does not automatically transfer local files into a VM queue."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Developing Applications for CloudHub — Understand Local Storage Limitations",
+        "url": "https://docs.mulesoft.com/cloudhub/developing-applications-for-cloudhub#understand-local-storage-limitations"
+      },
+      "architectureGuide": {
+        "title": "CloudHub — Worker Lifecycle and Application Restarts",
+        "url": "https://docs.mulesoft.com/cloudhub/worker-monitoring#application-restarts"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "C"
   },
   {
@@ -12153,7 +13362,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Incorrect", "text": "Visualizer shows application topology and metrics, not direct IP connectivity."},
       "D": {"type": "Incorrect", "text": "API Manager health checks do not verify network connectivity from a CloudHub worker to an internal IP."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub 2.0 Networking — Test Private Space Connectivity",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-networking-guide#test-private-space-connectivity"
+      },
+      "architectureGuide": {
+        "title": "CloudHub — Anypoint VPN Troubleshooting",
+        "url": "https://docs.mulesoft.com/cloudhub/vpn-troubleshooting#anypoint-vpn-tunnel-connection-works-but-routes-are-not-propagated"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -12176,7 +13398,20 @@ window.MCPA_QUESTIONS = [
       "C": {"type": "Correct", "text": "Multiple DLB instances in separate Availability Zones provide high availability."},
       "D": {"type": "Incorrect", "text": "Automatic failover to the Shared Load Balancer is not the DLB's HA mechanism."}
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub — Dedicated Load Balancer Licensing and Considerations",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer#considerations"
+      },
+      "architectureGuide": {
+        "title": "CloudHub — Routing External Requests to the Dedicated Load Balancer",
+        "url": "https://docs.mulesoft.com/cloudhub/lb-architecture#routing-external-requests-to-the-dedicated-load-balancer"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "C"
   },
   {
@@ -12248,7 +13483,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option does not satisfy the requirements."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint MQ FAQ — Can I Use Anypoint MQ On-Premises?",
+        "url": "https://docs.mulesoft.com/mq/mq-faq#can-i-use-anypoint-mq-on-premises"
+      },
+      "architectureGuide": {
+        "title": "Anypoint MQ Overview — Anypoint MQ Features and Hybrid Use Cases",
+        "url": "https://docs.mulesoft.com/mq/#anypoint-mq-features"
+      },
+      "arc720": {
+        "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
+        "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -12297,7 +13545,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option does not satisfy the requirements."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub Overview — Deploy Your Application to CloudHub",
+        "url": "https://docs.mulesoft.com/cloudhub/#deploy-your-application-to-cloudhub"
+      },
+      "architectureGuide": {
+        "title": "Deployment Options — CloudHub",
+        "url": "https://docs.mulesoft.com/runtime-manager/deployment-strategies#cloudhub"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -12346,7 +13607,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option does not satisfy the requirements."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+            "title": "Design Center — AsyncAPI Specifications (Messaging Interfaces and Transports such as RabbitMQ)",
+            "url": "https://docs.mulesoft.com/design-center/design-async-api"
+      },
+      "architectureGuide": {
+            "title": "AMQP Connector — Connect to an AMQP 0.9.1-Compliant Broker",
+            "url": "https://docs.mulesoft.com/amqp-connector/latest/#connect-to-a-broker"
+      },
+      "arc720": {
+            "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
+            "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
+      }
+},
     "correctAnswer": "B"
   },
   {
@@ -12395,7 +13669,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option does not satisfy the requirements."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint MQ FAQ — Passing a Correlation ID Between Publisher and Subscriber",
+        "url": "https://docs.mulesoft.com/mq/mq-faq#how-does-anypoint-mq-pass-a-correlation-id-between-publisher-and-subscriber"
+      },
+      "architectureGuide": {
+        "title": "Anypoint MQ Subscriber Source — Backpressure and Max Concurrency",
+        "url": "https://docs.mulesoft.com/anypoint-mq-connector/latest/anypoint-mq-listener#backpressure-and-max-concurrency"
+      },
+      "arc720": {
+        "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
+        "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -12444,7 +13731,20 @@ window.MCPA_QUESTIONS = [
         "text": "This is the correct answer."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Runtime Manager — Deployment Options: High Availability and Load Balancing",
+        "url": "https://docs.mulesoft.com/runtime-manager/deployment-strategies#load-balancing"
+      },
+      "architectureGuide": {
+        "title": "Runtime Manager — Multicast vs Unicast Clusters",
+        "url": "https://docs.mulesoft.com/runtime-manager/cluster-about#multicast-vs-unicast-clusters"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "D"
   },
   {
@@ -12493,7 +13793,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option does not satisfy the requirements."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Streaming in Mule — File-Stored Repeatable Stream",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/streaming-about#file-stored-repeatable-stream"
+      },
+      "architectureGuide": {
+        "title": "Streaming Strategies Reference — File-Stored Input Stream",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/streaming-strategies-reference#file-stored-input-stream"
+      },
+      "arc720": {
+        "lesson": "Lesson 8 — Effective API implementations",
+        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -12542,7 +13855,20 @@ window.MCPA_QUESTIONS = [
         "text": "This is the correct answer."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub — Create Safely Hidden Application Properties",
+        "url": "https://docs.mulesoft.com/cloudhub/secure-application-properties#create-safely-hidden-application-properties"
+      },
+      "architectureGuide": {
+        "title": "Mule Artifact JSON — Fields Reference (secureProperties)",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-artifact-json#fields"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "D"
   },
   {
@@ -12591,7 +13917,20 @@ window.MCPA_QUESTIONS = [
         "text": "This is the correct answer."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Mule Domains — Sharing Connectors and Configuration Across Applications",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/shared-resources#create_domain_project"
+      },
+      "architectureGuide": {
+        "title": "Mule Domains — Reference Shared Resources",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/shared-resources#reference-shared-resources"
+      },
+      "arc720": {
+        "lesson": "Lesson 8 — Effective API implementations",
+        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+      }
+    },
     "correctAnswer": "D"
   },
   {
@@ -12640,7 +13979,20 @@ window.MCPA_QUESTIONS = [
         "text": "This is the correct answer."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "CloudHub — Persistent Queues for Applications Containing Batch Jobs",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#persistent-queues-for-applications-containing-batch-jobs"
+      },
+      "architectureGuide": {
+        "title": "CloudHub — Batch Component and Persistent Queues",
+        "url": "https://docs.mulesoft.com/cloudhub/managing-queues#batch-component-and-persistent-queues"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "D"
   },
   {
@@ -12690,7 +14042,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option does not satisfy the requirements."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Runtime Fabric Security Architecture — Management Flow",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/security-architecture#management-flow"
+      },
+      "architectureGuide": {
+        "title": "Runtime Fabric Overview — How Application Deployments Work",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/#how-application-deployments-work-in-anypoint-runtime-fabric"
+      },
+      "arc720": {
+        "lesson": "Lesson 10 — Production",
+        "anchor": "ARC720-Course-Content.md#10-production"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -12739,7 +14104,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option does not satisfy the requirements."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Mule TLS Configuration — Keystores and Truststores",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/tls-configuration#keystores-and-truststores"
+      },
+      "architectureGuide": {
+        "title": "Mule TLS Configuration — Example: Configuring TLS for a Client",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/tls-configuration#example-configuring-tls-for-a-client"
+      },
+      "arc720": {
+        "lesson": "Lesson 6 — NFRs at the API-invocation level",
+        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -12788,7 +14166,20 @@ window.MCPA_QUESTIONS = [
         "text": "This is the correct answer."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Parallel For Each — Parallel Processing Within a Flow",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/parallel-foreach-scope#configuration"
+      },
+      "architectureGuide": {
+        "title": "Async Scope — Running Parts of a Flow Asynchronously",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/async-scope-reference#async-configuration"
+      },
+      "arc720": {
+        "lesson": "Lesson 8 — Effective API implementations",
+        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+      }
+    },
     "correctAnswer": "D"
   },
   {
@@ -12837,7 +14228,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option does not satisfy the requirements."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint MQ ACK and NACK — Acknowledgment Modes",
+        "url": "https://docs.mulesoft.com/anypoint-mq-connector/latest/anypoint-mq-ack#acknowledgment-modes"
+      },
+      "architectureGuide": {
+        "title": "Anypoint MQ ACK and NACK — Manual Acknowledgment and ACK Operation",
+        "url": "https://docs.mulesoft.com/anypoint-mq-connector/latest/anypoint-mq-ack#ack-operation-manual-acknowledgement-mode"
+      },
+      "arc720": {
+        "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
+        "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -12886,7 +14290,20 @@ window.MCPA_QUESTIONS = [
         "text": "This is the correct answer."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint CLI for API Manager — api-mgr:policy Commands",
+        "url": "https://docs.mulesoft.com/anypoint-cli/latest/api-mgr#api-mgr-policy-apply"
+      },
+      "architectureGuide": {
+        "title": "Anypoint CLI — Syntax and Default Flags",
+        "url": "https://docs.mulesoft.com/anypoint-cli/latest/#syntax"
+      },
+      "arc720": {
+        "lesson": "Lesson 8 — Effective API implementations",
+        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+      }
+    },
     "correctAnswer": "D"
   },
   {
@@ -12935,7 +14352,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option does not satisfy the requirements."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Mule Transactions — Transaction Timeout",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/transaction-management#transaction-timeout"
+      },
+      "architectureGuide": {
+        "title": "XA Transactions — Configuring a Resource to Use XA Transactions",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/xa-transactions#configuring-your-resource-to-use-xa-transactions"
+      },
+      "arc720": {
+        "lesson": "Lesson 8 — Effective API implementations",
+        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+      }
+    },
     "correctAnswer": "A"
   },
   {
@@ -12984,7 +14414,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option does not satisfy the requirements."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Design Center — Creating and Publishing Reusable API Fragments",
+        "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-fragment#about-this-task"
+      },
+      "architectureGuide": {
+        "title": "Design Center — Best Practices when Using API Designer",
+        "url": "https://docs.mulesoft.com/design-center/design-best-practices#raml-specification-best-practices"
+      },
+      "arc720": {
+        "lesson": "Lesson 6 — NFRs at the API-invocation level",
+        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+      }
+    },
     "correctAnswer": "C"
   },
   {
@@ -13033,7 +14476,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option does not satisfy the requirements."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Salesforce Connector — Salesforce APIs (SOAP, REST, Bulk, Streaming)",
+        "url": "https://docs.mulesoft.com/salesforce-connector/latest/#apis"
+      },
+      "architectureGuide": {
+        "title": "Salesforce Connector Reference — Create, Update, Delete, Deploy, and Retrieve Metadata",
+        "url": "https://docs.mulesoft.com/salesforce-connector/latest/salesforce-connector-reference#deployMetadata"
+      },
+      "arc720": {
+        "lesson": "Lesson 8 — Effective API implementations",
+        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+      }
+    },
     "correctAnswer": "C"
   },
   {
@@ -13082,7 +14538,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option does not satisfy the requirements."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "MuleSoft Accelerators — Cloud Information Model (CIM)",
+        "url": "https://docs.mulesoft.com/accelerators-cim/#preamble"
+      },
+      "architectureGuide": {
+        "title": "MuleSoft Accelerators — Considerations for Simplifying Accelerator Assets",
+        "url": "https://docs.mulesoft.com/accelerators-home/simplifying-assets#simplify-accelerator-assets"
+      },
+      "arc720": {
+        "lesson": "Lesson 7 — Effective APIs",
+        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+      }
+    },
     "correctAnswer": "B"
   },
   {
@@ -13132,7 +14601,20 @@ window.MCPA_QUESTIONS = [
         "text": "This is the correct answer."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "HTTP Caching Policy — How This Policy Works",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-http-caching#how-this-policy-works"
+      },
+      "architectureGuide": {
+        "title": "Runtime Fabric — Calculating Memory Allocation on CloudHub and Runtime Fabric",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/deploy-resource-allocation-self-managed#calculating-memory-allocation-on-cloudhub-and-runtime-fabric"
+      },
+      "arc720": {
+        "lesson": "Lesson 8 — Effective API implementations",
+        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+      }
+    },
     "correctAnswers": [
       "B",
       "D"
@@ -13184,7 +14666,20 @@ window.MCPA_QUESTIONS = [
         "text": "This option does not satisfy the requirements."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Mule Maven Plugin — Deploy Goal for CloudHub, RTF, and On-Premises",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept#deploy-goal"
+      },
+      "architectureGuide": {
+        "title": "Mule Maven Plugin — Compatibility and Goals",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept#mule-maven-plugin-goals"
+      },
+      "arc720": {
+        "lesson": "Lesson 8 — Effective API implementations",
+        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+      }
+    },
     "correctAnswer": "B"
   },
   {
