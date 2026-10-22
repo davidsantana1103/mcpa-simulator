@@ -10058,771 +10058,1647 @@ window.MCPA_QUESTIONS = [
   {
     "id": "q-169",
     "number": 169,
-    "title": "Deploying Managing Apis - Which feature in API Manager pairs a",
+    "title": "Architecting and Deploying - Pairing an app with its API instance",
     "domain": "Architecting and deploying API implementations",
     "topics": [
-      "Auto Discovery"
+      "API Autodiscovery",
+      "API Manager"
     ],
-    "prompt": "Which feature in API Manager pairs a deployed Mule app with its managed API automatically using the API ID?",
+    "prompt": "A Mule 4 application implements an API that has an API instance in API Manager. What must be configured in the application so that API Manager policies are enforced on it?",
     "options": [
       {
         "letter": "A",
-        "text": "Auto-discovery"
+        "text": "An autodiscovery element with the API ID and a flowRef"
       },
       {
         "letter": "B",
-        "text": "Mule Maven Plugin"
+        "text": "The policy XML copied into the application's configuration"
       },
       {
         "letter": "C",
-        "text": "Anypoint Visualizer"
+        "text": "A client ID enforcement flow written in DataWeave"
       },
       {
         "letter": "D",
-        "text": "Runtime Manager scheduling"
+        "text": "The Exchange asset ID and version in the pom.xml file"
       }
     ],
     "correctAnswer": "A",
-    "explanation": "Auto-discovery (via the api-gateway:autodiscovery element or property) pairs a running Mule app with an API instance in API Manager using the API ID. Once paired, the app downloads policies and enforces them locally.",
+    "explanation": "Correct answer: A. API Autodiscovery pairs a deployed Mule application with an API instance in API Manager. The api-gateway:autodiscovery element is configured with the API ID that API Manager assigned to the instance and a flowRef to the flow, which must use an HTTP Listener, so policies are applied to that flow.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Auto-discovery"
+        "text": "These link the app to the instance and identify the flow to protect."
       },
       "B": {
         "type": "Incorrect",
-        "text": "The Mule Maven Plugin packages and deploys apps; it does not pair them with API Manager records."
+        "text": "Policies are downloaded from API Manager, not copied into the app."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Visualizer reads pairing data to draw graphs; it does not create the pairing."
+        "text": "Hand-coded checks are not API Manager policies."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Runtime Manager scheduling triggers flows; it is unrelated to API-Manager pairing."
+        "text": "Exchange coordinates identify the asset, not the managed instance at runtime."
       }
     },
     "references": {
       "primary": {
-        "title": "API Autodiscovery — Prerequisites & Pairing Mule Application with API ID",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/api-auto-discovery-new-concept#prerequisites"
+        "title": "Configuring API Autodiscovery in a Mule 4 Application",
+        "url": "https://docs.mulesoft.com/api-manager/latest/configure-autodiscovery-4-task"
       },
       "architectureGuide": {
-        "title": "Client ID Enforcement & Policy Execution in Mule 4",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/client-id-based-policies#how-this-policy-works"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "API Autodiscovery",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
       }
     }
   },
   {
     "id": "q-170",
     "number": 170,
-    "title": "Deploying Managing Apis - Which testing tool is built specifically for",
+    "title": "Architecting and Deploying - Credentials the runtime needs",
     "domain": "Architecting and deploying API implementations",
     "topics": [
-      "Munit",
-      "Cicd Maven"
+      "API Autodiscovery",
+      "Organization Credentials"
     ],
-    "prompt": "Which testing tool is built specifically for unit-testing Mule applications, including mocking processors and asserting on events?",
+    "prompt": "A Mule application with a correctly configured autodiscovery element is deployed to a hybrid server, but it never pairs with its API instance. What is the most likely missing configuration?",
     "options": [
       {
         "letter": "A",
-        "text": "JUnit"
+        "text": "An Exchange public portal for the API"
       },
       {
         "letter": "B",
-        "text": "Selenium"
+        "text": "A dedicated load balancer in front of the server"
       },
       {
         "letter": "C",
-        "text": "MUnit"
+        "text": "An MUnit test suite for the autodiscovery flow"
       },
       {
         "letter": "D",
-        "text": "Postman"
+        "text": "Organization credentials in the Mule runtime"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "MUnit is MuleSoft's testing framework for unit and integration testing Mule apps. It mocks message processors, asserts on payloads/attributes/variables, supports coverage reports, and runs in CI alongside the Mule Maven Plugin.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. To use autodiscovery, Mule runtime engine must start with Anypoint Platform organization credentials (the environment's client ID and secret) configured. Without them, the runtime cannot connect to API Manager to pair with the API instance and download policies.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "JUnit can test plain Java code but not Mule flows directly."
+        "text": "Portals are for documentation and do not affect pairing."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Selenium is for browser UI testing."
+        "text": "Load balancing does not affect pairing with API Manager."
       },
       "C": {
-        "type": "Correct",
-        "text": "MUnit"
+        "type": "Incorrect",
+        "text": "Tests do not establish the runtime's connection to API Manager."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Postman tests deployed APIs end-to-end but is not a Mule unit test framework."
+        "type": "Correct",
+        "text": "The runtime needs environment credentials to connect to API Manager."
       }
     },
     "references": {
       "primary": {
-        "title": "MUnit Automated Testing Framework — Unit Testing Mule Applications & Flow Processors",
-        "url": "https://docs.mulesoft.com/munit/latest/#test-coverage"
+        "title": "Configuring API Autodiscovery in a Mule 4 Application",
+        "url": "https://docs.mulesoft.com/api-manager/latest/configure-autodiscovery-4-task"
       },
       "architectureGuide": {
-        "title": "Mule Maven Plugin Automated Deployment Architecture",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/mmp-concept#deploy-goal"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "Mule Gateway — Autodiscovery (Mule 4)",
+        "url": "https://docs.mulesoft.com/mule-gateway/mule-gateway-config-autodiscovery-mule4"
       }
     }
   },
   {
     "id": "q-171",
     "number": 171,
-    "title": "Api Implementation Design - What is the recommended approach to manage",
+    "title": "Architecting and Deploying - Different API IDs per environment",
     "domain": "Architecting and deploying API implementations",
     "topics": [
-      "Reliability Patterns"
+      "API Autodiscovery",
+      "Environments"
     ],
-    "prompt": "What is the recommended approach to manage secrets like database passwords used by Mule applications across environments?",
+    "prompt": "The same Mule application artifact is promoted from QA to production. Each environment has its own API instance with a different API ID. How should the autodiscovery API ID be handled?",
     "options": [
       {
         "letter": "A",
-        "text": "Hardcode them in mule-app.properties"
+        "text": "Rebuild the application with a different hard-coded ID for each environment"
       },
       {
         "letter": "B",
-        "text": "Use secure properties (encrypted) with environment-specific values resolved at deploy time"
+        "text": "Reference it as a property and set it per environment at deployment"
       },
       {
         "letter": "C",
-        "text": "Commit them to Git in plain text"
+        "text": "Use the same API instance for both environments"
       },
       {
         "letter": "D",
-        "text": "Pass them via the URL on each request"
+        "text": "Hard-code the production API ID, since QA does not need policies"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Mule supports secure (encrypted) properties so values are stored encrypted in version control and decrypted at runtime using a key supplied per environment. This separates configuration from code while keeping secrets out of plain text.",
+    "explanation": "Correct answer: B. Each environment has its own API instance and API ID. Configuring the autodiscovery apiId as a property placeholder, set per environment at deployment, lets the same artifact pair with the correct instance in each environment.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Hardcoding leaks secrets and prevents per-environment overrides."
+        "text": "Rebuilding per environment breaks the build-once, promote-everywhere practice."
       },
       "B": {
         "type": "Correct",
-        "text": "Use secure properties (encrypted) with environment-specific values resolved at deploy time"
+        "text": "Externalizing the ID lets one artifact pair with each environment's instance."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Plain-text Git secrets are an immediate security failure."
+        "text": "API instances belong to a single environment."
       },
       "D": {
         "type": "Incorrect",
-        "text": "URL-based secrets leak in logs and proxies."
+        "text": "QA would not be governed, and policies would not be tested."
       }
     },
     "references": {
       "primary": {
-        "title": "Mule Runtime — Secure Encrypted Properties Across Environments",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/mmp-concept#configure-shared-libraries"
+        "title": "Configuring API Autodiscovery in a Mule 4 Application",
+        "url": "https://docs.mulesoft.com/api-manager/latest/configure-autodiscovery-4-task"
       },
       "architectureGuide": {
-        "title": "Access Management Environments and Secure Configuration Management",
-        "url": "https://docs.mulesoft.com/access-management/environments#types-of-environments"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "Mule Runtime — Configuring Properties",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/configuring-properties"
       }
     }
   },
   {
     "id": "q-172",
     "number": 172,
-    "title": "Deploying Managing Apis - What is the Mule Maven Plugin used",
+    "title": "Architecting and Deploying - Requests blocked after deployment",
     "domain": "Architecting and deploying API implementations",
     "topics": [
-      "Cicd Maven"
+      "API Autodiscovery",
+      "Gatekeeper"
     ],
-    "prompt": "What is the Mule Maven Plugin used for in CI/CD pipelines?",
+    "prompt": "Right after an application with autodiscovery starts, requests to its API are rejected until the runtime finishes downloading policies from API Manager. Which Mule gateway behavior explains this?",
     "options": [
       {
         "letter": "A",
-        "text": "Drawing API specifications"
+        "text": "Spike Control queues requests at startup"
       },
       {
         "letter": "B",
-        "text": "Packaging and deploying Mule applications to CloudHub, RTF, or Hybrid"
+        "text": "API Manager deletes the instance until the app is restarted"
       },
       {
         "letter": "C",
-        "text": "Browsing Exchange assets"
+        "text": "Gatekeeper blocks the API until its policies are applied"
       },
       {
         "letter": "D",
-        "text": "Running the design-time mocking service"
+        "text": "The HTTP listener is disabled until MUnit tests pass"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "The Mule Maven Plugin packages Mule projects into deployable archives and deploys them to CloudHub, Runtime Fabric, Hybrid, or standalone runtimes from a CI/CD pipeline (Jenkins, Azure DevOps, GitHub Actions, etc.).",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. The Mule gateway's gatekeeper feature blocks API requests until all of the API's policies have been applied, so an API is never exposed unprotected while policies are still being downloaded after startup.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "API design is done in Design Center, not the Maven plugin."
+        "text": "Spike Control is a policy and does not run before policies load."
       },
       "B": {
-        "type": "Correct",
-        "text": "Packaging and deploying Mule applications to CloudHub, RTF, or Hybrid"
+        "type": "Incorrect",
+        "text": "API Manager does not delete instances during pairing."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Exchange has its own UI and Maven repository for asset publication; the deploy plugin is separate."
+        "type": "Correct",
+        "text": "It prevents requests from passing before policies are in place."
       },
       "D": {
         "type": "Incorrect",
-        "text": "The mocking service runs inside Design Center."
+        "text": "MUnit tests run at build time, not at application startup."
       }
     },
     "references": {
       "primary": {
-        "title": "Mule Maven Plugin (MMP) — Automated Deployment Targets in CI/CD",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/mmp-concept#deploy-goal"
+        "title": "Mule Gateway — Gatekeeper",
+        "url": "https://docs.mulesoft.com/mule-gateway/mule-gateway-gatekeeper"
       },
       "architectureGuide": {
-        "title": "MUnit Testing Framework & Test Coverage in Maven",
-        "url": "https://docs.mulesoft.com/munit/latest/#test-coverage"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "Mule Gateway — Autodiscovery (Mule 4)",
+        "url": "https://docs.mulesoft.com/mule-gateway/mule-gateway-config-autodiscovery-mule4"
       }
     }
   },
   {
     "id": "q-173",
     "number": 173,
-    "title": "Api Implementation Design - Which is the BEST place to handle",
+    "title": "Architecting and Deploying - Flow to reference",
     "domain": "Architecting and deploying API implementations",
     "topics": [
-      "Three Layer Architecture"
+      "API Autodiscovery",
+      "flowRef"
     ],
-    "prompt": "Which is the BEST place to handle field-level transformation of payloads in a Process API?",
+    "prompt": "An APIkit-based Mule application has a main flow with an HTTP Listener and APIkit Router, plus many resource flows. Which flow should the autodiscovery flowRef reference?",
     "options": [
       {
         "letter": "A",
-        "text": "Inside the System API to save a step"
+        "text": "Any flow; the reference is ignored at runtime"
       },
       {
         "letter": "B",
-        "text": "In Apex on Salesforce"
+        "text": "The error-handling flow, so policies apply to errors"
       },
       {
         "letter": "C",
-        "text": "Using the Transform Message processor with DataWeave inside the Process API flow"
+        "text": "Every resource flow, using a separate autodiscovery element each"
       },
       {
         "letter": "D",
-        "text": "By manually editing each message body in the consumer"
+        "text": "The main flow that contains the HTTP Listener"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "DataWeave (used in the Transform Message processor) is the canonical Mule transformation tool. Putting transformation in the System API leaks consumer concerns; doing it in consumers duplicates logic; Apex is unrelated to a MuleSoft Process API.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. The autodiscovery flowRef must point to a flow that uses an HTTP Listener. In an APIkit application, this is the main flow that receives requests and routes them, so policies are applied to all API traffic.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "System APIs should remain consumer-agnostic."
+        "text": "The referenced flow determines where policies are enforced."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Apex runs in Salesforce, not in MuleSoft Process APIs."
+        "text": "Policies apply to incoming requests, not to error handlers."
       },
       "C": {
-        "type": "Correct",
-        "text": "Using the Transform Message processor with DataWeave inside the Process API flow"
+        "type": "Incorrect",
+        "text": "One autodiscovery element pairs the app with its API instance."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Per-consumer transformation duplicates logic and undermines reuse."
+        "type": "Correct",
+        "text": "Policies are enforced on the flow that receives HTTP requests."
       }
     },
     "references": {
       "primary": {
-        "title": "Mule Runtime — DataWeave Transformations & Transform Message Component",
-        "url": "https://docs.mulesoft.com/general/api-led-develop#step-3-3-implement-the-hello-world-logic"
+        "title": "Configuring API Autodiscovery in a Mule 4 Application",
+        "url": "https://docs.mulesoft.com/api-manager/latest/configure-autodiscovery-4-task"
       },
       "architectureGuide": {
-        "title": "DataWeave Language Reference & Transformation Capabilities",
-        "url": "https://docs.mulesoft.com/general/api-led-develop#developer-deep-dive"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "API Autodiscovery",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
       }
     }
   },
   {
     "id": "q-174",
     "number": 174,
-    "title": "Deploying Managing Apis - Which strategy best supports rolling out CloudHub",
+    "title": "Architecting and Deploying - Proxy generated by API Manager",
     "domain": "Architecting and deploying API implementations",
     "topics": [
-      "Cloudhub Deployment",
-      "Cicd Maven"
+      "API Autodiscovery",
+      "API Proxy"
     ],
-    "prompt": "Which strategy best supports rolling out CloudHub deployments with minimal downtime when a new app version is released?",
+    "prompt": "An API Manager–generated API proxy is deployed in front of a non-Mule backend. How is the proxy linked to its API instance?",
     "options": [
       {
         "letter": "A",
-        "text": "Stop the old app, then deploy the new version"
+        "text": "The proxy is linked through its Exchange asset page"
       },
       {
         "letter": "B",
-        "text": "Use CloudHub deployment with zero-downtime (rolling) restart enabled"
+        "text": "The generated proxy already has autodiscovery"
       },
       {
         "letter": "C",
-        "text": "Re-create the application in a new business group"
+        "text": "The backend must add an autodiscovery element"
       },
       {
         "letter": "D",
-        "text": "Always recreate the worker pool from scratch"
+        "text": "Clients pass the API ID in each request"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "CloudHub supports zero-downtime deployment by rolling new workers in alongside old ones, then cutting traffic over once the new workers are healthy. Stopping first or recreating from scratch causes outages and unnecessary work.",
+    "explanation": "Correct answer: B. When API Manager generates an API proxy for an instance, the proxy application is created with the autodiscovery element already configured, so it pairs with the instance and enforces policies before forwarding requests to the backend.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Stop-then-deploy creates a deliberate outage window."
+        "text": "Exchange does not pair runtime applications."
       },
       "B": {
         "type": "Correct",
-        "text": "Use CloudHub deployment with zero-downtime (rolling) restart enabled"
+        "text": "API Manager configures the proxy with the instance's API ID."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Recreating across business groups changes governance and entitlements."
+        "text": "The backend is not a Mule app and does not pair with API Manager."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Recreating workers from scratch is unnecessary and disruptive."
+        "text": "Clients do not perform the pairing."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub Architecture — Zero-Downtime Rolling Deployment Updates",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#zero-downtime-updates"
+        "title": "Configuring API Autodiscovery in a Mule 4 Application",
+        "url": "https://docs.mulesoft.com/api-manager/latest/configure-autodiscovery-4-task"
       },
       "architectureGuide": {
-        "title": "CloudHub Fabric — Multi-Worker High Availability",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#worker-scale-out"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "API Manager — API Proxies",
+        "url": "https://docs.mulesoft.com/api-manager/latest/proxy-latest-concept"
       }
     }
   },
   {
     "id": "q-175",
     "number": 175,
-    "title": "Deploying Managing Apis - Which combination is recommended for a CICD",
+    "title": "Architecting and Deploying - Choose two: autodiscovery facts",
     "domain": "Architecting and deploying API implementations",
     "topics": [
-      "Cicd Maven",
-      "Munit"
+      "API Autodiscovery",
+      "API Manager"
     ],
-    "prompt": "Which combination is recommended for a CI/CD pipeline that builds, tests, and deploys Mule applications consistently across environments?",
+    "prompt": "Which two statements about API Autodiscovery are correct? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "Mule Maven Plugin for build/deploy + MUnit for tests + Jenkins/Azure DevOps/GitHub Actions for orchestration"
+        "text": "It pairs a deployed Mule application with one API instance"
       },
       {
         "letter": "B",
-        "text": "Manual deploys via Anypoint Studio"
+        "text": "It works without any Anypoint Platform credentials"
       },
       {
         "letter": "C",
-        "text": "Postman as the only test tool"
+        "text": "It publishes the application's specification to Exchange"
       },
       {
         "letter": "D",
-        "text": "Drag-and-drop deploys in Runtime Manager"
+        "text": "It can pair one application with instances in several environments"
+      },
+      {
+        "letter": "E",
+        "text": "The referenced flow must use an HTTP Listener"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "The recommended pipeline uses the Mule Maven Plugin (build, package, deploy), MUnit (unit/coverage testing), and a CI tool like Jenkins, Azure DevOps, or GitHub Actions to orchestrate per-environment promotion. Manual deploys are not repeatable.",
+    "correctAnswers": [
+      "A",
+      "E"
+    ],
+    "explanation": "Correct answers: A and E. API Autodiscovery pairs a Mule application with a single API instance in API Manager using its API ID. The referenced flow must use an HTTP Listener, and the runtime must be configured with organization credentials for the environment.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Mule Maven Plugin for build/deploy + MUnit for tests + Jenkins/Azure DevOps/GitHub Actions for orchestration"
+        "text": "The API ID identifies a single instance."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Manual deploys are not repeatable across SDLC environments."
+        "text": "The runtime needs organization credentials."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Postman is a complement, not a replacement for Mule unit tests."
+        "text": "Publishing is a separate Design Center or Maven step."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Drag-and-drop does not produce auditable, automated promotion."
+        "text": "An instance belongs to one environment; the runtime uses one environment's credentials."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "Policy enforcement requires an HTTP Listener source."
       }
     },
     "references": {
       "primary": {
-        "title": "Mule Maven Plugin (MMP) — Automated Build, Test (MUnit), and Deployment Pipeline",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/mmp-concept#deploy-goal"
+        "title": "Configuring API Autodiscovery in a Mule 4 Application",
+        "url": "https://docs.mulesoft.com/api-manager/latest/configure-autodiscovery-4-task"
       },
       "architectureGuide": {
-        "title": "MUnit Testing Framework & Automated Quality Gates",
-        "url": "https://docs.mulesoft.com/munit/latest/#test-coverage"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "Mule Gateway — Autodiscovery (Mule 4)",
+        "url": "https://docs.mulesoft.com/mule-gateway/mule-gateway-config-autodiscovery-mule4"
       }
     }
   },
   {
     "id": "q-176",
     "number": 176,
-    "title": "Api Implementation Design - Which Mule capability enables transactional reliability for",
+    "title": "Architecting and Deploying - Reaching on-premises systems",
     "domain": "Architecting and deploying API implementations",
     "topics": [
-      "Reliability Patterns"
+      "Anypoint VPC",
+      "Connectivity"
     ],
-    "prompt": "Which Mule capability enables transactional reliability for a flow that reads from a JMS queue, writes to a database, and acknowledges the JMS message?",
+    "prompt": "Mule applications on CloudHub must call an on-premises SAP system that is reachable only from inside the corporate network. Which capability is required?",
     "options": [
       {
         "letter": "A",
-        "text": "A non-transactional flow with retries only"
+        "text": "A larger worker size for the applications"
       },
       {
         "letter": "B",
-        "text": "A transactional scope coordinating JMS and JDBC transactions"
+        "text": "The HTTP Caching policy on the SAP System API"
       },
       {
         "letter": "C",
-        "text": "Only logging"
+        "text": "An Anypoint VPC with a VPN or transit gateway"
       },
       {
         "letter": "D",
-        "text": "An API contract"
+        "text": "An Exchange public portal for the SAP System API"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Mule supports transactional scopes that coordinate JMS and JDBC participants so the database write and JMS acknowledgement either both succeed or both fail (XA when distributed). Retry-only patterns risk duplicates without atomicity.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. An Anypoint VPC creates a private, isolated network segment for CloudHub workers. Connecting it to the corporate network through a VPN tunnel, transit gateway, VPC peering, or Direct Connect lets workers access resources behind the corporate firewall.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Retries alone can cause duplicate writes or lost acks."
+        "text": "Worker size does not provide network connectivity."
       },
       "B": {
-        "type": "Correct",
-        "text": "A transactional scope coordinating JMS and JDBC transactions"
+        "type": "Incorrect",
+        "text": "Caching does not create private connectivity."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Logging records but does not coordinate atomicity."
+        "type": "Correct",
+        "text": "The VPC extends the corporate network so workers can reach internal systems."
       },
       "D": {
         "type": "Incorrect",
-        "text": "API contracts are governance, not transactional control."
+        "text": "Portals document APIs and do not affect networking."
       }
     },
     "references": {
       "primary": {
-        "title": "Transaction Management — Coordinating JMS and JDBC Transactions (XA) in Mule 4",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/transaction-management#configuring-a-transaction-in-a-try-scope"
+        "title": "Anypoint Virtual Private Cloud",
+        "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       },
       "architectureGuide": {
-        "title": "XA Transactions and Bitronix Transaction Manager in Mule 4",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/xa-transactions#configuring-a-try-scope-to-use-xa-transactions"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "Anypoint VPC Connectivity Methods",
+        "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       }
     }
   },
   {
     "id": "q-177",
     "number": 177,
-    "title": "Deploying Managing Apis - Which combination is correct for promoting a",
+    "title": "Architecting and Deploying - Custom certificates and domains",
     "domain": "Architecting and deploying API implementations",
     "topics": [
-      "Cicd Maven",
-      "Business Groups Environments"
+      "Anypoint VPC",
+      "Dedicated Load Balancer"
     ],
-    "prompt": "Which combination is correct for promoting a Mule app and its API governance from Sandbox to Production?",
+    "prompt": "A company wants its CloudHub APIs exposed at api.company.com with its own TLS certificate and URL mapping rules. What does this require?",
     "options": [
       {
         "letter": "A",
-        "text": "Re-implement the app in Production"
+        "text": "The CloudHub shared load balancer with a DNS alias"
       },
       {
         "letter": "B",
-        "text": "Re-deploy the same artifact to Production environment via Maven plugin AND promote/configure the API instance and policies in API Manager"
+        "text": "A dedicated load balancer inside an Anypoint VPC"
       },
       {
         "letter": "C",
-        "text": "Edit the running Sandbox app's environment label"
+        "text": "A Rate Limiting policy configured with the domain name"
       },
       {
         "letter": "D",
-        "text": "Move the worker between environments"
+        "text": "Anypoint Visualizer with custom layers"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Promotion deploys the SAME artifact to the Production environment (Maven plugin) and configures or promotes the API instance, contracts, and policies in API Manager for that environment. Re-implementation, label edits, or worker moves are anti-patterns.",
+    "explanation": "Correct answer: B. CloudHub dedicated load balancers let organizations use their own SSL certificates and map incoming URLs to applications. They are configured within an Anypoint VPC, so this requirement calls for a VPC.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Re-implementation forfeits the value of artifact-based promotion."
+        "text": "The shared load balancer uses MuleSoft's certificates and domain."
       },
       "B": {
         "type": "Correct",
-        "text": "Re-deploy the same artifact to Production environment via Maven plugin AND promote/configure the API instance and policies in API Manager"
+        "text": "DLBs use custom certificates and mapping rules and are deployed in a VPC."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Environments are deployment boundaries; you cannot 'relabel' an app between them."
+        "text": "Policies do not configure domains or certificates."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Workers are bound to their environment and cannot be moved."
+        "text": "Visualizer shows the network and does not route traffic."
       }
     },
     "references": {
       "primary": {
-        "title": "Access Management — Multi-Environment Promotion (Sandbox to Production) via Maven & API Manager",
-        "url": "https://docs.mulesoft.com/access-management/environments#types-of-environments"
+        "title": "CloudHub Dedicated Load Balancer",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
       },
       "architectureGuide": {
-        "title": "Mule Maven Plugin Concepts for Deployment Automation",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/mmp-concept#deploy-goal"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+        "title": "Anypoint Virtual Private Cloud",
+        "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       }
     }
   },
   {
     "id": "q-178",
     "number": 178,
-    "title": "Api Implementation Design - Which is the correct reading of a",
+    "title": "Architecting and Deploying - Restricting inbound traffic",
     "domain": "Architecting and deploying API implementations",
     "topics": [
-      "Three Layer Architecture",
-      "Reliability Patterns"
+      "Anypoint VPC",
+      "Firewall Rules"
     ],
-    "prompt": "Which is the correct reading of a Process API that calls multiple System APIs in parallel and aggregates the results?",
+    "prompt": "A security policy states that internal CloudHub APIs must accept connections only from the corporate network's IP range and never from the public internet. What should the architect use?",
     "options": [
       {
         "letter": "A",
-        "text": "Sequential by default and slow"
+        "text": "VPC firewall rules for the corporate CIDR"
       },
       {
         "letter": "B",
-        "text": "Naturally suited to scatter-gather or parallel-foreach with combined response handling"
+        "text": "Client ID Enforcement only"
       },
       {
         "letter": "C",
-        "text": "Forbidden under API-led connectivity"
+        "text": "An Exchange private portal"
       },
       {
         "letter": "D",
-        "text": "Reserved for Experience APIs"
+        "text": "CORS restricted to the corporate domain"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Calling multiple System APIs in parallel and aggregating the responses is a classic Process-API pattern, often built with scatter-gather or parallel foreach. It improves response time and isolates each call's failure handling.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Each Anypoint VPC has firewall rules that control inbound traffic to its workers. Restricting them to the corporate CIDR, and blocking the shared load balancer if needed, ensures that internal APIs are not reachable from the internet.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Mule supports parallel routers; sequential is a choice, not a default constraint."
+        "type": "Correct",
+        "text": "Firewall rules control which sources can reach workers in the VPC."
       },
       "B": {
-        "type": "Correct",
-        "text": "Naturally suited to scatter-gather or parallel-foreach with combined response handling"
+        "type": "Incorrect",
+        "text": "Credentials do not restrict network origin."
       },
       "C": {
         "type": "Incorrect",
-        "text": "API-led explicitly supports orchestration in Process APIs."
+        "text": "Portal visibility does not block network traffic."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Cross-system orchestration belongs in Process APIs, not Experience APIs."
+        "text": "CORS is enforced by browsers and is not a network control."
       }
     },
     "references": {
       "primary": {
-        "title": "Scatter-Gather Router Component — Parallel Execution & Response Aggregation in Process APIs",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/scatter-gather-concept#result"
+        "title": "Anypoint VPC Firewall Rules",
+        "url": "https://docs.mulesoft.com/cloudhub/vpc-firewall-rules-concept"
       },
       "architectureGuide": {
-        "title": "Parallel For Each Scope & Concurrent Execution in Mule 4",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/parallel-foreach-scope#example"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "Anypoint Virtual Private Cloud",
+        "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       }
     }
   },
   {
     "id": "q-179",
     "number": 179,
-    "title": "Deploying Managing Apis - Which is the correct understanding of API",
+    "title": "Architecting and Deploying - When a VPC is not needed",
     "domain": "Architecting and deploying API implementations",
     "topics": [
-      "Auto Discovery"
+      "Anypoint VPC",
+      "Requirements"
     ],
-    "prompt": "Which is the correct understanding of API auto-discovery vs. proxying for a Mule API?",
+    "prompt": "For which requirement is an Anypoint VPC least likely to be necessary?",
     "options": [
       {
         "letter": "A",
-        "text": "They are identical"
+        "text": "Using a dedicated load balancer with company certificates"
       },
       {
         "letter": "B",
-        "text": "Auto-discovery binds a Mule app to API Manager so policies execute inline; proxying creates a separate gateway proxy app in front of the implementation"
+        "text": "Connecting to a database in the company's AWS VPC"
       },
       {
         "letter": "C",
-        "text": "Both deploy as proxies"
+        "text": "Allowing only corporate IP ranges to reach CloudHub workers"
       },
       {
         "letter": "D",
-        "text": "Both require Mutual TLS"
+        "text": "Calling a public SaaS API over the internet"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Auto-discovery binds the actual implementation app to its API Manager record so policies execute inline within the same runtime. Proxying deploys a separate gateway app that forwards traffic to the implementation. Auto-discovery is preferred when you control the implementation; proxies suit unmodifiable backends.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. An Anypoint VPC is needed for private connectivity, network isolation, firewall rules, and dedicated load balancers. Calling public internet endpoints, such as most SaaS APIs, does not require one.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "They are different deployment patterns."
+        "text": "Dedicated load balancers are configured within a VPC."
       },
       "B": {
-        "type": "Correct",
-        "text": "Auto-discovery binds a Mule app to API Manager so policies execute inline; proxying creates a separate gateway proxy app in front of the implementation"
+        "type": "Incorrect",
+        "text": "Private AWS resources require peering or similar VPC connectivity."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Auto-discovery does not deploy a separate proxy."
+        "text": "Firewall rules are a VPC capability."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Mutual TLS is a separate policy choice."
+        "type": "Correct",
+        "text": "Public internet endpoints are reachable without a VPC."
       }
     },
     "references": {
       "primary": {
-        "title": "API Autodiscovery vs Gateway Proxying — Inline Policy Enforcement vs Separate Proxy App",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/api-auto-discovery-new-concept#proxy-endpoint-vs-basic-endpoint"
+        "title": "Anypoint Virtual Private Cloud",
+        "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       },
       "architectureGuide": {
-        "title": "Configuring Autodiscovery in Mule 4 Applications",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/client-id-based-policies#how-this-policy-works"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "Anypoint VPC Connectivity Methods",
+        "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       }
     }
   },
   {
     "id": "q-180",
     "number": 180,
-    "title": "Deploying Managing Apis - Which is true about MUnit coverage in",
+    "title": "Architecting and Deploying - Planning the VPC address range",
     "domain": "Architecting and deploying API implementations",
     "topics": [
-      "Munit",
-      "Cicd Maven"
+      "Anypoint VPC",
+      "Provisioning"
     ],
-    "prompt": "Which is true about MUnit coverage in CI?",
+    "prompt": "When provisioning an Anypoint VPC that will connect to the corporate network through a VPN, what must the architect ensure about its CIDR block?",
     "options": [
       {
         "letter": "A",
-        "text": "Coverage is meaningless for integration code"
+        "text": "It can be changed freely after applications are deployed"
       },
       {
         "letter": "B",
-        "text": "MUnit reports coverage on flows and DataWeave and can fail builds below configured thresholds"
+        "text": "It must be a public IP range owned by MuleSoft"
       },
       {
         "letter": "C",
-        "text": "MUnit only tests Java code"
+        "text": "It must not overlap corporate network ranges"
       },
       {
         "letter": "D",
-        "text": "MUnit only runs in Anypoint Studio"
+        "text": "It must match the corporate network's CIDR exactly"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "MUnit produces coverage reports on flows and DataWeave and can be configured to fail Maven builds when thresholds are not met. This makes coverage gates a normal part of MuleSoft CI pipelines.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. An Anypoint VPC's CIDR block should be large enough for its workers and must not overlap with the networks it will connect to, such as the corporate network, so traffic can be routed correctly over the VPN.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Coverage gates remain useful for catching missed paths."
+        "text": "Changing a VPC's CIDR after provisioning is not a simple change."
       },
       "B": {
-        "type": "Correct",
-        "text": "MUnit reports coverage on flows and DataWeave and can fail builds below configured thresholds"
+        "type": "Incorrect",
+        "text": "VPCs use private address ranges."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "MUnit tests Mule flows, not just Java code."
+        "type": "Correct",
+        "text": "Overlapping ranges would make routing between the networks ambiguous."
       },
       "D": {
         "type": "Incorrect",
-        "text": "MUnit runs in Studio, Maven, and CI environments."
+        "text": "Identical ranges cannot be routed between networks."
       }
     },
     "references": {
       "primary": {
-        "title": "MUnit Automated Testing Framework — Test Coverage Reports & CI Build Quality Gates",
-        "url": "https://docs.mulesoft.com/munit/latest/#test-coverage"
+        "title": "Provisioning an Anypoint VPC",
+        "url": "https://docs.mulesoft.com/cloudhub/vpc-provisioning-concept"
       },
       "architectureGuide": {
-        "title": "Mule Maven Plugin Automated Build & Test Lifecycle",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/mmp-concept#deploy-goal"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "Anypoint VPC Connectivity Methods",
+        "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       }
     }
   },
   {
     "id": "q-181",
     "number": 181,
-    "title": "Api Implementation Design - An architect wants the SAME RAML spec",
+    "title": "Architecting and Deploying - Separate networks for prod and non-prod",
     "domain": "Architecting and deploying API implementations",
     "topics": [
-      "Raml Oas Design",
-      "Api Lifecycle"
+      "Anypoint VPC",
+      "Environments"
     ],
-    "prompt": "An architect wants the SAME RAML spec to drive both API Manager governance AND the Mule implementation skeleton. Which Mule capability supports this directly?",
+    "prompt": "A company wants production applications isolated in one network and QA and staging applications in another. How can Anypoint VPCs support this?",
     "options": [
       {
         "letter": "A",
-        "text": "APIkit, which scaffolds flows from a RAML/OAS specification"
+        "text": "Create a separate Anypoint organization for each environment"
       },
       {
         "letter": "B",
-        "text": "MUnit"
+        "text": "Use one VPC and separate environments by worker size"
+      },
+      {
+        "letter": "C",
+        "text": "Deploy QA to the shared load balancer and production to Exchange"
+      },
+      {
+        "letter": "D",
+        "text": "One VPC for production, another for non-production"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. The base Anypoint VPC subscription includes two VPCs, and each VPC can be associated with multiple environments. A common pattern is one VPC for production and one for non-production environments.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Separate organizations are unnecessary for network isolation."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Worker size does not isolate networks."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Exchange does not host applications."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Each VPC can be associated with multiple environments."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint Virtual Private Cloud",
+        "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
+      },
+      "architectureGuide": {
+        "title": "Provisioning an Anypoint VPC",
+        "url": "https://docs.mulesoft.com/cloudhub/vpc-provisioning-concept"
+      }
+    }
+  },
+  {
+    "id": "q-182",
+    "number": 182,
+    "title": "Architecting and Deploying - CloudHub 2.0 equivalent",
+    "domain": "Architecting and deploying API implementations",
+    "topics": [
+      "Private Spaces",
+      "CloudHub 2.0"
+    ],
+    "prompt": "A team moving from CloudHub to CloudHub 2.0 needs private connectivity to its data center and network isolation, as it had with its Anypoint VPC. What should it use?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "A CloudHub 2.0 private space"
+      },
+      {
+        "letter": "B",
+        "text": "A Flex Gateway in the shared space"
+      },
+      {
+        "letter": "C",
+        "text": "An Anypoint VPC attached directly to CloudHub 2.0 replicas"
+      },
+      {
+        "letter": "D",
+        "text": "A CloudHub 2.0 shared space with firewall rules"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. In CloudHub 2.0, private spaces are virtual, private, and isolated logical spaces for running applications. They support private connectivity, such as VPN or transit gateway, and network controls similar to Anypoint VPCs in CloudHub.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "Private spaces provide isolated networking and private connectivity."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "A gateway does not create private network connectivity."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "CloudHub 2.0 uses private spaces for this purpose."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Shared spaces do not provide private connectivity to the data center."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub 2.0 Private Spaces",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-private-space-about"
+      },
+      "architectureGuide": {
+        "title": "CloudHub 2.0 Overview",
+        "url": "https://docs.mulesoft.com/cloudhub-2/"
+      }
+    }
+  },
+  {
+    "id": "q-183",
+    "number": 183,
+    "title": "Architecting and Deploying - Who patches the runtime",
+    "domain": "Architecting and deploying API implementations",
+    "topics": [
+      "Runtime Plane",
+      "Responsibilities"
+    ],
+    "prompt": "A company is comparing hybrid standalone Mule runtimes with CloudHub 2.0. Who is responsible for installing and patching Mule runtime engine in each option?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The customer for both options"
+      },
+      {
+        "letter": "B",
+        "text": "MuleSoft for both options"
+      },
+      {
+        "letter": "C",
+        "text": "The customer for hybrid; MuleSoft for CloudHub 2.0"
+      },
+      {
+        "letter": "D",
+        "text": "MuleSoft for hybrid; the customer for CloudHub 2.0"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. With hybrid standalone runtimes, the customer installs, upgrades, and operates Mule runtime engine on its own servers, managed from the control plane. CloudHub 2.0 is a fully managed iPaaS in which MuleSoft runs the infrastructure and runtimes.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "CloudHub 2.0 runtimes are managed by MuleSoft."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "MuleSoft does not operate customer servers."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "Hybrid runtimes are customer-operated; CloudHub 2.0 is fully managed."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "These responsibilities are reversed."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
+      },
+      "architectureGuide": {
+        "title": "Deploying to Your Own Servers (Hybrid)",
+        "url": "https://docs.mulesoft.com/runtime-manager/deploying-to-your-own-servers"
+      }
+    }
+  },
+  {
+    "id": "q-184",
+    "number": 184,
+    "title": "Architecting and Deploying - High availability on own servers",
+    "domain": "Architecting and deploying API implementations",
+    "topics": [
+      "Runtime Plane",
+      "Clusters"
+    ],
+    "prompt": "A company runs hybrid Mule runtimes on four on-premises servers. It needs applications that share state and coordinate so that, if one server fails, processing continues. What should it configure?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Four separate environments"
+      },
+      {
+        "letter": "B",
+        "text": "A Mule cluster in Runtime Manager"
+      },
+      {
+        "letter": "C",
+        "text": "A server group"
+      },
+      {
+        "letter": "D",
+        "text": "Four CloudHub workers"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. In hybrid deployments, Runtime Manager can group servers. A server group deploys the same applications to several servers without coordination, while a cluster shares state and coordinates processing, providing high availability and failover.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Environments separate configurations; they do not provide failover."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Clusters share state and coordinate processing across servers."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Server groups deploy the same apps but do not share state or coordinate."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "CloudHub workers are not the company's on-premises servers."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Runtime Manager — Clusters",
+        "url": "https://docs.mulesoft.com/runtime-manager/cluster-about"
+      },
+      "architectureGuide": {
+        "title": "Runtime Manager — Server Groups",
+        "url": "https://docs.mulesoft.com/runtime-manager/server-group-about"
+      }
+    }
+  },
+  {
+    "id": "q-185",
+    "number": 185,
+    "title": "Architecting and Deploying - Kubernetes expertise",
+    "domain": "Architecting and deploying API implementations",
+    "topics": [
+      "Runtime Plane",
+      "Runtime Fabric"
+    ],
+    "prompt": "A company is considering Runtime Fabric on its own self-managed Kubernetes clusters. What should it plan for?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "No Kubernetes skills are needed because RTF hides Kubernetes"
+      },
+      {
+        "letter": "B",
+        "text": "Its own team must operate and secure the Kubernetes clusters"
+      },
+      {
+        "letter": "C",
+        "text": "Applications cannot be managed from Runtime Manager"
+      },
+      {
+        "letter": "D",
+        "text": "MuleSoft will patch the company's Kubernetes nodes"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Runtime Fabric runs Mule applications and gateways on customer infrastructure. On self-managed Kubernetes, the customer is responsible for the Kubernetes clusters, while MuleSoft provides orchestration of Mule runtimes and centralized management.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Customers must operate the underlying Kubernetes."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "On self-managed Kubernetes, the customer owns the infrastructure."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "RTF applications are managed from Anypoint Platform."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "MuleSoft provides runtime orchestration, not node management."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Runtime Fabric on Self-Managed Kubernetes",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/install-self-managed"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Runtime Fabric Overview",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/"
+      }
+    }
+  },
+  {
+    "id": "q-186",
+    "number": 186,
+    "title": "Architecting and Deploying - Comparing options for isolation",
+    "domain": "Architecting and deploying API implementations",
+    "topics": [
+      "Runtime Plane",
+      "Runtime Fabric"
+    ],
+    "prompt": "An organization wants to run Mule applications in containers on its own infrastructure, with resource isolation between applications and centralized management. Which option fits better than hybrid standalone runtimes?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Hybrid server groups"
+      },
+      {
+        "letter": "B",
+        "text": "CloudHub shared load balancer"
+      },
+      {
+        "letter": "C",
+        "text": "Anypoint Platform PCE alone"
+      },
+      {
+        "letter": "D",
+        "text": "Runtime Fabric"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Runtime Fabric deploys each Mule application in containers with allocated resources on customer-managed infrastructure, providing isolation between applications. Standalone runtimes host several applications in one runtime process.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Applications in standalone runtimes share the same Mule runtime process."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "This is a CloudHub networking feature, not a runtime option."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "PCE is a self-hosted control plane, not a container runtime."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "RTF runs each application in its own container on customer infrastructure."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint Runtime Fabric Overview",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
+      }
+    }
+  },
+  {
+    "id": "q-187",
+    "number": 187,
+    "title": "Architecting and Deploying - Choose two: MuleSoft-managed runtime options",
+    "domain": "Architecting and deploying API implementations",
+    "topics": [
+      "Runtime Plane",
+      "Hosting"
+    ],
+    "prompt": "Which two runtime plane options are fully managed by MuleSoft, including the infrastructure? (Choose two.)",
+    "options": [
+      {
+        "letter": "A",
+        "text": "CloudHub"
+      },
+      {
+        "letter": "B",
+        "text": "On-premises runtimes without a control plane"
+      },
+      {
+        "letter": "C",
+        "text": "Runtime Fabric"
+      },
+      {
+        "letter": "D",
+        "text": "Hybrid standalone runtimes"
+      },
+      {
+        "letter": "E",
+        "text": "CloudHub 2.0"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "E"
+    ],
+    "explanation": "Correct answers: A and E. CloudHub and CloudHub 2.0 are MuleSoft-managed runtime planes. Runtime Fabric, hybrid standalone runtimes, and on-premises runtimes run on customer infrastructure, with varying levels of MuleSoft management.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "CloudHub runs on MuleSoft-managed infrastructure."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "These are fully customer-managed."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "The customer manages the infrastructure."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "The customer operates the servers and runtimes."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "CloudHub 2.0 is a fully managed, containerized iPaaS."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
+      },
+      "architectureGuide": {
+        "title": "CloudHub 2.0 Overview",
+        "url": "https://docs.mulesoft.com/cloudhub-2/"
+      }
+    }
+  },
+  {
+    "id": "q-188",
+    "number": 188,
+    "title": "Architecting and Deploying - Low-latency access to on-prem data",
+    "domain": "Architecting and deploying API implementations",
+    "topics": [
+      "Runtime Plane",
+      "Hybrid"
+    ],
+    "prompt": "A System API performs many fine-grained calls to an on-premises mainframe. Latency through a VPN from the cloud is too high. Which runtime plane choice best reduces latency?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Add the HTTP Caching policy to every Process API"
+      },
+      {
+        "letter": "B",
+        "text": "Move the Experience API to a larger CloudHub 2.0 replica"
+      },
+      {
+        "letter": "C",
+        "text": "Run it on a customer-hosted runtime near the mainframe"
+      },
+      {
+        "letter": "D",
+        "text": "Increase the CloudHub worker size"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Runtime plane location affects latency. A System API that makes many calls to an on-premises system can run on a customer-hosted runtime, such as hybrid or Runtime Fabric, in the same data center, while other layers can run elsewhere.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Caching may help reads but does not reduce latency for every mainframe call."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "The latency is between the System API and the mainframe."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "Running close to the backend avoids the VPN round trips."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "More CPU does not reduce network latency."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
+      },
+      "architectureGuide": {
+        "title": "Deploying to Your Own Servers (Hybrid)",
+        "url": "https://docs.mulesoft.com/runtime-manager/deploying-to-your-own-servers"
+      }
+    }
+  },
+  {
+    "id": "q-189",
+    "number": 189,
+    "title": "Architecting and Deploying - Where MUnit fits best",
+    "domain": "Architecting and deploying API implementations",
+    "topics": [
+      "MUnit",
+      "Unit Testing"
+    ],
+    "prompt": "A team wants fast automated tests that verify a Mule flow's routing, transformations, and error handling on every build, without calling real backends. What should it use?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Manual tests with Postman against production"
+      },
+      {
+        "letter": "B",
+        "text": "Load tests against a sandbox environment"
+      },
+      {
+        "letter": "C",
+        "text": "MUnit tests with mocked connectors"
+      },
+      {
+        "letter": "D",
+        "text": "Anypoint Monitoring alerts in sandbox"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. MUnit is the testing framework for Mule applications. It is best used for unit tests that exercise flows, transformations, and error handling in isolation, with Mock When replacing calls to external systems, so tests run quickly in every build.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Manual production tests are slow and risky."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Load tests measure performance, not logic correctness."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "MUnit runs flows in isolation, with mocks replacing external calls."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Monitoring detects runtime problems, not logic regressions at build time."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "MUnit Overview",
+        "url": "https://docs.mulesoft.com/munit/latest/"
+      },
+      "architectureGuide": {
+        "title": "MUnit — Mock When Event Processor",
+        "url": "https://docs.mulesoft.com/munit/latest/mock-event-processor"
+      }
+    }
+  },
+  {
+    "id": "q-190",
+    "number": 190,
+    "title": "Architecting and Deploying - Unit versus integration test",
+    "domain": "Architecting and deploying API implementations",
+    "topics": [
+      "Testing",
+      "Integration Tests"
+    ],
+    "prompt": "Which statement correctly distinguishes unit tests from integration tests for an API implementation?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Unit tests run in production; integration tests run on developer laptops"
+      },
+      {
+        "letter": "B",
+        "text": "Unit tests use mocks; integration tests use real systems"
+      },
+      {
+        "letter": "C",
+        "text": "They are the same, but integration tests use MUnit"
+      },
+      {
+        "letter": "D",
+        "text": "Unit tests need a deployed app; integration tests do not"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Unit tests verify an application's own logic in isolation, replacing external dependencies with mocks. Integration tests exercise the application with its real dependencies, such as backends and networks, typically in a deployed environment.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Neither type is defined by running in production."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "The difference is whether external systems are replaced or called."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "The scope of the test differs."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Unit tests can run in the build without deployment."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "MUnit — Test Concepts",
+        "url": "https://docs.mulesoft.com/munit/latest/munit-test-concept"
+      },
+      "architectureGuide": {
+        "title": "MUnit Overview",
+        "url": "https://docs.mulesoft.com/munit/latest/"
+      }
+    }
+  },
+  {
+    "id": "q-191",
+    "number": 191,
+    "title": "Architecting and Deploying - Mocking a backend call",
+    "domain": "Architecting and deploying API implementations",
+    "topics": [
+      "MUnit",
+      "Mocking"
+    ],
+    "prompt": "A flow calls a Salesforce connector and transforms the result. In an MUnit test, how should the Salesforce call be handled so that the test is a unit test?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Use Mock When to return a canned response"
+      },
+      {
+        "letter": "B",
+        "text": "Skip testing flows that use connectors"
+      },
+      {
+        "letter": "C",
+        "text": "Call the production Salesforce org with a test user"
+      },
+      {
+        "letter": "D",
+        "text": "Remove the connector from the flow during testing"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. MUnit's Mock When processor intercepts a processor, such as a connector operation, and returns a defined response. This isolates the flow from external systems so tests are fast and repeatable.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "The mock replaces the connector call with a controlled result."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Connector flows can be unit-tested with mocks."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "That makes it an integration test with real dependencies."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Changing the flow under test defeats the test's purpose."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "MUnit — Mock When Event Processor",
+        "url": "https://docs.mulesoft.com/munit/latest/mock-event-processor"
+      },
+      "architectureGuide": {
+        "title": "MUnit — Test Concepts",
+        "url": "https://docs.mulesoft.com/munit/latest/munit-test-concept"
+      }
+    }
+  },
+  {
+    "id": "q-192",
+    "number": 192,
+    "title": "Architecting and Deploying - Enforcing coverage in CI",
+    "domain": "Architecting and deploying API implementations",
+    "topics": [
+      "MUnit",
+      "Coverage"
+    ],
+    "prompt": "The C4E wants every build to fail if MUnit coverage of an application falls below 80%. How can this be enforced?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Enable Anypoint Monitoring on the build server"
+      },
+      {
+        "letter": "B",
+        "text": "Ask reviewers to estimate coverage in code reviews"
+      },
+      {
+        "letter": "C",
+        "text": "Apply a policy in API Manager"
+      },
+      {
+        "letter": "D",
+        "text": "Set coverage thresholds in the MUnit Maven plugin"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. The MUnit Maven plugin runs tests as part of the Maven build and can generate coverage reports. It can be configured with minimum coverage requirements so that the build fails when coverage is too low.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Monitoring does not measure test coverage."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Manual estimates are unreliable and not enforced."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Policies govern runtime traffic, not builds."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "The plugin can fail the build when coverage is below the threshold."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "MUnit Maven Plugin",
+        "url": "https://docs.mulesoft.com/munit/latest/munit-maven-plugin"
+      },
+      "architectureGuide": {
+        "title": "MUnit Overview",
+        "url": "https://docs.mulesoft.com/munit/latest/"
+      }
+    }
+  },
+  {
+    "id": "q-193",
+    "number": 193,
+    "title": "Architecting and Deploying - What MUnit is not for",
+    "domain": "Architecting and deploying API implementations",
+    "topics": [
+      "MUnit",
+      "Testing Strategy"
+    ],
+    "prompt": "For which testing need is MUnit least suitable?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Verifying DataWeave transformations"
+      },
+      {
+        "letter": "B",
+        "text": "Load testing with thousands of concurrent users"
+      },
+      {
+        "letter": "C",
+        "text": "Checking that a flow routes messages correctly"
+      },
+      {
+        "letter": "D",
+        "text": "Testing error handling for a failed connector call"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. MUnit tests the logic of Mule applications, including transformations, routing, and error handling. Load and performance testing under high concurrency requires dedicated tools against deployed environments.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "MUnit can assert transformation results."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Load testing needs dedicated performance tools."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "MUnit can verify routing and processor calls."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Mocks can raise errors to test handlers."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "MUnit Overview",
+        "url": "https://docs.mulesoft.com/munit/latest/"
+      },
+      "architectureGuide": {
+        "title": "MUnit — Test Concepts",
+        "url": "https://docs.mulesoft.com/munit/latest/munit-test-concept"
+      }
+    }
+  },
+  {
+    "id": "q-194",
+    "number": 194,
+    "title": "Architecting and Deploying - Choose two: MUnit capabilities",
+    "domain": "Architecting and deploying API implementations",
+    "topics": [
+      "MUnit",
+      "Testing"
+    ],
+    "prompt": "Which two MUnit capabilities support unit testing of Mule applications? (Choose two.)",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Deploying applications to production"
+      },
+      {
+        "letter": "B",
+        "text": "Applying rate limiting policies"
+      },
+      {
+        "letter": "C",
+        "text": "Mocking processors to return predefined responses"
+      },
+      {
+        "letter": "D",
+        "text": "Generating API specifications from flows"
+      },
+      {
+        "letter": "E",
+        "text": "Verifying that a processor was called a specific number of times"
+      }
+    ],
+    "correctAnswers": [
+      "C",
+      "E"
+    ],
+    "explanation": "Correct answers: C and E. MUnit provides processors for mocking (Mock When), spying, verifying calls (Verify Call), and asserting results, which together enable isolated unit tests of Mule flows.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Deployment is done by Runtime Manager or Maven, not MUnit."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Policies are managed in API Manager."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "Mocks isolate the flow from external systems."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "MUnit does not generate specifications."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "Verify checks the flow's behavior."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "MUnit — Test Concepts",
+        "url": "https://docs.mulesoft.com/munit/latest/munit-test-concept"
+      },
+      "architectureGuide": {
+        "title": "MUnit — Mock When Event Processor",
+        "url": "https://docs.mulesoft.com/munit/latest/mock-event-processor"
+      }
+    }
+  },
+  {
+    "id": "q-195",
+    "number": 195,
+    "title": "Architecting and Deploying - Testing against real systems",
+    "domain": "Architecting and deploying API implementations",
+    "topics": [
+      "Integration Tests",
+      "Testing Strategy"
+    ],
+    "prompt": "After unit tests pass, the team must confirm that the deployed System API works with the real ERP test instance, including credentials and network access. What type of test is this?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "An integration test"
+      },
+      {
+        "letter": "B",
+        "text": "A unit test with every connector mocked"
+      },
+      {
+        "letter": "C",
+        "text": "A static analysis scan"
+      },
+      {
+        "letter": "D",
+        "text": "A code review of the Mule configuration"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Integration tests run the deployed application against its real dependencies to catch problems that unit tests with mocks cannot, such as incorrect credentials, network rules, or backend behavior.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "It verifies the app with its real dependencies and configuration."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Mocks would hide connectivity and credential problems."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Static analysis does not call real systems."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Reviews do not exercise real connectivity."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "MUnit — Test Concepts",
+        "url": "https://docs.mulesoft.com/munit/latest/munit-test-concept"
+      },
+      "architectureGuide": {
+        "title": "MUnit Overview",
+        "url": "https://docs.mulesoft.com/munit/latest/"
+      }
+    }
+  },
+  {
+    "id": "q-196",
+    "number": 196,
+    "title": "Architecting and Deploying - Automating deployment",
+    "domain": "Architecting and deploying API implementations",
+    "topics": [
+      "DevOps",
+      "Mule Maven Plugin"
+    ],
+    "prompt": "A team wants its CI server to build a Mule application and deploy it to CloudHub 2.0 on every merge to the main branch. Which tool is designed for this?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Exchange public portal"
+      },
+      {
+        "letter": "B",
+        "text": "API Designer"
       },
       {
         "letter": "C",
@@ -10830,1724 +11706,349 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "D",
-        "text": "Object Store v2"
+        "text": "Mule Maven Plugin"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "APIkit reads a RAML or OAS spec and scaffolds the Mule flows, validation, and routing for the API implementation, ensuring spec-driven implementation. The same spec is published to Exchange and used in API Manager for governance.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. The Mule Maven Plugin packages Mule applications and deploys them to targets such as CloudHub, CloudHub 2.0, Runtime Fabric, and hybrid servers. It integrates with any CI server that can run Maven.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "APIkit, which scaffolds flows from a RAML/OAS specification"
+        "type": "Incorrect",
+        "text": "Portals publish documentation, not applications."
       },
       "B": {
         "type": "Incorrect",
-        "text": "MUnit tests behavior; it does not scaffold implementations."
+        "text": "API Designer edits specifications."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Visualizer renders topology."
+        "text": "Visualizer shows the network and does not deploy."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Object Store stores key/value data."
+        "type": "Correct",
+        "text": "It builds and deploys Mule apps from a Maven build."
       }
     },
     "references": {
       "primary": {
-        "title": "APIkit Overview — Generating Flows and Routers from RAML/OAS Specifications",
-        "url": "https://docs.mulesoft.com/apikit/latest/#features"
+        "title": "Mule Maven Plugin",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept"
       },
       "architectureGuide": {
-        "title": "Designing API Specifications in Design Center",
-        "url": "https://docs.mulesoft.com/design-center/#prerequisites-for-using-design-center"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "Deploy Applications to CloudHub 2.0 Using Mule Maven Plugin",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/deploy-to-cloudhub-2"
       }
     }
-  },
-  {
-    "id": "q-182",
-    "number": 182,
-    "title": "Api Implementation Design - Which strategy best handles credentials for Mule",
-    "domain": "Architecting and deploying API implementations",
-    "topics": [
-      "Reliability Patterns"
-    ],
-    "prompt": "Which strategy best handles credentials for Mule apps calling external systems, while respecting per-environment differences?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Hardcode credentials in Mule XML"
-      },
-      {
-        "letter": "B",
-        "text": "Use property placeholders + secure (encrypted) properties + per-environment property files or platform secret stores"
-      },
-      {
-        "letter": "C",
-        "text": "Pass credentials in URL query strings"
-      },
-      {
-        "letter": "D",
-        "text": "Embed credentials in Git"
-      }
-    ],
-    "correctAnswer": "B",
-    "explanation": "Property placeholders combined with secure (encrypted) properties and per-environment property files (or external secret stores) enable per-environment credentials without exposing secrets in source. Hardcoding, URL passing, or plain-text Git all fail basic security.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Hardcoding leaks secrets and prevents environment overrides."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Use property placeholders + secure (encrypted) properties + per-environment property files or platform secret stores"
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "URL credentials leak in logs and proxies."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Plain-text Git secrets are a security incident."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Mule Runtime — Secure Encrypted Properties, Placeholders & Environment Isolation",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/mmp-concept#configure-shared-libraries"
-      },
-      "architectureGuide": {
-        "title": "Access Management Environments and Secure Configuration Management",
-        "url": "https://docs.mulesoft.com/access-management/environments#types-of-environments"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
-      }
-    }
-  },
-  {
-    "id": "q-183",
-    "number": 183,
-    "title": "Deploying Managing Apis - Which option BEST describes the role of",
-    "domain": "Architecting and deploying API implementations",
-    "topics": [
-      "Auto Discovery",
-      "Api Contracts Sla Tiers"
-    ],
-    "prompt": "Which option BEST describes the role of API Manager when a Mule API is deployed with auto-discovery enabled?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "API Manager replaces the implementation"
-      },
-      {
-        "letter": "B",
-        "text": "API Manager is the system of record for the API instance, contracts, and policies; the runtime downloads and enforces those policies locally"
-      },
-      {
-        "letter": "C",
-        "text": "API Manager only stores RAML files"
-      },
-      {
-        "letter": "D",
-        "text": "API Manager is only used for billing"
-      }
-    ],
-    "correctAnswer": "B",
-    "explanation": "API Manager is the source of truth for API instance metadata, contracts, and policies. With auto-discovery, the Mule runtime fetches the policy set for that API from API Manager and enforces it inline. Implementation lives in the Mule app, not in API Manager.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "API Manager governs; it does not implement business logic."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "API Manager is the system of record for the API instance, contracts, and policies; the runtime downloads and enforces those policies locally"
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Specs are stored in Exchange; API Manager governs instances."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "API Manager is governance and enforcement, not billing."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "API Autodiscovery Architecture — Pairing Mule Runtimes with API Manager",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/api-auto-discovery-new-concept#prerequisites"
-      },
-      "architectureGuide": {
-        "title": "Client ID Enforcement & Gateway Policy Execution",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/client-id-based-policies#how-this-policy-works"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
-      }
-    }
-  },
-  {
-    "id": "q-184",
-    "number": 184,
-    "title": "Deploying Managing Apis - A platform team needs centralized policy control",
-    "domain": "Architecting and deploying API implementations",
-    "topics": [
-      "Flex Gateway",
-      "Connected Mode"
-    ],
-    "prompt": "A platform team needs Flex Gateway instances to receive policies from API Manager and publish analytics to Anypoint Platform. Which operating mode should they use?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Local mode with YAML-only configuration"
-      },
-      {
-        "letter": "B",
-        "text": "Connected mode registered to Anypoint Platform"
-      },
-      {
-        "letter": "C",
-        "text": "Runtime Fabric sidecar mode"
-      },
-      {
-        "letter": "D",
-        "text": "VPN passthrough mode"
-      }
-    ],
-    "correctAnswer": "B",
-    "explanation": "Connected mode lets Flex Gateway receive centrally managed API definitions and policies from API Manager and publish analytics to Anypoint Platform. Local mode is configured from local YAML files and is better suited to isolated or air-gapped use cases where centralized governance is not required.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Local mode is managed through local YAML files and does not provide central API Manager governance or Anypoint analytics."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Connected mode registered to Anypoint Platform"
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Runtime Fabric is a deployment target for Mule runtimes, not a Flex Gateway operating mode."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "VPN connectivity can complement gateway deployment, but it is not the gateway operating mode that enables API Manager control."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Flex Gateway Connected Mode",
-        "url": "https://docs.mulesoft.com/gateway/latest/#connected_mode"
-      },
-      "architectureGuide": {
-        "title": "API Manager Overview — Centralized Policy Control and Analytics",
-        "url": "https://docs.mulesoft.com/api-manager/"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    }
-  },
-  {
-    "id": "q-185",
-    "number": 185,
-    "title": "API-led Migration - A large financial institution is migrating legacy SOAP services",
-    "domain": "Architecting and deploying API implementations",
-    "topics": [
-      "API-led Migration"
-    ],
-    "prompt": "A large financial institution is migrating legacy SOAP services to an API‑led architecture, must maintain a 99.9% SLA, comply with PCI‑DSS, and minimize downtime during the transition, with a strict 4‑month migration window and a fixed budget. Which THREE options meet the requirements? (Select all correct answers)",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Implement System APIs as lightweight SOAP‑to‑REST wrappers deployed in a highly available cluster on Cloud Hub, using blue‑green deployment for zero‑downtime cutover, and apply PCI‑DSS policies (encryption, tokenization) via API Manager."
-      },
-      {
-        "letter": "B",
-        "text": "Replace all legacy SOAP services with newly designed micro‑services in a single sprint, decommissioning the old services immediately."
-      },
-      {
-        "letter": "C",
-        "text": "Use a staged migration: first expose existing SOAP services through an API gateway (API‑led layer) while keeping the legacy back‑ends, then incrementally refactor each service into a System API with automated testing and CI/CD, using canary releases to meet SLA and budget."
-      },
-      {
-        "letter": "D",
-        "text": "Migrate the SOAP services to on‑premises Mule runtime in a single monolithic Mule application, using a single node deployment to simplify management."
-      },
-      {
-        "letter": "E",
-        "text": "Leverage Anypoint Virtual Private Cloud (VPC) with dedicated load balancers and enable end‑to‑end TLS, and use rolling deployments across multiple nodes to achieve high availability and meet PCI‑DSS encryption requirements."
-      },
-      {
-        "letter": "F",
-        "text": "Outsource the entire migration to a third‑party vendor and perform a big‑bang cutover after the four‑month window, accepting a planned outage."
-      }
-    ],
-    "explanation": "The question tests the candidate's ability to design a pragmatic, low‑risk migration to an API‑led architecture while meeting strict SLA, compliance, and budget constraints. Correct solutions (options 1, 3, and 5) all preserve the existing SOAP back‑ends during transition, use high‑availability deployment patterns (blue‑green, canary, rolling) to avoid service interruptions, and leverage Mule Soft's security policies to satisfy PCI‑DSS. Incorrect choices either propose unrealistic big‑bang rewrites, single‑node deployments, or acceptance of planned outages, each of which would jeopardize the SLA and compliance goals. In practice, financial institutions adopt incremental, API‑layer approaches, combine on‑premise and cloud resources for resilience, and use Mule Soft’s governance tools to enforce encryption and tokenization. Remember that a successful migration balances technical feasibility, operational continuity, and regulatory obligations, and that high‑availability patterns are essential for meeting a 99.9% SLA.",
-    "rationales": {
-      "A": {
-        "type": "Correct",
-        "text": "This option is correct. Wrapping existing SOAP services with System APIs preserves functionality while exposing RESTful contracts, which aligns with API‑led principles and reduces rewrite effort, helping stay within budget and timeline. Deploying the wrappers in a clustered Cloud Hub environment with blue‑green deployment ensures continuous availability and meets the 99.9% SLA. API Manager can enforce PCI‑DSS encryption and tokenization policies, guaranteeing compliance throughout the migration."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. Re‑architecting every service into new micro‑services in a single sprint is unrealistic for a large financial institution given the four‑month window and fixed budget. Such a big‑bang approach would likely cause extended downtime, violating the 99.9% SLA. Additionally, the effort to redesign, test, and certify each service for PCI‑DSS would far exceed budget constraints."
-      },
-      "C": {
-        "type": "Correct",
-        "text": "This option is correct. A staged approach lets the organization keep the legacy SOAP services running while gradually introducing API‑led abstractions, minimizing downtime. Canary releases allow traffic to be shifted gradually, providing real‑time monitoring to ensure the 99.9% SLA is not breached. Automated testing and CI/CD accelerate development within the four‑month window and keep costs predictable, while API policies enforce PCI‑DSS requirements."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. A single‑node deployment does not provide the redundancy needed to achieve a 99.9% SLA; any node failure would cause an outage. Consolidating many services into one monolithic application also increases risk and complexity, making PCI‑DSS compliance harder to verify and manage. The lack of high‑availability architecture contradicts the requirement to minimize downtime during migration."
-      },
-      "E": {
-        "type": "Correct",
-        "text": "This option is correct. An VPC isolates traffic and, combined with dedicated load balancers, provides the resilience needed for a 99.9% SLA. Rolling deployments allow updates without taking the entire service offline, thus minimizing downtime. Enabling TLS end‑to‑end satisfies PCI‑DSS encryption mandates, and the multi‑node setup stays within budget by using shared infrastructure rather than a full rewrite."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. Accepting a planned outage violates the requirement to minimize downtime and maintain a 99.9% SLA. Relying on a single cutover also risks missing the strict four‑month timeline if the vendor encounters delays. Moreover, outsourcing does not guarantee PCI‑DSS compliance unless the vendor’s processes are tightly controlled, which adds risk and potential hidden costs."
-      }
-    },
-    "references": {},
-    "correctAnswers": [
-      "A",
-      "C",
-      "E"
-    ]
-  },
-  {
-    "id": "q-186",
-    "number": 186,
-    "title": "HL7 Integration - A healthcare network is integrating three EMR systems that use",
-    "domain": "Architecting and deploying API implementations",
-    "topics": [
-      "HL7 Integration"
-    ],
-    "prompt": "A healthcare network is integrating three EMR systems that use different HL7 versions, and it must guarantee data transformation accuracy while providing graceful error handling under a $120,000 budget and strict HIPAA audit requirements. Which TWO actions should be taken? (Select all correct answers)",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Develop custom Java parsers for each HL7 version to perform the transformations."
-      },
-      {
-        "letter": "B",
-        "text": "Create Data Weave mappings that use the HL7 v2/v3 connectors with schema validation and unit tests for each message type."
-      },
-      {
-        "letter": "C",
-        "text": "Deploy the integration on an on‑premises Mule runtime in a dedicated data center to avoid any cloud costs."
-      },
-      {
-        "letter": "D",
-        "text": "Implement a global error handling flow that routes failed messages to a secure dead‑letter queue and records detailed, encrypted audit logs."
-      },
-      {
-        "letter": "E",
-        "text": "Disable encryption of data at rest to reduce infrastructure costs."
-      },
-      {
-        "letter": "F",
-        "text": "Use an API gateway with rate limiting but omit logging to improve performance."
-      }
-    ],
-    "explanation": "The question tests the candidate's ability to design a cost‑effective, HIPAA‑compliant integration for disparate HL7 systems. The correct actions focus on leveraging Mule Soft's native Data Weave with HL7 connectors for accurate, testable transformations, and on establishing a global error handling strategy that captures failures, isolates them in a secure dead‑letter queue, and logs encrypted audit records. Common misconceptions include believing that custom code or on‑premises deployment will automatically satisfy compliance, when in fact they raise cost and maintenance issues. Similarly, turning off encryption or logging may appear to save money but directly violate HIPAA requirements. Best practice is to use the platform's built‑in capabilities for transformation validation, unit testing, and comprehensive, secure error handling to meet both budgetary and regulatory constraints.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. Writing custom Java code for HL7 parsing significantly increases development effort, maintenance cost, and risk of errors, which can quickly exceed the $120,000 budget. Moreover, custom code lacks the built‑in validation and testing capabilities of Data Weave, making it harder to guarantee transformation accuracy. In a real-world scenario, teams that chose this path often faced missed deadlines and higher support costs."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "This option is correct. Data Weave provides a declarative, testable way to map between different HL7 versions, and the HL7 connectors handle parsing nuances while supporting schema validation to catch inconsistencies early. Unit tests ensure transformation logic is accurate before deployment, helping stay within budget by reducing rework. Healthcare integrations that adopt this approach routinely achieve high data fidelity and meet HIPAA audit expectations."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. While on‑premises deployment can satisfy certain compliance concerns, it typically requires significant capital expenditure for hardware, licensing, and ongoing operations, likely exceeding the $120,000 limit. Cloud‑based Anypoint Platform offerings provide HIPAA‑compliant environments with lower total cost of ownership and easier scaling. Organizations that chose pure on‑premises solutions often faced budget overruns and delayed project timelines."
-      },
-      "D": {
-        "type": "Correct",
-        "text": "This option is correct. A global error handler ensures that any transformation or connectivity failure is captured, isolated in a dead‑letter queue for later analysis, and logged with the level of detail required for HIPAA audits. Encrypting the logs and using a secure queue maintains data privacy and supports graceful degradation without data loss. Real‑world implementations using this pattern demonstrate reliable recovery and compliance reporting."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. Encryption of data at rest is a fundamental HIPAA requirement; disabling it would create a compliance violation regardless of budget constraints. The cost of enabling encryption is minimal compared to the potential fines and reputational damage of a breach. Projects that ignored encryption have faced severe penalties and loss of patient trust."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. While rate limiting can protect services, omitting logging eliminates the audit trail needed for HIPAA compliance and hampers troubleshooting. Logging does not significantly impact performance when configured properly, and it is essential for forensic analysis after an incident. Organizations that skipped logging struggled to demonstrate compliance during audits."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "HL7 EDI Connector — Before You Begin (Schema and Version Support)",
-        "url": "https://docs.mulesoft.com/hl7-connector/latest/#before-you-begin"
-      },
-      "architectureGuide": {
-        "title": "Mule Error Handling — Global Error Handlers and On-Error Scopes",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/error-handling#global_error_handler"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
-      }
-    },
-    "correctAnswers": [
-      "B",
-      "D"
-    ]
-  },
-  {
-    "id": "q-187",
-    "number": 187,
-    "title": "Integration Patterns - A regional healthcare provider needs to integrate its electronic",
-    "domain": "Architecting and deploying API implementations",
-    "topics": [
-      "Integration Patterns"
-    ],
-    "prompt": "A regional healthcare provider needs to integrate its electronic health record (EHR) system with a third‑party appointment scheduling service. The integration must be HIPAA‑compliant and be delivered within a two‑week sprint. Which integration pattern BEST meets the requirements?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Secure API Proxy pattern – expose a protected API that forwards requests to the third‑party service while applying TLS, OAuth2, and audit logging."
-      },
-      {
-        "letter": "B",
-        "text": "Batch processing pattern – collect appointment requests throughout the day and process them in a nightly batch job."
-      },
-      {
-        "letter": "C",
-        "text": "Asynchronous messaging pattern using a JMS queue – place appointment requests on a queue for later consumption by the scheduling service."
-      },
-      {
-        "letter": "D",
-        "text": "Direct HTTP request‑reply without mediation – the EHR system calls the third‑party service over HTTPS without any additional security layer."
-      },
-      {
-        "letter": "E",
-        "text": "Data Weave‑only transformation – use Data Weave to map EHR data to the third‑party format and send it directly."
-      },
-      {
-        "letter": "F",
-        "text": "Event‑driven Pub/Sub architecture with Kafka – publish appointment events to a topic that the scheduling service subscribes to."
-      }
-    ],
-    "explanation": "The question tests the candidate's ability to match integration patterns to regulatory and delivery constraints. HIPAA compliance demands encryption, strong authentication, and auditability, which are most easily satisfied by a Secure API Proxy that can apply gateway policies without extensive custom development. The two‑week sprint constraint rules out heavyweight solutions such as batch jobs, asynchronous queues, or event‑driven architectures, which require additional infrastructure and testing. Common misconceptions include assuming that any HTTPS call is sufficient for HIPAA or that Data Weave alone provides integration capabilities. Best practice is to leverage the API gateway for security enforcement while keeping the integration simple and maintainable, ensuring both compliance and rapid delivery.",
-    "rationales": {
-      "A": {
-        "type": "Correct",
-        "text": "Secure API Proxy pattern – expose a protected API that forwards requests to the third‑party service while applying TLS, OAuth2, and audit logging.: This option is correct. A secure API proxy enables rapid implementation by reusing the API gateway and applying HIPAA‑required security policies such as encryption in transit, strong authentication, and detailed audit logs. Because the proxy merely forwards calls, development effort stays low enough to fit a two‑week sprint, and the provider retains control over data handling to stay compliant."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "Batch processing pattern – collect appointment requests throughout the day and process them in a nightly batch job.: This option is incorrect. Batch processing introduces latency that prevents real‑time scheduling, which is generally required for patient appointments. Additionally, storing PHI in intermediate files for batch jobs adds compliance risk unless extensive encryption and retention controls are added, increasing the effort beyond a two‑week timeline."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Asynchronous messaging pattern using a JMS queue – place appointment requests on a queue for later consumption by the scheduling service.: This option is incorrect. While asynchronous messaging can be secure, it adds complexity such as message durability, dead‑letter handling, and additional components that must also be hardened for HIPAA. The extra setup time and the potential for out‑of‑order processing make it unsuitable for a quick two‑week delivery and for scenarios that need immediate confirmation of appointments."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Direct HTTP request‑reply without mediation – the EHR system calls the third‑party service over HTTPS without any additional security layer.: This option is incorrect. Although HTTPS provides transport encryption, a direct call bypasses the organization’s ability to enforce consistent security policies, audit logging, and token management required by HIPAA. Without a mediation layer, any changes to the third‑party API could break the integration, leading to higher maintenance effort."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Data Weave‑only transformation – use Data Weave to map EHR data to the third‑party format and send it directly.: This option is incorrect. Data Weave is a transformation language, not an integration pattern, and it does not address security, governance, or protocol mediation. Relying solely on transformation would leave the integration exposed to compliance gaps and would not guarantee a rapid, managed delivery."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Event‑driven Pub/Sub architecture with Kafka – publish appointment events to a topic that the scheduling service subscribes to.: This option is incorrect. While event‑driven architectures are powerful, setting up a Kafka cluster, configuring topics, and ensuring HIPAA‑level encryption and access control is far beyond a two‑week sprint. The added operational overhead and the need for precise ordering make this pattern an over‑engineered solution for the given problem."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "API Manager — Reviewing API Proxy Benefits and Impacts (Governance and Policy Enforcement)",
-        "url": "https://docs.mulesoft.com/api-manager/latest/proxy-advantages#benefits"
-      },
-      "architectureGuide": {
-        "title": "Mule Gateway — OAuth 2.0 Access Token Enforcement Policy",
-        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-oauth-access-token-enforcement#summary"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
-      }
-    },
-    "correctAnswer": "A"
-  },
-  {
-    "id": "q-188",
-    "number": 188,
-    "title": "Integration Patterns - A logistics company is orchestrating real‑time shipment tracking",
-    "domain": "Architecting and deploying API implementations",
-    "topics": [
-      "Integration Patterns"
-    ],
-    "prompt": "A logistics company is orchestrating real‑time shipment tracking across three carrier APIs. The solution must have the least operational overhead and run on a single Mule runtime. Which integration pattern should be selected?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "API‑led connectivity with separate System, Process, and Experience APIs."
-      },
-      {
-        "letter": "B",
-        "text": "Batch processing pattern to invoke the carrier APIs in scheduled chunks."
-      },
-      {
-        "letter": "C",
-        "text": "Publish‑Subscribe pattern using Anypoint MQ topics."
-      },
-      {
-        "letter": "D",
-        "text": "Scatter‑Gather pattern within a single Mule flow to call the three carrier APIs in parallel and aggregate the responses."
-      },
-      {
-        "letter": "E",
-        "text": "Message Queue pattern with asynchronous processing via Anypoint MQ."
-      },
-      {
-        "letter": "F",
-        "text": "Streaming pattern using Data Weave to process large payloads from the carrier APIs."
-      }
-    ],
-    "explanation": "The question tests knowledge of Mule Soft integration patterns and their suitability for real‑time, low‑overhead orchestrations. Scatter‑Gather is the ideal choice because it enables parallel API calls and response aggregation within a single flow, satisfying both the real‑time and single‑runtime constraints. API‑led connectivity, while powerful for reuse, adds layers and runtime footprints that increase operational effort. Batch processing and asynchronous queue‑based patterns are designed for delayed or bulk processing, which conflicts with immediate tracking needs. Publishing‑subscribe and streaming address different concerns—messaging decoupling and large data handling—neither of which aligns with the logistics company's requirements. Understanding when to apply each pattern is a best practice for designing efficient Mule applications.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "API‑led connectivity with separate System, Process, and Experience APIs.: This option is incorrect because API‑led connectivity encourages the creation of multiple layered APIs, often deployed on separate runtimes to achieve reuse and governance. While it provides strong modularity, it introduces additional operational overhead and latency, which conflicts with the requirement for the simplest deployment on a single runtime. In a real‑time tracking scenario, the extra hops would increase response times and management complexity."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "Batch processing pattern to invoke the carrier APIs in scheduled chunks.: Batch processing is unsuitable here, making this option incorrect. The pattern is designed for high‑volume, non‑real‑time workloads that can be processed in scheduled batches, not for instant shipment status updates. Deploying a batch job would cause delays in delivering tracking information, defeating the real‑time objective."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Publish‑Subscribe pattern using Anypoint MQ topics.: Although publish‑subscribe enables loose coupling, it is an asynchronous pattern and therefore incorrect for this use case. Real‑time tracking requires an immediate response to the caller, whereas publish‑subscribe introduces indeterminate latency as messages are consumed by subscribers at their own pace. Adding a messaging broker also raises operational overhead, contrary to the requirement."
-      },
-      "D": {
-        "type": "Correct",
-        "text": "Scatter‑Gather pattern within a single Mule flow to call the three carrier APIs in parallel and aggregate the responses.: This is the correct option. Scatter‑Gather allows the Mule flow to invoke all three carrier APIs concurrently, then combine the results into a single response, meeting the real‑time requirement while keeping the solution on one runtime. It introduces minimal additional components, thus delivering the lowest operational overhead among the presented choices."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Message Queue pattern with asynchronous processing via Anypoint MQ.: Using a message queue adds asynchronous behavior and extra infrastructure, making this option incorrect for a low‑latency, real‑time scenario. Messages would be placed on a queue and processed later, which introduces delay and complexity that the logistics company wants to avoid. The operational overhead of managing queues contradicts the goal of a single‑runtime deployment."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Streaming pattern using Data Weave to process large payloads from the carrier APIs.: Streaming is intended for handling large data streams efficiently, not for orchestrating multiple service calls, so this option is incorrect. It does not provide parallel invocation or response aggregation needed for real‑time shipment tracking. Applying streaming would add unnecessary complexity without addressing the core requirement."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Scatter-Gather — Parallel Processing and Response Aggregation",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/scatter-gather-concept#result"
-      },
-      "architectureGuide": {
-        "title": "Parallel For Each — Differences from For Each Scope",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/parallel-foreach-scope#differences-between-for-each-and-parallel-for-each-scopes"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
-      }
-    },
-    "correctAnswer": "D"
-  },
-  {
-    "id": "q-189",
-    "number": 189,
-    "title": "Event-Driven Architecture - A manufacturing firm is ingesting high‑velocity Io T sensor data",
-    "domain": "Architecting and deploying API implementations",
-    "topics": [
-      "Event-Driven Architecture"
-    ],
-    "prompt": "A manufacturing firm is ingesting high‑velocity Io T sensor data into its ERP system. The team has limited Mule Soft expertise and must deliver a solution that processes events in near real‑time. Which architectural style should be adopted? Which option should the team choose?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Batch processing architecture with scheduled Mule Soft jobs"
-      },
-      {
-        "letter": "B",
-        "text": "Synchronous request‑response API‑led connectivity"
-      },
-      {
-        "letter": "C",
-        "text": "Event‑driven architecture using Mule Soft streaming and asynchronous messaging"
-      },
-      {
-        "letter": "D",
-        "text": "Microservices architecture with heavyweight orchestration layer"
-      },
-      {
-        "letter": "E",
-        "text": "Point‑to‑point synchronous flows using HTTP connectors"
-      },
-      {
-        "letter": "F",
-        "text": "File‑based ingestion followed by periodic bulk loads"
-      }
-    ],
-    "explanation": "The question tests the candidate's understanding of selecting an appropriate integration architectural style for high‑velocity, near‑real‑time Io T data with limited Mule Soft resources. Event‑driven architecture is the optimal choice because it decouples producers and consumers, leverages asynchronous messaging, and allows Mule Soft's streaming features to handle large data volumes efficiently. Common misconceptions include assuming batch or synchronous API‑led approaches can meet low‑latency needs, or that a full microservices stack is always the best solution regardless of team expertise. Those alternatives either add latency, operational overhead, or scalability challenges that conflict with the scenario's constraints. Best practice is to choose the simplest pattern that satisfies performance requirements—event‑driven flows with managed queues or streaming—while keeping the implementation lightweight for teams new to Mule Soft.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Batch processing architecture with scheduled Mule Soft jobs: This option is incorrect. Batch processing groups records into large sets and runs them on a schedule, which introduces latency that is incompatible with near‑real‑time requirements. Using batch jobs for Io T sensor streams would cause data to be stale and could lead to missed alerts or delayed operational decisions."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "Synchronous request‑response API‑led connectivity: This option is incorrect. A synchronous request‑response model forces the producer to wait for a response, creating back‑pressure when the data velocity is high. For Io T streams, this can quickly overwhelm the ERP system and the limited Mule Soft team would struggle to manage throttling and timeouts."
-      },
-      "C": {
-        "type": "Correct",
-        "text": "Event‑driven architecture using Mule Soft streaming and asynchronous messaging: This option is correct. An event‑driven approach decouples producers from consumers, allowing sensor events to be ingested, buffered, and processed as they arrive, meeting near real‑time SLAs. Mule Soft provides streaming capabilities and connectors to Anypoint MQ or Kafka, which require minimal custom code and are well suited for teams with limited expertise."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Microservices architecture with heavyweight orchestration layer: This option is incorrect. While microservices can handle real‑time data, adding a heavyweight orchestration layer (e. g., a BPM engine) adds complexity and operational overhead that a team with limited Mule Soft experience would find difficult to manage. The extra latency from orchestration also contradicts the near‑real‑time goal."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Point‑to‑point synchronous flows using HTTP connectors: This option is incorrect. Point‑to‑point synchronous flows block resources while waiting for each HTTP call to complete, which does not scale for high‑velocity Io T streams. The resulting bottleneck would cause dropped messages and could require extensive tuning beyond the team's current skill set."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "File‑based ingestion followed by periodic bulk loads: This option is incorrect. Writing sensor data to files and loading them in bulk introduces significant delay and defeats the purpose of near‑real‑time processing. Moreover, managing file lifecycle and error handling adds complexity without delivering the required responsiveness."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Anypoint MQ Overview — Cloud-Based Asynchronous Messaging",
-        "url": "https://docs.mulesoft.com/mq/#anypoint-mq-features"
-      },
-      "architectureGuide": {
-        "title": "Streaming in Mule — Streaming Strategies for Large Payloads",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/streaming-about#streaming-strategies"
-      },
-      "arc720": {
-        "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
-        "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
-      }
-    },
-    "correctAnswer": "C"
-  },
-  {
-    "id": "q-190",
-    "number": 190,
-    "title": "Application Migration - A retail chain is migrating from a legacy ESB to Anypoint Platfor",
-    "domain": "Architecting and deploying API implementations",
-    "topics": [
-      "Application Migration"
-    ],
-    "prompt": "A retail chain is migrating from a legacy ESB to Anypoint Platform under a tight deadline, needs to reuse existing integration logic, and must minimize downtime. Which THREE options meet the requirements? (Select all correct answers)",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Deploy the converted Mule applications on Runtime Fabric in a hybrid model while keeping the legacy ESB running, then switch traffic using a load balancer (blue‑green deployment)."
-      },
-      {
-        "letter": "B",
-        "text": "Use Mule Soft's Migration Assistant to automatically convert Mule 3 projects to Mule 4."
-      },
-      {
-        "letter": "C",
-        "text": "Rewrite all integration logic from scratch using Data Weave 2.0 and Mule 4."
-      },
-      {
-        "letter": "D",
-        "text": "Use API‑led connectivity by wrapping existing services in API specifications and managing versions with API Manager, allowing incremental cut‑over."
-      },
-      {
-        "letter": "E",
-        "text": "Migrate the legacy ESB directly to Cloud Hub without any testing, assuming compatibility."
-      },
-      {
-        "letter": "F",
-        "text": "Replace the ESB's message routing with Anypoint MQ, requiring a complete redesign of flows."
-      }
-    ],
-    "explanation": "The question tests the candidate's understanding of migration strategies that balance reuse of existing integration assets with minimal service interruption. The correct answers (1, 2, and 4) each provide a practical path: Runtime Fabric hybrid deployment enables side‑by‑side operation and blue‑green traffic shifts; the Migration Assistant accelerates code conversion while preserving logic; and API‑led connectivity lets the organization expose legacy services as APIs and migrate traffic gradually. The incorrect options illustrate common misconceptions: rebuilding everything from scratch ignores reuse and extends timelines; blind migration to Cloud Hub skips essential validation and risk mitigation; and swapping the ESB for Anypoint MQ demands a full redesign, which contradicts the fast‑track, low‑downtime goal. In real projects, a combination of automated migration tools, hybrid runtimes, and API management is considered best practice to achieve rapid, reliable transitions.",
-    "rationales": {
-      "A": {
-        "type": "Correct",
-        "text": "Deploy the converted Mule applications on Runtime Fabric in a hybrid model while keeping the legacy ESB running, then switch traffic using a load balancer (blue‑green deployment).: This option is correct because a hybrid Runtime Fabric deployment allows the organization to run Mule runtimes alongside the existing ESB, preserving current integrations. By using a load balancer or blue‑green strategy, traffic can be shifted gradually, ensuring near‑zero downtime. It also leverages the existing logic after conversion, meeting both the reuse and deadline constraints."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Use Mule Soft's Migration Assistant to automatically convert Mule 3 projects to Mule 4.: This option is correct. The Migration Assistant automates much of the code translation from Mule 3 to Mule 4, preserving the bulk of the integration logic and dramatically reducing manual effort. Because the conversion happens quickly, it aligns with the tight timeline while still allowing the legacy assets to be reused."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Rewrite all integration logic from scratch using Data Weave 2.0 and Mule 4.: This option is incorrect. Re‑engineering every flow defeats the goal of reusing existing logic and would require extensive development and testing, extending the migration window. It also increases risk of introducing bugs, which could cause significant downtime during cut‑over."
-      },
-      "D": {
-        "type": "Correct",
-        "text": "Use API‑led connectivity by wrapping existing services in API specifications and managing versions with API Manager, allowing incremental cut‑over.: This option is correct. By exposing the legacy services as APIs and governing them through API Manager, the retailer can route a portion of traffic to the new Mule implementations while the rest continues on the ESB. This incremental approach minimizes downtime and leverages existing business logic encapsulated in the services."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Migrate the legacy ESB directly to Cloud Hub without any testing, assuming compatibility.: This option is incorrect. Deploying to Cloud Hub without validation can expose compatibility gaps, leading to runtime failures and unplanned outages. Moreover, it does not address the need to reuse existing integration assets in a controlled manner, nor does it provide a strategy for minimizing downtime."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Replace the ESB's message routing with Anypoint MQ, requiring a complete redesign of flows.: This option is incorrect. While Anypoint MQ is a powerful messaging service, swapping the entire routing layer would necessitate redesigning all integration flows, violating the requirement to reuse existing logic. Such a radical change would also increase migration risk and likely cause extended downtime."
-      }
-    },
-    "references": {},
-    "correctAnswers": [
-      "A",
-      "B",
-      "D"
-    ]
-  },
-  {
-    "id": "q-191",
-    "number": 191,
-    "title": "Integration Architecture - A federal agency is orchestrating an approvals workflow that span",
-    "domain": "Architecting and deploying API implementations",
-    "topics": [
-      "Integration Architecture"
-    ],
-    "prompt": "A federal agency is orchestrating an approvals workflow that spans a legacy mainframe, a cloud‑based document store, and a third‑party identity service, must meet Fed RAMP requirements, and has a limited integration budget. Which option should the team choose?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Deploy Mule runtime on the legacy mainframe using a custom connector and manage all integrations locally."
-      },
-      {
-        "letter": "B",
-        "text": "Use a third‑party i Paa S that is not Fed RAMP certified to connect the systems via pre‑built adapters."
-      },
-      {
-        "letter": "C",
-        "text": "Leverage Anypoint Platform for Government (Cloud Hub) hosted in a Fed RAMP‑authorized region to orchestrate the workflow."
-      },
-      {
-        "letter": "D",
-        "text": "Build a bespoke Java microservice suite and host it on a non‑Fed RAMP public cloud, then connect to the mainframe via VPN."
-      },
-      {
-        "letter": "E",
-        "text": "Install Mule runtime on‑premises in the agency data center and manually certify the environment for Fed RAMP compliance."
-      },
-      {
-        "letter": "F",
-        "text": "Deploy Mule Runtime Fabric on a private cloud that is not Fed RAMP authorized and connect to the cloud document store via public internet."
-      }
-    ],
-    "explanation": "The question tests knowledge of how federal agencies must balance compliance, integration complexity, and cost when selecting an integration platform. Fed RAMP certification is mandatory for any cloud component handling federal data, and Mule Soft’s Anypoint Platform for Government provides a ready‑made, Fed RAMP‑authorized environment that reduces both development effort and operational overhead. The correct choice leverages pre‑built connectors for the mainframe, document store, and identity service while offering a consumption‑based pricing model suitable for limited budgets. Common misconceptions include assuming that on‑premises or custom‑built solutions automatically meet compliance or are cheaper; in reality, the authorization process and ongoing maintenance often outweigh any perceived savings. Best practice is to select a managed, Fed RAMP‑approved integration platform that aligns with existing integration patterns and budget constraints.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Deploy Mule runtime on the legacy mainframe using a custom connector and manage all integrations locally.: This option is incorrect. While a custom connector can enable communication with the mainframe, running Mule on the mainframe itself is not supported and would require extensive development effort. Moreover, it does not address the Fed RAMP compliance requirement for cloud‑based components, and the cost of custom development would exceed a limited budget."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "Use a third‑party i Paa S that is not Fed RAMP certified to connect the systems via pre‑built adapters.: This option is incorrect. An i Paa S lacking Fed RAMP certification cannot be used for federal data, exposing the agency to compliance violations. Even if the adapters are pre‑built, the agency would still need to invest in security assessments and possibly additional tooling to achieve the required security posture, driving up costs."
-      },
-      "C": {
-        "type": "Correct",
-        "text": "Leverage Anypoint Platform for Government (Cloud Hub) hosted in a Fed RAMP‑authorized region to orchestrate the workflow.: This option is correct. Anypoint Platform for Government provides a Fed RAMP‑authorized Cloud Hub environment, satisfying the agency’s compliance mandate out‑of‑the‑box. It also reduces integration costs by offering pre‑built connectors, managed runtime, and scalable consumption‑based pricing, which aligns with the limited budget constraints."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Build a bespoke Java microservice suite and host it on a non‑Fed RAMP public cloud, then connect to the mainframe via VPN.: This option is incorrect. Although building custom microservices could technically integrate the systems, hosting them on a non‑Fed RAMP cloud violates federal compliance rules. Additionally, the development and ongoing maintenance effort would be significant, making it an expensive choice for a constrained budget."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Install Mule runtime on‑premises in the agency data center and manually certify the environment for Fed RAMP compliance.: This option is incorrect. While on‑premises deployment gives control over the environment, achieving Fed RAMP compliance would require a costly and time‑consuming authorization process that the agency likely cannot afford. The approach also forfeits the economic benefits of a managed Saa S offering."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Deploy Mule Runtime Fabric on a private cloud that is not Fed RAMP authorized and connect to the cloud document store via public internet.: This option is incorrect. Runtime Fabric on a non‑Fed RAMP private cloud does not satisfy the mandated security controls, and exposing the document store over the public internet increases risk. The agency would still need to invest in additional security layers, negating any budget advantage."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "MuleSoft Government Cloud Overview — FedRAMP-Authorized Anypoint Platform",
-        "url": "https://docs.mulesoft.com/gov-cloud/#features-included-in-government-cloud"
-      },
-      "architectureGuide": {
-        "title": "Security in MuleSoft Government Cloud — FedRAMP Compliance",
-        "url": "https://docs.mulesoft.com/gov-cloud/gov-cloud-security#fedramp-compliance"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
-      }
-    },
-    "correctAnswer": "C"
-  },
-  {
-    "id": "q-192",
-    "number": 192,
-    "title": "Integration Architecture - A healthcare analytics team must integrate a lab‑result REST API,",
-    "domain": "Architecting and deploying API implementations",
-    "topics": [
-      "Integration Architecture"
-    ],
-    "prompt": "A healthcare analytics team must integrate a lab‑result REST API, a patient‑portal SOAP service, and a billing system while staying under a $30,000 budget, achieving eventual consistency, and complying with GDPR; they are considering data replication, event‑driven choreography, batch synchronization, and API‑level caching. Which TWO actions should be taken? (Select all correct answers)",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Implement event‑driven choreography using Mule Soft's Anypoint MQ to propagate lab results and billing updates asynchronously."
-      },
-      {
-        "letter": "B",
-        "text": "Enable API‑level caching for the patient‑portal SOAP service responses with a short TTL to reduce repeated calls."
-      },
-      {
-        "letter": "C",
-        "text": "Perform full data replication of all lab and billing data into a central data lake without encryption."
-      },
-      {
-        "letter": "D",
-        "text": "Schedule nightly batch synchronization jobs between the REST API, SOAP service, and billing system."
-      },
-      {
-        "letter": "E",
-        "text": "Use data replication with field‑level encryption and GDPR‑compliant data‑subject access controls."
-      },
-      {
-        "letter": "F",
-        "text": "Disable any caching or replication and rely on direct synchronous calls to meet consistency."
-      }
-    ],
-    "explanation": "The question tests the candidate's ability to select integration patterns that balance cost, consistency, and data‑privacy requirements in a regulated healthcare environment. Event‑driven choreography and short‑TTL API caching are the optimal choices because they provide eventual consistency while minimizing infrastructure spend and can be secured to satisfy GDPR. Full data replication without protection, batch jobs, or exhaustive replication with encryption each either breach GDPR principles, exceed budget, or introduce unnecessary latency. Common misconceptions include assuming that any form of replication automatically solves consistency, or that batch synchronization is always the cheapest option; in reality, event‑driven approaches are both cost‑effective and align with modern cloud‑native best practices. Practitioners should always design for data minimisation, encrypted storage, and choose lightweight asynchronous patterns when budget and regulatory constraints coexist.",
-    "rationales": {
-      "A": {
-        "type": "Correct",
-        "text": "Implement event‑driven choreography using Mule Soft's Anypoint MQ to propagate lab results and billing updates asynchronously.: This option is correct. An event‑driven choreography decouples the three systems, allowing each to process updates at its own pace, which satisfies the eventual consistency requirement. Using a lightweight messaging service like Anypoint MQ keeps infrastructure costs low, helping the solution stay within the $30,000 budget, and it can be configured with encryption to meet GDPR mandates."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Enable API‑level caching for the patient‑portal SOAP service responses with a short TTL to reduce repeated calls.: This option is correct. Caching frequently requested SOAP responses reduces the number of calls to the legacy patient‑portal, cutting licensing and compute expenses and contributing to the budget constraint. By configuring a short time‑to‑live and ensuring that cached data is encrypted and does not retain personal identifiers longer than necessary, the approach remains GDPR‑compliant while still improving performance."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Perform full data replication of all lab and billing data into a central data lake without encryption.: This option is incorrect. Replicating all data without encryption violates GDPR's requirement for data protection at rest and exposes the organization to regulatory fines. Additionally, storing complete copies of the data inflates storage costs, likely exceeding the $30,000 budget, and provides no advantage for eventual consistency beyond what event‑driven approaches already deliver."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Schedule nightly batch synchronization jobs between the REST API, SOAP service, and billing system.: This option is incorrect. While batch jobs can achieve eventual consistency, they introduce a 24‑hour latency window that may be unacceptable for timely analytics and patient care decisions. The operational overhead of managing nightly jobs adds complexity and can increase licensing and monitoring costs, making it less suitable for a strict budget, and it does not address GDPR concerns about data handling during transfer."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Use data replication with field‑level encryption and GDPR‑compliant data‑subject access controls.: This option is incorrect. Although field‑level encryption and access controls address GDPR, full replication still duplicates large volumes of data, driving up storage and processing expenses beyond the $30,000 limit. Moreover, replicating data that is not strictly necessary violates GDPR's data‑minimisation principle, exposing the project to compliance risk without delivering the required eventual consistency efficiently."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Disable any caching or replication and rely on direct synchronous calls to meet consistency.: This option is incorrect. Direct synchronous calls increase latency and load on each system, raising operational costs and potentially breaching the budget. Synchronous integration also makes it harder to achieve eventual consistency, as any downstream failure blocks the entire transaction, and it offers no built‑in mechanisms for GDPR‑aligned data protection."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Anypoint MQ Overview — Cloud-Based Asynchronous Messaging",
-        "url": "https://docs.mulesoft.com/mq/#anypoint-mq-features"
-      },
-      "architectureGuide": {
-        "title": "HTTP Caching Policy — Caching API Responses at the Gateway",
-        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-http-caching#how-this-policy-works"
-      },
-      "arc720": {
-        "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
-        "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
-      }
-    },
-    "correctAnswers": [
-      "A",
-      "B"
-    ]
-  },
-  {
-    "id": "q-193",
-    "number": 193,
-    "title": "Integration Patterns - A regional healthcare provider is integrating patient‑record syst",
-    "domain": "Architecting and deploying API implementations",
-    "topics": [
-      "Integration Patterns"
-    ],
-    "prompt": "A regional healthcare provider is integrating patient‑record systems across three clinics. Due to HIPAA, data must be encrypted in transit and the integration must complete within 2 seconds for each lookup. The architects are debating between a request‑reply flow with a direct HTTP connector and a scatter‑gather pattern that calls each clinic in parallel. What is the MOST appropriate action?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Implement a request‑reply flow using a direct HTTP connector without TLS, calling each clinic sequentially."
-      },
-      {
-        "letter": "B",
-        "text": "Use a request‑reply flow with HTTPS connectors but keep the calls sequential for each clinic."
-      },
-      {
-        "letter": "C",
-        "text": "Adopt a scatter‑gather pattern with parallel HTTPS calls to all three clinics and configure a suitable timeout per request."
-      },
-      {
-        "letter": "D",
-        "text": "Apply a scatter‑gather pattern but use plain HTTP connectors for the parallel calls."
-      },
-      {
-        "letter": "E",
-        "text": "Schedule a nightly batch job that aggregates patient records from each clinic into a central database."
-      },
-      {
-        "letter": "F",
-        "text": "Deploy an API gateway that terminates TLS, then forwards plain HTTP requests to each clinic sequentially."
-      }
-    ],
-    "explanation": "The question tests the candidate's ability to balance security (HIPAA‑mandated encryption) with performance (2‑second SLA) when choosing an integration pattern. Scatter‑gather with parallel HTTPS calls is optimal because it encrypts data in transit and leverages concurrency to meet tight latency goals. Common misconceptions include assuming that any encryption at the edge is sufficient (option 6) or that sequential HTTPS calls will automatically meet performance targets (option 2). Using plain HTTP, even in a parallel pattern, breaches compliance (option 4). Batch or scheduled solutions (option 5) ignore real‑time requirements, and simple direct HTTP without TLS (option 1) fails both security and performance. Best practice: always encrypt sensitive data end‑to‑end and select a pattern that aligns with latency SLAs, configuring timeouts to handle slow downstream services.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Implement a request‑reply flow using a direct HTTP connector without TLS, calling each clinic sequentially.: This option is incorrect because it violates HIPAA requirements by sending unencrypted patient data over the network. Using plain HTTP exposes sensitive health information to interception. Additionally, sequential calls increase total latency, making it unlikely to meet the 2‑second SLA."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "Use a request‑reply flow with HTTPS connectors but keep the calls sequential for each clinic.: While this option satisfies the encryption requirement, it may still miss the performance goal. Sequential HTTPS calls add round‑trip time for each clinic, and if each response takes more than ~0.66 seconds, the overall lookup will exceed 2 seconds. Therefore it is not the most appropriate choice for the given latency constraint."
-      },
-      "C": {
-        "type": "Correct",
-        "text": "Adopt a scatter‑gather pattern with parallel HTTPS calls to all three clinics and configure a suitable timeout per request.: This is the correct answer because it meets both HIPAA encryption mandates and the strict latency requirement. Parallel HTTPS requests reduce the total response time to roughly the longest individual call, allowing the integration to stay within the 2‑second window. Setting a timeout ensures that a slow or unresponsive clinic does not hold up the entire flow, preserving SLA compliance."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Apply a scatter‑gather pattern but use plain HTTP connectors for the parallel calls.: This option fails the security requirement by transmitting patient data without encryption, directly breaching HIPAA regulations. Even though the parallelism could satisfy the latency target, the lack of TLS makes it unacceptable in a healthcare context. Security considerations outweigh performance gains in this scenario."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Schedule a nightly batch job that aggregates patient records from each clinic into a central database.: Batch processing does not provide real‑time lookup capability, which is required for the described use case. The 2‑second SLA cannot be achieved with a nightly job, and urgent clinical decisions would suffer. Moreover, batch jobs typically handle large volumes, not single‑record queries, making this approach unsuitable."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Deploy an API gateway that terminates TLS, then forwards plain HTTP requests to each clinic sequentially.: Although the API gateway secures the external entry point, the downstream plain HTTP calls still violate HIPAA because patient data travels unencrypted between the gateway and clinics. Additionally, sequential forwarding does not address the latency requirement. The design therefore does not satisfy both key constraints."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Scatter-Gather — Handle Timeout Errors in a Scatter-Gather",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/scatter-gather-concept#handle-timeout-errors-in-a-scatter-gather"
-      },
-      "architectureGuide": {
-        "title": "Mule TLS Configuration — Configuring TLS for a Client",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/tls-configuration#example-configuring-tls-for-a-client"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
-      }
-    },
-    "correctAnswer": "C"
-  },
-  {
-    "id": "q-194",
-    "number": 194,
-    "title": "Integration Design Patterns - A manufacturing company is designing an integration solution to s",
-    "domain": "Architecting and deploying API implementations",
-    "topics": [
-      "Integration Design Patterns"
-    ],
-    "prompt": "A manufacturing company is designing an integration solution to synchronize inventory data between its ERP, warehouse Io T sensors, and a partner’s order‑fulfillment system. The solution must tolerate intermittent network outages, handle high‑volume batch uploads nightly, and provide real‑time alerts when sensor thresholds are exceeded. Which THREE options meet the requirements? (Select all correct answers)",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Use Anypoint MQ durable queues with a dead‑letter queue to receive inventory updates from the ERP and sensor streams, ensuring messages are persisted until they can be processed."
-      },
-      {
-        "letter": "B",
-        "text": "Create a Mule Batch Job that reads nightly CSV files from an SFTP location, processes records in configurable chunks, and writes the results to the partner’s order‑fulfillment API."
-      },
-      {
-        "letter": "C",
-        "text": "Deploy a Mule flow that subscribes to MQTT topics from warehouse sensors, evaluates threshold conditions with Data Weave, and publishes a real‑time alert via an HTTP POST to the partner’s alert endpoint."
-      },
-      {
-        "letter": "D",
-        "text": "Use a simple HTTP Request connector with the default retry policy to pull inventory data from the ERP system on demand."
-      },
-      {
-        "letter": "E",
-        "text": "Configure a scheduled Data Weave script that reads the ERP database directly every hour and writes the data to the partner system without any queuing or error handling."
-      },
-      {
-        "letter": "F",
-        "text": "Run the integration on a single Cloud Hub worker and rely on in‑memory variables to store inventory state between calls, without any persistent storage or clustering."
-      }
-    ],
-    "explanation": "The question tests knowledge of Mule Soft integration patterns that address reliability, batch processing, and real‑time event handling. Durable messaging via Anypoint MQ (Option 1) ensures that inventory changes are not lost during network glitches, while the batch job (Option 2) is the recommended way to process large nightly files efficiently and with built‑in retry logic. Subscribing to MQTT with appropriate Qo S and immediately publishing alerts (Option 3) provides low‑latency sensor monitoring even when connectivity is intermittent. The incorrect options illustrate common misconceptions: assuming a basic HTTP request or simple scheduled script can replace robust queuing and batch mechanisms, or believing that in‑memory state on a single worker is sufficient for production‑grade resilience. Best practice is to combine persistent messaging, batch jobs, and appropriate Io T protocols to meet each functional and non‑functional requirement in an integration solution.",
-    "rationales": {
-      "A": {
-        "type": "Correct",
-        "text": "Use Anypoint MQ durable queues with a dead‑letter queue to receive inventory updates from the ERP and sensor streams, ensuring messages are persisted until they can be processed.: This option is correct. Anypoint MQ provides durable, persisted messaging that survives transient network failures, and the dead‑letter queue captures messages that cannot be processed after retries. In a real‑world scenario, if the partner system is offline for a few minutes, inventory change events remain safely stored and are delivered once connectivity is restored, satisfying the outage‑tolerance requirement."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Create a Mule Batch Job that reads nightly CSV files from an SFTP location, processes records in configurable chunks, and writes the results to the partner’s order‑fulfillment API.: This option is correct. Mule’s Batch Job is purpose‑built for high‑volume, overnight processing; it streams data, manages chunk size, and provides automatic retries for failed records. By using this pattern, the company can reliably ingest large ERP data extracts without overloading the runtime, meeting the high‑volume batch upload requirement."
-      },
-      "C": {
-        "type": "Correct",
-        "text": "Deploy a Mule flow that subscribes to MQTT topics from warehouse sensors, evaluates threshold conditions with Data Weave, and publishes a real‑time alert via an HTTP POST to the partner’s alert endpoint.: This option is correct. MQTT supports Qo S levels that guarantee delivery even when the network is flaky, and the flow can immediately evaluate sensor data to trigger alerts. Consequently, when a temperature sensor exceeds its limit, the alert is sent instantly, satisfying the real‑time notification need while also handling intermittent connectivity."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Use a simple HTTP Request connector with the default retry policy to pull inventory data from the ERP system on demand.: This option is incorrect. The default HTTP Request connector does not provide persistent storage, so any outage will cause lost requests, and it lacks the batching capabilities needed for nightly high‑volume loads. Relying solely on on‑demand pulls also cannot guarantee real‑time alerts for sensor data, making it unsuitable for the scenario."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Configure a scheduled Data Weave script that reads the ERP database directly every hour and writes the data to the partner system without any queuing or error handling.: This option is incorrect. Direct database reads without a queuing layer expose the integration to network interruptions—any failure will result in missing data. Moreover, the absence of batch processing features means large record sets could overwhelm the runtime, and there is no mechanism for guaranteed delivery of alerts, violating the core requirements."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Run the integration on a single Cloud Hub worker and rely on in‑memory variables to store inventory state between calls, without any persistent storage or clustering.: This option is incorrect. In‑memory state is lost if the worker restarts or the network drops, so the solution cannot tolerate intermittent outages. Additionally, a single worker offers no high‑availability or scaling for the nightly batch volume, and it cannot guarantee delivery of real‑time alerts, making it an inadequate design."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Anypoint MQ — Queues, Dead Letter Queues, and Durable Messaging",
-        "url": "https://docs.mulesoft.com/mq/mq-queues#dead-letter-queues"
-      },
-      "architectureGuide": {
-        "title": "Batch Processing — Architecture and Error Handling",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/batch-processing-concept#architecture"
-      },
-      "arc720": {
-        "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
-        "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
-      }
-    },
-    "correctAnswers": [
-      "A",
-      "B",
-      "C"
-    ]
-  },
-  {
-    "id": "q-195",
-    "number": 195,
-    "title": "CI/CD Pipelines - A multinational bank is standardizing its CI/CD pipeline for Mule",
-    "domain": "Architecting and deploying API implementations",
-    "topics": [
-      "CI/CD Pipelines"
-    ],
-    "prompt": "A multinational bank is standardizing its CI/CD pipeline for Mule applications across Cloud Hub and on-premise Runtime Fabric. The pipeline must enforce code quality, support automated testing, and stay within a strict quarterly budget. Which TWO actions should be taken?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Add a step in the pipeline that runs MUnit tests and fails the build if any test fails."
-      },
-      {
-        "letter": "B",
-        "text": "Integrate Sonar Qube (or Anypoint Code Analyzer) to perform static code analysis and enforce a quality gate before deployment."
-      },
-      {
-        "letter": "C",
-        "text": "Deploy directly from the Anypoint Platform UI for each commit, bypassing any CI automation."
-      },
-      {
-        "letter": "D",
-        "text": "Purchase a premium third-party test management suite and require its license for every build."
-      },
-      {
-        "letter": "E",
-        "text": "Enable automatic scaling for all Cloud Hub applications to handle peak load during each deployment."
-      },
-      {
-        "letter": "F",
-        "text": "Store secret credentials in plain text within the source repository to simplify pipeline scripts."
-      }
-    ],
-    "explanation": "The question evaluates the learner's understanding of building a cost-effective, quality-focused CI/CD pipeline for Mule applications. The two correct actions—running MUnit tests in the pipeline and integrating static analysis with Sonar Qube or Anypoint Code Analyzer—directly enforce code quality and automated testing while using tools that are either free or included with the Anypoint Platform, thus respecting the strict budget. The incorrect options are common misconceptions: manual UI deployments ignore automation benefits; buying extra testing tools adds unnecessary expense; auto-scaling is a runtime concern, not a pipeline step; and storing secrets in code undermines security and may introduce hidden remediation costs. In practice, architects should leverage native Mule Soft testing (MUnit) and static analysis capabilities, embed them in a CI tool like Jenkins or Bitbucket Pipelines, and avoid any extraneous licensing or manual processes. This approach ensures consistent, repeatable deployments across Cloud Hub and Runtime Fabric while staying within financial constraints.",
-    "rationales": {
-      "A": {
-        "type": "Correct",
-        "text": "Add a step in the pipeline that runs MUnit tests and fails the build if any test fails.: This is correct. Running MUnit tests as part of the CI build guarantees that functional regressions are caught early, which directly enforces automated testing and code quality. Because MUnit is bundled with Anypoint Studio, there is no additional licensing cost, keeping the solution within the budget."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Integrate Sonar Qube (or Anypoint Code Analyzer) to perform static code analysis and enforce a quality gate before deployment.: This is correct. Static analysis tools such as Sonar Qube or the native Anypoint Code Analyzer detect code smells, security issues, and rule violations, ensuring that only high-quality code proceeds through the pipeline. Using the built-in analyzer incurs no extra fees, aligning with the strict quarterly budget constraint."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Deploy directly from the Anypoint Platform UI for each commit, bypassing any CI automation.: This is incorrect. Deploying manually from the UI does not provide automated testing or code-quality enforcement, and it introduces human error and inconsistent deployment practices. Additionally, the lack of automation can increase operational overhead, indirectly raising costs contrary to the budget goal."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Purchase a premium third-party test management suite and require its license for every build.: This is incorrect. While a third-party suite might offer advanced features, its licensing fees would likely exceed the bank's quarterly budget, violating the cost-restriction requirement. Moreover, Mule Soft already provides native testing tools (MUnit) that are sufficient for most CI/CD needs."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Enable automatic scaling for all Cloud Hub applications to handle peak load during each deployment.: This is incorrect. Automatic scaling is an operational runtime setting, not a CI/CD pipeline action, and it can increase consumption-based charges, potentially breaching the budget limit. It also does not address code-quality enforcement or automated testing."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Store secret credentials in plain text within the source repository to simplify pipeline scripts.: This is incorrect. Storing secrets in clear text violates security best practices and can lead to credential leakage, which is unrelated to code quality or testing. Remediation would likely require additional security tooling or processes, adding cost and complexity."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "MUnit Coverage in Maven — Set Up a Minimum Coverage Level (Fail the Build)",
-        "url": "https://docs.mulesoft.com/munit/latest/coverage-maven-concept#set-up-a-minimum-coverage-level"
-      },
-      "architectureGuide": {
-        "title": "MUnit Maven Plugin — Enable Sonar Reports (SonarQube Static Analysis)",
-        "url": "https://docs.mulesoft.com/munit/latest/munit-maven-plugin#enable-sonar-reports"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
-      }
-    },
-    "correctAnswers": [
-      "A",
-      "B"
-    ]
-  },
-  {
-    "id": "q-196",
-    "number": 196,
-    "title": "HL7 Integration - A regional healthcare provider must integrate its legacy HL7 mess",
-    "domain": "Architecting and deploying API implementations",
-    "topics": [
-      "HL7 Integration"
-    ],
-    "prompt": "A regional healthcare provider must integrate its legacy HL7 messaging system with a new patient portal, but the integration team lacks experience with Mule Soft and the go-live date is in six weeks. What is the MOST appropriate action?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Assign the internal team to undergo a rapid Mule Soft training boot-camp and start building the integration themselves."
-      },
-      {
-        "letter": "B",
-        "text": "Outsource the entire integration to a third-party integration engine such as Mirth Connect, abandoning Mule Soft."
-      },
-      {
-        "letter": "C",
-        "text": "Engage a Mule Soft-certified consulting partner or senior architect to design and deliver the integration, leveraging Anypoint Exchange HL7 connectors."
-      },
-      {
-        "letter": "D",
-        "text": "Postpone the patient portal go-live until the internal team becomes proficient with Mule Soft."
-      },
-      {
-        "letter": "E",
-        "text": "Purchase a pre-built HL7-to-REST API connector from Anypoint Exchange and have the inexperienced team configure it without external help."
-      },
-      {
-        "letter": "F",
-        "text": "Build a custom Java service outside Mule Soft to translate HL7 messages to REST calls."
-      }
-    ],
-    "explanation": "The question tests the candidate's ability to choose the most pragmatic delivery approach when faced with a tight deadline and limited internal expertise. The optimal strategy is to bring in external Mule Soft expertise—such as a certified consulting partner—who can quickly leverage pre-built HL7 connectors and best-practice architectures, ensuring compliance and a reliable go-live. Common misconceptions include over-relying on rapid self-training, switching platforms mid-project, or assuming a pre-built connector eliminates the need for expertise. Each distractor reflects a plausible but risky shortcut that can lead to delays, increased costs, or technical debt. In real-world healthcare integrations, adhering to proven patterns, leveraging professional services, and ensuring proper governance are essential for meeting regulatory and operational deadlines.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Assign the internal team to undergo a rapid Mule Soft training boot-camp and start building the integration themselves.: This option is incorrect. While Mule Soft training is valuable, a boot-camp typically requires several weeks of classroom and hands-on work, leaving little time for actual development. With only six weeks until go-live, the team would likely be overwhelmed, leading to design flaws, missed deadlines, and potential compliance risks in a healthcare environment."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "Outsource the entire integration to a third-party integration engine such as Mirth Connect, abandoning Mule Soft.: This option is incorrect. Although Mirth Connect is a strong HL7 engine, the organization has already committed to Mule Soft as its integration platform, and switching would introduce additional licensing, training, and architectural complexity. Moreover, abandoning Mule Soft would forfeit the strategic benefits of a unified Anypoint Platform across the enterprise."
-      },
-      "C": {
-        "type": "Correct",
-        "text": "Engage a Mule Soft-certified consulting partner or senior architect to design and deliver the integration, leveraging Anypoint Exchange HL7 connectors.: This option is correct. A certified partner brings proven experience with HL7, pre-built connectors, and best-practice patterns, allowing the solution to be delivered within the tight six-week window. Their involvement reduces risk, ensures compliance with healthcare standards, and provides knowledge transfer to the internal team for future maintenance."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Postpone the patient portal go-live until the internal team becomes proficient with Mule Soft.: This option is incorrect. Delaying the launch could impact patient satisfaction, revenue, and strategic initiatives that depend on the portal. While additional learning time is beneficial, the business need for a timely rollout outweighs the benefit of waiting for internal proficiency."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Purchase a pre-built HL7-to-REST API connector from Anypoint Exchange and have the inexperienced team configure it without external help.: This option is incorrect. Although a pre-built connector accelerates development, configuring it correctly still requires deep understanding of HL7 message structures, error handling, and security requirements. An inexperienced team may misconfigure mappings or overlook critical validation, resulting in data integrity issues."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Build a custom Java service outside Mule Soft to translate HL7 messages to REST calls.: This option is incorrect. Developing a custom Java solution defeats the purpose of adopting Mule Soft, increases maintenance overhead, and bypasses the platform's monitoring, governance, and scalability features. It also creates a siloed codebase that is harder to integrate with other APIs and services in the future."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "HL7 EDI Connector — Exchange Templates and Examples (Reusable HL7 Assets)",
-        "url": "https://docs.mulesoft.com/hl7-connector/latest/#exchange-templates-and-examples"
-      },
-      "architectureGuide": {
-        "title": "MuleSoft Accelerator for Healthcare — Use Cases and HL7 Assets",
-        "url": "https://docs.mulesoft.com/healthcare/latest/#use-cases"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
-      }
-    },
-    "correctAnswer": "C"
   },
   {
     "id": "q-197",
     "number": 197,
-    "title": "Messaging - What requirement prevents using Anypoint MQ as the messaging broker fo",
+    "title": "Architecting and Deploying - Authenticating the pipeline",
     "domain": "Architecting and deploying API implementations",
     "topics": [
-      "Messaging"
+      "DevOps",
+      "Connected Apps"
     ],
-    "prompt": "What requirement prevents using Anypoint MQ as the messaging broker for a Mule application?",
+    "prompt": "A CI pipeline uses an administrator's personal username and password to deploy to Anypoint Platform. What should the architect recommend?",
     "options": [
       {
         "letter": "A",
-        "text": "When the payload sent through the message broker must be encrypted"
+        "text": "Create a client application in Exchange for the pipeline"
       },
       {
         "letter": "B",
-        "text": "When the messaging broker must be deployed on-premises"
+        "text": "Disable authentication for deployments"
       },
       {
         "letter": "C",
-        "text": "When the payload sent through the message broker must use XML format"
+        "text": "Use a connected app with only the required scopes"
       },
       {
         "letter": "D",
-        "text": "When the messaging broker must support point-to-point messaging"
+        "text": "Share the administrator's password with every pipeline"
       }
     ],
-    "explanation": "Correct answer: B. Anypoint MQ is a multi-tenant, cloud-based message queuing service: it is fully hosted and managed by MuleSoft and cannot be deployed on-premises. An on-premises messaging broker requirement therefore rules Anypoint MQ out, and MuleSoft's guidance is to use an on-premises broker such as Apache ActiveMQ instead. The other requirements do not exclude Anypoint MQ: it supports in-flight TLS encryption and, for encrypted queues, AES-256 encryption at rest; message payloads are serialized to a string, so XML is supported; and its queues provide point-to-point consumption while exchanges provide publish/subscribe.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Connected apps let applications such as CI/CD pipelines authenticate to Anypoint Platform with OAuth 2.0 and only the scopes they need, avoiding personal user credentials.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Anypoint MQ supports encryption: in-flight HTTPS/TLS for transport and AES-256 GCM encryption at rest when a queue is configured as encrypted, so an encryption requirement does not prevent its use."
+        "text": "Client apps are for calling APIs, not for platform operations."
       },
       "B": {
-        "type": "Correct",
-        "text": "Anypoint MQ cannot be deployed on-premises; it is a fully hosted, managed cloud service. An on-premises broker requirement is the blocker, and MuleSoft points to ActiveMQ for an on-premises messaging source."
+        "type": "Incorrect",
+        "text": "Unauthenticated deployment is unacceptable."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Anypoint MQ serializes message bodies to strings and can carry XML content, so a requirement to use XML does not prevent its use."
+        "type": "Correct",
+        "text": "Connected apps give pipelines scoped credentials not tied to a person."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Anypoint MQ queues provide point-to-point consumption (one consumer per message) and exchanges provide publish/subscribe, so a point-to-point requirement does not prevent its use."
+        "text": "Shared personal credentials are insecure and hard to rotate."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint MQ FAQ — Can I Use Anypoint MQ On-Premises?",
-        "url": "https://docs.mulesoft.com/mq/mq-faq#can-i-use-anypoint-mq-on-premises"
+        "title": "Connected Apps Overview",
+        "url": "https://docs.mulesoft.com/access-management/connected-apps-overview"
       },
       "architectureGuide": {
-        "title": "Anypoint MQ Overview — Anypoint MQ Features and Hybrid Use Cases",
-        "url": "https://docs.mulesoft.com/mq/#anypoint-mq-features"
-      },
-      "arc720": {
-        "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
-        "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
+        "title": "Mule Maven Plugin",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept"
       }
-    },
-    "correctAnswer": "B"
+    }
   },
   {
     "id": "q-198",
     "number": 198,
-    "title": "Integration Interfaces - An airline is architecting an API-led connectivity project to integrat",
+    "title": "Architecting and Deploying - Build once, deploy everywhere",
     "domain": "Architecting and deploying API implementations",
     "topics": [
-      "Integration Interfaces"
+      "DevOps",
+      "Configuration"
     ],
-    "prompt": "An airline is architecting an API-led connectivity project to integrate its flight data into an online aggregation website. The connections must allow for secured communication, high performance, and asynchronous message exchange. What are suitable interface technologies for the connectors in this integration assuming that MuleSoft fully supports those technologies and that Anypoint Connectors exist for these interfaces?",
+    "prompt": "A team rebuilds its Mule application separately for each environment to change backend URLs. Which practice should replace this?",
     "options": [
       {
         "letter": "A",
-        "text": "SOAP over HTTPS, HOP over TLS, gRPC over HTTPS"
+        "text": "Build once; supply environment properties at deploy"
       },
       {
         "letter": "B",
-        "text": "AsyncAPI over SQS, AMQP with RabbitMQ, JSON/REST over HTTPS"
+        "text": "Keep separate source branches for each environment"
       },
       {
         "letter": "C",
-        "text": "XML over ActiveMQ, XML over FTP, XML/REST over HTTPS"
+        "text": "Hard-code all URLs and change them manually in production"
       },
       {
         "letter": "D",
-        "text": "CSV over FTP, YAML over TLS, JSON over HTTPS"
+        "text": "Store backend URLs in Exchange asset descriptions"
       }
     ],
-    "explanation": "Correct answer: B. The integration needs secured communication, high performance, and asynchronous message exchange. AsyncAPI is a language for describing messaging interfaces and is transport-agnostic, so it can describe an interface carried over SQS; AMQP with RabbitMQ is an asynchronous messaging protocol for which an Anypoint connector exists; and JSON/REST over HTTPS provides a secured, high-performance synchronous interface. Option A mixes in SOAP over HTTPS, gRPC over HTTPS, and 'HOP' — SOAP and gRPC are request/response interfaces, not asynchronous messaging. Option C includes FTP, which is file transfer rather than messaging, and option D combines FTP and YAML over TLS, which are not messaging interface technologies at all.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Mule applications use property placeholders for environment-specific values, with secure properties for sensitive data. Building one artifact and supplying properties at deployment lets the same tested artifact move through all environments.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "SOAP over HTTPS and gRPC over HTTPS are synchronous request/response interfaces, not asynchronous message exchange, and 'HOP' is not a messaging interface technology."
+        "type": "Correct",
+        "text": "Externalized configuration lets the same tested artifact be promoted."
       },
       "B": {
-        "type": "Correct",
-        "text": "AsyncAPI describes messaging interfaces independent of transport, AMQP with RabbitMQ is an asynchronous messaging protocol with a connector, and JSON/REST over HTTPS is a secured high-performance interface."
+        "type": "Incorrect",
+        "text": "Divergent branches make releases inconsistent."
       },
       "C": {
         "type": "Incorrect",
-        "text": "FTP is a file-transfer mechanism, not an asynchronous messaging interface, so 'XML over FTP' does not satisfy the messaging requirement."
+        "text": "Manual changes are error-prone and untested."
       },
       "D": {
         "type": "Incorrect",
-        "text": "CSV over FTP is batch file transfer and 'YAML over TLS' is not a messaging interface technology; neither provides asynchronous message exchange."
+        "text": "Exchange descriptions are not runtime configuration."
       }
     },
     "references": {
       "primary": {
-        "title": "Design Center — AsyncAPI Specifications (Messaging Interfaces and Transports such as RabbitMQ)",
-        "url": "https://docs.mulesoft.com/design-center/design-async-api"
+        "title": "Mule Runtime — Configuring Properties",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/configuring-properties"
       },
       "architectureGuide": {
-        "title": "AMQP Connector — Connect to an AMQP 0.9.1-Compliant Broker",
-        "url": "https://docs.mulesoft.com/amqp-connector/latest/#connect-to-a-broker"
-      },
-      "arc720": {
-        "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
-        "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
+        "title": "Mule Runtime — Secure Configuration Properties",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/secure-configuration-properties"
       }
-    },
-    "correctAnswer": "B"
+    }
   },
   {
     "id": "q-199",
     "number": 199,
-    "title": "Messaging - A Mule solution implements an Experience API and System API as Mule ap",
+    "title": "Architecting and Deploying - Running MUnit in the pipeline",
     "domain": "Architecting and deploying API implementations",
     "topics": [
-      "Messaging"
+      "DevOps",
+      "MUnit"
     ],
-    "prompt": "A Mule solution implements an Experience API and System API as Mule applications that process messages in this order:\n1. The Experience API receives a request Anypoint MQ message (REQU) with a payload containing a variable-length list of request objects.\n2. The Experience API uses a For Each scope to split the list into individual objects and sends each object as a REQU_OBJECT message to an Anypoint MQ queue named REQUEST.\n3. The System API listens on the REQUEST queue, processes each message independently of all other messages, and sends a response message to a response queue named RESPONSE_OBJECT. The System API processing times can vary and are occasionally fairly long.\n4. The Experience API listens on the RESPONSE_OBJECT queue and receives, transforms, and accumulates each response.\n5. After receiving all the responses corresponding to the original REQU message, the Experience API creates and publishes a response Anypoint MQ message (RESP) to an Anypoint MQ queue named RESPONSE with a payload containing the list of responses returned by the System API, organized in the same order as the request objects originally sent in the REQU message.\nAssume successful response messages are returned by Experience API to the RESPONSE queue for all REQU messages. What is required so the Experience API can ensure the length and order of the list of objects in RESP and REQU match, while at the same time maximizing message throughput?",
+    "prompt": "Where should MUnit tests run in a CI/CD pipeline for a Mule application?",
     "options": [
       {
         "letter": "A",
-        "text": "After the For Each scope, add a second For Each scope configured with a persistent object store to collect response messages in the order in which they arrive, and then send the RESP message using this list of responses."
+        "text": "In API Manager as a policy"
       },
       {
         "letter": "B",
-        "text": "Use a persistent object store to keep track of the list length and all object indexes in the REQU message, both in the For Each scope and in all communication involving the System API. Set the maxConcurrency parameter for the receiving flow in the Experience API to a value greater than 1."
+        "text": "Only after deployment to production"
       },
       {
         "letter": "C",
-        "text": "Use a Scatter-Gather within the For Each scope to ensure response message order. Configure the Scatter-Gather with a persistent object store."
+        "text": "Only on developers' laptops, never in CI"
       },
       {
         "letter": "D",
-        "text": "Perform all communication involving the System API synchronously from within the For Each scope so that responses in RESPONSE_OBJECT are in the exact same order as request objects in the RESP message. Within the For Each scope, use an Async scope configured with a persistent object store."
+        "text": "In the Maven build, before deployment"
       }
     ],
-    "explanation": "Correct answer: B. The Experience API splits REQU into individual REQU_OBJECT messages that the System API processes independently and concurrently, so responses can return out of order and the Experience API must reassemble them into the same order and length as the original request. The reliable way to do this while keeping throughput high is to persist, in an object store, the list length and each object's index for both the outbound request objects and the inbound response messages, and to set maxConcurrency greater than 1 on the receiving flow so multiple responses are processed in parallel. Each response can then be matched to its original index rather than relying on arrival order. Collecting responses 'in the order in which they arrive' (A) or serializing the calls (D) does not reliably reproduce request order, and a Scatter-Gather inside the For Each (C) operates on branches within a single event, not across separate queue messages, so it cannot reorder independent responses.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. The MUnit Maven plugin runs tests during the Maven build. Running them in CI before deployment ensures every change is tested and that failing builds are not deployed.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Collecting responses in arrival order does not restore request order: responses can complete out of order, and a second For Each does not track each response back to its original index."
+        "text": "API Manager does not run tests."
       },
       "B": {
-        "type": "Correct",
-        "text": "A persistent object store that records the list length and each object index — for both the request objects and the response messages — lets the API match each response to its original position, and maxConcurrency greater than 1 keeps processing parallel for throughput."
+        "type": "Incorrect",
+        "text": "Tests must catch defects before production."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Scatter-Gather routes branches of a single event in parallel; it does not order responses that arrive as separate queue messages, so it cannot guarantee request order here."
+        "text": "Local-only tests are not enforced."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Making the System API calls synchronous serializes processing and defeats the goal of maximizing throughput, and the Async scope with an object store does not by itself guarantee ordering."
+        "type": "Correct",
+        "text": "Failing tests then stop broken builds from being deployed."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint MQ FAQ — Passing a Correlation ID Between Publisher and Subscriber",
-        "url": "https://docs.mulesoft.com/mq/mq-faq#how-does-anypoint-mq-pass-a-correlation-id-between-publisher-and-subscriber"
+        "title": "MUnit Maven Plugin",
+        "url": "https://docs.mulesoft.com/munit/latest/munit-maven-plugin"
       },
       "architectureGuide": {
-        "title": "Anypoint MQ Subscriber Source — Backpressure and Max Concurrency",
-        "url": "https://docs.mulesoft.com/anypoint-mq-connector/latest/anypoint-mq-listener#backpressure-and-max-concurrency"
-      },
-      "arc720": {
-        "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
-        "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
+        "title": "Mule Maven Plugin",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept"
       }
-    },
-    "correctAnswer": "B"
+    }
   },
   {
     "id": "q-200",
     "number": 200,
-    "title": "Application Design - An organization has built a large monolithic application over the year",
+    "title": "Architecting and Deploying - Automating platform configuration",
     "domain": "Architecting and deploying API implementations",
     "topics": [
-      "Application Design"
+      "DevOps",
+      "Platform APIs"
     ],
-    "prompt": "An organization has built a large monolithic application over the years and is currently looking to transition to a microservices architecture. During this transition phase, it has built some System APIs as Mule applications that provide access to different pieces of functionality of the monolithic application. The System APIs are deployed to Mule runtimes in a customer-hosted EC2 instance in AWS. The System APIs communicate directly with one database used by the monolithic application. Currently, a Database connector and configuration for that connector must be built into every project. There is a plan to partition this database into various smaller data stores in the future. What is the MuleSoft-recommended best practice to share the connector and configuration information among the APIs?",
+    "prompt": "As part of deployment, a pipeline must also create API instances and apply policies in each environment. How can this be automated?",
     "options": [
       {
         "letter": "A",
-        "text": "Build a separate Mule domain project for each API, and configure each of them to use a file on a shared file store to load the configuration information dynamically"
+        "text": "Add policies to the Mule application's pom.xml"
       },
       {
         "letter": "B",
-        "text": "Create an API proxy for each System API and share the Database connector configuration with all the API proxies via an automated policy"
+        "text": "Use the Anypoint Platform APIs or Anypoint CLI"
       },
       {
         "letter": "C",
-        "text": "Build another System API that connects to the database, and refactor all the other APIs to make requests through the new System API to access the database"
+        "text": "Publish the policies as API fragments in Exchange"
       },
       {
         "letter": "D",
-        "text": "Build a Mule domain project, add the Database connector and configuration to it, and reference this one domain project from each System API"
+        "text": "Record a browser macro that clicks through API Manager"
       }
     ],
-    "explanation": "Correct answer: D. The goal is to avoid embedding the same Database connector and its configuration in every System API project and to share that configuration as the database is later partitioned. MuleSoft's recommended mechanism for sharing global configuration elements across applications on the same runtime is a Mule domain project: you build one domain project that contains the Database connector and configuration, and each System API references that domain. A per-API domain loading configuration from a shared file store (A) does not centralize the configuration; an API proxy with a policy (B) cannot share a Mule connector configuration; and introducing another System API as a database gateway (C) is a different architectural pattern, not the recommended way to share a connector configuration.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Anypoint Platform exposes its capabilities through platform APIs, and Anypoint CLI provides command-line access. Pipelines can use them to create API instances, apply policies, and manage other configuration consistently.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "A separate domain per API that loads configuration from a shared file store does not centralize the Database connector configuration, so each API still manages its own copy."
+        "text": "Policies are managed in API Manager, not the build file."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "API proxies and policies operate on the API gateway layer and cannot share a Mule Database connector configuration among System API applications."
+        "type": "Correct",
+        "text": "Platform APIs and the CLI expose API Manager operations for automation."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Wrapping the database behind yet another System API is a valid architectural pattern but is not the recommended way to share a connector and its configuration across the existing APIs."
+        "text": "Fragments describe APIs; they do not apply policies."
       },
       "D": {
-        "type": "Correct",
-        "text": "A Mule domain project holds the Database connector and configuration as shared global elements, and each System API references that one domain, eliminating duplicated connector configuration."
+        "type": "Incorrect",
+        "text": "UI automation is brittle and unsupported."
       }
     },
     "references": {
       "primary": {
-        "title": "Mule Domains — Sharing Connectors and Configuration Across Applications",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/shared-resources#create_domain_project"
+        "title": "Exchange — Anypoint Platform APIs",
+        "url": "https://docs.mulesoft.com/exchange/about-platform-apis"
       },
       "architectureGuide": {
-        "title": "Mule Domains — Reference Shared Resources",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/shared-resources#reference-shared-resources"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "Anypoint CLI",
+        "url": "https://docs.mulesoft.com/anypoint-cli/latest/"
       }
-    },
-    "correctAnswer": "D"
+    }
   },
   {
     "id": "q-201",
     "number": 201,
-    "title": "Messaging - A manufacturing company wants to share inventory updates with dealers",
+    "title": "Architecting and Deploying - Choose two: DevOps artifacts",
     "domain": "Architecting and deploying API implementations",
     "topics": [
-      "Messaging"
+      "DevOps",
+      "Exchange"
     ],
-    "prompt": "A manufacturing company wants to share inventory updates with dealers D1 and D2 asynchronously and concurrently via Queues Q1 and Q2. Dealer D1 must consume the messages from the Queue Q1, and Dealer D2 must consume the messages from the Queue Q2. Dealer D1 has implemented a retry mechanism to reprocess the transaction in case of any errors while processing the inventory updates. Dealer D2 has not implemented any retry mechanism. How should the dealers acknowledge the message to avoid message loss and minimize impact on the current implementation?",
+    "prompt": "Which two practices support automated building and sharing of API-related artifacts? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "Dealer D1 can use AUTO acknowledgement and Dealer D2 must use MANUAL acknowledgment and acknowledge the message after successful processing"
+        "text": "Publishing API specifications and fragments to Exchange with Maven"
       },
       {
         "letter": "B",
-        "text": "Dealer D1 and Dealer D2 must use AUTO acknowledgement and acknowledge the message after successful processing"
+        "text": "Skipping MUnit tests to speed up deployments"
       },
       {
         "letter": "C",
-        "text": "Dealer D1 can use AUTO acknowledgement and Dealer D2 can use IMMEDIATE acknowledgment and acknowledge the message after successful processing"
+        "text": "Emailing JAR files to the operations team"
       },
       {
         "letter": "D",
-        "text": "Dealer D2 must use AUTO acknowledgement and Dealer D1 can use MANUAL acknowledgment and acknowledge the message after successful processing"
+        "text": "Editing production configuration directly in Runtime Manager"
+      },
+      {
+        "letter": "E",
+        "text": "Deploying applications with the Mule Maven Plugin from CI"
       }
     ],
-    "explanation": "Correct answer: A. The acknowledgment mode decides when the broker removes a message from the queue, and therefore whether a failed processing attempt can lose the inventory update.\n\nAUTO acknowledges a received message automatically, but only after the flow execution finishes successfully. If an error propagates out of the flow, the message is not acknowledged and is returned to the queue for redelivery. Dealer D1 has implemented its own retry mechanism, so it can rely on AUTO: on failure the message comes back and D1's existing retry logic reprocesses it. This keeps D1 on the default, lowest-impact configuration and requires no change to its current implementation.\n\nMANUAL delegates the entire acknowledgment decision to the application logic, which must issue an explicit ACK (success) or NACK (failure). Dealer D2 has no retry mechanism of its own, so it should take explicit control of the message lifecycle instead of delegating it to the runtime's automatic success/failure handling:\n- On success, D2 sends an ACK, so the message is removed from Q2 only after the update is safely applied.\n- On failure, D2 sends an explicit NACK (for example from an On Error Propagate path). The NACK returns the message to Q2 immediately for redelivery, or, once the queue's maximum delivery attempts are reached, routes it to the dead-letter queue (DLQ) so it is not lost.\n\nUsing MANUAL also minimizes the impact on D2's current implementation: rather than refactoring application code to add an internal retry framework, D2 lets Anypoint MQ own redelivery and DLQ routing, driving both from NACK.\n\nIMMEDIATE is unsuitable here because it acknowledges the message as it is consumed, before any processing: the message is removed from the queue and is not redelivered if processing later fails, which risks losing updates.",
+    "correctAnswers": [
+      "A",
+      "E"
+    ],
+    "explanation": "Correct answers: A and E. In a DevOps setting, Maven-based builds can run MUnit tests, publish assets to Exchange, and deploy applications with the Mule Maven Plugin, giving repeatable and traceable delivery.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Dealer D1 (has its own retry mechanism) can rely on AUTO: the message is acknowledged only when the flow succeeds, and on failure it is redelivered for D1 to reprocess. Dealer D2 (no retry mechanism) must use MANUAL: it ACKs only after processing succeeds, and on failure issues an explicit NACK that returns the message to Q2 for redelivery (or to the DLQ once delivery attempts are exhausted), instead of losing it."
+        "text": "Assets can be published to Exchange from automated builds."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Using AUTO for both ignores Dealer D2's lack of a retry mechanism: D2 would depend entirely on the runtime's automatic success/failure handling and would have no explicit control to NACK immediately on failure and drive redelivery or DLQ routing itself."
+        "text": "Skipping tests reduces quality and is not good practice."
       },
       "C": {
         "type": "Incorrect",
-        "text": "IMMEDIATE acknowledges the message before it is processed, so the message is removed from the queue and is not redelivered if processing fails. For Dealer D2, which has no retry mechanism, this can lose inventory updates."
+        "text": "Manual handoffs are not automated or traceable."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This reverses the correct assignment. Dealer D2 (no retry mechanism) is given AUTO while Dealer D1 (which has a retry mechanism) is given MANUAL. It does not give D2 explicit control to protect against message loss and adds an unnecessary change for D1."
+        "text": "Manual production edits bypass the pipeline."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "CI can deploy applications consistently."
       }
     },
     "references": {
       "primary": {
-        "title": "Mule Runtime — ACK Mode Parameter (AUTO, MANUAL, IMMEDIATE)",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/tuning-app-design#ack-mode-parameter"
+        "title": "Publishing Assets to Exchange Using Maven",
+        "url": "https://docs.mulesoft.com/exchange/to-publish-assets-maven"
       },
       "architectureGuide": {
-        "title": "Mule Runtime — Reliability Patterns: Reliable Messaging",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/reliability-patterns#reliable-messaging"
-      },
-      "arc720": {
-        "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
-        "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
+        "title": "Mule Maven Plugin",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept"
       }
-    },
-    "correctAnswer": "A"
+    }
   },
   {
     "id": "q-202",
     "number": 202,
-    "title": "CI/CD - An organization is in the process of building automated deployments us",
-    "domain": "Architecting and deploying API implementations",
-    "topics": [
-      "CI/CD"
-    ],
-    "prompt": "An organization is in the process of building automated deployments using a CI/CD process. As a part of automated deployments, it wants to apply policies to API instances. What tool can the organization use to promote and deploy API Manager policies?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Runtime Manager agent"
-      },
-      {
-        "letter": "B",
-        "text": "Mule Maven plugin"
-      },
-      {
-        "letter": "C",
-        "text": "MUnit Maven plugin"
-      },
-      {
-        "letter": "D",
-        "text": "Anypoint CLI"
-      }
-    ],
-    "explanation": "Correct answer: D. The organization needs a tool that can apply and promote API Manager policies as part of an automated CI/CD process. The Anypoint CLI provides API Manager commands, including api-mgr:policy:apply to apply a policy to an API instance and api-mgr:api:promote to promote an API instance between environments, so it can be scripted in a pipeline. The Runtime Manager agent (A) monitors and controls deployed Mule applications, not API Manager policies; the Mule Maven plugin (B) packages and deploys Mule applications; and the MUnit Maven plugin (C) runs MUnit tests. None of those manages API Manager policy deployment.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "The Runtime Manager agent monitors and controls Mule applications; it does not apply or promote API Manager policies."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "The Mule Maven plugin packages and deploys Mule applications and API proxies, but it is not the tool for applying API Manager policies."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "The MUnit Maven plugin runs MUnit tests as part of a build; it does not manage API Manager policies."
-      },
-      "D": {
-        "type": "Correct",
-        "text": "The Anypoint CLI exposes API Manager commands such as api-mgr:policy:apply and api-mgr:api:promote, which can be scripted to apply and promote policies in a CI/CD pipeline."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Anypoint CLI for API Manager — api-mgr:policy Commands",
-        "url": "https://docs.mulesoft.com/anypoint-cli/latest/api-mgr#api-mgr-policy-apply"
-      },
-      "architectureGuide": {
-        "title": "Anypoint CLI — Syntax and Default Flags",
-        "url": "https://docs.mulesoft.com/anypoint-cli/latest/#syntax"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
-      }
-    },
-    "correctAnswer": "D"
-  },
-  {
-    "id": "q-203",
-    "number": 203,
-    "title": "Connectors - Which Salesforce API is invoked to deploy, retrieve, create, update, o",
-    "domain": "Architecting and deploying API implementations",
-    "topics": [
-      "Connectors"
-    ],
-    "prompt": "Which Salesforce API is invoked to deploy, retrieve, create, update, or delete customization information, such as custom object definitions using Mule Salesforce Connectors in a Mule application?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "sObject Platform Action API"
-      },
-      {
-        "letter": "B",
-        "text": "User Interface API"
-      },
-      {
-        "letter": "C",
-        "text": "Metadata API"
-      },
-      {
-        "letter": "D",
-        "text": "Process Rules API"
-      }
-    ],
-    "explanation": "Correct answer: C. The Salesforce Metadata API manages customizations and build tools that work with the metadata model, such as custom object definitions, rather than with the data itself, and the Mule Salesforce Connector exposes Metadata API operations such as Deploy Metadata. The sObject Platform Action API (A) exposes actions available on an sObject record, the User Interface API (B) backs custom user interfaces, and the Process Rules API (D) is not the API used to manage customization metadata — none of these deploy or retrieve custom object definitions.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "The sObject Platform Action API returns the actions available for an sObject record; it does not manage customization metadata such as custom object definitions."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "The User Interface API supports building custom user interfaces; it is not the API for deploying, retrieving, creating, updating, or deleting customization metadata."
-      },
-      "C": {
-        "type": "Correct",
-        "text": "The Metadata API manages customizations and build tools that work with the metadata model, such as custom object definitions, and the connector exposes Metadata API operations such as Deploy Metadata."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "The Process Rules API is not the API used to deploy, retrieve, create, update, or delete customization metadata."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Salesforce Connector — Salesforce APIs (SOAP, REST, Bulk, Streaming)",
-        "url": "https://docs.mulesoft.com/salesforce-connector/latest/#apis"
-      },
-      "architectureGuide": {
-        "title": "Salesforce Connector Reference — Create, Update, Delete, Deploy, and Retrieve Metadata",
-        "url": "https://docs.mulesoft.com/salesforce-connector/latest/salesforce-connector-reference#deployMetadata"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
-      }
-    },
-    "correctAnswer": "C"
-  },
-  {
-    "id": "q-204",
-    "number": 204,
-    "title": "Application Design - Why would an Enterprise Architect use a single enterprise-wide canonic",
-    "domain": "Architecting and deploying API implementations",
-    "topics": [
-      "Application Design"
-    ],
-    "prompt": "Why would an Enterprise Architect use a single enterprise-wide canonical data model (CDM) when designing an integration solution using Anypoint Platform?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "To automate AI-enabled API implementation generation based on normalized backend databases from separate vendors"
-      },
-      {
-        "letter": "B",
-        "text": "To reduce dependencies when integrating multiple systems that use different data formats"
-      },
-      {
-        "letter": "C",
-        "text": "To remove the need to perform data transformation when processing message payloads in Mule applications"
-      },
-      {
-        "letter": "D",
-        "text": "To leverage a data abstraction layer that shields existing Mule applications from non-backward compatible changes to the model's data structure"
-      }
-    ],
-    "explanation": "Correct answer: B. A canonical data model defines a single, application-agnostic representation of shared business entities. When many systems that use different data formats are integrated, each system maps to and from the canonical model instead of directly to every other system, which reduces the number of point-to-point dependencies and the brittleness of the transformations. Option A is unrelated (the CDM is a design artifact, not an AI code-generation feature). Option C overstates the benefit: transformations are still required, but they happen between each system and the canonical model rather than pairwise. Option D describes the separate benefit of an abstraction layer; the primary reason to adopt a canonical model is to reduce dependencies across systems with differing formats.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "A canonical data model is a shared design artifact; it is not a mechanism for automating AI-enabled API implementation generation from vendor databases."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Mapping every system to a common canonical model instead of to every other system reduces the number of dependencies and simplifies integration across systems that use different data formats."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "A canonical model does not remove the need for transformation; each system still maps to and from the model, but the transformations are simplified and fewer in number."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Shielding applications from non-backward-compatible changes describes the general value of a data abstraction layer, not the primary reason for adopting an enterprise-wide canonical data model."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "MuleSoft Accelerators — Cloud Information Model (CIM)",
-        "url": "https://docs.mulesoft.com/accelerators-cim/#preamble"
-      },
-      "architectureGuide": {
-        "title": "MuleSoft Accelerators — Considerations for Simplifying Accelerator Assets",
-        "url": "https://docs.mulesoft.com/accelerators-home/simplifying-assets#simplify-accelerator-assets"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
-      }
-    },
-    "correctAnswer": "B"
-  },
-  {
-    "id": "q-205",
-    "number": 205,
-    "title": "CI/CD - An organization is using MuleSoft to develop APIs and automatically de",
-    "domain": "Architecting and deploying API implementations",
-    "topics": [
-      "CI/CD"
-    ],
-    "prompt": "An organization is using MuleSoft to develop APIs and automatically deploy them to both CloudHub and on-premises targets. Recently, it has decided to include Runtime Fabric deployment targets as well, and Mule infrastructure is set up for this option. What can now be used to automate deploying Mule applications to all three types of deployment targets?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "The Object Store v2 REST API"
-      },
-      {
-        "letter": "B",
-        "text": "The Mule Maven plugin"
-      },
-      {
-        "letter": "C",
-        "text": "Anypoint Monitoring agent configuration file"
-      },
-      {
-        "letter": "D",
-        "text": "The Runtime Manager agent configuration file"
-      }
-    ],
-    "explanation": "Correct answer: B. The organization wants one mechanism to automate deployments to CloudHub, on-premises, and Runtime Fabric targets. The Mule Maven plugin is designed exactly for this: it integrates packaging and deployment with the Maven lifecycle, and its deploy goal automatically uploads and starts the application in any of the supported deployment targets (CloudHub, Runtime Fabric, or on-premises). The Object Store v2 REST API (A) stores and retrieves application state, not deployments; the Anypoint Monitoring agent configuration file (C) configures monitoring; and the Runtime Manager agent configuration file (D) configures the agent, not multi-target application deployment.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "The Object Store v2 REST API is for storing and retrieving application state and data, not for deploying applications to deployment targets."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "The Mule Maven plugin's deploy goal automates uploading and starting the application in CloudHub, Runtime Fabric, or on-premises targets, so one tool covers all three."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "The Anypoint Monitoring agent configuration file configures monitoring, not application deployment."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "The Runtime Manager agent configuration file configures the Runtime Manager agent; it is not the multi-target deployment automation the question asks for."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Mule Maven Plugin — Deploy Goal for CloudHub, RTF, and On-Premises",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept#deploy-goal"
-      },
-      "architectureGuide": {
-        "title": "Mule Maven Plugin — Compatibility and Goals",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept#mule-maven-plugin-goals"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
-      }
-    },
-    "correctAnswer": "B"
-  },
-  {
-    "id": "q-206",
-    "number": 206,
     "title": "Deployment Options - Which Anypoint deployment option is a fully",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12608,8 +12109,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-207",
-    "number": 207,
+    "id": "q-203",
+    "number": 203,
     "title": "Deployment Options - Which deployment option lets you run Mule",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12670,8 +12171,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-208",
-    "number": 208,
+    "id": "q-204",
+    "number": 204,
     "title": "Deployment Options - Which CloudHub configuration enables a managed customercontrolled",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12733,8 +12234,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-209",
-    "number": 209,
+    "id": "q-205",
+    "number": 205,
     "title": "Deployment Options - An organization wants to enforce API policies",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12795,8 +12296,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-210",
-    "number": 210,
+    "id": "q-206",
+    "number": 206,
     "title": "Deployment Options - Which is a TRUE statement about CloudHub",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12857,8 +12358,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-211",
-    "number": 211,
+    "id": "q-207",
+    "number": 207,
     "title": "Deployment Options - Which scenario is the strongest case for",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12920,8 +12421,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-212",
-    "number": 212,
+    "id": "q-208",
+    "number": 208,
     "title": "Deployment Options - An organization wants Mule applications running in",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12982,8 +12483,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-213",
-    "number": 213,
+    "id": "q-209",
+    "number": 209,
     "title": "Deployment Options - Which CloudHub region minimizes latency for APAC consumers",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13045,8 +12546,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-214",
-    "number": 214,
+    "id": "q-210",
+    "number": 210,
     "title": "Deployment Options - Which statement about Mule Hybrid deployment is",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13107,8 +12608,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-215",
-    "number": 215,
+    "id": "q-211",
+    "number": 211,
     "title": "Deployment Options - Which option exposes ingress inside a Private",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13170,8 +12671,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-216",
-    "number": 216,
+    "id": "q-212",
+    "number": 212,
     "title": "Runtime Auto-Scaling - An online retailer expects a 3× traffic surge during holiday",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13248,8 +12749,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-217",
-    "number": 217,
+    "id": "q-213",
+    "number": 213,
     "title": "Runtime Deployment - A Saa S startup plans to deploy Mule runtime on a Kubernetes",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13326,8 +12827,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-218",
-    "number": 218,
+    "id": "q-214",
+    "number": 214,
     "title": "Runtime Deployment - A national retail chain processes 10,000 orders per minute and",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13404,8 +12905,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "E"
   },
   {
-    "id": "q-219",
-    "number": 219,
+    "id": "q-215",
+    "number": 215,
     "title": "API Migration - A logistics company is migrating its on‑premises APIs to Anypoint",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13485,8 +12986,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-220",
-    "number": 220,
+    "id": "q-216",
+    "number": 216,
     "title": "Deployment Choices - A mid‑size financial services firm must migrate its core payment ",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13563,8 +13064,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-221",
-    "number": 221,
+    "id": "q-217",
+    "number": 217,
     "title": "Deployment Strategy - A national retail chain plans to launch a new omnichannel experie",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13641,8 +13142,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-222",
-    "number": 222,
+    "id": "q-218",
+    "number": 218,
     "title": "Cloud Hub Deployment - A logistics company is migrating its on‑premise Mule runtimes to ",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13722,8 +13223,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-223",
-    "number": 223,
+    "id": "q-219",
+    "number": 219,
     "title": "Deployment Models - A mid-sized financial services firm is migrating its core loan‑or",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13800,8 +13301,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-224",
-    "number": 224,
+    "id": "q-220",
+    "number": 220,
     "title": "Runtime Deployment - A logistics startup plans to host its Mule runtime in a public cl",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13878,8 +13379,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-225",
-    "number": 225,
+    "id": "q-221",
+    "number": 221,
     "title": "Deployment Options - CloudHub custom-domain HTTPS with mTLS",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13942,8 +13443,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-226",
-    "number": 226,
+    "id": "q-222",
+    "number": 222,
     "title": "Deployment Options - Scheduler behavior across CloudHub workers",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14006,8 +13507,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-227",
-    "number": 227,
+    "id": "q-223",
+    "number": 223,
     "title": "Deployment Options - Runtime behavior during control plane outage",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14070,8 +13571,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-228",
-    "number": 228,
+    "id": "q-224",
+    "number": 224,
     "title": "Deployment Options - Object Store v2 sharing between applications",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14134,8 +13635,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-229",
-    "number": 229,
+    "id": "q-225",
+    "number": 225,
     "title": "Deployment Options - Internal CloudHub worker URL",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14198,8 +13699,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-230",
-    "number": 230,
+    "id": "q-226",
+    "number": 226,
     "title": "Deployment Options - Persistent VM queues across workers",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14262,8 +13763,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-231",
-    "number": 231,
+    "id": "q-227",
+    "number": 227,
     "title": "Deployment Options - Private connectivity to on-premises data centers",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14327,8 +13828,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-232",
-    "number": 232,
+    "id": "q-228",
+    "number": 228,
     "title": "Deployment Options - Masking secure properties in Runtime Manager",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14391,8 +13892,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-233",
-    "number": 233,
+    "id": "q-229",
+    "number": 229,
     "title": "Deployment Options - Runtime Fabric ingress controller",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14455,8 +13956,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-234",
-    "number": 234,
+    "id": "q-230",
+    "number": 230,
     "title": "Deployment Options - CloudHub worker size for large payloads",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14519,8 +14020,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-235",
-    "number": 235,
+    "id": "q-231",
+    "number": 231,
     "title": "Deployment Options - DLB mapping rules for API routing",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14583,8 +14084,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-236",
-    "number": 236,
+    "id": "q-232",
+    "number": 232,
     "title": "Deployment Options - Static outbound IP for CloudHub",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14647,8 +14148,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-237",
-    "number": 237,
+    "id": "q-233",
+    "number": 233,
     "title": "Deployment Options - CloudHub worker availability zones",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14711,8 +14212,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-238",
-    "number": 238,
+    "id": "q-234",
+    "number": 234,
     "title": "Deployment Options - HTTP traffic in an active-active cluster",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14775,8 +14276,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-239",
-    "number": 239,
+    "id": "q-235",
+    "number": 235,
     "title": "Deployment Options - Runtime Fabric controller node role",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14826,8 +14327,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-240",
-    "number": 240,
+    "id": "q-236",
+    "number": 236,
     "title": "Deployment Options - CloudHub deployment traffic handling",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14890,8 +14391,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-241",
-    "number": 241,
+    "id": "q-237",
+    "number": 237,
     "title": "Deployment Options - CloudHub ephemeral local files",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14954,8 +14455,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-242",
-    "number": 242,
+    "id": "q-238",
+    "number": 238,
     "title": "Deployment Options - CloudHub VPC network diagnostics",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15018,8 +14519,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-243",
-    "number": 243,
+    "id": "q-239",
+    "number": 239,
     "title": "Deployment Options - Dedicated Load Balancer high availability",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15082,8 +14583,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-244",
-    "number": 244,
+    "id": "q-240",
+    "number": 240,
     "title": "Deployment Options - Runtime Fabric replica load balancing",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15133,8 +14634,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-245",
-    "number": 245,
+    "id": "q-241",
+    "number": 241,
     "title": "Deployment Options - A company is modernizing its legacy systems to accelerate access to ap",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15195,8 +14696,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-246",
-    "number": 246,
+    "id": "q-242",
+    "number": 242,
     "title": "Deployment Options - An insurance company is designing a hybrid, load-balanced, single-clus",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15257,8 +14758,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-247",
-    "number": 247,
+    "id": "q-243",
+    "number": 243,
     "title": "Deployment Options - Refer to the exhibit.",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15320,8 +14821,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-248",
-    "number": 248,
+    "id": "q-244",
+    "number": 244,
     "title": "Deployment Options - CloudHub 1.0 vs CloudHub 2.0 shared and private spaces",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15384,8 +14885,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-249",
-    "number": 249,
+    "id": "q-245",
+    "number": 245,
     "title": "Deployment Options - CloudHub 2.0 private space fully managed ingress load balancer",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15448,8 +14949,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-250",
-    "number": 250,
+    "id": "q-246",
+    "number": 246,
     "title": "Deployment Options - CloudHub 1.0 port mapping for HTTP and HTTPS",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15512,8 +15013,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-251",
-    "number": 251,
+    "id": "q-247",
+    "number": 247,
     "title": "Deployment Options - DLB internal ports 8091 and 8092",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15576,8 +15077,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-252",
-    "number": 252,
+    "id": "q-248",
+    "number": 248,
     "title": "Deployment Options - DLB SSL endpoint and custom certificate configuration",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15640,8 +15141,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-253",
-    "number": 253,
+    "id": "q-249",
+    "number": 249,
     "title": "Deployment Options - DLB mapping rules and DNS CNAME for vanity domains",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15708,8 +15209,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-254",
-    "number": 254,
+    "id": "q-250",
+    "number": 250,
     "title": "Deployment Options - Dedicated Load Balancer high availability and units",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15772,8 +15273,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-255",
-    "number": 255,
+    "id": "q-251",
+    "number": 251,
     "title": "Deployment Options - CloudHub 1.0 high availability with multiple workers and persistent queues",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15837,8 +15338,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-256",
-    "number": 256,
+    "id": "q-252",
+    "number": 252,
     "title": "Deployment Options - CloudHub 2.0 high availability across replicas and AZs",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15902,8 +15403,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-257",
-    "number": 257,
+    "id": "q-253",
+    "number": 253,
     "title": "Deployment Options - Multi-region disaster recovery and Object Store v2 scope",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15967,8 +15468,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-258",
-    "number": 258,
+    "id": "q-254",
+    "number": 254,
     "title": "Deployment Options - Object Store v2 with multi-worker applications",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -16031,8 +15532,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-259",
-    "number": 259,
+    "id": "q-255",
+    "number": 255,
     "title": "Deployment Options - Connecting CloudHub to on-premises and private networks",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -16100,8 +15601,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-260",
-    "number": 260,
+    "id": "q-256",
+    "number": 256,
     "title": "Deployment Options - CloudHub 2.0 private space ingress ports and firewall rules",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -16167,8 +15668,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-261",
-    "number": 261,
+    "id": "q-257",
+    "number": 257,
     "title": "Deployment Options - CloudHub 2.0 public and internal DNS records",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -16231,8 +15732,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-262",
-    "number": 262,
+    "id": "q-258",
+    "number": 258,
     "title": "Deployment Options - CloudHub 2.0 private space TLS context and custom domains",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -16296,8 +15797,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-263",
-    "number": 263,
+    "id": "q-259",
+    "number": 259,
     "title": "Deployment Options - CloudHub 2.0 differences from CloudHub 1.0",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -16365,8 +15866,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-264",
-    "number": 264,
+    "id": "q-260",
+    "number": 260,
     "title": "Api Policies - Refer to the exhibit. CloudHub 2.0 private space ingress with TLS",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -16431,8 +15932,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-265",
-    "number": 265,
+    "id": "q-261",
+    "number": 261,
     "title": "API Quality Goals - Caching slow-changing reference data",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16490,8 +15991,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-266",
-    "number": 266,
+    "id": "q-262",
+    "number": 262,
     "title": "API Quality Goals - Data that must not be cached",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16549,8 +16050,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-267",
-    "number": 267,
+    "id": "q-263",
+    "number": 263,
     "title": "API Quality Goals - Sharing state across CloudHub workers",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16561,11 +16062,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "In a persistent object store (Object Store v2)"
+        "text": "In an in-memory object store on each worker"
       },
       {
         "letter": "B",
-        "text": "In an in-memory object store on each worker"
+        "text": "In a persistent object store (Object Store v2)"
       },
       {
         "letter": "C",
@@ -16576,16 +16077,16 @@ window.MCPA_QUESTIONS = [
         "text": "In a file written to the worker's local disk"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. On CloudHub, persistent object stores are backed by Object Store v2, which keeps data outside individual workers. This lets the stored values, such as watermarks, survive restarts and be shared by all workers of the same application, unlike variables, in-memory stores, or local files.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. On CloudHub, persistent object stores are backed by Object Store v2, which keeps data outside individual workers. This lets the stored values, such as watermarks, survive restarts and be shared by all workers of the same application, unlike variables, in-memory stores, or local files.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Object Store v2 persists data outside the worker and makes it available to all workers of the application."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "In-memory stores are lost on restart and are not shared between workers."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Object Store v2 persists data outside the worker and makes it available to all workers of the application."
       },
       "C": {
         "type": "Incorrect",
@@ -16608,8 +16109,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-268",
-    "number": 268,
+    "id": "q-264",
+    "number": 264,
     "title": "API Quality Goals - Cache scope versus caching policy",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16667,8 +16168,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-269",
-    "number": 269,
+    "id": "q-265",
+    "number": 265,
     "title": "API Quality Goals - Idempotent request detection",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16726,8 +16227,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-270",
-    "number": 270,
+    "id": "q-266",
+    "number": 266,
     "title": "API Quality Goals - Fallback to cached data",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16785,8 +16286,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-271",
-    "number": 271,
+    "id": "q-267",
+    "number": 267,
     "title": "API Quality Goals - Object Store data retention",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16801,31 +16302,31 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Use a database; Object Store v2 entries have a limited TTL"
+        "text": "Proceed, because Object Store v2 retains entries forever unless they are deleted"
       },
       {
         "letter": "C",
-        "text": "Proceed, because Object Store v2 retains entries forever unless they are deleted"
+        "text": "Use a database; Object Store v2 entries have a limited TTL"
       },
       {
         "letter": "D",
         "text": "Store the preferences in application properties so they are always available"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. Object Store v2 is intended for application state such as caching, watermarks, and deduplication. Its entries have a maximum time-to-live, so it is not suitable as a permanent system of record. Long-lived business data such as customer preferences belongs in a database or other system of record.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Object Store v2 is intended for application state such as caching, watermarks, and deduplication. Its entries have a maximum time-to-live, so it is not suitable as a permanent system of record. Long-lived business data such as customer preferences belongs in a database or other system of record.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "In-memory stores are less durable, not more."
       },
       "B": {
-        "type": "Correct",
-        "text": "Object Store v2 is designed for transient state such as caches and watermarks, not long-term records."
-      },
-      "C": {
         "type": "Incorrect",
         "text": "Object Store v2 enforces a time-to-live on stored entries, so data is not retained indefinitely."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "Object Store v2 is designed for transient state such as caches and watermarks, not long-term records."
       },
       "D": {
         "type": "Incorrect",
@@ -16844,8 +16345,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-272",
-    "number": 272,
+    "id": "q-268",
+    "number": 268,
     "title": "API Quality Goals - Choose two: Object Store use cases",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16864,11 +16365,11 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Keeping a watermark for incremental polling of a database"
+        "text": "Running complex relational queries for reporting"
       },
       {
         "letter": "D",
-        "text": "Running complex relational queries for reporting"
+        "text": "Keeping a watermark for incremental polling of a database"
       },
       {
         "letter": "E",
@@ -16876,10 +16377,10 @@ window.MCPA_QUESTIONS = [
       }
     ],
     "correctAnswers": [
-      "C",
+      "D",
       "E"
     ],
-    "explanation": "Correct answers: C and E. Object stores are key-value stores for application state. Common uses include watermarks, caching values such as tokens or reference data, and duplicate detection. They are not designed for large binary documents, long-term records, or relational reporting.",
+    "explanation": "Correct answers: D and E. Object stores are key-value stores for application state. Common uses include watermarks, caching values such as tokens or reference data, and duplicate detection. They are not designed for large binary documents, long-term records, or relational reporting.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -16890,12 +16391,12 @@ window.MCPA_QUESTIONS = [
         "text": "An object store is not a system of record for business data."
       },
       "C": {
-        "type": "Correct",
-        "text": "Watermarks are small, transient state values that must survive restarts."
-      },
-      "D": {
         "type": "Incorrect",
         "text": "Object stores are key-value stores and do not support relational queries."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Watermarks are small, transient state values that must survive restarts."
       },
       "E": {
         "type": "Correct",
@@ -16914,8 +16415,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-273",
-    "number": 273,
+    "id": "q-269",
+    "number": 269,
     "title": "API Quality Goals - Cache key design",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16934,15 +16435,15 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "The policy will cache only POST requests, so GET requests are unaffected"
+        "text": "Customers may receive another customer's cached recommendations"
       },
       {
         "letter": "D",
-        "text": "Customers may receive another customer's cached recommendations"
+        "text": "The policy will cache only POST requests, so GET requests are unaffected"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. A cache key must include every input that changes the response. For personalized responses, the key must include the customer's identity or the response should not be cached; otherwise one customer's response can be served to another. The HTTP Caching policy allows a custom key expression for this purpose.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. A cache key must include every input that changes the response. For personalized responses, the key must include the customer's identity or the response should not be cached; otherwise one customer's response can be served to another. The HTTP Caching policy allows a custom key expression for this purpose.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -16953,12 +16454,12 @@ window.MCPA_QUESTIONS = [
         "text": "The policy supports a time-to-live setting."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "The policy is typically used with GET responses and would cache them."
-      },
-      "D": {
         "type": "Correct",
         "text": "Requests with the same path share one cache entry, so personalized data can leak between users."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "The policy is typically used with GET responses and would cache them."
       }
     },
     "references": {
@@ -16973,8 +16474,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-274",
-    "number": 274,
+    "id": "q-270",
+    "number": 270,
     "title": "API Quality Goals - Invalidating cached data",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16989,31 +16490,31 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Keep the 24-hour TTL and ask users to refresh their browsers"
+        "text": "Reduce the cache time-to-live to five minutes or less"
       },
       {
         "letter": "C",
-        "text": "Reduce the cache time-to-live to five minutes or less"
+        "text": "Keep the 24-hour TTL and ask users to refresh their browsers"
       },
       {
         "letter": "D",
         "text": "Scale the backend horizontally so the cache is refreshed faster"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. The time-to-live of a cache entry determines how stale data can become. To meet a five-minute freshness requirement while retaining most of the performance benefit, the TTL should be reduced to five minutes or less instead of disabling caching.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. The time-to-live of a cache entry determines how stale data can become. To meet a five-minute freshness requirement while retaining most of the performance benefit, the TTL should be reduced to five minutes or less instead of disabling caching.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "This meets freshness but gives up the load reduction that is still possible with a short TTL."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Browser refreshes do not bypass a server-side cache."
-      },
-      "C": {
         "type": "Correct",
         "text": "The TTL defines the maximum staleness, so it must not exceed the freshness requirement."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Browser refreshes do not bypass a server-side cache."
       },
       "D": {
         "type": "Incorrect",
@@ -17032,8 +16533,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-275",
-    "number": 275,
+    "id": "q-271",
+    "number": 271,
     "title": "API Quality Goals - First step toward fault tolerance",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17044,11 +16545,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Increase the Experience API's worker size"
+        "text": "Set a timeout that fits within the 2-second SLA"
       },
       {
         "letter": "B",
-        "text": "Set a timeout that fits within the 2-second SLA"
+        "text": "Increase the Experience API's worker size"
       },
       {
         "letter": "C",
@@ -17059,16 +16560,16 @@ window.MCPA_QUESTIONS = [
         "text": "Retry the Process API call five times before responding"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. Timeouts are the first fault-tolerance measure for API invocations. They should be set as low as possible and in line with the API client's own SLA, so that a slow or hung dependency does not cause the client to fail its consumers.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Timeouts are the first fault-tolerance measure for API invocations. They should be set as low as possible and in line with the API client's own SLA, so that a slow or hung dependency does not cause the client to fail its consumers.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "More CPU and memory do not shorten the time spent waiting for a hung dependency."
-      },
-      "B": {
         "type": "Correct",
         "text": "A timeout stops waiting for a hung call and lets the client respond in time."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "More CPU and memory do not shorten the time spent waiting for a hung dependency."
       },
       "C": {
         "type": "Incorrect",
@@ -17091,8 +16592,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-276",
-    "number": 276,
+    "id": "q-272",
+    "number": 272,
     "title": "API Quality Goals - Retrying transient failures",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17103,11 +16604,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Retry a limited number of times with a delay between attempts"
+        "text": "Retry by calling a different HTTP method on the same resource"
       },
       {
         "letter": "B",
-        "text": "Retry by calling a different HTTP method on the same resource"
+        "text": "Retry a limited number of times with a delay between attempts"
       },
       {
         "letter": "C",
@@ -17118,16 +16619,16 @@ window.MCPA_QUESTIONS = [
         "text": "Retry immediately and continuously until the call succeeds"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. Retries help when failures are transient, but they should be limited and spaced out, and only applied to operations that are safe to repeat. In Mule applications, the Until Successful scope supports a maximum number of retries and a delay between attempts.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Retries help when failures are transient, but they should be limited and spaced out, and only applied to operations that are safe to repeat. In Mule applications, the Until Successful scope supports a maximum number of retries and a delay between attempts.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Limited, spaced retries can overcome transient failures without overloading the API."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "Changing the method changes the meaning of the request."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Limited, spaced retries can overcome transient failures without overloading the API."
       },
       "C": {
         "type": "Incorrect",
@@ -17150,8 +16651,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-277",
-    "number": 277,
+    "id": "q-273",
+    "number": 273,
     "title": "API Quality Goals - Retries and non-idempotent operations",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17166,35 +16667,35 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "An idempotency key that lets the API detect repeats"
-      },
-      {
-        "letter": "C",
         "text": "A Spike Control policy on the Payments API"
       },
       {
-        "letter": "D",
+        "letter": "C",
         "text": "A longer cache time-to-live on the Payments API"
+      },
+      {
+        "letter": "D",
+        "text": "An idempotency key that lets the API detect repeats"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. Retries are safe only for idempotent operations. Methods such as GET, PUT, and DELETE are idempotent, but POST is not, so retrying a POST can create duplicates. Before retrying, the API must be able to detect repeated requests, for example through a unique ID supplied by the client and stored by the API.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Retries are safe only for idempotent operations. Methods such as GET, PUT, and DELETE are idempotent, but POST is not, so retrying a POST can create duplicates. Before retrying, the API must be able to detect repeated requests, for example through a unique ID supplied by the client and stored by the API.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "POST is not idempotent; repeating it can create duplicate resources."
       },
       "B": {
-        "type": "Correct",
-        "text": "Without duplicate detection, a retried POST may create a second payment."
-      },
-      "C": {
         "type": "Incorrect",
         "text": "Spike Control smooths traffic and does not detect duplicate requests."
       },
-      "D": {
+      "C": {
         "type": "Incorrect",
         "text": "Caching does not prevent duplicate creation by POST requests."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Without duplicate detection, a retried POST may create a second payment."
       }
     },
     "references": {
@@ -17209,8 +16710,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-278",
-    "number": 278,
+    "id": "q-274",
+    "number": 274,
     "title": "API Quality Goals - Stop calling a failing API",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17268,8 +16769,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-279",
-    "number": 279,
+    "id": "q-275",
+    "number": 275,
     "title": "API Quality Goals - Fallback options",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17280,39 +16781,39 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Block the page until the Process API recovers"
+        "text": "Return a default list of best-selling products"
       },
       {
         "letter": "B",
-        "text": "Return HTTP 500 so the page shows an error banner"
+        "text": "Block the page until the Process API recovers"
       },
       {
         "letter": "C",
-        "text": "Call the Process API repeatedly until it succeeds"
+        "text": "Return HTTP 500 so the page shows an error banner"
       },
       {
         "letter": "D",
-        "text": "Return a default list of best-selling products"
+        "text": "Call the Process API repeatedly until it succeeds"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. Fallback is a fault-tolerance strategy in which the client uses an alternative when an API invocation fails. Options include calling an alternative API, returning a previously cached result, or returning a static default, such as a list of best-selling products.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Fallback is a fault-tolerance strategy in which the client uses an alternative when an API invocation fails. Options include calling an alternative API, returning a previously cached result, or returning a static default, such as a list of best-selling products.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Waiting indefinitely breaks the user experience."
+        "type": "Correct",
+        "text": "A static or default result keeps the page working when the API fails."
       },
       "B": {
         "type": "Incorrect",
-        "text": "The requirement is that the page still loads successfully."
+        "text": "Waiting indefinitely breaks the user experience."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Repeated calls delay the page and do not guarantee a response."
+        "text": "The requirement is that the page still loads successfully."
       },
       "D": {
-        "type": "Correct",
-        "text": "A static or default result keeps the page working when the API fails."
+        "type": "Incorrect",
+        "text": "Repeated calls delay the page and do not guarantee a response."
       }
     },
     "references": {
@@ -17327,8 +16828,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-280",
-    "number": 280,
+    "id": "q-276",
+    "number": 276,
     "title": "API Quality Goals - Handling rate-limit responses",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17339,11 +16840,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Back off and retry after the limit window resets"
+        "text": "Treat 429 as a permanent failure and stop calling the API"
       },
       {
         "letter": "B",
-        "text": "Treat 429 as a permanent failure and stop calling the API"
+        "text": "Back off and retry after the limit window resets"
       },
       {
         "letter": "C",
@@ -17354,16 +16855,16 @@ window.MCPA_QUESTIONS = [
         "text": "Create additional client applications to multiply the allowed quota"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. A Rate Limiting policy rejects requests that exceed the configured quota with HTTP 429 and can expose rate-limit headers. Resilient clients treat this as a temporary condition and back off until the window resets, rather than retrying immediately or giving up.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. A Rate Limiting policy rejects requests that exceed the configured quota with HTTP 429 and can expose rate-limit headers. Resilient clients treat this as a temporary condition and back off until the window resets, rather than retrying immediately or giving up.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "429 means the quota is exhausted, so the client should wait rather than retry immediately."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "The limit resets after its window, so the condition is temporary."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "429 means the quota is exhausted, so the client should wait rather than retry immediately."
       },
       "C": {
         "type": "Incorrect",
@@ -17386,8 +16887,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-281",
-    "number": 281,
+    "id": "q-277",
+    "number": 277,
     "title": "API Quality Goals - Retries in a layered network",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17402,35 +16903,35 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Retries multiply across layers and overload the backend"
-      },
-      {
-        "letter": "C",
         "text": "Retries are ignored by Mule runtime when an outage is detected"
       },
       {
-        "letter": "D",
+        "letter": "C",
         "text": "Retries cancel each other out, so the backend receives fewer calls"
+      },
+      {
+        "letter": "D",
+        "text": "Retries multiply across layers and overload the backend"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. Retries at every layer of an application network multiply: three retries at three layers can produce many times the original number of calls. Retries should be limited, spaced out, and coordinated with timeouts and circuit breakers so that clients do not overwhelm a recovering dependency.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Retries at every layer of an application network multiply: three retries at three layers can produce many times the original number of calls. Retries should be limited, spaced out, and coordinated with timeouts and circuit breakers so that clients do not overwhelm a recovering dependency.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "Each layer's retry behavior is configured independently."
       },
       "B": {
-        "type": "Correct",
-        "text": "Each layer's retries multiply the calls reaching the backend."
-      },
-      "C": {
         "type": "Incorrect",
         "text": "Mule runtime executes configured retries regardless of the cause."
       },
-      "D": {
+      "C": {
         "type": "Incorrect",
         "text": "Nested retries add calls; they do not cancel out."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Each layer's retries multiply the calls reaching the backend."
       }
     },
     "references": {
@@ -17445,8 +16946,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-282",
-    "number": 282,
+    "id": "q-278",
+    "number": 278,
     "title": "API Quality Goals - Choose two client-side strategies",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17515,8 +17016,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-283",
-    "number": 283,
+    "id": "q-279",
+    "number": 279,
     "title": "API Quality Goals - Alternative API as fallback",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17535,15 +17036,15 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Return HTTP 503 and ask the client to retry tomorrow"
+        "text": "Call the second carrier's API as a fallback"
       },
       {
         "letter": "D",
-        "text": "Call the second carrier's API as a fallback"
+        "text": "Return HTTP 503 and ask the client to retry tomorrow"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. One fallback option for fault-tolerant API invocations is to invoke an alternative API that provides an equivalent result. When the primary carrier's API fails, calling the second carrier's API gives the client a usable quote.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. One fallback option for fault-tolerant API invocations is to invoke an alternative API that provides an equivalent result. When the primary carrier's API fails, calling the second carrier's API gives the client a usable quote.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -17554,12 +17055,12 @@ window.MCPA_QUESTIONS = [
         "text": "Indefinite retries leave the client without a quote during an outage."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "The business wants a quote rather than an error."
-      },
-      "D": {
         "type": "Correct",
         "text": "An alternative API provides an equivalent result when the primary invocation fails."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "The business wants a quote rather than an error."
       }
     },
     "references": {
@@ -17574,8 +17075,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-284",
-    "number": 284,
+    "id": "q-280",
+    "number": 280,
     "title": "API Quality Goals - Protecting an API from sudden bursts",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17594,15 +17095,15 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Spike Control"
+        "text": "HTTP Caching"
       },
       {
         "letter": "D",
-        "text": "HTTP Caching"
+        "text": "Spike Control"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. The Spike Control policy protects an API implementation from traffic spikes by limiting the number of requests in a time window and delaying excess requests, with a configurable number of attempts, before rejecting them. This smooths bursts so that a fragile backend is not overwhelmed.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. The Spike Control policy protects an API implementation from traffic spikes by limiting the number of requests in a time window and delaying excess requests, with a configurable number of attempts, before rejecting them. This smooths bursts so that a fragile backend is not overwhelmed.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -17613,12 +17114,12 @@ window.MCPA_QUESTIONS = [
         "text": "Rate Limiting enforces a quota and rejects requests beyond it rather than smoothing them."
       },
       "C": {
-        "type": "Correct",
-        "text": "Spike Control queues excess requests for a short period and retries them, smoothing bursts."
-      },
-      "D": {
         "type": "Incorrect",
         "text": "Caching can reduce load for cacheable reads but does not shape bursts of requests."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Spike Control queues excess requests for a short period and retries them, smoothing bursts."
       }
     },
     "references": {
@@ -17633,8 +17134,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-285",
-    "number": 285,
+    "id": "q-281",
+    "number": 281,
     "title": "API Quality Goals - Scaling a CPU-bound API",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17692,8 +17193,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-286",
-    "number": 286,
+    "id": "q-282",
+    "number": 282,
     "title": "API Quality Goals - Backend is the bottleneck",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17751,8 +17252,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-287",
-    "number": 287,
+    "id": "q-283",
+    "number": 283,
     "title": "API Quality Goals - Latency of a single request",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17810,8 +17311,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-288",
-    "number": 288,
+    "id": "q-284",
+    "number": 284,
     "title": "API Quality Goals - Stateful in-memory sessions",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17822,39 +17323,39 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "The load balancer will refuse to route requests to more than one worker"
+        "text": "Carts may be missing when requests reach a different worker"
       },
       {
         "letter": "B",
-        "text": "Memory usage per worker will quadruple"
+        "text": "The load balancer will refuse to route requests to more than one worker"
       },
       {
         "letter": "C",
-        "text": "No problem, because CloudHub replicates worker memory automatically"
+        "text": "Memory usage per worker will quadruple"
       },
       {
         "letter": "D",
-        "text": "Carts may be missing when requests reach a different worker"
+        "text": "No problem, because CloudHub replicates worker memory automatically"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. Horizontal scaling works best for stateless API implementations. If state is kept in a single worker's memory, requests routed to other workers cannot see it. State should be moved to a shared store, such as a persistent object store or database, before scaling out.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Horizontal scaling works best for stateless API implementations. If state is kept in a single worker's memory, requests routed to other workers cannot see it. State should be moved to a shared store, such as a persistent object store or database, before scaling out.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Load balancers distribute requests across all available workers."
+        "type": "Correct",
+        "text": "In-memory state is local to one worker, but the load balancer can route requests anywhere."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Each worker still holds only the carts it has created."
+        "text": "Load balancers distribute requests across all available workers."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Worker memory is not replicated between workers."
+        "text": "Each worker still holds only the carts it has created."
       },
       "D": {
-        "type": "Correct",
-        "text": "In-memory state is local to one worker, but the load balancer can route requests anywhere."
+        "type": "Incorrect",
+        "text": "Worker memory is not replicated between workers."
       }
     },
     "references": {
@@ -17869,8 +17370,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-289",
-    "number": 289,
+    "id": "q-285",
+    "number": 285,
     "title": "API Quality Goals - Choose two: when scaling out helps",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17939,8 +17440,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-290",
-    "number": 290,
+    "id": "q-286",
+    "number": 286,
     "title": "API Quality Goals - Primary-node-only workloads",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17998,8 +17499,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-291",
-    "number": 291,
+    "id": "q-287",
+    "number": 287,
     "title": "API Quality Goals - Autoscaling CloudHub 2.0",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -18057,8 +17558,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-292",
-    "number": 292,
+    "id": "q-288",
+    "number": 288,
     "title": "API Quality Goals - Vertical versus horizontal scaling",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -18069,11 +17570,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Vertical scaling to a larger worker size"
+        "text": "Horizontal scaling to more workers of the same size"
       },
       {
         "letter": "B",
-        "text": "Horizontal scaling to more workers of the same size"
+        "text": "Vertical scaling to a larger worker size"
       },
       {
         "letter": "C",
@@ -18084,16 +17585,16 @@ window.MCPA_QUESTIONS = [
         "text": "Enabling the HTTP Caching policy"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. Horizontal scaling increases concurrent capacity but leaves the resources available to a single request unchanged. When individual requests need more memory or CPU than one instance provides, vertical scaling to a larger worker or replica size is required.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Horizontal scaling increases concurrent capacity but leaves the resources available to a single request unchanged. When individual requests need more memory or CPU than one instance provides, vertical scaling to a larger worker or replica size is required.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "More memory per worker lets each large request be processed."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "Each request still runs on one worker with the same memory limit."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "More memory per worker lets each large request be processed."
       },
       "C": {
         "type": "Incorrect",
@@ -18116,8 +17617,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-293",
-    "number": 293,
+    "id": "q-289",
+    "number": 289,
     "title": "API Quality Goals - Scaling and SLA-limited consumers",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -18175,8 +17676,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-294",
-    "number": 294,
+    "id": "q-290",
+    "number": 290,
     "title": "API Quality Goals - Which layer to scale",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -18234,8 +17735,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-295",
-    "number": 295,
+    "id": "q-291",
+    "number": 291,
     "title": "Monitoring Analyzing - Which Anypoint Platform feature provides a realtime",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18296,8 +17797,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-296",
-    "number": 296,
+    "id": "q-292",
+    "number": 292,
     "title": "Monitoring Analyzing - Which Anypoint capability stores Mule application logs",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18359,8 +17860,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-297",
-    "number": 297,
+    "id": "q-293",
+    "number": 293,
     "title": "Monitoring Analyzing - Which Anypoint Monitoring artifact lets architects build",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18421,8 +17922,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-298",
-    "number": 298,
+    "id": "q-294",
+    "number": 294,
     "title": "Monitoring Analyzing - Which capability is provided by Anypoint Visualizer",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18484,8 +17985,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-299",
-    "number": 299,
+    "id": "q-295",
+    "number": 295,
     "title": "Monitoring Analyzing - Which feature provides automatic notification when CloudHub",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18546,8 +18047,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-300",
-    "number": 300,
+    "id": "q-296",
+    "number": 296,
     "title": "Monitoring Analyzing - Which Anypoint feature is most useful for",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18608,8 +18109,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-301",
-    "number": 301,
+    "id": "q-297",
+    "number": 297,
     "title": "Monitoring Analyzing - Which feature in CloudHub measures and exposes",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18670,8 +18171,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-302",
-    "number": 302,
+    "id": "q-298",
+    "number": 298,
     "title": "Monitoring Analyzing - Which is the recommended way to expose",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18733,8 +18234,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-303",
-    "number": 303,
+    "id": "q-299",
+    "number": 299,
     "title": "API Monitoring - A logistics company needs to track API latency and usage across",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18811,8 +18312,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-304",
-    "number": 304,
+    "id": "q-300",
+    "number": 300,
     "title": "Monitoring - A manufacturing company wants real‑time visibility into",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18889,8 +18390,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-305",
-    "number": 305,
+    "id": "q-301",
+    "number": 301,
     "title": "API Monitoring - A logistics company with a 99.9% SLA requirement and a limited mo",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18970,8 +18471,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-306",
-    "number": 306,
+    "id": "q-302",
+    "number": 302,
     "title": "Monitoring - A regional healthcare provider handling protected patient data ne",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19048,8 +18549,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-307",
-    "number": 307,
+    "id": "q-303",
+    "number": 303,
     "title": "Logging Configuration - A logistics startup with a small Dev Ops crew discovers that erro",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19126,8 +18627,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-308",
-    "number": 308,
+    "id": "q-304",
+    "number": 304,
     "title": "Monitoring Deployment - A federal government agency is required to store all monitoring d",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19191,8 +18692,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-309",
-    "number": 309,
+    "id": "q-305",
+    "number": 305,
     "title": "Monitoring - A manufacturing plant’s ERP integration shows intermittent latenc",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19269,8 +18770,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-310",
-    "number": 310,
+    "id": "q-306",
+    "number": 306,
     "title": "API Monitoring - A fintech startup wants to set up real‑time alerts for API SLA br",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19347,8 +18848,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-311",
-    "number": 311,
+    "id": "q-307",
+    "number": 307,
     "title": "API Analytics - A large retail enterprise is rolling out API analytics across its",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19415,8 +18916,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-312",
-    "number": 312,
+    "id": "q-308",
+    "number": 308,
     "title": "Observability - A healthcare integration team must configure logging to retain au",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19484,8 +18985,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-313",
-    "number": 313,
+    "id": "q-309",
+    "number": 309,
     "title": "Audit Logging - A regional healthcare provider operates a patient‑record API that",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19549,8 +19050,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-314",
-    "number": 314,
+    "id": "q-310",
+    "number": 310,
     "title": "Logging and Monitoring - A large retail chain’s order‑processing flow has started returnin",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19627,8 +19128,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-315",
-    "number": 315,
+    "id": "q-311",
+    "number": 311,
     "title": "API Analytics - A federal agency is deploying a citizen-service portal on Anypoin",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19692,8 +19193,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "E"
   },
   {
-    "id": "q-316",
-    "number": 316,
+    "id": "q-312",
+    "number": 312,
     "title": "Performance Monitoring - A manufacturing company's ERP integration is experiencing latency",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19770,8 +19271,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-317",
-    "number": 317,
+    "id": "q-313",
+    "number": 313,
     "title": "API Monitoring & Governance - A hospital network runs dozens of APIs for patient data exchange ",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19839,8 +19340,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-318",
-    "number": 318,
+    "id": "q-314",
+    "number": 314,
     "title": "API Monitoring - A national retail chain wants real-time visibility into API usage",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19917,8 +19418,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-319",
-    "number": 319,
+    "id": "q-315",
+    "number": 315,
     "title": "Monitoring and Observability - Visualizer topology and policy troubleshooting",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19980,8 +19481,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-320",
-    "number": 320,
+    "id": "q-316",
+    "number": 316,
     "title": "Monitoring and Observability - CloudHub worker CPU alert",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20043,8 +19544,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-321",
-    "number": 321,
+    "id": "q-317",
+    "number": 317,
     "title": "Monitoring and Observability - External compliant application logging",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20106,8 +19607,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-322",
-    "number": 322,
+    "id": "q-318",
+    "number": 318,
     "title": "Monitoring and Observability - Scheduled external API tests",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20169,8 +19670,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-323",
-    "number": 323,
+    "id": "q-319",
+    "number": 319,
     "title": "Monitoring and Observability - Assigning Visualizer architecture layers",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20232,8 +19733,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-324",
-    "number": 324,
+    "id": "q-320",
+    "number": 320,
     "title": "Monitoring and Observability - Alerting on API client quota violations",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20295,8 +19796,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-325",
-    "number": 325,
+    "id": "q-321",
+    "number": 321,
     "title": "Monitoring and Observability - Geographic functional testing",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20358,8 +19859,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-326",
-    "number": 326,
+    "id": "q-322",
+    "number": 322,
     "title": "Monitoring and Observability - Custom business-logic notifications",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20421,8 +19922,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-327",
-    "number": 327,
+    "id": "q-323",
+    "number": 323,
     "title": "Monitoring and Observability - Long-term CloudHub log retention",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20484,8 +19985,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-328",
-    "number": 328,
+    "id": "q-324",
+    "number": 324,
     "title": "Monitoring and Observability - Cross-application metrics dashboard",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20547,8 +20048,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-329",
-    "number": 329,
+    "id": "q-325",
+    "number": 325,
     "title": "Monitoring and Observability - Environment visibility in Visualizer",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20610,8 +20111,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-330",
-    "number": 330,
+    "id": "q-326",
+    "number": 326,
     "title": "Monitoring and Observability - BDD API tests in CI/CD",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20674,8 +20175,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-331",
-    "number": 331,
+    "id": "q-327",
+    "number": 327,
     "title": "Monitoring and Observability - Troubleshooting cascading API failures",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20737,8 +20238,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-332",
-    "number": 332,
+    "id": "q-328",
+    "number": 328,
     "title": "Monitoring and Observability - Monitoring customer-hosted runtimes",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20800,8 +20301,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-333",
-    "number": 333,
+    "id": "q-329",
+    "number": 329,
     "title": "Monitoring and Observability - Tracking application deletion",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20863,8 +20364,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-334",
-    "number": 334,
+    "id": "q-330",
+    "number": 330,
     "title": "Monitoring and Observability - Supported Runtime Manager alert conditions",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20926,8 +20427,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-335",
-    "number": 335,
+    "id": "q-331",
+    "number": 331,
     "title": "Monitoring and Observability - Dynamic request logging without redeployment",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20989,8 +20490,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-336",
-    "number": 336,
+    "id": "q-332",
+    "number": 332,
     "title": "Monitoring and Observability - Runtime Fabric cluster log forwarding",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21052,8 +20553,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-337",
-    "number": 337,
+    "id": "q-333",
+    "number": 333,
     "title": "Monitoring and Observability - Diagnosing HTTP 429 responses",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21115,8 +20616,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-338",
-    "number": 338,
+    "id": "q-334",
+    "number": 334,
     "title": "Monitoring and Observability - Custom Visualizer labels",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21178,8 +20679,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-339",
-    "number": 339,
+    "id": "q-335",
+    "number": 335,
     "title": "Monitoring and Observability - Titanium log search capability",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21241,8 +20742,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-340",
-    "number": 340,
+    "id": "q-336",
+    "number": 336,
     "title": "Monitoring and Observability - CloudHub worker unresponsiveness",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21304,8 +20805,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-341",
-    "number": 341,
+    "id": "q-337",
+    "number": 337,
     "title": "Monitoring and Observability - Visualizer error indicator",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21354,8 +20855,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-342",
-    "number": 342,
+    "id": "q-338",
+    "number": 338,
     "title": "Monitoring and Observability - Registering an implementation with API Manager",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21417,8 +20918,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-343",
-    "number": 343,
+    "id": "q-339",
+    "number": 339,
     "title": "Monitoring and Observability - Configuring the Visualizer node display name",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21480,8 +20981,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-344",
-    "number": 344,
+    "id": "q-340",
+    "number": 340,
     "title": "Monitoring and Observability - Visualizer policy compliance indicator",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21543,8 +21044,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-345",
-    "number": 345,
+    "id": "q-341",
+    "number": 341,
     "title": "Monitoring and Observability - Visualizer tags set via application properties",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21606,8 +21107,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-346",
-    "number": 346,
+    "id": "q-342",
+    "number": 342,
     "title": "Monitoring and Observability - Visualizer edges based on recent traffic",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21669,8 +21170,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-347",
-    "number": 347,
+    "id": "q-343",
+    "number": 343,
     "title": "Monitoring and Observability - Visualizer Editor permission for defined views",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
