@@ -1263,807 +1263,1809 @@ window.MCPA_QUESTIONS = [
   {
     "id": "q-022",
     "number": 22,
-    "title": "Org Platform Foundations - In Anypoint Platform what is the purpose",
+    "title": "Organizational Foundations - Purpose of a new C4E",
     "domain": "Establishing organizational and platform foundations",
     "topics": [
-      "Business Groups Environments"
+      "C4E",
+      "IT Operating Model"
     ],
-    "prompt": "In Anypoint Platform, what is the purpose of organizing assets into business groups?",
+    "prompt": "A company's central integration team has a 9-month backlog of requests from the lines of business. Leadership agrees to set up a Center for Enablement (C4E). Which mandate best reflects how a C4E should operate?",
     "options": [
       {
         "letter": "A",
-        "text": "To partition the platform by Mule runtime version"
+        "text": "Approve every API design before any team may start implementation, regardless of its scope"
       },
       {
         "letter": "B",
-        "text": "To provide a hierarchy with isolated user, environment, and asset boundaries"
+        "text": "Focus solely on selecting and procuring integration tools, leaving delivery practices to each team"
       },
       {
         "letter": "C",
-        "text": "To replace API policies"
+        "text": "Take over all integration delivery from the LoB teams so that every API is built by the same experts"
       },
       {
         "letter": "D",
-        "text": "To increase vCore capacity automatically"
+        "text": "Enable LoB teams to deliver their own projects by providing reusable assets, standards, and guidance"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Business groups create a hierarchy that isolates users, environments, entitlements (vCores, static IPs), and assets. They mirror an organization's structure (e.g., by line of business or subsidiary) and let the master org delegate control without exposing other groups' resources.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. A Center for Enablement is a cross-functional team that productizes, publishes, and harvests reusable assets and best practices so that lines of business and other teams can deliver projects themselves. Unlike a traditional center of excellence that centralizes delivery, a C4E focuses on enablement and self-service, which is how it helps close the IT delivery gap.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Runtime versions are an attribute of deployments, not a business-group property."
+        "text": "Heavy approval gates slow teams down; a C4E relies on enablement and lightweight governance."
       },
       "B": {
-        "type": "Correct",
-        "text": "To provide a hierarchy with isolated user, environment, and asset boundaries"
+        "type": "Incorrect",
+        "text": "A C4E covers assets, best practices, and enablement, not just tooling decisions."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Policies are applied in API Manager; business groups are an organizational construct."
+        "text": "Centralizing all delivery recreates the backlog that caused the problem in the first place."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "vCore entitlements must be allocated explicitly to a business group; they do not auto-scale."
+        "type": "Correct",
+        "text": "A C4E shifts central IT from delivering every project to enabling others to self-serve."
       }
     },
     "references": {
       "primary": {
-        "title": "Access Management — Business Group Hierarchies, Environments, and Asset Boundaries",
-        "url": "https://docs.mulesoft.com/access-management/business-groups#business-group-hierarchy"
+        "title": "Salesforce Blog — What Is a Center for Enablement (C4E)?",
+        "url": "https://www.salesforce.com/blog/what-is-a-center-for-enablement/"
       },
       "architectureGuide": {
-        "title": "Managing Environments for Multi-Tier Delivery in Anypoint Platform",
-        "url": "https://docs.mulesoft.com/access-management/environments#types-of-environments"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+        "title": "MuleSoft Whitepaper — API-led connectivity",
+        "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
     }
   },
   {
     "id": "q-023",
     "number": 23,
-    "title": "Org Platform Foundations - Which entitlement model determines how many vCores",
+    "title": "Organizational Foundations - Primary KPI for a C4E",
     "domain": "Establishing organizational and platform foundations",
     "topics": [
-      "Business Groups Environments",
-      "Vcores Capacity"
+      "C4E",
+      "KPIs"
     ],
-    "prompt": "Which entitlement model determines how many vCores a business group can deploy to CloudHub?",
+    "prompt": "Six months after establishing a C4E, the CIO wants one metric that best shows whether the C4E is achieving its goal of building a reusable application network. Which KPI is most appropriate?",
     "options": [
       {
         "letter": "A",
-        "text": "The vCore allocation assigned to the business group by the master organization"
+        "text": "The number of hours C4E members spend in project steering meetings"
       },
       {
         "letter": "B",
-        "text": "The number of users in the business group"
+        "text": "The number of consumers reusing each API published in Exchange"
       },
       {
         "letter": "C",
-        "text": "The number of APIs published in Exchange"
+        "text": "The total lines of code written by the C4E team members each month"
       },
       {
         "letter": "D",
-        "text": "The Mule runtime version"
+        "text": "The number of servers provisioned for the integration platform"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "vCore entitlements are assigned by the master organization to business groups (and within them to environments). Apps deployed cannot exceed the business group's allocation. Users, published APIs, and runtime versions do not change vCore entitlement.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. C4E success is measured by outcomes such as reuse and adoption, not by the C4E's own output. Metrics like the number of consumers per API, Exchange asset consumption, and how many teams are delivering with platform assets show whether the application network is growing through self-service and reuse.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "The vCore allocation assigned to the business group by the master organization"
+        "type": "Incorrect",
+        "text": "Time spent in meetings is an activity measure, not an outcome measure."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Users and entitlements are independent allocations."
+        "type": "Correct",
+        "text": "Reuse of published assets directly measures whether the application network is delivering value."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Published assets in Exchange do not change vCore allocation."
+        "text": "Output volume of the C4E itself says nothing about enablement or reuse by others."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Runtime versions are properties of deployed apps, not entitlements."
+        "text": "Infrastructure size does not indicate whether assets are being reused."
       }
     },
     "references": {
       "primary": {
-        "title": "Access Management — Business Group Entitlements & vCore Allocations",
-        "url": "https://docs.mulesoft.com/access-management/business-groups#business-group-hierarchy"
+        "title": "MuleSoft Blog — Reusable KPIs for reusable APIs",
+        "url": "https://blogs.mulesoft.com/api-integration/strategy/build-reusable-apis-track-kpis/"
       },
       "architectureGuide": {
-        "title": "CloudHub Architecture — Sizing Worker vCores for Delivery Teams",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#cloudhub-workers"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+        "title": "MuleSoft Blog — Integration Analytics: From Definition to KPI Dashboard",
+        "url": "https://blogs.mulesoft.com/api-integration/strategy/integration-analytics-dashboard/"
       }
     }
   },
   {
     "id": "q-024",
     "number": 24,
-    "title": "Org Platform Foundations - Which Anypoint Platform component governs which users",
+    "title": "Organizational Foundations - Choose two C4E KPIs",
     "domain": "Establishing organizational and platform foundations",
     "topics": [
-      "Rbac Permissions"
+      "C4E",
+      "KPIs"
     ],
-    "prompt": "Which Anypoint Platform component governs which users can deploy applications, manage APIs, or configure environments?",
+    "prompt": "A C4E lead is building a dashboard to report the C4E's progress to executives. Which two KPIs are most appropriate? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "Access Management roles and permissions"
+        "text": "The number of lines of business actively delivering projects on Anypoint Platform"
       },
       {
         "letter": "B",
-        "text": "Anypoint MQ ACLs"
+        "text": "The number of Mule runtime versions installed across environments"
       },
       {
         "letter": "C",
-        "text": "RAML traits"
+        "text": "The percentage of projects delivered exclusively by the C4E team"
       },
       {
         "letter": "D",
-        "text": "Object Store keys"
+        "text": "The number of support tickets closed personally by C4E members"
+      },
+      {
+        "letter": "E",
+        "text": "The reuse rate of APIs and assets published in Anypoint Exchange"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Access Management defines users, groups, roles (built-in like Organization Administrator, Environment Administrator, plus custom roles), and permissions per business group and environment. MQ ACLs control queue access only; RAML traits are spec-level reuse; Object Store keys are app-level data.",
+    "correctAnswers": [
+      "A",
+      "E"
+    ],
+    "explanation": "Correct answers: A and E. Typical C4E KPIs measure adoption and reuse: how many lines of business use the platform, how many assets are published and consumed in Exchange, how many consumers each API has, and how project delivery speed improves. Metrics that measure work done by the C4E itself do not reflect its enabling role.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Access Management roles and permissions"
+        "text": "Broad LoB adoption shows the C4E is enabling teams beyond central IT."
       },
       "B": {
         "type": "Incorrect",
-        "text": "MQ ACLs only govern message-broker access, not platform RBAC."
+        "text": "Version counts are an operational detail, not a measure of C4E success."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Traits describe API behavior in RAML, not user permissions."
+        "text": "A rising share of C4E-delivered projects indicates centralization, not enablement."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Object Store keys are application data, not RBAC subjects."
+        "text": "A C4E should enable self-service rather than measure how much work it does itself."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "Reuse is the core value of an application network and a key C4E outcome."
       }
     },
     "references": {
       "primary": {
-        "title": "Access Management — Roles, Scopes, and Permissions Configuration",
-        "url": "https://docs.mulesoft.com/access-management/roles#default-roles-and-permission-scopes"
+        "title": "MuleSoft Blog — Integration Analytics: From Definition to KPI Dashboard",
+        "url": "https://blogs.mulesoft.com/api-integration/strategy/integration-analytics-dashboard/"
       },
       "architectureGuide": {
-        "title": "Single Sign-On (SSO) & External Identity Providers in Anypoint Platform",
-        "url": "https://docs.mulesoft.com/access-management/external-identity#managing-users-external-identity"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+        "title": "Salesforce Blog — What Is a Center for Enablement (C4E)?",
+        "url": "https://www.salesforce.com/blog/what-is-a-center-for-enablement/"
       }
     }
   },
   {
     "id": "q-025",
     "number": 25,
-    "title": "Org Platform Foundations - What is the correct interpretation of an",
+    "title": "Organizational Foundations - Starting a C4E",
     "domain": "Establishing organizational and platform foundations",
     "topics": [
-      "Business Groups Environments"
+      "C4E",
+      "Adoption"
     ],
-    "prompt": "What is the correct interpretation of an API's 'environment' in Anypoint Platform?",
+    "prompt": "A company is starting its MuleSoft journey and wants to establish a C4E without delaying its first strategic project. What is the recommended approach?",
     "options": [
       {
         "letter": "A",
-        "text": "A separate billing org"
+        "text": "Hire an external team to build every API so that the C4E only has to approve deliverables"
       },
       {
         "letter": "B",
-        "text": "A deployment target boundary (e.g., Sandbox, Production) inside a business group, with isolated apps and API instances"
+        "text": "Spend a year defining standards for every possible use case before any project begins"
       },
       {
         "letter": "C",
-        "text": "A RAML annotation only"
+        "text": "Start small alongside the first projects, harvest reusable assets, and grow"
       },
       {
         "letter": "D",
-        "text": "A type of policy"
+        "text": "Wait until at least fifty APIs exist and then form a C4E to clean them up"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Environments (Sandbox, Production, plus optional custom environments) are deployment boundaries inside a business group. Apps, API instances, contracts, and entitlements are scoped per environment, enabling promotion across SDLC stages.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. A C4E is typically established incrementally. It starts with a small cross-functional team tied to initial projects, harvests reusable assets and practices from those projects, publishes them in Exchange, and expands as more lines of business come on board. This approach demonstrates value quickly and builds momentum.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Billing happens at the master org / business group level, not per environment."
+        "text": "Outsourcing all delivery does not build the internal capability that a C4E is meant to create."
       },
       "B": {
-        "type": "Correct",
-        "text": "A deployment target boundary (e.g., Sandbox, Production) inside a business group, with isolated apps and API instances"
+        "type": "Incorrect",
+        "text": "Long upfront standardization delays value and produces standards untested by real projects."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Environments are runtime boundaries, not RAML annotations."
+        "type": "Correct",
+        "text": "Starting small and harvesting assets from real projects lets the C4E show value early and scale with demand."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Policies are applied within environments; environments are not policies."
+        "text": "Forming the C4E late means early APIs are built without shared practices or reuse in mind."
       }
     },
     "references": {
       "primary": {
-        "title": "Access Management — Environment Types (Sandbox, Production) and Deployment Boundaries",
-        "url": "https://docs.mulesoft.com/access-management/environments#types-of-environments"
+        "title": "Salesforce Blog — What Is a Center for Enablement (C4E)?",
+        "url": "https://www.salesforce.com/blog/what-is-a-center-for-enablement/"
       },
       "architectureGuide": {
-        "title": "Managing Environments for Multi-Tier Delivery in Anypoint Platform",
-        "url": "https://docs.mulesoft.com/access-management/environments#types-of-environments"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+        "title": "Trailhead — Explore MuleSoft Catalyst Delivery Methodology",
+        "url": "https://trailhead.salesforce.com/content/learn/modules/mulesoft-catalyst-playbooks/learn-about-the-mulesoft-catalyst-delivery-methodology"
       }
     }
   },
   {
     "id": "q-026",
     "number": 26,
-    "title": "Org Platform Foundations - Which Anypoint Platform mechanism lets a single",
+    "title": "Organizational Foundations - Automating KPI collection",
     "domain": "Establishing organizational and platform foundations",
     "topics": [
-      "Exchange Asset Management",
-      "Rbac Permissions"
+      "C4E",
+      "KPIs"
     ],
-    "prompt": "Which Anypoint Platform mechanism lets a single business group's master organization centrally enforce that all newly published assets in subsidiary business groups have a specific tag or category?",
+    "prompt": "A C4E wants to report monthly on the number of published assets, the number of managed APIs, the number of client applications, and the number of deployed applications per business group, without manual counting. What is the most suitable approach?",
     "options": [
       {
         "letter": "A",
-        "text": "Per-asset RAML annotations"
+        "text": "Ask every project team to fill in a monthly spreadsheet with the counts"
       },
       {
         "letter": "B",
-        "text": "Anypoint Platform governance/Exchange asset standards (with custom asset taxonomy and review)"
+        "text": "Pull the metrics from the Exchange, API Manager, and Runtime Manager APIs"
       },
       {
         "letter": "C",
-        "text": "Object Store keys"
+        "text": "Count the number of API specifications stored in the source code repository"
       },
       {
         "letter": "D",
-        "text": "Custom JWT claims"
+        "text": "Parse the Mule application logs from every runtime to infer the counts"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Centralized asset standards rely on Exchange's taxonomy/categorization, plus the master organization's review and governance practices (and tools like Anypoint API Governance) to enforce required tags or quality standards on assets. Per-asset annotations alone, Object Store keys, or JWT claims do not enforce taxonomy.",
+    "explanation": "Correct answer: B. Anypoint Platform exposes data about assets, managed APIs, client applications, and deployments through its platform APIs. MuleSoft has published approaches such as the Metrics Accelerator that use these APIs to compute platform metrics and feed dashboards, letting a C4E track KPIs automatically and consistently.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "RAML annotations describe an API; they do not enforce taxonomy."
+        "text": "Manual reporting is slow, inconsistent, and exactly what the C4E wants to avoid."
       },
       "B": {
         "type": "Correct",
-        "text": "Anypoint Platform governance/Exchange asset standards (with custom asset taxonomy and review)"
+        "text": "Anypoint Platform exposes this information through APIs, so it can be gathered automatically into a dashboard."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Object Store is runtime data."
+        "text": "Repository contents do not show managed APIs, contracts, or deployments."
       },
       "D": {
         "type": "Incorrect",
-        "text": "JWT claims describe access tokens, not asset metadata."
+        "text": "Logs record runtime events, not the inventory of assets, APIs, and contracts."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — Centrally Governing and Enforcing Asset Standards & Taxonomy",
-        "url": "https://docs.mulesoft.com/exchange/#view-assets-by-business-group"
+        "title": "MuleSoft Blog — Integration Analytics: From Definition to KPI Dashboard",
+        "url": "https://blogs.mulesoft.com/api-integration/strategy/integration-analytics-dashboard/"
       },
       "architectureGuide": {
-        "title": "Access Management — Business Group Hierarchies and Resource Governance",
-        "url": "https://docs.mulesoft.com/access-management/business-groups#business-group-hierarchy"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+        "title": "MuleSoft Blog — Reusable KPIs for reusable APIs",
+        "url": "https://blogs.mulesoft.com/api-integration/strategy/build-reusable-apis-track-kpis/"
       }
     }
   },
   {
     "id": "q-027",
     "number": 27,
-    "title": "Org Platform Foundations - Which combination is correct about API instances",
+    "title": "Organizational Foundations - C4E versus traditional CoE",
     "domain": "Establishing organizational and platform foundations",
     "topics": [
-      "Business Groups Environments",
-      "Api Lifecycle"
+      "C4E",
+      "Center of Excellence"
     ],
-    "prompt": "Which combination is correct about API instances and their environments in API Manager?",
+    "prompt": "An executive asks how a C4E differs from the Integration Competency Center (ICC) the company ran in the past. Which statement best describes the difference?",
     "options": [
       {
         "letter": "A",
-        "text": "One API spec maps to one instance globally"
+        "text": "An ICC is staffed by business users, while a C4E is staffed only by infrastructure engineers"
       },
       {
         "letter": "B",
-        "text": "An API spec can have separate API instances per environment (e.g., Sandbox and Production), each with its own implementation URL and policies"
+        "text": "An ICC uses governance, while a C4E has no governance responsibilities at all"
       },
       {
         "letter": "C",
-        "text": "Instances are not associated with environments"
+        "text": "An ICC focuses on APIs, while a C4E focuses only on batch and file integrations"
       },
       {
         "letter": "D",
-        "text": "Instances are managed in Exchange, not API Manager"
+        "text": "An ICC delivers centrally; a C4E enables distributed teams to deliver and reuse"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "An API spec in Exchange can have one API instance per environment (Sandbox, Production, custom) in API Manager, each with its own implementation URI, contracts, and policies. This supports SDLC isolation.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Traditional ICCs or centers of excellence concentrate integration delivery in one central team, which often becomes a bottleneck. A C4E is a cross-functional team that enables lines of business to deliver themselves, by producing reusable assets, best practices, and lightweight governance and by measuring success through adoption and reuse.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Multi-environment instances are the standard pattern."
+        "text": "A C4E is cross-functional and includes business and IT roles."
       },
       "B": {
-        "type": "Correct",
-        "text": "An API spec can have separate API instances per environment (e.g., Sandbox and Production), each with its own implementation URL and policies"
+        "type": "Incorrect",
+        "text": "A C4E still defines standards and lightweight governance to keep the network consistent."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Instances are scoped to an environment."
+        "text": "The difference is the operating model, not the integration style."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Instances are managed in API Manager; specs live in Exchange."
+        "type": "Correct",
+        "text": "The C4E's role is enablement and reuse rather than central delivery."
       }
     },
     "references": {
       "primary": {
-        "title": "Access Management — Scoping API Instances & Implementation URLs Per Environment",
-        "url": "https://docs.mulesoft.com/access-management/environments#types-of-environments"
+        "title": "Salesforce Blog — What Is a Center for Enablement (C4E)?",
+        "url": "https://www.salesforce.com/blog/what-is-a-center-for-enablement/"
       },
       "architectureGuide": {
-        "title": "Defining SLA Tiers and Managing API Consumer Contracts in API Manager",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/defining-sla-tiers#defining-a-tier"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+        "title": "MuleSoft Whitepaper — API-led connectivity",
+        "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
     }
   },
   {
     "id": "q-028",
     "number": 28,
-    "title": "Org Platform Foundations - Which is the correct understanding of API",
+    "title": "Organizational Foundations - Catalyst pillars",
     "domain": "Establishing organizational and platform foundations",
     "topics": [
-      "C4E",
-      "Exchange Asset Management"
+      "MuleSoft Catalyst",
+      "Methodology"
     ],
-    "prompt": "Which is the correct understanding of API spec ownership in a federated, multi-business-group deployment?",
+    "prompt": "A program manager asks how MuleSoft Catalyst structures its methodology. Which answer is correct?",
     "options": [
       {
         "letter": "A",
-        "text": "Specs are owned by Anypoint Platform vendors"
+        "text": "Business outcomes, technology delivery, and organizational enablement"
       },
       {
         "letter": "B",
-        "text": "Specs are typically owned by the producing line-of-business team in their business group, with central C4E governance ensuring standards"
+        "text": "Around four phases: requirements, design, build, and production support"
       },
       {
         "letter": "C",
-        "text": "Specs are owned by API consumers"
+        "text": "Around two tracks: platform installation and developer certification"
       },
       {
         "letter": "D",
-        "text": "Specs cannot cross business groups"
+        "text": "Around the three API-led layers: System, Process, and Experience"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "In federated operating models, the producing LoB team owns its specs while a central C4E enforces standards (taxonomy, naming, security, response shapes). Specs can be shared across business groups via Exchange so consumers in other groups can request access.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. MuleSoft Catalyst is an outcome-based delivery methodology structured around three pillars: business outcomes (defining outcomes with clear KPIs and aligning stakeholders), technology delivery (getting Anypoint Platform running and building APIs and integrations), and organizational enablement (making sure the organization is ready to use and adopt the platform).",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Vendors do not own customer-built specs."
+        "type": "Correct",
+        "text": "Catalyst aligns technology initiatives to business objectives using these three pillars."
       },
       "B": {
-        "type": "Correct",
-        "text": "Specs are typically owned by the producing line-of-business team in their business group, with central C4E governance ensuring standards"
+        "type": "Incorrect",
+        "text": "These are generic project phases, not the structure of the Catalyst methodology."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Consumers consume specs; they do not own them."
+        "text": "Catalyst covers far more, including business outcomes and organizational enablement."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Specs are commonly shared across business groups via Exchange."
+        "text": "These are API-led connectivity layers, not Catalyst pillars."
       }
     },
     "references": {
       "primary": {
-        "title": "Access Management — Business Group Spec Ownership & Federated Governance",
-        "url": "https://docs.mulesoft.com/access-management/business-groups#business-group-hierarchy"
+        "title": "MuleSoft Catalyst — Consulting and Methodology",
+        "url": "https://www.mulesoft.com/support-and-services/consulting"
       },
       "architectureGuide": {
-        "title": "Salesforce & MuleSoft Guide — Center for Enablement (C4E) Operating Model",
-        "url": "https://www.salesforce.com/blog/what-is-a-center-for-enablement/"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+        "title": "Trailhead — Explore MuleSoft Catalyst Delivery Methodology",
+        "url": "https://trailhead.salesforce.com/content/learn/modules/mulesoft-catalyst-playbooks/learn-about-the-mulesoft-catalyst-delivery-methodology"
       }
     }
   },
   {
     "id": "q-029",
     "number": 29,
-    "title": "Org Platform Foundations - Which capability should gate API spec",
+    "title": "Organizational Foundations - Finding Catalyst best practices",
     "domain": "Establishing organizational and platform foundations",
     "topics": [
-      "Api Governance",
-      "Cicd Maven"
+      "MuleSoft Catalyst",
+      "Knowledge Hub"
     ],
-    "prompt": "A platform team wants every RAML or OAS change checked against enterprise standards before merge. Which MuleSoft capability should be integrated into the CI/CD pipeline?",
+    "prompt": "A newly formed C4E wants to use MuleSoft's proven playbooks, best practices, and templates rather than inventing its own operating procedures. Where should it look?",
     "options": [
       {
         "letter": "A",
-        "text": "Run Anypoint API Governance ruleset validation through the CLI or APIs as a pipeline gate"
+        "text": "API Manager policy templates"
       },
       {
         "letter": "B",
-        "text": "Wait for Runtime Manager alerts after deployment"
+        "text": "Anypoint Monitoring dashboards"
       },
       {
         "letter": "C",
-        "text": "Rely only on Exchange comments from reviewers"
+        "text": "Runtime Manager application settings"
       },
       {
         "letter": "D",
-        "text": "Apply an SLA tier after the API is in production"
+        "text": "MuleSoft Catalyst Knowledge Hub"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Anypoint API Governance can validate API specifications against organizational rulesets during CI/CD so non-compliant changes are blocked before publication or deployment. Runtime alerts, reviewer comments, and post-deployment SLA tiers are useful in other parts of the lifecycle but do not provide an automated pre-merge standards gate.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. MuleSoft Catalyst brings together a methodology, assets, and services. Its best practices, from playbooks to blueprints, are found in the Catalyst Knowledge Hub, while technical assets such as connectors, templates, and API fragments are available in Anypoint Exchange.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Run Anypoint API Governance ruleset validation through the CLI or APIs as a pipeline gate"
+        "type": "Incorrect",
+        "text": "Policy templates configure runtime policies; they are not organizational best practices."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Runtime Manager surfaces operational events after deployment, not design-time standards conformance before merge."
+        "text": "Monitoring shows runtime metrics; it does not contain delivery playbooks."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Manual comments do not provide consistent, automated enforcement across every repository."
+        "text": "Runtime Manager deploys and manages applications, not methodology content."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "SLA tiers govern consumer access, not design-time API specification quality."
+        "type": "Correct",
+        "text": "Catalyst best practices, including playbooks and blueprints, are published in the Catalyst Knowledge Hub."
       }
     },
     "references": {
       "primary": {
-        "title": "CLI for API Governance — Automating Conformance Checks in CI/CD",
-        "url": "https://docs.mulesoft.com/anypoint-cli/latest/api-governance"
+        "title": "MuleSoft Catalyst — Consulting and Methodology",
+        "url": "https://www.mulesoft.com/support-and-services/consulting"
       },
       "architectureGuide": {
-        "title": "Anypoint API Governance Overview",
-        "url": "https://docs.mulesoft.com/api-governance/"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+        "title": "MuleSoft Catalyst",
+        "url": "https://www.mulesoft.com/catalyst"
       }
     }
   },
   {
     "id": "q-030",
     "number": 30,
-    "title": "Org Platform Foundations - Which API Governance capability provides portfoliowide",
+    "title": "Organizational Foundations - Business outcomes pillar",
     "domain": "Establishing organizational and platform foundations",
     "topics": [
-      "Api Governance",
-      "Compliance Reporting"
+      "MuleSoft Catalyst",
+      "Business Outcomes"
     ],
-    "prompt": "Which Anypoint capability gives architects a portfolio-wide view of governance coverage, conformance rates, and downloadable compliance reports across services?",
+    "prompt": "At the start of a MuleSoft program, executives cannot agree on what success looks like, and IT is building APIs without a link to business goals. Which Catalyst activity addresses this first?",
     "options": [
       {
         "letter": "A",
-        "text": "API Governance Dashboard"
+        "text": "Enroll all developers in certification training"
       },
       {
         "letter": "B",
-        "text": "Anypoint Visualizer"
+        "text": "Install Mule runtimes in every environment so teams can start building"
       },
       {
         "letter": "C",
-        "text": "Runtime Manager alerts"
+        "text": "Define business outcomes with KPIs and align stakeholders"
       },
       {
         "letter": "D",
-        "text": "Exchange comments"
+        "text": "Publish every existing integration to Exchange as an asset"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "The API Governance Dashboard centralizes visibility into how much of the portfolio is covered by governance and how well services conform to the active rulesets. Visualizer shows dependency topology, Runtime Manager focuses on operations, and Exchange comments are collaboration artifacts rather than compliance reporting.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. In MuleSoft Catalyst, the business outcomes pillar comes first: the organization identifies the outcomes it wants, defines KPIs to measure them, and aligns stakeholders. Technology delivery and organizational enablement are then organized to achieve those outcomes.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "API Governance Dashboard"
+        "type": "Incorrect",
+        "text": "Training is part of organizational enablement but does not define what success looks like."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Visualizer shows application and API relationships, not governance conformance metrics."
+        "text": "Platform setup is technology delivery and does not resolve the lack of agreed goals."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Runtime Manager alerts are operational notifications, not portfolio governance reports."
+        "type": "Correct",
+        "text": "The business outcomes pillar starts by defining outcomes with clear KPIs and aligning stakeholders."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Exchange comments are manual discussions and cannot provide portfolio-wide compliance analytics."
+        "text": "Publishing assets supports reuse but does not tie the program to business goals."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint API Governance Overview and Dashboard Metrics",
-        "url": "https://docs.mulesoft.com/api-governance/"
+        "title": "MuleSoft Catalyst — Consulting and Methodology",
+        "url": "https://www.mulesoft.com/support-and-services/consulting"
       },
       "architectureGuide": {
-        "title": "Getting Started with Anypoint API Governance",
-        "url": "https://docs.mulesoft.com/api-governance/get-started"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+        "title": "Trailhead — Explore MuleSoft Catalyst Delivery Methodology",
+        "url": "https://trailhead.salesforce.com/content/learn/modules/mulesoft-catalyst-playbooks/learn-about-the-mulesoft-catalyst-delivery-methodology"
       }
     }
   },
   {
     "id": "q-031",
     "number": 31,
-    "title": "Asset Management - A mid‑size manufacturing firm wants to create reusable Mule Soft",
+    "title": "Organizational Foundations - Benefit of Catalyst",
     "domain": "Establishing organizational and platform foundations",
     "topics": [
-      "Asset Management"
+      "MuleSoft Catalyst",
+      "Benefits"
     ],
-    "prompt": "A mid‑size manufacturing firm wants to create reusable Mule Soft assets (templates, connectors, and policies) that can be shared across three product lines while keeping operational overhead low and staying under a $80,000 annual budget. What is the MOST appropriate action?",
+    "prompt": "A company has purchased Anypoint Platform and asks what the main benefit of adopting the MuleSoft Catalyst approach would be. Which answer is most accurate?",
     "options": [
       {
         "letter": "A",
-        "text": "Purchase three separate Enterprise Anypoint Platform subscriptions (one per product line) to ensure complete isolation of environments."
+        "text": "An automated code generator that builds all APIs from business requirements"
       },
       {
         "letter": "B",
-        "text": "Adopt Mule Soft Community Edition for each product line and share assets manually through a Git repository."
+        "text": "An outcome-driven methodology, assets, and services that speed up ROI"
       },
       {
         "letter": "C",
-        "text": "Obtain a single Enterprise Anypoint Platform subscription and use a shared Anypoint Exchange to publish templates, connectors, and policies for all three product lines."
+        "text": "A separate runtime engine that runs Mule applications faster than Mule runtime"
       },
       {
         "letter": "D",
-        "text": "Develop a custom in‑house connector framework outside of Mule Soft to avoid any licensing fees."
-      },
-      {
-        "letter": "E",
-        "text": "Engage a Mule Soft partner to design and build the reusable assets as a fixed‑price professional services engagement."
-      },
-      {
-        "letter": "F",
-        "text": "Deploy the assets on an on‑premises Runtime Fabric to avoid subscription fees and share them via a network file share."
+        "text": "A licensing model that removes the need to size vCores or flows"
       }
     ],
-    "explanation": "The question tests knowledge of cost‑effective asset reuse and governance on the Anypoint Platform. The optimal strategy is to centralize reusable assets in a shared Exchange under a single Enterprise subscription, which provides versioning, policy enforcement, and low‑overhead management while staying within the $80,000 budget. Common misconceptions include assuming multiple isolated subscriptions reduce complexity, believing the free Community Edition offers sufficient sharing capabilities, or thinking a custom framework can replace Mule Soft's built‑in assets without added cost. Each distractor reflects a plausible but flawed approach that either raises costs, sacrifices governance, or adds unnecessary effort. Best practice for enterprises is to leverage a single, appropriately sized Anypoint Platform license with Exchange to maximize reuse, maintain consistent policies, and keep operational overhead minimal.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. MuleSoft Catalyst brings together an outcomes-driven methodology, customer-validated assets, and services from MuleSoft and partners to help organizations maximize ROI and drive transformation. Its value lies in aligning technology initiatives with business objectives and enabling the organization, not in providing additional runtime technology.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "This option is incorrect. Buying three separate Enterprise subscriptions would duplicate licensing costs, likely pushing the total well above the $80,000 budget. In addition, managing three distinct environments adds operational overhead, contradicting the firm’s goal of low maintenance and efficient reuse."
+        "text": "Catalyst provides guidance and assets but does not automatically generate implementations."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. Community Edition does not include Anypoint Exchange, so assets cannot be published and governed centrally, which defeats the purpose of reusable, policy‑driven assets. Moreover, the lack of commercial support and governance features makes it risky for a mid‑size enterprise, especially when compliance and security are concerns."
+        "type": "Correct",
+        "text": "Catalyst combines methodology, reusable assets, and services to align delivery with business outcomes."
       },
       "C": {
-        "type": "Correct",
-        "text": "This option is correct. A single Enterprise subscription provides access to Exchange, allowing teams to centrally publish and version reusable assets while maintaining governance and consistency. The shared environment reduces licensing costs, keeping the total under $80,000, and minimizes operational overhead by consolidating management into one platform."
+        "type": "Incorrect",
+        "text": "Catalyst is a methodology and services approach, not a runtime engine."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This option is incorrect. Building a proprietary framework replicates functionality that Mule Soft already offers, requiring significant development and maintenance effort that would likely exceed the budget. It also introduces integration risk and eliminates the benefits of Mule Soft’s proven connectors, policies, and governance capabilities."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. While a partner can deliver high‑quality assets, the fixed‑price engagement consumes a large portion of the $80,000 budget and does not provide a sustainable, ongoing governance model. The organization would still need to manage licensing and platform costs separately, and future changes would require additional spending."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. Runtime Fabric still requires an Enterprise subscription for platform capabilities, so subscription fees are not avoided. Sharing assets via a file share lacks version control, policy enforcement, and the collaborative features of Exchange, leading to higher operational overhead and potential compliance issues."
+        "text": "Catalyst does not change licensing or capacity planning."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — Discovering, Publishing, and Reusing Assets",
-        "url": "https://docs.mulesoft.com/exchange/#view-assets-by-business-group"
+        "title": "MuleSoft Catalyst — Consulting and Methodology",
+        "url": "https://www.mulesoft.com/support-and-services/consulting"
       },
       "architectureGuide": {
-        "title": "Access Management — Business Groups and Shared Resource Governance",
-        "url": "https://docs.mulesoft.com/access-management/business-groups#business-group-ownership"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+        "title": "MuleSoft Catalyst",
+        "url": "https://www.mulesoft.com/catalyst"
       }
-    },
-    "correctAnswer": "C"
+    }
   },
   {
     "id": "q-032",
     "number": 32,
-    "title": "API Governance and Access Management - A national retail chain is adopting Anypoint Platform to enable",
+    "title": "Organizational Foundations - Organizational enablement pillar",
     "domain": "Establishing organizational and platform foundations",
     "topics": [
-      "API Governance and Access Management"
+      "MuleSoft Catalyst",
+      "Organizational Enablement"
     ],
-    "prompt": "A national retail chain is adopting Anypoint Platform to enable business‑unit self‑service for new integrations, but its security office requires role‑based access controls and the organization has limited API governance maturity. Which TWO actions should be taken? (Select all correct answers)",
+    "prompt": "Which activity belongs to the organizational enablement pillar of MuleSoft Catalyst?",
     "options": [
       {
         "letter": "A",
-        "text": "Create a dedicated Business Group for each business unit and configure role‑based permissions via Anypoint Access Management."
+        "text": "Establishing a C4E, training, and internal support"
       },
       {
         "letter": "B",
-        "text": "Adopt a strict, enterprise‑wide API governance framework before any business units begin building APIs."
+        "text": "Configuring CloudHub 2.0 private spaces for production"
       },
       {
         "letter": "C",
-        "text": "Require all integration developers to undergo a manual security code review for each new API before it is published."
+        "text": "Implementing the first System API for the ERP"
       },
       {
         "letter": "D",
-        "text": "Turn off role‑based access controls and rely solely on perimeter firewalls to protect APIs."
-      },
-      {
-        "letter": "E",
-        "text": "Implement a lightweight, incremental governance approach—use Exchange for API cataloging and apply API Manager policies at the environment level, then mature governance as the program grows."
-      },
-      {
-        "letter": "F",
-        "text": "Integrate an external identity provider but bypass Anypoint's built‑in role management, assigning all users the same role in Anypoint."
+        "text": "Defining revenue targets for a new digital channel"
       }
     ],
-    "explanation": "The question tests the ability to balance self‑service integration with security and governance requirements on Anypoint Platform. Correct actions involve using Business Groups with role‑based permissions (option 1) and adopting a lightweight, incremental governance model that leverages Exchange and API Manager policies (option 5). Common misconceptions include thinking that a full‑scale governance framework must be in place before any development (option 2) or that manual code reviews are the only way to ensure security (option 3), both of which hinder agility. Disabling RBAC or using a single global role (options 4 and 6) ignore the platform’s built‑in capabilities to enforce least‑privilege access. In practice, organizations should start simple, enforce role‑based access at the group level, and evolve governance as maturity increases.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Organizational enablement focuses on making sure the organization can adopt and sustain the platform. In Catalyst this includes establishing a Center for Enablement, training and certification paths, and internal support models, complementing the business outcomes and technology delivery pillars.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "This option is correct. Anypoint Access Management lets you define Business Groups that isolate resources per unit and assign roles such as API Designer, API Manager, or Viewer. By scoping permissions to groups, the security office gets the required role‑based controls while still allowing units to self‑service within their sandbox."
+        "text": "These activities prepare the organization to use and adopt Anypoint Platform."
       },
       "B": {
         "type": "Incorrect",
-        "text": "This option is incorrect. Imposing a heavyweight governance model upfront can stall the self‑service initiative and contradict the limited maturity of the organization. Best practice is to start with a lightweight, incremental approach and mature the framework as teams gain experience."
+        "text": "Platform setup belongs to the technology delivery pillar."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option is incorrect. Manual reviews for every API defeat the purpose of self‑service and introduce bottlenecks; automated policies in API Manager are preferred for consistent security enforcement. Over‑reliance on manual processes also creates delays and reduces agility."
+        "text": "Building APIs and integrations is part of technology delivery."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This option is incorrect. Disabling role‑based controls removes the fine‑grained permissions needed to meet the security office’s requirements and places all protection at the network layer, which is insufficient for multi‑tenant environments. Proper access management within the platform is essential for secure self‑service."
-      },
-      "E": {
-        "type": "Correct",
-        "text": "This option is correct. Starting with minimal governance—cataloguing APIs in Exchange and attaching reusable security policies in API Manager—provides immediate protection while keeping the process simple for business units. As the organization’s maturity improves, additional standards and automated governance can be layered on."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. While external Id Ps can be federated, bypassing Anypoint’s native role model eliminates the granular access needed for self‑service and conflicts with the security office’s demand for role‑based controls. Assigning a single role defeats the purpose of segregation of duties."
+        "text": "Defining measurable outcomes belongs to the business outcomes pillar."
       }
     },
     "references": {
       "primary": {
-        "title": "Access Management — Creating Business Groups and Role-Based Permissions",
-        "url": "https://docs.mulesoft.com/access-management/managing-business-groups#create-business-group"
+        "title": "Trailhead — Explore MuleSoft Catalyst Delivery Methodology",
+        "url": "https://trailhead.salesforce.com/content/learn/modules/mulesoft-catalyst-playbooks/learn-about-the-mulesoft-catalyst-delivery-methodology"
       },
       "architectureGuide": {
-        "title": "Access Management — Using Roles to Manage Permissions",
-        "url": "https://docs.mulesoft.com/access-management/roles#create-a-custom-role"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+        "title": "MuleSoft Catalyst — Consulting and Methodology",
+        "url": "https://www.mulesoft.com/support-and-services/consulting"
       }
-    },
-    "correctAnswers": [
-      "A",
-      "E"
-    ]
+    }
   },
   {
     "id": "q-033",
     "number": 33,
-    "title": "Mule Soft Certified Platform Architect (MCPA) - A logistics startup needs to expose a shipment‑tracking API that ",
+    "title": "Organizational Foundations - Catalyst playbook approach",
     "domain": "Establishing organizational and platform foundations",
     "topics": [
-      "Mule Soft Certified Platform Architect (MCPA)"
+      "MuleSoft Catalyst",
+      "Playbooks"
     ],
-    "prompt": "A logistics startup needs to expose a shipment‑tracking API that will be versioned quarterly. The product team wants to reuse common data types across multiple APIs, but the developers are split between RAML and Open API expertise, and the launch deadline is 6 weeks. What should be done FIRST?",
+    "prompt": "Catalyst playbooks follow a consistent approach for each path, such as the C4E or Anypoint Platform playbooks. Which sequence describes that approach?",
     "options": [
       {
         "letter": "A",
-        "text": "Conduct a design decision workshop to select either RAML or Open API as the standard specification and create a shared data type library."
+        "text": "Discover, contract, consume, and retire"
       },
       {
         "letter": "B",
-        "text": "Immediately start coding the shipment‑tracking API in both RAML and Open API to satisfy both developer groups."
+        "text": "Design, implement, test, and deploy"
       },
       {
         "letter": "C",
-        "text": "Use Mule Soft's API Manager to version the API quarterly without defining any data types first."
+        "text": "Plan, establish foundation, scale, measure"
       },
       {
         "letter": "D",
-        "text": "Hire external consultants to convert existing RAML definitions to Open API before any internal alignment."
-      },
-      {
-        "letter": "E",
-        "text": "Set up a CI/CD pipeline for the API before finalizing the data model and specification format."
-      },
-      {
-        "letter": "F",
-        "text": "Publish the API to Exchange as a draft before agreeing on a common data type strategy."
+        "text": "Assess, migrate, decommission, and archive"
       }
     ],
-    "explanation": "The question tests the candidate's understanding of API design governance, especially the importance of early standardization when multiple teams and specifications are involved. The first step must be to reach a consensus on a single contract language (RAML or Open API) and to establish a shared data type library, enabling reuse and simplifying version management. Options that suggest building both specifications, versioning without a contract, hiring consultants, setting up pipelines, or publishing drafts all skip this critical alignment and are common misconceptions that waste time and resources. In real projects, a brief design workshop or governance meeting saves weeks by preventing duplicated effort and ensuring that all downstream activities (CI/CD, versioning, publishing) have a solid foundation. Best practice dictates that specification decisions and reusable type definitions precede any implementation or operational setup.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. MuleSoft Catalyst codifies its paths, such as business outcomes, Anypoint Platform, projects, C4E, internal support, and training, into playbooks. Each playbook follows the same approach: plan for success, establish the foundation, build to scale, and measure impact.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Conduct a design decision workshop to select either RAML or Open API as the standard specification and create a shared data type library.: This option is correct because aligning the team on a single specification language early enables consistent reuse of data types and speeds up implementation. A short workshop clarifies which format best fits the organization’s tooling, skill set, and governance model, allowing the shared type library to be built once and referenced across APIs. Without this agreement, parallel effort would duplicate work and jeopardize the 6‑week deadline."
+        "type": "Incorrect",
+        "text": "These describe API consumption and lifecycle steps, not Catalyst playbooks."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Immediately start coding the shipment‑tracking API in both RAML and Open API to satisfy both developer groups.: This option is incorrect; developing two versions of the same API doubles the effort and creates unnecessary maintenance overhead. It ignores the need for a unified contract and shared data type definitions, leading to divergent implementations that are hard to synchronize. With only six weeks, this approach would likely cause missed deadlines and increased defects."
+        "text": "These are software delivery stages for a single API, not the playbook approach."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Use Mule Soft's API Manager to version the API quarterly without defining any data types first.: This option is incorrect because versioning strategy should be driven by a well‑defined contract, not applied to an undocumented API. Defining data types and choosing a specification format precede version management, ensuring that each version is backward compatible and testable. Applying versioning too early can result in inconsistent releases and broken client integrations."
+        "type": "Correct",
+        "text": "Each Catalyst playbook follows this consistent progression."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Hire external consultants to convert existing RAML definitions to Open API before any internal alignment.: This option is incorrect as it adds cost and time without addressing the core governance gap of agreeing on a single standard. Conversion work is moot if the team has not decided which format to adopt, and it may introduce translation errors. The six‑week timeline favors internal consensus rather than external conversion projects."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Set up a CI/CD pipeline for the API before finalizing the data model and specification format.: This option is incorrect because automation pipelines rely on stable artifacts such as the API specification and data model. Building a pipeline first would later require reconfiguration once the contract format is decided, wasting effort. Prioritizing design ensures the pipeline can be correctly configured from the start, supporting faster releases."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Publish the API to Exchange as a draft before agreeing on a common data type strategy.: This option is incorrect; publishing a draft API without a shared type library can mislead consumers and create fragmented expectations. It also bypasses the essential step of establishing reusable data definitions, which are critical for consistency across multiple APIs. Early publishing may necessitate frequent re‑publishing, confusing stakeholders and eroding trust."
+        "text": "These describe a migration project, not the Catalyst playbook structure."
       }
     },
     "references": {
       "primary": {
-        "title": "Design Center — Creating and Publishing Reusable API Fragments",
-        "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-fragment#procedure"
+        "title": "Trailhead — Explore MuleSoft Catalyst Delivery Methodology",
+        "url": "https://trailhead.salesforce.com/content/learn/modules/mulesoft-catalyst-playbooks/learn-about-the-mulesoft-catalyst-delivery-methodology"
       },
       "architectureGuide": {
-        "title": "Design Center — Best Practices when Using API Designer",
-        "url": "https://docs.mulesoft.com/design-center/design-best-practices#api-designer-best-practices"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "MuleSoft Catalyst — Consulting and Methodology",
+        "url": "https://www.mulesoft.com/support-and-services/consulting"
       }
-    },
-    "correctAnswer": "A"
+    }
   },
   {
     "id": "q-034",
     "number": 34,
+    "title": "Organizational Foundations - Payloads must stay on premises",
+    "domain": "Establishing organizational and platform foundations",
+    "topics": [
+      "Hosting Options",
+      "Hybrid"
+    ],
+    "prompt": "A bank wants MuleSoft to manage the Anypoint Platform control plane, but regulations require that all customer transaction data be processed only in the bank's own data center. Which hosting option best meets these requirements?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "MuleSoft-hosted control plane and CloudHub 2.0 runtime plane in the nearest region"
+      },
+      {
+        "letter": "B",
+        "text": "MuleSoft-hosted control plane with hybrid or Runtime Fabric runtimes"
+      },
+      {
+        "letter": "C",
+        "text": "Anypoint Platform Private Cloud Edition installed in a public cloud account"
+      },
+      {
+        "letter": "D",
+        "text": "MuleSoft Government Cloud with CloudHub workers"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Anypoint Platform lets the control plane and runtime plane be hosted independently. Organizations that want MuleSoft to manage the control plane but must process data in their own infrastructure can host the runtime plane themselves, using hybrid standalone Mule runtimes or Runtime Fabric, while managing them from the MuleSoft-hosted control plane.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "CloudHub 2.0 processes data on MuleSoft-managed infrastructure, not in the bank's data center."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "The runtime plane can run in the bank's infrastructure while still being managed from the MuleSoft control plane."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "PCE is for self-hosting the control plane as well, which the bank does not require."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Government Cloud is a FedRAMP control plane for US agencies and does not keep processing in the bank's data center."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
+      },
+      "architectureGuide": {
+        "title": "Deploying to Your Own Servers (Hybrid)",
+        "url": "https://docs.mulesoft.com/runtime-manager/deploying-to-your-own-servers"
+      }
+    }
+  },
+  {
+    "id": "q-035",
+    "number": 35,
+    "title": "Organizational Foundations - Full data sovereignty",
+    "domain": "Establishing organizational and platform foundations",
+    "topics": [
+      "Hosting Options",
+      "Private Cloud Edition"
+    ],
+    "prompt": "A defense contractor requires that no data, including API specifications, application metadata, and user identities, ever leaves its own infrastructure. Which option meets this requirement?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "CloudHub 2.0 private space with a VPN to the data center"
+      },
+      {
+        "letter": "B",
+        "text": "EU control plane with Runtime Fabric in the contractor's data center"
+      },
+      {
+        "letter": "C",
+        "text": "US control plane with hybrid standalone Mule runtimes"
+      },
+      {
+        "letter": "D",
+        "text": "Private Cloud Edition with customer-hosted runtimes"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Anypoint Platform Private Cloud Edition is a self-hosted control plane deployed in the customer's own data center or cloud account, giving full control over where assets and metadata are stored. Combined with customer-hosted runtimes, it provides full data sovereignty, although some Anypoint Platform components are not supported in PCE.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "A private space is still MuleSoft-managed infrastructure in a MuleSoft-managed control plane."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "The EU control plane is MuleSoft-managed, so metadata and identities are stored outside the contractor's infrastructure."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Hybrid keeps runtime processing local, but the control plane data is hosted by MuleSoft."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "PCE self-hosts the control plane, so assets and metadata stay in the customer's infrastructure."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint Platform Private Cloud Edition",
+        "url": "https://docs.mulesoft.com/private-cloud/"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
+      }
+    }
+  },
+  {
+    "id": "q-036",
+    "number": 36,
+    "title": "Organizational Foundations - European metadata residency",
+    "domain": "Establishing organizational and platform foundations",
+    "topics": [
+      "Hosting Options",
+      "EU Control Plane"
+    ],
+    "prompt": "A German retailer wants a fully MuleSoft-managed platform, but its data protection officer requires that platform metadata, such as API specifications and application configurations, be stored in the European Union. What should the architect recommend?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Use the MuleSoft-managed EU control plane with runtimes in EU regions"
+      },
+      {
+        "letter": "B",
+        "text": "Use MuleSoft Government Cloud because it has stricter compliance controls"
+      },
+      {
+        "letter": "C",
+        "text": "Use the US control plane and encrypt all API specifications in Exchange"
+      },
+      {
+        "letter": "D",
+        "text": "Use the US control plane and deploy CloudHub applications to the Frankfurt region"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. MuleSoft offers regional control planes, such as the EU Cloud, in which the organization's design-time data and metadata are stored in that region. The runtime region is a separate choice: deploying applications to an EU region from the US control plane does not move control plane data to the EU.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "The EU control plane stores organization metadata in the EU and supports EU runtime regions."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Government Cloud is a FedRAMP environment for US government agencies and is hosted in the US."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Encryption does not change where control plane data is stored."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "The runtime region is independent of control plane data residency, so metadata would still be in the US."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
+      },
+      "architectureGuide": {
+        "title": "EU Control Plane",
+        "url": "https://docs.mulesoft.com/eu-control-plane/"
+      }
+    }
+  },
+  {
+    "id": "q-037",
+    "number": 37,
+    "title": "Organizational Foundations - US federal agency",
+    "domain": "Establishing organizational and platform foundations",
+    "topics": [
+      "Hosting Options",
+      "Government Cloud"
+    ],
+    "prompt": "A US federal agency wants to use a MuleSoft-managed cloud environment for Anypoint Platform and must use a FedRAMP-authorized service. Which option should be selected?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Anypoint Platform Private Cloud Edition"
+      },
+      {
+        "letter": "B",
+        "text": "MuleSoft Government Cloud"
+      },
+      {
+        "letter": "C",
+        "text": "US commercial control plane with CloudHub 2.0"
+      },
+      {
+        "letter": "D",
+        "text": "EU control plane with Runtime Fabric"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. MuleSoft Government Cloud is a FedRAMP-authorized control plane managed by MuleSoft and intended for US government agencies. Other control planes, such as the US or EU commercial clouds, are not the FedRAMP offering, and PCE is self-managed.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "PCE is self-hosted by the customer, which contradicts the requirement for a MuleSoft-managed cloud."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Government Cloud is a FedRAMP-authorized, MuleSoft-managed environment for US government agencies."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "The commercial control plane operates under standard commercial terms rather than as the FedRAMP-authorized offering."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "The EU control plane addresses EU data residency, not US federal compliance."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "MuleSoft Government Cloud",
+        "url": "https://docs.mulesoft.com/gov-cloud/"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
+      }
+    }
+  },
+  {
+    "id": "q-038",
+    "number": 38,
+    "title": "Organizational Foundations - Containers in the customer's cloud",
+    "domain": "Establishing organizational and platform foundations",
+    "topics": [
+      "Hosting Options",
+      "Runtime Fabric"
+    ],
+    "prompt": "A company runs its workloads on its own Kubernetes clusters in AWS and wants to deploy Mule applications and API gateways there with high availability and centralized management from Anypoint Platform, without managing individual Mule runtime servers. Which runtime option fits best?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "CloudHub 2.0 shared space"
+      },
+      {
+        "letter": "B",
+        "text": "Hybrid standalone Mule runtimes on EC2 instances"
+      },
+      {
+        "letter": "C",
+        "text": "On-premises runtimes without a control plane connection"
+      },
+      {
+        "letter": "D",
+        "text": "Anypoint Runtime Fabric"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Anypoint Runtime Fabric is a container service for running Mule applications and API gateways in a customer's data center or third-party cloud. The customer manages the infrastructure, and MuleSoft provides orchestration and centralized management, including high availability and failover.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "CloudHub 2.0 runs on MuleSoft-managed infrastructure, not on the company's own clusters."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Standalone runtimes require the company to manage individual servers, which it wants to avoid."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Disconnected runtimes lose centralized management from Anypoint Platform."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Runtime Fabric runs Mule applications and gateways in containers on the customer's infrastructure, managed from Anypoint Platform."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint Runtime Fabric Overview",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
+      }
+    }
+  },
+  {
+    "id": "q-039",
+    "number": 39,
+    "title": "Organizational Foundations - Minimal operations",
+    "domain": "Establishing organizational and platform foundations",
+    "topics": [
+      "Hosting Options",
+      "CloudHub 2.0"
+    ],
+    "prompt": "A startup with a two-person integration team has no data residency or on-premises constraints and wants to minimize infrastructure operations while getting high availability and scaling. Which hosting combination should the architect recommend?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "MuleSoft-hosted control plane with CloudHub 2.0"
+      },
+      {
+        "letter": "B",
+        "text": "MuleSoft-hosted control plane with Runtime Fabric on self-managed Kubernetes"
+      },
+      {
+        "letter": "C",
+        "text": "MuleSoft-hosted control plane with hybrid runtimes on virtual machines"
+      },
+      {
+        "letter": "D",
+        "text": "Anypoint Platform PCE with hybrid runtimes"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. CloudHub 2.0 is a fully managed, containerized iPaaS for running APIs and integrations, with features such as high availability and scaling. With the MuleSoft-hosted control plane, it minimizes operational responsibility, which suits small teams without data residency or on-premises requirements.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "Both planes are managed by MuleSoft, so the team operates no infrastructure."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Runtime Fabric requires the team to operate the underlying infrastructure."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Hybrid runtimes put server management, patching, and clustering on the team."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "PCE and hybrid runtimes require the team to run both planes themselves."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub 2.0 Overview",
+        "url": "https://docs.mulesoft.com/cloudhub-2/"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
+      }
+    }
+  },
+  {
+    "id": "q-040",
+    "number": 40,
+    "title": "Organizational Foundations - Corporate SSO for platform users",
+    "domain": "Establishing organizational and platform foundations",
+    "topics": [
+      "Identity Management",
+      "SSO"
+    ],
+    "prompt": "A company wants its developers and administrators to sign in to Anypoint Platform with their corporate Okta credentials and have team memberships driven by Okta groups. What should be configured?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "An OAuth 2.0 access token enforcement policy on every API"
+      },
+      {
+        "letter": "B",
+        "text": "Client management with Okta as an OAuth 2.0 client provider"
+      },
+      {
+        "letter": "C",
+        "text": "Identity management with Okta as an external IdP"
+      },
+      {
+        "letter": "D",
+        "text": "A connected app in Access Management for each developer"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Identity management in Anypoint Platform configures an external identity provider, using SAML 2.0 or OpenID Connect, so that users sign in to the platform with their corporate credentials. Group information from the identity provider can be mapped to teams and permissions.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "API policies secure APIs at runtime; they do not control sign-in to Anypoint Platform."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Client management authorizes API client applications, not users signing in to the platform."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "Identity management controls how users authenticate to Anypoint Platform itself."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Connected apps grant applications programmatic access to the platform, not SSO for users."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Configuring Identity Management in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/external-identity"
+      },
+      "architectureGuide": {
+        "title": "Configuring SAML SSO for Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/conf-saml-sso"
+      }
+    }
+  },
+  {
+    "id": "q-041",
+    "number": 41,
+    "title": "Organizational Foundations - OAuth tokens for API consumers",
+    "domain": "Establishing organizational and platform foundations",
+    "topics": [
+      "Client Management",
+      "OAuth 2.0"
+    ],
+    "prompt": "An organization wants consumers of its APIs to obtain OAuth 2.0 access tokens from its existing PingFederate server, and wants those tokens validated by API policies. What should be configured in Anypoint Platform?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "A connected app that issues tokens to each API consumer"
+      },
+      {
+        "letter": "B",
+        "text": "Identity management with PingFederate as a SAML identity provider"
+      },
+      {
+        "letter": "C",
+        "text": "Client management with PingFederate as a client provider and an OAuth policy"
+      },
+      {
+        "letter": "D",
+        "text": "Client ID enforcement only, because it validates OAuth tokens automatically"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Client management lets an organization configure external OAuth 2.0 client providers, such as PingFederate, OpenAM, or OpenID Connect Dynamic Client Registration-compliant providers. Client applications are then registered with that provider, and OAuth 2.0 policies on the APIs validate the tokens it issues.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Connected apps provide access to Anypoint Platform APIs, not to the organization's own APIs."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Identity management controls user sign-in to the platform, not authorization of API clients."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "Client management registers API client applications with the external OAuth provider used by API policies."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Client ID enforcement checks client credentials, not OAuth tokens from an external provider."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Client Management in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
+      },
+      "architectureGuide": {
+        "title": "Configuring PingFederate Client Management",
+        "url": "https://docs.mulesoft.com/access-management/conf-client-mgmt-pf-task"
+      }
+    }
+  },
+  {
+    "id": "q-042",
+    "number": 42,
+    "title": "Organizational Foundations - Identity versus client management",
+    "domain": "Establishing organizational and platform foundations",
+    "topics": [
+      "Identity Management",
+      "Client Management"
+    ],
+    "prompt": "Which statement correctly distinguishes identity management from client management in Anypoint Platform?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Identity management applies only to CloudHub, while client management applies only to hybrid runtimes"
+      },
+      {
+        "letter": "B",
+        "text": "Identity management secures APIs at runtime; client management controls who can sign in to Exchange"
+      },
+      {
+        "letter": "C",
+        "text": "Both serve the same purpose, but identity management is used only in production environments"
+      },
+      {
+        "letter": "D",
+        "text": "Identity management is for platform users; client management is for API clients"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Anypoint Platform separates two concerns. Identity management configures an external identity provider for users who sign in to the platform. Client management configures external OAuth 2.0 providers that issue credentials and tokens to the client applications that consume the organization's APIs.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Neither feature depends on the runtime deployment model."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "These responsibilities are reversed and misstated."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "They have different purposes and are not tied to specific environments in this way."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Identity management is for users of the platform, while client management is for API client applications."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Configuring Identity Management in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/external-identity"
+      },
+      "architectureGuide": {
+        "title": "Client Management in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
+      }
+    }
+  },
+  {
+    "id": "q-043",
+    "number": 43,
+    "title": "Organizational Foundations - Dynamic client registration",
+    "domain": "Establishing organizational and platform foundations",
+    "topics": [
+      "Client Management",
+      "OpenID Connect"
+    ],
+    "prompt": "A company uses an OpenID Connect provider that supports Dynamic Client Registration. It wants client applications created when consumers request access in Exchange to be registered automatically in that provider. What should be configured?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "An OpenID Connect client provider in Client Management"
+      },
+      {
+        "letter": "B",
+        "text": "Manual registration of each client application in the provider by the platform team"
+      },
+      {
+        "letter": "C",
+        "text": "A custom policy that inserts client IDs into the provider's database"
+      },
+      {
+        "letter": "D",
+        "text": "SAML identity management, so that every consumer is created as a platform user"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Anypoint Platform supports client providers that comply with OpenID Connect Dynamic Client Registration. When such a provider is configured in Client Management and associated with environments, client applications created through Exchange are registered with the provider automatically, and API policies validate its tokens.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "OpenID Connect client management uses Dynamic Client Registration to create clients in the provider."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Manual registration is what Dynamic Client Registration is meant to eliminate."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Custom database writes are unsupported and unnecessary when DCR is available."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "SAML identity management is for user sign-in, not for registering API client applications."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Configuring OpenID Connect Client Management",
+        "url": "https://docs.mulesoft.com/access-management/configure-client-management-openid-task"
+      },
+      "architectureGuide": {
+        "title": "Client Management in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
+      }
+    }
+  },
+  {
+    "id": "q-044",
+    "number": 44,
+    "title": "Organizational Foundations - Choose two: what each option controls",
+    "domain": "Establishing organizational and platform foundations",
+    "topics": [
+      "Identity Management",
+      "Client Management"
+    ],
+    "prompt": "An architect is documenting access control on Anypoint Platform. Which two statements are correct? (Choose two.)",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Identity management issues OAuth tokens that API policies use to authorize client applications"
+      },
+      {
+        "letter": "B",
+        "text": "Identity management can map external identity provider groups to Anypoint Platform teams"
+      },
+      {
+        "letter": "C",
+        "text": "Client management is required before any user can sign in to Anypoint Platform"
+      },
+      {
+        "letter": "D",
+        "text": "Only one identity provider and one client provider can exist across the entire platform"
+      },
+      {
+        "letter": "E",
+        "text": "Multiple client providers can be configured and associated with different environments"
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "E"
+    ],
+    "explanation": "Correct answers: B and E. Identity management connects Anypoint Platform to an external identity provider for user authentication and can map provider groups to teams. Client management can include multiple external client providers associated with different environments, which issue credentials and tokens to API client applications.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Tokens for API clients come from client providers configured in client management."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Group mappings from the identity provider control users' platform permissions."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "User sign-in is handled by identity management or Anypoint's own accounts."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Client management supports multiple client providers; the restriction is false."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "Client providers can be assigned per environment to meet different authorization needs."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Configuring Identity Management in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/external-identity"
+      },
+      "architectureGuide": {
+        "title": "Client Management in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
+      }
+    }
+  },
+  {
+    "id": "q-045",
+    "number": 45,
+    "title": "Organizational Foundations - Default client credentials",
+    "domain": "Establishing organizational and platform foundations",
+    "topics": [
+      "Client Management",
+      "Client ID Enforcement"
+    ],
+    "prompt": "A team has not configured any external client provider. A consumer requests access to an API from its Exchange page. How does the consumer obtain credentials for the API's client ID enforcement policy?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The consumer must sign in with SAML SSO, and its session cookie is used as the credential"
+      },
+      {
+        "letter": "B",
+        "text": "Anypoint Platform generates a client ID and secret for the client app"
+      },
+      {
+        "letter": "C",
+        "text": "The API owner emails a shared password that all consumers use"
+      },
+      {
+        "letter": "D",
+        "text": "The consumer cannot obtain credentials until an external OAuth provider is configured"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. By default, Anypoint Platform acts as the client provider: when a consumer creates a client application and requests access to an API, the platform generates a client ID and secret. Policies such as client ID enforcement then validate those credentials. External client providers are needed only when tokens must come from an organization's OAuth server.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Platform user sessions are not used as API client credentials."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Without an external provider, Anypoint Platform itself acts as the client provider for client applications."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Shared passwords prevent identifying and controlling individual clients."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "An external provider is optional; Anypoint Platform can issue client credentials itself."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Client Management in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
+      },
+      "architectureGuide": {
+        "title": "API Manager — Client ID Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
+      }
+    }
+  },
+  {
+    "id": "q-046",
+    "number": 46,
+    "title": "Organizational Foundations - Hybrid data flow",
+    "domain": "Establishing organizational and platform foundations",
+    "topics": [
+      "Data Residency",
+      "Hybrid"
+    ],
+    "prompt": "A company uses the MuleSoft-hosted control plane and hybrid Mule runtimes in its own data center. Which data leaves the data center during normal operation?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Database credentials for every system the applications connect to"
+      },
+      {
+        "letter": "B",
+        "text": "All message payloads processed by the Mule applications"
+      },
+      {
+        "letter": "C",
+        "text": "Nothing, because hybrid runtimes have no connection to the control plane"
+      },
+      {
+        "letter": "D",
+        "text": "Management metadata such as app status and metrics"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. In a hybrid deployment, the runtime plane runs in the customer's infrastructure while the control plane is hosted by MuleSoft. The Runtime Manager agent sends management information, such as application status, and monitoring data to the control plane, while message payloads are processed locally in the customer's runtimes.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Connection secrets remain in the applications' configuration in the customer's environment."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Payloads are processed in the customer's runtimes and are not sent to the control plane by default."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Hybrid runtimes are registered with and managed from the control plane."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Hybrid runtimes communicate with the control plane for management and monitoring while payloads stay local."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Runtime Manager Agent",
+        "url": "https://docs.mulesoft.com/runtime-manager/runtime-manager-agent"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
+      }
+    }
+  },
+  {
+    "id": "q-047",
+    "number": 47,
+    "title": "Organizational Foundations - Runtime region versus control plane",
+    "domain": "Establishing organizational and platform foundations",
+    "topics": [
+      "Data Residency",
+      "CloudHub"
+    ],
+    "prompt": "A Canadian company uses the US control plane and deploys its CloudHub 2.0 applications to the Canada runtime region. The compliance team assumes that all of its Anypoint Platform data is now stored in Canada. What should the architect clarify?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Deploying to Canada automatically moves the organization to the Canada control plane"
+      },
+      {
+        "letter": "B",
+        "text": "Correct; the runtime region determines where all Anypoint Platform data is stored"
+      },
+      {
+        "letter": "C",
+        "text": "Apps run in Canada, but control plane metadata stays in the US"
+      },
+      {
+        "letter": "D",
+        "text": "CloudHub 2.0 always stores payloads in the US, regardless of the runtime region"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Anypoint Platform treats the control plane location, the runtime option, and the runtime region as independent choices. The runtime region determines where CloudHub or CloudHub 2.0 applications execute, while the organization's design-time data and metadata stay in the control plane where the organization lives.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "An organization lives in exactly one control plane, which is not changed by the runtime region."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "The runtime region determines where applications execute, not where control plane data lives."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "Runtime region and control plane data residency are independent choices."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Applications execute in the selected runtime region."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Platform Control Planes",
+        "url": "https://docs.mulesoft.com/control-planes/"
+      }
+    }
+  },
+  {
+    "id": "q-048",
+    "number": 48,
+    "title": "Organizational Foundations - Logs must stay in the company's SIEM",
+    "domain": "Establishing organizational and platform foundations",
+    "topics": [
+      "Data Residency",
+      "Logging"
+    ],
+    "prompt": "A company deploys Mule applications to CloudHub. Its security policy requires that application logs be retained only in its own SIEM, not in MuleSoft-managed log storage. What should the architect recommend?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Forward logs to the SIEM with a custom Log4j appender and disable CloudHub logs"
+      },
+      {
+        "letter": "B",
+        "text": "Apply a message logging policy in API Manager that writes to the SIEM"
+      },
+      {
+        "letter": "C",
+        "text": "Set the application log level to ERROR so that CloudHub stores fewer log entries"
+      },
+      {
+        "letter": "D",
+        "text": "Use the EU control plane so that CloudHub logs are stored in the SIEM"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. By default, CloudHub stores application logs in MuleSoft-managed storage. To meet requirements that logs live only in the customer's own systems, applications can use a custom Log4j appender to send logs to an external system, and CloudHub logging can be disabled for the application.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "CloudHub supports forwarding logs to an external system and disabling CloudHub logging."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "A policy would not stop the application's own logs from being stored in CloudHub."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Fewer logs are still stored in MuleSoft-managed storage."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "The control plane region determines where platform data is stored, not whether logs go to a SIEM."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub — Integrate with Your Logging System",
+        "url": "https://docs.mulesoft.com/cloudhub/custom-log-appender"
+      },
+      "architectureGuide": {
+        "title": "CloudHub 2.0 — Integrating with Your Logging System",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-integrate-log-system"
+      }
+    }
+  },
+  {
+    "id": "q-049",
+    "number": 49,
+    "title": "Organizational Foundations - Where Anypoint MQ stores messages",
+    "domain": "Establishing organizational and platform foundations",
+    "topics": [
+      "Data Residency",
+      "Anypoint MQ"
+    ],
+    "prompt": "An architect plans to use Anypoint MQ for an EU-only process whose messages contain personal data. What determines where those messages are stored?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The region selected for the Anypoint MQ queues and exchanges"
+      },
+      {
+        "letter": "B",
+        "text": "Anypoint MQ always stores messages in the US, regardless of configuration"
+      },
+      {
+        "letter": "C",
+        "text": "The region of the API client that triggered the business process"
+      },
+      {
+        "letter": "D",
+        "text": "The location of the Mule application that publishes the messages"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Anypoint MQ is a multi-region messaging service. Queues and exchanges are created in a chosen region, and messages are stored in that region. For data residency requirements, the architect should create destinations in a compliant region and align it with the control plane and runtime choices.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "Anypoint MQ destinations are created in a specific region, which determines where messages are stored."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Anypoint MQ is available in multiple regions, including EU regions."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "The client's location does not determine where MQ stores messages."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Publishers can connect to queues in another region; the queue's region decides where messages reside."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint MQ Overview",
+        "url": "https://docs.mulesoft.com/mq/"
+      },
+      "architectureGuide": {
+        "title": "Anypoint MQ — Understanding Anypoint MQ",
+        "url": "https://docs.mulesoft.com/mq/mq-understanding"
+      }
+    }
+  },
+  {
+    "id": "q-050",
+    "number": 50,
+    "title": "Organizational Foundations - Self-hosted platform data",
+    "domain": "Establishing organizational and platform foundations",
+    "topics": [
+      "Data Residency",
+      "Private Cloud Edition"
+    ],
+    "prompt": "In a deployment that uses Anypoint Platform Private Cloud Edition with customer-hosted runtimes, where are API specifications, application metadata, and message payloads stored?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Specifications in MuleSoft's US cloud and payloads on premises"
+      },
+      {
+        "letter": "B",
+        "text": "Metadata in the EU control plane and payloads on premises"
+      },
+      {
+        "letter": "C",
+        "text": "All in the customer's own infrastructure"
+      },
+      {
+        "letter": "D",
+        "text": "Payloads in MuleSoft-managed storage and metadata on premises"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Anypoint Platform PCE is a self-hosted control plane, so assets such as API specifications and metadata are stored in the customer's data center or cloud account. With customer-hosted runtimes, payloads are also processed locally, providing full data sovereignty.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "With PCE, the control plane and its assets are not stored in the US cloud."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "PCE does not use any MuleSoft-managed control plane."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "PCE hosts the control plane locally, and the runtimes are also customer-hosted."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Customer-hosted runtimes process payloads in the customer's environment."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint Platform Private Cloud Edition",
+        "url": "https://docs.mulesoft.com/private-cloud/"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
+      }
+    }
+  },
+  {
+    "id": "q-051",
+    "number": 51,
+    "title": "Organizational Foundations - Choose two: data in the control plane",
+    "domain": "Establishing organizational and platform foundations",
+    "topics": [
+      "Data Residency",
+      "Control Plane"
+    ],
+    "prompt": "An organization uses the MuleSoft-hosted control plane and Runtime Fabric in its own data center. Which two kinds of data are stored in the MuleSoft-hosted control plane? (Choose two.)",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The message payloads processed by the Mule applications"
+      },
+      {
+        "letter": "B",
+        "text": "API specifications and other assets published to Exchange"
+      },
+      {
+        "letter": "C",
+        "text": "The contents of the customer's backend databases"
+      },
+      {
+        "letter": "D",
+        "text": "The Kubernetes nodes running the Runtime Fabric workloads"
+      },
+      {
+        "letter": "E",
+        "text": "API Manager configuration, such as policies and client application contracts"
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "E"
+    ],
+    "explanation": "Correct answers: B and E. The control plane stores the organization's design-time data and management metadata, including Exchange assets and API Manager configuration. When the runtime plane is customer-hosted, such as with Runtime Fabric, the applications process payloads in the customer's infrastructure.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Payloads are processed by the runtimes in the customer's data center."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Exchange assets are design-time data stored in the control plane."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Backend data remains in the customer's systems; the platform does not store it."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "The nodes are customer infrastructure in the runtime plane."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "API management configuration is part of the control plane."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
+      },
+      "architectureGuide": {
+        "title": "Anypoint Runtime Fabric Overview",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/"
+      }
+    }
+  },
+  {
+    "id": "q-052",
+    "number": 52,
     "title": "Designing Sharing Apis - Which Anypoint Platform component is used to",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -2124,8 +3126,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-035",
-    "number": 35,
+    "id": "q-053",
+    "number": 53,
     "title": "Designing Sharing Apis - Which Anypoint Platform component is the marketplace",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -2186,8 +3188,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-036",
-    "number": 36,
+    "id": "q-054",
+    "number": 54,
     "title": "Designing Sharing Apis - Which approach is recommended for sharing common",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -2249,8 +3251,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-037",
-    "number": 37,
+    "id": "q-055",
+    "number": 55,
     "title": "Designing Sharing Apis - What is the recommended order of major",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -2311,8 +3313,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-038",
-    "number": 38,
+    "id": "q-056",
+    "number": 56,
     "title": "Designing Sharing Apis - When applying breaking changes to an API",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -2373,8 +3375,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-039",
-    "number": 39,
+    "id": "q-057",
+    "number": 57,
     "title": "Designing Sharing Apis - A development team wants to mock and",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -2436,8 +3438,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-040",
-    "number": 40,
+    "id": "q-058",
+    "number": 58,
     "title": "Designing Sharing Apis - Which artifact does Anypoint Exchange version when",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -2499,8 +3501,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-041",
-    "number": 41,
+    "id": "q-059",
+    "number": 59,
     "title": "Designing Sharing Apis - Which approach best supports introducing a breaking",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -2562,8 +3564,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-042",
-    "number": 42,
+    "id": "q-060",
+    "number": 60,
     "title": "Designing Sharing Apis - Which is the MOST appropriate way to",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -2624,8 +3626,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-043",
-    "number": 43,
+    "id": "q-061",
+    "number": 61,
     "title": "Designing Sharing Apis - Which artifact lets developers consume a published",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -2687,8 +3689,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-044",
-    "number": 44,
+    "id": "q-062",
+    "number": 62,
     "title": "Designing Sharing Apis - Which Anypoint Platform feature provides a registrystyle",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -2750,8 +3752,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-045",
-    "number": 45,
+    "id": "q-063",
+    "number": 63,
     "title": "Api Implementation Design - Which approach lets an architect provide consistent",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -2813,8 +3815,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-046",
-    "number": 46,
+    "id": "q-064",
+    "number": 64,
     "title": "Designing Sharing Apis - Which approach BEST allows architects to compose",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -2876,8 +3878,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-047",
-    "number": 47,
+    "id": "q-065",
+    "number": 65,
     "title": "Designing Sharing Apis - Which Exchange lifecycle state signals an",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -2939,8 +3941,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-048",
-    "number": 48,
+    "id": "q-066",
+    "number": 66,
     "title": "API Design - A logistics startup with a three‑person Dev Ops team needs to",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -3017,8 +4019,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-049",
-    "number": 49,
+    "id": "q-067",
+    "number": 67,
     "title": "API Versioning - A mid-sized finance firm is building a new API to expose customer",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -3095,8 +4097,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-050",
-    "number": 50,
+    "id": "q-068",
+    "number": 68,
     "title": "Mule Soft Certified Platform Architect (MCPA) - A financial services company is exposing a loan‑application API t",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -3173,8 +4175,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-051",
-    "number": 51,
+    "id": "q-069",
+    "number": 69,
     "title": "API Versioning - A mid‑size financial services firm is designing a new account‑man",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -3251,8 +4253,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-052",
-    "number": 52,
+    "id": "q-070",
+    "number": 70,
     "title": "Hypermedia APIs - A fintech startup is building a hypermedia‑driven loan‑applicatio",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -3316,8 +4318,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-053",
-    "number": 53,
+    "id": "q-071",
+    "number": 71,
     "title": "API Versioning - A mid‑size bank is exposing a new customer‑profile service on Any",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -3394,8 +4396,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-054",
-    "number": 54,
+    "id": "q-072",
+    "number": 72,
     "title": "API Versioning - A logistics startup needs to roll out a new shipment-tracking API",
     "domain": "Designing and sharing APIs",
     "topics": [
@@ -3472,8 +4474,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-055",
-    "number": 55,
+    "id": "q-073",
+    "number": 73,
     "title": "API Layers - Order status for a mobile app",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -3488,35 +4490,35 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "System APIs per backend, a reusable Order Status Process API, and a thin Mobile Experience API"
-      },
-      {
-        "letter": "C",
         "text": "System APIs for SAP orders, carrier tracking, and Salesforce customers that the mobile app invokes and combines on the device"
       },
       {
-        "letter": "D",
+        "letter": "C",
         "text": "One Mobile Order Status API that calls SAP, the carrier platform, and Salesforce directly and returns the mobile payload"
+      },
+      {
+        "letter": "D",
+        "text": "System APIs per backend, a reusable Order Status Process API, and a thin Mobile Experience API"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. API-led connectivity separates concerns into three layers. System APIs unlock data from each system of record, Process APIs orchestrate and combine that data into reusable business capabilities such as order status, and Experience APIs adapt the result for a specific channel. Because the web team will need the same capability, the orchestration must live in a Process API that both channels reuse, while each channel gets its own lightweight Experience API.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. API-led connectivity separates concerns into three layers. System APIs unlock data from each system of record, Process APIs orchestrate and combine that data into reusable business capabilities such as order status, and Experience APIs adapt the result for a specific channel. Because the web team will need the same capability, the orchestration must live in a Process API that both channels reuse, while each channel gets its own lightweight Experience API.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "Without System APIs the backend access is not reusable, and the Process API would have to absorb channel-specific formatting that changes with the mobile UI."
       },
       "B": {
-        "type": "Correct",
-        "text": "Each backend gets a System API, the cross-system orchestration is a reusable Process API that the web team can also consume, and the channel-specific shaping lives in a thin Experience API."
-      },
-      "C": {
         "type": "Incorrect",
         "text": "Pushing orchestration into the client duplicates business logic in every channel and increases round trips over mobile networks."
       },
-      "D": {
+      "C": {
         "type": "Incorrect",
         "text": "This is a point-to-point design: the orchestration and backend access would have to be rebuilt for the web channel, so nothing is reusable."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Each backend gets a System API, the cross-system orchestration is a reusable Process API that the web team can also consume, and the channel-specific shaping lives in a thin Experience API."
       }
     },
     "references": {
@@ -3531,8 +4533,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-056",
-    "number": 56,
+    "id": "q-074",
+    "number": 74,
     "title": "API Layers - Onboarding a new employee",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -3590,8 +4592,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-057",
-    "number": 57,
+    "id": "q-075",
+    "number": 75,
     "title": "API Layers - Partner price lookup",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -3602,35 +4604,35 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Add a Distributor Pricing Experience API that reuses the Pricing Process API"
-      },
-      {
-        "letter": "B",
         "text": "Build a new Distributor Pricing Process API that copies the pricing logic and calls the same System APIs"
       },
       {
-        "letter": "C",
+        "letter": "B",
         "text": "Modify the Pricing Process API so it returns the partner field names whenever the caller is a distributor"
+      },
+      {
+        "letter": "C",
+        "text": "Add a Distributor Pricing Experience API that reuses the Pricing Process API"
       },
       {
         "letter": "D",
         "text": "Expose the pricing System APIs directly to distributors and let them calculate prices themselves"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. When an existing business capability must be offered to a new channel with different data formats or policies, API-led connectivity adds an Experience API in front of the existing Process API. The Process API stays channel-agnostic and reusable, while the Experience API handles the partner-specific shape and lets API Manager apply partner-specific policies such as rate limiting.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. When an existing business capability must be offered to a new channel with different data formats or policies, API-led connectivity adds an Experience API in front of the existing Process API. The Process API stays channel-agnostic and reusable, while the Experience API handles the partner-specific shape and lets API Manager apply partner-specific policies such as rate limiting.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "An Experience API adapts an existing capability to a new consumer's format and policies without changing or duplicating the Process API."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "Duplicating the business logic creates two implementations of pricing that will drift apart over time."
       },
-      "C": {
+      "B": {
         "type": "Incorrect",
         "text": "Adding consumer-specific formatting to the Process API couples it to individual channels and risks breaking the internal sales portal."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "An Experience API adapts an existing capability to a new consumer's format and policies without changing or duplicating the Process API."
       },
       "D": {
         "type": "Incorrect",
@@ -3649,8 +4651,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-058",
-    "number": 58,
+    "id": "q-076",
+    "number": 76,
     "title": "API Layers - Identify the System APIs",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -3708,8 +4710,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-059",
-    "number": 59,
+    "id": "q-077",
+    "number": 77,
     "title": "API Layers - Customer 360 in two channels",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -3767,8 +4769,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-060",
-    "number": 60,
+    "id": "q-078",
+    "number": 78,
     "title": "API Layers - Assigning a new API to a layer",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -3779,39 +4781,39 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Experience layer, because it is consumed directly by customer-facing applications"
+        "text": "Process layer, because it combines several systems and applies shared business rules"
       },
       {
         "letter": "B",
-        "text": "No layer, because availability calculations should be implemented inside each consuming application"
+        "text": "Experience layer, because it is consumed directly by customer-facing applications"
       },
       {
         "letter": "C",
-        "text": "System layer, because it reads inventory data directly from the warehouse management systems"
+        "text": "No layer, because availability calculations should be implemented inside each consuming application"
       },
       {
         "letter": "D",
-        "text": "Process layer, because it combines several systems and applies shared business rules"
+        "text": "System layer, because it reads inventory data directly from the warehouse management systems"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. Layer assignment depends on the API's responsibility, not on who calls it. An API that orchestrates several systems and applies business rules that are independent of any particular channel belongs in the Process layer, where it can be reused by the e-commerce site, store app, and marketplace integration through their own Experience APIs if needed.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Layer assignment depends on the API's responsibility, not on who calls it. An API that orchestrates several systems and applies business rules that are independent of any particular channel belongs in the Process layer, where it can be reused by the e-commerce site, store app, and marketplace integration through their own Experience APIs if needed.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Being consumed by channels does not make an API an Experience API; it serves three different channels with the same channel-agnostic result."
+        "type": "Correct",
+        "text": "Aggregating multiple systems and applying channel-independent business rules is the defining responsibility of a Process API."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Duplicating the calculation in every channel produces inconsistent results and prevents reuse."
+        "text": "Being consumed by channels does not make an API an Experience API; it serves three different channels with the same channel-agnostic result."
       },
       "C": {
         "type": "Incorrect",
-        "text": "System APIs front a single system and avoid business rules; this API spans two systems and computes a business value."
+        "text": "Duplicating the calculation in every channel produces inconsistent results and prevents reuse."
       },
       "D": {
-        "type": "Correct",
-        "text": "Aggregating multiple systems and applying channel-independent business rules is the defining responsibility of a Process API."
+        "type": "Incorrect",
+        "text": "System APIs front a single system and avoid business rules; this API spans two systems and computes a business value."
       }
     },
     "references": {
@@ -3826,8 +4828,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-061",
-    "number": 61,
+    "id": "q-079",
+    "number": 79,
     "title": "API Layers - Choose two layers for a quote process",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -3846,11 +4848,11 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "The rating engine, capacity-planning system, and Salesforce should each be fronted by System APIs"
+        "text": "The discount rules should be implemented in the web portal Experience API because only portal customers receive discounts"
       },
       {
         "letter": "D",
-        "text": "The discount rules should be implemented in the web portal Experience API because only portal customers receive discounts"
+        "text": "The rating engine, capacity-planning system, and Salesforce should each be fronted by System APIs"
       },
       {
         "letter": "E",
@@ -3858,10 +4860,10 @@ window.MCPA_QUESTIONS = [
       }
     ],
     "correctAnswers": [
-      "C",
+      "D",
       "E"
     ],
-    "explanation": "Correct answers: C and E. In API-led connectivity, each backend is unlocked by System APIs, cross-system business logic such as calculating a freight quote with discounts is implemented once in a Process API, and each channel receives its own Experience API in the format it requires. Discounts that depend on the customer rather than the channel belong in the Process layer.",
+    "explanation": "Correct answers: D and E. In API-led connectivity, each backend is unlocked by System APIs, cross-system business logic such as calculating a freight quote with discounts is implemented once in a Process API, and each channel receives its own Experience API in the format it requires. Discounts that depend on the customer rather than the channel belong in the Process layer.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -3872,12 +4874,12 @@ window.MCPA_QUESTIONS = [
         "text": "System APIs should not orchestrate other systems; that hides business logic in the wrong layer and removes reuse."
       },
       "C": {
-        "type": "Correct",
-        "text": "Each backend gets a System API so that its data and functions are reusable and its complexity is hidden."
-      },
-      "D": {
         "type": "Incorrect",
         "text": "The scenario states discounts are customer-specific, not channel-specific, so they must apply to EDI partners as well."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Each backend gets a System API so that its data and functions are reusable and its complexity is hidden."
       },
       "E": {
         "type": "Correct",
@@ -3896,8 +4898,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-062",
-    "number": 62,
+    "id": "q-080",
+    "number": 80,
     "title": "API Layers - Event-driven step in a process",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -3955,8 +4957,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-063",
-    "number": 63,
+    "id": "q-081",
+    "number": 81,
     "title": "API Layers - Who should own the System APIs?",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4014,8 +5016,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-064",
-    "number": 64,
+    "id": "q-082",
+    "number": 82,
     "title": "API Layers - Rate of change by layer",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4026,35 +5028,35 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Experience APIs change most often, Process APIs moderately, and System APIs least"
-      },
-      {
-        "letter": "B",
         "text": "Process APIs change most frequently because each new channel requires a new version of every Process API"
       },
       {
-        "letter": "C",
+        "letter": "B",
         "text": "System APIs change most frequently because backend systems receive patches and upgrades every quarter"
+      },
+      {
+        "letter": "C",
+        "text": "Experience APIs change most often, Process APIs moderately, and System APIs least"
       },
       {
         "letter": "D",
         "text": "All three layers change at the same rate because they are deployed through the same CI/CD pipeline"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. One of the defining characteristics of the three layers is their rate of change. Experience APIs track fast-moving channel and UI requirements, Process APIs evolve with business processes, and System APIs change slowly because they front long-lived systems of record. Separating APIs this way lets fast-changing parts evolve without destabilizing the reusable foundation.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. One of the defining characteristics of the three layers is their rate of change. Experience APIs track fast-moving channel and UI requirements, Process APIs evolve with business processes, and System APIs change slowly because they front long-lived systems of record. Separating APIs this way lets fast-changing parts evolve without destabilizing the reusable foundation.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "The layers are arranged by rate of change: channels evolve quickly, processes evolve moderately, and systems of record are the most stable."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "New channels should be handled by new Experience APIs that reuse existing Process APIs unchanged."
       },
-      "C": {
+      "B": {
         "type": "Incorrect",
         "text": "Backend patches rarely alter a System API contract; System APIs are designed to be the most stable layer."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "The layers are arranged by rate of change: channels evolve quickly, processes evolve moderately, and systems of record are the most stable."
       },
       "D": {
         "type": "Incorrect",
@@ -4073,8 +5075,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-065",
-    "number": 65,
+    "id": "q-083",
+    "number": 83,
     "title": "API Layers - Functional focus of a System API",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4089,35 +5091,35 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Split it into two System APIs: one for Salesforce accounts and one for loyalty tiers and mobile formatting"
+        "text": "Keep only Salesforce account access in the System API and move the other logic to other layers"
       },
       {
         "letter": "C",
-        "text": "Keep the design because putting everything in one API reduces the number of deployments to manage"
+        "text": "Split it into two System APIs: one for Salesforce accounts and one for loyalty tiers and mobile formatting"
       },
       {
         "letter": "D",
-        "text": "Keep only Salesforce account access in the System API and move the other logic to other layers"
+        "text": "Keep the design because putting everything in one API reduces the number of deployments to manage"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. Each layer has a distinct functional focus. System APIs expose and abstract a single system of record, Process APIs implement business logic and orchestration across systems, and Experience APIs adapt data for a particular channel. Mixing these responsibilities in one System API couples it to other systems and to a single consumer, reducing reuse.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Each layer has a distinct functional focus. System APIs expose and abstract a single system of record, Process APIs implement business logic and orchestration across systems, and Experience APIs adapt data for a particular channel. Mixing these responsibilities in one System API couples it to other systems and to a single consumer, reducing reuse.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "The calculation needs order data from another system; pushing it into Salesforce creates a hidden cross-system dependency."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "A loyalty-and-formatting API still mixes cross-system business logic with channel concerns and is not a System API."
+        "type": "Correct",
+        "text": "A System API's functional focus is unlocking one system; business rules across systems and channel formatting belong to other layers."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Fewer deployments do not compensate for a System API that is coupled to other systems and to one channel, which destroys reuse."
+        "text": "A loyalty-and-formatting API still mixes cross-system business logic with channel concerns and is not a System API."
       },
       "D": {
-        "type": "Correct",
-        "text": "A System API's functional focus is unlocking one system; business rules across systems and channel formatting belong to other layers."
+        "type": "Incorrect",
+        "text": "Fewer deployments do not compensate for a System API that is coupled to other systems and to one channel, which destroys reuse."
       }
     },
     "references": {
@@ -4132,8 +5134,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-066",
-    "number": 66,
+    "id": "q-084",
+    "number": 84,
     "title": "API Layers - Frequent UI changes",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4191,8 +5193,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-067",
-    "number": 67,
+    "id": "q-085",
+    "number": 85,
     "title": "API Layers - Assign APIs by ownership and change",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4211,15 +5213,15 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "(1) System, (2) Process, (3) Experience"
+        "text": "(1) System, (2) Experience, (3) Process"
       },
       {
         "letter": "D",
-        "text": "(1) System, (2) Experience, (3) Process"
+        "text": "(1) System, (2) Process, (3) Experience"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. API layers can be identified from three characteristics: who owns the API, what it focuses on, and how often it changes. Central IT owning a stable API over one system indicates a System API; a business owner applying cross-system rules indicates a Process API; and an app team iterating every sprint indicates an Experience API.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. API layers can be identified from three characteristics: who owns the API, what it focuses on, and how often it changes. Central IT owning a stable API over one system indicates a System API; a business owner applying cross-system rules indicates a Process API; and an app team iterating every sprint indicates an Experience API.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -4230,12 +5232,12 @@ window.MCPA_QUESTIONS = [
         "text": "Student Records fronts a single system of record and Course Enrollment spans two systems, so these are reversed."
       },
       "C": {
-        "type": "Correct",
-        "text": "Each API matches its layer's ownership, functional focus, and rate of change: stable backend access, cross-system business rules, and a fast-changing channel API."
-      },
-      "D": {
         "type": "Incorrect",
         "text": "Course enrollment applies business rules across systems and is not channel-specific, while the mobile API is clearly channel-specific."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Each API matches its layer's ownership, functional focus, and rate of change: stable backend access, cross-system business rules, and a fast-changing channel API."
       }
     },
     "references": {
@@ -4250,8 +5252,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-068",
-    "number": 68,
+    "id": "q-086",
+    "number": 86,
     "title": "API Layers - LoB ownership of Process APIs",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4309,8 +5311,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-069",
-    "number": 69,
+    "id": "q-087",
+    "number": 87,
     "title": "API Layers - Stable contract over a changing backend",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4329,15 +5331,15 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Create new Process APIs for the SaaS platform and ask consumers to move to them after the migration"
+        "text": "Expose billing through backend-independent System APIs and re-implement them during migration"
       },
       {
         "letter": "D",
-        "text": "Expose billing through backend-independent System APIs and re-implement them during migration"
+        "text": "Create new Process APIs for the SaaS platform and ask consumers to move to them after the migration"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. System APIs insulate the rest of the application network from changes in systems of record. When their contracts are designed independently of a specific backend, the backend can be replaced by changing only the System API implementation, protecting the slower-changing contracts that Process APIs depend on.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. System APIs insulate the rest of the application network from changes in systems of record. When their contracts are designed independently of a specific backend, the backend can be replaced by changing only the System API implementation, protecting the slower-changing contracts that Process APIs depend on.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -4348,12 +5350,12 @@ window.MCPA_QUESTIONS = [
         "text": "Each Process API would need code changes and coordinated testing, multiplying migration effort and risk."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Duplicating Process APIs pushes the migration burden onto every consumer."
-      },
-      "D": {
         "type": "Correct",
         "text": "A stable System API contract absorbs backend changes, so the dependent Process APIs do not need to change when the system of record is replaced."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Duplicating Process APIs pushes the migration burden onto every consumer."
       }
     },
     "references": {
@@ -4368,8 +5370,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-070",
-    "number": 70,
+    "id": "q-088",
+    "number": 88,
     "title": "API Layers - No EDM and limited capacity",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4384,35 +5386,35 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Mirror the backend's model and semantics, but in JSON with readable names and only needed fields"
-      },
-      {
-        "letter": "C",
         "text": "Let each consuming Process API define its own data model for the System API"
       },
       {
-        "letter": "D",
+        "letter": "C",
         "text": "Pause the project until the team defines a complete Enterprise Data Model for the organization"
+      },
+      {
+        "letter": "D",
+        "text": "Mirror the backend's model and semantics, but in JSON with readable names and only needed fields"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. MuleSoft's guidance for System API data models depends on the organization. If an Enterprise Data Model exists, System APIs use its types. Otherwise each System API can use the Bounded Context Data Model of its context. If neither is practical, the System API can use data types that closely mirror the backend system's model, while still abstracting technical details such as proprietary formats and naming so consumers are not tied to the backend's idiosyncrasies.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. MuleSoft's guidance for System API data models depends on the organization. If an Enterprise Data Model exists, System APIs use its types. Otherwise each System API can use the Bounded Context Data Model of its context. If neither is practical, the System API can use data types that closely mirror the backend system's model, while still abstracting technical details such as proprietary formats and naming so consumers are not tied to the backend's idiosyncrasies.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "Leaking proprietary formats and cryptic names to every consumer couples them to the backend and makes the API hard to use."
       },
       "B": {
-        "type": "Correct",
-        "text": "When neither an EDM nor clean Bounded Context models are practical, mirroring the backend while removing technical idiosyncrasies keeps translation effort low and still hides proprietary formats."
-      },
-      "C": {
         "type": "Incorrect",
         "text": "A System API needs a single contract; consumer-defined models would produce many inconsistent versions of the same API."
       },
-      "D": {
+      "C": {
         "type": "Incorrect",
         "text": "Waiting for an organization-wide EDM delays delivery and is unrealistic for a small team."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "When neither an EDM nor clean Bounded Context models are practical, mirroring the backend while removing technical idiosyncrasies keeps translation effort low and still hides proprietary formats."
       }
     },
     "references": {
@@ -4427,8 +5429,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-071",
-    "number": 71,
+    "id": "q-089",
+    "number": 89,
     "title": "API Layers - EDM already in place",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4439,35 +5441,35 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Create a new Bounded Context Data Model for each System API that differs from the EDM"
+        "text": "Use EDM data types and translate to each backend's model in the implementations"
       },
       {
         "letter": "B",
-        "text": "Use the EDM only in Experience APIs because System APIs should never transform data"
+        "text": "Create a new Bounded Context Data Model for each System API that differs from the EDM"
       },
       {
         "letter": "C",
-        "text": "Use EDM data types and translate to each backend's model in the implementations"
+        "text": "Use the EDM only in Experience APIs because System APIs should never transform data"
       },
       {
         "letter": "D",
         "text": "Expose each backend's native data model so the System APIs remain thin pass-through layers"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. If an organization already uses an Enterprise Data Model, the API data model of its System APIs should use data types from that EDM. The System API implementation translates between those EDM types and the native data model of the backend system, so consumers work with consistent, backend-independent definitions.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. If an organization already uses an Enterprise Data Model, the API data model of its System APIs should use data types from that EDM. The System API implementation translates between those EDM types and the native data model of the backend system, so consumers work with consistent, backend-independent definitions.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Duplicating definitions alongside a working EDM fragments the data model without any benefit."
+        "type": "Correct",
+        "text": "When an EDM is in use, System APIs adopt its types so all consumers share consistent definitions, and the implementation handles translation to the backend."
       },
       "B": {
         "type": "Incorrect",
-        "text": "System APIs are precisely where translation between the backend model and a shared model belongs."
+        "text": "Duplicating definitions alongside a working EDM fragments the data model without any benefit."
       },
       "C": {
-        "type": "Correct",
-        "text": "When an EDM is in use, System APIs adopt its types so all consumers share consistent definitions, and the implementation handles translation to the backend."
+        "type": "Incorrect",
+        "text": "System APIs are precisely where translation between the backend model and a shared model belongs."
       },
       "D": {
         "type": "Incorrect",
@@ -4486,8 +5488,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-072",
-    "number": 72,
+    "id": "q-090",
+    "number": 90,
     "title": "API Layers - Bounded context for a System API",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4545,8 +5547,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-073",
-    "number": 73,
+    "id": "q-091",
+    "number": 91,
     "title": "API Layers - Hiding backend complexity",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4557,11 +5559,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Expose business-meaningful names and map them to SAP structures in the implementation"
+        "text": "Let each Process API team transform the SAP fields into its own names as needed"
       },
       {
         "letter": "B",
-        "text": "Let each Process API team transform the SAP fields into its own names as needed"
+        "text": "Expose business-meaningful names and map them to SAP structures in the implementation"
       },
       {
         "letter": "C",
@@ -4572,16 +5574,16 @@ window.MCPA_QUESTIONS = [
         "text": "Replace the System API with direct RFC calls from each Process API so they get full SAP functionality"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. A key purpose of System APIs is to hide the complexity of systems of record from their consumers. Exposing understandable, business-oriented data types and handling the mapping to backend-specific structures inside the System API implementation makes the API reusable by teams without backend expertise and reduces the ripple effect of backend changes.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. A key purpose of System APIs is to hide the complexity of systems of record from their consumers. Exposing understandable, business-oriented data types and handling the mapping to backend-specific structures inside the System API implementation makes the API reusable by teams without backend expertise and reduces the ripple effect of backend changes.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Abstracting SAP-specific complexity lets non-SAP teams consume the API and limits the impact of SAP changes."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "The same mapping would be duplicated across many Process APIs, creating inconsistency and maintenance cost."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Abstracting SAP-specific complexity lets non-SAP teams consume the API and limits the impact of SAP changes."
       },
       "C": {
         "type": "Incorrect",
@@ -4604,8 +5606,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-074",
-    "number": 74,
+    "id": "q-092",
+    "number": 92,
     "title": "API Layers - How many System APIs per backend?",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4663,8 +5665,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-075",
-    "number": 75,
+    "id": "q-093",
+    "number": 93,
     "title": "API Layers - Backend replacement planned",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4722,8 +5724,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-076",
-    "number": 76,
+    "id": "q-094",
+    "number": 94,
     "title": "API Layers - Translation responsibility",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4734,11 +5736,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "In the CRM system itself, by changing its native data model to match the API"
+        "text": "In the Customer System API's implementation"
       },
       {
         "letter": "B",
-        "text": "In the Customer System API's implementation"
+        "text": "In the CRM system itself, by changing its native data model to match the API"
       },
       {
         "letter": "C",
@@ -4749,16 +5751,16 @@ window.MCPA_QUESTIONS = [
         "text": "In an API policy applied to the Customer System API in API Manager"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. The System API defines a contract in terms of the chosen API data model, and its implementation translates between those data types and the native data model of the backend system. This keeps the translation in one place and shields every consumer from the backend's model.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. The System API defines a contract in terms of the chosen API data model, and its implementation translates between those data types and the native data model of the backend system. This keeps the translation in one place and shields every consumer from the backend's model.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Changing the system of record to fit an API is costly and usually impossible for packaged or SaaS systems."
-      },
-      "B": {
         "type": "Correct",
         "text": "The System API implementation owns the mapping between its API data model and the backend system's native model."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Changing the system of record to fit an API is costly and usually impossible for packaged or SaaS systems."
       },
       "C": {
         "type": "Incorrect",
@@ -4781,8 +5783,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-077",
-    "number": 77,
+    "id": "q-095",
+    "number": 95,
     "title": "API Layers - Large federated enterprise",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4840,8 +5842,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-078",
-    "number": 78,
+    "id": "q-096",
+    "number": 96,
     "title": "API Layers - Small centralized organization",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4899,8 +5901,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-079",
-    "number": 79,
+    "id": "q-097",
+    "number": 97,
     "title": "API Layers - Meaning of the same term",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4911,35 +5913,35 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Separate Patient types per context, translated where the contexts interact"
-      },
-      {
-        "letter": "B",
         "text": "Rename one of the types so that no two contexts in the organization use the same name"
       },
       {
-        "letter": "C",
+        "letter": "B",
         "text": "Let the clinical definition win because clinical data is more sensitive"
+      },
+      {
+        "letter": "C",
+        "text": "Separate Patient types per context, translated where the contexts interact"
       },
       {
         "letter": "D",
         "text": "Merge both definitions into one Patient type containing every billing and clinical field"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. In a Bounded Context Data Model approach, each bounded context is identified by its shared vocabulary and has its own set of data type definitions. Types in different contexts may have the same name, such as Patient, but they are separate definitions. Where contexts interact, APIs map between their models.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. In a Bounded Context Data Model approach, each bounded context is identified by its shared vocabulary and has its own set of data type definitions. Types in different contexts may have the same name, such as Patient, but they are separate definitions. Where contexts interact, APIs map between their models.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "In Bounded Context Data Models, each context has its own definitions, which may share names but are formally unrelated."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "Shared names across contexts are expected; renaming does not address the different meanings."
       },
-      "C": {
+      "B": {
         "type": "Incorrect",
         "text": "Choosing one context's model for both ignores the billing context's legitimate needs."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "In Bounded Context Data Models, each context has its own definitions, which may share names but are formally unrelated."
       },
       "D": {
         "type": "Incorrect",
@@ -4958,8 +5960,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-080",
-    "number": 80,
+    "id": "q-098",
+    "number": 98,
     "title": "API Layers - Cost of an EDM",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5017,8 +6019,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-081",
-    "number": 81,
+    "id": "q-099",
+    "number": 99,
     "title": "API Layers - When BCDM translation is required",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5029,35 +6031,35 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "No mapping is needed because all bounded contexts automatically share the same data types"
+        "text": "Sales-to-Logistics data mapping is needed where the Process API calls the System API"
       },
       {
         "letter": "B",
-        "text": "Both APIs must be merged into one bounded context before they can interact"
+        "text": "No mapping is needed because all bounded contexts automatically share the same data types"
       },
       {
         "letter": "C",
-        "text": "Sales-to-Logistics data mapping is needed where the Process API calls the System API"
+        "text": "Both APIs must be merged into one bounded context before they can interact"
       },
       {
         "letter": "D",
         "text": "The Shipment System API must adopt the Sales context's data model"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. With Bounded Context Data Models, each context maintains its own formally unrelated data types. When an API in one context calls an API in another, data must be mapped between the two models. This mapping is the cost paid for allowing each context to evolve independently.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. With Bounded Context Data Models, each context maintains its own formally unrelated data types. When an API in one context calls an API in another, data must be mapped between the two models. This mapping is the cost paid for allowing each context to evolve independently.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Bounded contexts are defined precisely so that they do not share data type definitions."
+        "type": "Correct",
+        "text": "Bounded contexts have independent models, so interactions across a context boundary require translation."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Contexts can interact through explicit mappings; merging them is not required."
+        "text": "Bounded contexts are defined precisely so that they do not share data type definitions."
       },
       "C": {
-        "type": "Correct",
-        "text": "Bounded contexts have independent models, so interactions across a context boundary require translation."
+        "type": "Incorrect",
+        "text": "Contexts can interact through explicit mappings; merging them is not required."
       },
       "D": {
         "type": "Incorrect",
@@ -5076,8 +6078,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-082",
-    "number": 82,
+    "id": "q-100",
+    "number": 100,
     "title": "API Layers - Reasons for a canonical model",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5088,11 +6090,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "One shared definition per data type, reducing point-to-point format mappings"
+        "text": "To shield APIs from all non-backward-compatible changes to the canonical model"
       },
       {
         "letter": "B",
-        "text": "To shield APIs from all non-backward-compatible changes to the canonical model"
+        "text": "One shared definition per data type, reducing point-to-point format mappings"
       },
       {
         "letter": "C",
@@ -5103,16 +6105,16 @@ window.MCPA_QUESTIONS = [
         "text": "To allow each line of business to define its own versions of shared entities"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. An enterprise-wide canonical (Enterprise) data model defines each data type once for the whole organization. Systems translate between their native format and the canonical format, which reduces the number of distinct mappings needed. The trade-off is the governance needed to agree on and evolve one shared model.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. An enterprise-wide canonical (Enterprise) data model defines each data type once for the whole organization. Systems translate between their native format and the canonical format, which reduces the number of distinct mappings needed. The trade-off is the governance needed to agree on and evolve one shared model.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "A canonical model means each system maps to and from one shared format instead of to every other system's format."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "Breaking changes to a shared canonical model affect every API that uses it."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "A canonical model means each system maps to and from one shared format instead of to every other system's format."
       },
       "C": {
         "type": "Incorrect",
@@ -5135,8 +6137,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-083",
-    "number": 83,
+    "id": "q-101",
+    "number": 101,
     "title": "API Layers - Starting point for a new API program",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5151,31 +6153,31 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Define Bounded Context Data Models aligned with the business domains"
+        "text": "Use one data model per API and never share data types between APIs"
       },
       {
         "letter": "C",
-        "text": "Use one data model per API and never share data types between APIs"
+        "text": "Define Bounded Context Data Models aligned with the business domains"
       },
       {
         "letter": "D",
         "text": "Adopt the e-commerce platform's native model as the company-wide standard"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. When there is no existing Enterprise Data Model and teams are organized by business domain, Bounded Context Data Models aligned with those domains are usually the most practical choice. Each domain team owns its model and shares types within its context, and mappings are added where contexts interact.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. When there is no existing Enterprise Data Model and teams are organized by business domain, Bounded Context Data Models aligned with those domains are usually the most practical choice. Each domain team owns its model and shares types within its context, and mappings are added where contexts interact.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "A year-long EDM effort conflicts with the requirement for fast delivery by domain teams."
       },
       "B": {
-        "type": "Correct",
-        "text": "Domain-aligned bounded contexts let each team deliver independently without waiting for an enterprise-wide agreement."
-      },
-      "C": {
         "type": "Incorrect",
         "text": "Defining a separate model for every API gives up reuse of shared types within a domain."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "Domain-aligned bounded contexts let each team deliver independently without waiting for an enterprise-wide agreement."
       },
       "D": {
         "type": "Incorrect",
@@ -5194,8 +6196,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-084",
-    "number": 84,
+    "id": "q-102",
+    "number": 102,
     "title": "API Layers - Flexible queries for new apps",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5253,8 +6255,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-085",
-    "number": 85,
+    "id": "q-103",
+    "number": 103,
     "title": "API Layers - DataGraph is not a replacement for System APIs",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5265,35 +6267,35 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "DataGraph should be deployed inside each System API to expose its data as GraphQL"
+        "text": "DataGraph builds on existing REST APIs, so the System APIs are still needed"
       },
       {
         "letter": "B",
-        "text": "DataGraph is a message broker and should replace Anypoint MQ rather than System APIs"
+        "text": "DataGraph should be deployed inside each System API to expose its data as GraphQL"
       },
       {
         "letter": "C",
-        "text": "DataGraph builds on existing REST APIs, so the System APIs are still needed"
+        "text": "DataGraph is a message broker and should replace Anypoint MQ rather than System APIs"
       },
       {
         "letter": "D",
         "text": "DataGraph can connect to SAP and Oracle directly, so the System APIs are redundant"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. Anypoint DataGraph supports REST APIs described with RAML or OAS specifications and combines them into a unified schema. It sits on top of the application network, typically consuming System and Process APIs; it does not connect to backend systems directly and does not remove the need for APIs that unlock those systems.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Anypoint DataGraph supports REST APIs described with RAML or OAS specifications and combines them into a unified schema. It sits on top of the application network, typically consuming System and Process APIs; it does not connect to backend systems directly and does not remove the need for APIs that unlock those systems.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "DataGraph is a separate managed service that runs a single GraphQL endpoint for the unified schema."
+        "type": "Correct",
+        "text": "DataGraph consumes REST APIs with RAML or OAS specifications; it does not replace the APIs that unlock backend systems."
       },
       "B": {
         "type": "Incorrect",
-        "text": "DataGraph is a GraphQL query layer, not a message broker."
+        "text": "DataGraph is a separate managed service that runs a single GraphQL endpoint for the unified schema."
       },
       "C": {
-        "type": "Correct",
-        "text": "DataGraph consumes REST APIs with RAML or OAS specifications; it does not replace the APIs that unlock backend systems."
+        "type": "Incorrect",
+        "text": "DataGraph is a GraphQL query layer, not a message broker."
       },
       "D": {
         "type": "Incorrect",
@@ -5312,8 +6314,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-086",
-    "number": 86,
+    "id": "q-104",
+    "number": 104,
     "title": "API Layers - Unsuitable role for DataGraph",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5371,8 +6373,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-087",
-    "number": 87,
+    "id": "q-105",
+    "number": 105,
     "title": "API Layers - Securing DataGraph",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5391,15 +6393,15 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Embed client credentials in the GraphQL queries and validate them in each System API"
+        "text": "Manage it in API Manager with policies, client contracts, and SLA tiers"
       },
       {
         "letter": "D",
-        "text": "Manage it in API Manager with policies, client contracts, and SLA tiers"
+        "text": "Embed client credentials in the GraphQL queries and validate them in each System API"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. Anypoint DataGraph is managed in API Manager. Administrators can configure policies on the unified schema's GraphQL endpoint, manage contracts so only authorized client applications can consume it, and define SLA tiers for each DataGraph instance.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Anypoint DataGraph is managed in API Manager. Administrators can configure policies on the unified schema's GraphQL endpoint, manage contracts so only authorized client applications can consume it, and define SLA tiers for each DataGraph instance.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -5410,12 +6412,12 @@ window.MCPA_QUESTIONS = [
         "text": "DataGraph's GraphQL endpoint can have its own policies and contracts in API Manager."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Client access to the GraphQL endpoint is handled through API Manager, not by custom checks in each downstream API."
-      },
-      "D": {
         "type": "Correct",
         "text": "DataGraph is administered in API Manager, where policies, client contracts, and SLA tiers control who can query and how much."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Client access to the GraphQL endpoint is handled through API Manager, not by custom checks in each downstream API."
       }
     },
     "references": {
@@ -5430,8 +6432,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-088",
-    "number": 88,
+    "id": "q-106",
+    "number": 106,
     "title": "API Layers - Linking types",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5489,8 +6491,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-089",
-    "number": 89,
+    "id": "q-107",
+    "number": 107,
     "title": "API Layers - Merging duplicate types",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5501,11 +6503,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Linking the Order type to the Product type"
+        "text": "Link the two Customer types so consumers query them separately"
       },
       {
         "letter": "B",
-        "text": "Link the two Customer types so consumers query them separately"
+        "text": "Linking the Order type to the Product type"
       },
       {
         "letter": "C",
@@ -5516,16 +6518,16 @@ window.MCPA_QUESTIONS = [
         "text": "Rewrite both APIs so they return identical Customer payloads"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. DataGraph lets you merge object types to combine similar types into a single type, extending its fields and datasets. Merging the CRM and Billing Customer types yields one Customer type in the unified schema that exposes both contact and balance information.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. DataGraph lets you merge object types to combine similar types into a single type, extending its fields and datasets. Merging the CRM and Billing Customer types yields one Customer type in the unified schema that exposes both contact and balance information.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Merging combines similar types into one, extending their fields for a richer query result."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "Linking connects different types; it would not present a single Customer type with both sets of fields."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Merging combines similar types into one, extending their fields for a richer query result."
       },
       "C": {
         "type": "Incorrect",
@@ -5548,8 +6550,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-090",
-    "number": 90,
+    "id": "q-108",
+    "number": 108,
     "title": "API Layers - Where DataGraph fits in the application network",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5618,8 +6620,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-091",
-    "number": 91,
+    "id": "q-109",
+    "number": 109,
     "title": "Api Policies - What is the recommended way to expose",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -5681,8 +6683,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-092",
-    "number": 92,
+    "id": "q-110",
+    "number": 110,
     "title": "Api Policies - Which Anypoint policy enforces mutual TLS for",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -5743,8 +6745,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-093",
-    "number": 93,
+    "id": "q-111",
+    "number": 111,
     "title": "Api Policies - Which statement about prebuilt MuleSoft API policies",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -5805,8 +6807,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-094",
-    "number": 94,
+    "id": "q-112",
+    "number": 112,
     "title": "Api Policies - An architect needs to expose an API",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -5868,8 +6870,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-095",
-    "number": 95,
+    "id": "q-113",
+    "number": 113,
     "title": "Api Policies - Which builtin policy can validate a JSON",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -5930,8 +6932,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-096",
-    "number": 96,
+    "id": "q-114",
+    "number": 114,
     "title": "Api Policies - Which security control prevents a denialofservice from",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -5992,8 +6994,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-097",
-    "number": 97,
+    "id": "q-115",
+    "number": 115,
     "title": "Api Policies - An architect wants ALL traffic to a",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6054,8 +7056,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-098",
-    "number": 98,
+    "id": "q-116",
+    "number": 116,
     "title": "Api Policies - Which Anypoint capability lets organizations build custom",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6116,8 +7118,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-099",
-    "number": 99,
+    "id": "q-117",
+    "number": 117,
     "title": "Api Policies - An architect is asked to enforce that",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6178,8 +7180,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-100",
-    "number": 100,
+    "id": "q-118",
+    "number": 118,
     "title": "Api Policies - Which control in API Manager records the",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6240,8 +7242,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-101",
-    "number": 101,
+    "id": "q-119",
+    "number": 119,
     "title": "Api Policies - Which Anypoint Platform option enforces API policies",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6303,8 +7305,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-102",
-    "number": 102,
+    "id": "q-120",
+    "number": 120,
     "title": "Api Policies - An API Manager policy is configured for",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6365,8 +7367,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-103",
-    "number": 103,
+    "id": "q-121",
+    "number": 121,
     "title": "Api Policies - Which response best describes how to model",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6428,8 +7430,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-104",
-    "number": 104,
+    "id": "q-122",
+    "number": 122,
     "title": "Api Policies - Which artifact in API Manager allows applying",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6491,8 +7493,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-105",
-    "number": 105,
+    "id": "q-123",
+    "number": 123,
     "title": "Api Policies - Which is the correct way to authenticate",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6554,8 +7556,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-106",
-    "number": 106,
+    "id": "q-124",
+    "number": 124,
     "title": "Api Policies - Which Anypoint capability lets architects create and",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6616,8 +7618,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-107",
-    "number": 107,
+    "id": "q-125",
+    "number": 125,
     "title": "Api Policies - Which approach is valid for keeping access",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6679,8 +7681,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-108",
-    "number": 108,
+    "id": "q-126",
+    "number": 126,
     "title": "API Security - A regional healthcare provider must expose patient appointment",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6757,8 +7759,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-109",
-    "number": 109,
+    "id": "q-127",
+    "number": 127,
     "title": "API Governance - A federal agency is consolidating multiple legacy services into a",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6822,8 +7824,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-110",
-    "number": 110,
+    "id": "q-128",
+    "number": 128,
     "title": "Security and Governance - A healthcare network is integrating a patient portal with an",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6890,8 +7892,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-111",
-    "number": 111,
+    "id": "q-129",
+    "number": 129,
     "title": "API Security - A regional healthcare provider must expose patient data through",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6968,8 +7970,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-112",
-    "number": 112,
+    "id": "q-130",
+    "number": 130,
     "title": "API Governance - A federal agency follows a strict change‑control process and must",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7046,8 +8048,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-113",
-    "number": 113,
+    "id": "q-131",
+    "number": 131,
     "title": "API Security - A federal government agency is securing an internal API that prov",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7124,8 +8126,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-114",
-    "number": 114,
+    "id": "q-132",
+    "number": 132,
     "title": "Mule Soft Certified Platform Architect (MCPA) - A healthcare startup must secure its patient data APIs to satisfy",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7205,8 +8207,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-115",
-    "number": 115,
+    "id": "q-133",
+    "number": 133,
     "title": "PCI-DSS Compliance - An online retail company must protect credit‑card information flo",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7283,8 +8285,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-116",
-    "number": 116,
+    "id": "q-134",
+    "number": 134,
     "title": "API Governance - A logistics startup plans to launch a public shipment‑tracking AP",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7361,8 +8363,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-117",
-    "number": 117,
+    "id": "q-135",
+    "number": 135,
     "title": "Io T Security - A manufacturing plant wants to secure MQTT telemetry from its Io",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7426,8 +8428,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-118",
-    "number": 118,
+    "id": "q-136",
+    "number": 136,
     "title": "API Management - A national retail chain wants to expose its inventory catalog to",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7508,8 +8510,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-119",
-    "number": 119,
+    "id": "q-137",
+    "number": 137,
     "title": "WS-Security - A government tax department needs to secure a SOAP web service th",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7589,8 +8591,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-120",
-    "number": 120,
+    "id": "q-138",
+    "number": 138,
     "title": "API Security - A global retail chain is rolling out a loyalty API that will be c",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7667,8 +8669,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-121",
-    "number": 121,
+    "id": "q-139",
+    "number": 139,
     "title": "API Security - A government agency is publishing a confidential document‑exchang",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7735,8 +8737,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-122",
-    "number": 122,
+    "id": "q-140",
+    "number": 140,
     "title": "API Security - A mid-sized financial services firm is launching a new mobile ban",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7800,8 +8802,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "E"
   },
   {
-    "id": "q-123",
-    "number": 123,
+    "id": "q-141",
+    "number": 141,
     "title": "API Security Governance - A federal government agency is publishing citizen services APIs t",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7865,8 +8867,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-124",
-    "number": 124,
+    "id": "q-142",
+    "number": 142,
     "title": "Security - A new Mule application has been deployed through Runtime Manager to Cl",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7927,8 +8929,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-125",
-    "number": 125,
+    "id": "q-143",
+    "number": 143,
     "title": "Security - A Mule application is designed to call the Google Maps API to perform",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7989,8 +8991,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-126",
-    "number": 126,
+    "id": "q-144",
+    "number": 144,
     "title": "API Governance - Following MuleSoft's recommended best practices for API governance and",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8051,8 +9053,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-127",
-    "number": 127,
+    "id": "q-145",
+    "number": 145,
     "title": "Api Policies - Automated policies scope and priority in API Manager",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8114,8 +9116,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-128",
-    "number": 128,
+    "id": "q-146",
+    "number": 146,
     "title": "Api Policies - Mule Gateway versus Flex Gateway policy reuse",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8178,8 +9180,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-129",
-    "number": 129,
+    "id": "q-147",
+    "number": 147,
     "title": "Api Policies - JWT Validation policy signature and claims validation",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8241,8 +9243,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-130",
-    "number": 130,
+    "id": "q-148",
+    "number": 148,
     "title": "Api Policies - OpenID Connect OAuth 2.0 token enforcement with external client management",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8304,8 +9306,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-131",
-    "number": 131,
+    "id": "q-149",
+    "number": 149,
     "title": "Api Policies - External identity providers for client management",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8367,8 +9369,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-132",
-    "number": 132,
+    "id": "q-150",
+    "number": 150,
     "title": "Api Policies - Anypoint Service Mesh for non-Mule microservices",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8430,8 +9432,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-133",
-    "number": 133,
+    "id": "q-151",
+    "number": 151,
     "title": "Api Policies - Choosing between Mule Gateway and Flex Gateway",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8494,8 +9496,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-134",
-    "number": 134,
+    "id": "q-152",
+    "number": 152,
     "title": "Api Policies - Applying a policy at the organization or environment level",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8557,8 +9559,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-135",
-    "number": 135,
+    "id": "q-153",
+    "number": 153,
     "title": "Api Policies - Refer to the exhibit. Choosing the better gateway deployment",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8622,8 +9624,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-136",
-    "number": 136,
+    "id": "q-154",
+    "number": 154,
     "title": "Api Policies - Refer to the exhibit. OAuth 2.0 token validation with an external provider",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8687,8 +9689,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-137",
-    "number": 137,
+    "id": "q-155",
+    "number": 155,
     "title": "Api Policies - Refer to the exhibit. Routing with service mesh versus gateway policies",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8752,8 +9754,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-138",
-    "number": 138,
+    "id": "q-156",
+    "number": 156,
     "title": "Deploying Managing Apis - Which feature in API Manager pairs a",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -8814,8 +9816,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-139",
-    "number": 139,
+    "id": "q-157",
+    "number": 157,
     "title": "Deploying Managing Apis - Which testing tool is built specifically for",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -8877,8 +9879,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-140",
-    "number": 140,
+    "id": "q-158",
+    "number": 158,
     "title": "Api Implementation Design - What is the recommended approach to manage",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -8939,8 +9941,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-141",
-    "number": 141,
+    "id": "q-159",
+    "number": 159,
     "title": "Deploying Managing Apis - What is the Mule Maven Plugin used",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -9001,8 +10003,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-142",
-    "number": 142,
+    "id": "q-160",
+    "number": 160,
     "title": "Api Implementation Design - Which is the BEST place to handle",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -9063,8 +10065,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-143",
-    "number": 143,
+    "id": "q-161",
+    "number": 161,
     "title": "Deploying Managing Apis - Which strategy best supports rolling out CloudHub",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -9126,8 +10128,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-144",
-    "number": 144,
+    "id": "q-162",
+    "number": 162,
     "title": "Deploying Managing Apis - Which combination is recommended for a CICD",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -9189,8 +10191,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-145",
-    "number": 145,
+    "id": "q-163",
+    "number": 163,
     "title": "Api Implementation Design - Which Mule capability enables transactional reliability for",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -9251,8 +10253,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-146",
-    "number": 146,
+    "id": "q-164",
+    "number": 164,
     "title": "Deploying Managing Apis - Which combination is correct for promoting a",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -9314,8 +10316,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-147",
-    "number": 147,
+    "id": "q-165",
+    "number": 165,
     "title": "Api Implementation Design - Which is the correct reading of a",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -9377,8 +10379,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-148",
-    "number": 148,
+    "id": "q-166",
+    "number": 166,
     "title": "Deploying Managing Apis - Which is the correct understanding of API",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -9439,8 +10441,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-149",
-    "number": 149,
+    "id": "q-167",
+    "number": 167,
     "title": "Deploying Managing Apis - Which is true about MUnit coverage in",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -9502,8 +10504,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-150",
-    "number": 150,
+    "id": "q-168",
+    "number": 168,
     "title": "Api Implementation Design - An architect wants the SAME RAML spec",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -9565,8 +10567,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-151",
-    "number": 151,
+    "id": "q-169",
+    "number": 169,
     "title": "Api Implementation Design - Which strategy best handles credentials for Mule",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -9627,8 +10629,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-152",
-    "number": 152,
+    "id": "q-170",
+    "number": 170,
     "title": "Deploying Managing Apis - Which option BEST describes the role of",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -9690,8 +10692,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-153",
-    "number": 153,
+    "id": "q-171",
+    "number": 171,
     "title": "Deploying Managing Apis - A platform team needs centralized policy control",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -9753,8 +10755,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-154",
-    "number": 154,
+    "id": "q-172",
+    "number": 172,
     "title": "API-led Migration - A large financial institution is migrating legacy SOAP services",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -9822,8 +10824,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-155",
-    "number": 155,
+    "id": "q-173",
+    "number": 173,
     "title": "HL7 Integration - A healthcare network is integrating three EMR systems that use",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -9903,8 +10905,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-156",
-    "number": 156,
+    "id": "q-174",
+    "number": 174,
     "title": "Integration Patterns - A regional healthcare provider needs to integrate its electronic",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -9981,8 +10983,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-157",
-    "number": 157,
+    "id": "q-175",
+    "number": 175,
     "title": "Integration Patterns - A logistics company is orchestrating real‑time shipment tracking",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10059,8 +11061,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-158",
-    "number": 158,
+    "id": "q-176",
+    "number": 176,
     "title": "Event-Driven Architecture - A manufacturing firm is ingesting high‑velocity Io T sensor data",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10137,8 +11139,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-159",
-    "number": 159,
+    "id": "q-177",
+    "number": 177,
     "title": "Application Migration - A retail chain is migrating from a legacy ESB to Anypoint Platfor",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10206,8 +11208,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-160",
-    "number": 160,
+    "id": "q-178",
+    "number": 178,
     "title": "Integration Architecture - A federal agency is orchestrating an approvals workflow that span",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10284,8 +11286,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-161",
-    "number": 161,
+    "id": "q-179",
+    "number": 179,
     "title": "Integration Architecture - A healthcare analytics team must integrate a lab‑result REST API,",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10365,8 +11367,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-162",
-    "number": 162,
+    "id": "q-180",
+    "number": 180,
     "title": "Integration Patterns - A regional healthcare provider is integrating patient‑record syst",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10443,8 +11445,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-163",
-    "number": 163,
+    "id": "q-181",
+    "number": 181,
     "title": "Integration Design Patterns - A manufacturing company is designing an integration solution to s",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10525,8 +11527,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-164",
-    "number": 164,
+    "id": "q-182",
+    "number": 182,
     "title": "CI/CD Pipelines - A multinational bank is standardizing its CI/CD pipeline for Mule",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10606,8 +11608,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-165",
-    "number": 165,
+    "id": "q-183",
+    "number": 183,
     "title": "HL7 Integration - A regional healthcare provider must integrate its legacy HL7 mess",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10684,8 +11686,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-166",
-    "number": 166,
+    "id": "q-184",
+    "number": 184,
     "title": "Messaging - What requirement prevents using Anypoint MQ as the messaging broker fo",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10746,8 +11748,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-167",
-    "number": 167,
+    "id": "q-185",
+    "number": 185,
     "title": "Integration Interfaces - An airline is architecting an API-led connectivity project to integrat",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10808,8 +11810,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-168",
-    "number": 168,
+    "id": "q-186",
+    "number": 186,
     "title": "Messaging - A Mule solution implements an Experience API and System API as Mule ap",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10870,8 +11872,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-169",
-    "number": 169,
+    "id": "q-187",
+    "number": 187,
     "title": "Application Design - An organization has built a large monolithic application over the year",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10932,8 +11934,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-170",
-    "number": 170,
+    "id": "q-188",
+    "number": 188,
     "title": "Messaging - A manufacturing company wants to share inventory updates with dealers",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10994,8 +11996,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-171",
-    "number": 171,
+    "id": "q-189",
+    "number": 189,
     "title": "CI/CD - An organization is in the process of building automated deployments us",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11056,8 +12058,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-172",
-    "number": 172,
+    "id": "q-190",
+    "number": 190,
     "title": "Connectors - Which Salesforce API is invoked to deploy, retrieve, create, update, o",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11118,8 +12120,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-173",
-    "number": 173,
+    "id": "q-191",
+    "number": 191,
     "title": "Application Design - Why would an Enterprise Architect use a single enterprise-wide canonic",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11180,8 +12182,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-174",
-    "number": 174,
+    "id": "q-192",
+    "number": 192,
     "title": "CI/CD - An organization is using MuleSoft to develop APIs and automatically de",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11242,8 +12244,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-175",
-    "number": 175,
+    "id": "q-193",
+    "number": 193,
     "title": "Deployment Options - Which Anypoint deployment option is a fully",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -11304,8 +12306,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-176",
-    "number": 176,
+    "id": "q-194",
+    "number": 194,
     "title": "Deployment Options - Which deployment option lets you run Mule",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -11366,8 +12368,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-177",
-    "number": 177,
+    "id": "q-195",
+    "number": 195,
     "title": "Deployment Options - Which CloudHub configuration enables a managed customercontrolled",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -11429,8 +12431,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-178",
-    "number": 178,
+    "id": "q-196",
+    "number": 196,
     "title": "Deployment Options - An organization wants to enforce API policies",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -11491,8 +12493,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-179",
-    "number": 179,
+    "id": "q-197",
+    "number": 197,
     "title": "Deployment Options - Which is a TRUE statement about CloudHub",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -11553,8 +12555,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-180",
-    "number": 180,
+    "id": "q-198",
+    "number": 198,
     "title": "Deployment Options - Which scenario is the strongest case for",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -11616,8 +12618,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-181",
-    "number": 181,
+    "id": "q-199",
+    "number": 199,
     "title": "Deployment Options - An organization wants Mule applications running in",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -11678,8 +12680,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-182",
-    "number": 182,
+    "id": "q-200",
+    "number": 200,
     "title": "Deployment Options - Which CloudHub region minimizes latency for APAC consumers",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -11741,8 +12743,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-183",
-    "number": 183,
+    "id": "q-201",
+    "number": 201,
     "title": "Deployment Options - Which statement about Mule Hybrid deployment is",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -11803,8 +12805,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-184",
-    "number": 184,
+    "id": "q-202",
+    "number": 202,
     "title": "Deployment Options - Which option exposes ingress inside a Private",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -11866,8 +12868,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-185",
-    "number": 185,
+    "id": "q-203",
+    "number": 203,
     "title": "Runtime Auto-Scaling - An online retailer expects a 3× traffic surge during holiday",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -11944,8 +12946,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-186",
-    "number": 186,
+    "id": "q-204",
+    "number": 204,
     "title": "Runtime Deployment - A Saa S startup plans to deploy Mule runtime on a Kubernetes",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12022,8 +13024,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-187",
-    "number": 187,
+    "id": "q-205",
+    "number": 205,
     "title": "Runtime Deployment - A national retail chain processes 10,000 orders per minute and",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12100,8 +13102,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "E"
   },
   {
-    "id": "q-188",
-    "number": 188,
+    "id": "q-206",
+    "number": 206,
     "title": "API Migration - A logistics company is migrating its on‑premises APIs to Anypoint",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12181,8 +13183,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-189",
-    "number": 189,
+    "id": "q-207",
+    "number": 207,
     "title": "Deployment Choices - A mid‑size financial services firm must migrate its core payment ",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12259,8 +13261,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-190",
-    "number": 190,
+    "id": "q-208",
+    "number": 208,
     "title": "Deployment Strategy - A national retail chain plans to launch a new omnichannel experie",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12337,8 +13339,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-191",
-    "number": 191,
+    "id": "q-209",
+    "number": 209,
     "title": "Cloud Hub Deployment - A logistics company is migrating its on‑premise Mule runtimes to ",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12418,8 +13420,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-192",
-    "number": 192,
+    "id": "q-210",
+    "number": 210,
     "title": "Deployment Models - A mid-sized financial services firm is migrating its core loan‑or",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12496,8 +13498,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-193",
-    "number": 193,
+    "id": "q-211",
+    "number": 211,
     "title": "Runtime Deployment - A logistics startup plans to host its Mule runtime in a public cl",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12574,8 +13576,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-194",
-    "number": 194,
+    "id": "q-212",
+    "number": 212,
     "title": "Deployment Options - CloudHub custom-domain HTTPS with mTLS",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12638,8 +13640,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-195",
-    "number": 195,
+    "id": "q-213",
+    "number": 213,
     "title": "Deployment Options - Scheduler behavior across CloudHub workers",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12702,8 +13704,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-196",
-    "number": 196,
+    "id": "q-214",
+    "number": 214,
     "title": "Deployment Options - Runtime behavior during control plane outage",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12766,8 +13768,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-197",
-    "number": 197,
+    "id": "q-215",
+    "number": 215,
     "title": "Deployment Options - Object Store v2 sharing between applications",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12830,8 +13832,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-198",
-    "number": 198,
+    "id": "q-216",
+    "number": 216,
     "title": "Deployment Options - Internal CloudHub worker URL",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12894,8 +13896,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-199",
-    "number": 199,
+    "id": "q-217",
+    "number": 217,
     "title": "Deployment Options - Persistent VM queues across workers",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12958,8 +13960,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-200",
-    "number": 200,
+    "id": "q-218",
+    "number": 218,
     "title": "Deployment Options - Private connectivity to on-premises data centers",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13023,8 +14025,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-201",
-    "number": 201,
+    "id": "q-219",
+    "number": 219,
     "title": "Deployment Options - Masking secure properties in Runtime Manager",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13087,8 +14089,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-202",
-    "number": 202,
+    "id": "q-220",
+    "number": 220,
     "title": "Deployment Options - Runtime Fabric ingress controller",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13151,8 +14153,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-203",
-    "number": 203,
+    "id": "q-221",
+    "number": 221,
     "title": "Deployment Options - CloudHub worker size for large payloads",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13215,8 +14217,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-204",
-    "number": 204,
+    "id": "q-222",
+    "number": 222,
     "title": "Deployment Options - DLB mapping rules for API routing",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13279,8 +14281,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-205",
-    "number": 205,
+    "id": "q-223",
+    "number": 223,
     "title": "Deployment Options - Static outbound IP for CloudHub",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13343,8 +14345,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-206",
-    "number": 206,
+    "id": "q-224",
+    "number": 224,
     "title": "Deployment Options - CloudHub worker availability zones",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13407,8 +14409,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-207",
-    "number": 207,
+    "id": "q-225",
+    "number": 225,
     "title": "Deployment Options - HTTP traffic in an active-active cluster",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13471,8 +14473,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-208",
-    "number": 208,
+    "id": "q-226",
+    "number": 226,
     "title": "Deployment Options - Runtime Fabric controller node role",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13522,8 +14524,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-209",
-    "number": 209,
+    "id": "q-227",
+    "number": 227,
     "title": "Deployment Options - CloudHub deployment traffic handling",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13586,8 +14588,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-210",
-    "number": 210,
+    "id": "q-228",
+    "number": 228,
     "title": "Deployment Options - CloudHub ephemeral local files",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13650,8 +14652,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-211",
-    "number": 211,
+    "id": "q-229",
+    "number": 229,
     "title": "Deployment Options - CloudHub VPC network diagnostics",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13714,8 +14716,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-212",
-    "number": 212,
+    "id": "q-230",
+    "number": 230,
     "title": "Deployment Options - Dedicated Load Balancer high availability",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13778,8 +14780,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-213",
-    "number": 213,
+    "id": "q-231",
+    "number": 231,
     "title": "Deployment Options - Runtime Fabric replica load balancing",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13829,8 +14831,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-214",
-    "number": 214,
+    "id": "q-232",
+    "number": 232,
     "title": "Deployment Options - A company is modernizing its legacy systems to accelerate access to ap",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13891,8 +14893,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-215",
-    "number": 215,
+    "id": "q-233",
+    "number": 233,
     "title": "Deployment Options - An insurance company is designing a hybrid, load-balanced, single-clus",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13953,8 +14955,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-216",
-    "number": 216,
+    "id": "q-234",
+    "number": 234,
     "title": "Deployment Options - Refer to the exhibit.",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14016,8 +15018,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-217",
-    "number": 217,
+    "id": "q-235",
+    "number": 235,
     "title": "Deployment Options - CloudHub 1.0 vs CloudHub 2.0 shared and private spaces",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14080,8 +15082,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-218",
-    "number": 218,
+    "id": "q-236",
+    "number": 236,
     "title": "Deployment Options - CloudHub 2.0 private space fully managed ingress load balancer",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14144,8 +15146,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-219",
-    "number": 219,
+    "id": "q-237",
+    "number": 237,
     "title": "Deployment Options - CloudHub 1.0 port mapping for HTTP and HTTPS",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14208,8 +15210,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-220",
-    "number": 220,
+    "id": "q-238",
+    "number": 238,
     "title": "Deployment Options - DLB internal ports 8091 and 8092",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14272,8 +15274,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-221",
-    "number": 221,
+    "id": "q-239",
+    "number": 239,
     "title": "Deployment Options - DLB SSL endpoint and custom certificate configuration",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14336,8 +15338,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-222",
-    "number": 222,
+    "id": "q-240",
+    "number": 240,
     "title": "Deployment Options - DLB mapping rules and DNS CNAME for vanity domains",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14404,8 +15406,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-223",
-    "number": 223,
+    "id": "q-241",
+    "number": 241,
     "title": "Deployment Options - Dedicated Load Balancer high availability and units",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14468,8 +15470,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-224",
-    "number": 224,
+    "id": "q-242",
+    "number": 242,
     "title": "Deployment Options - CloudHub 1.0 high availability with multiple workers and persistent queues",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14533,8 +15535,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-225",
-    "number": 225,
+    "id": "q-243",
+    "number": 243,
     "title": "Deployment Options - CloudHub 2.0 high availability across replicas and AZs",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14598,8 +15600,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-226",
-    "number": 226,
+    "id": "q-244",
+    "number": 244,
     "title": "Deployment Options - Multi-region disaster recovery and Object Store v2 scope",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14663,8 +15665,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-227",
-    "number": 227,
+    "id": "q-245",
+    "number": 245,
     "title": "Deployment Options - Object Store v2 with multi-worker applications",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14727,8 +15729,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-228",
-    "number": 228,
+    "id": "q-246",
+    "number": 246,
     "title": "Deployment Options - Connecting CloudHub to on-premises and private networks",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14796,8 +15798,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-229",
-    "number": 229,
+    "id": "q-247",
+    "number": 247,
     "title": "Deployment Options - CloudHub 2.0 private space ingress ports and firewall rules",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14863,8 +15865,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-230",
-    "number": 230,
+    "id": "q-248",
+    "number": 248,
     "title": "Deployment Options - CloudHub 2.0 public and internal DNS records",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14927,8 +15929,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-231",
-    "number": 231,
+    "id": "q-249",
+    "number": 249,
     "title": "Deployment Options - CloudHub 2.0 private space TLS context and custom domains",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14992,8 +15994,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-232",
-    "number": 232,
+    "id": "q-250",
+    "number": 250,
     "title": "Deployment Options - CloudHub 2.0 differences from CloudHub 1.0",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15061,8 +16063,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-233",
-    "number": 233,
+    "id": "q-251",
+    "number": 251,
     "title": "Api Policies - Refer to the exhibit. CloudHub 2.0 private space ingress with TLS",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15127,8 +16129,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-234",
-    "number": 234,
+    "id": "q-252",
+    "number": 252,
     "title": "Non Functional Requirements - What is the unit of compute capacity",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -15190,8 +16192,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-235",
-    "number": 235,
+    "id": "q-253",
+    "number": 253,
     "title": "Non Functional Requirements - Which Anypoint capability provides reliable asynchronous queuebased",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -15253,8 +16255,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-236",
-    "number": 236,
+    "id": "q-254",
+    "number": 254,
     "title": "Non Functional Requirements - Where should durable clustershared keyvalue state be",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -15315,8 +16317,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-237",
-    "number": 237,
+    "id": "q-255",
+    "number": 255,
     "title": "Non Functional Requirements - What is the purpose of CloudHubs Object",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -15377,8 +16379,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-238",
-    "number": 238,
+    "id": "q-256",
+    "number": 256,
     "title": "Non Functional Requirements - What does enabling Persistent Queues on a",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -15440,8 +16442,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-239",
-    "number": 239,
+    "id": "q-257",
+    "number": 257,
     "title": "Non Functional Requirements - Which CloudHub feature distributes traffic across multiple",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -15503,8 +16505,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-240",
-    "number": 240,
+    "id": "q-258",
+    "number": 258,
     "title": "Non Functional Requirements - An organization needs failover for a CloudHub",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -15565,8 +16567,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-241",
-    "number": 241,
+    "id": "q-259",
+    "number": 259,
     "title": "Api Implementation Design - A longrunning batch process consumes far more",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -15628,8 +16630,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-242",
-    "number": 242,
+    "id": "q-260",
+    "number": 260,
     "title": "Non Functional Requirements - Which CloudHub configuration property controls whether outbound",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -15691,8 +16693,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-243",
-    "number": 243,
+    "id": "q-261",
+    "number": 261,
     "title": "Non Functional Requirements - What is the primary goal of an",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -15754,8 +16756,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-244",
-    "number": 244,
+    "id": "q-262",
+    "number": 262,
     "title": "Non Functional Requirements - What is the impact of selecting a",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -15817,8 +16819,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-245",
-    "number": 245,
+    "id": "q-263",
+    "number": 263,
     "title": "Non Functional Requirements - An architect must support 200 requests per",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -15880,8 +16882,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-246",
-    "number": 246,
+    "id": "q-264",
+    "number": 264,
     "title": "Non Functional Requirements - Which architectural pattern best protects a downstream",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -15943,8 +16945,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-247",
-    "number": 247,
+    "id": "q-265",
+    "number": 265,
     "title": "Api Implementation Design - A Process API frequently refetches the same",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16006,8 +17008,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-248",
-    "number": 248,
+    "id": "q-266",
+    "number": 266,
     "title": "Non Functional Requirements - Which action increases the maximum throughput of",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16069,8 +17071,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-249",
-    "number": 249,
+    "id": "q-267",
+    "number": 267,
     "title": "Non Functional Requirements - Which is a true statement about Anypoint",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16132,8 +17134,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-250",
-    "number": 250,
+    "id": "q-268",
+    "number": 268,
     "title": "Non Functional Requirements - Which choice best supports horizontal scaling of",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16195,8 +17197,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-251",
-    "number": 251,
+    "id": "q-269",
+    "number": 269,
     "title": "Non Functional Requirements - Which design choice is MOST important for",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16259,8 +17261,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-252",
-    "number": 252,
+    "id": "q-270",
+    "number": 270,
     "title": "Non Functional Requirements - Which Mule pattern provides bulkheadstyle isolation when",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16322,8 +17324,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-253",
-    "number": 253,
+    "id": "q-271",
+    "number": 271,
     "title": "Non Functional Requirements - An architect must design an asynchronous notification",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16384,8 +17386,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-254",
-    "number": 254,
+    "id": "q-272",
+    "number": 272,
     "title": "Non Functional Requirements - Which approach BEST addresses both regulatory dataresidency",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16448,8 +17450,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-255",
-    "number": 255,
+    "id": "q-273",
+    "number": 273,
     "title": "State Management - A fintech startup plans to run Mule runtimes on a Kubernetes",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16526,8 +17528,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-256",
-    "number": 256,
+    "id": "q-274",
+    "number": 274,
     "title": "Scalability and Observability - An e‑commerce retailer expects a 300% traffic surge during the",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16608,8 +17610,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-257",
-    "number": 257,
+    "id": "q-275",
+    "number": 275,
     "title": "Logging and Error Handling - A fashion retailer's mobile app backend is generating frequent va",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16676,8 +17678,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-258",
-    "number": 258,
+    "id": "q-276",
+    "number": 276,
     "title": "Performance - A marketing organization is designing a Mule application to process ca",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16738,8 +17740,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-259",
-    "number": 259,
+    "id": "q-277",
+    "number": 277,
     "title": "Reliability - An architect is designing a Mule application to meet the following two",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16800,8 +17802,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-260",
-    "number": 260,
+    "id": "q-278",
+    "number": 278,
     "title": "Performance - A bank is implementing a REST API in a Mule application to receive an",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16862,8 +17864,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-261",
-    "number": 261,
+    "id": "q-279",
+    "number": 279,
     "title": "Transactions - How does a timeout attribute in a configured transaction manager help",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16924,8 +17926,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-262",
-    "number": 262,
+    "id": "q-280",
+    "number": 280,
     "title": "Performance - Refer to the exhibit.",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16990,8 +17992,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-263",
-    "number": 263,
+    "id": "q-281",
+    "number": 281,
     "title": "Monitoring Analyzing - Which Anypoint Platform feature provides a realtime",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -17052,8 +18054,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-264",
-    "number": 264,
+    "id": "q-282",
+    "number": 282,
     "title": "Monitoring Analyzing - Which Anypoint capability stores Mule application logs",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -17115,8 +18117,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-265",
-    "number": 265,
+    "id": "q-283",
+    "number": 283,
     "title": "Monitoring Analyzing - Which Anypoint Monitoring artifact lets architects build",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -17177,8 +18179,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-266",
-    "number": 266,
+    "id": "q-284",
+    "number": 284,
     "title": "Monitoring Analyzing - Which capability is provided by Anypoint Visualizer",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -17240,8 +18242,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-267",
-    "number": 267,
+    "id": "q-285",
+    "number": 285,
     "title": "Monitoring Analyzing - Which feature provides automatic notification when CloudHub",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -17302,8 +18304,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-268",
-    "number": 268,
+    "id": "q-286",
+    "number": 286,
     "title": "Monitoring Analyzing - Which Anypoint feature is most useful for",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -17364,8 +18366,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-269",
-    "number": 269,
+    "id": "q-287",
+    "number": 287,
     "title": "Monitoring Analyzing - Which feature in CloudHub measures and exposes",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -17426,8 +18428,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-270",
-    "number": 270,
+    "id": "q-288",
+    "number": 288,
     "title": "Monitoring Analyzing - Which is the recommended way to expose",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -17489,8 +18491,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-271",
-    "number": 271,
+    "id": "q-289",
+    "number": 289,
     "title": "API Monitoring - A logistics company needs to track API latency and usage across",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -17567,8 +18569,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-272",
-    "number": 272,
+    "id": "q-290",
+    "number": 290,
     "title": "Monitoring - A manufacturing company wants real‑time visibility into",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -17645,8 +18647,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-273",
-    "number": 273,
+    "id": "q-291",
+    "number": 291,
     "title": "API Monitoring - A logistics company with a 99.9% SLA requirement and a limited mo",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -17726,8 +18728,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-274",
-    "number": 274,
+    "id": "q-292",
+    "number": 292,
     "title": "Monitoring - A regional healthcare provider handling protected patient data ne",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -17804,8 +18806,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-275",
-    "number": 275,
+    "id": "q-293",
+    "number": 293,
     "title": "Logging Configuration - A logistics startup with a small Dev Ops crew discovers that erro",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -17882,8 +18884,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-276",
-    "number": 276,
+    "id": "q-294",
+    "number": 294,
     "title": "Monitoring Deployment - A federal government agency is required to store all monitoring d",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -17947,8 +18949,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-277",
-    "number": 277,
+    "id": "q-295",
+    "number": 295,
     "title": "Monitoring - A manufacturing plant’s ERP integration shows intermittent latenc",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18025,8 +19027,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-278",
-    "number": 278,
+    "id": "q-296",
+    "number": 296,
     "title": "API Monitoring - A fintech startup wants to set up real‑time alerts for API SLA br",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18103,8 +19105,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-279",
-    "number": 279,
+    "id": "q-297",
+    "number": 297,
     "title": "API Analytics - A large retail enterprise is rolling out API analytics across its",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18171,8 +19173,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-280",
-    "number": 280,
+    "id": "q-298",
+    "number": 298,
     "title": "Observability - A healthcare integration team must configure logging to retain au",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18240,8 +19242,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-281",
-    "number": 281,
+    "id": "q-299",
+    "number": 299,
     "title": "Audit Logging - A regional healthcare provider operates a patient‑record API that",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18305,8 +19307,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-282",
-    "number": 282,
+    "id": "q-300",
+    "number": 300,
     "title": "Logging and Monitoring - A large retail chain’s order‑processing flow has started returnin",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18383,8 +19385,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-283",
-    "number": 283,
+    "id": "q-301",
+    "number": 301,
     "title": "API Analytics - A federal agency is deploying a citizen-service portal on Anypoin",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18448,8 +19450,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "E"
   },
   {
-    "id": "q-284",
-    "number": 284,
+    "id": "q-302",
+    "number": 302,
     "title": "Performance Monitoring - A manufacturing company's ERP integration is experiencing latency",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18526,8 +19528,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-285",
-    "number": 285,
+    "id": "q-303",
+    "number": 303,
     "title": "API Monitoring & Governance - A hospital network runs dozens of APIs for patient data exchange ",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18595,8 +19597,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-286",
-    "number": 286,
+    "id": "q-304",
+    "number": 304,
     "title": "API Monitoring - A national retail chain wants real-time visibility into API usage",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18673,8 +19675,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-287",
-    "number": 287,
+    "id": "q-305",
+    "number": 305,
     "title": "Monitoring and Observability - Visualizer topology and policy troubleshooting",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18736,8 +19738,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-288",
-    "number": 288,
+    "id": "q-306",
+    "number": 306,
     "title": "Monitoring and Observability - CloudHub worker CPU alert",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18799,8 +19801,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-289",
-    "number": 289,
+    "id": "q-307",
+    "number": 307,
     "title": "Monitoring and Observability - External compliant application logging",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18862,8 +19864,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-290",
-    "number": 290,
+    "id": "q-308",
+    "number": 308,
     "title": "Monitoring and Observability - Scheduled external API tests",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18925,8 +19927,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-291",
-    "number": 291,
+    "id": "q-309",
+    "number": 309,
     "title": "Monitoring and Observability - Assigning Visualizer architecture layers",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18988,8 +19990,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-292",
-    "number": 292,
+    "id": "q-310",
+    "number": 310,
     "title": "Monitoring and Observability - Alerting on API client quota violations",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19051,8 +20053,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-293",
-    "number": 293,
+    "id": "q-311",
+    "number": 311,
     "title": "Monitoring and Observability - Geographic functional testing",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19114,8 +20116,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-294",
-    "number": 294,
+    "id": "q-312",
+    "number": 312,
     "title": "Monitoring and Observability - Custom business-logic notifications",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19177,8 +20179,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-295",
-    "number": 295,
+    "id": "q-313",
+    "number": 313,
     "title": "Monitoring and Observability - Long-term CloudHub log retention",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19240,8 +20242,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-296",
-    "number": 296,
+    "id": "q-314",
+    "number": 314,
     "title": "Monitoring and Observability - Cross-application metrics dashboard",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19303,8 +20305,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-297",
-    "number": 297,
+    "id": "q-315",
+    "number": 315,
     "title": "Monitoring and Observability - Environment visibility in Visualizer",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19366,8 +20368,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-298",
-    "number": 298,
+    "id": "q-316",
+    "number": 316,
     "title": "Monitoring and Observability - BDD API tests in CI/CD",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19430,8 +20432,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-299",
-    "number": 299,
+    "id": "q-317",
+    "number": 317,
     "title": "Monitoring and Observability - Troubleshooting cascading API failures",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19493,8 +20495,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-300",
-    "number": 300,
+    "id": "q-318",
+    "number": 318,
     "title": "Monitoring and Observability - Monitoring customer-hosted runtimes",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19556,8 +20558,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-301",
-    "number": 301,
+    "id": "q-319",
+    "number": 319,
     "title": "Monitoring and Observability - Tracking application deletion",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19619,8 +20621,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-302",
-    "number": 302,
+    "id": "q-320",
+    "number": 320,
     "title": "Monitoring and Observability - Supported Runtime Manager alert conditions",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19682,8 +20684,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-303",
-    "number": 303,
+    "id": "q-321",
+    "number": 321,
     "title": "Monitoring and Observability - Dynamic request logging without redeployment",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19745,8 +20747,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-304",
-    "number": 304,
+    "id": "q-322",
+    "number": 322,
     "title": "Monitoring and Observability - Runtime Fabric cluster log forwarding",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19808,8 +20810,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-305",
-    "number": 305,
+    "id": "q-323",
+    "number": 323,
     "title": "Monitoring and Observability - Diagnosing HTTP 429 responses",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19871,8 +20873,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-306",
-    "number": 306,
+    "id": "q-324",
+    "number": 324,
     "title": "Monitoring and Observability - Custom Visualizer labels",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19934,8 +20936,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-307",
-    "number": 307,
+    "id": "q-325",
+    "number": 325,
     "title": "Monitoring and Observability - Titanium log search capability",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19997,8 +20999,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-308",
-    "number": 308,
+    "id": "q-326",
+    "number": 326,
     "title": "Monitoring and Observability - CloudHub worker unresponsiveness",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20060,8 +21062,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-309",
-    "number": 309,
+    "id": "q-327",
+    "number": 327,
     "title": "Monitoring and Observability - Visualizer error indicator",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20110,8 +21112,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-310",
-    "number": 310,
+    "id": "q-328",
+    "number": 328,
     "title": "Monitoring and Observability - Registering an implementation with API Manager",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20173,8 +21175,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-311",
-    "number": 311,
+    "id": "q-329",
+    "number": 329,
     "title": "Monitoring and Observability - Configuring the Visualizer node display name",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20236,8 +21238,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-312",
-    "number": 312,
+    "id": "q-330",
+    "number": 330,
     "title": "Monitoring and Observability - Visualizer policy compliance indicator",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20299,8 +21301,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-313",
-    "number": 313,
+    "id": "q-331",
+    "number": 331,
     "title": "Monitoring and Observability - Visualizer tags set via application properties",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20362,8 +21364,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-314",
-    "number": 314,
+    "id": "q-332",
+    "number": 332,
     "title": "Monitoring and Observability - Visualizer edges based on recent traffic",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20425,8 +21427,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-315",
-    "number": 315,
+    "id": "q-333",
+    "number": 333,
     "title": "Monitoring and Observability - Visualizer Editor permission for defined views",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
