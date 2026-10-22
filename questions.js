@@ -6983,3140 +6983,3081 @@ window.MCPA_QUESTIONS = [
   {
     "id": "q-118",
     "number": 118,
-    "title": "Api Policies - What is the recommended way to expose",
+    "title": "API Governance - Separate instances per environment",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Api Contracts Sla Tiers",
-      "Rate Limiting Throttling"
+      "API Instances",
+      "Environments"
     ],
-    "prompt": "What is the recommended way to expose APIs to internal consumers and external partners with different SLAs and access requirements?",
+    "prompt": "A team promotes its Order API from development to QA to production. Each stage has different backend URLs, policies, and client applications. How should the API be managed in API Manager?",
     "options": [
       {
         "letter": "A",
-        "text": "Deploy duplicate apps for each consumer"
+        "text": "Skip API Manager in non-production and use it only in production"
       },
       {
         "letter": "B",
-        "text": "Use SLA tiers and API contracts in API Manager"
+        "text": "Create a separate API instance in each environment"
       },
       {
         "letter": "C",
-        "text": "Hardcode allowed clients in flows"
+        "text": "Create one API instance per client application in production only"
       },
       {
         "letter": "D",
-        "text": "Block external partners entirely"
+        "text": "Create one API instance and change its configuration at each promotion"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "API Manager supports SLA tiers (Bronze, Silver, Gold, etc.) that define rate limits per consumer. API contracts bind a client application to a tier, allowing differentiated access without duplicating implementations. Hardcoding clients is brittle and unmanageable.",
+    "explanation": "Correct answer: B. Environments in Anypoint Platform isolate applications and API configurations. Creating an API instance per environment lets each stage have its own implementation URL, policies, SLA tiers, and client contracts, so changes can be tested before they reach production.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Duplicating apps wastes resources and contradicts API-led reuse."
+        "text": "Policies and contracts should be validated before reaching production."
       },
       "B": {
         "type": "Correct",
-        "text": "Use SLA tiers and API contracts in API Manager"
+        "text": "Each environment's instance holds its own configuration, policies, and contracts."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Hardcoded allow-lists bypass governance and break on consumer changes."
+        "text": "Instances are not per client; contracts link clients to an instance."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Blocking external partners ignores legitimate business needs that contracts and tiers solve."
+        "text": "One shared instance would mix stages and break the earlier environments when it changes."
       }
     },
     "references": {
       "primary": {
-        "title": "API Manager — Defining SLA Tiers and Configuring Tiered Consumer Contracts",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/defining-sla-tiers#defining-a-tier"
+        "title": "Access Management — Environments",
+        "url": "https://docs.mulesoft.com/access-management/environments"
       },
       "architectureGuide": {
-        "title": "Client ID Enforcement & Managing Application Contracts",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/client-id-based-policies#how-this-policy-works"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "API Manager — Creating an API Instance",
+        "url": "https://docs.mulesoft.com/api-manager/latest/create-instance-task"
       }
     }
   },
   {
     "id": "q-119",
     "number": 119,
-    "title": "Api Policies - Which Anypoint policy enforces mutual TLS for",
+    "title": "API Governance - Two consumer groups, one API version",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Mtls Policy"
+      "API Instances",
+      "Policies"
     ],
-    "prompt": "Which Anypoint policy enforces mutual TLS for client-to-API authentication?",
+    "prompt": "An Inventory API v1 is used by internal apps, which need only client ID enforcement, and by external partners, who need OAuth 2.0, stricter rate limits, and a different endpoint. What is the best way to manage this in API Manager?",
     "options": [
       {
         "letter": "A",
-        "text": "JWT validation"
+        "text": "Apply both policy sets to one instance and let clients choose"
       },
       {
         "letter": "B",
-        "text": "OAuth 2.0 token enforcement"
+        "text": "Expose the System API directly to partners instead"
       },
       {
         "letter": "C",
-        "text": "Client ID enforcement"
+        "text": "Two instances of v1, each with its own policies"
       },
       {
         "letter": "D",
-        "text": "Mutual TLS"
+        "text": "Publish a second major version of the API for partners"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "The Mutual TLS (mTLS) policy requires the client to present a valid X.509 certificate trusted by the configured truststore. JWT, OAuth 2.0 token enforcement, and Client ID policies all operate at the application layer rather than at the TLS handshake.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. API Manager allows several instances of the same API version. Each instance can have its own endpoint, policies, and SLA tiers, which suits cases where different consumer groups need different governance for the same contract.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "JWT validation checks a bearer token signature and claims at the application layer."
+        "text": "Policies on an instance apply to all of its traffic."
       },
       "B": {
         "type": "Incorrect",
-        "text": "OAuth 2.0 token enforcement validates an access token, typically from an external identity provider."
+        "text": "This bypasses the layer design and does not solve the policy differences."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Client ID enforcement checks app-level credentials (client_id/client_secret), not certificates."
+        "type": "Correct",
+        "text": "Multiple instances of one API version can expose different endpoints and policy sets."
       },
       "D": {
-        "type": "Correct",
-        "text": "Mutual TLS"
+        "type": "Incorrect",
+        "text": "The contract is the same, so a new major version is unnecessary."
       }
     },
     "references": {
       "primary": {
-        "title": "IP Allowlist Policy & Mutual TLS (mTLS) Inbound Security",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/ip-allowlist#how-this-policy-works"
+        "title": "API Manager — Managing Versions and Instances",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
       },
       "architectureGuide": {
-        "title": "CloudHub Dedicated Load Balancer (DLB) SSL/TLS & Mutual Authentication",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer#create-and-configure-a-dedicated-load-balancer"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "API Manager — API Instances",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-instance-landing-page"
       }
     }
   },
   {
     "id": "q-120",
     "number": 120,
-    "title": "Api Policies - Which statement about prebuilt MuleSoft API policies",
+    "title": "API Governance - Sensitive data and environment access",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Custom Policies"
+      "Environments",
+      "Access Management"
     ],
-    "prompt": "Which statement about pre-built MuleSoft API policies is TRUE?",
+    "prompt": "A Payroll System API exposes highly sensitive salary data. The security team wants to ensure that only a small operations group can change its production policies, while developers keep full control in sandbox. What should the architect recommend?",
     "options": [
       {
         "letter": "A",
-        "text": "They require custom Java code to install"
+        "text": "Put the production instance in a Design environment"
       },
       {
         "letter": "B",
-        "text": "They are configured in API Manager and downloaded by the runtime"
+        "text": "Deploy the production API without an API instance so no one can change policies"
       },
       {
         "letter": "C",
-        "text": "They only run on Runtime Fabric"
+        "text": "Give all developers production access but ask them not to change policies"
       },
       {
         "letter": "D",
-        "text": "They cannot be combined on the same API"
+        "text": "Grant production API Manager rights to the ops group only"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Pre-built policies (rate limiting, OAuth 2.0 enforcement, client ID, JWT, IP filtering, etc.) are configured per API and per environment in API Manager. The Mule runtime downloads them and enforces them locally. Multiple policies can be layered on a single API.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Access Management lets permissions be granted per environment and business group. Restricting production API Manager permissions to an operations team while developers manage sandbox enforces separation of duties for sensitive APIs and systems.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Pre-built policies are no-code; custom development is only for custom policies."
+        "text": "Design environments are for design-time work, not production governance."
       },
       "B": {
-        "type": "Correct",
-        "text": "They are configured in API Manager and downloaded by the runtime"
+        "type": "Incorrect",
+        "text": "Unmanaged APIs lose governance entirely."
       },
       "C": {
         "type": "Incorrect",
-        "text": "They run on any supported deployment target (CloudHub, RTF, Hybrid)."
+        "text": "Relying on goodwill does not enforce separation of duties."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Multiple policies on the same API are common (e.g., mTLS plus rate limit)."
+        "type": "Correct",
+        "text": "Environment-level permissions let access differ between sandbox and production."
       }
     },
     "references": {
       "primary": {
-        "title": "API Gateway — Prebuilt Policies and Inline Enforcement Architecture",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/api-auto-discovery-new-concept#proxy-endpoint-vs-basic-endpoint"
+        "title": "Access Management — Environments",
+        "url": "https://docs.mulesoft.com/access-management/environments"
       },
       "architectureGuide": {
-        "title": "Applying Automated Policies in API Manager Across Environments",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/automated-policy-apply#apply-an-automated-policy-in-connected-mode"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "Access Management — Business Groups",
+        "url": "https://docs.mulesoft.com/access-management/business-groups"
       }
     }
   },
   {
     "id": "q-121",
     "number": 121,
-    "title": "Api Policies - An architect needs to expose an API",
+    "title": "API Governance - Business groups for separate divisions",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Api Contracts Sla Tiers",
-      "Rate Limiting Throttling"
+      "Business Groups",
+      "Governance"
     ],
-    "prompt": "An architect needs to expose an API to partners with strict client identification requirements but no need for end-user OAuth. Which policy combination is most appropriate?",
+    "prompt": "Two divisions of a company must manage their own APIs, environments, and users independently, while the parent organization retains overall visibility. How should Anypoint Platform be organized?",
     "options": [
       {
         "letter": "A",
-        "text": "Only IP allow-list"
+        "text": "A business group per division under the root org"
       },
       {
         "letter": "B",
-        "text": "Client ID enforcement plus rate-limiting SLA-based"
+        "text": "Create separate Anypoint Platform organizations with no relationship"
       },
       {
         "letter": "C",
-        "text": "JWT validation only"
+        "text": "Tag each API with the division name in Exchange"
       },
       {
         "letter": "D",
-        "text": "No policies (rely on the partner)"
+        "text": "Use one environment per division in the root organization only"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Client ID enforcement uniquely identifies each partner app and enables per-client SLA tiers and rate limiting. Combining the two is the standard pattern for partner B2B APIs that do not require user-context OAuth flows.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Business groups are child organizations within the root organization. They let divisions manage their own environments, APIs, and users with delegated administrators, while the root organization keeps overall governance.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "IP allow-listing alone cannot identify which client made each call or apply per-client limits."
+        "type": "Correct",
+        "text": "Business groups delegate administration of their own environments and assets."
       },
       "B": {
-        "type": "Correct",
-        "text": "Client ID enforcement plus rate-limiting SLA-based"
+        "type": "Incorrect",
+        "text": "Unrelated organizations remove the parent's visibility and sharing."
       },
       "C": {
         "type": "Incorrect",
-        "text": "JWT validation typically expects user-context tokens issued by an IdP, not partner client identification."
+        "text": "Tags help discovery but do not separate administration."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Relying on partners for governance violates basic API security and SLA practice."
+        "text": "Environments do not delegate user administration as business groups do."
       }
     },
     "references": {
       "primary": {
-        "title": "API Manager — Client ID Enforcement and Rate Limiting on Client Application Contracts",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/client-id-based-policies#how-this-policy-works"
+        "title": "Access Management — Business Groups",
+        "url": "https://docs.mulesoft.com/access-management/business-groups"
       },
       "architectureGuide": {
-        "title": "Defining SLA Tiers and Consumer Tiers in API Manager",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/defining-sla-tiers#defining-a-tier"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "Access Management — Environments",
+        "url": "https://docs.mulesoft.com/access-management/environments"
       }
     }
   },
   {
     "id": "q-122",
     "number": 122,
-    "title": "Api Policies - Which builtin policy can validate a JSON",
+    "title": "API Governance - Choose two: API instances",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Jwt Validation"
+      "API Instances",
+      "API Manager"
     ],
-    "prompt": "Which built-in policy can validate a JSON Web Token's signature, issuer, audience, and expiration before the request reaches the implementation?",
+    "prompt": "Which two statements about API instances in API Manager are correct? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "JWT Validation"
+        "text": "An API version can have only one instance across the organization"
       },
       {
         "letter": "B",
-        "text": "Client ID enforcement"
+        "text": "Policies are applied to the Exchange asset, so all instances share them"
       },
       {
         "letter": "C",
-        "text": "IP allow-list"
+        "text": "Instances are created in Runtime Manager when an app is deployed"
       },
       {
         "letter": "D",
-        "text": "Mutual TLS"
+        "text": "An API instance belongs to a specific environment"
+      },
+      {
+        "letter": "E",
+        "text": "Client contracts are made with a specific API instance"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "The JWT Validation policy checks signature against a JWKS or shared secret, plus issuer, audience, expiration, and required claims. It runs in API Manager-managed policies before traffic reaches the implementation flow.",
+    "correctAnswers": [
+      "D",
+      "E"
+    ],
+    "explanation": "Correct answers: D and E. An API instance is created in API Manager in a given environment, typically from an Exchange asset version. Policies, SLA tiers, and client contracts are configured per instance, which lets different environments or consumer groups be governed separately.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "JWT Validation"
+        "type": "Incorrect",
+        "text": "An API version can have multiple instances."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Client ID enforcement validates app credentials, not JWT claims."
+        "text": "Policies are applied per instance."
       },
       "C": {
         "type": "Incorrect",
-        "text": "IP allow-listing filters by source IP and cannot validate tokens."
+        "text": "Instances are created in API Manager, typically from Exchange assets."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Mutual TLS authenticates at the transport layer with X.509 certs."
+        "type": "Correct",
+        "text": "Instances are created and managed within an environment."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "Access is granted per instance, so each environment's instance has its own contracts."
       }
     },
     "references": {
       "primary": {
-        "title": "JWT Validation Policy Configuration & Token Signature Verification in API Manager",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/policy-mule4-jwt-validation#how-this-policy-works"
+        "title": "API Manager — API Instances",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-instance-landing-page"
       },
       "architectureGuide": {
-        "title": "IETF RFC 7517 — JSON Web Key (JWKS) Specification",
-        "url": "https://datatracker.ietf.org/doc/html/rfc7517"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "API Manager — Contracts",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-contracts-landing-page"
       }
     }
   },
   {
     "id": "q-123",
     "number": 123,
-    "title": "Api Policies - Which security control prevents a denialofservice from",
+    "title": "API Governance - Different quotas for different consumers",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Rate Limiting Throttling"
+      "Rate Limiting SLA",
+      "SLA Tiers"
     ],
-    "prompt": "Which security control prevents a denial-of-service from a misbehaving client by capping requests per time window?",
+    "prompt": "A public API must allow free-tier consumers 1,000 requests per day and premium consumers 100,000 requests per day. Which policy should be applied?",
     "options": [
       {
         "letter": "A",
-        "text": "Rate-limiting policy"
+        "text": "Spike Control with a delay between requests"
       },
       {
         "letter": "B",
-        "text": "OAuth 2.0 token enforcement"
+        "text": "Rate Limiting: SLA-Based with Free and Premium tiers"
       },
       {
         "letter": "C",
-        "text": "JSON threat protection"
+        "text": "Rate Limiting with a single limit of 100,000 per day"
       },
       {
         "letter": "D",
-        "text": "Mutual TLS"
+        "text": "HTTP Caching with a one-day time-to-live"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Rate-limiting policies cap request volume per client and per time window, defending against accidental or malicious traffic floods. OAuth, JSON threat protection, and mTLS each address different concerns (authentication, payload validation, transport identity).",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. The Rate Limiting: SLA-Based policy enforces limits defined in SLA tiers. Each client application's contract is associated with a tier, so different consumers get different quotas. Client credentials identify the application.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Rate-limiting policy"
+        "type": "Incorrect",
+        "text": "Spike Control smooths bursts but does not give per-tier quotas."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "OAuth proves identity; it does not cap throughput."
+        "type": "Correct",
+        "text": "SLA tiers set different quotas per client application contract."
       },
       "C": {
         "type": "Incorrect",
-        "text": "JSON threat protection blocks malicious payload structures, not request volume."
+        "text": "A single limit cannot distinguish free from premium consumers."
       },
       "D": {
         "type": "Incorrect",
-        "text": "mTLS authenticates the client at TLS time but does not cap call rate."
+        "text": "Caching does not enforce request quotas."
       }
     },
     "references": {
       "primary": {
-        "title": "Rate Limiting and Throttling Policy Reference in API Manager",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/rate-limiting-and-throttling#how-this-policy-works"
+        "title": "Rate Limiting: SLA-Based Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting-sla"
       },
       "architectureGuide": {
-        "title": "Defining SLA Tiers and Consumer Tiers in API Manager",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/defining-sla-tiers#defining-a-tier"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "API Manager — Defining SLA Tiers",
+        "url": "https://docs.mulesoft.com/api-manager/latest/defining-sla-tiers"
       }
     }
   },
   {
     "id": "q-124",
     "number": 124,
-    "title": "Api Policies - An architect wants ALL traffic to a",
+    "title": "API Governance - Protecting a backend with fixed capacity",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Oauth2 Policy"
+      "Rate Limiting",
+      "Backend Protection"
     ],
-    "prompt": "An architect wants ALL traffic to a Mule API to be authorized by a corporate identity provider's OAuth 2.0 access tokens. Which approach is most appropriate?",
+    "prompt": "A System API fronts a legacy system that can handle at most 50 requests per second in total, regardless of which client sends them. Which policy best enforces this?",
     "options": [
       {
         "letter": "A",
-        "text": "Implement custom token validation in every flow"
+        "text": "Rate Limiting: SLA-Based with a 50 requests per second tier"
       },
       {
         "letter": "B",
-        "text": "Apply the OAuth 2.0 access-token enforcement policy in API Manager and integrate with the IdP"
+        "text": "Client ID Enforcement"
       },
       {
         "letter": "C",
-        "text": "Use IP allow-listing instead"
+        "text": "Rate Limiting with a limit of 50 requests per second"
       },
       {
         "letter": "D",
-        "text": "Use Mutual TLS instead"
+        "text": "JSON Threat Protection"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Apply the OAuth 2.0 access-token enforcement policy in API Manager and configure it against the corporate IdP (e.g., Okta, Ping, Azure AD via OpenAM, or external OAuth providers). Per-flow custom validation is brittle, duplicative, and bypasses governance.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. The Rate Limiting policy enforces a limit on all requests to an API instance, which protects backends with a fixed capacity. SLA-based rate limiting applies limits per client application, so it does not cap the aggregate load.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Per-flow code duplicates logic and skips API Manager governance."
+        "text": "SLA limits apply per client contract, so many clients could exceed the total."
       },
       "B": {
-        "type": "Correct",
-        "text": "Apply the OAuth 2.0 access-token enforcement policy in API Manager and integrate with the IdP"
+        "type": "Incorrect",
+        "text": "This identifies clients but does not cap throughput."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "IP allow-lists do not validate user-context tokens."
+        "type": "Correct",
+        "text": "A non-SLA rate limit caps total traffic to the API instance."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Mutual TLS authenticates the transport endpoint, not the calling user."
+        "text": "This limits payload structure, not request rate."
       }
     },
     "references": {
       "primary": {
-        "title": "External Identity Management & OAuth 2.0 Access Token Enforcement with Corporate IdP",
-        "url": "https://docs.mulesoft.com/access-management/external-identity#managing-users-external-identity"
+        "title": "Rate Limiting Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting"
       },
       "architectureGuide": {
-        "title": "IETF RFC 6749 — The OAuth 2.0 Authorization Framework",
-        "url": "https://datatracker.ietf.org/doc/html/rfc6749"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "Spike Control Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-spike-control"
       }
     }
   },
   {
     "id": "q-125",
     "number": 125,
-    "title": "Api Policies - Which Anypoint capability lets organizations build custom",
+    "title": "API Governance - Browser-based consumers",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Custom Policies"
+      "CORS",
+      "Policies"
     ],
-    "prompt": "Which Anypoint capability lets organizations build custom API policies in Java/XML when pre-built ones are insufficient?",
+    "prompt": "A single-page web application served from https://shop.example.com must call an Experience API hosted at https://api.example.com. Browsers block the calls. Which policy should be applied?",
     "options": [
       {
         "letter": "A",
-        "text": "Custom policies via the Policy Development Kit (PDK) or YAML/XML templates"
+        "text": "Cross-Origin Resource Sharing (CORS)"
       },
       {
         "letter": "B",
-        "text": "Object Store v2"
+        "text": "IP Allowlist"
       },
       {
         "letter": "C",
-        "text": "Exchange templates"
+        "text": "Header Removal"
       },
       {
         "letter": "D",
-        "text": "MUnit suites"
+        "text": "HTTP Caching"
       }
     ],
     "correctAnswer": "A",
-    "explanation": "Custom policies are authored as YAML/XML templates and Mule extensions; modern Mule offers the Policy Development Kit for richer custom policies. They are uploaded to API Manager and applied like pre-built policies.",
+    "explanation": "Correct answer: A. Browsers enforce the same-origin policy for scripts. The CORS policy adds the necessary response headers and handles preflight requests so that the API can be called from approved origins.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Custom policies via the Policy Development Kit (PDK) or YAML/XML templates"
+        "text": "CORS lets the API tell browsers which origins may call it."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Object Store v2 is runtime data storage, not a policy framework."
+        "text": "Restricting IPs does not satisfy the browser's cross-origin checks."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Exchange templates accelerate project starts; they are not policies."
+        "text": "Removing headers does not add the required CORS response headers."
       },
       "D": {
         "type": "Incorrect",
-        "text": "MUnit is for testing, not enforcement."
+        "text": "Caching responses does not change browser origin rules."
       }
     },
     "references": {
       "primary": {
-        "title": "Developing and Packaging Custom Policies for Mule 4 in API Manager",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/custom-policy-getting-started#setting-up-a-project-with-the-archetype"
+        "title": "Cross-Origin Resource Sharing (CORS) Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-cors"
       },
       "architectureGuide": {
-        "title": "Automated Policy Enforcement Across Managed APIs",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/automated-policy-apply#apply-an-automated-policy-in-connected-mode"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "Included Policies Directory",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
     }
   },
   {
     "id": "q-126",
     "number": 126,
-    "title": "Api Policies - An architect is asked to enforce that",
+    "title": "API Governance - Audit of request metadata",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Mtls Policy"
+      "Message Logging",
+      "Policies"
     ],
-    "prompt": "An architect is asked to enforce that ONLY traffic from a specific upstream API gateway can reach a downstream Process API. Which approach is best?",
+    "prompt": "Auditors require that the client ID and resource path of every call to a Process API be logged, without changing the API implementation. Which policy should be used?",
     "options": [
       {
         "letter": "A",
-        "text": "Allow public traffic and audit logs after the fact"
+        "text": "HTTP Basic Authentication"
       },
       {
         "letter": "B",
-        "text": "Combine an IP allow-list policy with mutual TLS so only the gateway's certificate and IPs can connect"
+        "text": "Message Logging"
       },
       {
         "letter": "C",
-        "text": "Disable all policies on the Process API"
+        "text": "Spike Control"
       },
       {
         "letter": "D",
-        "text": "Change the API to a Mule application without governance"
+        "text": "Header Injection"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Combining IP allow-listing with mutual TLS enforces both network-level and certificate-level identity for the upstream caller. This is the standard layered control for zero-trust integration between API tiers.",
+    "explanation": "Correct answer: B. The Message Logging policy logs custom messages, built from expressions over request or response data, before or after the API is called. It lets operations teams add audit logging without changing the implementation.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Audit-after-the-fact does not prevent unwanted access."
+        "text": "This authenticates callers but does not log the requested details."
       },
       "B": {
         "type": "Correct",
-        "text": "Combine an IP allow-list policy with mutual TLS so only the gateway's certificate and IPs can connect"
+        "text": "It logs configurable expressions from requests and responses at the gateway."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Disabling policies removes the only enforcement layer."
+        "text": "This controls traffic bursts, not logging."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Removing governance is the opposite of architectural best practice."
+        "text": "This adds headers to messages but does not write logs."
       }
     },
     "references": {
       "primary": {
-        "title": "IP Allowlist Policy & Mutual TLS (mTLS) Defense-in-Depth for Internal APIs",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/ip-allowlist#how-this-policy-works"
+        "title": "Message Logging Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-message-logging"
       },
       "architectureGuide": {
-        "title": "CloudHub Dedicated Load Balancer (DLB) SSL/TLS & Mutual Authentication",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer#create-and-configure-a-dedicated-load-balancer"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "Included Policies Directory",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
     }
   },
   {
     "id": "q-127",
     "number": 127,
-    "title": "Api Policies - Which control in API Manager records the",
+    "title": "API Governance - Reducing load from repeated reads",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Api Contracts Sla Tiers"
+      "HTTP Caching",
+      "Performance"
     ],
-    "prompt": "Which control in API Manager records the agreement that gives a specific client app access to a specific API instance under a specific SLA tier?",
+    "prompt": "An API returns a product catalog that changes daily and is read thousands of times per minute with identical requests. The team wants to cut response times and backend load without touching the implementation. Which policy fits?",
     "options": [
       {
         "letter": "A",
-        "text": "API contract"
+        "text": "Client ID Enforcement"
       },
       {
         "letter": "B",
-        "text": "API alias"
+        "text": "JSON Threat Protection"
       },
       {
         "letter": "C",
-        "text": "API specification"
+        "text": "Rate Limiting"
       },
       {
         "letter": "D",
-        "text": "Mule policy"
+        "text": "HTTP Caching"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "An API contract is the bound agreement between a client application and an API instance, including the SLA tier. Approval may be automatic or manual depending on the API configuration.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. The HTTP Caching policy stores responses and serves them for matching requests until they expire. For read-heavy data that changes infrequently, it reduces response time and backend load without implementation changes.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "API contract"
+        "type": "Incorrect",
+        "text": "This identifies clients but does not reduce backend calls."
       },
       "B": {
         "type": "Incorrect",
-        "text": "API alias is not the access-binding artifact."
+        "text": "This protects against malicious payloads, not repeated reads."
       },
       "C": {
         "type": "Incorrect",
-        "text": "The specification defines the API contract surface, not consumer agreements."
+        "text": "Rejecting requests reduces load but does not serve them faster."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Policies enforce non-functional rules; they do not represent client agreements."
+        "type": "Correct",
+        "text": "Cached responses are returned at the gateway without calling the backend."
       }
     },
     "references": {
       "primary": {
-        "title": "API Manager — Managing API Contracts and Binding Client Applications to SLA Tiers",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/defining-sla-tiers#managing-applications"
+        "title": "HTTP Caching Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-http-caching"
       },
       "architectureGuide": {
-        "title": "Defining SLA Tiers in API Manager",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/defining-sla-tiers#defining-a-tier"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "Included Policies Directory",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
     }
   },
   {
     "id": "q-128",
     "number": 128,
-    "title": "Api Policies - Which Anypoint Platform option enforces API policies",
+    "title": "API Governance - Choose two: NFR to policy",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Custom Policies",
-      "Rate Limiting Throttling"
+      "Policies",
+      "NFRs"
     ],
-    "prompt": "Which Anypoint Platform option enforces API policies at the gateway tier WITHOUT requiring code changes inside the Mule application?",
+    "prompt": "Which two pairings of a non-functional requirement with an API Manager policy are correct? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "Pre-built policies configured in API Manager and downloaded by the runtime gateway"
+        "text": "Validate OAuth tokens: Message Logging"
       },
       {
         "letter": "B",
-        "text": "Custom Java code in every flow"
+        "text": "Limit JSON nesting depth: CORS"
       },
       {
         "letter": "C",
-        "text": "Manual review of every request in Postman"
+        "text": "Smooth short traffic bursts: Spike Control"
       },
       {
         "letter": "D",
-        "text": "RAML validation at design time"
+        "text": "Different per-consumer quotas: IP Allowlist"
+      },
+      {
+        "letter": "E",
+        "text": "Remove an internal header before the response leaves: Header Removal"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Pre-built API Manager policies are downloaded by the Mule API gateway runtime and enforced before traffic hits the implementation flow, with zero implementation code change. Custom flow code is brittle and duplicative; manual review is not enforcement; RAML validation is design-time only.",
+    "correctAnswers": [
+      "C",
+      "E"
+    ],
+    "explanation": "Correct answers: C and E. Each included policy addresses specific non-functional requirements: Spike Control for bursts, Header Removal for stripping headers, SLA-based rate limiting for quotas, OAuth and JWT policies for tokens, and threat protection policies for payload limits.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Pre-built policies configured in API Manager and downloaded by the runtime gateway"
+        "type": "Incorrect",
+        "text": "Message Logging writes logs; token validation needs an OAuth or JWT policy."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Per-flow code duplicates policy logic."
+        "text": "CORS governs browser origins; JSON Threat Protection limits nesting."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Manual review does not enforce anything at runtime."
+        "type": "Correct",
+        "text": "Spike Control delays excess requests to flatten bursts."
       },
       "D": {
         "type": "Incorrect",
-        "text": "RAML validation runs at design time."
+        "text": "IP Allowlist restricts origins; SLA-based rate limiting sets per-consumer quotas."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "Header Removal strips specified headers."
       }
     },
     "references": {
       "primary": {
-        "title": "API Gateway — Pre-Built Policy Enforcement at Gateway Tier Without Application Code Changes",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/api-auto-discovery-new-concept#proxy-endpoint-vs-basic-endpoint"
+        "title": "Included Policies Directory",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       },
       "architectureGuide": {
-        "title": "Applying Automated Policies in API Manager Across Environments",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/automated-policy-apply#apply-an-automated-policy-in-connected-mode"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "API Manager — Included Policies",
+        "url": "https://docs.mulesoft.com/api-manager/latest/policies-ootb-landing-page"
       }
     }
   },
   {
     "id": "q-129",
     "number": 129,
-    "title": "Api Policies - An API Manager policy is configured for",
+    "title": "API Governance - Client ID enforcement in the spec",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Business Groups Environments"
+      "API Specification",
+      "Client ID Enforcement"
     ],
-    "prompt": "An API Manager policy is configured for an API instance in the Production environment. Will it automatically apply to the Sandbox API instance?",
+    "prompt": "Client ID Enforcement will be applied to an API using client_id and client_secret headers. What should change in the API specification?",
     "options": [
       {
         "letter": "A",
-        "text": "Yes, policies cascade across environments"
+        "text": "Remove all query parameters to avoid conflicts"
       },
       {
         "letter": "B",
-        "text": "No, policies are configured per API instance and per environment"
+        "text": "Add a new resource /login that issues client IDs"
       },
       {
         "letter": "C",
-        "text": "Only if API contracts exist in both"
+        "text": "Nothing; policies are invisible to API consumers"
       },
       {
         "letter": "D",
-        "text": "Only when using Runtime Fabric"
+        "text": "Declare both headers, e.g. via a trait"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Policies are configured at the API-instance level inside an environment. Sandbox and Production are separate API instances and require separate policy configuration, although standardized policies can be promoted via APIs or scripts.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. When a policy requires clients to send something, the specification should describe it. For client ID enforcement, the client_id and client_secret headers or query parameters should be declared, often through a reusable trait, so consumers know how to call the API.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Policies do not cascade across environments automatically."
+        "text": "Query parameters do not conflict with header-based credentials."
       },
       "B": {
-        "type": "Correct",
-        "text": "No, policies are configured per API instance and per environment"
+        "type": "Incorrect",
+        "text": "Credentials come from client applications in Exchange, not an API resource."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Contracts govern access, not policy propagation."
+        "text": "Consumers must send credentials, so the contract should describe them."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Per-environment scoping is independent of the runtime target."
+        "type": "Correct",
+        "text": "Consumers must know from the contract which credentials to send."
       }
     },
     "references": {
       "primary": {
-        "title": "Access Management — Environment Scoping and Per-Environment Policy Isolation",
-        "url": "https://docs.mulesoft.com/access-management/environments#types-of-environments"
+        "title": "Client ID Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
       },
       "architectureGuide": {
-        "title": "Applying Automated Policies in API Manager Across Environments",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/automated-policy-apply#apply-an-automated-policy-in-connected-mode"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+        "title": "Design Center — Creating and Publishing API Fragments",
+        "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-fragment"
       }
     }
   },
   {
     "id": "q-130",
     "number": 130,
-    "title": "Api Policies - Which response best describes how to model",
+    "title": "API Governance - OAuth 2.0 in the spec",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Api Contracts Sla Tiers",
-      "Rate Limiting Throttling"
+      "API Specification",
+      "OAuth 2.0"
     ],
-    "prompt": "Which response best describes how to model SLA tiers for a public API used by both internal apps and paying external partners?",
+    "prompt": "An Experience API will be protected with an OAuth 2.0 token enforcement policy. Which specification change best reflects this?",
     "options": [
       {
         "letter": "A",
-        "text": "Same SLA tier for everyone"
+        "text": "Add an OAuth 2.0 security scheme to secured resources"
       },
       {
         "letter": "B",
-        "text": "Multiple SLA tiers (e.g., Internal-Unlimited, Partner-Premium, Partner-Free) with different rate limits and approval policies"
+        "text": "Change every GET to POST so tokens are sent in the body"
       },
       {
         "letter": "C",
-        "text": "Block external partners"
+        "text": "Add client_secret as a required query parameter on every method"
       },
       {
         "letter": "D",
-        "text": "Use only IP allow-listing"
+        "text": "Add a 429 response to every method"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Different consumers warrant different SLA tiers â internal apps may require higher or unlimited throughput, paying partners get premium tiers, free-tier partners get strict rate limits. Tiers are configured in API Manager and bound through API contracts.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. RAML and OAS support security schemes. Declaring an OAuth 2.0 scheme and applying it to resources documents that clients must send an access token, typically in the Authorization header, and describes the related error responses.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "One-size-fits-all tiers underprice or overprovision."
+        "type": "Correct",
+        "text": "The scheme documents the Authorization header and the 401 and 403 responses."
       },
       "B": {
-        "type": "Correct",
-        "text": "Multiple SLA tiers (e.g., Internal-Unlimited, Partner-Premium, Partner-Free) with different rate limits and approval policies"
+        "type": "Incorrect",
+        "text": "Tokens are sent in the Authorization header regardless of method."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Blocking partners forfeits revenue and reach."
+        "text": "OAuth access tokens are sent as bearer tokens, not as client secrets."
       },
       "D": {
         "type": "Incorrect",
-        "text": "IP allow-listing alone cannot differentiate per-partner rate limits."
+        "text": "429 relates to rate limiting, not OAuth."
       }
     },
     "references": {
       "primary": {
-        "title": "Defining SLA Tiers and Managing Differentiated Consumer Access in API Manager",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/defining-sla-tiers#defining-a-tier"
+        "title": "API Manager — Configuring an API for OAuth 2.0",
+        "url": "https://docs.mulesoft.com/api-manager/latest/about-configure-api-for-oauth"
       },
       "architectureGuide": {
-        "title": "Rate Limiting and Throttling Policies in API Manager",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/rate-limiting-and-throttling#how-this-policy-works"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "OpenID Connect OAuth 2.0 Token Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-openid-token-enforcement"
       }
     }
   },
   {
     "id": "q-131",
     "number": 131,
-    "title": "Api Policies - Which artifact in API Manager allows applying",
+    "title": "API Governance - Rate limiting in the spec",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Custom Policies",
-      "Rate Limiting Throttling"
+      "API Specification",
+      "Rate Limiting"
     ],
-    "prompt": "Which artifact in API Manager allows applying a policy template to many APIs at once based on tags or environments?",
+    "prompt": "A Rate Limiting policy will be applied to an API and will expose rate-limit headers. How should the specification be updated?",
     "options": [
       {
         "letter": "A",
-        "text": "Automated policies (also known as policy templates applied across APIs)"
+        "text": "Remove all response codes except 200"
       },
       {
         "letter": "B",
-        "text": "Per-API custom Java code"
+        "text": "Add a required client_secret header"
       },
       {
         "letter": "C",
-        "text": "Anypoint MQ exchanges"
+        "text": "Document 429 and rate-limit headers"
       },
       {
         "letter": "D",
-        "text": "Object Store v2 keys"
+        "text": "Add an OAuth 2.0 security scheme"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Automated/standard policies (sometimes called governance-applied policies) let architects apply a policy template to a set of APIs based on criteria like tags, environment, or scope. This avoids per-API configuration drift and supports central enforcement.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Applying a policy can introduce new responses and headers. For rate limiting, the specification should document the 429 Too Many Requests response and any rate-limit headers so clients can handle limits correctly.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Automated policies (also known as policy templates applied across APIs)"
+        "type": "Incorrect",
+        "text": "Removing error responses makes the contract less accurate."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Per-API code defeats automation and central enforcement."
+        "text": "Non-SLA rate limiting does not identify clients."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "MQ exchanges are messaging routes."
+        "type": "Correct",
+        "text": "Clients need to know how quota exhaustion is reported."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Object Store keys are runtime data."
+        "text": "Rate limiting does not require OAuth."
       }
     },
     "references": {
       "primary": {
-        "title": "Applying Automated Policies Across Environments in API Manager",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/automated-policy-apply#apply-an-automated-policy-in-connected-mode"
+        "title": "Rate Limiting Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting"
       },
       "architectureGuide": {
-        "title": "Custom Policy Development in Mule 4",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/custom-policy-getting-started#setting-up-a-project-with-the-archetype"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "Rate Limiting: SLA-Based Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting-sla"
       }
     }
   },
   {
     "id": "q-132",
     "number": 132,
-    "title": "Api Policies - Which is the correct way to authenticate",
+    "title": "API Governance - Basic authentication in the spec",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Oauth2 Policy",
-      "Api Contracts Sla Tiers"
+      "API Specification",
+      "Basic Authentication"
     ],
-    "prompt": "Which is the correct way to authenticate Mule apps to call other Mule apps that are protected by OAuth 2.0 client credentials in API Manager?",
+    "prompt": "A System API will be secured with the HTTP Basic Authentication policy. Which specification change is appropriate?",
     "options": [
       {
         "letter": "A",
-        "text": "Use the calling app's basic-auth credentials"
+        "text": "Declare client_id and client_secret query parameters"
       },
       {
         "letter": "B",
-        "text": "Configure the calling app with its API contract's client ID and client secret to obtain access tokens"
+        "text": "Apply a Basic Authentication security scheme"
       },
       {
         "letter": "C",
-        "text": "Disable the OAuth policy on the called app"
+        "text": "Add a /token resource that returns OAuth tokens"
       },
       {
         "letter": "D",
-        "text": "Embed the user's password in the calling flow"
+        "text": "Add a username field to every request body"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Mule apps acting as API consumers register a contract with the called API in API Manager and obtain an OAuth access token using the client_id/client_secret from that contract. The token is then sent on each call.",
+    "explanation": "Correct answer: B. Specifications should reflect the security applied to the API. For HTTP Basic Authentication, a Basic Authentication security scheme documents that the Authorization header is required and that 401 is returned when it is missing or invalid.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Basic auth is unrelated to OAuth client credentials flows."
+        "text": "These are used by client ID enforcement, not basic authentication."
       },
       "B": {
         "type": "Correct",
-        "text": "Configure the calling app with its API contract's client ID and client secret to obtain access tokens"
+        "text": "The scheme documents the Authorization header and 401 response."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Disabling policies removes the only enforcement."
+        "text": "Basic authentication does not use OAuth tokens."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Embedding user passwords is both wrong protocol and a security failure."
+        "text": "Basic authentication uses the Authorization header, not body fields."
       }
     },
     "references": {
       "primary": {
-        "title": "API Manager — Authenticating Inter-Application Calls via OAuth 2.0 Client Credentials",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/client-id-based-policies#how-this-policy-works"
+        "title": "HTTP Basic Authentication Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-basic-auth-simple"
       },
       "architectureGuide": {
-        "title": "External Identity Management & Client Provider Integration",
-        "url": "https://docs.mulesoft.com/access-management/external-identity#managing-users-external-identity"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "Design Center — Creating and Publishing API Fragments",
+        "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-fragment"
       }
     }
   },
   {
     "id": "q-133",
     "number": 133,
-    "title": "Api Policies - Which Anypoint capability lets architects create and",
+    "title": "API Governance - Policy without spec impact",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Jwt Validation"
+      "API Specification",
+      "Policies"
     ],
-    "prompt": "Which Anypoint capability lets architects create and rotate JWKS-backed signing keys consumed by JWT-validating policies?",
+    "prompt": "For which policy is a change to the API specification least likely to be needed?",
     "options": [
       {
         "letter": "A",
-        "text": "Anypoint Visualizer"
+        "text": "Client ID Enforcement"
       },
       {
         "letter": "B",
-        "text": "An external IdP exposing a JWKS endpoint that the JWT Validation policy fetches"
+        "text": "OpenID Connect OAuth 2.0 Token Enforcement"
       },
       {
         "letter": "C",
-        "text": "Object Store v2 alone"
+        "text": "Message Logging"
       },
       {
         "letter": "D",
-        "text": "API Manager's RAML editor"
+        "text": "Rate Limiting: SLA-Based"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Signing key rotation is normally handled by the external Identity Provider, which exposes a JWKS endpoint. The JWT Validation policy fetches and caches keys from that endpoint, picking up rotations transparently. Visualizer and Object Store do not perform JWKS validation.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Policies that require clients to send something or that add responses affect the contract and should be documented. Policies such as Message Logging operate transparently and do not change what clients send or receive.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Visualizer is a topology view."
+        "text": "Clients must send credentials that should be documented."
       },
       "B": {
-        "type": "Correct",
-        "text": "An external IdP exposing a JWKS endpoint that the JWT Validation policy fetches"
+        "type": "Incorrect",
+        "text": "Clients must send access tokens, which should be documented."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Object Store does not provide JWKS validation logic."
+        "type": "Correct",
+        "text": "Logging at the gateway does not change requests or responses."
       },
       "D": {
         "type": "Incorrect",
-        "text": "API Manager edits policy config; signing keys live in the IdP's JWKS."
+        "text": "Clients must send credentials and may receive 429 responses."
       }
     },
     "references": {
       "primary": {
-        "title": "JWT Validation Policy — Validating Signatures & Key Rotation via External IdP JWKS",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/policy-mule4-jwt-validation#how-this-policy-works"
+        "title": "Message Logging Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-message-logging"
       },
       "architectureGuide": {
-        "title": "IETF RFC 7517 — JSON Web Key (JWKS) Specification",
-        "url": "https://datatracker.ietf.org/doc/html/rfc7517"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "Included Policies Directory",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
     }
   },
   {
     "id": "q-134",
     "number": 134,
-    "title": "Api Policies - Which approach is valid for keeping access",
+    "title": "API Governance - Embedded gateway for a Mule app",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Mtls Policy",
-      "Api Contracts Sla Tiers"
+      "API Gateway",
+      "Autodiscovery"
     ],
-    "prompt": "Which approach is valid for keeping access to a Process API restricted to specific upstream Experience APIs and nothing else?",
+    "prompt": "A new API is implemented as a Mule 4 application, and the team wants to apply API Manager policies with no extra network hop or extra deployment. Which approach is best?",
     "options": [
       {
         "letter": "A",
-        "text": "Make the Process API public"
+        "text": "Implement the policies in DataWeave inside each flow"
       },
       {
         "letter": "B",
-        "text": "Combine API contracts (only the listed Experience APIs request and approve), plus mTLS or OAuth 2.0 client credentials, plus IP allow-listing where applicable"
+        "text": "Configure API Autodiscovery in the Mule application"
       },
       {
         "letter": "C",
-        "text": "Disable API Manager"
+        "text": "Install Anypoint Service Mesh in a Kubernetes cluster"
       },
       {
         "letter": "D",
-        "text": "Rely on naming conventions"
+        "text": "Deploy a separate API proxy in front of the application"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Layered access control â contracts to declare allowed clients, mTLS or OAuth 2.0 to authenticate them, and (where deployments allow) IP allow-listing â provides defense-in-depth between API tiers. Public endpoints, disabled governance, or naming conventions are not enforcement.",
+    "explanation": "Correct answer: B. Mule runtime includes an embedded API gateway. When a Mule application is configured with API Autodiscovery, it pairs with an API instance and enforces its policies directly, without a separate proxy.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Public exposure is the opposite of restricted access."
+        "text": "Hand-coded policies cannot be managed centrally in API Manager."
       },
       "B": {
         "type": "Correct",
-        "text": "Combine API contracts (only the listed Experience APIs request and approve), plus mTLS or OAuth 2.0 client credentials, plus IP allow-listing where applicable"
+        "text": "The embedded gateway in Mule runtime enforces policies in the same app."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Disabling API Manager removes enforcement."
+        "text": "Service Mesh targets microservices in Kubernetes, not a single Mule app."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Naming conventions are not security controls."
+        "text": "A proxy adds a deployment and a network hop."
       }
     },
     "references": {
       "primary": {
-        "title": "IP Allowlist Policy, Mutual TLS (mTLS) & API Contracts for Inter-Tier Defense-in-Depth",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/ip-allowlist#how-this-policy-works"
+        "title": "API Autodiscovery",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
       },
       "architectureGuide": {
-        "title": "Client ID Enforcement and Application Contract Requests",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/client-id-based-policies#how-this-policy-works"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "API Gateway Capabilities (Mule 4)",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-gateway-capabilities-mule4"
       }
     }
   },
   {
     "id": "q-135",
     "number": 135,
-    "title": "API Security - A regional healthcare provider must expose patient appointment",
+    "title": "API Governance - Implementation cannot be redeployed",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "API Security"
+      "API Proxy",
+      "API Gateway"
     ],
-    "prompt": "A regional healthcare provider must expose patient appointment APIs to partner clinics while remaining fully HIPAA‑compliant, and the security team has mandated end‑to‑end encryption and strict access controls. What is the MOST appropriate action?",
+    "prompt": "An existing SOAP-to-REST implementation, built by a vendor on a non-Mule platform, must have policies applied from API Manager. The vendor cannot change or redeploy it. Which approach is most appropriate?",
     "options": [
       {
         "letter": "A",
-        "text": "Deploy the APIs on Anypoint Platform (Cloud Hub or Runtime Fabric), enable TLS 1.2 with mutual authentication, enforce OAuth 2.0 token validation, and apply role‑based access via Anypoint Access Management and API Manager policies."
+        "text": "Configure API Autodiscovery in the vendor's application"
       },
       {
         "letter": "B",
-        "text": "Host the APIs on a public internet server using basic authentication and rely on a site‑to‑site VPN between the provider and each partner clinic."
+        "text": "Apply policies directly to the Exchange asset"
       },
       {
         "letter": "C",
-        "text": "Expose the services as SOAP over HTTP without any encryption, but encrypt the underlying database where appointment records are stored."
+        "text": "Ask clients to validate each other's credentials"
       },
       {
         "letter": "D",
-        "text": "Publish the APIs via a public API portal without authentication, assuming partner clinics will be restricted only by IP whitelisting."
-      },
-      {
-        "letter": "E",
-        "text": "Implement a custom encryption layer inside Mule flows and protect the APIs with API‑key authentication only."
-      },
-      {
-        "letter": "F",
-        "text": "Publish the APIs on an on‑premises Runtime Manager instance, enable only HTTP (no TLS), and use client certificates solely for internal service‑to‑service calls."
+        "text": "Deploy an API proxy or Flex Gateway in front of it"
       }
     ],
-    "explanation": "The question tests knowledge of securing APIs that handle PHI in a Mule Soft environment, specifically the need for end‑to‑end encryption and robust access controls to satisfy HIPAA. The correct approach leverages the Anypoint Platform’s native security capabilities: TLS 1.2 (preferably with mutual authentication) for transport encryption, OAuth 2.0 for strong authentication, and role‑based policies via API Manager and Access Management for fine‑grained authorization. Common misconceptions include assuming network‑level protections like VPNs or IP whitelisting replace TLS, believing that encrypting data at rest is sufficient, or relying on weak authentication mechanisms such as basic auth or API keys. Each distractor reflects a real‑world pitfall that organizations might consider to cut costs or simplify deployment, but these choices expose PHI and lead to compliance violations. Best practice is to use the integrated security stack provided by Mule Soft, apply defense‑in‑depth, and ensure every request is encrypted and authenticated before any PHI is processed.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. When the implementation is not a Mule application or cannot be changed, an API proxy or Flex Gateway placed in front of it enforces API Manager policies. The trade-off is an extra hop and an extra component to run.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "This option is correct because it combines transport‑level encryption (TLS 1.2 with mutual authentication) with strong identity enforcement (OAuth 2.0) and fine‑grained authorization through Access Management. The combination satisfies HIPAA’s requirement for end‑to‑end encryption and strict access controls for protected health information (PHI). In practice, partner clinics receive access tokens that are validated on each request, and only users with the appropriate role can view or modify appointment data, ensuring compliance and auditability."
+        "type": "Incorrect",
+        "text": "Autodiscovery applies to Mule applications, and the vendor app cannot change."
       },
       "B": {
         "type": "Incorrect",
-        "text": "This option is incorrect because basic authentication transmits credentials in a reversible format and does not meet HIPAA’s encryption standards. While a VPN adds a network layer of protection, it does not provide end‑to‑end encryption for the API payload itself, leaving PHI vulnerable if the VPN is misconfigured. Moreover, managing separate VPN tunnels for each clinic introduces operational overhead and does not integrate with Mule Soft’s built‑in security policies."
+        "text": "Exchange assets do not enforce runtime policies."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option is incorrect because encrypting data at rest does not address the requirement for encryption in transit, which is mandatory under HIPAA for PHI transmitted over public networks.SOAP over plain HTTP exposes the entire message payload to interception, making it non‑compliant. Even with a secure database, the unencrypted API traffic could be captured, leading to potential breaches and regulatory penalties."
+        "text": "Client-side enforcement is not governance."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "This option is incorrect because IP whitelisting alone does not provide authentication or encryption, both of which are required for HIPAA compliance. Without proper authentication, any entity spoofing an allowed IP could access PHI. Additionally, the data would travel in clear text unless TLS is explicitly configured, violating end‑to‑end encryption mandates."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "This option is incorrect because custom encryption inside the flow does not protect the data while it travels over the network; TLS is still required for transport‑level security. API‑key authentication is a weak form of access control compared to OAuth 2.0 or JWT, and it does not provide granular, role‑based permissions. Relying on custom code also increases maintenance complexity and may not be audited by security teams, risking non‑compliance."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "This option is incorrect because disabling TLS means data is sent in clear text, directly breaching HIPAA’s encryption‑in‑transit requirement. Client certificates for internal calls do not protect external traffic from partner clinics, leaving PHI exposed. An on‑premises deployment without proper TLS and API‑level policies fails to provide the comprehensive security framework needed for regulated healthcare data."
+        "type": "Correct",
+        "text": "A gateway in front of the backend enforces policies without modifying it."
       }
     },
     "references": {
       "primary": {
-        "title": "API Manager — TLS Policy and Mutual Authentication (mTLS) Enforcement",
-        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-tls#apply-mtls-inbound-configuration-to-a-specific-api-instance"
+        "title": "API Manager — API Proxies",
+        "url": "https://docs.mulesoft.com/api-manager/latest/proxy-latest-concept"
       },
       "architectureGuide": {
-        "title": "Access Management — Role-Based Access Control for APIs and Environments",
-        "url": "https://docs.mulesoft.com/access-management/roles#assign-api-permissions-to-a-custom-role"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "Anypoint Flex Gateway Documentation",
+        "url": "https://docs.mulesoft.com/gateway/latest/"
       }
-    },
-    "correctAnswer": "A"
+    }
   },
   {
     "id": "q-136",
     "number": 136,
-    "title": "API Governance - A federal agency is consolidating multiple legacy services into a",
+    "title": "API Governance - Lightweight gateway in Kubernetes",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "API Governance"
+      "Flex Gateway",
+      "API Gateway"
     ],
-    "prompt": "A federal agency is consolidating multiple legacy services into a unified API portfolio and must enforce a uniform security policy that aligns with NIST guidelines, yet the internal team lacks deep API‑governance experience. Which option should the team choose?",
+    "prompt": "A team runs Node.js microservices in its own Kubernetes cluster and wants policies managed in API Manager with a lightweight footprint and no Mule runtime per service. Which option fits best?",
     "options": [
       {
         "letter": "A",
-        "text": "Build a custom security policy engine on top of Mule runtime, writing Java‑based policies to meet each NIST control without using API Manager."
+        "text": "Anypoint Flex Gateway"
       },
       {
         "letter": "B",
-        "text": "Rely solely on network‑level controls such as firewalls and VPNs, assuming they provide sufficient protection for the APIs."
+        "text": "A Mule API proxy for each microservice on CloudHub"
       },
       {
         "letter": "C",
-        "text": "Adopt Mule Soft's API Governance framework, using Anypoint Exchange, API Manager, and the out‑of‑the‑box NIST‑aligned policy templates with automated enforcement and governance dashboards."
+        "text": "API Autodiscovery inside each Node.js service"
       },
       {
         "letter": "D",
-        "text": "Deploy a third‑party API gateway that advertises NIST compliance and route all traffic through it, while keeping Mule Soft solely for backend integration."
-      },
-      {
-        "letter": "E",
-        "text": "Publish the APIs to Anypoint Exchange but enforce security manually per API by adding individual policies in API Manager without a centralized governance model."
-      },
-      {
-        "letter": "F",
-        "text": "Consolidate the legacy services but postpone the implementation of a standardized security policy until after the APIs have been in production for a year."
+        "text": "Exchange public portal for each service"
       }
     ],
-    "explanation": "The question tests knowledge of API governance and how to achieve NIST‑aligned security with limited internal expertise. Mule Soft's API Governance suite offers pre‑configured policy templates, centralized enforcement, and reporting that directly map to NIST controls, making it the optimal choice for a federal agency. Options that rely on custom development, perimeter‑only security, or third‑party gateways ignore the benefits of a unified platform and introduce complexity or gaps. Manual per‑API policy management and deferring security both lead to inconsistency and non‑compliance, which are common misconceptions among teams new to API governance. Best practice is to leverage the built‑in governance capabilities of Anypoint Platform to ensure consistent, auditable security across the entire API portfolio.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Anypoint Flex Gateway is a lightweight, high-performance gateway that can run in Docker and Kubernetes and is managed through API Manager. It suits non-Mule services that need centralized policies without a Mule runtime per service.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "This option is incorrect because creating a bespoke policy engine requires significant development effort and deep security expertise that the team does not possess. Custom code is prone to errors, difficult to maintain, and will not benefit from Mule Soft’s proven, continuously updated security policies. In a real‑world scenario, such a solution often leads to gaps in compliance and longer time‑to‑value."
+        "type": "Correct",
+        "text": "Flex Gateway is a lightweight gateway that runs in containers and is managed by API Manager."
       },
       "B": {
         "type": "Incorrect",
-        "text": "This option is incorrect because perimeter defenses do not protect against API‑specific threats like injection, credential leakage, or broken authentication. NIST guidelines require controls at the application layer, including authentication, authorization, and auditing, which firewalls cannot enforce. Agencies that depend only on network security frequently experience breaches that bypass perimeter devices via compromised credentials."
+        "text": "Separate Mule proxies add weight and route traffic out of the cluster."
       },
       "C": {
-        "type": "Correct",
-        "text": "This option is correct because Mule Soft provides a ready‑made governance layer that centralizes policy management, versioning, and compliance reporting. The built‑in NIST‑aligned policy templates reduce the need for deep security expertise while ensuring consistent enforcement across all APIs. In practice, agencies can quickly certify their API portfolio, monitor compliance, and adjust policies from a single console, meeting federal mandates efficiently."
+        "type": "Incorrect",
+        "text": "Autodiscovery is a Mule runtime feature."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This option is incorrect because adding an external gateway introduces integration complexity, duplicate management, and potential gaps between the gateway and Mule Soft runtime. The team would still need a governance process to keep policies synchronized, which defeats the purpose of using a unified platform. Moreover, without Mule Soft’s governance features, consistent documentation and lifecycle tracking become difficult."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "This option is incorrect as it leads to inconsistent policy application and increased operational overhead. Manual per‑API enforcement makes it easy to miss a control, causing non‑compliance with NIST standards. Real‑world teams that forgo a governance model often struggle with audit readiness and experience policy drift over time."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "This option is incorrect because delaying security contradicts federal compliance requirements, which demand controls be in place before deployment. Postponing exposes sensitive data to risk and can result in costly remediation after a breach. Agencies that wait typically face audit failures and may need to de‑commission non‑compliant APIs."
+        "text": "Portals document APIs but do not enforce policies."
       }
     },
-    "references": {},
-    "correctAnswer": "C"
+    "references": {
+      "primary": {
+        "title": "Anypoint Flex Gateway Documentation",
+        "url": "https://docs.mulesoft.com/gateway/latest/"
+      },
+      "architectureGuide": {
+        "title": "API Gateway Capabilities (Mule 4)",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-gateway-capabilities-mule4"
+      }
+    }
   },
   {
     "id": "q-137",
     "number": 137,
-    "title": "Security and Governance - A healthcare network is integrating a patient portal with an",
+    "title": "API Governance - Trade-off of API proxies",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Security and Governance"
+      "API Proxy",
+      "Trade-offs"
     ],
-    "prompt": "A healthcare network is integrating a patient portal with an electronic medical record system and must satisfy audit‑logging requirements and data‑at‑rest encryption, all while staying within a $200,000 project cap and a 3‑month deadline. Which TWO actions should be taken? (Select all correct answers)",
+    "prompt": "What is the main trade-off of enforcing policies with a separate API proxy instead of the embedded gateway in a Mule implementation?",
     "options": [
       {
         "letter": "A",
-        "text": "Deploy the integration on‑premises using a Mule runtime with a hardware security module (HSM) to encrypt data at rest."
+        "text": "Policies applied through proxies cannot be changed at runtime"
       },
       {
         "letter": "B",
-        "text": "Deploy the integration to Cloud Hub, leveraging its built‑in data‑at‑rest encryption and managed infrastructure."
+        "text": "Proxies cannot enforce client ID or rate limiting policies"
       },
       {
         "letter": "C",
-        "text": "Implement custom Data Weave scripts that write encrypted logs to a local file system for audit purposes."
+        "text": "Proxies require rewriting the backend in Mule"
       },
       {
         "letter": "D",
-        "text": "Purchase a third‑party encryption appliance and integrate it via a VPN tunnel to the Mule runtime."
-      },
-      {
-        "letter": "E",
-        "text": "Enable Anypoint Monitoring’s audit‑logging feature and configure encrypted property files using Secure Configuration Properties."
-      },
-      {
-        "letter": "F",
-        "text": "Apply API Manager throttling policies to the patient‑portal API to satisfy audit‑logging requirements."
+        "text": "An extra network hop and an extra application to deploy"
       }
     ],
-    "explanation": "The question tests the ability to choose security‑focused actions that also respect budget and schedule constraints. The correct choices leverage native, managed capabilities of the Anypoint Platform: Cloud Hub’s built‑in data‑at‑rest encryption eliminates the need for extra hardware, and Anypoint Monitoring with Secure Configuration Properties provides compliant audit logging and encryption of sensitive configuration data. Common misconceptions include assuming that custom scripts or third‑party appliances are necessary for compliance, or that unrelated features like throttling policies can fulfill audit requirements. In practice, architects should prioritize platform‑provided security features that are cost‑effective, quick to enable, and fully supported for regulatory use cases. This approach ensures a faster delivery, lower total cost of ownership, and easier ongoing governance.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. API proxies let policies be applied to any backend, but they are an additional deployment and network hop. When the implementation is a Mule application, the embedded gateway avoids this overhead.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "This option is incorrect. While an HSM can provide strong encryption, provisioning, licensing, and maintaining dedicated on‑premises hardware significantly increases both cost and implementation time, likely exceeding the $200,000 budget and three‑month schedule. Additionally, the team would need to manage patching, HA, and compliance for the HSM, which adds operational overhead not needed for this timeline."
+        "text": "Proxy policies are managed in API Manager like any other."
       },
       "B": {
-        "type": "Correct",
-        "text": "This option is correct. Cloud Hub automatically encrypts all data at rest using platform‑wide encryption keys, satisfying the encryption requirement without additional purchase or configuration effort. Because Cloud Hub is a Paa S offering, provisioning can be completed in days, keeping the project well within the budget and three‑month deadline while also providing built‑in monitoring and logging capabilities."
+        "type": "Incorrect",
+        "text": "Proxies enforce the same included policies."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option is incorrect. Writing custom encrypted logs is error‑prone, difficult to standardize, and does not integrate with Mule Soft’s audit‑logging framework, making it hard to produce tamper‑evident audit trails required for healthcare compliance. Moreover, managing encryption keys and log rotation manually adds complexity and risk, potentially delaying the project."
+        "text": "Proxies exist precisely to avoid changing the backend."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. Introducing a third‑party appliance adds significant capital expense, additional network latency, and integration effort, all of which are likely to breach the $200,000 cap and the three‑month timeline. The appliance also introduces another point of failure and requires separate management and compliance validation."
-      },
-      "E": {
         "type": "Correct",
-        "text": "This option is correct. Anypoint Monitoring provides native audit‑logging that records who accessed or modified APIs and integrations, satisfying the audit requirement. Secure Configuration Properties encrypts sensitive data such as passwords and keys at rest, meeting the encryption mandate without extra hardware or software purchases. Both features are part of the standard Anypoint Platform subscription, keeping costs low and deployment fast."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. Throttling policies control request rates and protect against abuse, but they do not generate audit logs or encrypt data at rest. Relying on throttling to meet compliance needs reflects a misunderstanding of the purpose of API Manager policies, and it would leave the solution non‑compliant with healthcare regulations."
+        "text": "The proxy is a separate component that adds latency and resources."
       }
     },
-    "references": {},
-    "correctAnswers": [
-      "B",
-      "E"
-    ]
+    "references": {
+      "primary": {
+        "title": "API Manager — API Proxies",
+        "url": "https://docs.mulesoft.com/api-manager/latest/proxy-latest-concept"
+      },
+      "architectureGuide": {
+        "title": "API Autodiscovery",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
+      }
+    }
   },
   {
     "id": "q-138",
     "number": 138,
-    "title": "API Security - A regional healthcare provider must expose patient data through",
+    "title": "API Governance - Service mesh for east-west traffic",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "API Security"
+      "Anypoint Service Mesh",
+      "Microservices"
     ],
-    "prompt": "A regional healthcare provider must expose patient data through APIs while remaining fully HIPAA‑compliant, and the security team demands encryption at rest and in transit. What is the MOST appropriate action?",
+    "prompt": "A company has many non-Mule microservices in Kubernetes that call each other inside the cluster. It wants them discoverable in Exchange and governed with API Manager policies without changing service code. Which approach was designed for this scenario?",
     "options": [
       {
         "letter": "A",
-        "text": "Implement OAuth 2.0 client‑credentials flow but serve the APIs over plain HTTP, assuming the token provides sufficient security."
+        "text": "Anypoint Service Mesh"
       },
       {
         "letter": "B",
-        "text": "Deploy the APIs on‑premise behind a VPN and rely solely on network‑level encryption to protect the data."
+        "text": "A single Experience API that wraps all microservices"
       },
       {
         "letter": "C",
-        "text": "Enable TLS 1.2 on the API gateway and configure Anypoint Platform’s encrypted Object Store for any persisted patient data."
+        "text": "API Autodiscovery added to each microservice"
       },
       {
         "letter": "D",
-        "text": "Apply basic authentication over HTTPS but store patient data in plain text in the backend database."
-      },
-      {
-        "letter": "E",
-        "text": "Configure an API rate‑limiting policy in API Manager, assuming that controlling traffic volume satisfies HIPAA compliance."
-      },
-      {
-        "letter": "F",
-        "text": "Sign a Business Associate Agreement with an external Saa S provider and transmit data without encryption, trusting the contract to ensure compliance."
+        "text": "An API proxy on CloudHub for every microservice"
       }
     ],
-    "explanation": "The question tests knowledge of HIPAA’s dual encryption requirements for protected health information: data must be encrypted both while in transit and while stored. Enabling TLS 1.2 on the API gateway secures the transport layer, while using Anypoint’s encrypted Object Store encrypts data at rest, together satisfying the regulatory mandates. Common misconceptions include believing that authentication mechanisms (OAuth, basic auth) or network controls (VPNs, rate limiting) alone fulfill encryption needs; they address access or availability but not confidentiality of the data itself. Even with contractual safeguards like a BAA, technical encryption controls are mandatory. Best practice is to implement layered security—transport encryption, storage encryption, and strong authentication—to ensure comprehensive HIPAA compliance.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Anypoint Service Mesh extended Anypoint Platform's API management to non-Mule microservices running in Kubernetes, including traffic between services, without changing service code. It appears in the exam guide; for new designs, MuleSoft's current lightweight option for non-Mule services is Flex Gateway.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "This option is incorrect because OAuth tokens protect authentication and authorization, but they do not encrypt the data transmitted over the network. Serving APIs over plain HTTP leaves the data vulnerable to interception, violating the encryption‑in‑transit requirement of HIPAA. In a real-world breach, intercepted tokens could be replayed, exposing protected health information (PHI)."
+        "type": "Correct",
+        "text": "It extended API management to microservices in Kubernetes, including service-to-service traffic."
       },
       "B": {
         "type": "Incorrect",
-        "text": "While a VPN adds a layer of encryption, it does not guarantee that data stored by the APIs is encrypted at rest. HIPAA requires both in‑transit and at‑rest encryption, and VPNs protect only the transport layer. If the underlying storage is compromised, PHI could be exposed, leading to non‑compliance penalties."
+        "text": "Wrapping does not govern the service-to-service calls."
       },
       "C": {
-        "type": "Correct",
-        "text": "This option is correct because TLS 1.2 provides strong encryption for data in transit, satisfying the HIPAA requirement for secure transmission. Anypoint’s encrypted Object Store ensures that any data written to disk is encrypted at rest, meeting the encryption‑at‑rest mandate. Together, these controls create a defense‑in‑depth approach that aligns with industry best practices for protecting PHI."
+        "type": "Incorrect",
+        "text": "Autodiscovery requires Mule applications."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Although HTTPS encrypts data while it travels, storing the data in plain text fails to meet the encryption‑at‑rest requirement. HIPAA explicitly mandates that protected health information be encrypted wherever it is stored. Without at‑rest encryption, a database breach would immediately expose PHI, resulting in severe compliance violations."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Rate limiting is valuable for protecting APIs from abuse, but it does not address encryption requirements. HIPAA compliance focuses on safeguarding the confidentiality and integrity of PHI, which rate limiting does not accomplish. Relying solely on rate limits would leave data exposed to eavesdropping and storage breaches."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "A BAA is necessary for HIPAA but does not replace technical safeguards like encryption. Transmitting unencrypted PHI violates the HIPAA Security Rule, regardless of contractual agreements. In practice, this could lead to audit findings and hefty fines despite the signed BAA."
+        "text": "Routing internal traffic out to CloudHub adds latency and cost."
       }
     },
     "references": {
       "primary": {
-        "title": "API Manager — TLS Policy for Transport Encryption at the Gateway",
-        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-tls#summary"
+        "title": "MuleSoft Developers — Getting Started with Anypoint Service Mesh",
+        "url": "https://developer.mulesoft.com/tutorials-and-howtos/anypoint-service-mesh/getting-started-with-anypoint-service-mesh-provisioning/"
       },
       "architectureGuide": {
-        "title": "Object Store v2 — Encrypted, Persistent Key-Value Storage",
-        "url": "https://docs.mulesoft.com/object-store/#object-store-v2-features"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "Anypoint Flex Gateway Documentation",
+        "url": "https://docs.mulesoft.com/gateway/latest/"
       }
-    },
-    "correctAnswer": "C"
+    }
   },
   {
     "id": "q-139",
     "number": 139,
-    "title": "API Governance - A federal agency follows a strict change‑control process and must",
+    "title": "API Governance - Securing System APIs",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "API Governance"
+      "Security",
+      "System API"
     ],
-    "prompt": "A federal agency follows a strict change‑control process and must track API versions and enforce usage policies across multiple departments. Which option should the team choose?",
+    "prompt": "A company wants to make sure that its System APIs can only be called by its own Process APIs, which run on known network addresses. Which policy combination is most appropriate?",
     "options": [
       {
         "letter": "A",
-        "text": "Publish the APIs to Anypoint Exchange with semantic versioning and enforce usage policies centrally through Anypoint API Manager."
+        "text": "OAuth 2.0 with end-user consent screens"
       },
       {
         "letter": "B",
-        "text": "Maintain separate RAML files for each department and manually track version numbers in a shared drive."
+        "text": "No policies, because System APIs are internal"
       },
       {
         "letter": "C",
-        "text": "Deploy each API version to a dedicated Mule runtime on‑premise and rely on firewall rules to restrict access."
+        "text": "Client ID Enforcement plus IP Allowlist"
       },
       {
         "letter": "D",
-        "text": "Use Mule Soft’s API‑led connectivity pattern without registering the APIs in Exchange, applying policies at the application level."
-      },
-      {
-        "letter": "E",
-        "text": "Create a separate API gateway instance for each department and manage policies independently on each gateway."
-      },
-      {
-        "letter": "F",
-        "text": "Store the API specifications in a Git repository and use CI/CD pipelines to tag releases, without using API Manager for policy enforcement."
+        "text": "CORS plus HTTP Caching"
       }
     ],
-    "explanation": "The question tests knowledge of Mule Soft’s central governance capabilities for versioning and policy enforcement. Anypoint Exchange combined with API Manager gives a single, auditable source of truth for API versions and lets the organization apply consistent usage policies across all consumers, which aligns with strict federal change‑control mandates. Options that rely on manual tracking, disparate runtimes, or isolated gateways miss the centralized control and auditability needed. Misconceptions often arise from assuming that version files or firewall rules alone provide sufficient governance, but without a dedicated API governance layer, compliance cannot be guaranteed. Best practice is to publish versioned assets to Exchange and manage policies through API Manager to achieve both traceability and enforceable usage rules.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. System APIs are usually internal and should be called only by known Process APIs. Client ID enforcement identifies the calling application, and an IP allowlist limits calls to the Process layer's addresses, adding defense in depth.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "This is the correct approach. Anypoint Exchange supports versioned API assets, allowing the agency to record each change in a controlled manner. API Manager then lets the team apply consistent policies—such as rate limiting, client‑ID enforcement, and SLA monitoring—across all departments from a single point, satisfying the strict change‑control requirements."
+        "type": "Incorrect",
+        "text": "End-user consent is unnecessary for internal service calls."
       },
       "B": {
         "type": "Incorrect",
-        "text": "This option is incorrect because manual version tracking is error‑prone and does not provide centralized policy enforcement. Without a governance layer, each department could apply different policies, leading to compliance gaps. The shared‑drive method also lacks auditability required for federal change‑control processes."
+        "text": "Internal APIs still need protection from unintended callers."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "This choice is incorrect. While isolated runtimes can separate versions, firewall rules do not enforce usage policies such as quota or authentication. Managing many runtimes adds operational overhead and makes it difficult to maintain a single source of truth for version history."
+        "type": "Correct",
+        "text": "Credentials identify the caller, and the allowlist restricts network origin."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This is incorrect because API‑led connectivity alone does not provide version management or centralized policy control. Policies coded inside each application are hard to audit and update consistently across departments. Without Exchange, the agency loses visibility into which version is in production, violating strict change‑control standards."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. Multiple gateways fragment policy management, making it nearly impossible to guarantee uniform enforcement. It also creates duplicate effort for version tracking and increases the risk of configuration drift, which contradicts the agency’s need for a single, auditable control point."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "This is incorrect because source‑code versioning does not provide runtime governance. Tags in Git capture design changes but do not automatically apply or monitor usage policies when the API is invoked. Without API Manager, the agency cannot centrally enforce or audit policies required by federal regulations."
+        "text": "Neither policy restricts which services can call the API."
       }
     },
     "references": {
       "primary": {
-        "title": "API Manager Overview — API Instances, Contracts, Policies, and SLA Tiers",
-        "url": "https://docs.mulesoft.com/api-manager/latest/latest-overview-concept#api-manager-components-concepts-and-features"
+        "title": "IP Allowlist Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-ip-allowlist"
       },
       "architectureGuide": {
-        "title": "Anypoint Exchange — Asset Versions and Lifecycle States",
-        "url": "https://docs.mulesoft.com/exchange/lifecycle#stable-state"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "Client ID Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
       }
-    },
-    "correctAnswer": "A"
+    }
   },
   {
     "id": "q-140",
     "number": 140,
-    "title": "API Security - A federal government agency is securing an internal API that prov",
+    "title": "API Governance - Securing Experience APIs for end users",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "API Security"
+      "Security",
+      "Experience API"
     ],
-    "prompt": "A federal government agency is securing an internal API that provides classified data. The project has a strict compliance mandate and a $30k budget cap. Which security best practice provides the MOST secure method to protect the API? Which option should the team choose?",
+    "prompt": "A mobile Experience API lets end users view their own orders. Access must be tied to the authenticated user through the company's identity provider. Which policy is most appropriate?",
     "options": [
       {
         "letter": "A",
-        "text": "Implement OAuth 2.0 client‑credentials flow with JWT access tokens and scopes."
+        "text": "IP Allowlist of mobile carrier networks"
       },
       {
         "letter": "B",
-        "text": "Use API keys passed in a custom header and validate them in a policy."
+        "text": "OAuth 2.0 token enforcement with the IdP"
       },
       {
         "letter": "C",
-        "text": "Restrict access to the API by configuring an IP whitelist on the firewall."
+        "text": "HTTP Basic Authentication with one shared account"
       },
       {
         "letter": "D",
-        "text": "Enforce Mutual TLS (m TLS) on the API gateway, requiring each consumer to present a validated client certificate."
-      },
-      {
-        "letter": "E",
-        "text": "Apply Basic Authentication (username/password) over HTTPS."
-      },
-      {
-        "letter": "F",
-        "text": "Deploy a hardware security module (HSM) to encrypt data at rest and use token‑binding for requests."
+        "text": "Client ID Enforcement only"
       }
     ],
-    "explanation": "The question tests the candidate's understanding of the strongest, compliance‑driven authentication mechanism for protecting a classified internal API within a limited budget. Mutual TLS (m TLS) is the most secure method because it provides cryptographic, two‑way authentication that guarantees both the server and client identities, fulfilling strict federal mandates. Common misconceptions include assuming that OAuth, API keys, or IP whitelisting alone are sufficient; these methods either lack strong client proof, are vulnerable to secret leakage, or do not verify identity. Basic Auth is frequently mistaken as secure when used over HTTPS, but static credentials are still a weak link. An HSM is valuable for data‑at‑rest encryption but does not replace the need for strong transport‑layer authentication and may be cost‑prohibitive. Therefore, the best practice within the $30k cap is to enable m TLS on the API gateway.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Experience APIs exposed to end-user apps typically use OAuth 2.0, with tokens issued by an identity provider. The token enforcement policy validates tokens so access is tied to the authenticated user and authorized client.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Implement OAuth 2.0 client‑credentials flow with JWT access tokens and scopes.: This option is incorrect for the given scenario. While OAuth 2.0 with JWTs provides token‑based authentication and fine‑grained scopes, the access tokens can be intercepted or replayed if not carefully protected, and the token issuance process adds complexity. For a classified internal API, the agency needs stronger, non‑repudiable client identity verification that OAuth alone does not guarantee."
+        "text": "IP ranges cannot identify individual users."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Use API keys passed in a custom header and validate them in a policy.: This option is also incorrect. API keys are static secrets that are difficult to rotate and can be copied or leaked, offering only a weak form of authentication. In a high‑security environment, relying solely on an API key does not satisfy compliance requirements for strong client authentication and auditability."
+        "type": "Correct",
+        "text": "Access tokens represent the authenticated user and are validated by the policy."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Restrict access to the API by configuring an IP whitelist on the firewall.: This choice is incorrect. IP whitelisting can limit exposure but it does not authenticate the requester; IP addresses can be spoofed or change due to network re‑architecture. Classified data requires assurance of the exact client identity, which IP filtering alone cannot provide."
+        "text": "A shared account cannot distinguish users."
       },
       "D": {
-        "type": "Correct",
-        "text": "Enforce Mutual TLS (m TLS) on the API gateway, requiring each consumer to present a validated client certificate.: This option is correct. Mutual TLS provides two‑way authentication by verifying both server and client certificates, ensuring that only trusted, credentialed applications can call the API. It meets strict compliance mandates, offers strong cryptographic assurance, and can be implemented within the $30k budget using Mule Soft’s API Manager and existing PKI infrastructure."
-      },
-      "E": {
         "type": "Incorrect",
-        "text": "Apply Basic Authentication (username/password) over HTTPS.: This option is incorrect. Basic Auth relies on static credentials that can be phished, reused, or brute‑forced, and it does not provide the same level of cryptographic binding as certificate‑based authentication. For classified data, the risk of credential compromise is too high, making Basic Auth an insufficient safeguard."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Deploy a hardware security module (HSM) to encrypt data at rest and use token‑binding for requests.: This answer is incorrect. While an HSM secures data at rest, it does not address authentication of API callers, and token‑binding adds complexity without guaranteeing client identity. Additionally, HSM solutions often exceed the modest $30k budget, making this approach impractical for the project constraints."
+        "text": "Client credentials identify the app, not the end user."
       }
     },
     "references": {
       "primary": {
-        "title": "API Manager — TLS Policy and mTLS Inbound Configuration",
-        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-tls#apply-mtls-inbound-configuration-to-a-specific-api-instance"
+        "title": "OpenID Connect OAuth 2.0 Token Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-openid-token-enforcement"
       },
       "architectureGuide": {
-        "title": "Mule TLS Configuration — Keystores, Truststores, and Two-Way Auth",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/tls-configuration#example-configuring-tls-for-two-way-authentication"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "API Manager — Configuring an API for OAuth 2.0",
+        "url": "https://docs.mulesoft.com/api-manager/latest/about-configure-api-for-oauth"
       }
-    },
-    "correctAnswer": "D"
+    }
   },
   {
     "id": "q-141",
     "number": 141,
-    "title": "Mule Soft Certified Platform Architect (MCPA) - A healthcare startup must secure its patient data APIs to satisfy",
+    "title": "API Governance - Process API security",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Mule Soft Certified Platform Architect (MCPA)"
+      "Security",
+      "Process API"
     ],
-    "prompt": "A healthcare startup must secure its patient data APIs to satisfy both GDPR and HIPAA while operating with a small security team and a $20k budget. Which TWO actions should be taken? (Select all correct answers)",
+    "prompt": "Process APIs are called only by internal Experience APIs and other Process APIs within the company's network. Which policy is the typical baseline for them?",
     "options": [
       {
         "letter": "A",
-        "text": "Purchase an enterprise‑grade Web Application Firewall (WAF) and host it on dedicated hardware."
+        "text": "Client ID Enforcement"
       },
       {
         "letter": "B",
-        "text": "Enable TLS/HTTPS for all API traffic to encrypt data in transit."
+        "text": "Header Injection"
       },
       {
         "letter": "C",
-        "text": "Store patient records in an unencrypted S3 bucket to reduce storage costs."
+        "text": "CORS"
       },
       {
         "letter": "D",
-        "text": "Require developers to embed API keys directly in client‑side Java Script."
-      },
-      {
-        "letter": "E",
-        "text": "Apply out‑of‑the‑box API Manager security policies such as OAuth 2.0 client‑credentials, IP whitelisting, and request throttling."
-      },
-      {
-        "letter": "F",
-        "text": "Perform manual quarterly penetration testing without any automated scanning tools."
+        "text": "HTTP Caching"
       }
     ],
-    "explanation": "The question tests understanding of cost‑effective API security measures that satisfy stringent regulations such as GDPR and HIPAA. Encryption of data in transit (TLS/HTTPS) and the use of built‑in API gateway security policies (OAuth 2.0, IP whitelisting, throttling) are essential controls that can be implemented with minimal expense and operational overhead, making them the correct choices. Common misconceptions include assuming that expensive hardware appliances or insecure practices like client‑side API keys provide adequate protection; these either exceed budget constraints or create compliance gaps. Storing data unencrypted or neglecting automated security testing also fails to meet regulatory requirements and exposes the organization to risk. Best practice for small teams is to leverage platform‑provided security features, enable encryption both at rest and in transit, and apply fine‑grained access controls while maintaining audit logs for compliance reporting.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. A typical baseline for internal Process APIs is client ID enforcement, which identifies calling applications and enables contracts and analytics. Stronger controls, such as OAuth or IP allowlisting, can be added based on data sensitivity.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Purchase an enterprise‑grade Web Application Firewall (WAF) and host it on dedicated hardware.: This option is incorrect because a dedicated hardware WAF typically exceeds a $20k budget and requires specialized staff to manage it, which the small security team cannot support. While a WAF can add a layer of protection, the cost and operational overhead make it unsuitable for a startup with limited resources. Investing in built‑in gateway policies provides comparable protection at a fraction of the cost."
+        "type": "Correct",
+        "text": "It identifies which internal application calls each Process API."
       },
       "B": {
-        "type": "Correct",
-        "text": "Enable TLS/HTTPS for all API traffic to encrypt data in transit.: This option is correct. Encrypting data in transit with TLS/HTTPS is a fundamental requirement under both GDPR and HIPAA to protect personal health information from interception. Implementing TLS is inexpensive, often included out‑of‑the‑box with API platforms, and can be managed by a small team, satisfying the budget and compliance constraints."
+        "type": "Incorrect",
+        "text": "Injecting headers does not authenticate callers."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Store patient records in an unencrypted S3 bucket to reduce storage costs.: This option is incorrect because storing protected health information (PHI) or personal data without encryption directly violates GDPR and HIPAA mandates for data at rest protection. An unencrypted bucket exposes data to accidental leaks and unauthorized access, leading to severe fines and loss of trust. Encryption at rest is a low‑cost control that should be enabled instead."
+        "text": "CORS is for browser-based callers."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Require developers to embed API keys directly in client‑side Java Script.: This option is incorrect. Embedding API keys in client‑side code makes them easily discoverable, breaking the principle of least privilege and opening the APIs to abuse. HIPAA and GDPR require strong authentication mechanisms that cannot be exposed publicly; a server‑side token exchange such as OAuth 2.0 is required instead."
-      },
-      "E": {
-        "type": "Correct",
-        "text": "Apply out‑of‑the‑box API Manager security policies such as OAuth 2.0 client‑credentials, IP whitelisting, and request throttling.: This option is correct. Using built‑in API Manager policies provides robust authentication, authorization, and threat protection without additional licensing or complex implementation. Features like OAuth 2.0 enforce scoped access, IP whitelisting limits exposure, and throttling prevents denial‑of‑service attacks, all of which help meet GDPR and HIPAA requirements within the $20k budget."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Perform manual quarterly penetration testing without any automated scanning tools.: This option is incorrect. While periodic penetration testing is valuable, relying solely on manual testing is inefficient for a small team and may miss many automated vulnerability checks. Moreover, the cost and effort of comprehensive manual testing can quickly exceed the limited budget, and it does not replace the need for continuous, automated security controls."
+        "text": "Caching is a performance policy, not a security baseline."
       }
     },
     "references": {
       "primary": {
-        "title": "API Manager — Client ID Enforcement and Client Application Credentials",
-        "url": "https://docs.mulesoft.com/api-manager/latest/client-id-based-policies#how-this-policy-works"
+        "title": "Client ID Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
       },
       "architectureGuide": {
-        "title": "API Manager — IP Allowlist Policy for Restricting Access",
-        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-ip-allowlist#summary"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "API Manager — Contracts",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-contracts-landing-page"
       }
-    },
-    "correctAnswers": [
-      "B",
-      "E"
-    ]
+    }
   },
   {
     "id": "q-142",
     "number": 142,
-    "title": "PCI-DSS Compliance - An online retail company must protect credit‑card information flo",
+    "title": "API Governance - Partner-facing Experience API",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "PCI-DSS Compliance"
+      "Security",
+      "Experience API"
     ],
-    "prompt": "An online retail company must protect credit‑card information flowing through its checkout API to satisfy PCI‑DSS, has a tight operational budget, and wants the solution that adds the least overhead to request processing. Which approach BEST meets the requirements?",
+    "prompt": "An Experience API is exposed to external partners over the internet. Partners send large JSON payloads. Which two policies are most important to add for security? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "Enable end‑to‑end TLS on the checkout API and configure a Mule Soft policy that encrypts the credit‑card fields using the Secure Property Placeholder."
+        "text": "HTTP Caching"
       },
       {
         "letter": "B",
-        "text": "Use a Mule Soft Data Weave transformation to mask the credit‑card number before any further processing, then log the masked value."
+        "text": "CORS allowing all origins"
       },
       {
         "letter": "C",
-        "text": "Deploy an API‑gateway policy that tokenizes the credit‑card number using Mule Soft's Tokenization policy, then route the token downstream."
+        "text": "An OAuth 2.0 or JWT token enforcement policy"
       },
       {
         "letter": "D",
-        "text": "Forward the checkout request directly to a PCI‑DSS‑validated external payment service and never store or process the card data within Mule, using only TLS for transport."
+        "text": "Message Logging of full payloads"
       },
       {
         "letter": "E",
-        "text": "Store the credit‑card data in an encrypted Mule Soft Object Store and retrieve it only when needed for settlement."
-      },
-      {
-        "letter": "F",
-        "text": "Use a custom Java component that performs RSA encryption on the card number before passing it to downstream services."
+        "text": "JSON Threat Protection"
       }
     ],
-    "explanation": "The question tests knowledge of PCI‑DSS compliance strategies that minimize processing overhead in a Mule Soft integration scenario. The optimal approach is to avoid handling credit‑card data within Mule entirely by delegating the transaction to a PCI‑DSS‑validated external payment service, securing the transport with TLS only. This eliminates the need for internal encryption, tokenization, or storage, thereby reducing CPU load, simplifying key management, and keeping costs low. Options involving payload encryption, masking, tokenization, or custom cryptography all introduce extra processing steps or compliance burdens, which are common misconceptions when designers think any encryption satisfies PCI‑DSS without considering performance impact. Learners should remember that the best practice is to reduce the scope of PCI‑DSS by keeping card data out of the internal environment whenever possible.",
+    "correctAnswers": [
+      "C",
+      "E"
+    ],
+    "explanation": "Correct answers: C and E. Internet-facing Experience APIs need strong authentication, such as OAuth 2.0 or JWT validation, and protection against malicious payloads, such as JSON threat protection. Performance and logging policies do not address these threats.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Enable end‑to‑end TLS on the checkout API and configure a Mule Soft policy that encrypts the credit‑card fields using the Secure Property Placeholder.: This option encrypts the card data in transit with TLS, which is required by PCI‑DSS, but using the Secure Property Placeholder to encrypt payload fields still forces Mule to decrypt and re‑encrypt the data for every request. The additional cryptographic processing adds measurable latency and CPU usage, which conflicts with the requirement for minimal overhead. While it meets compliance, it is not the most efficient solution for a tight budget."
+        "text": "Caching improves performance, not security."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Use a Mule Soft Data Weave transformation to mask the credit‑card number before any further processing, then log the masked value.: Masking the number removes visible digits, but the original card data is still present in memory and potentially logged before masking, violating PCI‑DSS requirements to protect sensitive data at rest and in use. The transformation itself consumes processing time, increasing request latency. This approach gives a false sense of security and does not eliminate the need for proper encryption or tokenization."
+        "text": "Allowing every origin weakens browser-based protections."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Deploy an API‑gateway policy that tokenizes the credit‑card number using Mule Soft's Tokenization policy, then route the token downstream.: Tokenization replaces the PAN with a non‑sensitive token, which aligns with PCI‑DSS best practices and reduces exposure of raw card data. However, the tokenization policy introduces extra processing steps—lookup, token generation, and storage—which add overhead to each API call. For an organization seeking the least impact on performance and cost, this added processing may be unnecessary if the card data can be avoided altogether."
+        "type": "Correct",
+        "text": "Tokens authenticate and authorize partner applications."
       },
       "D": {
-        "type": "Correct",
-        "text": "Forward the checkout request directly to a PCI‑DSS‑validated external payment service and never store or process the card data within Mule, using only TLS for transport.: By sending the raw credit‑card payload directly to a compliant third‑party payment processor, the Mule runtime never touches the sensitive data, eliminating the need for internal encryption, tokenization, or storage. TLS protects the data in transit, satisfying PCI‑DSS transmission requirements, while avoiding any additional CPU cycles for cryptographic operations inside Mule. This approach meets compliance, keeps operational costs low, and adds virtually no processing overhead, making it the optimal solution."
+        "type": "Incorrect",
+        "text": "Logging full payloads can expose sensitive data and is not a security control."
       },
       "E": {
-        "type": "Incorrect",
-        "text": "Store the credit‑card data in an encrypted Mule Soft Object Store and retrieve it only when needed for settlement.: Storing card data, even in an encrypted object store, introduces significant compliance responsibilities, such as key management, access controls, and audit logging, which increase operational complexity and cost. Retrieval of the data for settlement adds extra latency to each transaction flow. Therefore, this method does not satisfy the requirement for minimal overhead and is generally discouraged unless the business absolutely must retain card data."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Use a custom Java component that performs RSA encryption on the card number before passing it to downstream services.: Custom RSA encryption provides strong protection but requires key management, careful implementation, and considerable CPU resources for each encryption operation, leading to higher latency. Maintaining custom code also raises operational costs and risks of security flaws. Consequently, this solution does not align with the budget‑conscious, low‑overhead goal."
+        "type": "Correct",
+        "text": "It limits payload depth and size to block malicious JSON."
       }
     },
     "references": {
       "primary": {
-        "title": "Omni Gateway — TLS Policy for Transport Encryption of API Traffic",
-        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-tls#summary"
+        "title": "JSON Threat Protection Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-json-threat-protection"
       },
       "architectureGuide": {
-        "title": "Salesforce Compliance — PCI Attestation of Compliance (AoC) for MuleSoft / Anypoint Platform",
-        "url": "https://compliance.salesforce.com/en/documents/a005A00000mkLDhQAM"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "JWT Validation Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-jwt-validation"
       }
-    },
-    "correctAnswer": "D"
+    }
   },
   {
     "id": "q-143",
     "number": 143,
-    "title": "API Governance - A logistics startup plans to launch a public shipment‑tracking AP",
+    "title": "API Governance - Defense in depth across tiers",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "API Governance"
+      "Security",
+      "API-led Connectivity"
     ],
-    "prompt": "A logistics startup plans to launch a public shipment‑tracking API within four weeks, needs built‑in request throttling to prevent abuse, and the team is more familiar with OAS than RAML. What should be done FIRST?",
+    "prompt": "An architect applies OAuth 2.0 to all Experience APIs. A developer argues that Process and System APIs therefore need no policies. What should the architect reply?",
     "options": [
       {
         "letter": "A",
-        "text": "Develop the Mule flow first, then add throttling later using a custom Java component."
+        "text": "Correct; securing the Experience layer protects everything below it"
       },
       {
         "letter": "B",
-        "text": "Convert the OAS definition to RAML, then design the API in Design Center using RAML."
+        "text": "Lower tiers still need their own controls"
       },
       {
         "letter": "C",
-        "text": "Create the API specification using OAS in Design Center, publish it to API Manager, and apply a rate‑limiting policy."
+        "text": "Lower tiers should be secured only by CORS"
       },
       {
         "letter": "D",
-        "text": "Deploy the API to Cloud Hub without registering it in API Manager, then configure throttling on the load balancer."
-      },
-      {
-        "letter": "E",
-        "text": "Use an external third‑party gateway for throttling and bypass Anypoint API Manager entirely."
-      },
-      {
-        "letter": "F",
-        "text": "Skip throttling for the initial launch and monitor usage manually after release."
+        "text": "Lower tiers should use the same end-user OAuth consent flow"
       }
     ],
-    "explanation": "The question tests knowledge of API governance sequencing in Anypoint Platform, especially when a team prefers Open API Specification. The recommended first action is to author the API contract using OAS in Design Center, then publish it to API Manager where a throttling policy can be applied immediately, ensuring the public API is protected from the start. Common misconceptions include believing that implementation must precede governance, that OAS must be converted to RAML, or that external solutions are needed for rate limiting. Each of these distractors overlooks Mule Soft's native support for OAS and its built‑in policy engine, which provide a faster, more maintainable path to a secure API. Best practice is to establish the contract and governance (including throttling) early, then develop the integration logic, which aligns with rapid delivery goals and reduces operational risk.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Security in an application network uses defense in depth. Even when Experience APIs enforce OAuth 2.0, Process and System APIs should identify and restrict their callers, for example with client ID enforcement and IP allowlists, appropriate to each tier.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Develop the Mule flow first, then add throttling later using a custom Java component.: This option is incorrect. While building the implementation is essential, Mule Soft best practice is to govern the API before writing integration logic. Adding throttling later with custom code defeats the purpose of using API Manager policies, which provide out‑of‑the‑box, configurable rate limiting and easier maintenance."
+        "text": "Internal callers or misconfigurations can reach lower tiers directly."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Convert the OAS definition to RAML, then design the API in Design Center using RAML.: This option is incorrect. Converting OAS to RAML adds unnecessary effort and risk of losing details, especially when the team is already comfortable with OAS. Mule Soft supports OAS natively, so you can import the OAS directly into Design Center, avoiding a conversion step and speeding up delivery."
+        "type": "Correct",
+        "text": "Each tier must protect itself in case calls bypass the upper tiers."
       },
       "C": {
-        "type": "Correct",
-        "text": "Create the API specification using OAS in Design Center, publish it to API Manager, and apply a rate‑limiting policy.: This option is correct. The first step aligns with the team's OAS expertise and establishes governance early by defining the contract in Design Center. Publishing the spec to API Manager enables you to attach a throttling (rate‑limiting) policy immediately, ensuring the public API is protected from abuse before any implementation is deployed."
+        "type": "Incorrect",
+        "text": "CORS is not an authentication mechanism."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Deploy the API to Cloud Hub without registering it in API Manager, then configure throttling on the load balancer.: This option is incorrect. Deploying without API Manager bypasses the built‑in policy framework, forcing you to manage throttling outside Mule Soft. Using a load balancer for rate limiting is possible but more complex, less flexible, and does not provide the analytics and developer portal capabilities of API Manager."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Use an external third‑party gateway for throttling and bypass Anypoint API Manager entirely.: This option is incorrect. Introducing a third‑party gateway adds integration overhead, licensing costs, and fragments the governance model. Anypoint API Manager already offers robust throttling policies, so leveraging the native solution simplifies operations and keeps the API lifecycle unified."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Skip throttling for the initial launch and monitor usage manually after release.: This option is incorrect. Ignoring throttling exposes the public API to potential abuse, which can degrade performance or cause denial of service. Manual monitoring is reactive and cannot prevent abuse in real time; proactive rate‑limiting via API Manager is the recommended approach."
+        "text": "Internal service calls do not need end-user consent."
       }
     },
     "references": {
       "primary": {
-        "title": "Design Center — Creating and Publishing an API Specification (Share in Exchange)",
-        "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-specs#share-in-exchange-and-api-manager"
+        "title": "Client ID Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
       },
       "architectureGuide": {
-        "title": "API Manager — Rate Limiting and Throttling Policy",
-        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-rate-limiting#summary"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "IP Allowlist Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-ip-allowlist"
       }
-    },
-    "correctAnswer": "C"
+    }
   },
   {
     "id": "q-144",
     "number": 144,
-    "title": "Io T Security - A manufacturing plant wants to secure MQTT telemetry from its Io",
+    "title": "API Governance - How to send client credentials",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Io T Security"
+      "Client ID Enforcement",
+      "Client Credentials"
     ],
-    "prompt": "A manufacturing plant wants to secure MQTT telemetry from its Io T sensors to the Mule runtime, must adhere to IEC 62443, and the network can only support minimal encryption overhead. What is the MOST appropriate action?",
+    "prompt": "An API has Client ID Enforcement applied with its default configuration. How should a client application send its credentials?",
     "options": [
       {
         "letter": "A",
-        "text": "Deploy MQTT over TLS 1.3 with RSA certificates for both client and server authentication."
+        "text": "Encoded in the request path as /client/{id}/secret/{secret}"
       },
       {
         "letter": "B",
-        "text": "Use plain MQTT and rely on network segmentation per IEC 62443 zone concepts."
+        "text": "In a cookie set by Anypoint Platform after login"
       },
       {
         "letter": "C",
-        "text": "Implement MQTT over TLS with mutual X.509 certificate authentication."
+        "text": "Inside the JSON request body as a credentials object"
       },
       {
         "letter": "D",
-        "text": "Use MQTT over TLS with pre‑shared key (PSK) cipher suites to minimize handshake overhead."
-      },
-      {
-        "letter": "E",
-        "text": "Enable MQTT over DTLS with AES‑256‑GCM and full certificate chain validation."
-      },
-      {
-        "letter": "F",
-        "text": "Apply MQTT over an IPsec tunnel between sensors and Mule runtime."
+        "text": "client_id and client_secret headers or query params"
       }
     ],
-    "explanation": "The question tests the candidate's ability to balance IEC 62443 security mandates with the performance constraints of resource‑limited Io T devices. IEC 62443 requires confidentiality, integrity, and authentication for telemetry traffic, but the plant's network can only tolerate minimal encryption overhead. TLS with pre‑shared keys (PSK) delivers the needed security while avoiding expensive asymmetric cryptographic operations, making it the optimal solution. Options that rely on full X.509 certificates, high‑strength ciphers, or additional tunneling mechanisms introduce unnecessary processing load, leading to latency or device strain. Understanding when to use lightweight TLS‑PSK is a best practice for securing MQTT in constrained industrial Io T deployments.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Client ID enforcement validates the client ID and secret of a registered client application. By default it reads client_id and client_secret from headers or query parameters, and can also be configured to read them from an HTTP Basic Authorization header. Requests should use HTTPS.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Deploy MQTT over TLS 1.3 with RSA certificates for both client and server authentication.: This option provides strong security but uses RSA certificates, which involve costly asymmetric cryptographic operations during the TLS handshake. The high computational load contradicts the requirement for minimal encryption overhead on constrained Io T devices. While it would satisfy IEC 62443, the performance impact makes it unsuitable for this scenario."
+        "text": "Path segments are not the configured credential origin."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Use plain MQTT and rely on network segmentation per IEC 62443 zone concepts.: Relying solely on network segmentation leaves the telemetry data unencrypted, exposing it to interception or tampering if the segmentation is breached. IEC 62443 mandates confidentiality and integrity controls, not just logical separation. Therefore this approach does not meet the security requirements despite low overhead."
+        "text": "Client credentials are not platform session cookies."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Implement MQTT over TLS with mutual X.509 certificate authentication.: Mutual X.509 authentication offers robust identity verification, but each device must store and process full certificate chains, increasing memory and CPU usage. The handshake involves full asymmetric cryptography, which adds significant overhead on low‑power sensors. Consequently, it fails the minimal overhead constraint while still being compliant with IEC 62443."
+        "text": "The policy does not read credentials from the body by default."
       },
       "D": {
         "type": "Correct",
-        "text": "Use MQTT over TLS with pre‑shared key (PSK) cipher suites to minimize handshake overhead.: TLS‑PSK replaces asymmetric operations with a symmetric pre‑shared key, dramatically reducing CPU and memory consumption during the handshake while still providing confidentiality, integrity, and authentication as required by IEC 62443. This approach meets the plant's low‑overhead network limitation and maintains a compliant security posture. It is the most appropriate balance of security and performance for constrained Io T sensors."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Enable MQTT over DTLS with AES‑256‑GCM and full certificate chain validation.: DTLS adds encryption suitable for UDP, but the use of AES‑256‑GCM and full certificate validation again introduces heavy cryptographic processing. The larger key size and certificate handling increase latency and resource usage, conflicting with the minimal overhead requirement. Although secure, it is not the optimal choice for this environment."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Apply MQTT over an IPsec tunnel between sensors and Mule runtime.: IPsec provides strong layer‑3 protection but requires additional encapsulation and negotiation overhead, often exceeding the capabilities of lightweight Io T devices. Implementing and managing IPsec tunnels adds complexity and can degrade network performance. Hence, it does not satisfy the constraint of minimal encryption overhead."
+        "text": "The default policy reads these values from the request."
       }
     },
-    "references": {},
-    "correctAnswer": "D"
+    "references": {
+      "primary": {
+        "title": "Client ID Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
+      },
+      "architectureGuide": {
+        "title": "API Manager — Managing Client Applications",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-client-apps-latest-task"
+      }
+    }
   },
   {
     "id": "q-145",
     "number": 145,
-    "title": "API Management - A national retail chain wants to expose its inventory catalog to",
+    "title": "API Governance - Credentials in a Basic Authorization header",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "API Management"
+      "Client ID Enforcement",
+      "Basic Authentication"
     ],
-    "prompt": "A national retail chain wants to expose its inventory catalog to external partners, must enforce OAuth 2.0, support rate limiting, enable response caching, keep end‑to‑end latency under 200 ms, and cannot exceed a modest licensing cost; options include using a policy‑driven API proxy, implementing a dedicated caching layer, applying token introspection, configuring per‑client throttling, and enabling edge‑side compression. Which THREE options meet the requirements? (Select all correct answers)",
+    "prompt": "A client platform can only send credentials in a standard Authorization header. The API uses Client ID Enforcement. What can the API owner do?",
     "options": [
       {
         "letter": "A",
-        "text": "Use a policy‑driven API proxy to enforce OAuth 2.0, apply throttling, and enable response caching."
+        "text": "Ask the client to send the secret in the URL path"
       },
       {
         "letter": "B",
-        "text": "Deploy a dedicated external caching layer (e. g., Redis) behind the API proxy."
+        "text": "Remove client ID enforcement for that client only"
       },
       {
         "letter": "C",
-        "text": "Apply token introspection for every request against the authorization server."
+        "text": "Read them from the Basic Authorization header"
       },
       {
         "letter": "D",
-        "text": "Configure per‑client throttling policies in the API manager."
-      },
-      {
-        "letter": "E",
-        "text": "Enable edge‑side compression to gzip responses."
-      },
-      {
-        "letter": "F",
-        "text": "Replace the API proxy with a full‑mesh ESB orchestration layer for all traffic."
+        "text": "Replace the policy with CORS"
       }
     ],
-    "explanation": "The question tests the candidate's ability to select the most cost‑effective, low‑latency solution set for exposing an API while meeting security, rate‑limiting, and caching requirements. Policy‑driven API proxies in Anypoint Platform deliver OAuth 2.0 enforcement, throttling, and caching as built‑in policies, keeping both licensing and operational overhead minimal. Adding a dedicated caching layer such as Redis further improves latency without significant cost, satisfying the response‑caching need. Per‑client throttling policies directly address the rate‑limiting requirement and are lightweight enough to stay under the latency budget. Options like token introspection, edge‑side compression, and a full‑mesh ESB are common misconceptions: they either add unnecessary latency, do not meet all functional requirements, or increase cost, making them poor choices for this scenario.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Client ID enforcement can be configured to obtain the client ID and secret from a custom expression, such as headers or query parameters, or from an HTTP Basic Authentication header, with the client ID as the username and the secret as the password.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Use a policy‑driven API proxy to enforce OAuth 2.0, apply throttling, and enable response caching.: This option is correct. An API proxy managed by Anypoint API Manager can apply OAuth 2.0 token validation, rate‑limiting, and response‑caching policies without additional infrastructure, keeping licensing costs low. Because the policies execute at the edge, latency stays well below 200 ms, making it an ideal choice for the scenario."
+        "type": "Incorrect",
+        "text": "This exposes the secret in logs and is not supported."
       },
       "B": {
-        "type": "Correct",
-        "text": "Deploy a dedicated external caching layer (e. g., Redis) behind the API proxy.: This option is correct. A separate caching tier can store frequently requested catalog data, dramatically reducing backend calls and helping meet the sub‑200 ms latency goal. Open‑source solutions such as Redis have minimal licensing cost, satisfying the modest budget constraint while providing true response caching."
+        "type": "Incorrect",
+        "text": "Exempting a client defeats the governance of the API."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Apply token introspection for every request against the authorization server.: This option is incorrect. Token introspection requires a network round‑trip to the authorization server for each request, adding latency that can easily exceed the 200 ms target. Additionally, the extra calls increase operational cost and do not provide caching or rate‑limiting capabilities, making it unsuitable for the given constraints."
+        "type": "Correct",
+        "text": "The policy supports a Basic Authentication header as the credentials origin."
       },
       "D": {
-        "type": "Correct",
-        "text": "Configure per‑client throttling policies in the API manager.: This option is correct. Per‑client throttling directly implements the required rate‑limiting function and is enforced by the API proxy, avoiding extra hardware or licensing. The policy is lightweight and runs at the edge, preserving the low‑latency requirement while staying within budget."
-      },
-      "E": {
         "type": "Incorrect",
-        "text": "Enable edge‑side compression to gzip responses.: This option is incorrect. While compression reduces bandwidth usage, it does not satisfy the mandatory OAuth enforcement, rate‑limiting, or caching requirements. Moreover, compression adds CPU overhead that can increase response time, potentially jeopardizing the 200 ms latency goal without delivering the core functional needs."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Replace the API proxy with a full‑mesh ESB orchestration layer for all traffic.: This option is incorrect. An ESB orchestration layer introduces higher processing latency, greater operational complexity, and higher licensing costs compared to a lightweight API proxy. It does not inherently provide the policy‑driven OAuth, throttling, or caching features needed in a cost‑effective manner."
+        "text": "CORS does not authenticate clients."
       }
     },
     "references": {
       "primary": {
-        "title": "API Manager — Rate Limiting and Throttling Policy",
-        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-rate-limiting#how-this-policy-works"
+        "title": "Client ID Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
       },
       "architectureGuide": {
-        "title": "HTTP Caching Policy — Reducing Backend Load with Response Caching",
-        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-http-caching#summary"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "HTTP Basic Authentication Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-basic-auth-simple"
       }
-    },
-    "correctAnswers": [
-      "A",
-      "B",
-      "D"
-    ]
+    }
   },
   {
     "id": "q-146",
     "number": 146,
-    "title": "WS-Security - A government tax department needs to secure a SOAP web service th",
+    "title": "API Governance - When client ID and secret are required",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "WS-Security"
+      "Client Credentials",
+      "SLA Tiers"
     ],
-    "prompt": "A government tax department needs to secure a SOAP web service that exchanges taxpayer data with state agencies, must implement WS‑Security, satisfy NIST SP 800‑53 controls, and cannot add extra certificates due to policy restrictions; possible measures include using message‑level encryption, applying transport‑level TLS, employing Username Token with digests, configuring IP whitelisting, and enabling WS‑Secure Conversation. Which TWO actions should be taken? (Select all correct answers)",
+    "prompt": "Which policy requires the API client to identify itself with its client application credentials on each request?",
     "options": [
       {
         "letter": "A",
-        "text": "Use message‑level encryption (WS‑Security) to protect the SOAP payload."
+        "text": "Rate Limiting: SLA-Based"
       },
       {
         "letter": "B",
-        "text": "Apply transport‑level TLS (HTTPS) for the service endpoint."
+        "text": "IP Allowlist"
       },
       {
         "letter": "C",
-        "text": "Employ a Username Token with password digests for authentication."
+        "text": "JSON Threat Protection"
       },
       {
         "letter": "D",
-        "text": "Configure IP whitelisting to restrict access to known agency addresses."
-      },
-      {
-        "letter": "E",
-        "text": "Enable WS‑Secure Conversation to establish a security context token."
-      },
-      {
-        "letter": "F",
-        "text": "Disable WS‑Security and rely solely on network firewalls."
+        "text": "Rate Limiting"
       }
     ],
-    "explanation": "The question tests knowledge of applying WS‑Security controls in environments with strict certificate policies while meeting NIST SP 800‑53 security requirements. Message‑level encryption and a Username Token with password digests together provide confidentiality and authentication directly within the SOAP message, satisfying both WS‑Security and NIST mandates without needing additional certificates. Transport‑level TLS alone, IP whitelisting, and disabling WS‑Security are common misconceptions because they address only network security, not the message itself. WS‑Secure Conversation, while useful for performance, still depends on an initial certificate exchange and adds unnecessary complexity when certificates cannot be added. Best practice is to combine message‑level encryption with strong token‑based authentication to achieve end‑to‑end security that complies with federal standards.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. SLA-based rate limiting enforces limits according to the SLA tier of each client application's contract, so requests must carry the client ID and secret. Policies such as plain rate limiting or IP allowlisting do not identify the client application.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Use message‑level encryption (WS‑Security) to protect the SOAP payload.: This is correct. Message‑level encryption encrypts the SOAP body inside the XML document, satisfying WS‑Security requirements and NIST confidentiality controls without requiring additional certificates if a shared secret or existing certificate is used. It ensures the data remains protected even if the transport layer is compromised, which is essential for highly sensitive taxpayer information."
+        "text": "The policy must know which contract and tier apply to each request."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Apply transport‑level TLS (HTTPS) for the service endpoint.: This is incorrect as a sole measure. While TLS encrypts the channel, it does not provide the required WS‑Security constructs such as signed/encrypted SOAP elements and does not meet NIST mandates for message‑level protection. Relying only on TLS would leave the payload exposed to intermediaries that may terminate the TLS session, violating the policy of end‑to‑end security."
+        "text": "This restricts by network origin, not client application."
       },
       "C": {
-        "type": "Correct",
-        "text": "Employ a Username Token with password digests for authentication.: This is correct. Username Token with a digest hashes the password before it is placed in the SOAP header, preventing clear‑text transmission and meeting authentication requirements without needing extra certificates. It aligns with WS‑Security standards and NIST controls for verifying the identity of the calling agency while respecting the certificate restriction."
+        "type": "Incorrect",
+        "text": "This inspects payload structure, not client identity."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Configure IP whitelisting to restrict access to known agency addresses.: This is incorrect. IP whitelisting is a network‑level control that does not provide encryption, integrity, or authentication of the SOAP message itself. Although it can reduce exposure, it does not satisfy WS‑Security or NIST requirements for protecting the data payload."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Enable WS‑Secure Conversation to establish a security context token.: This is incorrect in this scenario. WS‑Secure Conversation creates a security context after an initial handshake that typically relies on certificate‑based key exchange; without the ability to add new certificates, establishing the context becomes impractical. Moreover, it adds unnecessary complexity when message‑level encryption and Username Token already meet the required controls."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Disable WS‑Security and rely solely on network firewalls.: This is incorrect. Disabling WS‑Security directly contravenes the stated requirement to implement WS‑Security and would leave the SOAP messages unprotected at the application layer, violating NIST SP 800‑53 confidentiality and integrity safeguards. Firewalls cannot guarantee the protection of data once it traverses the network."
+        "text": "Non-SLA rate limiting applies to all requests regardless of client."
       }
     },
     "references": {
       "primary": {
-        "title": "WS-Security Policy — Message-Level Security for SOAP Services",
-        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-web-services-security#how-the-ws-security-policy-works"
+        "title": "Rate Limiting: SLA-Based Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting-sla"
       },
       "architectureGuide": {
-        "title": "WS-Security Policy — Supported Algorithms and Certificate Requirements",
-        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-web-services-security#supported-algorithms"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "Client ID Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
       }
-    },
-    "correctAnswers": [
-      "A",
-      "C"
-    ]
+    }
   },
   {
     "id": "q-147",
     "number": 147,
-    "title": "API Security - A global retail chain is rolling out a loyalty API that will be c",
+    "title": "API Governance - Secrets in public clients",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "API Security"
+      "Client Credentials",
+      "Security"
     ],
-    "prompt": "A global retail chain is rolling out a loyalty API that will be consumed by mobile apps, web portals, and third‑party partners. The security policy mandates least‑privilege access and the ability to revoke compromised credentials within 5 minutes, while the team has limited experience with token management. Which approach BEST meets the requirements?",
+    "prompt": "A team plans to embed its client secret in a JavaScript single-page application so the browser can call an API protected by Client ID Enforcement. What concern should the architect raise?",
     "options": [
       {
         "letter": "A",
-        "text": "Implement Basic Authentication over HTTPS and manually disable user accounts when a credential is suspected of being compromised."
+        "text": "Client secrets expire every hour"
       },
       {
         "letter": "B",
-        "text": "Use long‑lived API keys generated in Anypoint Platform and rotate them weekly."
+        "text": "Anyone viewing the app's code can see the secret"
       },
       {
         "letter": "C",
-        "text": "Adopt a custom JWT solution signed by an internal identity provider with a 24‑hour expiration time and no built‑in revocation endpoint."
+        "text": "Browsers cannot send custom HTTP headers"
       },
       {
         "letter": "D",
-        "text": "Configure API Manager to issue short‑lived OAuth 2.0 access tokens (e. g., 5‑minute TTL) with scoped permissions and enable the standard token revocation endpoint for immediate invalidation."
-      },
-      {
-        "letter": "E",
-        "text": "Deploy Basic Auth with client certificates for each consumer and rely on certificate revocation lists (CRLs) that are refreshed hourly."
-      },
-      {
-        "letter": "F",
-        "text": "Create a proprietary token store in a relational database and write custom middleware to check token validity on every request."
+        "text": "Client ID Enforcement works only with mobile apps"
       }
     ],
-    "explanation": "The question tests knowledge of Mule Soft’s API security mechanisms, specifically how to deliver least‑privilege, quickly revocable credentials with minimal operational overhead. OAuth 2.0 access tokens issued by API Manager satisfy both the scope (least‑privilege) and the fast revocation requirement because the platform includes a standard revocation endpoint and supports short token lifetimes. Options that rely on static secrets (API keys, Basic Auth) cannot be scoped finely and revocation is manual, exceeding the five‑minute window. Custom JWTs or proprietary token stores add unnecessary complexity and typically lack built‑in revocation, which contradicts the team’s limited token‑management expertise. Best practice is to leverage the out‑of‑the‑box OAuth policies that Mule Soft provides, configuring appropriate scopes and token TTLs to meet security policies while keeping operations simple.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Client secrets should only be used by clients that can keep them confidential, such as server-side applications. Secrets embedded in browser or mobile code can be extracted. Public clients usually call an Experience API via a backend or use OAuth 2.0 flows designed for public clients.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Implement Basic Authentication over HTTPS and manually disable user accounts when a credential is suspected of being compromised.: This option is incorrect. Basic Authentication transmits static usernames and passwords, which do not support scoped, least‑privilege permissions and cannot be revoked in under five minutes without additional tooling. Relying on manual account disabling also introduces human delay and increases operational risk."
+        "text": "Client secrets do not expire on a fixed hourly basis."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Use long‑lived API keys generated in Anypoint Platform and rotate them weekly.: This option is incorrect. API keys are static secrets; they cannot be scoped to fine‑grained permissions and revoking a compromised key would typically require a manual process that exceeds the five‑minute window. Weekly rotation does not satisfy the rapid revocation requirement and may expose the API to broader abuse."
+        "type": "Correct",
+        "text": "Browser code is public, so the secret cannot be kept confidential."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Adopt a custom JWT solution signed by an internal identity provider with a 24‑hour expiration time and no built‑in revocation endpoint.: This option is incorrect. Although JWTs can carry scopes, a 24‑hour lifespan far exceeds the five‑minute revocation window, and without a revocation endpoint the team cannot invalidate a token promptly. Building and maintaining a custom revocation mechanism also defeats the goal of limited token‑management expertise."
+        "text": "Browsers can send custom headers, subject to CORS."
       },
       "D": {
-        "type": "Correct",
-        "text": "Configure API Manager to issue short‑lived OAuth 2.0 access tokens (e. g., 5‑minute TTL) with scoped permissions and enable the standard token revocation endpoint for immediate invalidation.: This option is correct. OAuth 2.0 in Anypoint Platform provides built‑in token issuance, scope‑based least‑privilege control, and a revocation endpoint that can invalidate a token instantly, meeting the five‑minute requirement. The platform handles token lifecycle automatically, which aligns with the team’s limited experience in token management."
-      },
-      "E": {
         "type": "Incorrect",
-        "text": "Deploy Basic Auth with client certificates for each consumer and rely on certificate revocation lists (CRLs) that are refreshed hourly.: This option is incorrect. While client certificates provide strong authentication, managing CRLs on an hourly basis does not guarantee revocation within five minutes, and certificates are not inherently scoped for least‑privilege access. Additionally, the operational overhead of certificate lifecycle management is high for a team with limited experience."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Create a proprietary token store in a relational database and write custom middleware to check token validity on every request.: This option is incorrect. Building a custom token store introduces complexity, requires developers to implement scope enforcement and rapid revocation logic, and is error‑prone. It also deviates from Mule Soft’s recommended best practices, increasing the likelihood of security gaps."
+        "text": "The policy works with any HTTP client."
       }
     },
     "references": {
       "primary": {
-        "title": "API Manager — Mule OAuth 2.0 Provider Endpoints, Scopes, and Token Revocation",
-        "url": "https://docs.mulesoft.com/api-manager/latest/mule-oauth-provider-landing-page#endpoints"
+        "title": "Client ID Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
       },
       "architectureGuide": {
-        "title": "API Manager — OAuth 2.0 Access Token Enforcement and Validation",
-        "url": "https://docs.mulesoft.com/api-manager/latest/oauth-dance-about"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "API Manager — OAuth 2.0 Grant Types",
+        "url": "https://docs.mulesoft.com/api-manager/latest/oauth-grant-types-about"
       }
-    },
-    "correctAnswer": "D"
+    }
   },
   {
     "id": "q-148",
     "number": 148,
-    "title": "API Security - A government agency is publishing a confidential document‑exchang",
+    "title": "API Governance - Client credentials with OAuth 2.0",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "API Security"
+      "Client Credentials",
+      "OAuth 2.0"
     ],
-    "prompt": "A government agency is publishing a confidential document‑exchange API on Anypoint Platform. Compliance (FIPS 140‑2) requires encryption at rest, and the API must be accessible only from approved IP ranges while also supporting short‑lived access tokens for external contractors. Which TWO actions should be taken? (Select all correct answers)",
+    "prompt": "An API is protected by an OAuth 2.0 token enforcement policy with an external client provider. How does a client application use its client ID and secret?",
     "options": [
       {
         "letter": "A",
-        "text": "Configure TLS 1.3 on the inbound listener."
+        "text": "It sends the secret to the API on every request alongside the token"
       },
       {
         "letter": "B",
-        "text": "Enable FIPS‑140‑2 validated encryption at rest by using Anypoint Secrets Manager backed by a hardware security module."
+        "text": "It uses them to sign in to Anypoint Platform"
       },
       {
         "letter": "C",
-        "text": "Deploy the API to a dedicated Cloud Hub worker with a private VPC."
+        "text": "It never needs a client ID because tokens are anonymous"
       },
       {
         "letter": "D",
-        "text": "Add an OAuth 2.0 client‑credentials grant and set the token expiration to 5 minutes."
-      },
-      {
-        "letter": "E",
-        "text": "Apply an IP whitelist (Client‑IP Restriction) policy in API Manager to limit requests to approved CIDR ranges."
-      },
-      {
-        "letter": "F",
-        "text": "Store the API’s client secret in a plain‑text property file on the runtime."
+        "text": "Exchange it for a token at the provider, then send the token"
       }
     ],
-    "explanation": "The question tests a candidate's knowledge of securing APIs on Anypoint Platform in a highly regulated environment. FIPS 140‑2 compliance mandates that data stored by the platform be encrypted using a validated cryptographic module, which is achieved through Secrets Manager backed by an HSM (Option 2). Controlling which networks can reach the API is done with the Client‑IP Restriction policy, ensuring only approved IP ranges can invoke the service (Option 5). While TLS, OAuth token lifetimes, and private VPCs are important security measures, they address different layers (in‑transit security, token management, network isolation) and do not directly satisfy the specific compliance and access‑control requirements presented. The distractors reflect common misconceptions—such as believing TLS covers at‑rest encryption or that placing an API in a VPC automatically enforces IP restrictions—highlighting the need to apply the correct platform policies for each security domain.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. With OAuth 2.0, the client application authenticates to the authorization server, such as an external client provider, with its credentials and receives an access token. It sends only the token to the API, where the policy validates it.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Configure TLS 1.3 on the inbound listener.: This option is incorrect. TLS protects data in transit, not data at rest, and the requirement specifically calls out encryption at rest for FIPS compliance. While using TLS 1.3 is a best practice for securing communications, it does not satisfy the storage‑level encryption or IP‑restriction needs. Implementing TLS alone would leave the confidential documents unprotected on the underlying storage medium."
+        "text": "Sending the secret to the API is unnecessary with OAuth 2.0."
       },
       "B": {
-        "type": "Correct",
-        "text": "Enable FIPS‑140‑2 validated encryption at rest by using Anypoint Secrets Manager backed by a hardware security module.: This option is correct. FIPS 140‑2 validation guarantees that the cryptographic module used for encrypting data at rest meets federal standards, which is mandatory for the agency’s confidential documents. Anypoint Secrets Manager can store encryption keys in an HSM, ensuring that the data stored in Object Store or external databases is encrypted in a compliant manner. Without this step, the platform would store data in plaintext, violating the compliance mandate."
+        "type": "Incorrect",
+        "text": "Platform sign-in uses identity management, not client credentials."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Deploy the API to a dedicated Cloud Hub worker with a private VPC.: This option is incorrect. Placing the API in a private VPC isolates network traffic but does not automatically provide FIPS‑compliant encryption at rest or enforce IP‑based access control. While network isolation is useful for reducing exposure, the scenario explicitly requires encryption at rest and IP whitelisting, which are not addressed merely by VPC deployment. Additionally, contractors still need a way to reach the API, which a private VPC would block unless additional routing is configured."
+        "text": "Tokens are issued to registered client applications."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Add an OAuth 2.0 client‑credentials grant and set the token expiration to 5 minutes.: This option is partially correct regarding short‑lived tokens but does not meet the IP‑range restriction or encryption‑at‑rest requirement, and the question asks for only two actions. Although configuring a short token TTL satisfies the contractor token requirement, the exam expects the most direct actions to address both compliance and network constraints; IP whitelisting is a separate, required control. Selecting this alone would leave the API exposed to any IP address, violating the approved‑IP rule."
-      },
-      "E": {
         "type": "Correct",
-        "text": "Apply an IP whitelist (Client‑IP Restriction) policy in API Manager to limit requests to approved CIDR ranges.: This option is correct. The Client‑IP Restriction policy allows the administrator to specify exact IP ranges that are allowed to call the API, fulfilling the requirement that only approved IPs may access the confidential service. It works at the gateway layer, rejecting any request from unauthorized networks before they reach the runtime, thereby reducing attack surface. Without this policy, the API would be reachable from anywhere on the internet, breaching the agency’s security controls."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Store the API’s client secret in a plain‑text property file on the runtime.: This option is incorrect and represents a common security mistake. Plain‑text storage of secrets defeats the purpose of encryption at rest and can be easily discovered by anyone with access to the file system, violating FIPS 140‑2 requirements. Proper secret management would involve using Anypoint Secrets Manager or encrypted properties, not unsecured files. Using plain‑text secrets also undermines overall compliance and could lead to credential leakage."
+        "text": "With OAuth 2.0, the API receives the token, not the secret."
       }
     },
-    "references": {},
-    "correctAnswers": [
-      "B",
-      "E"
-    ]
+    "references": {
+      "primary": {
+        "title": "API Manager — Configuring an API for OAuth 2.0",
+        "url": "https://docs.mulesoft.com/api-manager/latest/about-configure-api-for-oauth"
+      },
+      "architectureGuide": {
+        "title": "API Manager — OAuth 2.0 Grant Types",
+        "url": "https://docs.mulesoft.com/api-manager/latest/oauth-grant-types-about"
+      }
+    }
   },
   {
     "id": "q-149",
     "number": 149,
-    "title": "API Security - A mid-sized financial services firm is launching a new mobile ban",
+    "title": "API Governance - Requesting access",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "API Security"
+      "Contracts",
+      "Exchange"
     ],
-    "prompt": "A mid-sized financial services firm is launching a new mobile banking app and needs to expose customer account APIs to third-party fintech partners within a tight three-month deadline, while staying under a $150,000 budget and meeting PCI-DSS requirements. Which option should the team choose?",
+    "prompt": "A developer wants to call a Process API protected by Client ID Enforcement. How does the developer get access?",
     "options": [
       {
         "letter": "A",
-        "text": "Deploy Anypoint Platform with API-led connectivity on Cloud Hub, apply API Manager PCI-DSS policies, and use Anypoint Security to encrypt data in transit and at rest."
+        "text": "Request access in Exchange"
       },
       {
         "letter": "B",
-        "text": "Build a custom API gateway on-premises using the open-source Kong platform, manually implement PCI-DSS controls, and host the APIs on existing data-center servers."
+        "text": "Copy credentials from another team's application"
       },
       {
         "letter": "C",
-        "text": "Use Mule Soft's Anypoint Platform with Runtime Fabric in a private VPC, but skip API Manager policies to save time."
+        "text": "Ask Runtime Manager to issue a client ID"
       },
       {
         "letter": "D",
-        "text": "Publish the APIs directly from the mobile app to fintech partners over TLS, without an API gateway or additional security controls."
-      },
-      {
-        "letter": "E",
-        "text": "Implement a hybrid solution: expose the APIs through Anypoint Platform's API Manager on Cloud Hub, route sensitive traffic through a dedicated PCI-DSS-certified VPC, and use Mule Soft's pre-built PCI-DSS compliance templates to accelerate development."
-      },
-      {
-        "letter": "F",
-        "text": "Adopt an external iPaaS such as Dell Boomi and rely on the fintech partner's environment for all security and compliance responsibilities."
+        "text": "Deploy a new API proxy for the developer"
       }
     ],
-    "explanation": "The question tests the candidate's understanding of how to design a PCI-DSS-compliant API exposure strategy under strict time and budget constraints. The correct answer (Option 5) combines Mule Soft's fast-time-to-value features—API Manager policies, pre-built compliance templates, and a hybrid Cloud Hub/VPC deployment—to meet both regulatory and operational requirements. Options 1 and 3 miss critical segmentation or policy enforcement, leading to compliance gaps. Option 2 underestimates the effort needed to manually achieve PCI-DSS controls, while Option 4 removes essential gateway functionality altogether. Option 6 incorrectly assumes the partner can shoulder all compliance duties, which is not permissible under PCI standards. In practice, architects should leverage Mule Soft's security-by-design capabilities and dedicated network isolation to satisfy PCI-DSS while staying within project constraints.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Consumers request access from the API's Exchange page. They select or create a client application, the API instance, and an SLA tier if available. This creates a contract that, once approved, lets the client application's credentials call the API.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Deploy Anypoint Platform with API-led connectivity on Cloud Hub, apply API Manager PCI-DSS policies, and use Anypoint Security to encrypt data in transit and at rest.: This option is partially correct because Cloud Hub combined with API Manager policies can satisfy many PCI-DSS controls. However, a shared-multitenant Cloud Hub environment may not meet the segmentation and isolation requirements that some PCI auditors demand for cardholder data. Without a dedicated VPC or private cloud, the firm could face compliance gaps and additional audit remediation costs, making this choice less optimal for the stated constraints."
+        "type": "Correct",
+        "text": "This creates a contract between the client app and the API instance."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Build a custom API gateway on-premises using the open-source Kong platform, manually implement PCI-DSS controls, and host the APIs on existing data-center servers.: Although using existing on-premises infrastructure could reduce licensing spend, the effort to manually design, test, and certify the gateway for PCI-DSS is substantial. Achieving a fully compliant solution typically exceeds three months, especially for a team that must also develop the mobile APIs. Consequently, this approach is unlikely to meet the deadline or stay within the $150,000 budget."
+        "text": "Sharing credentials hides who is calling the API."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Use Mule Soft's Anypoint Platform with Runtime Fabric in a private VPC, but skip API Manager policies to save time.: Skipping API Manager policies eliminates essential PCI-DSS controls such as authentication, rate limiting, and data masking. Even though Runtime Fabric provides isolation, the lack of documented, enforceable security policies would cause the solution to fail a PCI audit. Therefore this option is not acceptable despite its technical merits."
+        "text": "Runtime Manager does not issue API client credentials."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Publish the APIs directly from the mobile app to fintech partners over TLS, without an API gateway or additional security controls.: Relying solely on TLS for protection leaves the APIs vulnerable to unauthorized access, lack of audit trails, and inability to enforce granular consent – all required by PCI-DSS. An API gateway is a core component for enforcing security policies, monitoring traffic, and providing non-repudiation. This shortcut would almost certainly result in non-compliance and expose the firm to data-breach risk."
-      },
-      "E": {
-        "type": "Correct",
-        "text": "Implement a hybrid solution: expose the APIs through Anypoint Platform's API Manager on Cloud Hub, route sensitive traffic through a dedicated PCI-DSS-certified VPC, and use Mule Soft's pre-built PCI-DSS compliance templates to accelerate development.: This option satisfies all constraints. The Cloud Hub API Manager provides rapid, out-of-the-box security policies, while the dedicated VPC ensures the required network segmentation for PCI-DSS. Pre-built compliance templates reduce implementation effort, keeping the project within the three-month timeline and the $150,000 budget, making it the optimal choice."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Adopt an external iPaaS such as Dell Boomi and rely on the fintech partner's environment for all security and compliance responsibilities.: Delegating all security to a partner violates the shared-responsibility model and does not address the firm's own PCI-DSS obligations. Additionally, Boomi's standard connectors do not provide the specific PCI-DSS policy framework required for cardholder data. Selecting this option would leave the firm exposed to compliance violations and potential fines."
+        "text": "A proxy does not grant client access."
       }
     },
-    "references": {},
-    "correctAnswer": "E"
+    "references": {
+      "primary": {
+        "title": "Exchange — Requesting Access to an API",
+        "url": "https://docs.mulesoft.com/exchange/to-request-access"
+      },
+      "architectureGuide": {
+        "title": "API Manager — Contracts",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-contracts-landing-page"
+      }
+    }
   },
   {
     "id": "q-150",
     "number": 150,
-    "title": "API Security Governance - A federal government agency is publishing citizen services APIs t",
+    "title": "API Governance - Automatic versus manual approval",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "API Security Governance"
+      "SLA Tiers",
+      "Contracts"
     ],
-    "prompt": "A federal government agency is publishing citizen services APIs that must comply with FIPS-140 encryption standards and undergo rigorous access-control reviews before release. Which option should the team choose?",
+    "prompt": "An API has a Bronze SLA tier that any internal team may use and a Gold tier that requires review by the API owner. How should the tiers be configured?",
     "options": [
       {
         "letter": "A",
-        "text": "Expose the APIs using default HTTP listeners with standard TLS (non-FIPS) and protect them with basic authentication."
+        "text": "Approval is configured per client app, not per tier"
       },
       {
         "letter": "B",
-        "text": "Deploy the APIs to an external third-party gateway that supports FIPS-140 encryption but bypass Mule Soft's governance features."
+        "text": "Both with manual approval to keep things simple"
       },
       {
         "letter": "C",
-        "text": "Use API Community Manager to share the APIs publicly, relying on its built-in security controls."
+        "text": "Bronze auto-approved, Gold manually approved"
       },
       {
         "letter": "D",
-        "text": "Publish the APIs through Anypoint API Manager, configure TLS with FIPS-140-validated cipher suites, and enforce an access-review approval workflow in Anypoint Access Management."
-      },
-      {
-        "letter": "E",
-        "text": "Implement the APIs in Cloud Hub without any additional security configuration, trusting the platform's default encryption."
-      },
-      {
-        "letter": "F",
-        "text": "Apply API Autodiscovery without configuring any security policies, and let developers handle access control locally."
+        "text": "Both with automatic approval, monitored through analytics"
       }
     ],
-    "explanation": "The question tests knowledge of Mule Soft's capabilities for meeting federal security mandates, specifically FIPS-140 encryption and structured access-review processes. Anypoint API Manager combined with Access Management is the only offering that lets architects enforce validated TLS cipher suites and embed formal approval workflows, thereby satisfying both encryption and governance requirements. Options that rely on default TLS, basic authentication, or external gateways miss either the cryptographic validation or the centralized review, which are common misconceptions among practitioners who assume any TLS is sufficient. Public-facing tools like API Community Manager or minimal configurations in Cloud Hub do not address the stringent controls needed for citizen data. Best practice is to use the integrated security and governance features of the Anypoint Platform to maintain compliance, auditability, and consistent policy enforcement across all APIs.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. SLA tiers in API Manager define limits and whether contract requests are approved automatically or require manual approval by the API owner. This allows low-risk tiers to be self-service while premium tiers are reviewed.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Expose the APIs using default HTTP listeners with standard TLS (non-FIPS) and protect them with basic authentication.: This option is incorrect because standard TLS does not guarantee the use of FIPS-140-validated cryptographic modules, which are required for federal compliance. Basic authentication provides only minimal security and does not satisfy the rigorous access-control review process. Deploying with these settings could expose sensitive citizen data to non-compliant encryption and weak authentication, leading to audit failures."
+        "text": "Approval behavior is defined on the SLA tier."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Deploy the APIs to an external third-party gateway that supports FIPS-140 encryption but bypass Mule Soft's governance features.: While the external gateway may meet the encryption requirement, bypassing Mule Soft's built-in governance eliminates centralized policy enforcement and audit trails. The agency would lose visibility into API usage, versioning, and access-review workflows provided by Anypoint Platform. This fragmentation can cause inconsistencies in security controls and increase operational risk."
+        "text": "Internal teams would wait unnecessarily for Bronze access."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Use API Community Manager to share the APIs publicly, relying on its built-in security controls.: API Community Manager is designed for public consumption and collaborative documentation, not for enforcing strict federal security standards. Its default security model does not enforce FIPS-140-validated encryption nor detailed access-review processes. Publishing citizen services through a public portal could unintentionally expose sensitive data to unrestricted audiences."
+        "type": "Correct",
+        "text": "Each SLA tier has its own approval setting."
       },
       "D": {
-        "type": "Correct",
-        "text": "Publish the APIs through Anypoint API Manager, configure TLS with FIPS-140-validated cipher suites, and enforce an access-review approval workflow in Anypoint Access Management.: This option is correct because Anypoint API Manager allows explicit selection of FIPS-140-validated TLS cipher suites, ensuring encryption compliance. The integrated Access Management workflow provides a formal review and approval process for each API before it is released, satisfying rigorous access-control requirements. Using this end-to-end solution keeps governance, monitoring, and compliance centralized within the Mule Soft platform, reducing risk and audit exposure."
-      },
-      "E": {
         "type": "Incorrect",
-        "text": "Implement the APIs in Cloud Hub without any additional security configuration, trusting the platform's default encryption.: Relying on Cloud Hub's default encryption does not guarantee FIPS-140 compliance, as the platform may use standard TLS configurations that are not validated against the standard. Moreover, without explicit access-review policies, the agency cannot demonstrate that each API passed a rigorous control process. This approach could lead to non-compliance findings during security assessments."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Apply API Autodiscovery without configuring any security policies, and let developers handle access control locally.: API Autodiscovery is a mechanism for linking APIs to their implementations; it does not provide any security guarantees on its own. Omitting security policies leaves encryption and access-control decisions to individual developers, which is inconsistent with federal standards. This decentralized model increases the likelihood of misconfiguration and non-compliant APIs being published."
+        "text": "Gold access would be granted without the required review."
       }
     },
-    "references": {},
-    "correctAnswer": "D"
+    "references": {
+      "primary": {
+        "title": "API Manager — Defining SLA Tiers",
+        "url": "https://docs.mulesoft.com/api-manager/latest/defining-sla-tiers"
+      },
+      "architectureGuide": {
+        "title": "API Manager — SLA Tiers",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-sla-tiers"
+      }
+    }
   },
   {
     "id": "q-151",
     "number": 151,
-    "title": "Security - A new Mule application has been deployed through Runtime Manager to Cl",
+    "title": "API Governance - Approving a pending request",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Security"
+      "Contracts",
+      "API Manager"
     ],
-    "prompt": "A new Mule application has been deployed through Runtime Manager to CloudHub 1.0 using a CI/CD pipeline with sensitive properties set as cleartext. The Runtime Manager Administrator opened a high priority incident ticket about this violation of their security requirements indicating these sensitive properties values must not be stored or visible in Runtime Manager but should be changeable in Runtime Manager by Administrators with proper permissions. How can the Mule application be deployed while safely hiding the sensitive properties?",
+    "prompt": "A partner requested access to an API on a manually approved SLA tier. Where does the API owner approve the request?",
     "options": [
       {
         "letter": "A",
-        "text": "Add encrypted versions of the sensitive properties as global configuration properties in the Mule application"
+        "text": "In Runtime Manager, by restarting the application"
       },
       {
         "letter": "B",
-        "text": "Add a new wrapper.java.additional.XX parameter for each sensitive property in the wrapper.conf file used by the CI/CD pipeline scripts"
+        "text": "In API Manager, in the API instance's contracts"
       },
       {
         "letter": "C",
-        "text": "Create a variable for each sensitive property and declare them as hidden in the CI/CD pipeline scripts"
+        "text": "In Access Management, by making the partner an administrator"
       },
       {
         "letter": "D",
-        "text": "Add an ArrayList of all the sensitive properties' names in the mule-artifact.json file of the application"
+        "text": "In Design Center, by editing the API specification"
       }
     ],
-    "explanation": "Correct answer: D. CloudHub supports safely hidden application properties: the property name is visible in Runtime Manager but the value is not displayed or retrievable, and administrators with the right permissions can still set or change it in Runtime Manager. For Mule 4, this is enabled by listing the sensitive property names under the secureProperties key in the application's mule-artifact.json file. That satisfies both requirements — values are never stored or shown in cleartext in Runtime Manager, yet they remain changeable there. Encrypting the values inside the application (A) still leaves the artifact carrying the values and is a different mechanism from safely hidden properties; wrapper.conf (B) holds JVM startup arguments, not secure property masking; and hiding values in the CI/CD scripts (C) does not prevent the values from appearing in Runtime Manager.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Contract requests that require manual approval appear in API Manager for the API instance. The API owner reviews and approves or rejects them; approved contracts allow the client application's requests to pass the policy.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Encrypted values as global configuration properties keep the sensitive data inside the application artifact; this is not the safely hidden application property mechanism and does not meet the 'not visible in Runtime Manager' requirement."
+        "text": "Restarting an app does not approve access."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "wrapper.java.additional parameters in wrapper.conf configure JVM startup options; they do not mask or hide application property values."
+        "type": "Correct",
+        "text": "Pending contracts are approved by the API owner in API Manager."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Declaring variables as hidden in the CI/CD scripts hides them from the pipeline but does not prevent the values from being stored or displayed in Runtime Manager."
+        "text": "Granting admin rights is unrelated and excessive."
       },
       "D": {
-        "type": "Correct",
-        "text": "Listing the sensitive property names in the secureProperties array of mule-artifact.json makes them safely hidden application properties: the names are visible, the values are neither displayed nor retrievable, and administrators can still change them in Runtime Manager."
+        "type": "Incorrect",
+        "text": "Design Center does not manage client contracts."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Create Safely Hidden Application Properties",
-        "url": "https://docs.mulesoft.com/cloudhub/secure-application-properties#create-safely-hidden-application-properties"
+        "title": "API Manager — Contracts",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-contracts-landing-page"
       },
       "architectureGuide": {
-        "title": "Mule Artifact JSON — Fields Reference (secureProperties)",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-artifact-json#fields"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "API Manager — Viewing API Contracts",
+        "url": "https://docs.mulesoft.com/api-manager/latest/view-api-contracts"
       }
-    },
-    "correctAnswer": "D"
+    }
   },
   {
     "id": "q-152",
     "number": 152,
-    "title": "Security - A Mule application is designed to call the Google Maps API to perform",
+    "title": "API Governance - Revoking access",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Security"
+      "Contracts",
+      "Revocation"
     ],
-    "prompt": "A Mule application is designed to call the Google Maps API to perform a distance computation, and is deployed to CloudHub. At a minimum, what (if anything) should be configured in the TLS context of the HTTP Request configuration to meet these requirements?",
+    "prompt": "A partner's client application is misusing an API. The API owner wants to stop that application's calls immediately while keeping access for other clients. What should be done?",
     "options": [
       {
         "letter": "A",
-        "text": "Download the Google public certificate from a browser, generate a JKS file from it, and add it in TrustStore as part of the TLS context"
+        "text": "Delete the API instance"
       },
       {
         "letter": "B",
-        "text": "The configuration is built-in and nothing extra is required for the TLS context"
+        "text": "Remove the Client ID Enforcement policy"
       },
       {
         "letter": "C",
-        "text": "Request a private key from Google, create a PKCS#12 file with it, and add it in KeyStore as part of the TLS context"
+        "text": "Change the API's major version"
       },
       {
         "letter": "D",
-        "text": "Download the Google public certificate from a browser, generate a JKS file from it, and add it in KeyStore as part of the TLS context"
+        "text": "Revoke its contract in API Manager"
       }
     ],
-    "explanation": "Correct answer: B. The Mule application calls the Google Maps API over HTTPS, and Google's certificate is issued by a well-known public Certificate Authority. In a Mule TLS context, if no tls:trust-store is specified, Mule uses the default Java truststore, which contains the certificates for the major CAs and is kept current when Java is updated. Nothing extra therefore needs to be configured in the TLS context for this outbound call. Downloading Google's public certificate and adding it to a truststore (A) is unnecessary because the default truststore already trusts it; requesting a private key from Google and adding it to a keystore (C) is wrong because a one-way TLS client call to a public API does not require a client private key; and placing Google's public certificate in a keystore (D) confuses keystores (private keys and client identity) with truststores (trusted server certificates).",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. API owners can revoke a contract in API Manager. Once revoked, the client application's credentials no longer pass policies such as client ID enforcement for that API instance, while other contracts are unaffected.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Manually importing Google's public certificate into a truststore is unnecessary: when no truststore is configured, Mule uses the default Java truststore, which already trusts well-known public CAs."
+        "text": "This would cut off all clients."
       },
       "B": {
-        "type": "Correct",
-        "text": "The default Java truststore already contains the certificates of the major CAs, so nothing extra is required in the TLS context for a one-way HTTPS call to a publicly trusted API."
+        "type": "Incorrect",
+        "text": "This would open the API to everyone."
       },
       "C": {
         "type": "Incorrect",
-        "text": "A client keystore holds the client's own private key and certificate for client authentication; a one-way TLS call to a public API does not require a private key from Google."
+        "text": "Versioning does not remove one client's access."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "A server's public certificate belongs in a truststore, not a keystore, and in any case the default truststore already trusts it."
+        "type": "Correct",
+        "text": "Revocation blocks that application's requests to the API instance."
       }
     },
     "references": {
       "primary": {
-        "title": "Mule TLS Configuration — Keystores and Truststores",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/tls-configuration#keystores-and-truststores"
+        "title": "API Manager — Contracts",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-contracts-landing-page"
       },
       "architectureGuide": {
-        "title": "Mule TLS Configuration — Example: Configuring TLS for a Client",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/tls-configuration#example-configuring-tls-for-a-client"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "API Manager — Viewing API Contracts",
+        "url": "https://docs.mulesoft.com/api-manager/latest/view-api-contracts"
       }
-    },
-    "correctAnswer": "B"
+    }
   },
   {
     "id": "q-153",
     "number": 153,
-    "title": "API Governance - Following MuleSoft's recommended best practices for API governance and",
+    "title": "API Governance - Access per instance",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "API Governance"
+      "Contracts",
+      "Environments"
     ],
-    "prompt": "Following MuleSoft's recommended best practices for API governance and API policies, a project team has used RAML specifications to document and publish functional requirements and detailed design definitions of its APIs. These API specifications have been used by various stakeholders to implement APIs. Later, the project team requires all API specifications to be augmented with an additional non-functional requirement (NFR) to protect the backend services from a high rate of requests, according to defined service-level agreements (SLAs). The NFR's SLAs are based on a new tiered subscription level \"Gold\", \"Silver\", or \"Platinum\" that must be tied to a new parameter that is being added to the Accounts object in their enterprise data model. Following MuleSoft's recommended best practices, how should the project team now convey the necessary non-functional requirement to stakeholders?",
+    "prompt": "A client application has an approved contract with the sandbox instance of an API. The team now calls the production instance and receives 401 errors. What is the most likely cause?",
     "options": [
       {
         "letter": "A",
-        "text": "Create and deploy API proxies in API Manager for the NFR, change the baseUrl in each API specification to the corresponding API proxy implementation endpoint, and publish each modified API specification to Exchange"
+        "text": "It has no approved contract with the production instance"
       },
       {
         "letter": "B",
-        "text": "Create a shared RAML fragment required to implement the NFR, list each API implementation endpoint in the RAML fragment, and publish the RAML fragment to Exchange"
+        "text": "Contracts expire automatically when called from production"
       },
       {
         "letter": "C",
-        "text": "Update each API specification with a shared RAML fragment required to implement the NFR and publish the RAML fragment and each modified API specification to Exchange"
+        "text": "Client applications can only be used in sandbox"
       },
       {
         "letter": "D",
-        "text": "Update each API specification with comments about the NFR's SLAs and publish each modified API specification to Exchange"
+        "text": "Production instances do not support client ID enforcement"
       }
     ],
-    "explanation": "Correct answer: C. The project team needs to convey a new non-functional requirement (rate limiting tied to Gold/Silver/Platinum subscription tiers) to all stakeholders through the API specifications. MuleSoft's recommended best practice is to express reusable specification content as a RAML fragment: create the shared fragment that carries the NFR, then update each API specification to reference it, and publish both the fragment and the modified specifications to Exchange so every stakeholder works from the same governed definition. Creating API proxies and changing baseUrls (A) implements the NFR at the gateway rather than conveying it in the specification; a fragment that lists implementation endpoints (B) misuses a fragment, which describes reusable design, not implementation endpoints; and comments (D) are not machine-readable and cannot be enforced or reused.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Contracts link a client application to a specific API instance. Access to a sandbox instance does not grant access to the production instance; the client must request and obtain a contract for production as well.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "API proxies and baseUrl changes implement the requirement at the gateway layer; they do not convey the NFR through the API specifications as the task requires."
+        "type": "Correct",
+        "text": "Contracts are per instance, so production access must be requested separately."
       },
       "B": {
         "type": "Incorrect",
-        "text": "A RAML fragment describes reusable design content; listing implementation endpoints in a fragment is not its purpose and does not convey the NFR."
+        "text": "Contracts do not expire based on the calling environment."
       },
       "C": {
-        "type": "Correct",
-        "text": "Creating a shared RAML fragment that carries the NFR, referencing it from each API specification, and publishing both the fragment and the modified specifications to Exchange follows the recommended practice for reusable, governed specifications."
+        "type": "Incorrect",
+        "text": "Client applications can have contracts with production instances."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Documenting the NFR only as comments is not machine-readable or reusable and cannot drive policy or SLA enforcement."
+        "text": "Production instances support the same policies."
       }
     },
     "references": {
       "primary": {
-        "title": "Design Center — Creating and Publishing Reusable API Fragments",
-        "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-fragment#about-this-task"
+        "title": "API Manager — Contracts",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-contracts-landing-page"
       },
       "architectureGuide": {
-        "title": "Design Center — Best Practices when Using API Designer",
-        "url": "https://docs.mulesoft.com/design-center/design-best-practices#raml-specification-best-practices"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "Exchange — Requesting Access to an API",
+        "url": "https://docs.mulesoft.com/exchange/to-request-access"
       }
-    },
-    "correctAnswer": "C"
+    }
   },
   {
     "id": "q-154",
     "number": 154,
-    "title": "Api Policies - Automated policies scope and priority in API Manager",
+    "title": "API Governance - Malicious JSON payloads",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "API Governance",
-      "Custom Policies"
+      "Threat Protection",
+      "JSON"
     ],
-    "prompt": "A security architect must guarantee that every API deployed to a production environment enforces an IP allowlist, without relying on individual teams to attach the policy to each API. Which API Manager capability should the architect use, and what is its scope?",
+    "prompt": "An attacker sends deeply nested JSON documents with huge arrays to an API, exhausting memory in the implementation. Which policy addresses this?",
     "options": [
       {
         "letter": "A",
-        "text": "Automated policies, applied to all APIs running in an environment; they have priority over the same types of policies already applied to a specific API proxy."
+        "text": "CORS"
       },
       {
         "letter": "B",
-        "text": "A custom policy applied individually to each API instance by each team."
+        "text": "HTTP Caching"
       },
       {
         "letter": "C",
-        "text": "An SLA tier configured on each API instance."
+        "text": "JSON Threat Protection"
       },
       {
         "letter": "D",
-        "text": "An API Governance ruleset that blocks deployment of non-conforming APIs."
+        "text": "Client ID Enforcement"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Automated policies enforce security and logging requirements by applying the same policies to all APIs running in an environment, so a target environment automatically enforces critical policies and an administrator no longer needs to remember to insert a policy manually. You can configure all included policies and custom policies as automated policies. Automated policies have priority over the same types of policies already applied to a specific API proxy, and since automated policies have priority over API-level policies, conflicts are detected and must be resolved before proceeding. They are available for Mule 4 APIs using a MuleSoft-hosted control plane and support all runtime deployment targets (CloudHub, Runtime Fabric, and hybrid).",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. The JSON Threat Protection policy limits the structure of JSON payloads, such as container depth, array entry count, and string length, rejecting malicious requests before they reach the implementation.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Automated policies apply environment-wide and take priority over the same policy types at the API level."
+        "type": "Incorrect",
+        "text": "CORS governs browser origins, not payload structure."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Relying on each team to attach a policy manually is exactly what automation removes."
+        "text": "Caching does not inspect payloads."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "SLA tiers govern consumption levels, not environment-wide policy enforcement."
+        "type": "Correct",
+        "text": "It limits nesting depth, array size, and string lengths."
       },
       "D": {
         "type": "Incorrect",
-        "text": "API Governance tests conformance to rulesets but does not enforce runtime traffic policies."
+        "text": "Authenticated clients could still send malicious payloads."
       }
     },
     "references": {
       "primary": {
-        "title": "Automated Policies — Mule Gateway",
-        "url": "https://docs.mulesoft.com/mule-gateway/policies-automated-overview"
+        "title": "JSON Threat Protection Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-json-threat-protection"
       },
       "architectureGuide": {
-        "title": "Applying Automated Policies — Conflict Management",
-        "url": "https://docs.mulesoft.com/mule-gateway/policies-automated-applying"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "Included Policies Directory",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
     }
   },
   {
     "id": "q-155",
     "number": 155,
-    "title": "Api Policies - Mule Gateway versus Flex Gateway policy reuse",
+    "title": "API Governance - XML bombs",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Custom Policies",
-      "Flex Gateway",
-      "API Management"
+      "Threat Protection",
+      "XML"
     ],
-    "prompt": "An organization has built a custom policy on Mule Gateway and now wants to reuse the exact same custom policy on a Flex Gateway instance managing non-Mule APIs. What does MuleSoft documentation state about this reuse?",
+    "prompt": "A SOAP-style API that accepts XML is vulnerable to payloads with excessive element depth and attributes. Which policy should be applied?",
     "options": [
       {
         "letter": "A",
-        "text": "The policy can be reused unchanged because all Anypoint gateways share one policy runtime."
+        "text": "JSON Threat Protection"
       },
       {
         "letter": "B",
-        "text": "A Mule Gateway policy cannot be reused in Flex Gateway and vice versa, because the underlying architectures are fundamentally different; Flex Gateway custom policies are built with Envoy-provided Rust WASM SDKs."
+        "text": "XML Threat Protection"
       },
       {
         "letter": "C",
-        "text": "The policy can be reused only after it is published to Anypoint Exchange as a REST asset."
+        "text": "Spike Control"
       },
       {
         "letter": "D",
-        "text": "The policy can be reused only when both gateways run in Local Mode."
+        "text": "Header Removal"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Building custom policies on Mule Gateway is similar to building an application with Java using the Mule DSL, while building a custom policy in Flex Gateway is based on Envoy-provided Rust WASM SDKs. A Mule Gateway policy cannot be reused in Flex Gateway and vice versa because the underlying architectures are fundamentally different. MuleSoft recommends Flex Gateway for high-availability and high-performance Mule and non-Mule applications, and Mule Gateway for Mule applications on CloudHub that do not require managing underlying infrastructure.",
+    "explanation": "Correct answer: B. The XML Threat Protection policy protects against malicious XML by limiting structures such as element depth, attribute counts, and text sizes, rejecting requests that exceed the limits.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Mule Gateway (Spring/Mule DSL based) and Flex Gateway (Envoy based) use different policy runtimes."
+        "text": "This policy inspects JSON, not XML."
       },
       "B": {
         "type": "Correct",
-        "text": "Custom policies are not portable between Mule Gateway and Flex Gateway due to their fundamentally different architectures."
+        "text": "It limits element depth, attribute counts, and sizes of XML."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Publishing to Exchange does not make a Mule Gateway policy executable on an Envoy-based gateway."
+        "text": "Spike Control limits rate, not payload structure."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Deployment mode (Local or Connected) does not change policy portability."
+        "text": "Removing headers does not inspect payloads."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Platform Gateways Overview — Custom Policy Architectures",
-        "url": "https://docs.mulesoft.com/gateway-home"
+        "title": "XML Threat Protection Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-xml-threat-protection"
       },
       "architectureGuide": {
-        "title": "Omni Gateway (formerly Flex Gateway) Overview",
-        "url": "https://docs.mulesoft.com/gateway/latest"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "Included Policies Directory",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
     }
   },
   {
     "id": "q-156",
     "number": 156,
-    "title": "Api Policies - JWT Validation policy signature and claims validation",
+    "title": "API Governance - Restricting callers by network",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Jwt Validation",
-      "API Security"
+      "IP Allowlist",
+      "Security"
     ],
-    "prompt": "An architect must protect an API so that only requests carrying a valid, signed JWT with an unexpired exp claim and an audience matching the API are accepted. Which statement about the JWT Validation policy is correct?",
+    "prompt": "An API must be callable only from a partner's two fixed egress IP addresses. Which policy enforces this?",
     "options": [
       {
         "letter": "A",
-        "text": "The policy validates the signature of a JWS-format JWT and asserts claim values such as aud, exp, and nbf; it does not validate JWTs that use JWE."
+        "text": "IP Blocklist"
       },
       {
         "letter": "B",
-        "text": "The policy generates JWTs and issues them to client applications after validating their credentials."
+        "text": "CORS"
       },
       {
         "letter": "C",
-        "text": "The policy validates both JWS and JWE tokens and always enforces the aud claim as mandatory."
+        "text": "Rate Limiting"
       },
       {
         "letter": "D",
-        "text": "The policy validates only the token signature; claim values such as exp and aud are ignored."
+        "text": "IP Allowlist"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "The JWT Validation policy validates the signature of the token and asserts the values of the claims of all incoming requests by using a JWT with JWS format; it does not validate JWTs that use JWE. Registered claim validations provided by default include aud (the token is rejected if it does not contain at least one of the defined values), exp (rejected if past the validation date), and nbf (rejected if the validation time is before the token's time). Each claim validation can be defined as mandatory or non-mandatory: if a claim is mandatory and not present, the token is rejected, and if a claim is present its value is always validated.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. The IP Allowlist policy permits requests only from configured IP addresses or ranges. It is a common control for partner and internal APIs with known source addresses.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "The policy validates JWS-format signatures and asserts claims such as aud, exp, and nbf, but not JWE."
+        "type": "Incorrect",
+        "text": "A blocklist denies listed addresses and allows all others."
       },
       "B": {
         "type": "Incorrect",
-        "text": "The policy validates tokens; it does not generate or issue them."
+        "text": "CORS restricts browser origins, not network addresses."
       },
       "C": {
         "type": "Incorrect",
-        "text": "The policy does not validate JWE, and aud can be configured as mandatory or non-mandatory."
+        "text": "Rate limits apply to request counts, not origins."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Claim validations such as aud, exp, and nbf are core behavior, not ignored."
+        "type": "Correct",
+        "text": "Only requests from the listed addresses are allowed."
       }
     },
     "references": {
       "primary": {
-        "title": "JWT Validation Policy — Mule Gateway",
-        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-jwt-validation"
+        "title": "IP Allowlist Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-ip-allowlist"
       },
       "architectureGuide": {
-        "title": "JWT Validation Policy — Omni Gateway",
-        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-jwt-validation"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "Included Policies Directory",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
     }
   },
   {
     "id": "q-157",
     "number": 157,
-    "title": "Api Policies - OpenID Connect OAuth 2.0 token enforcement with external client management",
+    "title": "API Governance - Validating signed tokens locally",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Oauth2 Policy",
-      "API Security"
+      "JWT Validation",
+      "Security"
     ],
-    "prompt": "An organization uses an external OpenID Connect identity provider as its client-management solution and wants API Manager to accept only OAuth 2.0 tokens issued to registered client applications. Which policy and configuration combination is correct?",
+    "prompt": "Clients send JSON Web Tokens issued by a trusted identity provider. The API team wants to validate the token's signature and claims at the gateway without calling the provider on each request. Which policy should be used?",
     "options": [
       {
         "letter": "A",
-        "text": "Apply the OAuth 2.0 Access Token Enforcement Using Mule OAuth Provider policy, which validates tokens issued by the Anypoint Mule OAuth provider."
+        "text": "JWT Validation"
       },
       {
         "letter": "B",
-        "text": "Apply the OpenID Connect OAuth 2.0 Token Enforcement policy, which is available only to an organization configured to use OpenID Connect dynamic client registration as a client-management solution."
+        "text": "Header Injection"
       },
       {
         "letter": "C",
-        "text": "Apply the JWT Validation policy alone, because it performs client-management lookups against the identity provider."
+        "text": "Client ID Enforcement"
       },
       {
         "letter": "D",
-        "text": "Apply the Client ID Enforcement policy, which validates the OAuth 2.0 access token signature."
+        "text": "HTTP Basic Authentication"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "The OpenID Connect Access Token Enforcement policy restricts access to a protected resource to only those HTTP requests that provide a valid OAuth 2 token belonging to a client application with API access, and it does not generate tokens but only validates them. It is available only to an organization that is configured to use the OpenID Connect dynamic client registration as a client-management solution. The policy extracts the token from the request, sends it to the validation endpoint, receives token metadata including the client ID, and then uses a local database updated with contracts obtained from Anypoint Platform to verify whether the client ID has access to the API.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. The JWT Validation policy validates JSON Web Tokens by checking their signature, using a key or JWKS, and claims such as expiration and audience. Self-contained tokens can be validated without calling the issuer on every request.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "The Mule OAuth Provider policy validates tokens issued by the Mule OAuth provider, not an external OpenID Connect IdP."
+        "type": "Correct",
+        "text": "It verifies the token's signature and claims, such as expiry and audience."
       },
       "B": {
-        "type": "Correct",
-        "text": "The OpenID Connect OAuth 2.0 Token Enforcement policy is designed for organizations using OpenID Connect dynamic client registration."
+        "type": "Incorrect",
+        "text": "This adds headers and does not validate tokens."
       },
       "C": {
         "type": "Incorrect",
-        "text": "JWT Validation checks the token signature and claims; it does not perform client-management lookups."
+        "text": "This validates client credentials, not JWTs."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Client ID Enforcement validates a client ID header, not an OAuth 2.0 access token."
+        "text": "This validates username and password."
       }
     },
     "references": {
       "primary": {
-        "title": "OpenID Connect OAuth 2.0 Token Enforcement Policy",
-        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-openid-token-enforcement"
+        "title": "JWT Validation Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-jwt-validation"
       },
       "architectureGuide": {
-        "title": "Configuring OpenID Connect Client Management in Anypoint Platform",
-        "url": "https://docs.mulesoft.com/access-management/configure-client-management-openid-task"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "Included Policies Directory",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
     }
   },
   {
     "id": "q-158",
     "number": 158,
-    "title": "Api Policies - External identity providers for client management",
+    "title": "API Governance - Choose two: security policies",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "API Security",
-      "Oauth2 Policy"
+      "Policies",
+      "Security"
     ],
-    "prompt": "An organization wants Anypoint Platform API portals to dynamically register client applications with an external identity provider that supports the OpenID Connect Dynamic Client Registration (DCR) standard. Which providers does MuleSoft documentation identify as supported for this external client-management configuration?",
+    "prompt": "Which two policies enforce security constraints on API invocations? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "Any HTTP server that can issue JSON Web Tokens."
+        "text": "Message Logging"
       },
       {
         "letter": "B",
-        "text": "Providers supporting the OpenID Connect Dynamic Client Registration standard, such as Salesforce, Okta, or OpenAM."
+        "text": "Spike Control"
       },
       {
         "letter": "C",
-        "text": "Only MuleSoft's built-in Anypoint Platform identity provider."
+        "text": "IP Allowlist"
       },
       {
         "letter": "D",
-        "text": "Only providers that use SAML 2.0 for client registration."
+        "text": "HTTP Caching"
+      },
+      {
+        "letter": "E",
+        "text": "XML Threat Protection"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "You configure an external OpenID Connect (OIDC) identity provider (IdP) to handle client management for your Anypoint Platform APIs using providers that support the OIDC Dynamic Client Registration (DCR) standard, such as Salesforce, Okta, or OpenAM. API portals then dynamically register client applications with the chosen external IdP when requesting access. After configuration, you apply the OpenID Connect OAuth Token Enforcement policy to your API gateways through API Manager.",
+    "correctAnswers": [
+      "C",
+      "E"
+    ],
+    "explanation": "Correct answers: C and E. Security policies authenticate, authorize, or protect APIs from attacks; examples include IP allowlists, threat protection, JWT validation, and OAuth enforcement. Policies such as caching, spike control, and logging address quality of service or operations.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "The IdP must support the OpenID Connect Dynamic Client Registration standard, not merely issue JWTs."
+        "text": "This records information for auditing and troubleshooting."
       },
       "B": {
-        "type": "Correct",
-        "text": "Salesforce, Okta, and OpenAM are examples of supported OIDC DCR providers."
+        "type": "Incorrect",
+        "text": "This manages traffic bursts for quality of service."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "The configuration is specifically for an external IdP as the client-management solution."
+        "type": "Correct",
+        "text": "It restricts callers by network origin."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Client registration for this configuration uses OpenID Connect DCR, not SAML."
+        "text": "This improves performance."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "It rejects malicious XML payloads."
       }
     },
     "references": {
       "primary": {
-        "title": "Configuring OpenID Connect Client Management in Anypoint Platform",
-        "url": "https://docs.mulesoft.com/access-management/configure-client-management-openid-task"
+        "title": "Included Policies Directory",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       },
       "architectureGuide": {
-        "title": "Configuring Identity Management in Anypoint Platform — Supported Providers",
-        "url": "https://docs.mulesoft.com/access-management/external-identity"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "API Manager — Included Policies",
+        "url": "https://docs.mulesoft.com/api-manager/latest/policies-ootb-landing-page"
       }
     }
   },
   {
     "id": "q-159",
     "number": 159,
-    "title": "Api Policies - Anypoint Service Mesh for non-Mule microservices",
+    "title": "API Governance - Where client providers are configured",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Anypoint Service Mesh",
-      "API Management"
+      "OAuth 2.0",
+      "Client Providers"
     ],
-    "prompt": "An organization runs non-Mule microservices in a Kubernetes cluster with an Istio service mesh and wants to discover, manage, and secure those services through Anypoint Platform without rewriting them. Which approach fits, and how is it implemented?",
+    "prompt": "An organization with several business groups wants to use an external OAuth 2.0 provider for its APIs. Where are external client providers configured and how are they used?",
     "options": [
       {
         "letter": "A",
-        "text": "Anypoint Service Mesh, which installs a MuleSoft adapter within the Istio service mesh and uses Envoy-based sidecar proxies to apply policies to Mule and non-Mule services."
+        "text": "In Runtime Manager, per deployed application"
       },
       {
         "letter": "B",
-        "text": "Runtime Fabric, which converts non-Mule microservices into Mule applications at deploy time."
+        "text": "In the root org, linked to environments"
       },
       {
         "letter": "C",
-        "text": "Anypoint MQ, which exposes microservices as queues with policies attached."
+        "text": "In Exchange, on each API's asset page"
       },
       {
         "letter": "D",
-        "text": "API Functional Monitoring, which intercepts service traffic and enforces policies."
+        "text": "In each Mule application's configuration file"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Anypoint Service Mesh extends Anypoint Platform to any microservice, Mule and non-Mule, by using Istio. It is implemented by installing the Mule adapter within the Istio service mesh, and a sidecar proxy (Envoy-based, running within the same pod) handles service-to-service communication. The Mule adapter connects Kubernetes components to Anypoint Platform so existing microservices can be discovered as APIs and managed within API Manager. Runtime Fabric is a Mule runtime; Anypoint MQ is messaging; API Functional Monitoring tests APIs rather than enforcing policies.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. External client providers are configured in Access Management at the root organization level and associated with environments, including those of business groups. APIs in those environments then use the provider for client applications and token validation.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Anypoint Service Mesh uses Istio plus a MuleSoft adapter and Envoy sidecars to govern Mule and non-Mule microservices."
+        "type": "Incorrect",
+        "text": "Runtime Manager does not manage OAuth client providers."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Runtime Fabric runs Mule applications; it does not transform non-Mule microservices."
+        "type": "Correct",
+        "text": "Client providers are set up in the root org and linked to environments."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Anypoint MQ is a messaging service and does not apply API policies to microservices."
+        "text": "Exchange uses the configured provider but does not define it."
       },
       "D": {
         "type": "Incorrect",
-        "text": "API Functional Monitoring verifies API behavior; it is not a policy enforcement layer."
+        "text": "Applications do not register client providers for the platform."
       }
     },
     "references": {
       "primary": {
-        "title": "Service Mesh 101 — What is a service mesh?",
-        "url": "https://www.mulesoft.com/api/what-is-a-service-mesh"
+        "title": "Client Management in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
       },
       "architectureGuide": {
-        "title": "Anypoint API Manager — Service Mesh Integration with Istio and Envoy",
-        "url": "https://www.mulesoft.com/platform/api/manager"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "Configuring OpenID Connect Client Management",
+        "url": "https://docs.mulesoft.com/access-management/configure-client-management-openid-task"
       }
     }
   },
   {
     "id": "q-160",
     "number": 160,
-    "title": "Api Policies - Choosing between Mule Gateway and Flex Gateway",
+    "title": "API Governance - Roles in an OAuth 2.0 flow",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Flex Gateway",
-      "API Management",
-      "Custom Policies"
+      "OAuth 2.0",
+      "Identity Provider"
     ],
-    "prompt": "An architect must protect a mix of Mule and non-Mule APIs running in Kubernetes and on-premises, and needs high availability and high performance across all of them. Which gateway choice does MuleSoft recommend?",
+    "prompt": "In an OAuth 2.0 setup with an external IdP as the client provider, which statement correctly describes the roles?",
     "options": [
       {
         "letter": "A",
-        "text": "Mule Gateway, because it is the only gateway that can protect non-Mule APIs."
+        "text": "API Manager issues tokens; the IdP validates them"
       },
       {
         "letter": "B",
-        "text": "Flex Gateway (Omni Gateway), because MuleSoft recommends it for high-availability and high-performance Mule and non-Mule applications."
+        "text": "The API client issues tokens to itself"
       },
       {
         "letter": "C",
-        "text": "Anypoint MQ, because it can front any API protocol."
+        "text": "Exchange issues tokens when access is requested"
       },
       {
         "letter": "D",
-        "text": "API Governance, because it enforces runtime traffic policies on any API."
+        "text": "The IdP issues tokens; the policy validates them"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Flex Gateway (Omni Gateway) is an Envoy-based, ultrafast lightweight API gateway designed to manage and secure APIs running anywhere, and MuleSoft recommends you choose it for high-availability and high-performance Mule and non-Mule applications. Mule runtime engine includes an embedded Mule Gateway, and you can leverage API Manager governance capabilities to apply throttling, security, caching, and logging to your APIs; MuleSoft recommends Mule Gateway for protecting Mule applications on CloudHub that do not require managing and maintaining underlying infrastructure.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. With an external client provider, the identity provider acts as the OAuth 2.0 authorization server that issues access tokens. API clients obtain tokens from it and send them to APIs, where a token enforcement policy validates them.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Flex Gateway protects non-Mule APIs; Mule Gateway is embedded in the Mule runtime for Mule apps."
+        "text": "Tokens are issued by the external provider."
       },
       "B": {
-        "type": "Correct",
-        "text": "MuleSoft recommends Flex Gateway for high-availability and high-performance Mule and non-Mule applications."
+        "type": "Incorrect",
+        "text": "Clients obtain tokens from the authorization server."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Anypoint MQ is a messaging service, not an API gateway."
+        "text": "Exchange registers client apps but does not issue access tokens."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "API Governance validates conformance to rulesets; it does not enforce runtime traffic policies."
+        "type": "Correct",
+        "text": "The provider is the authorization server, and the gateway enforces tokens."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Platform Gateways Overview — Gateway Recommendations",
-        "url": "https://docs.mulesoft.com/gateway-home"
+        "title": "API Manager — Configuring an API for OAuth 2.0",
+        "url": "https://docs.mulesoft.com/api-manager/latest/about-configure-api-for-oauth"
       },
       "architectureGuide": {
-        "title": "Omni Gateway (formerly Flex Gateway) Overview",
-        "url": "https://docs.mulesoft.com/gateway/latest"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "OpenID Connect OAuth 2.0 Token Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-openid-token-enforcement"
       }
     }
   },
   {
     "id": "q-161",
     "number": 161,
-    "title": "Api Policies - Applying a policy at the organization or environment level",
+    "title": "API Governance - Registering clients in the IdP",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "API Governance",
-      "Business Groups Environments"
+      "OAuth 2.0",
+      "Dynamic Client Registration"
     ],
-    "prompt": "A security architect wants to enforce a logging and security standard across every API in a specific environment with the least administrative effort, while still allowing teams to add API-specific policies. Which approach should the architect take?",
+    "prompt": "When a consumer creates a client application in Exchange for an API in an environment that uses an OpenID Connect client provider, what happens?",
     "options": [
       {
         "letter": "A",
-        "text": "Configure the policy as an automated policy for the environment, because automated policies apply to all APIs running in the environment and have priority over the same policy types at the API level."
+        "text": "The client app exists only in Anypoint and cannot get tokens"
       },
       {
         "letter": "B",
-        "text": "Ask each team to apply the policy manually to every API instance."
+        "text": "The client receives a platform user account"
       },
       {
         "letter": "C",
-        "text": "Create an API group and require every team to publish APIs only into that group, which automatically applies policies."
+        "text": "The consumer must manually register the client in the IdP first"
       },
       {
         "letter": "D",
-        "text": "Apply the policy to a single API instance and rely on API Manager to replicate it to all other APIs."
+        "text": "It is registered in the IdP via Dynamic Client Registration"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Automated policies are designed to be applied to all APIs within an environment, and they have priority over API-level policies. Policy automation enables security architects and administrators to secure and govern every API running in an environment, and you can configure all included policies and custom policies as automated policies. Teams can still add API-specific policies, but where the same policy type exists at both levels, the automated policy prevails, and a conflict is detected if an automated policy is added that is already applied at the API level.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. With an OpenID Connect client provider that supports Dynamic Client Registration, creating a client application in Anypoint Platform registers the client in the identity provider. The client can then obtain tokens from the IdP for APIs protected by token enforcement policies.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Automated policies enforce standards across an entire environment and take priority over the same API-level policy types."
+        "type": "Incorrect",
+        "text": "The registration lets the client obtain tokens from the IdP."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Manual per-API application is error-prone and is what automation replaces."
+        "text": "Client applications are not platform users."
       },
       "C": {
         "type": "Incorrect",
-        "text": "API groups publish API instances as a unit but are not the mechanism for environment-wide policy automation."
+        "text": "DCR removes the need for manual registration."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Policies are not replicated from one API instance to all others."
+        "type": "Correct",
+        "text": "Anypoint Platform registers the client with the provider."
       }
     },
     "references": {
       "primary": {
-        "title": "Automated Policies — Mule Gateway",
-        "url": "https://docs.mulesoft.com/mule-gateway/policies-automated-overview"
+        "title": "Configuring OpenID Connect Client Management",
+        "url": "https://docs.mulesoft.com/access-management/configure-client-management-openid-task"
       },
       "architectureGuide": {
-        "title": "API Manager Overview — Policy Automation and Client Applications",
-        "url": "https://docs.mulesoft.com/api-manager/latest/latest-overview-concept"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+        "title": "Client Management in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
       }
     }
   },
   {
     "id": "q-162",
     "number": 162,
-    "title": "Api Policies - Refer to the exhibit. Choosing the better gateway deployment",
+    "title": "API Governance - Different providers per environment",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Flex Gateway",
-      "Mule Gateway",
-      "API Management"
+      "OAuth 2.0",
+      "Business Groups"
     ],
-    "prompt": "Refer to the exhibit.\nAn architect is comparing two ways to govern the same set of APIs: (A) embed governance in the Mule runtime with Mule Gateway, or (B) front the APIs with a dedicated Flex Gateway instance. Based on the exhibit and MuleSoft guidance, which alternative is the better choice for an organization that must protect both Mule and non-Mule APIs in Kubernetes and on-premises, with high availability and high performance?",
-    "image": "images/q269.svg",
+    "prompt": "A company's retail business group must use PingFederate for its production APIs, while its sandbox uses the Anypoint default provider. Is this possible?",
     "options": [
       {
         "letter": "A",
-        "text": "Alternative A, because embedding governance in the Mule runtime is the recommended choice for high-availability, high-performance non-Mule APIs running anywhere."
+        "text": "Yes, by assigning providers per environment"
       },
       {
         "letter": "B",
-        "text": "Alternative B, because Flex Gateway is an Envoy-based gateway that MuleSoft recommends for high-availability and high-performance Mule and non-Mule applications."
+        "text": "No, one client provider applies to the whole organization"
       },
       {
         "letter": "C",
-        "text": "Alternative A, because non-Mule APIs must be rewritten as Mule applications before policies can be applied."
+        "text": "Only if retail becomes a separate Anypoint organization"
       },
       {
         "letter": "D",
-        "text": "Neither; API governance rulesets are the only way to protect non-Mule APIs."
+        "text": "Only if PingFederate is also used for platform user sign-in"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Mule Gateway is embedded in the Mule runtime engine and applies governance capabilities to Mule APIs; MuleSoft recommends it for Mule applications on CloudHub that do not require managing and maintaining underlying infrastructure. Note that Mule Gateway can also protect a non-Mule backend: because it runs as a Mule proxy application, you can configure Mule in Runtime Manager as a CloudHub proxy application protecting multiple backends, so a non-Mule backend does not have to be rewritten. Flex Gateway (Omni Gateway) is an Envoy-based, ultrafast lightweight API gateway designed to manage and secure APIs running anywhere, and MuleSoft recommends it for high-availability and high-performance Mule and non-Mule applications. Because the stated requirement emphasizes high availability and high performance across Mule and non-Mule APIs deployed in Kubernetes and on-premises, Flex Gateway is the better alternative.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Anypoint Platform supports multiple client providers. Each environment, including environments of business groups, is associated with a client provider, so production can use PingFederate while sandbox uses the default provider.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Mule Gateway can protect a non-Mule backend through a Mule-hosted proxy application, but it is embedded in the Mule runtime and does not match the stated high-availability/high-performance requirement across Kubernetes and on-premises as well as Flex Gateway."
+        "type": "Correct",
+        "text": "Client providers can differ by environment."
       },
       "B": {
-        "type": "Correct",
-        "text": "Flex Gateway is the recommended Envoy-based gateway for high-availability and high-performance Mule and non-Mule APIs anywhere."
+        "type": "Incorrect",
+        "text": "Multiple client providers are supported."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Non-Mule APIs do not need to be rewritten: Flex Gateway can protect them directly, and Mule Gateway can protect them through a Mule proxy application."
+        "text": "Business groups can use different providers per environment."
       },
       "D": {
         "type": "Incorrect",
-        "text": "API Governance checks conformance to rulesets and is not a runtime policy enforcement gateway."
+        "text": "Client management is independent of identity management."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Platform Gateways Overview — Gateway Selection Guidance",
-        "url": "https://docs.mulesoft.com/gateway-home"
+        "title": "Client Management in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
       },
       "architectureGuide": {
-        "title": "Omni Gateway (formerly Flex Gateway) Overview",
-        "url": "https://docs.mulesoft.com/gateway/latest"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "PingFederate Access Token Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-pingfederate-oauth-token-enforcement"
       }
     }
   },
   {
     "id": "q-163",
     "number": 163,
-    "title": "Api Policies - Refer to the exhibit. OAuth 2.0 token validation with an external provider",
+    "title": "API Governance - Choose two: OAuth 2.0 relationships",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Oauth2 Policy",
-      "API Security",
-      "Jwt Validation"
+      "OAuth 2.0",
+      "Client Management"
     ],
-    "prompt": "Refer to the exhibit.\nAn organization's API portal registers client applications dynamically with an external OpenID Connect identity provider. Based on the exhibit, which policy should be applied to the API gateway so that only requests presenting a valid OAuth 2.0 access token issued to a registered client application are accepted?",
-    "image": "images/q270.svg",
+    "prompt": "Which two statements about OAuth 2.0 on Anypoint Platform are correct? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "The OpenID Connect OAuth 2.0 Token Enforcement policy"
+        "text": "Access tokens are stored in Exchange for each request"
       },
       {
         "letter": "B",
-        "text": "The OAuth 2.0 Access Token Enforcement Using Mule OAuth Provider policy"
+        "text": "Client applications are registered with the environment's client provider"
       },
       {
         "letter": "C",
-        "text": "The IP Allowlist policy"
+        "text": "Business groups cannot use external client providers"
       },
       {
         "letter": "D",
-        "text": "The JSON Threat Protection policy"
+        "text": "Identity management providers issue tokens for API clients"
+      },
+      {
+        "letter": "E",
+        "text": "A token enforcement policy validates tokens issued by the provider"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "The OpenID Connect OAuth 2.0 Token Enforcement policy restricts access to a protected resource to only those HTTP requests that provide a valid OAuth 2 token belonging to a client application with API access. It is available only to an organization configured to use the OpenID Connect dynamic client registration as a client-management solution. The policy extracts the token, sends it to the validation endpoint, receives token metadata including the client ID, and then verifies against a local database updated with contracts obtained from Anypoint Platform that the client ID has access to the API. The Mule OAuth Provider variant validates tokens issued by the Mule OAuth provider instead of an external IdP.",
+    "correctAnswers": [
+      "B",
+      "E"
+    ],
+    "explanation": "Correct answers: B and E. In client management, client applications are registered with the client provider associated with the environment. The provider issues access tokens, and an OAuth 2.0 token enforcement policy on the API validates them.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "This policy validates OAuth 2.0 tokens for organizations using OpenID Connect dynamic client registration with an external IdP."
+        "type": "Incorrect",
+        "text": "Exchange does not store per-request tokens."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "The Mule OAuth Provider policy validates tokens from the Mule OAuth provider, not an external OIDC IdP."
+        "type": "Correct",
+        "text": "This lets the provider issue tokens to them."
       },
       "C": {
         "type": "Incorrect",
-        "text": "IP Allowlist filters by source IP address, not by OAuth 2.0 token validity."
+        "text": "Business group environments can use configured providers."
       },
       "D": {
         "type": "Incorrect",
-        "text": "JSON Threat Protection guards against malicious JSON payloads, not token validation."
+        "text": "Identity management is for platform user sign-in."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "The policy checks the token on each request."
       }
     },
     "references": {
       "primary": {
-        "title": "OpenID Connect OAuth 2.0 Token Enforcement Policy",
-        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-openid-token-enforcement"
+        "title": "Client Management in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
       },
       "architectureGuide": {
-        "title": "Configuring OpenID Connect Client Management in Anypoint Platform",
-        "url": "https://docs.mulesoft.com/access-management/configure-client-management-openid-task"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "API Manager — Configuring an API for OAuth 2.0",
+        "url": "https://docs.mulesoft.com/api-manager/latest/about-configure-api-for-oauth"
       }
     }
   },
   {
     "id": "q-164",
     "number": 164,
-    "title": "Api Policies - Refer to the exhibit. Routing with service mesh versus gateway policies",
+    "title": "API Governance - Need a custom policy",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
-      "Anypoint Service Mesh",
-      "API Management",
-      "Flex Gateway"
+      "Custom Policies",
+      "Policies"
     ],
-    "prompt": "Refer to the exhibit.\nAn architect is deciding where to enforce API policies for a Kubernetes microservices estate. The exhibit contrasts an Envoy sidecar service mesh inside the cluster with a central gateway in front of the cluster. Based on MuleSoft guidance, which alternative is the better fit for applying policies to east-west traffic between non-Mule microservices?",
-    "image": "images/q272.svg",
+    "prompt": "Every request must carry an HMAC signature header computed with a partner-specific shared key, verified before reaching the implementation. No included policy supports this. What should the architect recommend?",
     "options": [
       {
         "letter": "A",
-        "text": "A central Mule Gateway in front of the cluster, because it can intercept all east-west traffic."
+        "text": "Ask partners to stop signing requests"
       },
       {
         "letter": "B",
-        "text": "Anypoint Service Mesh, because it uses Envoy-based sidecar proxies within the Istio mesh and a Mule adapter to bring non-Mule services under Anypoint governance."
+        "text": "Use the Header Injection policy to add the signature"
       },
       {
         "letter": "C",
-        "text": "Anypoint MQ, because queues sit between microservices and can enforce policies."
+        "text": "Develop a custom policy and apply it in API Manager"
       },
       {
         "letter": "D",
-        "text": "API Functional Monitoring, because it intercepts service-to-service calls."
+        "text": "Use Client ID Enforcement with the HMAC as the secret"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Anypoint Service Mesh brings complete lifecycle API management capabilities to microservices, whether built with Mule or not, and operates by installing the Mule adapter within the Istio service mesh. A sidecar proxy (Envoy-based, running within the same pod/container group as the service) handles service-to-service communication, so policies are enforced for east-west traffic inside the cluster. A central gateway typically governs north-south traffic entering the cluster and cannot see all east-west calls between pods.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. When none of the included policies meets a requirement, such as verifying a proprietary request signature, a custom policy can be developed, published to Exchange, and applied in API Manager like any other policy.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "A central gateway governs north-south traffic entering the cluster; it cannot intercept all pod-to-pod east-west calls."
+        "text": "This removes a security requirement."
       },
       "B": {
-        "type": "Correct",
-        "text": "Anypoint Service Mesh uses Envoy sidecars and the Mule adapter to govern Mule and non-Mule microservices, including east-west traffic."
+        "type": "Incorrect",
+        "text": "Injecting a header does not verify a signature."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Anypoint MQ is asynchronous messaging and does not apply API policies to service calls."
+        "type": "Correct",
+        "text": "Custom policies extend the gateway when included policies are insufficient."
       },
       "D": {
         "type": "Incorrect",
-        "text": "API Functional Monitoring tests APIs; it does not intercept or govern service-to-service calls."
+        "text": "Client ID enforcement compares credentials, not signatures."
       }
     },
     "references": {
       "primary": {
-        "title": "Service Mesh 101 — What is a service mesh?",
-        "url": "https://www.mulesoft.com/api/what-is-a-service-mesh"
+        "title": "Getting Started with Custom Policies",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-getting-started"
       },
       "architectureGuide": {
-        "title": "Anypoint API Manager — Service Mesh Integration with Istio and Envoy",
-        "url": "https://www.mulesoft.com/platform/api/manager"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "Flex Gateway Policy Development Kit (PDK)",
+        "url": "https://docs.mulesoft.com/pdk/latest/"
       }
     }
   },
   {
     "id": "q-165",
     "number": 165,
+    "title": "API Governance - When a custom policy is unnecessary",
+    "domain": "Governing web APIs on Anypoint Platform",
+    "topics": [
+      "Custom Policies",
+      "Included Policies"
+    ],
+    "prompt": "For which requirement should the architect avoid building a custom policy?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Calling an external fraud-scoring service before forwarding requests"
+      },
+      {
+        "letter": "B",
+        "text": "Verifying a proprietary signature scheme on each request"
+      },
+      {
+        "letter": "C",
+        "text": "Limiting each client to 100 requests per minute by SLA tier"
+      },
+      {
+        "letter": "D",
+        "text": "Enforcing a company-specific header format with complex rules"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Custom policies add development and maintenance effort. When an included policy, such as Rate Limiting: SLA-Based, already meets the requirement, it should be used instead of building a custom policy.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This custom logic is not available as an included policy."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "No included policy verifies proprietary signatures."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "SLA-based rate limiting already does this."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Complex proprietary validation may require a custom policy."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Rate Limiting: SLA-Based Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting-sla"
+      },
+      "architectureGuide": {
+        "title": "Getting Started with Custom Policies",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-getting-started"
+      }
+    }
+  },
+  {
+    "id": "q-166",
+    "number": 166,
+    "title": "API Governance - Custom policies for Flex Gateway",
+    "domain": "Governing web APIs on Anypoint Platform",
+    "topics": [
+      "Custom Policies",
+      "Flex Gateway"
+    ],
+    "prompt": "A team needs a custom policy for APIs protected by Anypoint Flex Gateway. Which tool does MuleSoft provide for building it?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Anypoint Visualizer custom layers"
+      },
+      {
+        "letter": "B",
+        "text": "The Flex Gateway Policy Development Kit (PDK)"
+      },
+      {
+        "letter": "C",
+        "text": "DataWeave scripts uploaded to Runtime Manager"
+      },
+      {
+        "letter": "D",
+        "text": "API Designer fragments in Design Center"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. MuleSoft provides the Policy Development Kit for building custom policies for Flex Gateway. For Mule gateways, custom policies are built as Mule 4 custom policy projects. In both cases the policy is published to Exchange and applied in API Manager.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Visualizer shows the network and does not create policies."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "PDK is used to build custom policies for Flex Gateway."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Runtime Manager does not host gateway policies."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Fragments describe APIs and do not run as policies."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Flex Gateway Policy Development Kit (PDK)",
+        "url": "https://docs.mulesoft.com/pdk/latest/"
+      },
+      "architectureGuide": {
+        "title": "Getting Started with Custom Policies",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-getting-started"
+      }
+    }
+  },
+  {
+    "id": "q-167",
+    "number": 167,
+    "title": "API Governance - Publishing a custom policy",
+    "domain": "Governing web APIs on Anypoint Platform",
+    "topics": [
+      "Custom Policies",
+      "Exchange"
+    ],
+    "prompt": "A team has built a Mule 4 custom policy. How is it made available for other API owners to apply?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Copy the policy XML into each Mule application"
+      },
+      {
+        "letter": "B",
+        "text": "Add it to the API specification as a trait"
+      },
+      {
+        "letter": "C",
+        "text": "Deploy it as a standalone application in Runtime Manager"
+      },
+      {
+        "letter": "D",
+        "text": "Publish it to Exchange so it appears in API Manager"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Custom policies are packaged and published to Exchange. API Manager then lists them alongside included policies, so API owners can apply and configure them consistently on API instances.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This bypasses central management and versioning."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Traits describe APIs; they do not execute policies."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Policies are not deployed as applications."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Custom policies are Exchange assets that API Manager can apply."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Getting Started with Custom Policies",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-getting-started"
+      },
+      "architectureGuide": {
+        "title": "Custom Policy Reference (Mule 4)",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-mule-4-reference"
+      }
+    }
+  },
+  {
+    "id": "q-168",
+    "number": 168,
+    "title": "API Governance - Choose two: scenarios for custom policies",
+    "domain": "Governing web APIs on Anypoint Platform",
+    "topics": [
+      "Custom Policies",
+      "Scenarios"
+    ],
+    "prompt": "Which two scenarios most likely require a custom policy? (Choose two.)",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Masking a proprietary account number format in responses"
+      },
+      {
+        "letter": "B",
+        "text": "Allowing only requests from a fixed set of IP addresses"
+      },
+      {
+        "letter": "C",
+        "text": "Smoothing bursts of traffic to protect a backend"
+      },
+      {
+        "letter": "D",
+        "text": "Validating JWT signatures with a JWKS endpoint"
+      },
+      {
+        "letter": "E",
+        "text": "Calling an internal entitlement service to authorize each request"
+      }
+    ],
+    "correctAnswers": [
+      "A",
+      "E"
+    ],
+    "explanation": "Correct answers: A and E. Custom policies are appropriate for cross-cutting needs specific to an organization, such as proprietary masking or custom authorization calls. Common needs like IP restriction, JWT validation, and burst control are met by included policies.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "Organization-specific transformations are not covered by included policies."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "IP Allowlist covers this."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Spike Control covers this."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "JWT Validation covers this."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "Custom authorization logic needs a custom policy."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Getting Started with Custom Policies",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-getting-started"
+      },
+      "architectureGuide": {
+        "title": "Included Policies Directory",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
+      }
+    }
+  },
+  {
+    "id": "q-169",
+    "number": 169,
     "title": "Deploying Managing Apis - Which feature in API Manager pairs a",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10177,8 +10118,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-166",
-    "number": 166,
+    "id": "q-170",
+    "number": 170,
     "title": "Deploying Managing Apis - Which testing tool is built specifically for",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10240,8 +10181,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-167",
-    "number": 167,
+    "id": "q-171",
+    "number": 171,
     "title": "Api Implementation Design - What is the recommended approach to manage",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10302,8 +10243,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-168",
-    "number": 168,
+    "id": "q-172",
+    "number": 172,
     "title": "Deploying Managing Apis - What is the Mule Maven Plugin used",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10364,8 +10305,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-169",
-    "number": 169,
+    "id": "q-173",
+    "number": 173,
     "title": "Api Implementation Design - Which is the BEST place to handle",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10426,8 +10367,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-170",
-    "number": 170,
+    "id": "q-174",
+    "number": 174,
     "title": "Deploying Managing Apis - Which strategy best supports rolling out CloudHub",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10489,8 +10430,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-171",
-    "number": 171,
+    "id": "q-175",
+    "number": 175,
     "title": "Deploying Managing Apis - Which combination is recommended for a CICD",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10552,8 +10493,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-172",
-    "number": 172,
+    "id": "q-176",
+    "number": 176,
     "title": "Api Implementation Design - Which Mule capability enables transactional reliability for",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10614,8 +10555,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-173",
-    "number": 173,
+    "id": "q-177",
+    "number": 177,
     "title": "Deploying Managing Apis - Which combination is correct for promoting a",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10677,8 +10618,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-174",
-    "number": 174,
+    "id": "q-178",
+    "number": 178,
     "title": "Api Implementation Design - Which is the correct reading of a",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10740,8 +10681,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-175",
-    "number": 175,
+    "id": "q-179",
+    "number": 179,
     "title": "Deploying Managing Apis - Which is the correct understanding of API",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10802,8 +10743,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-176",
-    "number": 176,
+    "id": "q-180",
+    "number": 180,
     "title": "Deploying Managing Apis - Which is true about MUnit coverage in",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10865,8 +10806,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-177",
-    "number": 177,
+    "id": "q-181",
+    "number": 181,
     "title": "Api Implementation Design - An architect wants the SAME RAML spec",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10928,8 +10869,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-178",
-    "number": 178,
+    "id": "q-182",
+    "number": 182,
     "title": "Api Implementation Design - Which strategy best handles credentials for Mule",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10990,8 +10931,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-179",
-    "number": 179,
+    "id": "q-183",
+    "number": 183,
     "title": "Deploying Managing Apis - Which option BEST describes the role of",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11053,8 +10994,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-180",
-    "number": 180,
+    "id": "q-184",
+    "number": 184,
     "title": "Deploying Managing Apis - A platform team needs centralized policy control",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11116,8 +11057,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-181",
-    "number": 181,
+    "id": "q-185",
+    "number": 185,
     "title": "API-led Migration - A large financial institution is migrating legacy SOAP services",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11185,8 +11126,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-182",
-    "number": 182,
+    "id": "q-186",
+    "number": 186,
     "title": "HL7 Integration - A healthcare network is integrating three EMR systems that use",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11266,8 +11207,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-183",
-    "number": 183,
+    "id": "q-187",
+    "number": 187,
     "title": "Integration Patterns - A regional healthcare provider needs to integrate its electronic",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11344,8 +11285,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-184",
-    "number": 184,
+    "id": "q-188",
+    "number": 188,
     "title": "Integration Patterns - A logistics company is orchestrating real‑time shipment tracking",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11422,8 +11363,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-185",
-    "number": 185,
+    "id": "q-189",
+    "number": 189,
     "title": "Event-Driven Architecture - A manufacturing firm is ingesting high‑velocity Io T sensor data",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11500,8 +11441,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-186",
-    "number": 186,
+    "id": "q-190",
+    "number": 190,
     "title": "Application Migration - A retail chain is migrating from a legacy ESB to Anypoint Platfor",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11569,8 +11510,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-187",
-    "number": 187,
+    "id": "q-191",
+    "number": 191,
     "title": "Integration Architecture - A federal agency is orchestrating an approvals workflow that span",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11647,8 +11588,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-188",
-    "number": 188,
+    "id": "q-192",
+    "number": 192,
     "title": "Integration Architecture - A healthcare analytics team must integrate a lab‑result REST API,",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11728,8 +11669,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-189",
-    "number": 189,
+    "id": "q-193",
+    "number": 193,
     "title": "Integration Patterns - A regional healthcare provider is integrating patient‑record syst",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11806,8 +11747,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-190",
-    "number": 190,
+    "id": "q-194",
+    "number": 194,
     "title": "Integration Design Patterns - A manufacturing company is designing an integration solution to s",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11888,8 +11829,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-191",
-    "number": 191,
+    "id": "q-195",
+    "number": 195,
     "title": "CI/CD Pipelines - A multinational bank is standardizing its CI/CD pipeline for Mule",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11969,8 +11910,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-192",
-    "number": 192,
+    "id": "q-196",
+    "number": 196,
     "title": "HL7 Integration - A regional healthcare provider must integrate its legacy HL7 mess",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -12047,8 +11988,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-193",
-    "number": 193,
+    "id": "q-197",
+    "number": 197,
     "title": "Messaging - What requirement prevents using Anypoint MQ as the messaging broker fo",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -12109,8 +12050,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-194",
-    "number": 194,
+    "id": "q-198",
+    "number": 198,
     "title": "Integration Interfaces - An airline is architecting an API-led connectivity project to integrat",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -12171,8 +12112,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-195",
-    "number": 195,
+    "id": "q-199",
+    "number": 199,
     "title": "Messaging - A Mule solution implements an Experience API and System API as Mule ap",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -12233,8 +12174,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-196",
-    "number": 196,
+    "id": "q-200",
+    "number": 200,
     "title": "Application Design - An organization has built a large monolithic application over the year",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -12295,8 +12236,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-197",
-    "number": 197,
+    "id": "q-201",
+    "number": 201,
     "title": "Messaging - A manufacturing company wants to share inventory updates with dealers",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -12357,8 +12298,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-198",
-    "number": 198,
+    "id": "q-202",
+    "number": 202,
     "title": "CI/CD - An organization is in the process of building automated deployments us",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -12419,8 +12360,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-199",
-    "number": 199,
+    "id": "q-203",
+    "number": 203,
     "title": "Connectors - Which Salesforce API is invoked to deploy, retrieve, create, update, o",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -12481,8 +12422,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-200",
-    "number": 200,
+    "id": "q-204",
+    "number": 204,
     "title": "Application Design - Why would an Enterprise Architect use a single enterprise-wide canonic",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -12543,8 +12484,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-201",
-    "number": 201,
+    "id": "q-205",
+    "number": 205,
     "title": "CI/CD - An organization is using MuleSoft to develop APIs and automatically de",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -12605,8 +12546,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-202",
-    "number": 202,
+    "id": "q-206",
+    "number": 206,
     "title": "Deployment Options - Which Anypoint deployment option is a fully",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12667,8 +12608,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-203",
-    "number": 203,
+    "id": "q-207",
+    "number": 207,
     "title": "Deployment Options - Which deployment option lets you run Mule",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12729,8 +12670,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-204",
-    "number": 204,
+    "id": "q-208",
+    "number": 208,
     "title": "Deployment Options - Which CloudHub configuration enables a managed customercontrolled",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12792,8 +12733,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-205",
-    "number": 205,
+    "id": "q-209",
+    "number": 209,
     "title": "Deployment Options - An organization wants to enforce API policies",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12854,8 +12795,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-206",
-    "number": 206,
+    "id": "q-210",
+    "number": 210,
     "title": "Deployment Options - Which is a TRUE statement about CloudHub",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12916,8 +12857,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-207",
-    "number": 207,
+    "id": "q-211",
+    "number": 211,
     "title": "Deployment Options - Which scenario is the strongest case for",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12979,8 +12920,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-208",
-    "number": 208,
+    "id": "q-212",
+    "number": 212,
     "title": "Deployment Options - An organization wants Mule applications running in",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13041,8 +12982,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-209",
-    "number": 209,
+    "id": "q-213",
+    "number": 213,
     "title": "Deployment Options - Which CloudHub region minimizes latency for APAC consumers",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13104,8 +13045,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-210",
-    "number": 210,
+    "id": "q-214",
+    "number": 214,
     "title": "Deployment Options - Which statement about Mule Hybrid deployment is",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13166,8 +13107,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-211",
-    "number": 211,
+    "id": "q-215",
+    "number": 215,
     "title": "Deployment Options - Which option exposes ingress inside a Private",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13229,8 +13170,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-212",
-    "number": 212,
+    "id": "q-216",
+    "number": 216,
     "title": "Runtime Auto-Scaling - An online retailer expects a 3× traffic surge during holiday",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13307,8 +13248,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-213",
-    "number": 213,
+    "id": "q-217",
+    "number": 217,
     "title": "Runtime Deployment - A Saa S startup plans to deploy Mule runtime on a Kubernetes",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13385,8 +13326,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-214",
-    "number": 214,
+    "id": "q-218",
+    "number": 218,
     "title": "Runtime Deployment - A national retail chain processes 10,000 orders per minute and",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13463,8 +13404,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "E"
   },
   {
-    "id": "q-215",
-    "number": 215,
+    "id": "q-219",
+    "number": 219,
     "title": "API Migration - A logistics company is migrating its on‑premises APIs to Anypoint",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13544,8 +13485,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-216",
-    "number": 216,
+    "id": "q-220",
+    "number": 220,
     "title": "Deployment Choices - A mid‑size financial services firm must migrate its core payment ",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13622,8 +13563,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-217",
-    "number": 217,
+    "id": "q-221",
+    "number": 221,
     "title": "Deployment Strategy - A national retail chain plans to launch a new omnichannel experie",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13700,8 +13641,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-218",
-    "number": 218,
+    "id": "q-222",
+    "number": 222,
     "title": "Cloud Hub Deployment - A logistics company is migrating its on‑premise Mule runtimes to ",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13781,8 +13722,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-219",
-    "number": 219,
+    "id": "q-223",
+    "number": 223,
     "title": "Deployment Models - A mid-sized financial services firm is migrating its core loan‑or",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13859,8 +13800,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-220",
-    "number": 220,
+    "id": "q-224",
+    "number": 224,
     "title": "Runtime Deployment - A logistics startup plans to host its Mule runtime in a public cl",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13937,8 +13878,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-221",
-    "number": 221,
+    "id": "q-225",
+    "number": 225,
     "title": "Deployment Options - CloudHub custom-domain HTTPS with mTLS",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14001,8 +13942,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-222",
-    "number": 222,
+    "id": "q-226",
+    "number": 226,
     "title": "Deployment Options - Scheduler behavior across CloudHub workers",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14065,8 +14006,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-223",
-    "number": 223,
+    "id": "q-227",
+    "number": 227,
     "title": "Deployment Options - Runtime behavior during control plane outage",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14129,8 +14070,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-224",
-    "number": 224,
+    "id": "q-228",
+    "number": 228,
     "title": "Deployment Options - Object Store v2 sharing between applications",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14193,8 +14134,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-225",
-    "number": 225,
+    "id": "q-229",
+    "number": 229,
     "title": "Deployment Options - Internal CloudHub worker URL",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14257,8 +14198,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-226",
-    "number": 226,
+    "id": "q-230",
+    "number": 230,
     "title": "Deployment Options - Persistent VM queues across workers",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14321,8 +14262,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-227",
-    "number": 227,
+    "id": "q-231",
+    "number": 231,
     "title": "Deployment Options - Private connectivity to on-premises data centers",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14386,8 +14327,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-228",
-    "number": 228,
+    "id": "q-232",
+    "number": 232,
     "title": "Deployment Options - Masking secure properties in Runtime Manager",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14450,8 +14391,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-229",
-    "number": 229,
+    "id": "q-233",
+    "number": 233,
     "title": "Deployment Options - Runtime Fabric ingress controller",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14514,8 +14455,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-230",
-    "number": 230,
+    "id": "q-234",
+    "number": 234,
     "title": "Deployment Options - CloudHub worker size for large payloads",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14578,8 +14519,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-231",
-    "number": 231,
+    "id": "q-235",
+    "number": 235,
     "title": "Deployment Options - DLB mapping rules for API routing",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14642,8 +14583,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-232",
-    "number": 232,
+    "id": "q-236",
+    "number": 236,
     "title": "Deployment Options - Static outbound IP for CloudHub",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14706,8 +14647,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-233",
-    "number": 233,
+    "id": "q-237",
+    "number": 237,
     "title": "Deployment Options - CloudHub worker availability zones",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14770,8 +14711,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-234",
-    "number": 234,
+    "id": "q-238",
+    "number": 238,
     "title": "Deployment Options - HTTP traffic in an active-active cluster",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14834,8 +14775,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-235",
-    "number": 235,
+    "id": "q-239",
+    "number": 239,
     "title": "Deployment Options - Runtime Fabric controller node role",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14885,8 +14826,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-236",
-    "number": 236,
+    "id": "q-240",
+    "number": 240,
     "title": "Deployment Options - CloudHub deployment traffic handling",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14949,8 +14890,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-237",
-    "number": 237,
+    "id": "q-241",
+    "number": 241,
     "title": "Deployment Options - CloudHub ephemeral local files",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15013,8 +14954,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-238",
-    "number": 238,
+    "id": "q-242",
+    "number": 242,
     "title": "Deployment Options - CloudHub VPC network diagnostics",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15077,8 +15018,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-239",
-    "number": 239,
+    "id": "q-243",
+    "number": 243,
     "title": "Deployment Options - Dedicated Load Balancer high availability",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15141,8 +15082,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-240",
-    "number": 240,
+    "id": "q-244",
+    "number": 244,
     "title": "Deployment Options - Runtime Fabric replica load balancing",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15192,8 +15133,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-241",
-    "number": 241,
+    "id": "q-245",
+    "number": 245,
     "title": "Deployment Options - A company is modernizing its legacy systems to accelerate access to ap",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15254,8 +15195,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-242",
-    "number": 242,
+    "id": "q-246",
+    "number": 246,
     "title": "Deployment Options - An insurance company is designing a hybrid, load-balanced, single-clus",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15316,8 +15257,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-243",
-    "number": 243,
+    "id": "q-247",
+    "number": 247,
     "title": "Deployment Options - Refer to the exhibit.",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15379,8 +15320,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-244",
-    "number": 244,
+    "id": "q-248",
+    "number": 248,
     "title": "Deployment Options - CloudHub 1.0 vs CloudHub 2.0 shared and private spaces",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15443,8 +15384,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-245",
-    "number": 245,
+    "id": "q-249",
+    "number": 249,
     "title": "Deployment Options - CloudHub 2.0 private space fully managed ingress load balancer",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15507,8 +15448,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-246",
-    "number": 246,
+    "id": "q-250",
+    "number": 250,
     "title": "Deployment Options - CloudHub 1.0 port mapping for HTTP and HTTPS",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15571,8 +15512,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-247",
-    "number": 247,
+    "id": "q-251",
+    "number": 251,
     "title": "Deployment Options - DLB internal ports 8091 and 8092",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15635,8 +15576,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-248",
-    "number": 248,
+    "id": "q-252",
+    "number": 252,
     "title": "Deployment Options - DLB SSL endpoint and custom certificate configuration",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15699,8 +15640,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-249",
-    "number": 249,
+    "id": "q-253",
+    "number": 253,
     "title": "Deployment Options - DLB mapping rules and DNS CNAME for vanity domains",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15767,8 +15708,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-250",
-    "number": 250,
+    "id": "q-254",
+    "number": 254,
     "title": "Deployment Options - Dedicated Load Balancer high availability and units",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15831,8 +15772,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-251",
-    "number": 251,
+    "id": "q-255",
+    "number": 255,
     "title": "Deployment Options - CloudHub 1.0 high availability with multiple workers and persistent queues",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15896,8 +15837,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-252",
-    "number": 252,
+    "id": "q-256",
+    "number": 256,
     "title": "Deployment Options - CloudHub 2.0 high availability across replicas and AZs",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15961,8 +15902,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-253",
-    "number": 253,
+    "id": "q-257",
+    "number": 257,
     "title": "Deployment Options - Multi-region disaster recovery and Object Store v2 scope",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -16026,8 +15967,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-254",
-    "number": 254,
+    "id": "q-258",
+    "number": 258,
     "title": "Deployment Options - Object Store v2 with multi-worker applications",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -16090,8 +16031,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-255",
-    "number": 255,
+    "id": "q-259",
+    "number": 259,
     "title": "Deployment Options - Connecting CloudHub to on-premises and private networks",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -16159,8 +16100,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-256",
-    "number": 256,
+    "id": "q-260",
+    "number": 260,
     "title": "Deployment Options - CloudHub 2.0 private space ingress ports and firewall rules",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -16226,8 +16167,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-257",
-    "number": 257,
+    "id": "q-261",
+    "number": 261,
     "title": "Deployment Options - CloudHub 2.0 public and internal DNS records",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -16290,8 +16231,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-258",
-    "number": 258,
+    "id": "q-262",
+    "number": 262,
     "title": "Deployment Options - CloudHub 2.0 private space TLS context and custom domains",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -16355,8 +16296,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-259",
-    "number": 259,
+    "id": "q-263",
+    "number": 263,
     "title": "Deployment Options - CloudHub 2.0 differences from CloudHub 1.0",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -16424,8 +16365,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-260",
-    "number": 260,
+    "id": "q-264",
+    "number": 264,
     "title": "Api Policies - Refer to the exhibit. CloudHub 2.0 private space ingress with TLS",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -16490,8 +16431,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-261",
-    "number": 261,
+    "id": "q-265",
+    "number": 265,
     "title": "API Quality Goals - Caching slow-changing reference data",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16549,8 +16490,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-262",
-    "number": 262,
+    "id": "q-266",
+    "number": 266,
     "title": "API Quality Goals - Data that must not be cached",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16608,8 +16549,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-263",
-    "number": 263,
+    "id": "q-267",
+    "number": 267,
     "title": "API Quality Goals - Sharing state across CloudHub workers",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16620,11 +16561,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "In an in-memory object store on each worker"
+        "text": "In a persistent object store (Object Store v2)"
       },
       {
         "letter": "B",
-        "text": "In a persistent object store (Object Store v2)"
+        "text": "In an in-memory object store on each worker"
       },
       {
         "letter": "C",
@@ -16635,16 +16576,16 @@ window.MCPA_QUESTIONS = [
         "text": "In a file written to the worker's local disk"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. On CloudHub, persistent object stores are backed by Object Store v2, which keeps data outside individual workers. This lets the stored values, such as watermarks, survive restarts and be shared by all workers of the same application, unlike variables, in-memory stores, or local files.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. On CloudHub, persistent object stores are backed by Object Store v2, which keeps data outside individual workers. This lets the stored values, such as watermarks, survive restarts and be shared by all workers of the same application, unlike variables, in-memory stores, or local files.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "In-memory stores are lost on restart and are not shared between workers."
-      },
-      "B": {
         "type": "Correct",
         "text": "Object Store v2 persists data outside the worker and makes it available to all workers of the application."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "In-memory stores are lost on restart and are not shared between workers."
       },
       "C": {
         "type": "Incorrect",
@@ -16667,8 +16608,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-264",
-    "number": 264,
+    "id": "q-268",
+    "number": 268,
     "title": "API Quality Goals - Cache scope versus caching policy",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16726,8 +16667,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-265",
-    "number": 265,
+    "id": "q-269",
+    "number": 269,
     "title": "API Quality Goals - Idempotent request detection",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16785,8 +16726,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-266",
-    "number": 266,
+    "id": "q-270",
+    "number": 270,
     "title": "API Quality Goals - Fallback to cached data",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16844,8 +16785,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-267",
-    "number": 267,
+    "id": "q-271",
+    "number": 271,
     "title": "API Quality Goals - Object Store data retention",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16860,31 +16801,31 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Proceed, because Object Store v2 retains entries forever unless they are deleted"
+        "text": "Use a database; Object Store v2 entries have a limited TTL"
       },
       {
         "letter": "C",
-        "text": "Use a database; Object Store v2 entries have a limited TTL"
+        "text": "Proceed, because Object Store v2 retains entries forever unless they are deleted"
       },
       {
         "letter": "D",
         "text": "Store the preferences in application properties so they are always available"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. Object Store v2 is intended for application state such as caching, watermarks, and deduplication. Its entries have a maximum time-to-live, so it is not suitable as a permanent system of record. Long-lived business data such as customer preferences belongs in a database or other system of record.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Object Store v2 is intended for application state such as caching, watermarks, and deduplication. Its entries have a maximum time-to-live, so it is not suitable as a permanent system of record. Long-lived business data such as customer preferences belongs in a database or other system of record.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "In-memory stores are less durable, not more."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Object Store v2 enforces a time-to-live on stored entries, so data is not retained indefinitely."
-      },
-      "C": {
         "type": "Correct",
         "text": "Object Store v2 is designed for transient state such as caches and watermarks, not long-term records."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Object Store v2 enforces a time-to-live on stored entries, so data is not retained indefinitely."
       },
       "D": {
         "type": "Incorrect",
@@ -16903,8 +16844,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-268",
-    "number": 268,
+    "id": "q-272",
+    "number": 272,
     "title": "API Quality Goals - Choose two: Object Store use cases",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16923,11 +16864,11 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Running complex relational queries for reporting"
+        "text": "Keeping a watermark for incremental polling of a database"
       },
       {
         "letter": "D",
-        "text": "Keeping a watermark for incremental polling of a database"
+        "text": "Running complex relational queries for reporting"
       },
       {
         "letter": "E",
@@ -16935,10 +16876,10 @@ window.MCPA_QUESTIONS = [
       }
     ],
     "correctAnswers": [
-      "D",
+      "C",
       "E"
     ],
-    "explanation": "Correct answers: D and E. Object stores are key-value stores for application state. Common uses include watermarks, caching values such as tokens or reference data, and duplicate detection. They are not designed for large binary documents, long-term records, or relational reporting.",
+    "explanation": "Correct answers: C and E. Object stores are key-value stores for application state. Common uses include watermarks, caching values such as tokens or reference data, and duplicate detection. They are not designed for large binary documents, long-term records, or relational reporting.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -16949,12 +16890,12 @@ window.MCPA_QUESTIONS = [
         "text": "An object store is not a system of record for business data."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Object stores are key-value stores and do not support relational queries."
-      },
-      "D": {
         "type": "Correct",
         "text": "Watermarks are small, transient state values that must survive restarts."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Object stores are key-value stores and do not support relational queries."
       },
       "E": {
         "type": "Correct",
@@ -16973,8 +16914,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-269",
-    "number": 269,
+    "id": "q-273",
+    "number": 273,
     "title": "API Quality Goals - Cache key design",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16993,15 +16934,15 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Customers may receive another customer's cached recommendations"
+        "text": "The policy will cache only POST requests, so GET requests are unaffected"
       },
       {
         "letter": "D",
-        "text": "The policy will cache only POST requests, so GET requests are unaffected"
+        "text": "Customers may receive another customer's cached recommendations"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. A cache key must include every input that changes the response. For personalized responses, the key must include the customer's identity or the response should not be cached; otherwise one customer's response can be served to another. The HTTP Caching policy allows a custom key expression for this purpose.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. A cache key must include every input that changes the response. For personalized responses, the key must include the customer's identity or the response should not be cached; otherwise one customer's response can be served to another. The HTTP Caching policy allows a custom key expression for this purpose.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -17012,12 +16953,12 @@ window.MCPA_QUESTIONS = [
         "text": "The policy supports a time-to-live setting."
       },
       "C": {
-        "type": "Correct",
-        "text": "Requests with the same path share one cache entry, so personalized data can leak between users."
-      },
-      "D": {
         "type": "Incorrect",
         "text": "The policy is typically used with GET responses and would cache them."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Requests with the same path share one cache entry, so personalized data can leak between users."
       }
     },
     "references": {
@@ -17032,8 +16973,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-270",
-    "number": 270,
+    "id": "q-274",
+    "number": 274,
     "title": "API Quality Goals - Invalidating cached data",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17048,31 +16989,31 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Reduce the cache time-to-live to five minutes or less"
+        "text": "Keep the 24-hour TTL and ask users to refresh their browsers"
       },
       {
         "letter": "C",
-        "text": "Keep the 24-hour TTL and ask users to refresh their browsers"
+        "text": "Reduce the cache time-to-live to five minutes or less"
       },
       {
         "letter": "D",
         "text": "Scale the backend horizontally so the cache is refreshed faster"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. The time-to-live of a cache entry determines how stale data can become. To meet a five-minute freshness requirement while retaining most of the performance benefit, the TTL should be reduced to five minutes or less instead of disabling caching.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. The time-to-live of a cache entry determines how stale data can become. To meet a five-minute freshness requirement while retaining most of the performance benefit, the TTL should be reduced to five minutes or less instead of disabling caching.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "This meets freshness but gives up the load reduction that is still possible with a short TTL."
       },
       "B": {
-        "type": "Correct",
-        "text": "The TTL defines the maximum staleness, so it must not exceed the freshness requirement."
-      },
-      "C": {
         "type": "Incorrect",
         "text": "Browser refreshes do not bypass a server-side cache."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "The TTL defines the maximum staleness, so it must not exceed the freshness requirement."
       },
       "D": {
         "type": "Incorrect",
@@ -17091,8 +17032,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-271",
-    "number": 271,
+    "id": "q-275",
+    "number": 275,
     "title": "API Quality Goals - First step toward fault tolerance",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17103,11 +17044,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Set a timeout that fits within the 2-second SLA"
+        "text": "Increase the Experience API's worker size"
       },
       {
         "letter": "B",
-        "text": "Increase the Experience API's worker size"
+        "text": "Set a timeout that fits within the 2-second SLA"
       },
       {
         "letter": "C",
@@ -17118,16 +17059,16 @@ window.MCPA_QUESTIONS = [
         "text": "Retry the Process API call five times before responding"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. Timeouts are the first fault-tolerance measure for API invocations. They should be set as low as possible and in line with the API client's own SLA, so that a slow or hung dependency does not cause the client to fail its consumers.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Timeouts are the first fault-tolerance measure for API invocations. They should be set as low as possible and in line with the API client's own SLA, so that a slow or hung dependency does not cause the client to fail its consumers.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "A timeout stops waiting for a hung call and lets the client respond in time."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "More CPU and memory do not shorten the time spent waiting for a hung dependency."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "A timeout stops waiting for a hung call and lets the client respond in time."
       },
       "C": {
         "type": "Incorrect",
@@ -17150,8 +17091,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-272",
-    "number": 272,
+    "id": "q-276",
+    "number": 276,
     "title": "API Quality Goals - Retrying transient failures",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17162,11 +17103,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Retry by calling a different HTTP method on the same resource"
+        "text": "Retry a limited number of times with a delay between attempts"
       },
       {
         "letter": "B",
-        "text": "Retry a limited number of times with a delay between attempts"
+        "text": "Retry by calling a different HTTP method on the same resource"
       },
       {
         "letter": "C",
@@ -17177,16 +17118,16 @@ window.MCPA_QUESTIONS = [
         "text": "Retry immediately and continuously until the call succeeds"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. Retries help when failures are transient, but they should be limited and spaced out, and only applied to operations that are safe to repeat. In Mule applications, the Until Successful scope supports a maximum number of retries and a delay between attempts.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Retries help when failures are transient, but they should be limited and spaced out, and only applied to operations that are safe to repeat. In Mule applications, the Until Successful scope supports a maximum number of retries and a delay between attempts.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Changing the method changes the meaning of the request."
-      },
-      "B": {
         "type": "Correct",
         "text": "Limited, spaced retries can overcome transient failures without overloading the API."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Changing the method changes the meaning of the request."
       },
       "C": {
         "type": "Incorrect",
@@ -17209,8 +17150,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-273",
-    "number": 273,
+    "id": "q-277",
+    "number": 277,
     "title": "API Quality Goals - Retries and non-idempotent operations",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17225,35 +17166,35 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "A Spike Control policy on the Payments API"
+        "text": "An idempotency key that lets the API detect repeats"
       },
       {
         "letter": "C",
-        "text": "A longer cache time-to-live on the Payments API"
+        "text": "A Spike Control policy on the Payments API"
       },
       {
         "letter": "D",
-        "text": "An idempotency key that lets the API detect repeats"
+        "text": "A longer cache time-to-live on the Payments API"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. Retries are safe only for idempotent operations. Methods such as GET, PUT, and DELETE are idempotent, but POST is not, so retrying a POST can create duplicates. Before retrying, the API must be able to detect repeated requests, for example through a unique ID supplied by the client and stored by the API.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Retries are safe only for idempotent operations. Methods such as GET, PUT, and DELETE are idempotent, but POST is not, so retrying a POST can create duplicates. Before retrying, the API must be able to detect repeated requests, for example through a unique ID supplied by the client and stored by the API.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "POST is not idempotent; repeating it can create duplicate resources."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Spike Control smooths traffic and does not detect duplicate requests."
+        "type": "Correct",
+        "text": "Without duplicate detection, a retried POST may create a second payment."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Caching does not prevent duplicate creation by POST requests."
+        "text": "Spike Control smooths traffic and does not detect duplicate requests."
       },
       "D": {
-        "type": "Correct",
-        "text": "Without duplicate detection, a retried POST may create a second payment."
+        "type": "Incorrect",
+        "text": "Caching does not prevent duplicate creation by POST requests."
       }
     },
     "references": {
@@ -17268,8 +17209,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-274",
-    "number": 274,
+    "id": "q-278",
+    "number": 278,
     "title": "API Quality Goals - Stop calling a failing API",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17327,8 +17268,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-275",
-    "number": 275,
+    "id": "q-279",
+    "number": 279,
     "title": "API Quality Goals - Fallback options",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17339,39 +17280,39 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Return a default list of best-selling products"
-      },
-      {
-        "letter": "B",
         "text": "Block the page until the Process API recovers"
       },
       {
-        "letter": "C",
+        "letter": "B",
         "text": "Return HTTP 500 so the page shows an error banner"
       },
       {
-        "letter": "D",
+        "letter": "C",
         "text": "Call the Process API repeatedly until it succeeds"
+      },
+      {
+        "letter": "D",
+        "text": "Return a default list of best-selling products"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. Fallback is a fault-tolerance strategy in which the client uses an alternative when an API invocation fails. Options include calling an alternative API, returning a previously cached result, or returning a static default, such as a list of best-selling products.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Fallback is a fault-tolerance strategy in which the client uses an alternative when an API invocation fails. Options include calling an alternative API, returning a previously cached result, or returning a static default, such as a list of best-selling products.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "A static or default result keeps the page working when the API fails."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "Waiting indefinitely breaks the user experience."
       },
-      "C": {
+      "B": {
         "type": "Incorrect",
         "text": "The requirement is that the page still loads successfully."
       },
-      "D": {
+      "C": {
         "type": "Incorrect",
         "text": "Repeated calls delay the page and do not guarantee a response."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "A static or default result keeps the page working when the API fails."
       }
     },
     "references": {
@@ -17386,8 +17327,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-276",
-    "number": 276,
+    "id": "q-280",
+    "number": 280,
     "title": "API Quality Goals - Handling rate-limit responses",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17398,11 +17339,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Treat 429 as a permanent failure and stop calling the API"
+        "text": "Back off and retry after the limit window resets"
       },
       {
         "letter": "B",
-        "text": "Back off and retry after the limit window resets"
+        "text": "Treat 429 as a permanent failure and stop calling the API"
       },
       {
         "letter": "C",
@@ -17413,16 +17354,16 @@ window.MCPA_QUESTIONS = [
         "text": "Create additional client applications to multiply the allowed quota"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. A Rate Limiting policy rejects requests that exceed the configured quota with HTTP 429 and can expose rate-limit headers. Resilient clients treat this as a temporary condition and back off until the window resets, rather than retrying immediately or giving up.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. A Rate Limiting policy rejects requests that exceed the configured quota with HTTP 429 and can expose rate-limit headers. Resilient clients treat this as a temporary condition and back off until the window resets, rather than retrying immediately or giving up.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "The limit resets after its window, so the condition is temporary."
-      },
-      "B": {
         "type": "Correct",
         "text": "429 means the quota is exhausted, so the client should wait rather than retry immediately."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "The limit resets after its window, so the condition is temporary."
       },
       "C": {
         "type": "Incorrect",
@@ -17445,8 +17386,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-277",
-    "number": 277,
+    "id": "q-281",
+    "number": 281,
     "title": "API Quality Goals - Retries in a layered network",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17461,35 +17402,35 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Retries are ignored by Mule runtime when an outage is detected"
+        "text": "Retries multiply across layers and overload the backend"
       },
       {
         "letter": "C",
-        "text": "Retries cancel each other out, so the backend receives fewer calls"
+        "text": "Retries are ignored by Mule runtime when an outage is detected"
       },
       {
         "letter": "D",
-        "text": "Retries multiply across layers and overload the backend"
+        "text": "Retries cancel each other out, so the backend receives fewer calls"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. Retries at every layer of an application network multiply: three retries at three layers can produce many times the original number of calls. Retries should be limited, spaced out, and coordinated with timeouts and circuit breakers so that clients do not overwhelm a recovering dependency.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Retries at every layer of an application network multiply: three retries at three layers can produce many times the original number of calls. Retries should be limited, spaced out, and coordinated with timeouts and circuit breakers so that clients do not overwhelm a recovering dependency.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "Each layer's retry behavior is configured independently."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Mule runtime executes configured retries regardless of the cause."
+        "type": "Correct",
+        "text": "Each layer's retries multiply the calls reaching the backend."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Nested retries add calls; they do not cancel out."
+        "text": "Mule runtime executes configured retries regardless of the cause."
       },
       "D": {
-        "type": "Correct",
-        "text": "Each layer's retries multiply the calls reaching the backend."
+        "type": "Incorrect",
+        "text": "Nested retries add calls; they do not cancel out."
       }
     },
     "references": {
@@ -17504,8 +17445,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-278",
-    "number": 278,
+    "id": "q-282",
+    "number": 282,
     "title": "API Quality Goals - Choose two client-side strategies",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17574,8 +17515,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-279",
-    "number": 279,
+    "id": "q-283",
+    "number": 283,
     "title": "API Quality Goals - Alternative API as fallback",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17594,15 +17535,15 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Call the second carrier's API as a fallback"
+        "text": "Return HTTP 503 and ask the client to retry tomorrow"
       },
       {
         "letter": "D",
-        "text": "Return HTTP 503 and ask the client to retry tomorrow"
+        "text": "Call the second carrier's API as a fallback"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. One fallback option for fault-tolerant API invocations is to invoke an alternative API that provides an equivalent result. When the primary carrier's API fails, calling the second carrier's API gives the client a usable quote.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. One fallback option for fault-tolerant API invocations is to invoke an alternative API that provides an equivalent result. When the primary carrier's API fails, calling the second carrier's API gives the client a usable quote.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -17613,12 +17554,12 @@ window.MCPA_QUESTIONS = [
         "text": "Indefinite retries leave the client without a quote during an outage."
       },
       "C": {
-        "type": "Correct",
-        "text": "An alternative API provides an equivalent result when the primary invocation fails."
-      },
-      "D": {
         "type": "Incorrect",
         "text": "The business wants a quote rather than an error."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "An alternative API provides an equivalent result when the primary invocation fails."
       }
     },
     "references": {
@@ -17633,8 +17574,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-280",
-    "number": 280,
+    "id": "q-284",
+    "number": 284,
     "title": "API Quality Goals - Protecting an API from sudden bursts",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17653,15 +17594,15 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "HTTP Caching"
+        "text": "Spike Control"
       },
       {
         "letter": "D",
-        "text": "Spike Control"
+        "text": "HTTP Caching"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. The Spike Control policy protects an API implementation from traffic spikes by limiting the number of requests in a time window and delaying excess requests, with a configurable number of attempts, before rejecting them. This smooths bursts so that a fragile backend is not overwhelmed.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. The Spike Control policy protects an API implementation from traffic spikes by limiting the number of requests in a time window and delaying excess requests, with a configurable number of attempts, before rejecting them. This smooths bursts so that a fragile backend is not overwhelmed.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -17672,12 +17613,12 @@ window.MCPA_QUESTIONS = [
         "text": "Rate Limiting enforces a quota and rejects requests beyond it rather than smoothing them."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Caching can reduce load for cacheable reads but does not shape bursts of requests."
-      },
-      "D": {
         "type": "Correct",
         "text": "Spike Control queues excess requests for a short period and retries them, smoothing bursts."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Caching can reduce load for cacheable reads but does not shape bursts of requests."
       }
     },
     "references": {
@@ -17692,8 +17633,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-281",
-    "number": 281,
+    "id": "q-285",
+    "number": 285,
     "title": "API Quality Goals - Scaling a CPU-bound API",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17751,8 +17692,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-282",
-    "number": 282,
+    "id": "q-286",
+    "number": 286,
     "title": "API Quality Goals - Backend is the bottleneck",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17810,8 +17751,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-283",
-    "number": 283,
+    "id": "q-287",
+    "number": 287,
     "title": "API Quality Goals - Latency of a single request",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17869,8 +17810,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-284",
-    "number": 284,
+    "id": "q-288",
+    "number": 288,
     "title": "API Quality Goals - Stateful in-memory sessions",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17881,39 +17822,39 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Carts may be missing when requests reach a different worker"
-      },
-      {
-        "letter": "B",
         "text": "The load balancer will refuse to route requests to more than one worker"
       },
       {
-        "letter": "C",
+        "letter": "B",
         "text": "Memory usage per worker will quadruple"
       },
       {
-        "letter": "D",
+        "letter": "C",
         "text": "No problem, because CloudHub replicates worker memory automatically"
+      },
+      {
+        "letter": "D",
+        "text": "Carts may be missing when requests reach a different worker"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. Horizontal scaling works best for stateless API implementations. If state is kept in a single worker's memory, requests routed to other workers cannot see it. State should be moved to a shared store, such as a persistent object store or database, before scaling out.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Horizontal scaling works best for stateless API implementations. If state is kept in a single worker's memory, requests routed to other workers cannot see it. State should be moved to a shared store, such as a persistent object store or database, before scaling out.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "In-memory state is local to one worker, but the load balancer can route requests anywhere."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "Load balancers distribute requests across all available workers."
       },
-      "C": {
+      "B": {
         "type": "Incorrect",
         "text": "Each worker still holds only the carts it has created."
       },
-      "D": {
+      "C": {
         "type": "Incorrect",
         "text": "Worker memory is not replicated between workers."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "In-memory state is local to one worker, but the load balancer can route requests anywhere."
       }
     },
     "references": {
@@ -17928,8 +17869,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-285",
-    "number": 285,
+    "id": "q-289",
+    "number": 289,
     "title": "API Quality Goals - Choose two: when scaling out helps",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17998,8 +17939,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-286",
-    "number": 286,
+    "id": "q-290",
+    "number": 290,
     "title": "API Quality Goals - Primary-node-only workloads",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -18057,8 +17998,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-287",
-    "number": 287,
+    "id": "q-291",
+    "number": 291,
     "title": "API Quality Goals - Autoscaling CloudHub 2.0",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -18116,8 +18057,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-288",
-    "number": 288,
+    "id": "q-292",
+    "number": 292,
     "title": "API Quality Goals - Vertical versus horizontal scaling",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -18128,11 +18069,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Horizontal scaling to more workers of the same size"
+        "text": "Vertical scaling to a larger worker size"
       },
       {
         "letter": "B",
-        "text": "Vertical scaling to a larger worker size"
+        "text": "Horizontal scaling to more workers of the same size"
       },
       {
         "letter": "C",
@@ -18143,16 +18084,16 @@ window.MCPA_QUESTIONS = [
         "text": "Enabling the HTTP Caching policy"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. Horizontal scaling increases concurrent capacity but leaves the resources available to a single request unchanged. When individual requests need more memory or CPU than one instance provides, vertical scaling to a larger worker or replica size is required.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Horizontal scaling increases concurrent capacity but leaves the resources available to a single request unchanged. When individual requests need more memory or CPU than one instance provides, vertical scaling to a larger worker or replica size is required.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Each request still runs on one worker with the same memory limit."
-      },
-      "B": {
         "type": "Correct",
         "text": "More memory per worker lets each large request be processed."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Each request still runs on one worker with the same memory limit."
       },
       "C": {
         "type": "Incorrect",
@@ -18175,8 +18116,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-289",
-    "number": 289,
+    "id": "q-293",
+    "number": 293,
     "title": "API Quality Goals - Scaling and SLA-limited consumers",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -18234,8 +18175,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-290",
-    "number": 290,
+    "id": "q-294",
+    "number": 294,
     "title": "API Quality Goals - Which layer to scale",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -18293,8 +18234,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-291",
-    "number": 291,
+    "id": "q-295",
+    "number": 295,
     "title": "Monitoring Analyzing - Which Anypoint Platform feature provides a realtime",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18355,8 +18296,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-292",
-    "number": 292,
+    "id": "q-296",
+    "number": 296,
     "title": "Monitoring Analyzing - Which Anypoint capability stores Mule application logs",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18418,8 +18359,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-293",
-    "number": 293,
+    "id": "q-297",
+    "number": 297,
     "title": "Monitoring Analyzing - Which Anypoint Monitoring artifact lets architects build",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18480,8 +18421,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-294",
-    "number": 294,
+    "id": "q-298",
+    "number": 298,
     "title": "Monitoring Analyzing - Which capability is provided by Anypoint Visualizer",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18543,8 +18484,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-295",
-    "number": 295,
+    "id": "q-299",
+    "number": 299,
     "title": "Monitoring Analyzing - Which feature provides automatic notification when CloudHub",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18605,8 +18546,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-296",
-    "number": 296,
+    "id": "q-300",
+    "number": 300,
     "title": "Monitoring Analyzing - Which Anypoint feature is most useful for",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18667,8 +18608,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-297",
-    "number": 297,
+    "id": "q-301",
+    "number": 301,
     "title": "Monitoring Analyzing - Which feature in CloudHub measures and exposes",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18729,8 +18670,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-298",
-    "number": 298,
+    "id": "q-302",
+    "number": 302,
     "title": "Monitoring Analyzing - Which is the recommended way to expose",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18792,8 +18733,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-299",
-    "number": 299,
+    "id": "q-303",
+    "number": 303,
     "title": "API Monitoring - A logistics company needs to track API latency and usage across",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18870,8 +18811,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-300",
-    "number": 300,
+    "id": "q-304",
+    "number": 304,
     "title": "Monitoring - A manufacturing company wants real‑time visibility into",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18948,8 +18889,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-301",
-    "number": 301,
+    "id": "q-305",
+    "number": 305,
     "title": "API Monitoring - A logistics company with a 99.9% SLA requirement and a limited mo",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19029,8 +18970,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-302",
-    "number": 302,
+    "id": "q-306",
+    "number": 306,
     "title": "Monitoring - A regional healthcare provider handling protected patient data ne",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19107,8 +19048,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-303",
-    "number": 303,
+    "id": "q-307",
+    "number": 307,
     "title": "Logging Configuration - A logistics startup with a small Dev Ops crew discovers that erro",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19185,8 +19126,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-304",
-    "number": 304,
+    "id": "q-308",
+    "number": 308,
     "title": "Monitoring Deployment - A federal government agency is required to store all monitoring d",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19250,8 +19191,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-305",
-    "number": 305,
+    "id": "q-309",
+    "number": 309,
     "title": "Monitoring - A manufacturing plant’s ERP integration shows intermittent latenc",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19328,8 +19269,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-306",
-    "number": 306,
+    "id": "q-310",
+    "number": 310,
     "title": "API Monitoring - A fintech startup wants to set up real‑time alerts for API SLA br",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19406,8 +19347,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-307",
-    "number": 307,
+    "id": "q-311",
+    "number": 311,
     "title": "API Analytics - A large retail enterprise is rolling out API analytics across its",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19474,8 +19415,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-308",
-    "number": 308,
+    "id": "q-312",
+    "number": 312,
     "title": "Observability - A healthcare integration team must configure logging to retain au",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19543,8 +19484,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-309",
-    "number": 309,
+    "id": "q-313",
+    "number": 313,
     "title": "Audit Logging - A regional healthcare provider operates a patient‑record API that",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19608,8 +19549,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-310",
-    "number": 310,
+    "id": "q-314",
+    "number": 314,
     "title": "Logging and Monitoring - A large retail chain’s order‑processing flow has started returnin",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19686,8 +19627,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-311",
-    "number": 311,
+    "id": "q-315",
+    "number": 315,
     "title": "API Analytics - A federal agency is deploying a citizen-service portal on Anypoin",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19751,8 +19692,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "E"
   },
   {
-    "id": "q-312",
-    "number": 312,
+    "id": "q-316",
+    "number": 316,
     "title": "Performance Monitoring - A manufacturing company's ERP integration is experiencing latency",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19829,8 +19770,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-313",
-    "number": 313,
+    "id": "q-317",
+    "number": 317,
     "title": "API Monitoring & Governance - A hospital network runs dozens of APIs for patient data exchange ",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19898,8 +19839,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-314",
-    "number": 314,
+    "id": "q-318",
+    "number": 318,
     "title": "API Monitoring - A national retail chain wants real-time visibility into API usage",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19976,8 +19917,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-315",
-    "number": 315,
+    "id": "q-319",
+    "number": 319,
     "title": "Monitoring and Observability - Visualizer topology and policy troubleshooting",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20039,8 +19980,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-316",
-    "number": 316,
+    "id": "q-320",
+    "number": 320,
     "title": "Monitoring and Observability - CloudHub worker CPU alert",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20102,8 +20043,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-317",
-    "number": 317,
+    "id": "q-321",
+    "number": 321,
     "title": "Monitoring and Observability - External compliant application logging",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20165,8 +20106,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-318",
-    "number": 318,
+    "id": "q-322",
+    "number": 322,
     "title": "Monitoring and Observability - Scheduled external API tests",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20228,8 +20169,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-319",
-    "number": 319,
+    "id": "q-323",
+    "number": 323,
     "title": "Monitoring and Observability - Assigning Visualizer architecture layers",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20291,8 +20232,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-320",
-    "number": 320,
+    "id": "q-324",
+    "number": 324,
     "title": "Monitoring and Observability - Alerting on API client quota violations",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20354,8 +20295,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-321",
-    "number": 321,
+    "id": "q-325",
+    "number": 325,
     "title": "Monitoring and Observability - Geographic functional testing",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20417,8 +20358,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-322",
-    "number": 322,
+    "id": "q-326",
+    "number": 326,
     "title": "Monitoring and Observability - Custom business-logic notifications",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20480,8 +20421,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-323",
-    "number": 323,
+    "id": "q-327",
+    "number": 327,
     "title": "Monitoring and Observability - Long-term CloudHub log retention",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20543,8 +20484,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-324",
-    "number": 324,
+    "id": "q-328",
+    "number": 328,
     "title": "Monitoring and Observability - Cross-application metrics dashboard",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20606,8 +20547,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-325",
-    "number": 325,
+    "id": "q-329",
+    "number": 329,
     "title": "Monitoring and Observability - Environment visibility in Visualizer",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20669,8 +20610,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-326",
-    "number": 326,
+    "id": "q-330",
+    "number": 330,
     "title": "Monitoring and Observability - BDD API tests in CI/CD",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20733,8 +20674,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-327",
-    "number": 327,
+    "id": "q-331",
+    "number": 331,
     "title": "Monitoring and Observability - Troubleshooting cascading API failures",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20796,8 +20737,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-328",
-    "number": 328,
+    "id": "q-332",
+    "number": 332,
     "title": "Monitoring and Observability - Monitoring customer-hosted runtimes",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20859,8 +20800,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-329",
-    "number": 329,
+    "id": "q-333",
+    "number": 333,
     "title": "Monitoring and Observability - Tracking application deletion",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20922,8 +20863,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-330",
-    "number": 330,
+    "id": "q-334",
+    "number": 334,
     "title": "Monitoring and Observability - Supported Runtime Manager alert conditions",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20985,8 +20926,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-331",
-    "number": 331,
+    "id": "q-335",
+    "number": 335,
     "title": "Monitoring and Observability - Dynamic request logging without redeployment",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21048,8 +20989,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-332",
-    "number": 332,
+    "id": "q-336",
+    "number": 336,
     "title": "Monitoring and Observability - Runtime Fabric cluster log forwarding",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21111,8 +21052,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-333",
-    "number": 333,
+    "id": "q-337",
+    "number": 337,
     "title": "Monitoring and Observability - Diagnosing HTTP 429 responses",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21174,8 +21115,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-334",
-    "number": 334,
+    "id": "q-338",
+    "number": 338,
     "title": "Monitoring and Observability - Custom Visualizer labels",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21237,8 +21178,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-335",
-    "number": 335,
+    "id": "q-339",
+    "number": 339,
     "title": "Monitoring and Observability - Titanium log search capability",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21300,8 +21241,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-336",
-    "number": 336,
+    "id": "q-340",
+    "number": 340,
     "title": "Monitoring and Observability - CloudHub worker unresponsiveness",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21363,8 +21304,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-337",
-    "number": 337,
+    "id": "q-341",
+    "number": 341,
     "title": "Monitoring and Observability - Visualizer error indicator",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21413,8 +21354,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-338",
-    "number": 338,
+    "id": "q-342",
+    "number": 342,
     "title": "Monitoring and Observability - Registering an implementation with API Manager",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21476,8 +21417,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-339",
-    "number": 339,
+    "id": "q-343",
+    "number": 343,
     "title": "Monitoring and Observability - Configuring the Visualizer node display name",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21539,8 +21480,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-340",
-    "number": 340,
+    "id": "q-344",
+    "number": 344,
     "title": "Monitoring and Observability - Visualizer policy compliance indicator",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21602,8 +21543,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-341",
-    "number": 341,
+    "id": "q-345",
+    "number": 345,
     "title": "Monitoring and Observability - Visualizer tags set via application properties",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21665,8 +21606,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-342",
-    "number": 342,
+    "id": "q-346",
+    "number": 346,
     "title": "Monitoring and Observability - Visualizer edges based on recent traffic",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21728,8 +21669,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-343",
-    "number": 343,
+    "id": "q-347",
+    "number": 347,
     "title": "Monitoring and Observability - Visualizer Editor permission for defined views",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
