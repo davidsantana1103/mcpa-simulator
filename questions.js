@@ -4206,7 +4206,16 @@ window.MCPA_QUESTIONS = [
         "text": "The downstream context translates the upstream model to protect its own model."
       }
     },
-    "references": {}
+    "references": {
+      "primary": {
+        "title": "Salesforce — Domain-Driven Design for Solution Architecture (bounded contexts, ACL)",
+        "url": "https://www.salesforce.com/blog/composing-complex-systems-domain-driven-design"
+      },
+      "secondary": {
+        "title": "MuleSoft Blog — Modeling domain data: canonical vs. bounded context models",
+        "url": "https://blogs.mulesoft.com/api-integration/strategy/overcome-the-challenges-of-evolving-legacy-architectures"
+      }
+    }
   },
   {
     "id": "q-071",
@@ -4256,7 +4265,16 @@ window.MCPA_QUESTIONS = [
         "text": "Translation adds effort the team does not need to protect a model it does not have."
       }
     },
-    "references": {}
+    "references": {
+      "primary": {
+        "title": "Salesforce — Domain-Driven Design for Solution Architecture (bounded contexts, ACL)",
+        "url": "https://www.salesforce.com/blog/composing-complex-systems-domain-driven-design"
+      },
+      "secondary": {
+        "title": "MuleSoft Blog — Modeling domain data: canonical vs. bounded context models",
+        "url": "https://blogs.mulesoft.com/api-integration/strategy/overcome-the-challenges-of-evolving-legacy-architectures"
+      }
+    }
   },
   {
     "id": "q-072",
@@ -4306,7 +4324,16 @@ window.MCPA_QUESTIONS = [
         "text": "A conformist downstream adopts the upstream model without influence."
       }
     },
-    "references": {}
+    "references": {
+      "primary": {
+        "title": "Salesforce — Domain-Driven Design for Solution Architecture (bounded contexts, ACL)",
+        "url": "https://www.salesforce.com/blog/composing-complex-systems-domain-driven-design"
+      },
+      "secondary": {
+        "title": "MuleSoft Blog — Modeling domain data: canonical vs. bounded context models",
+        "url": "https://blogs.mulesoft.com/api-integration/strategy/overcome-the-challenges-of-evolving-legacy-architectures"
+      }
+    }
   },
   {
     "id": "q-073",
@@ -4356,7 +4383,16 @@ window.MCPA_QUESTIONS = [
         "text": "Joint ownership is impossible when one side cannot change."
       }
     },
-    "references": {}
+    "references": {
+      "primary": {
+        "title": "Salesforce — Domain-Driven Design for Solution Architecture (bounded contexts, ACL)",
+        "url": "https://www.salesforce.com/blog/composing-complex-systems-domain-driven-design"
+      },
+      "secondary": {
+        "title": "MuleSoft Blog — Modeling domain data: canonical vs. bounded context models",
+        "url": "https://blogs.mulesoft.com/api-integration/strategy/overcome-the-challenges-of-evolving-legacy-architectures"
+      }
+    }
   },
   {
     "id": "q-074",
@@ -4406,7 +4442,16 @@ window.MCPA_QUESTIONS = [
         "text": "Implementation language does not determine the mapping relationship."
       }
     },
-    "references": {}
+    "references": {
+      "primary": {
+        "title": "Salesforce — Domain-Driven Design for Solution Architecture (bounded contexts, ACL)",
+        "url": "https://www.salesforce.com/blog/composing-complex-systems-domain-driven-design"
+      },
+      "secondary": {
+        "title": "MuleSoft Blog — Modeling domain data: canonical vs. bounded context models",
+        "url": "https://blogs.mulesoft.com/api-integration/strategy/overcome-the-challenges-of-evolving-legacy-architectures"
+      }
+    }
   },
   {
     "id": "q-075",
@@ -4467,7 +4512,16 @@ window.MCPA_QUESTIONS = [
         "text": "The downstream can translate the upstream model to protect its own."
       }
     },
-    "references": {}
+    "references": {
+      "primary": {
+        "title": "Salesforce — Domain-Driven Design for Solution Architecture (bounded contexts, ACL)",
+        "url": "https://www.salesforce.com/blog/composing-complex-systems-domain-driven-design"
+      },
+      "secondary": {
+        "title": "MuleSoft Blog — Modeling domain data: canonical vs. bounded context models",
+        "url": "https://blogs.mulesoft.com/api-integration/strategy/overcome-the-challenges-of-evolving-legacy-architectures"
+      }
+    }
   },
   {
     "id": "q-076",
@@ -16332,73 +16386,58 @@ window.MCPA_QUESTIONS = [
   {
     "id": "q-273",
     "number": 273,
-    "title": "API Monitoring - A logistics company needs to track API latency and usage across",
+    "title": "Monitoring - Which component generates API monitoring data",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
-      "API Monitoring"
+      "API Monitoring",
+      "Monitoring Components"
     ],
-    "prompt": "A logistics company needs to track API latency and usage across its shipment‑tracking services to meet a two‑week reporting deadline, but its budget only allows a single additional Anypoint subscription. Which approach BEST meets the requirements?",
+    "prompt": "An architect must identify which Anypoint Platform component generates the metrics used for API monitoring and alerting, so the team can report on latency and usage for its shipment-tracking APIs. Which component provides this data?",
     "options": [
       {
         "letter": "A",
-        "text": "Purchase an Anypoint Monitoring add‑on subscription and enable it for the shipment‑tracking APIs, then use the provided latency and usage dashboards."
+        "text": "Anypoint Monitoring, which collects API and Mule application metrics and exposes them through dashboards and alerts."
       },
       {
         "letter": "B",
-        "text": "Enable API Manager analytics on the existing subscription, which automatically records latency and usage without any extra cost."
+        "text": "Anypoint Exchange, which catalogs reusable API assets and their versions."
       },
       {
         "letter": "C",
-        "text": "Deploy a custom Mule flow that logs request timestamps to an external database and build a reporting dashboard in‑house."
+        "text": "API Designer, which defines and mocks API specifications."
       },
       {
         "letter": "D",
-        "text": "Install a third‑party APM agent (e. g., New Relic) on the Cloud Hub workers to collect latency metrics."
-      },
-      {
-        "letter": "E",
-        "text": "Use Anypoint Visualizer to view API traffic patterns and infer latency from flow diagrams."
-      },
-      {
-        "letter": "F",
-        "text": "Enable Runtime Manager alerts for high response times and manually aggregate the alerts for reporting."
+        "text": "API Manager, which applies policies to API instances but does not itself generate invocation metrics."
       }
     ],
-    "explanation": "The question tests knowledge of Mule Soft's monitoring capabilities and cost‑effective licensing options. Anypoint Monitoring is the only feature that can be added with a single extra subscription and immediately provides the detailed latency and usage metrics required for reporting, making option 1 the best fit. Options 2 and 5 confuse API Manager analytics and Visualizer with monitoring, but those features either require higher‑level licenses or do not deliver the needed metrics. Options 3, 4, and 6 propose custom or external solutions that either exceed the budget, are technically unsupported on Cloud Hub, or lack the required granularity, leading to missed deadlines or additional hidden costs. Learners should remember that when a limited budget allows only one additional subscription, the Monitoring add‑on is the purpose‑built, out‑of‑the‑box solution for API performance tracking.",
+    "explanation": "Correct answer: A. Anypoint Monitoring is the Anypoint Platform component that collects metrics for APIs and Mule applications and surfaces them through dashboards, custom charts, and alerts. It is the source of the latency, throughput, and error-rate data used for monitoring and alerting. Exchange is an asset catalog, API Designer defines specifications, and API Manager enforces policies; none of them is the metrics generator.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "This option is correct. Anypoint Monitoring is a dedicated add‑on that supplies out‑of‑the‑box latency, throughput, and error‑rate metrics for any API running on the platform, and it can be enabled with a single additional subscription. By using the built‑in dashboards, the company can generate accurate reports within the two‑week window without developing custom instrumentation."
+        "text": "Anypoint Monitoring collects API and application metrics and provides the dashboards and alerts built on that data."
       },
       "B": {
         "type": "Incorrect",
-        "text": "This option is incorrect. API Manager analytics are only available with an Enterprise‑level license or the separate Monitoring add‑on; they are not included in the basic subscription. Assuming they are free would lead to missing data and an inability to meet the reporting deadline, forcing the team to seek alternative solutions later."
+        "text": "Anypoint Exchange stores and catalogs reusable assets; it does not generate invocation metrics."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option is incorrect. While technically possible, creating custom logging, persisting timestamps, and building a dashboard would exceed the two‑week timeframe and require significant development effort. The approach also adds operational overhead and risk of inconsistent data collection, making it unsuitable for the tight deadline and limited budget."
+        "text": "API Designer is used to define and mock API specifications, not to collect runtime metrics."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This option is incorrect. Cloud Hub does not allow installation of external agents on its managed workers, and adding a third‑party APM would require another subscription beyond the single allowed one. Attempting this would result in a technical blocker and additional cost, preventing the company from meeting its reporting schedule."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. Anypoint Visualizer provides a visual map of integrations and their relationships but does not expose quantitative latency or usage statistics. Relying on it would give only a high‑level view and would not satisfy the detailed reporting requirement."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. Runtime Manager alerts are designed for threshold‑based notifications, not for systematic collection of latency and usage data. Manually aggregating alerts would be time‑consuming, error‑prone, and unlikely to produce the comprehensive metrics needed for a formal two‑week report."
+        "text": "API Manager applies policies to API instances; the invocation metrics themselves are produced by Anypoint Monitoring."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Monitoring — Metrics, Dashboards, and Alerting Overview",
-        "url": "https://docs.mulesoft.com/monitoring/#features"
+        "title": "Anypoint Monitoring Overview",
+        "url": "https://docs.mulesoft.com/monitoring/"
       },
       "secondary": {
-        "title": "Anypoint Monitoring — Anypoint Insights Performance Metrics",
-        "url": "https://docs.mulesoft.com/monitoring/anypoint-insights#insights-chart-reference"
+        "title": "Anypoint Monitoring - Metrics, Retention, and Limits FAQ",
+        "url": "https://docs.mulesoft.com/monitoring/am-faq"
       }
     },
     "correctAnswer": "A"
@@ -16406,147 +16445,117 @@ window.MCPA_QUESTIONS = [
   {
     "id": "q-274",
     "number": 274,
-    "title": "Monitoring - A manufacturing company wants real‑time visibility into",
+    "title": "Monitoring - Alerts for API invocation metrics",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
-      "Monitoring"
+      "Monitoring",
+      "Alerts"
     ],
-    "prompt": "A manufacturing company wants real‑time visibility into integration performance to meet its SLA of 99.9% uptime. What is the MOST appropriate action?",
+    "prompt": "A manufacturing company wants real-time visibility into integration performance and must be notified automatically when API error rates exceed a threshold, in order to meet a 99.9% uptime SLA. What should the architect configure?",
     "options": [
       {
         "letter": "A",
-        "text": "Increase the number of worker nodes in the Cloud Hub deployment."
+        "text": "Anypoint Monitoring dashboards together with alert policies on metrics such as response time, error rate, and throughput."
       },
       {
         "letter": "B",
-        "text": "Set up batch jobs to collect integration metrics every hour."
+        "text": "A batch job that exports Runtime Manager logs to a file every hour."
       },
       {
         "letter": "C",
-        "text": "Turn on static health checks that run once daily."
+        "text": "API Manager rate-limiting policies on all APIs."
       },
       {
         "letter": "D",
-        "text": "Enable Anypoint Monitoring with real‑time dashboards and alerts."
-      },
-      {
-        "letter": "E",
-        "text": "Use API Manager to enforce rate limiting on all APIs."
-      },
-      {
-        "letter": "F",
-        "text": "Deploy a custom logging solution that writes to a file system."
+        "text": "A custom Mule flow that writes request timestamps to an external database."
       }
     ],
-    "explanation": "The question tests knowledge of Mule Soft's monitoring capabilities and how they support SLA compliance. Real‑time visibility is essential for a 99.9% uptime guarantee, and Anypoint Monitoring provides continuous metrics, dashboards, and alerting that meet this need. Common misconceptions include assuming that scaling resources, batch metric collection, or simple health checks are sufficient for SLA monitoring, when in fact they either do not provide visibility or are too delayed. Rate limiting is a protective measure, not a monitoring tool, and custom file‑based logging lacks the immediacy and analytics needed for proactive management. Best practice is to enable Anypoint Monitoring, configure relevant thresholds, and integrate alerts with incident response processes to ensure rapid detection and remediation of integration issues.",
+    "explanation": "Correct answer: A. Anypoint Monitoring provides real-time dashboards and lets you define alert policies that notify you when a metric crosses a threshold, which is exactly what proactive SLA monitoring requires. A batch export (B) is not real-time, rate limiting (C) controls traffic rather than reporting on it, and a custom logging flow (D) is bespoke and does not provide built-in alerting.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. Adding more workers improves scalability and can reduce latency, but it does not provide any visibility into integration performance. Without monitoring, the company cannot detect failures or SLA breaches in real time, so uptime cannot be guaranteed."
+        "type": "Correct",
+        "text": "Dashboards plus alert policies on key metrics give real-time visibility and automatic notification when thresholds are crossed."
       },
       "B": {
         "type": "Incorrect",
-        "text": "This option is incorrect. Hourly batch collection introduces a significant delay between an issue occurring and its detection, which defeats the requirement for real‑time visibility. SLA compliance may be violated because problems could remain unnoticed for up to an hour."
+        "text": "Hourly batch exports are not real-time and do not raise alerts on threshold breaches."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option is incorrect. Daily health checks provide only a snapshot once per day and are far too infrequent for a 99.9% uptime SLA. Real‑time alerts are necessary to react promptly to any degradation or outage."
+        "text": "Rate limiting protects the backend by controlling traffic; it does not monitor or alert on error rates."
       },
       "D": {
-        "type": "Correct",
-        "text": "This option is correct. Anypoint Monitoring offers out‑of‑the‑box metrics, latency tracking, error rates, and customizable alerts that fire instantly when thresholds are crossed. With these capabilities, the manufacturing company can continuously watch integration health and act before SLA violations occur."
-      },
-      "E": {
         "type": "Incorrect",
-        "text": "This option is incorrect. Rate limiting protects downstream systems from overload but does not provide performance visibility or SLA tracking. It may even reduce throughput, which could hinder meeting the uptime target if not monitored properly."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. While logging can capture events, writing logs to a file system requires manual parsing and does not deliver real‑time metrics or alerts. The lack of centralized, searchable dashboards makes it unsuitable for meeting strict uptime requirements."
+        "text": "A custom logging flow is non-standard effort and provides no built-in alerting."
       }
     },
     "references": {
       "primary": {
-        "title": "Configuring Alerts in Anypoint Monitoring",
-        "url": "https://docs.mulesoft.com/monitoring/alerts-hf#create"
+        "title": "Anypoint Monitoring Overview",
+        "url": "https://docs.mulesoft.com/monitoring/"
       },
       "secondary": {
-        "title": "Anypoint Monitoring — Anypoint Insights Performance Metrics",
-        "url": "https://docs.mulesoft.com/monitoring/anypoint-insights#charts-performance"
+        "title": "Anypoint Monitoring - Metrics, Retention, and Limits FAQ",
+        "url": "https://docs.mulesoft.com/monitoring/am-faq"
       }
     },
-    "correctAnswer": "D"
+    "correctAnswer": "A"
   },
   {
     "id": "q-275",
     "number": 275,
-    "title": "API Monitoring - A logistics company with a 99.9% SLA requirement and a limited mo",
+    "title": "Monitoring - Alerts to define across API layers",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
-      "API Monitoring"
+      "API Monitoring",
+      "Alerts"
     ],
-    "prompt": "A logistics company with a 99.9% SLA requirement and a limited monitoring budget needs to ensure API health and receive timely alerts for performance degradation. Which TWO actions should be taken? (Select all correct answers)",
+    "prompt": "A logistics company with a 99.9% SLA requirement and a limited monitoring budget must ensure API health and be alerted when performance degrades. Which two actions should it take? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "Create an SLA policy in API Manager with response‑time and error‑rate thresholds and configure email notifications."
+        "text": "Configure alerts on API invocation metrics such as error rate and response time."
       },
       {
         "letter": "B",
-        "text": "Deploy a third‑party APM solution such as New Relic and integrate it with the APIs."
+        "text": "Rely on CloudHub autoscaling to detect and resolve degradation automatically."
       },
       {
         "letter": "C",
-        "text": "Enable Anypoint Monitoring (standard tier) and set up alerts for latency and throughput metrics."
+        "text": "Configure alerts on Mule application health metrics such as CPU and memory."
       },
       {
         "letter": "D",
-        "text": "Increase the number of runtime instances to achieve higher redundancy."
-      },
-      {
-        "letter": "E",
-        "text": "Schedule a nightly log‑analysis job to parse API logs for performance issues."
-      },
-      {
-        "letter": "F",
-        "text": "Configure automatic scaling rules based on CPU usage in Cloud Hub."
+        "text": "Schedule a nightly log-analysis job to detect performance issues."
       }
     ],
-    "explanation": "The question tests knowledge of cost‑effective monitoring and alerting strategies within the Mule Soft platform for high‑availability SLAs. API Manager SLA policies and the standard tier of Anypoint Monitoring together provide threshold‑based alerts for latency, error rates, and throughput, delivering real‑time visibility without extra licensing costs, which aligns with the limited budget. Common misconceptions include assuming that adding more instances or scaling automatically resolves monitoring needs, or that third‑party APM tools are required; these approaches either add cost or fail to provide timely alerts. Nightly log analysis and manual scaling do not meet the near‑real‑time detection required for a 99.9% SLA. Best practice is to leverage the native SLA policy and monitoring features, configure appropriate thresholds, and route alerts to the operations team through email or other integrated channels.",
+    "explanation": "Correct answers: A and C. The exam guide asks you to specify alerts for key metrics of API invocations across all API-led layers and for Mule applications. API invocation metrics (error rate, response time) catch problems at the API level, and Mule application metrics (CPU, memory) catch problems at the implementation level, so together they cover both. Autoscaling (B) reacts to load but does not detect or notify on SLA breaches, and a nightly job (D) is too slow to protect a 99.9% SLA.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Create an SLA policy in API Manager with response‑time and error‑rate thresholds and configure email notifications.: This is correct. API Manager’s SLA policies let you define quantitative thresholds such as latency and error percentage, and the platform can automatically send alerts when those thresholds are breached. With a 99.9% SLA, early notification of degradation helps the operations team remediate before the SLA is violated, and the feature is included in the standard subscription, keeping costs low."
+        "text": "Alerts on API invocation metrics detect degradation at the API level, which is a core exam objective."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Deploy a third‑party APM solution such as New Relic and integrate it with the APIs.: This is incorrect. While third‑party APM tools provide deep insights, they typically require additional licensing fees that exceed a limited monitoring budget. Moreover, Mule Soft already offers built‑in monitoring and alerting capabilities that are tightly integrated with API Manager, making an external tool redundant for basic SLA enforcement."
+        "text": "Autoscaling changes capacity; it neither detects nor notifies you about SLA degradation."
       },
       "C": {
         "type": "Correct",
-        "text": "Enable Anypoint Monitoring (standard tier) and set up alerts for latency and throughput metrics.: This is correct. The standard tier of Anypoint Monitoring is included with most subscriptions and allows you to create real‑time dashboards and threshold‑based alerts for key performance indicators. Timely alerts on latency or throughput spikes give the team the visibility needed to act quickly and protect the 99.9% SLA without incurring extra cost."
+        "text": "Alerts on Mule application health metrics (CPU, memory) detect problems at the implementation level."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Increase the number of runtime instances to achieve higher redundancy.: This is incorrect. Adding more instances can improve availability but does not provide any mechanism for detecting or alerting on performance degradation. Without monitoring and alerts, you would still be unaware of SLA breaches, and the additional instances increase operational cost, which conflicts with the limited budget constraint."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Schedule a nightly log‑analysis job to parse API logs for performance issues.: This is incorrect. Nightly batch processing introduces a significant delay; performance problems could go undetected for many hours, potentially causing SLA violations. Real‑time alerting is essential for a 99.9% SLA, and Mule Soft’s built‑in monitoring offers instantaneous notifications far more effective than delayed log analysis."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Configure automatic scaling rules based on CPU usage in Cloud Hub.: This is incorrect. Automatic scaling helps maintain capacity under load but does not generate alerts about API latency or error‑rate degradation. Scaling alone cannot guarantee SLA compliance; without monitoring thresholds and alerts, the team may miss subtle performance regressions that do not trigger scaling events."
+        "text": "A nightly job cannot provide the timely alerting a 99.9% SLA requires."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Monitoring — Compare Anypoint Monitoring and Runtime Manager Alerts",
-        "url": "https://docs.mulesoft.com/monitoring/alerts-hf#compare-anypoint-monitoring-alerts-and-runtime-manager-alerts"
+        "title": "Anypoint Monitoring Overview",
+        "url": "https://docs.mulesoft.com/monitoring/"
       },
       "secondary": {
-        "title": "API Manager — SLA Tiers and Client Application Contracts",
-        "url": "https://docs.mulesoft.com/api-manager/latest/api-contracts-landing-page#client-application-credentials"
+        "title": "Anypoint Monitoring - Metrics, Retention, and Limits FAQ",
+        "url": "https://docs.mulesoft.com/monitoring/am-faq"
       }
     },
     "correctAnswers": [
@@ -16557,73 +16566,58 @@ window.MCPA_QUESTIONS = [
   {
     "id": "q-276",
     "number": 276,
-    "title": "Monitoring - A regional healthcare provider handling protected patient data ne",
+    "title": "Monitoring - Audit trail for API and configuration changes",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
+      "Audit Logging",
       "Monitoring"
     ],
-    "prompt": "A regional healthcare provider handling protected patient data needs to implement monitoring that satisfies HIPAA audit requirements while minimizing additional licensing costs. What is the MOST appropriate action?",
+    "prompt": "A regional healthcare provider handling protected patient data must record who accessed or changed APIs and platform configuration, to satisfy an audit requirement, while minimizing additional licensing costs. What should the architect enable?",
     "options": [
       {
         "letter": "A",
-        "text": "Enable the built‑in Anypoint Platform audit logging (available with the standard license) and forward the logs to the organization’s existing SIEM for HIPAA‑compliant analysis."
+        "text": "The built-in Anypoint Platform audit log, which records user and administrative actions and can be exported."
       },
       {
         "letter": "B",
-        "text": "Purchase the Anypoint Monitoring Advanced add‑on to obtain pre‑built HIPAA compliance dashboards."
+        "text": "A custom Logger component in each flow that writes events to a database."
       },
       {
         "letter": "C",
-        "text": "Deploy a dedicated Cloud Hub v Core environment with the HIPAA compliance profile, which includes full‑stack monitoring out of the box."
+        "text": "Anypoint Monitoring API Analytics, relying on its default retention."
       },
       {
         "letter": "D",
-        "text": "Install an open‑source Prometheus server and scrape JMX metrics from the Mule runtime, then build custom alerts for audit purposes."
-      },
-      {
-        "letter": "E",
-        "text": "Rely exclusively on operating‑system syslog files generated by the Mule runtime, without enabling any Anypoint Platform logging features."
-      },
-      {
-        "letter": "F",
-        "text": "Enable API Manager analytics for all APIs and use its export feature to send data to a third‑party compliance reporting tool."
+        "text": "A third-party APM agent installed on the CloudHub workers."
       }
     ],
-    "explanation": "The question tests knowledge of HIPAA‑required audit logging versus cost‑effective monitoring choices within the Anypoint Platform. HIPAA mandates detailed logs of who accessed protected health information, when, and what actions were taken; the platform’s built‑in audit logging satisfies this need and is included with the standard license. Forwarding these logs to an existing SIEM provides the necessary retention, analysis, and reporting capabilities without incurring extra Mule Soft licensing fees. The other options either introduce unnecessary licensing costs, fail to capture the required audit data, or add operational complexity that does not align with HIPAA’s strict audit specifications. Learners should remember that leveraging native, no‑cost platform features and integrating with already‑licensed security tools is the recommended best practice for compliance‑driven monitoring.",
+    "explanation": "Correct answer: A. The Anypoint Platform audit log natively records user and administrative actions (for example, creating an application, requesting access, or resetting a client secret) and can be exported, which satisfies an audit requirement without extra licensing or custom code. A custom Logger (B) captures only what the flow chooses to log, API Analytics (C) records usage metrics rather than an audit trail of actions, and a third-party APM agent (D) does not produce the platform's audit records.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Enable the built‑in Anypoint Platform audit logging (available with the standard license) and forward the logs to the organization’s existing SIEM for HIPAA‑compliant analysis.: This option is correct because the core Anypoint Platform includes audit logging without extra licensing. HIPAA requires detailed access and transaction logs, which are captured by the built‑in audit feature. By forwarding these logs to an already‑licensed SIEM, the provider meets audit requirements while avoiding additional costs."
+        "text": "The built-in audit log records user and administrative actions and can be exported, meeting the audit requirement with no extra license."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Purchase the Anypoint Monitoring Advanced add‑on to obtain pre‑built HIPAA compliance dashboards.: This option is incorrect; although the Advanced add‑on provides richer visualizations, it introduces an additional license fee that the question explicitly wants to avoid. The dashboards are not required to satisfy the audit log content mandated by HIPAA. Selecting this would increase cost without providing unique compliance capabilities beyond the standard audit logs."
+        "text": "A custom Logger only captures the events the flow explicitly logs; it is not a complete audit trail."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Deploy a dedicated Cloud Hub v Core environment with the HIPAA compliance profile, which includes full‑stack monitoring out of the box.: This option is incorrect because provisioning dedicated v Cores solely for monitoring adds unnecessary infrastructure expense. While a HIPAA compliance profile ensures the environment meets security standards, it does not eliminate the need for audit logging, which is already available in the standard license. The extra cost contradicts the goal of minimizing licensing expenses."
+        "text": "API Analytics records usage metrics, not an audit trail of user and configuration changes."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Install an open‑source Prometheus server and scrape JMX metrics from the Mule runtime, then build custom alerts for audit purposes.: This option is incorrect; although Prometheus can collect performance metrics at no license cost, it does not capture the detailed audit events (who accessed what data and when) required by HIPAA. Building and maintaining custom alerting adds operational overhead and risk of missing required audit fields. Therefore it does not provide a compliant, cost‑effective solution."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Rely exclusively on operating‑system syslog files generated by the Mule runtime, without enabling any Anypoint Platform logging features.: This option is incorrect because OS‑level syslog lacks the granular, transaction‑level information that HIPAA audit rules demand, such as API request identifiers and user context. Without the platform’s audit logs, the provider would likely fail an audit review. Additionally, it ignores the built‑in capabilities that are already included at no extra cost."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Enable API Manager analytics for all APIs and use its export feature to send data to a third‑party compliance reporting tool.: This option is incorrect; API Manager analytics focuses on usage statistics and performance, not on the comprehensive audit trail needed for HIPAA. Exporting analytics data does not substitute for the required access and change logs. Moreover, it adds complexity and potential licensing for the third‑party tool, violating the cost‑minimization objective."
+        "text": "A third-party APM agent monitors performance and does not produce Anypoint Platform audit records."
       }
     },
     "references": {
       "primary": {
-        "title": "Access Management — Audit Logging and Audit Log Contents",
-        "url": "https://docs.mulesoft.com/access-management/audit-logging#audit-log-content"
+        "title": "Audit Logging in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/audit-logging"
       },
       "secondary": {
-        "title": "Anypoint Monitoring — Exporting Telemetry Data to Third-Party Systems",
-        "url": "https://docs.mulesoft.com/monitoring/telemetry-exporter#before-you-begin"
+        "title": "Anypoint Monitoring Overview",
+        "url": "https://docs.mulesoft.com/monitoring/"
       }
     },
     "correctAnswer": "A"
@@ -16631,286 +16625,235 @@ window.MCPA_QUESTIONS = [
   {
     "id": "q-277",
     "number": 277,
-    "title": "Logging Configuration - A logistics startup with a small Dev Ops crew discovers that erro",
+    "title": "Logging Configuration - Reducing log volume while keeping root-cause detail",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
-      "Logging Configuration"
+      "Logging Configuration",
+      "Logging"
     ],
-    "prompt": "A logistics startup with a small Dev Ops crew discovers that error logs are overwhelming the console, and they need to configure logging to capture only critical events without losing root‑cause visibility. What should be done FIRST?",
+    "prompt": "A logistics startup's Mule application is flooding the console with logs, and the team needs to capture only critical events without losing root-cause visibility. What should it do first?",
     "options": [
       {
         "letter": "A",
-        "text": "Increase the console’s buffer size so more log lines can be displayed before they are overwritten."
+        "text": "Set the root logger level to ERROR in the runtime's log4j2 configuration so only errors and their stack traces are emitted."
       },
       {
         "letter": "B",
-        "text": "Disable all application logging and rely solely on Anypoint Monitoring alerts for error detection."
+        "text": "Disable application logging and rely only on Anypoint Monitoring alerts."
       },
       {
         "letter": "C",
-        "text": "Edit the Mule runtime’s log4j2. xml (or log4j2. properties) to set the root logger level to ERROR, preserving stack traces for critical failures."
+        "text": "Add a Logger component at INFO level to every flow."
       },
       {
         "letter": "D",
-        "text": "Add a Logger component to each flow and configure it to log at INFO level for every message passing through."
-      },
-      {
-        "letter": "E",
-        "text": "Redirect all logs to an external file while keeping the console logger at INFO level."
-      },
-      {
-        "letter": "F",
-        "text": "Enable the Log Masking feature to hide sensitive data, assuming that will reduce the amount of log output displayed."
+        "text": "Increase the console buffer size so more log lines are retained."
       }
     ],
-    "explanation": "The question tests knowledge of Mule Soft logging best practices, specifically how to reduce console noise while preserving diagnostic detail. The appropriate first action is to lower the root logger's level to ERROR in the log4j2 configuration, which filters out INFO and DEBUG messages yet retains full stack traces for failures. Common misconceptions include increasing buffer size, disabling logging, or adding more INFO loggers—each either fails to address volume or eliminates essential information. Redirecting logs to a file or enabling log masking improve security or persistence but do not solve the immediate console overload problem. Proper logging hygiene starts with level filtering, then proceeds to targeted package‑level adjustments or external log aggregation as needed.",
+    "explanation": "Correct answer: A. Mule's logging is driven by Log4j2; raising the root logger level to ERROR suppresses lower-severity messages while still emitting errors and their stack traces, which preserves root-cause visibility. Disabling logging (B) removes the evidence needed to diagnose failures, adding INFO loggers (C) increases volume rather than reducing it, and enlarging the console buffer (D) keeps more noise instead of filtering it.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Increase the console’s buffer size so more log lines can be displayed before they are overwritten.: This option is incorrect because expanding the buffer does not reduce the volume of log output; it merely allows more lines to be stored temporarily. The underlying problem—excessive logging noise—remains, making it harder to spot critical events. In a production setting, a larger buffer can even hide the issue longer, delaying incident response."
+        "type": "Correct",
+        "text": "Setting the root logger to ERROR filters out lower-severity noise while retaining errors and stack traces."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Disable all application logging and rely solely on Anypoint Monitoring alerts for error detection.: Turning off logging altogether is a common misconception; while monitoring can surface errors, the detailed stack trace needed for root‑cause analysis is lost. Without logs, developers cannot reproduce issues or understand the context in which they occurred. Best practice is to filter logs, not eliminate them."
+        "text": "Disabling logging removes the diagnostics you need to investigate incidents."
       },
       "C": {
-        "type": "Correct",
-        "text": "Edit the Mule runtime’s log4j2. xml (or log4j2. properties) to set the root logger level to ERROR, preserving stack traces for critical failures.: This is the correct first step. By lowering the root logger to ERROR, only high‑severity events are written to the console, dramatically reducing noise while still capturing the full exception information needed for troubleshooting. After this, finer‑grained logger levels can be added for specific packages if additional context is required."
+        "type": "Incorrect",
+        "text": "Adding INFO loggers increases log volume rather than reducing it."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Add a Logger component to each flow and configure it to log at INFO level for every message passing through.: Placing INFO‑level loggers in every flow will increase log volume, the opposite of what is required. Even though it provides detailed visibility, it overwhelms the console and makes critical errors harder to locate. This approach contradicts the goal of capturing only critical events."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Redirect all logs to an external file while keeping the console logger at INFO level.: Redirecting logs to a file is useful for long‑term retention, but keeping the console at INFO still floods the console with unnecessary entries. The primary issue—console overload—remains unresolved, and operators will still have difficulty spotting critical errors in real time. The first step should address the console output directly."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Enable the Log Masking feature to hide sensitive data, assuming that will reduce the amount of log output displayed.: Log masking only obscures sensitive fields; it does not affect the number of log statements generated. The console will still be saturated with the same volume of messages, making it harder to identify critical events. This option addresses data privacy, not log verbosity."
+        "text": "A larger console buffer retains more output but does not filter it."
       }
     },
     "references": {
       "primary": {
-        "title": "Logging in Mule — Changing the Log Level and Configuring Logging",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/logging-in-mule#change-the-log-level"
+        "title": "Anypoint Monitoring - Metrics, Retention, and Limits FAQ",
+        "url": "https://docs.mulesoft.com/monitoring/am-faq"
       },
       "secondary": {
-        "title": "Logging in Mule — Configuring Custom Logging Settings",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/logging-in-mule#configuring-custom-logging-settings"
+        "title": "Anypoint Monitoring Overview",
+        "url": "https://docs.mulesoft.com/monitoring/"
       }
     },
-    "correctAnswer": "C"
+    "correctAnswer": "A"
   },
   {
     "id": "q-278",
     "number": 278,
-    "title": "Monitoring Deployment - A federal government agency is required to store all monitoring d",
+    "title": "Monitoring Deployment - Keeping monitoring data on-premises",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
-      "Monitoring Deployment"
+      "Monitoring Deployment",
+      "Data Residency"
     ],
-    "prompt": "A federal government agency is required to store all monitoring data on-premises for security clearance reasons, yet wants to leverage Anypoint Monitoring’s dashboards. Which option should the team choose?",
+    "prompt": "A federal government agency must store all monitoring data on-premises for security reasons, yet still wants to use Anypoint Monitoring dashboards. What should the architect recommend?",
     "options": [
       {
         "letter": "A",
-        "text": "Deploy Anypoint Monitoring Private Cloud Edition (PCE) on‑premises and connect it to the Saa S dashboards."
+        "text": "Deploy Anypoint Monitoring on Anypoint Platform Private Cloud Edition (PCE) so that monitoring data stays on-premises."
       },
       {
         "letter": "B",
-        "text": "Use the standard Saa S Anypoint Monitoring service, which stores data in Mule Soft’s cloud."
+        "text": "Use the standard SaaS Anypoint Monitoring service, which stores data in MuleSoft's cloud."
       },
       {
         "letter": "C",
-        "text": "Enable Runtime Manager’s on‑premises monitoring view, which provides local dashboards only."
+        "text": "Export monitoring data to CSV files and upload them manually to the platform."
       },
       {
         "letter": "D",
-        "text": "Export monitoring data to a CSV file and manually upload it to the Anypoint Monitoring portal."
-      },
-      {
-        "letter": "E",
-        "text": "Use Anypoint Analytics instead of Monitoring, storing data in an on‑premises database."
-      },
-      {
-        "letter": "F",
-        "text": "Install the Anypoint Monitoring Bridge to stream data to a private Elasticsearch cluster while still using the Saa S dashboards."
+        "text": "Install the Anypoint Monitoring agent on-premises but continue to use the SaaS dashboards and storage."
       }
     ],
-    "explanation": "The question tests knowledge of how Mule Soft enables on‑premises storage of monitoring data while still providing the full Saa S dashboard experience. Anypoint Monitoring Private Cloud Edition (PCE) is the only officially supported solution that satisfies strict data residency requirements for government agencies and retains the rich visualizations of the cloud dashboards. Options that rely on the standard Saa S service, Runtime Manager limited views, manual CSV uploads, Anypoint Analytics, or a non‑existent monitoring bridge are common misconceptions because they either move data off‑premises or do not provide the needed depth of monitoring. Practitioners should remember that PCE is designed specifically for regulated environments where data cannot leave the organization’s network, and it integrates transparently with the existing Anypoint Monitoring UI. Selecting the correct deployment model ensures compliance, continuous observability, and avoids costly re‑engineering later.",
+    "explanation": "Correct answer: A. Anypoint Platform Private Cloud Edition (PCE) supports Anypoint Monitoring, which keeps monitoring data within the customer's on-premises environment, satisfying the residency requirement. The SaaS service (B) stores data in MuleSoft's cloud, manual CSV exports (C) are not a monitoring solution, and the on-premises agent (D) still forwards data to the cloud endpoint, so the data does not stay on-premises.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Deploy Anypoint Monitoring Private Cloud Edition (PCE) on‑premises and connect it to the Saa S dashboards.: This is the correct choice. Anypoint Monitoring PCE stores raw monitoring data within the agency’s own data center, satisfying on‑premises retention requirements, while still feeding the cloud‑hosted dashboards for visualization. It provides the same rich UI as the Saa S service without moving sensitive data outside the secure environment."
+        "text": "Anypoint Monitoring on PCE runs on-premises and keeps monitoring data inside the customer environment."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Use the standard Saa S Anypoint Monitoring service, which stores data in Mule Soft’s cloud.: This option is incorrect because the Saa S service stores all monitoring data in Mule Soft’s multi‑tenant cloud, violating the agency’s mandate to keep data on‑premises. While it offers immediate dashboards, it does not meet compliance constraints for federal security clearance. Selecting this would expose the data to external storage and could lead to audit findings."
+        "text": "The SaaS service stores monitoring data in MuleSoft's cloud, which violates the residency requirement."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Enable Runtime Manager’s on‑premises monitoring view, which provides local dashboards only.: This answer is incorrect. Runtime Manager does offer limited on‑premises metrics, but its dashboards are far less comprehensive than Anypoint Monitoring and lack many advanced analytics features. Relying solely on this view would not give the team the full monitoring capabilities they need."
+        "text": "Manual CSV export is not a functioning monitoring capability."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Export monitoring data to a CSV file and manually upload it to the Anypoint Monitoring portal.: This is incorrect. Anypoint Monitoring does not support manual CSV uploads; data must be streamed in real time via the monitoring agents. Attempting this workflow would break data continuity and render dashboards stale or incomplete, defeating the purpose of continuous monitoring."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Use Anypoint Analytics instead of Monitoring, storing data in an on‑premises database.: This option is incorrect. Anypoint Analytics is designed for business‑level insights and does not capture the low‑level runtime metrics required for operational monitoring. Moreover, it still relies on Mule Soft’s cloud services for data processing, so it would not satisfy the on‑premises storage requirement."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Install the Anypoint Monitoring Bridge to stream data to a private Elasticsearch cluster while still using the Saa S dashboards.: This answer is incorrect. While the concept of a monitoring bridge sounds plausible, Mule Soft does not provide an official bridge component that streams data to a private Elasticsearch cluster for use with the Saa S dashboards. The only supported method for on‑premises storage with full dashboard functionality is the Private Cloud Edition."
+        "text": "The on-premises agent still sends monitoring data to the Anypoint Monitoring cloud endpoint."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint Monitoring on Anypoint Platform PCE (on-premises)",
+        "url": "https://docs.mulesoft.com/private-cloud/3.2/anypoint-monitoring"
+      },
+      "secondary": {
+        "title": "MuleSoft Blog - Government Cloud Monitoring Best Practices for Hybrid Runtimes",
+        "url": "https://blogs.mulesoft.com/dev-guides/government-cloud-monitoring-best-practices"
+      }
+    },
     "correctAnswer": "A"
   },
   {
     "id": "q-279",
     "number": 279,
-    "title": "Monitoring - A manufacturing plant’s ERP integration shows intermittent latenc",
+    "title": "Monitoring - Isolating a latency bottleneck",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
-      "Monitoring"
+      "Monitoring",
+      "Troubleshooting"
     ],
-    "prompt": "A manufacturing plant’s ERP integration shows intermittent latency spikes during peak shifts, and the team must select the most effective troubleshooting tool to isolate the bottleneck quickly. What is the MOST appropriate action?",
+    "prompt": "A manufacturing plant's ERP integration shows intermittent latency spikes during peak shifts, and the team must isolate the bottleneck quickly. Which Anypoint Platform capability should it use first?",
     "options": [
       {
         "letter": "A",
-        "text": "Activate the Mule Debugger in Anypoint Studio and step through the flow during peak hours."
+        "text": "Anypoint Monitoring's flow and transaction metrics to identify the slow step in the integration."
       },
       {
         "letter": "B",
-        "text": "Increase the JVM heap size on the runtime to handle higher load."
+        "text": "Increase the JVM heap size on the runtime."
       },
       {
         "letter": "C",
-        "text": "Enable API Manager throttling policies to limit request rates."
+        "text": "Add API Manager throttling policies to limit request rates."
       },
       {
         "letter": "D",
-        "text": "Enable Anypoint Monitoring’s transaction tracing for the ERP integration and analyze the latency metrics."
-      },
-      {
-        "letter": "E",
-        "text": "Review the application logs for ERROR‑level entries after the spike occurs."
-      },
-      {
-        "letter": "F",
-        "text": "Scale the deployment horizontally by adding more Cloud Hub workers without further analysis."
+        "text": "Add more CloudHub workers without further analysis."
       }
     ],
-    "explanation": "The question tests knowledge of Mule Soft performance troubleshooting, specifically the use of built‑in observability tools to quickly locate latency sources. Anypoint Monitoring’s transaction tracing provides granular, end‑to‑end timing data that highlights the exact processor or external call responsible for spikes, making it the most efficient method for rapid isolation. Common misconceptions include assuming that debugging, log review, or simple resource scaling will directly reveal performance problems, when in reality they either disrupt production, lack timing detail, or treat symptoms rather than causes. Proper practice is to leverage the runtime’s monitoring and tracing capabilities first, then apply targeted fixes such as connector tuning or batch size adjustments. Understanding when and how to use these tools ensures minimal downtime and cost‑effective resolution of performance issues.",
+    "explanation": "Correct answer: A. Anypoint Monitoring exposes per-flow and per-processor metrics, so you can see which step is slow and target the fix. Raising heap (B), throttling requests (C), and scaling out (D) are all changes that may or may not help; without metrics you are guessing at the cause of the latency.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Activate the Mule Debugger in Anypoint Studio and step through the flow during peak hours.: This option is incorrect. The Mule Debugger requires a development environment and cannot be attached to a live, high‑traffic production instance without disrupting traffic. Using it during peak shifts would likely introduce additional latency and could cause transaction failures, making it unsuitable for rapid bottleneck isolation."
+        "type": "Correct",
+        "text": "Flow and transaction metrics reveal which step is slow, letting the team fix the actual bottleneck."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Increase the JVM heap size on the runtime to handle higher load.: This option is incorrect. While insufficient heap can cause performance degradation, simply increasing heap does not identify where the latency originates and may mask underlying issues such as inefficient transformations or network delays. Without pinpointing the root cause, the team risks over‑provisioning resources without solving the real bottleneck."
+        "text": "Increasing heap addresses memory pressure, not necessarily the latency source."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Enable API Manager throttling policies to limit request rates.: This option is incorrect. Throttling reduces the number of incoming requests but does not help diagnose why the existing traffic is experiencing spikes. Applying throttling could degrade business operations during peak shifts without providing insight into the actual component causing latency."
+        "text": "Throttling limits traffic; it does not diagnose where the time is spent."
       },
       "D": {
-        "type": "Correct",
-        "text": "Enable Anypoint Monitoring’s transaction tracing for the ERP integration and analyze the latency metrics.: This option is correct. Transaction tracing captures detailed timing information for each processor in a flow, allowing the team to see exactly which step or external system is slowing down during peak periods. By reviewing the trace data in Anypoint Monitoring, they can isolate the bottleneck quickly and take targeted remediation actions, such as optimizing a connector or adjusting batch sizes."
-      },
-      "E": {
         "type": "Incorrect",
-        "text": "Review the application logs for ERROR‑level entries after the spike occurs.: This option is incorrect. Error logs indicate failures, not performance delays; latency spikes often manifest without error entries. Relying solely on error logs would miss the subtle timing information needed to pinpoint the slow path, leading to prolonged troubleshooting cycles."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Scale the deployment horizontally by adding more Cloud Hub workers without further analysis.: This option is incorrect. Adding workers may temporarily alleviate symptoms but does not address the root cause and incurs unnecessary cost. Scaling without diagnostics can also introduce new complexities, such as session affinity issues, while the underlying latency issue remains unresolved."
+        "text": "Adding workers is a change made without diagnosis and may not resolve the bottleneck."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Monitoring — Traces for End-to-End Request Visibility",
-        "url": "https://docs.mulesoft.com/monitoring/traces#trace-overview"
+        "title": "Anypoint Monitoring Overview",
+        "url": "https://docs.mulesoft.com/monitoring/"
       },
       "secondary": {
-        "title": "Anypoint Monitoring — Anypoint Insights Flow Metrics",
-        "url": "https://docs.mulesoft.com/monitoring/anypoint-insights#entity-metrics-app-flows"
+        "title": "API Visualizer (Anypoint Visualizer) Overview",
+        "url": "https://docs.mulesoft.com/visualizer/"
       }
     },
-    "correctAnswer": "D"
+    "correctAnswer": "A"
   },
   {
     "id": "q-280",
     "number": 280,
-    "title": "API Monitoring - A fintech startup wants to set up real‑time alerts for API SLA br",
+    "title": "Monitoring - Real-time alerts for SLA breaches",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
-      "API Monitoring"
+      "API Monitoring",
+      "Alerts"
     ],
-    "prompt": "A fintech startup wants to set up real‑time alerts for API SLA breaches while keeping operational overhead low and staying within its $20,000 annual budget for monitoring services. Which approach BEST meets the requirements?",
+    "prompt": "A fintech startup wants to be alerted in real time when API SLA thresholds are breached, with low operational overhead. What should the architect configure?",
     "options": [
       {
         "letter": "A",
-        "text": "Enable Anypoint Monitoring’s built‑in SLA alerting and configure email notifications directly from the platform."
+        "text": "Anypoint Monitoring alert policies that trigger notifications when the monitored metrics cross defined thresholds."
       },
       {
         "letter": "B",
-        "text": "Deploy a custom Mule Soft application that polls the API Manager metrics every minute and writes breach events to a My SQL database, then uses a cron job to send SMS alerts."
+        "text": "A custom application that polls API Manager metrics and writes breach events to a database."
       },
       {
         "letter": "C",
-        "text": "Subscribe to a third‑party APM tool (e. g., New Relic) and integrate it via the Anypoint Connector, paying for a separate license."
+        "text": "A third-party APM tool integrated through a connector."
       },
       {
         "letter": "D",
-        "text": "Use Anypoint Runtime Manager’s health check alerts and manually review the logs daily to spot SLA breaches."
-      },
-      {
-        "letter": "E",
-        "text": "Configure API Manager policies to trigger a webhook to a serverless function that posts to a Slack channel, and host the function on AWS Lambda with a pay‑as‑you‑go model."
-      },
-      {
-        "letter": "F",
-        "text": "Purchase a dedicated on‑premises monitoring appliance that scrapes API metrics via JMX and raises alerts through an SNMP trap."
+        "text": "Manual daily review of Runtime Manager health-check alerts."
       }
     ],
-    "explanation": "The question tests the candidate's understanding of Mule Soft's native monitoring capabilities and cost‑effective alerting strategies. Anypoint Monitoring provides out‑of‑the‑box SLA breach detection with email notifications, requiring no extra development or third‑party licensing, thus keeping both operational overhead and spend low. Options that involve custom polling, external APM tools, manual log reviews, serverless webhook pipelines, or costly hardware all introduce additional complexity, maintenance effort, or expense that conflict with the startup's constraints. Common misconceptions include assuming that any monitoring solution must be built in‑house or that third‑party tools are automatically superior; in reality, leveraging built‑in features is often the most efficient path. Best practice is to first evaluate Mule Soft’s native observability suite before extending the architecture with external services.",
+    "explanation": "Correct answer: A. Anypoint Monitoring alert policies evaluate the monitored metrics and send notifications when a threshold is crossed, giving real-time alerting with no custom code. A custom polling application (B) adds maintenance overhead, a third-party APM (C) adds cost and integration effort, and manual review (D) is neither real-time nor low-overhead.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Enable Anypoint Monitoring’s built‑in SLA alerting and configure email notifications directly from the platform.: This option is correct. Anypoint Monitoring includes native SLA‑breach detection and can send email alerts without any additional infrastructure or code, which keeps operational overhead minimal. Because the capability is part of the standard Anypoint subscription, it fits comfortably within a $20,000 annual monitoring budget, making it the most efficient choice for the startup."
+        "text": "Built-in alert policies notify you in real time when metrics breach thresholds, with minimal overhead."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Deploy a custom Mule Soft application that polls the API Manager metrics every minute and writes breach events to a My SQL database, then uses a cron job to send SMS alerts.: This option is incorrect. Building a custom polling application introduces significant development and maintenance effort, increasing operational overhead. The need for a database, cron jobs, and SMS gateway also adds recurring costs that can quickly exceed the $20,000 budget, especially when scaling."
+        "text": "A custom polling application adds code and maintenance overhead."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Subscribe to a third‑party APM tool (e. g., New Relic) and integrate it via the Anypoint Connector, paying for a separate license.: This option is incorrect. While third‑party APM tools can provide robust monitoring, they require separate licensing fees that are likely to push total spend beyond the $20,000 limit. Additionally, the integration adds complexity and creates a dependency on an external vendor, increasing overhead."
+        "text": "A third-party APM adds licensing cost and integration effort."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Use Anypoint Runtime Manager’s health check alerts and manually review the logs daily to spot SLA breaches.: This option is incorrect. Runtime Manager health checks focus on instance health, not on API performance metrics such as response time or latency SLA. Manual daily log review is neither real‑time nor scalable, leading to missed breaches and higher operational effort."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Configure API Manager policies to trigger a webhook to a serverless function that posts to a Slack channel, and host the function on AWS Lambda with a pay‑as‑you‑go model.: This option is plausible but incorrect for the given constraints. Although serverless functions are cost‑effective, the solution still requires custom policy configuration, webhook management, and Lambda development, raising operational overhead beyond the simplest native approach. The added components also introduce potential latency and reliability concerns."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Purchase a dedicated on‑premises monitoring appliance that scrapes API metrics via JMX and raises alerts through an SNMP trap.: This option is incorrect. An on‑premises appliance entails a large upfront capital expense and ongoing maintenance, which far exceeds the $20,000 annual budget for a startup. Moreover, the approach adds unnecessary complexity compared to the cloud‑native monitoring already available in Anypoint."
+        "text": "Manual daily review is slow and does not provide real-time alerting."
       }
     },
     "references": {
       "primary": {
-        "title": "API Manager — Instance Alerts for APIs (Response Time and Response Code Alerts with Email Notifications)",
-        "url": "https://docs.mulesoft.com/api-manager/latest/using-api-alerts#instance-alerts"
+        "title": "Anypoint Monitoring Overview",
+        "url": "https://docs.mulesoft.com/monitoring/"
       },
       "secondary": {
-        "title": "API Manager — Reviewing SLA Tiers Concepts (Monitoring SLA Performance)",
-        "url": "https://docs.mulesoft.com/api-manager/latest/defining-sla-tiers#preamble"
+        "title": "Anypoint Monitoring - Metrics, Retention, and Limits FAQ",
+        "url": "https://docs.mulesoft.com/monitoring/am-faq"
       }
     },
     "correctAnswer": "A"
@@ -16918,414 +16861,359 @@ window.MCPA_QUESTIONS = [
   {
     "id": "q-281",
     "number": 281,
-    "title": "API Analytics - A large retail enterprise is rolling out API analytics across its",
+    "title": "API Analytics - Balancing insight, budget, and custom dashboards",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
-      "API Analytics"
+      "API Analytics",
+      "Monitoring"
     ],
-    "prompt": "A large retail enterprise is rolling out API analytics across its e‑commerce platform and must balance detailed usage insights with a strict $100,000 analytics budget, while also needing custom dashboards for business stakeholders. Which TWO actions should be taken? (Select all correct answers)",
+    "prompt": "A large retail enterprise is rolling out API analytics and must balance detailed usage insight with a strict budget, while also giving business stakeholders custom dashboards. Which two actions should it take? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "Enable full‑suite API Analytics for all APIs and purchase the premium Anypoint Analytics add‑on."
+        "text": "Enable API analytics only for the high-value APIs that need the insight."
       },
       {
         "letter": "B",
-        "text": "Enable analytics only for high‑traffic or revenue‑critical APIs and use the API Manager’s usage sampling feature to limit data volume."
+        "text": "Enable full-suite analytics for every API and purchase a premium analytics add-on."
       },
       {
         "letter": "C",
-        "text": "Rely exclusively on Anypoint Visualizer to get detailed usage insights without configuring API Analytics."
+        "text": "Export analytics data through the Anypoint Monitoring metrics API to an external BI tool for custom dashboards."
       },
       {
         "letter": "D",
-        "text": "Turn off all analytics and ask developers to manually log API calls in a spreadsheet."
-      },
-      {
-        "letter": "E",
-        "text": "Export raw analytics data via the Metrics API to an external BI tool (e. g., Power BI) where custom stakeholder dashboards can be built at no extra Anypoint cost."
-      },
-      {
-        "letter": "F",
-        "text": "Buy a separate third‑party API monitoring Saa S and duplicate the data collection, assuming it will be cheaper than Anypoint."
+        "text": "Rely on Anypoint Visualizer alone for detailed usage insight."
       }
     ],
-    "explanation": "The question tests knowledge of cost‑effective API analytics strategies on the Anypoint Platform. The correct actions involve selective enablement of analytics for high‑value APIs and leveraging the Metrics API to feed data into external BI tools for custom dashboards, both of which help stay within a strict budget while still providing detailed insights. Common misconceptions include assuming that full‑suite analytics or visualizer alone will meet all needs, or that manual logging or third‑party duplication can replace platform‑native capabilities without added cost. Best practice is to use the platform's sampling and selective analytics features to control data volume, and to export data for downstream reporting, thereby balancing insight depth with financial constraints. Understanding these trade‑offs is essential for architects designing scalable, budget‑aware monitoring solutions.",
+    "explanation": "Correct answers: A and C. Scoping analytics to the APIs that need them controls data volume and cost, and exporting the metrics through the Anypoint Monitoring metrics API lets stakeholders build custom dashboards in a BI tool without buying more platform capability. Enabling everything with a premium add-on (B) increases cost, and Visualizer (D) shows the application-network graph and its traffic, not detailed usage analytics.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Enable full‑suite API Analytics for all APIs and purchase the premium Anypoint Analytics add‑on.: This option is incorrect because enabling the full suite for every API and adding the premium add‑on quickly exceeds the $100,000 budget. The premium add‑on charges per API call volume, and a large retail e‑commerce platform typically generates high traffic, leading to substantial costs. In practice, organizations that take this approach often run into budget overruns and have to cut other critical services."
+        "type": "Correct",
+        "text": "Scoping analytics to high-value APIs keeps data volume and cost under control."
       },
       "B": {
-        "type": "Correct",
-        "text": "Enable analytics only for high‑traffic or revenue‑critical APIs and use the API Manager’s usage sampling feature to limit data volume.: This option is correct. By focusing analytics on the most important APIs and applying usage sampling, the enterprise captures essential insights while controlling the amount of stored data, which directly reduces licensing costs. Real‑world deployments use this selective approach to stay within tight budgets while still obtaining actionable metrics for key services."
+        "type": "Incorrect",
+        "text": "Enabling everything plus a premium add-on works against the strict budget."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Rely exclusively on Anypoint Visualizer to get detailed usage insights without configuring API Analytics.: This option is incorrect because Anypoint Visualizer provides topology and dependency maps, not granular usage statistics such as request counts, latency, or error rates. Stakeholders needing detailed performance and consumption data would not receive the necessary information. Companies that depend only on Visualizer often find they lack the insight needed for capacity planning and business reporting."
+        "type": "Correct",
+        "text": "Exporting metrics to an external BI tool enables custom dashboards without extra platform spend."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Turn off all analytics and ask developers to manually log API calls in a spreadsheet.: This option is incorrect and impractical. Manual logging is error‑prone, does not scale with high‑volume traffic, and provides no real‑time visibility for operational teams. In real scenarios, such an approach leads to missed SLA violations and an inability to make data‑driven decisions."
-      },
-      "E": {
-        "type": "Correct",
-        "text": "Export raw analytics data via the Metrics API to an external BI tool (e. g., Power BI) where custom stakeholder dashboards can be built at no extra Anypoint cost.: This option is correct. The Metrics API allows the platform to pull usage data out of Anypoint without incurring additional analytics licensing fees, and external BI platforms can create tailored dashboards for business users. Enterprises commonly adopt this pattern to keep costs low while delivering rich visualizations that match stakeholder requirements."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Buy a separate third‑party API monitoring Saa S and duplicate the data collection, assuming it will be cheaper than Anypoint.: This option is incorrect because duplicating data collection adds integration overhead and likely increases total cost of ownership rather than reducing it. Third‑party tools also require separate licensing, and the lack of native integration can cause data consistency issues. Organizations that attempt this often encounter fragmented monitoring and higher than anticipated expenses."
+        "text": "Visualizer shows the application-network graph; it is not a detailed usage-analytics tool."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint Monitoring Overview",
+        "url": "https://docs.mulesoft.com/monitoring/"
+      },
+      "secondary": {
+        "title": "Anypoint Monitoring - Metrics, Retention, and Limits FAQ",
+        "url": "https://docs.mulesoft.com/monitoring/am-faq"
+      }
+    },
     "correctAnswers": [
-      "B",
-      "E"
+      "A",
+      "C"
     ]
   },
   {
     "id": "q-282",
     "number": 282,
-    "title": "Observability - A healthcare integration team must configure logging to retain au",
+    "title": "Observability - Audit logging and compliance alerting",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
-      "Observability"
+      "Observability",
+      "Audit Logging"
     ],
-    "prompt": "A healthcare integration team must configure logging to retain audit-level records, enable distributed tracing for end-to-end visibility, and set alert thresholds for any deviation from compliance metrics, all under a tight regulatory timeline. Which THREE options meet the requirements? (Select all correct answers)",
+    "prompt": "A healthcare integration team must retain audit-level records and detect any deviation from its compliance metrics. Which two actions should it take? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "Use Anypoint Visualizer’s flow diagrams; they provide end‑to‑end visibility without needing distributed tracing."
+        "text": "Enable audit-level logging and configure the appropriate retention for those records."
       },
       {
         "letter": "B",
-        "text": "Enable audit‑level logging via Log4j2 and configure a 180‑day retention policy in Anypoint Monitoring."
+        "text": "Create an Anypoint Monitoring alert policy that fires when a compliance metric deviates beyond its threshold."
       },
       {
         "letter": "C",
-        "text": "Turn on distributed tracing by setting the MULE_TRACING_ENABLED property and exporting spans to an Open Telemetry collector."
+        "text": "Set the runtime log level to INFO and rely on autoscaling logs for compliance."
       },
       {
         "letter": "D",
-        "text": "Create a custom Anypoint Monitoring alert policy that fires when any compliance metric deviates beyond a defined threshold."
-      },
-      {
-        "letter": "E",
-        "text": "Set the Mule runtime’s default log level to INFO and rely on Cloud Hub auto‑scaling logs for compliance."
-      },
-      {
-        "letter": "F",
-        "text": "Use Anypoint Security policies to encrypt audit logs at rest; this automatically satisfies retention requirements."
+        "text": "Use Anypoint Visualizer flow diagrams in place of configuring alerts."
       }
     ],
-    "explanation": "The question tests knowledge of Mule Soft’s observability features—logging, distributed tracing, and alerting—as they relate to strict regulatory compliance. Correct solutions must ensure audit‑level logs are captured and retained, enable true distributed tracing for end‑to‑end request visibility, and configure proactive alerts on compliance metric deviations. Options 2, 3, and 4 each address one of these pillars directly using Anypoint Monitoring and runtime configuration. The remaining options reflect common misconceptions: visualizers do not replace tracing, INFO‑level logs are insufficient for audit purposes, and encryption does not fulfill retention mandates. In practice, architects should combine proper log level settings, retention policies, tracing enablement, and alert policies to build a compliant, observable integration landscape.",
+    "explanation": "Correct answers: A and B. Retaining audit-level records satisfies the retention requirement, and an alert policy on the compliance metrics detects deviations as they happen. Setting the log level to INFO (C) does not produce an audit trail, and Visualizer (D) is a graph of the application network, not an alerting mechanism.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Use Anypoint Visualizer’s flow diagrams; they provide end‑to‑end visibility without needing distributed tracing.: This option is incorrect. Anypoint Visualizer only displays static flow diagrams and does not capture runtime request paths, latency, or trace IDs. Without true distributed tracing, the team cannot achieve the required end‑to‑end visibility needed for compliance auditing."
+        "type": "Correct",
+        "text": "Audit-level logging with configured retention provides the required audit records."
       },
       "B": {
         "type": "Correct",
-        "text": "Enable audit‑level logging via Log4j2 and configure a 180‑day retention policy in Anypoint Monitoring.: This option is correct. Setting the Log4j2 logger to the audit level ensures that detailed, immutable events are captured. Coupling this with a 180‑day retention policy in Anypoint Monitoring satisfies regulatory requirements for preserving audit records over the mandated period."
+        "text": "An alert policy on the compliance metric detects and notifies on deviations."
       },
       "C": {
-        "type": "Correct",
-        "text": "Turn on distributed tracing by setting the MULE_TRACING_ENABLED property and exporting spans to an Open Telemetry collector.: This option is correct. Enabling the MULE_TRACING_ENABLED flag activates Mule Soft's built‑in tracing capabilities, and sending spans to an Open Telemetry collector provides full request‑level visibility across services. This satisfies the need for end‑to‑end tracing in a regulated environment."
+        "type": "Incorrect",
+        "text": "INFO-level logs are not an audit trail and autoscaling logs do not satisfy compliance."
       },
       "D": {
-        "type": "Correct",
-        "text": "Create a custom Anypoint Monitoring alert policy that fires when any compliance metric deviates beyond a defined threshold.: This option is correct. Anypoint Monitoring allows the definition of threshold‑based alerts on custom metrics, enabling the team to be immediately notified of any compliance drift. Without such alerts, deviations could go unnoticed until after a compliance audit."
-      },
-      "E": {
         "type": "Incorrect",
-        "text": "Set the Mule runtime’s default log level to INFO and rely on Cloud Hub auto‑scaling logs for compliance.: This option is incorrect. INFO level logs do not capture the detailed audit information required by healthcare regulations, and Cloud Hub’s default retention may be far shorter than the mandated period. Relying on this configuration would leave the organization non‑compliant."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Use Anypoint Security policies to encrypt audit logs at rest; this automatically satisfies retention requirements.: This option is incorrect. Encryption addresses data confidentiality but does not control how long logs are retained. Regulatory compliance still demands an explicit retention schedule, which encryption alone does not provide."
+        "text": "Visualizer diagrams do not replace alerting on compliance metrics."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Audit Logging in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/audit-logging"
+      },
+      "secondary": {
+        "title": "Anypoint Monitoring Overview",
+        "url": "https://docs.mulesoft.com/monitoring/"
+      }
+    },
     "correctAnswers": [
-      "B",
-      "C",
-      "D"
+      "A",
+      "B"
     ]
   },
   {
     "id": "q-283",
     "number": 283,
-    "title": "Audit Logging - A regional healthcare provider operates a patient‑record API that",
+    "title": "Audit Logging - Long-term audit retention",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
-      "Audit Logging"
+      "Audit Logging",
+      "Monitoring"
     ],
-    "prompt": "A regional healthcare provider operates a patient‑record API that must retain audit logs for seven years to satisfy HIPAA. The operations team has limited experience with Anypoint Monitoring and wants the simplest way to generate immutable audit trails without custom code. What is the MOST appropriate action?",
+    "prompt": "A healthcare provider must keep an audit trail of API and configuration changes for seven years, using the simplest platform-native option. What should the architect enable?",
     "options": [
       {
         "letter": "A",
-        "text": "Turn on Anypoint Monitoring's API Analytics and rely on its default 30‑day retention, assuming it meets the requirement."
+        "text": "The built-in Anypoint Platform audit log, forwarding its entries to the organization's long-term archive."
       },
       {
         "letter": "B",
-        "text": "Add a custom Logger component to each flow that writes to a database, then archive the table for seven years."
+        "text": "A custom Logger component that writes events to a database."
       },
       {
         "letter": "C",
-        "text": "Use the Anypoint Runtime Manager “Log Forwarding” feature to send logs to a Syslog server and set the server’s retention to seven years."
+        "text": "API Analytics, relying on its default retention."
       },
       {
         "letter": "D",
-        "text": "Enable the built‑in Anypoint Platform Audit Log and set its retention to seven years."
-      },
-      {
-        "letter": "E",
-        "text": "Configure a Data Weave Transform to send each request to an external S3 bucket via the Amazon S3 connector."
-      },
-      {
-        "letter": "F",
-        "text": "Deploy the API on a private VPC and enable native OS‑level file logging with manual rotation for seven years."
+        "text": "Operating-system file logging on the runtime with manual rotation."
       }
     ],
-    "explanation": "The question tests knowledge of Mule Soft's native audit‑logging capabilities and how they satisfy strict regulatory retention requirements without custom development. Anypoint Platform includes an immutable audit log that can be configured for long‑term retention, making it the simplest and most compliant solution for HIPAA. Options that rely on API Analytics, custom Logger components, log forwarding to external Syslog, Data Weave‑driven S3 uploads, or OS‑level file logging all introduce additional complexity, lack guaranteed immutability, or fail to meet the seven‑year retention mandate. Common misconceptions include assuming API Analytics provides immutable storage or that forwarding logs to a Syslog server automatically satisfies compliance. Best practice is to use the built‑in audit log feature, configure the required retention period, and verify that access controls and encryption are in place to protect the logs.",
+    "explanation": "Correct answer: A. The built-in Anypoint Platform audit log records user and administrative actions, and its entries can be forwarded to a long-term archive to meet a multi-year retention requirement without custom code. A custom Logger (B) captures only chosen events, API Analytics (C) records usage rather than an audit trail and has limited retention, and OS-level logging (D) is not an audit trail of platform actions.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Turn on Anypoint Monitoring's API Analytics and rely on its default 30‑day retention, assuming it meets the requirement.: This option is incorrect because API Analytics does not provide immutable storage and its default retention period is far shorter than the seven‑year requirement. Even if the retention were extended, the data is not guaranteed to be tamper‑proof, which is essential for HIPAA audit trails. Relying on this feature would leave the organization non‑compliant and expose it to potential penalties."
+        "type": "Correct",
+        "text": "The platform audit log records the required actions and can be forwarded to long-term storage."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Add a custom Logger component to each flow that writes to a database, then archive the table for seven years.: This option is incorrect because it requires custom code changes and introduces operational overhead to manage the database schema, backup strategy, and security controls. Custom logging may also miss platform‑level events such as configuration changes, which are part of a comprehensive audit trail. Moreover, ensuring immutability of database records is complex and not the simplest approach for the operations team."
+        "text": "A custom Logger is not a complete audit trail and requires code."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Use the Anypoint Runtime Manager “Log Forwarding” feature to send logs to a Syslog server and set the server’s retention to seven years.: While log forwarding can move logs to an external system, it still requires the team to provision, configure, and secure a Syslog server, which adds infrastructure complexity. The forwarded logs are not automatically immutable; additional measures must be taken to prevent tampering. Therefore this solution is not the simplest option for a team with limited monitoring experience."
+        "text": "API Analytics records usage, not an audit trail, and does not meet multi-year retention."
       },
       "D": {
-        "type": "Correct",
-        "text": "Enable the built‑in Anypoint Platform Audit Log and set its retention to seven years.: This is the correct answer. Anypoint Platform provides a native, immutable audit log that records all API requests, configuration changes, and security events without any custom code. The retention period can be configured up to seven years, satisfying HIPAA requirements while keeping the implementation simple for the operations team."
-      },
-      "E": {
         "type": "Incorrect",
-        "text": "Configure a Data Weave Transform to send each request to an external S3 bucket via the Amazon S3 connector.: This option is incorrect because it involves writing custom Data Weave logic and managing an external connector, which adds development effort. It also requires handling error scenarios, bucket policies, and encryption, increasing operational risk. The resulting logs would not be automatically immutable unless additional safeguards are implemented."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Deploy the API on a private VPC and enable native OS‑level file logging with manual rotation for seven years.: This approach is incorrect because file‑based logs are mutable and rely on manual processes for rotation and retention, making them prone to tampering or loss. Managing seven‑year retention at the OS level is cumbersome and error‑prone, especially for teams lacking deep logging expertise. It does not leverage Mule Soft’s built‑in audit capabilities that guarantee immutability."
+        "text": "OS-level file logging is not an audit trail of platform configuration changes."
       }
     },
-    "references": {},
-    "correctAnswer": "D"
+    "references": {
+      "primary": {
+        "title": "Audit Logging in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/audit-logging"
+      },
+      "secondary": {
+        "title": "Anypoint Monitoring Overview",
+        "url": "https://docs.mulesoft.com/monitoring/"
+      }
+    },
+    "correctAnswer": "A"
   },
   {
     "id": "q-284",
     "number": 284,
-    "title": "Logging and Monitoring - A large retail chain’s order‑processing flow has started returnin",
+    "title": "Logging and Monitoring - Diagnosing errors with the log viewer",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
-      "Logging and Monitoring"
+      "Logging",
+      "Troubleshooting"
     ],
-    "prompt": "A large retail chain’s order‑processing flow has started returning intermittent 500 errors after a recent Mule runtime upgrade. The on‑call engineers are proficient in Java but unfamiliar with Mule Soft’s internal logger hierarchy. Which approach BEST meets the requirements for quickly identifying the root cause?",
+    "prompt": "A retail chain's order-processing flow started returning intermittent 500 errors after an upgrade, and the engineers need to see the exception detail quickly. What should they do?",
     "options": [
       {
         "letter": "A",
-        "text": "Add a java. util. logging Logger inside a custom Java component and log the exception stack trace there."
+        "text": "Use Runtime Manager's log viewer, raise the log level for the relevant Mule package, and filter by the request's correlation ID."
       },
       {
         "letter": "B",
-        "text": "Set the global Mule logger level to DEBUG for the entire application and restart the runtime."
+        "text": "Add a java.util.logging logger inside a custom Java component."
       },
       {
         "letter": "C",
-        "text": "Use Runtime Manager’s Log Viewer, set the logger for org. mule. runtime. core. api. exception to DEBUG, and filter the logs by the request’s correlation ID."
+        "text": "Set the global logger level to DEBUG for the entire application and restart the runtime."
       },
       {
         "letter": "D",
-        "text": "Create a custom error handler that writes the full exception details to a database table for later analysis."
-      },
-      {
-        "letter": "E",
-        "text": "Configure Anypoint Monitoring to send an email alert whenever a 500 status code is returned."
-      },
-      {
-        "letter": "F",
-        "text": "Modify the flow to catch the exception and rethrow it as a custom Mule error type with a unique error code."
+        "text": "Configure Anypoint Monitoring to email an alert on every 500 response."
       }
     ],
-    "explanation": "The question tests knowledge of Mule Soft’s logging hierarchy and the most efficient way to surface detailed error information for engineers familiar with Java. The best practice is to leverage Runtime Manager’s Log Viewer, adjusting the logger for the specific Mule exception package (org. mule. runtime. core. api. exception) to DEBUG and using the correlation ID to isolate the failing request. This approach provides precise, actionable logs without overwhelming the system or requiring code changes. Common misconceptions include assuming generic Java logging will integrate seamlessly, believing a global DEBUG level is always helpful, or relying on alerts and database storage for immediate diagnosis. Remember that targeted logging combined with correlation IDs is the quickest path to root‑cause analysis in Mule environments.",
+    "explanation": "Correct answer: A. Runtime Manager's log viewer lets you inspect application logs, and raising the level for a specific Mule package (rather than globally) captures the exception detail you need while filtering by correlation ID isolates the failing request. A custom Java logger (B) adds code for no benefit, a global DEBUG level (C) floods the logs and needs a restart, and an email alert on each 500 (D) reports the symptom but not the cause.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Add a java. util. logging Logger inside a custom Java component and log the exception stack trace there.: This option is incorrect because Mule runtime does not route java. util. logging output through its own logger hierarchy, so the logs will appear in a separate file that the on‑call team may not be monitoring. It also requires code changes and redeployment, which adds delay to root‑cause analysis. In practice, the engineers would still have to locate a disparate log file, making the approach inefficient."
+        "type": "Correct",
+        "text": "The log viewer with a targeted log level and correlation-ID filter surfaces the exception detail quickly."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Set the global Mule logger level to DEBUG for the entire application and restart the runtime.: While this will capture more detail, it is not the best approach because enabling DEBUG globally floods the log files with massive amounts of data, obscuring the relevant error information. The engineers would spend extra time sifting through noise, and the increased I/O could affect performance. Additionally, the change requires a restart, which may not be feasible in a production environment."
+        "text": "A custom Java logger adds code without giving better access to the exception."
       },
       "C": {
-        "type": "Correct",
-        "text": "Use Runtime Manager’s Log Viewer, set the logger for org. mule. runtime. core. api. exception to DEBUG, and filter the logs by the request’s correlation ID.: This is the correct answer. By targeting the specific Mule package that handles exceptions, you obtain detailed stack traces without overwhelming the log files. The Log Viewer is immediately accessible to engineers, and using the correlation ID quickly isolates the failing request, enabling rapid identification of the root cause."
+        "type": "Incorrect",
+        "text": "A global DEBUG level increases noise and requires a restart."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Create a custom error handler that writes the full exception details to a database table for later analysis.: Although storing errors in a database can be useful for long‑term analytics, it does not provide the immediacy required for troubleshooting intermittent 500 errors. The added latency of a database write and the need to query the table delay the identification of the problem. Moreover, this approach introduces additional components that could themselves become points of failure."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Configure Anypoint Monitoring to send an email alert whenever a 500 status code is returned.: Alerting on 500 responses informs the team that a problem exists, but it does not supply the detailed stack trace or context needed to pinpoint the cause. Engineers would still have to dig into logs manually, which defeats the requirement for a quick root‑cause fix. Alerts are better suited for notifying, not diagnosing, issues."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Modify the flow to catch the exception and rethrow it as a custom Mule error type with a unique error code.: Defining a custom error type improves error classification for downstream handling, but it does not automatically surface the underlying stack trace or logger details needed for immediate debugging. The engineers would still need to locate where the custom error is logged, adding extra steps. This strategy is more appropriate for long‑term error management rather than rapid troubleshooting."
+        "text": "An alert on each 500 reports the symptom, not the underlying exception."
       }
     },
     "references": {
       "primary": {
-        "title": "Logging in Mule — Change the Log Level for Specific Packages",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/logging-in-mule#change-the-log-level"
+        "title": "Anypoint Monitoring Overview",
+        "url": "https://docs.mulesoft.com/monitoring/"
       },
       "secondary": {
-        "title": "Correlation ID — Identifying a Request Across Logs",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/correlation-id#example-of-identifying-the-correlation-id-in-logs"
+        "title": "Anypoint Monitoring - Metrics, Retention, and Limits FAQ",
+        "url": "https://docs.mulesoft.com/monitoring/am-faq"
       }
     },
-    "correctAnswer": "C"
+    "correctAnswer": "A"
   },
   {
     "id": "q-285",
     "number": 285,
-    "title": "API Analytics - A federal agency is deploying a citizen-service portal on Anypoin",
+    "title": "API Analytics - Access control for usage metrics",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
-      "API Analytics"
+      "API Analytics",
+      "Monitoring"
     ],
-    "prompt": "A federal agency is deploying a citizen-service portal on Anypoint Platform and must ensure that all API usage metrics are encrypted at rest and only visible to cleared personnel. The security team prefers native platform capabilities over third-party tools. Which option should the team choose?",
+    "prompt": "A federal agency must ensure that API usage metrics are visible only to cleared personnel, preferring native platform capabilities over third-party tools. What should the architect do?",
     "options": [
       {
         "letter": "A",
-        "text": "Enable the \"Encrypt API Analytics\" toggle in Anypoint Platform settings."
+        "text": "Use Anypoint Monitoring for the API metrics and restrict access to them with role-based permissions."
       },
       {
         "letter": "B",
-        "text": "Create a custom Mule application that writes usage metrics to a self-managed encrypted database."
+        "text": "Enable an 'Encrypt API Analytics' toggle in the platform settings."
       },
       {
         "letter": "C",
-        "text": "Activate Runtime Manager's log encryption feature for all worker logs."
+        "text": "Export usage data to an encrypted Amazon S3 bucket."
       },
       {
         "letter": "D",
-        "text": "Configure API Manager to export usage data to an Amazon S3 bucket encrypted with SSE-KMS."
-      },
-      {
-        "letter": "E",
-        "text": "Use Anypoint Monitoring (API Analytics) which is encrypted at rest by default and restrict access with role-based permissions."
-      },
-      {
-        "letter": "F",
-        "text": "Install a third-party encryption gateway to encrypt traffic between API Manager and the analytics store."
+        "text": "Install a third-party encryption gateway in front of the analytics store."
       }
     ],
-    "explanation": "The question tests knowledge of Anypoint Platform's native security for API analytics data. By default, API usage metrics stored in Anypoint Monitoring are encrypted at rest, and visibility is governed by the platform's role-based access control, eliminating the need for custom encryption solutions or third-party services. Options 1, 3, and 4 describe features that either do not exist, apply to different data types, or involve external tools, leading to misconceptions about how analytics data is protected. Option 2, while technically feasible, conflicts with the requirement to use native capabilities and adds operational burden. Option 6 repeats the same mistake by introducing unnecessary external components. Understanding that Anypoint Monitoring provides built-in encryption and access control is a best practice for meeting strict federal security mandates.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Enable the \"Encrypt API Analytics\" toggle in Anypoint Platform settings.: This option is incorrect because there is no separate toggle for encrypting API analytics data. Anypoint Platform encrypts analytics data at rest automatically as part of its managed services. Attempting to locate such a setting would lead administrators to waste time and possibly misconfigure other security controls."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "Create a custom Mule application that writes usage metrics to a self-managed encrypted database.: While this approach would provide encryption at rest, it relies on a custom solution rather than native platform capabilities. Managing a separate database adds operational overhead, introduces integration risk, and defeats the requirement to use built-in features. Moreover, visibility controls would need to be implemented manually, increasing the chance of errors."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Activate Runtime Manager's log encryption feature for all worker logs.: Runtime Manager can encrypt worker logs, but those logs do not contain the API usage metrics collected by API Manager. Using log encryption would not satisfy the requirement to protect analytics data. This misconception often arises because both logs and analytics are stored, yet they are separate services with distinct security settings."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Configure API Manager to export usage data to an Amazon S3 bucket encrypted with SSE-KMS.: Exporting metrics to an external S3 bucket introduces a third-party storage service, which contradicts the team's preference for native capabilities. Although SSE-KMS provides strong encryption, it adds complexity in access management and data residency compliance. This option is a common fallback when native features are misunderstood or unavailable."
-      },
-      "E": {
-        "type": "Correct",
-        "text": "Use Anypoint Monitoring (API Analytics) which is encrypted at rest by default and restrict access with role-based permissions.: This is the correct option. Anypoint Monitoring stores API usage metrics in a platform-managed data store that is automatically encrypted at rest, requiring no additional configuration. Access to the analytics data is controlled through Anypoint Platform's role-based access control, allowing only cleared personnel to view the metrics. This satisfies both the encryption and visibility requirements using only native platform features."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Install a third-party encryption gateway to encrypt traffic between API Manager and the analytics store.: Adding an external encryption gateway would duplicate the protection already provided by the platform and introduce unnecessary complexity and potential points of failure. The native platform already encrypts data at rest, so this solution is redundant and conflicts with the preference for native tools. It reflects a common misconception that additional layers are always needed for compliance."
-      }
-    },
-    "references": {},
-    "correctAnswer": "E"
-  },
-  {
-    "id": "q-286",
-    "number": 286,
-    "title": "Performance Monitoring - A manufacturing company's ERP integration is experiencing latency",
-    "domain": "Monitoring and analyzing application networks",
-    "topics": [
-      "Performance Monitoring"
-    ],
-    "prompt": "A manufacturing company's ERP integration is experiencing latency spikes during peak production hours, and the performance team suspects inefficient Mule flows. They have access to Anypoint Monitoring but limited time to instrument additional components. What is the MOST appropriate action?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Review the flow activity metrics in Anypoint Monitoring to identify slow processors and refactor the flow accordingly."
-      },
-      {
-        "letter": "B",
-        "text": "Deploy additional Mule runtime instances to distribute load without investigating the current flow performance."
-      },
-      {
-        "letter": "C",
-        "text": "Insert custom logger components at the beginning and end of each flow to measure latency manually."
-      },
-      {
-        "letter": "D",
-        "text": "Replace all batch jobs with streaming Data Weave transformations to improve throughput."
-      },
-      {
-        "letter": "E",
-        "text": "Increase the JVM heap size of the Mule runtime to mitigate latency spikes."
-      },
-      {
-        "letter": "F",
-        "text": "Disable Anypoint Monitoring temporarily to reduce overhead and see if latency improves."
-      }
-    ],
-    "explanation": "The question tests the candidate's ability to select the most efficient troubleshooting approach when time and instrumentation resources are limited. Anypoint Monitoring already supplies granular flow activity data, making it the quickest way to locate inefficient processors and guide refactoring. Common misconceptions include assuming that scaling, increasing heap, or adding custom logging are first-line solutions, yet these either add cost, introduce new overhead, or fail to address the root cause. Replacing batch jobs with streaming or disabling monitoring are also misguided actions that ignore the actual diagnostic data available. The best practice is to leverage existing monitoring dashboards to pinpoint bottlenecks, then apply targeted flow optimizations such as async processing, Data Weave streaming, or connector tuning.",
+    "explanation": "Correct answer: A. Anypoint Monitoring provides the API usage metrics, and Anypoint Platform role-based access control determines who can view them, which satisfies the 'only cleared personnel' requirement with native capabilities. There is no single 'Encrypt API Analytics' toggle (B), exporting to S3 (C) moves the data outside the platform and does not control visibility in Anypoint, and a third-party gateway (D) contradicts the preference for native capabilities.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Review the flow activity metrics in Anypoint Monitoring to identify slow processors and refactor the flow accordingly.: This option is correct because Anypoint Monitoring already provides detailed flow-level metrics such as processor execution time, which can be examined quickly without adding new instrumentation. By pinpointing the exact processors that consume the most time, the team can target refactoring efforts where they will have the greatest impact. In practice, this approach often resolves latency spikes in ERP integrations by simplifying complex transformations or introducing async processing where needed."
+        "text": "Anypoint Monitoring plus role-based permissions keeps the metrics visible only to authorized users, natively."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Deploy additional Mule runtime instances to distribute load without investigating the current flow performance.: This option is incorrect because adding capacity without first understanding the root cause can lead to unnecessary cost and may not resolve the latency issue. Inefficient flows will consume resources on each new instance, potentially replicating the problem at a larger scale. Real-world teams that scale prematurely often find that the underlying bottleneck reappears, requiring a later, more disruptive redesign."
+        "text": "There is no such 'Encrypt API Analytics' toggle in the platform settings."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Insert custom logger components at the beginning and end of each flow to measure latency manually.: This option is incorrect as it requires additional development and deployment time, contradicting the constraint of limited instrumentation time. While custom logging can provide timing data, Anypoint Monitoring already captures this information in a more comprehensive and less intrusive way. Moreover, excessive logging can add overhead and mask the very latency spikes the team is trying to diagnose."
+        "text": "Exporting to S3 moves the data outside the platform and does not govern in-platform visibility."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Replace all batch jobs with streaming Data Weave transformations to improve throughput.: This option is incorrect because not all latency spikes are caused by batch processing, and wholesale replacement could introduce new complexity or break existing contracts. Streaming Data Weave is beneficial for large payloads, but it does not address other common inefficiencies such as synchronous calls or suboptimal routing. Implementing such a change without evidence could waste effort and potentially degrade performance in other scenarios."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Increase the JVM heap size of the Mule runtime to mitigate latency spikes.: This option is incorrect because heap size adjustments treat the symptom rather than the cause and may only provide a temporary improvement. If the latency originates from CPU-bound processing or blocking I/O within the flow, a larger heap will not help and could even increase garbage-collection pauses. Best practice is to first identify the slow processors before tuning JVM parameters."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Disable Anypoint Monitoring temporarily to reduce overhead and see if latency improves.: This option is incorrect because the overhead introduced by Anypoint Monitoring is negligible compared to the processing performed by the flows themselves. Disabling monitoring removes valuable visibility, making it harder to diagnose the issue rather than helping to solve it. In production environments, maintaining observability is a core best practice for performance troubleshooting."
+        "text": "A third-party gateway is not a native capability and adds unnecessary complexity."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Monitoring — Anypoint Insights Flow Metrics",
-        "url": "https://docs.mulesoft.com/monitoring/anypoint-insights#entity-metrics-app-flows"
+        "title": "Anypoint Monitoring Overview",
+        "url": "https://docs.mulesoft.com/monitoring/"
       },
       "secondary": {
-        "title": "Runtime Manager — Flow Metrics for Hybrid Deployments",
-        "url": "https://docs.mulesoft.com/runtime-manager/flow-metrics#view-flow-metrics"
+        "title": "Anypoint Monitoring - Metrics, Retention, and Limits FAQ",
+        "url": "https://docs.mulesoft.com/monitoring/am-faq"
+      }
+    },
+    "correctAnswer": "A"
+  },
+  {
+    "id": "q-286",
+    "number": 286,
+    "title": "Performance Monitoring - Finding slow processors",
+    "domain": "Monitoring and analyzing application networks",
+    "topics": [
+      "Performance Monitoring",
+      "Monitoring"
+    ],
+    "prompt": "A manufacturing company's ERP integration has latency spikes, and the team suspects inefficient flows. It already has Anypoint Monitoring available. What should it do first?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Review the flow activity metrics in Anypoint Monitoring to identify the slow processors, then refactor the flow."
+      },
+      {
+        "letter": "B",
+        "text": "Add more runtime instances to distribute the load."
+      },
+      {
+        "letter": "C",
+        "text": "Insert custom loggers at the start and end of each flow to measure latency."
+      },
+      {
+        "letter": "D",
+        "text": "Increase the JVM heap size of the runtime."
+      }
+    ],
+    "explanation": "Correct answer: A. Anypoint Monitoring's flow activity metrics show how long each processor takes, so the team can pinpoint and fix the slow step instead of guessing. Scaling out (B), custom latency loggers (C), and a larger heap (D) are all changes made without first locating the bottleneck, and none of them identifies the inefficient processor.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "Flow activity metrics identify the slow processors, enabling a targeted fix."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Adding instances spreads load but does not reveal or fix the inefficient flow."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Custom latency loggers duplicate what Anypoint Monitoring already provides."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "A larger heap addresses memory, not necessarily the flow's inefficiency."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint Monitoring Overview",
+        "url": "https://docs.mulesoft.com/monitoring/"
+      },
+      "secondary": {
+        "title": "Anypoint Monitoring - Metrics, Retention, and Limits FAQ",
+        "url": "https://docs.mulesoft.com/monitoring/am-faq"
       }
     },
     "correctAnswer": "A"
@@ -17333,145 +17221,123 @@ window.MCPA_QUESTIONS = [
   {
     "id": "q-287",
     "number": 287,
-    "title": "API Monitoring & Governance - A hospital network runs dozens of APIs for patient data exchange ",
+    "title": "API Monitoring and Governance - Anomaly detection with GDPR retention",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
-      "API Monitoring & Governance"
+      "API Monitoring & Governance",
+      "Monitoring"
     ],
-    "prompt": "A hospital network runs dozens of APIs for patient data exchange and wants to proactively detect abnormal usage patterns while meeting GDPR data-retention rules. They plan to use Anypoint Monitoring, custom alerts, and external SIEM integration. Which THREE options meet the requirements?",
+    "prompt": "A hospital network wants to proactively detect abnormal API usage while meeting GDPR data-retention rules, using Anypoint Monitoring and custom alerts. Which two actions should it take? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "Enable Anypoint Monitoring's default 1-year log retention and send all logs to the SIEM, assuming the SIEM will filter out personal data."
+        "text": "Configure Anypoint Monitoring alerts, including anomaly-based detection, for the key API metrics."
       },
       {
         "letter": "B",
-        "text": "Configure Anypoint Monitoring's built-in anomaly detection policy, set the monitoring data retention to 30 days, and forward alerts to the external SIEM via webhook."
+        "text": "Set monitoring data retention to the minimum required and purge data beyond the GDPR retention window."
       },
       {
         "letter": "C",
-        "text": "Activate API Manager's client-ID enforcement and rely on the built-in dashboards for abnormal usage detection without integrating with a SIEM."
+        "text": "Send all logs to the SIEM indefinitely and assume the SIEM filters out personal data."
       },
       {
         "letter": "D",
-        "text": "Create custom alerts in API Manager for rate-limit breaches, route the alert events to a Kafka topic that the SIEM consumes, and enable Anypoint Monitoring's data-purge schedule to delete logs older than 30 days."
-      },
-      {
-        "letter": "E",
-        "text": "Turn on Data Weave's PII masking in every flow and store the masked logs indefinitely for forensic analysis."
-      },
-      {
-        "letter": "F",
-        "text": "Schedule a nightly export of Anypoint Monitoring logs to an encrypted GDPR-compliant S3 bucket with a lifecycle rule that deletes objects after 30 days, and configure a webhook to push any anomaly alerts to the SIEM."
+        "text": "Rely on API Manager client-ID enforcement alone to detect abnormal usage."
       }
     ],
-    "explanation": "The question tests the learner's understanding of how to combine Anypoint Monitoring, custom alerting, and external SIEM integration while adhering to GDPR data-retention constraints. Correct solutions must (1) provide a mechanism for detecting abnormal API usage, such as anomaly detection or rate-limit alerts, (2) ensure that the monitoring data is retained only for a limited, justifiable period (commonly 30 days for patient data), and (3) forward the relevant alerts to a SIEM for centralized security analysis. Options 2, 4, and 6 satisfy all three criteria by using built-in monitoring features, configuring appropriate retention policies, and leveraging webhooks or Kafka to deliver alerts. The incorrect options either retain data for too long, omit SIEM integration, or rely on measures (like PII masking or client-ID enforcement) that do not fulfill proactive detection or GDPR retention requirements. Best practice is to define a clear retention policy, use encryption for log storage, and employ real-time alert forwarding to maintain both health security vigilance and regulatory compliance.",
+    "explanation": "Correct answers: A and B. Alerts (including anomaly-based detection) on the key API metrics satisfy the proactive-detection goal, and configuring retention to the minimum required with purging satisfies GDPR. Retaining all logs indefinitely (C) violates GDPR, and client-ID enforcement (D) controls access but does not detect abnormal usage patterns.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Enable Anypoint Monitoring's default 1-year log retention and send all logs to the SIEM, assuming the SIEM will filter out personal data.: This option is incorrect because GDPR requires that personal data not be retained longer than necessary. Keeping a full year of logs exceeds typical retention policies for patient data unless a specific justification exists. Moreover, relying on the SIEM to purge PII does not satisfy the principle of data minimisation and could expose the hospital to compliance risk."
+        "type": "Correct",
+        "text": "Anomaly-based alerts on key API metrics proactively detect abnormal usage."
       },
       "B": {
         "type": "Correct",
-        "text": "Configure Anypoint Monitoring's built-in anomaly detection policy, set the monitoring data retention to 30 days, and forward alerts to the external SIEM via webhook.: This option is correct. Anypoint Monitoring provides anomaly detection that can flag unusual API traffic, satisfying proactive detection needs. Setting retention to 30 days aligns with GDPR's storage limitation principle, and using a webhook to push alerts to the SIEM ensures that security teams receive real-time notifications while keeping the retained data within the compliance window."
+        "text": "Minimum retention with purging beyond the GDPR window satisfies the data-retention rule."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Activate API Manager's client-ID enforcement and rely on the built-in dashboards for abnormal usage detection without integrating with a SIEM.: This option is incorrect because client-ID enforcement alone does not provide proactive anomaly detection; dashboards are typically reactive and do not generate automated alerts. Without SIEM integration, the organization loses centralized correlation and incident response capabilities. Additionally, the solution does not address GDPR-compliant log retention, leaving a compliance gap."
+        "text": "Indefinite retention of all logs violates GDPR, and the SIEM does not automatically make it compliant."
       },
       "D": {
-        "type": "Correct",
-        "text": "Create custom alerts in API Manager for rate-limit breaches, route the alert events to a Kafka topic that the SIEM consumes, and enable Anypoint Monitoring's data-purge schedule to delete logs older than 30 days.: This option is correct. Custom rate-limit alerts can identify abnormal usage patterns, and publishing them to Kafka provides a reliable, decoupled feed for the SIEM. The built-in purge schedule ensures logs are automatically removed after 30 days, meeting GDPR's requirement to limit storage duration."
-      },
-      "E": {
         "type": "Incorrect",
-        "text": "Turn on Data Weave's PII masking in every flow and store the masked logs indefinitely for forensic analysis.: This option is incorrect because indefinite storage violates GDPR's principle of storage limitation. Masking does not eliminate the need for a defined retention period, and indefinite retention could still be considered excessive. Moreover, masking alone does not provide the proactive detection capabilities required by the scenario."
-      },
-      "F": {
-        "type": "Correct",
-        "text": "Schedule a nightly export of Anypoint Monitoring logs to an encrypted GDPR-compliant S3 bucket with a lifecycle rule that deletes objects after 30 days, and configure a webhook to push any anomaly alerts to the SIEM.: This option is correct. Exporting logs to a secure, encrypted bucket ensures data is protected at rest, while the lifecycle rule enforces the 30-day retention mandated by GDPR. The webhook delivers anomaly alerts in real time to the SIEM, completing the proactive monitoring loop."
+        "text": "Client-ID enforcement controls access; it does not detect abnormal usage."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "Anypoint Monitoring Overview",
+        "url": "https://docs.mulesoft.com/monitoring/"
+      },
+      "secondary": {
+        "title": "Anypoint Monitoring - Metrics, Retention, and Limits FAQ",
+        "url": "https://docs.mulesoft.com/monitoring/am-faq"
+      }
+    },
     "correctAnswers": [
-      "B",
-      "D",
-      "F"
+      "A",
+      "B"
     ]
   },
   {
     "id": "q-288",
     "number": 288,
-    "title": "API Monitoring - A national retail chain wants real-time visibility into API usage",
+    "title": "API Monitoring - Single-view visibility across many APIs",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
-      "API Monitoring"
+      "API Monitoring",
+      "Monitoring"
     ],
-    "prompt": "A national retail chain wants real-time visibility into API usage across its e-commerce and in-store applications, yet its operations team can only manage a limited number of monitoring dashboards. Which approach BEST meets the requirements?",
+    "prompt": "A national retail chain wants real-time visibility into API usage across many applications, but its operations team can manage only a few dashboards. What should the architect configure?",
     "options": [
       {
         "letter": "A",
-        "text": "Enable API Manager's default Analytics and create a single custom dashboard that aggregates usage metrics across all APIs."
+        "text": "Anypoint Monitoring's built-in dashboards with alert policies, so many APIs can be monitored from a single view."
       },
       {
         "letter": "B",
-        "text": "Deploy a separate Mule runtime for each application and configure a dedicated monitoring dashboard per runtime."
+        "text": "A separate monitoring dashboard per runtime."
       },
       {
         "letter": "C",
-        "text": "Use Anypoint Monitoring's out-of-the-box API Traffic dashboard and configure alert policies to email the operations team, eliminating the need for multiple dashboards."
+        "text": "CloudHub real-time log streaming, watched directly in the console."
       },
       {
         "letter": "D",
-        "text": "Turn on Cloud Hub's real-time logs and have the team watch the log streams directly in the console."
-      },
-      {
-        "letter": "E",
-        "text": "Enable API Autodiscovery on each service and route metrics to a third-party SIEM, then build a single dashboard there."
-      },
-      {
-        "letter": "F",
-        "text": "Use the API Manager's Policy \"Rate Limiting\" to throttle usage and rely on the policy logs for visibility."
+        "text": "A third-party SIEM dashboard fed by API Autodiscovery."
       }
     ],
-    "explanation": "The question tests knowledge of Mule Soft's native monitoring capabilities, specifically how to achieve real-time API usage visibility with minimal dashboard overhead. Anypoint Monitoring provides an out-of-the-box API Traffic dashboard that aggregates usage across all APIs and supports alert policies, offering immediate insight without the need to build or maintain multiple custom dashboards. Options that suggest separate runtimes, raw log watching, or extensive third-party integrations either increase operational complexity or fail to deliver real-time summarized metrics. Misconceptions such as using rate-limiting policies for visibility or relying solely on default analytics without leveraging built-in dashboards are common pitfalls. Best practice is to use the native Anypoint Monitoring tools for consolidated, real-time insight while supplementing with alerts to keep the operations team informed without overwhelming them with dashboards.",
+    "explanation": "Correct answer: A. Anypoint Monitoring's built-in dashboards aggregate API and application metrics, and alert policies notify the team when something needs attention, so a small team can watch many APIs from a single view. A dashboard per runtime (B) multiplies the dashboards the team cannot manage, watching raw log streams (C) is not scalable monitoring, and API Autodiscovery (D) links implementations to API instances rather than feeding a SIEM.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Enable API Manager's default Analytics and create a single custom dashboard that aggregates usage metrics across all APIs.: This option is partially correct because API Manager does provide default analytics and you can build a custom dashboard. However, creating and maintaining a custom dashboard requires additional effort and may not provide the out-of-the-box real-time visualizations that Anypoint Monitoring offers. For a team that wants minimal dashboard management, using the built-in API Traffic dashboard is a more efficient solution."
+        "type": "Correct",
+        "text": "Built-in dashboards plus alert policies give single-view visibility across many APIs."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Deploy a separate Mule runtime for each application and configure a dedicated monitoring dashboard per runtime.: Deploying separate runtimes for each application would dramatically increase the number of dashboards needed, which directly contradicts the constraint of limited dashboard management. While it could isolate workloads, it adds operational overhead and does not improve real-time visibility across the ecosystem. This approach is therefore not suitable for the stated requirement."
+        "text": "One dashboard per runtime increases the number of views the team must manage."
       },
       "C": {
-        "type": "Correct",
-        "text": "Use Anypoint Monitoring's out-of-the-box API Traffic dashboard and configure alert policies to email the operations team, eliminating the need for multiple dashboards.: This is the correct answer because the API Traffic dashboard already aggregates real-time usage data across all APIs and requires no custom development. Alert policies can notify the team of threshold breaches, providing visibility without the need to monitor many separate dashboards. This aligns perfectly with the need for real-time insight while keeping dashboard count minimal."
+        "type": "Incorrect",
+        "text": "Watching raw log streams is not a scalable monitoring approach."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Turn on Cloud Hub's real-time logs and have the team watch the log streams directly in the console.: Viewing raw log streams gives detailed information but is not a practical way to achieve high-level, real-time API usage visibility. Logs are noisy, require constant manual inspection, and do not provide the summarized metrics that dashboards and alerts deliver. Consequently, this option does not satisfy the requirement for limited, actionable dashboards."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Enable API Autodiscovery on each service and route metrics to a third-party SIEM, then build a single dashboard there.: Routing metrics to a SIEM can produce a unified view, but it adds integration complexity, latency, and additional licensing considerations. While a single dashboard in the SIEM could meet the limited-dashboard goal, the extra steps introduce points of failure and delay real-time visibility. For most Mule Soft deployments, using the native Anypoint Monitoring solution is simpler and more immediate."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Use the API Manager's Policy \"Rate Limiting\" to throttle usage and rely on the policy logs for visibility.: Rate limiting is a control mechanism, not a monitoring strategy. Policy logs show when throttling occurs but do not give comprehensive usage statistics across all APIs. Relying on these logs would give an incomplete picture and does not address the need for a real-time, consolidated dashboard."
+        "text": "API Autodiscovery links an implementation to an API instance; it does not feed a SIEM."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Insights — Built-in API Dashboards and Request Metrics",
-        "url": "https://docs.mulesoft.com/monitoring/anypoint-insights#api-charts"
+        "title": "Anypoint Monitoring Overview",
+        "url": "https://docs.mulesoft.com/monitoring/"
       },
       "secondary": {
-        "title": "Anypoint Monitoring — Create an Alert and Configure Email Notifications",
-        "url": "https://docs.mulesoft.com/monitoring/alerts-hf#create"
+        "title": "API Visualizer (Anypoint Visualizer) Overview",
+        "url": "https://docs.mulesoft.com/visualizer/"
       }
     },
-    "correctAnswer": "C"
+    "correctAnswer": "A"
   },
   {
     "id": "q-289",
@@ -18819,7 +18685,16 @@ window.MCPA_QUESTIONS = [
         "text": "Visualizer's red error indicator is not an Autodiscovery configuration warning."
       }
     },
-    "references": {},
+    "references": {
+      "primary": {
+        "title": "API Visualizer (Anypoint Visualizer) Overview",
+        "url": "https://docs.mulesoft.com/visualizer/"
+      },
+      "secondary": {
+        "title": "Anypoint Monitoring Overview",
+        "url": "https://docs.mulesoft.com/monitoring/"
+      }
+    },
     "correctAnswer": "C"
   },
   {
