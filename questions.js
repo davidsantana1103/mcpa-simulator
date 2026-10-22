@@ -52,7 +52,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Platform Glossary",
         "url": "https://docs.mulesoft.com/general/glossary"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft — What is an API?",
         "url": "https://www.mulesoft.com/resources/api/what-is-an-api"
       }
@@ -111,7 +111,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — API Proxies",
         "url": "https://docs.mulesoft.com/api-manager/latest/proxy-latest-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Flex Gateway Documentation",
         "url": "https://docs.mulesoft.com/gateway/latest/"
       }
@@ -170,7 +170,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft — Application networks are the next generation of integration middleware",
         "url": "https://www.mulesoft.com/api/application-network-integration-middleware"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft — What is an application network?",
         "url": "https://www.mulesoft.com/api/what-is-an-application-network"
       }
@@ -229,7 +229,7 @@ window.MCPA_QUESTIONS = [
         "title": "Design Center — Mocking Service",
         "url": "https://docs.mulesoft.com/design-center/design-mocking-service"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Exchange Overview",
         "url": "https://docs.mulesoft.com/exchange/"
       }
@@ -299,7 +299,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Gateway Capabilities (Mule 4)",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-gateway-capabilities-mule4"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Platform Glossary",
         "url": "https://docs.mulesoft.com/general/glossary"
       }
@@ -358,7 +358,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Flex Gateway Documentation",
         "url": "https://docs.mulesoft.com/gateway/latest/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager Overview",
         "url": "https://docs.mulesoft.com/api-manager/latest/latest-overview-concept"
       }
@@ -417,7 +417,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft — What is a RESTful API?",
         "url": "https://www.mulesoft.com/resources/api/restful-api"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft — What is REST API design?",
         "url": "https://www.mulesoft.com/resources/api/what-is-rest-api-design"
       }
@@ -476,7 +476,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft — What is an API?",
         "url": "https://www.mulesoft.com/resources/api/what-is-an-api"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
@@ -535,7 +535,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft — What is a RESTful API?",
         "url": "https://www.mulesoft.com/resources/api/restful-api"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft — What is REST API design?",
         "url": "https://www.mulesoft.com/resources/api/what-is-rest-api-design"
       }
@@ -594,7 +594,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft — What is REST API design?",
         "url": "https://www.mulesoft.com/resources/api/what-is-rest-api-design"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft — What is a RESTful API?",
         "url": "https://www.mulesoft.com/resources/api/restful-api"
       }
@@ -653,7 +653,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft — What is an application network?",
         "url": "https://www.mulesoft.com/api/what-is-an-application-network"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft — Application networks are the next generation of integration middleware",
         "url": "https://www.mulesoft.com/api/application-network-integration-middleware"
       }
@@ -712,7 +712,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Whitepaper — API-led connectivity",
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
@@ -771,7 +771,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Whitepaper — API-led connectivity",
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
@@ -830,7 +830,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Whitepaper — API-led connectivity",
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
@@ -900,7 +900,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       }
@@ -959,7 +959,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Whitepaper — API-led connectivity",
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft — What is an application network?",
         "url": "https://www.mulesoft.com/api/what-is-an-application-network"
       }
@@ -1018,7 +1018,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Exchange Overview",
         "url": "https://docs.mulesoft.com/exchange/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Platform Glossary",
         "url": "https://docs.mulesoft.com/general/glossary"
       }
@@ -1077,7 +1077,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager Overview",
         "url": "https://docs.mulesoft.com/api-manager/latest/latest-overview-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Gateway Capabilities (Mule 4)",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-gateway-capabilities-mule4"
       }
@@ -1136,7 +1136,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Platform Glossary",
         "url": "https://docs.mulesoft.com/general/glossary"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Platform Documentation Home",
         "url": "https://docs.mulesoft.com/general/"
       }
@@ -1195,7 +1195,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Visualizer Overview",
         "url": "https://docs.mulesoft.com/visualizer/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Platform Glossary",
         "url": "https://docs.mulesoft.com/general/glossary"
       }
@@ -1254,7 +1254,7 @@ window.MCPA_QUESTIONS = [
         "title": "Runtime Manager Overview",
         "url": "https://docs.mulesoft.com/runtime-manager/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Monitoring Overview",
         "url": "https://docs.mulesoft.com/monitoring/"
       }
@@ -1313,7 +1313,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is a Center for Enablement (C4E)?",
         "url": "https://www.salesforce.com/blog/what-is-a-center-for-enablement/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Whitepaper — API-led connectivity",
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
@@ -1372,7 +1372,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Reusable KPIs for reusable APIs",
         "url": "https://blogs.mulesoft.com/api-integration/strategy/build-reusable-apis-track-kpis/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Blog — Integration Analytics: From Definition to KPI Dashboard",
         "url": "https://blogs.mulesoft.com/api-integration/strategy/integration-analytics-dashboard/"
       }
@@ -1442,7 +1442,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Integration Analytics: From Definition to KPI Dashboard",
         "url": "https://blogs.mulesoft.com/api-integration/strategy/integration-analytics-dashboard/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Salesforce Blog — What Is a Center for Enablement (C4E)?",
         "url": "https://www.salesforce.com/blog/what-is-a-center-for-enablement/"
       }
@@ -1501,7 +1501,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is a Center for Enablement (C4E)?",
         "url": "https://www.salesforce.com/blog/what-is-a-center-for-enablement/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Trailhead — Explore MuleSoft Catalyst Delivery Methodology",
         "url": "https://trailhead.salesforce.com/content/learn/modules/mulesoft-catalyst-playbooks/learn-about-the-mulesoft-catalyst-delivery-methodology"
       }
@@ -1560,7 +1560,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Integration Analytics: From Definition to KPI Dashboard",
         "url": "https://blogs.mulesoft.com/api-integration/strategy/integration-analytics-dashboard/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Blog — Reusable KPIs for reusable APIs",
         "url": "https://blogs.mulesoft.com/api-integration/strategy/build-reusable-apis-track-kpis/"
       }
@@ -1619,7 +1619,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is a Center for Enablement (C4E)?",
         "url": "https://www.salesforce.com/blog/what-is-a-center-for-enablement/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Whitepaper — API-led connectivity",
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
@@ -1678,7 +1678,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Catalyst — Consulting and Methodology",
         "url": "https://www.mulesoft.com/support-and-services/consulting"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Trailhead — Explore MuleSoft Catalyst Delivery Methodology",
         "url": "https://trailhead.salesforce.com/content/learn/modules/mulesoft-catalyst-playbooks/learn-about-the-mulesoft-catalyst-delivery-methodology"
       }
@@ -1737,7 +1737,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Catalyst — Consulting and Methodology",
         "url": "https://www.mulesoft.com/support-and-services/consulting"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Catalyst",
         "url": "https://www.mulesoft.com/catalyst"
       }
@@ -1796,7 +1796,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Catalyst — Consulting and Methodology",
         "url": "https://www.mulesoft.com/support-and-services/consulting"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Trailhead — Explore MuleSoft Catalyst Delivery Methodology",
         "url": "https://trailhead.salesforce.com/content/learn/modules/mulesoft-catalyst-playbooks/learn-about-the-mulesoft-catalyst-delivery-methodology"
       }
@@ -1855,7 +1855,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Catalyst — Consulting and Methodology",
         "url": "https://www.mulesoft.com/support-and-services/consulting"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Catalyst",
         "url": "https://www.mulesoft.com/catalyst"
       }
@@ -1914,7 +1914,7 @@ window.MCPA_QUESTIONS = [
         "title": "Trailhead — Explore MuleSoft Catalyst Delivery Methodology",
         "url": "https://trailhead.salesforce.com/content/learn/modules/mulesoft-catalyst-playbooks/learn-about-the-mulesoft-catalyst-delivery-methodology"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Catalyst — Consulting and Methodology",
         "url": "https://www.mulesoft.com/support-and-services/consulting"
       }
@@ -1973,7 +1973,7 @@ window.MCPA_QUESTIONS = [
         "title": "Trailhead — Explore MuleSoft Catalyst Delivery Methodology",
         "url": "https://trailhead.salesforce.com/content/learn/modules/mulesoft-catalyst-playbooks/learn-about-the-mulesoft-catalyst-delivery-methodology"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Catalyst — Consulting and Methodology",
         "url": "https://www.mulesoft.com/support-and-services/consulting"
       }
@@ -2032,7 +2032,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Platform Hosting Overview",
         "url": "https://docs.mulesoft.com/hosting-home/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Deploying to Your Own Servers (Hybrid)",
         "url": "https://docs.mulesoft.com/runtime-manager/deploying-to-your-own-servers"
       }
@@ -2091,7 +2091,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Platform Private Cloud Edition",
         "url": "https://docs.mulesoft.com/private-cloud/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Platform Hosting Overview",
         "url": "https://docs.mulesoft.com/hosting-home/"
       }
@@ -2150,7 +2150,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Platform Hosting Overview",
         "url": "https://docs.mulesoft.com/hosting-home/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "EU Control Plane",
         "url": "https://docs.mulesoft.com/eu-control-plane/"
       }
@@ -2209,7 +2209,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Government Cloud",
         "url": "https://docs.mulesoft.com/gov-cloud/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Platform Hosting Overview",
         "url": "https://docs.mulesoft.com/hosting-home/"
       }
@@ -2268,7 +2268,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Runtime Fabric Overview",
         "url": "https://docs.mulesoft.com/runtime-fabric/latest/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Platform Hosting Overview",
         "url": "https://docs.mulesoft.com/hosting-home/"
       }
@@ -2327,7 +2327,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub 2.0 Overview",
         "url": "https://docs.mulesoft.com/cloudhub-2/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Platform Hosting Overview",
         "url": "https://docs.mulesoft.com/hosting-home/"
       }
@@ -2386,7 +2386,7 @@ window.MCPA_QUESTIONS = [
         "title": "Configuring Identity Management in Anypoint Platform",
         "url": "https://docs.mulesoft.com/access-management/external-identity"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Configuring SAML SSO for Anypoint Platform",
         "url": "https://docs.mulesoft.com/access-management/conf-saml-sso"
       }
@@ -2445,7 +2445,7 @@ window.MCPA_QUESTIONS = [
         "title": "Client Management in Anypoint Platform",
         "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Configuring PingFederate Client Management",
         "url": "https://docs.mulesoft.com/access-management/conf-client-mgmt-pf-task"
       }
@@ -2504,7 +2504,7 @@ window.MCPA_QUESTIONS = [
         "title": "Configuring Identity Management in Anypoint Platform",
         "url": "https://docs.mulesoft.com/access-management/external-identity"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Client Management in Anypoint Platform",
         "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
       }
@@ -2563,7 +2563,7 @@ window.MCPA_QUESTIONS = [
         "title": "Configuring OpenID Connect Client Management",
         "url": "https://docs.mulesoft.com/access-management/configure-client-management-openid-task"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Client Management in Anypoint Platform",
         "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
       }
@@ -2633,7 +2633,7 @@ window.MCPA_QUESTIONS = [
         "title": "Configuring Identity Management in Anypoint Platform",
         "url": "https://docs.mulesoft.com/access-management/external-identity"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Client Management in Anypoint Platform",
         "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
       }
@@ -2692,7 +2692,7 @@ window.MCPA_QUESTIONS = [
         "title": "Client Management in Anypoint Platform",
         "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — Client ID Enforcement Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
       }
@@ -2751,7 +2751,7 @@ window.MCPA_QUESTIONS = [
         "title": "Runtime Manager Agent",
         "url": "https://docs.mulesoft.com/runtime-manager/runtime-manager-agent"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Platform Hosting Overview",
         "url": "https://docs.mulesoft.com/hosting-home/"
       }
@@ -2810,7 +2810,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Platform Hosting Overview",
         "url": "https://docs.mulesoft.com/hosting-home/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Platform Control Planes",
         "url": "https://docs.mulesoft.com/control-planes/"
       }
@@ -2869,7 +2869,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub — Integrate with Your Logging System",
         "url": "https://docs.mulesoft.com/cloudhub/custom-log-appender"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub 2.0 — Integrating with Your Logging System",
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-integrate-log-system"
       }
@@ -2928,7 +2928,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint MQ Overview",
         "url": "https://docs.mulesoft.com/mq/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint MQ — Understanding Anypoint MQ",
         "url": "https://docs.mulesoft.com/mq/mq-understanding"
       }
@@ -2987,7 +2987,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Platform Private Cloud Edition",
         "url": "https://docs.mulesoft.com/private-cloud/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Platform Hosting Overview",
         "url": "https://docs.mulesoft.com/hosting-home/"
       }
@@ -3057,7 +3057,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Platform Hosting Overview",
         "url": "https://docs.mulesoft.com/hosting-home/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Runtime Fabric Overview",
         "url": "https://docs.mulesoft.com/runtime-fabric/latest/"
       }
@@ -3116,7 +3116,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — Managing Versions and Instances",
         "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "APIkit Overview",
         "url": "https://docs.mulesoft.com/apikit/latest/"
       }
@@ -3175,7 +3175,7 @@ window.MCPA_QUESTIONS = [
         "title": "APIkit Overview",
         "url": "https://docs.mulesoft.com/apikit/latest/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Design Center — Publishing API Specifications",
         "url": "https://docs.mulesoft.com/design-center/design-publish"
       }
@@ -3234,7 +3234,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Autodiscovery",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — Managing Versions and Instances",
         "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
       }
@@ -3293,7 +3293,7 @@ window.MCPA_QUESTIONS = [
         "title": "Design Center — Mocking Service",
         "url": "https://docs.mulesoft.com/design-center/design-mocking-service"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Design Center — Publishing API Specifications",
         "url": "https://docs.mulesoft.com/design-center/design-publish"
       }
@@ -3352,7 +3352,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — Managing Versions and Instances",
         "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Exchange — Asset Versions",
         "url": "https://docs.mulesoft.com/exchange/asset-versions"
       }
@@ -3422,7 +3422,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — Managing Versions and Instances",
         "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Exchange Overview",
         "url": "https://docs.mulesoft.com/exchange/"
       }
@@ -3481,7 +3481,7 @@ window.MCPA_QUESTIONS = [
         "title": "Design Center — Creating and Publishing API Fragments",
         "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-fragment"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Exchange Overview",
         "url": "https://docs.mulesoft.com/exchange/"
       }
@@ -3540,7 +3540,7 @@ window.MCPA_QUESTIONS = [
         "title": "Design Center — Publishing API Specifications",
         "url": "https://docs.mulesoft.com/design-center/design-publish"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Exchange — Publishing Assets",
         "url": "https://docs.mulesoft.com/exchange/about-sharing-assets"
       }
@@ -3599,7 +3599,7 @@ window.MCPA_QUESTIONS = [
         "title": "Exchange Public Portals",
         "url": "https://docs.mulesoft.com/exchange/about-portals"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Exchange — Publishing Assets",
         "url": "https://docs.mulesoft.com/exchange/about-sharing-assets"
       }
@@ -3658,7 +3658,7 @@ window.MCPA_QUESTIONS = [
         "title": "Exchange — Describing an Asset",
         "url": "https://docs.mulesoft.com/exchange/to-describe-an-asset"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Exchange Overview",
         "url": "https://docs.mulesoft.com/exchange/"
       }
@@ -3717,7 +3717,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — Managing Versions and Instances",
         "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Autodiscovery",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
       }
@@ -3787,7 +3787,7 @@ window.MCPA_QUESTIONS = [
         "title": "Exchange — Publishing Assets",
         "url": "https://docs.mulesoft.com/exchange/about-sharing-assets"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Exchange Overview",
         "url": "https://docs.mulesoft.com/exchange/"
       }
@@ -3846,7 +3846,7 @@ window.MCPA_QUESTIONS = [
         "title": "Exchange — Asset Versions",
         "url": "https://docs.mulesoft.com/exchange/asset-versions"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Exchange — Manage Versions",
         "url": "https://docs.mulesoft.com/exchange/manage-versions"
       }
@@ -3905,7 +3905,7 @@ window.MCPA_QUESTIONS = [
         "title": "Exchange — Asset Versions",
         "url": "https://docs.mulesoft.com/exchange/asset-versions"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — Managing Versions and Instances",
         "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
       }
@@ -3964,7 +3964,7 @@ window.MCPA_QUESTIONS = [
         "title": "Exchange — Asset Versions",
         "url": "https://docs.mulesoft.com/exchange/asset-versions"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Exchange — Manage Versions",
         "url": "https://docs.mulesoft.com/exchange/manage-versions"
       }
@@ -4023,7 +4023,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — Managing Versions and Instances",
         "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Exchange — Asset Versions",
         "url": "https://docs.mulesoft.com/exchange/asset-versions"
       }
@@ -4082,7 +4082,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — Managing Versions and Instances",
         "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Exchange — Manage Versions",
         "url": "https://docs.mulesoft.com/exchange/manage-versions"
       }
@@ -4152,7 +4152,7 @@ window.MCPA_QUESTIONS = [
         "title": "Exchange — Asset Versions",
         "url": "https://docs.mulesoft.com/exchange/asset-versions"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Exchange — Manage Versions",
         "url": "https://docs.mulesoft.com/exchange/manage-versions"
       }
@@ -4522,7 +4522,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft — What is a RESTful API?",
         "url": "https://www.mulesoft.com/resources/api/restful-api"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
         "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       }
@@ -4581,7 +4581,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft — What is REST API design?",
         "url": "https://www.mulesoft.com/resources/api/what-is-rest-api-design"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft — What is a RESTful API?",
         "url": "https://www.mulesoft.com/resources/api/restful-api"
       }
@@ -4640,7 +4640,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft — What is REST API design?",
         "url": "https://www.mulesoft.com/resources/api/what-is-rest-api-design"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft — What is a RESTful API?",
         "url": "https://www.mulesoft.com/resources/api/restful-api"
       }
@@ -4699,7 +4699,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft — What is REST API design?",
         "url": "https://www.mulesoft.com/resources/api/what-is-rest-api-design"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "HTTP Caching Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-http-caching"
       }
@@ -4758,7 +4758,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft — What is a RESTful API?",
         "url": "https://www.mulesoft.com/resources/api/restful-api"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft — What is REST API design?",
         "url": "https://www.mulesoft.com/resources/api/what-is-rest-api-design"
       }
@@ -4828,7 +4828,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft — What is a RESTful API?",
         "url": "https://www.mulesoft.com/resources/api/restful-api"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
         "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       }
@@ -4887,7 +4887,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Whitepaper — API-led connectivity",
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
@@ -4946,7 +4946,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       }
@@ -5005,7 +5005,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Whitepaper — API-led connectivity",
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
@@ -5064,7 +5064,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       }
@@ -5123,7 +5123,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Whitepaper — API-led connectivity",
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
@@ -5182,7 +5182,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       }
@@ -5252,7 +5252,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Whitepaper — API-led connectivity",
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
@@ -5311,7 +5311,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       }
@@ -5370,7 +5370,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Whitepaper — API-led connectivity",
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
@@ -5429,7 +5429,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       }
@@ -5488,7 +5488,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       }
@@ -5547,7 +5547,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Whitepaper — API-led connectivity",
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
@@ -5606,7 +5606,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       }
@@ -5665,7 +5665,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Whitepaper — API-led connectivity",
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
@@ -5724,7 +5724,7 @@ window.MCPA_QUESTIONS = [
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       }
@@ -5783,7 +5783,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
@@ -5842,7 +5842,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Whitepaper — API-led connectivity",
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
@@ -5901,7 +5901,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
@@ -5960,7 +5960,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
@@ -6019,7 +6019,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Whitepaper — API-led connectivity",
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
@@ -6078,7 +6078,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
@@ -6137,7 +6137,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
@@ -6196,7 +6196,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
@@ -6255,7 +6255,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Whitepaper — API-led connectivity",
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
@@ -6314,7 +6314,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
@@ -6373,7 +6373,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Whitepaper — API-led connectivity",
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
@@ -6432,7 +6432,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
@@ -6491,7 +6491,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Whitepaper — API-led connectivity",
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
@@ -6550,7 +6550,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Using APIs to build a great architecture",
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Salesforce Blog — What Is API-Led Connectivity?",
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
@@ -6609,7 +6609,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint DataGraph Overview",
         "url": "https://docs.mulesoft.com/datagraph/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint DataGraph — Querying the Unified Schema",
         "url": "https://docs.mulesoft.com/datagraph/query-unified-schema"
       }
@@ -6668,7 +6668,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint DataGraph Overview",
         "url": "https://docs.mulesoft.com/datagraph/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint DataGraph — Adding an API to the Unified Schema",
         "url": "https://docs.mulesoft.com/datagraph/add-api-to-unified-schema"
       }
@@ -6727,7 +6727,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint DataGraph Overview",
         "url": "https://docs.mulesoft.com/datagraph/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint DataGraph — Querying the Unified Schema",
         "url": "https://docs.mulesoft.com/datagraph/query-unified-schema"
       }
@@ -6786,7 +6786,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint DataGraph Overview",
         "url": "https://docs.mulesoft.com/datagraph/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint DataGraph — Security",
         "url": "https://docs.mulesoft.com/datagraph/security"
       }
@@ -6845,7 +6845,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint DataGraph — Linking Types",
         "url": "https://docs.mulesoft.com/datagraph/linking"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint DataGraph Overview",
         "url": "https://docs.mulesoft.com/datagraph/"
       }
@@ -6904,7 +6904,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint DataGraph — Merging Types",
         "url": "https://docs.mulesoft.com/datagraph/merge-types"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint DataGraph Overview",
         "url": "https://docs.mulesoft.com/datagraph/"
       }
@@ -6974,7 +6974,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint DataGraph Overview",
         "url": "https://docs.mulesoft.com/datagraph/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint DataGraph — Querying the Unified Schema",
         "url": "https://docs.mulesoft.com/datagraph/query-unified-schema"
       }
@@ -7033,7 +7033,7 @@ window.MCPA_QUESTIONS = [
         "title": "Access Management — Environments",
         "url": "https://docs.mulesoft.com/access-management/environments"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — Creating an API Instance",
         "url": "https://docs.mulesoft.com/api-manager/latest/create-instance-task"
       }
@@ -7092,7 +7092,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — Managing Versions and Instances",
         "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — API Instances",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-instance-landing-page"
       }
@@ -7151,7 +7151,7 @@ window.MCPA_QUESTIONS = [
         "title": "Access Management — Environments",
         "url": "https://docs.mulesoft.com/access-management/environments"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Access Management — Business Groups",
         "url": "https://docs.mulesoft.com/access-management/business-groups"
       }
@@ -7210,7 +7210,7 @@ window.MCPA_QUESTIONS = [
         "title": "Access Management — Business Groups",
         "url": "https://docs.mulesoft.com/access-management/business-groups"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Access Management — Environments",
         "url": "https://docs.mulesoft.com/access-management/environments"
       }
@@ -7280,7 +7280,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — API Instances",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-instance-landing-page"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — Contracts",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-contracts-landing-page"
       }
@@ -7339,7 +7339,7 @@ window.MCPA_QUESTIONS = [
         "title": "Rate Limiting: SLA-Based Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting-sla"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — Defining SLA Tiers",
         "url": "https://docs.mulesoft.com/api-manager/latest/defining-sla-tiers"
       }
@@ -7398,7 +7398,7 @@ window.MCPA_QUESTIONS = [
         "title": "Rate Limiting Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Spike Control Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-spike-control"
       }
@@ -7457,7 +7457,7 @@ window.MCPA_QUESTIONS = [
         "title": "Cross-Origin Resource Sharing (CORS) Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-cors"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Included Policies Directory",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
@@ -7516,7 +7516,7 @@ window.MCPA_QUESTIONS = [
         "title": "Message Logging Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-message-logging"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Included Policies Directory",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
@@ -7575,7 +7575,7 @@ window.MCPA_QUESTIONS = [
         "title": "HTTP Caching Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-http-caching"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Included Policies Directory",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
@@ -7645,7 +7645,7 @@ window.MCPA_QUESTIONS = [
         "title": "Included Policies Directory",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — Included Policies",
         "url": "https://docs.mulesoft.com/api-manager/latest/policies-ootb-landing-page"
       }
@@ -7704,7 +7704,7 @@ window.MCPA_QUESTIONS = [
         "title": "Client ID Enforcement Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Design Center — Creating and Publishing API Fragments",
         "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-fragment"
       }
@@ -7763,7 +7763,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — Configuring an API for OAuth 2.0",
         "url": "https://docs.mulesoft.com/api-manager/latest/about-configure-api-for-oauth"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "OpenID Connect OAuth 2.0 Token Enforcement Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-openid-token-enforcement"
       }
@@ -7822,7 +7822,7 @@ window.MCPA_QUESTIONS = [
         "title": "Rate Limiting Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Rate Limiting: SLA-Based Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting-sla"
       }
@@ -7881,7 +7881,7 @@ window.MCPA_QUESTIONS = [
         "title": "HTTP Basic Authentication Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-basic-auth-simple"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Design Center — Creating and Publishing API Fragments",
         "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-fragment"
       }
@@ -7940,7 +7940,7 @@ window.MCPA_QUESTIONS = [
         "title": "Message Logging Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-message-logging"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Included Policies Directory",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
@@ -7999,7 +7999,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Autodiscovery",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Gateway Capabilities (Mule 4)",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-gateway-capabilities-mule4"
       }
@@ -8058,7 +8058,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — API Proxies",
         "url": "https://docs.mulesoft.com/api-manager/latest/proxy-latest-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Flex Gateway Documentation",
         "url": "https://docs.mulesoft.com/gateway/latest/"
       }
@@ -8117,7 +8117,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Flex Gateway Documentation",
         "url": "https://docs.mulesoft.com/gateway/latest/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Gateway Capabilities (Mule 4)",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-gateway-capabilities-mule4"
       }
@@ -8176,7 +8176,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — API Proxies",
         "url": "https://docs.mulesoft.com/api-manager/latest/proxy-latest-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Autodiscovery",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
       }
@@ -8235,7 +8235,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Developers — Getting Started with Anypoint Service Mesh",
         "url": "https://developer.mulesoft.com/tutorials-and-howtos/anypoint-service-mesh/getting-started-with-anypoint-service-mesh-provisioning/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Flex Gateway Documentation",
         "url": "https://docs.mulesoft.com/gateway/latest/"
       }
@@ -8294,7 +8294,7 @@ window.MCPA_QUESTIONS = [
         "title": "IP Allowlist Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-ip-allowlist"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Client ID Enforcement Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
       }
@@ -8353,7 +8353,7 @@ window.MCPA_QUESTIONS = [
         "title": "OpenID Connect OAuth 2.0 Token Enforcement Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-openid-token-enforcement"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — Configuring an API for OAuth 2.0",
         "url": "https://docs.mulesoft.com/api-manager/latest/about-configure-api-for-oauth"
       }
@@ -8412,7 +8412,7 @@ window.MCPA_QUESTIONS = [
         "title": "Client ID Enforcement Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — Contracts",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-contracts-landing-page"
       }
@@ -8482,7 +8482,7 @@ window.MCPA_QUESTIONS = [
         "title": "JSON Threat Protection Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-json-threat-protection"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "JWT Validation Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-jwt-validation"
       }
@@ -8541,7 +8541,7 @@ window.MCPA_QUESTIONS = [
         "title": "Client ID Enforcement Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "IP Allowlist Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-ip-allowlist"
       }
@@ -8600,7 +8600,7 @@ window.MCPA_QUESTIONS = [
         "title": "Client ID Enforcement Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — Managing Client Applications",
         "url": "https://docs.mulesoft.com/api-manager/latest/manage-client-apps-latest-task"
       }
@@ -8659,7 +8659,7 @@ window.MCPA_QUESTIONS = [
         "title": "Client ID Enforcement Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "HTTP Basic Authentication Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-basic-auth-simple"
       }
@@ -8718,7 +8718,7 @@ window.MCPA_QUESTIONS = [
         "title": "Rate Limiting: SLA-Based Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting-sla"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Client ID Enforcement Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
       }
@@ -8777,7 +8777,7 @@ window.MCPA_QUESTIONS = [
         "title": "Client ID Enforcement Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — OAuth 2.0 Grant Types",
         "url": "https://docs.mulesoft.com/api-manager/latest/oauth-grant-types-about"
       }
@@ -8836,7 +8836,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — Configuring an API for OAuth 2.0",
         "url": "https://docs.mulesoft.com/api-manager/latest/about-configure-api-for-oauth"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — OAuth 2.0 Grant Types",
         "url": "https://docs.mulesoft.com/api-manager/latest/oauth-grant-types-about"
       }
@@ -8895,7 +8895,7 @@ window.MCPA_QUESTIONS = [
         "title": "Exchange — Requesting Access to an API",
         "url": "https://docs.mulesoft.com/exchange/to-request-access"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — Contracts",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-contracts-landing-page"
       }
@@ -8954,7 +8954,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — Defining SLA Tiers",
         "url": "https://docs.mulesoft.com/api-manager/latest/defining-sla-tiers"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — SLA Tiers",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-sla-tiers"
       }
@@ -9013,7 +9013,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — Contracts",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-contracts-landing-page"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — Viewing API Contracts",
         "url": "https://docs.mulesoft.com/api-manager/latest/view-api-contracts"
       }
@@ -9072,7 +9072,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — Contracts",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-contracts-landing-page"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — Viewing API Contracts",
         "url": "https://docs.mulesoft.com/api-manager/latest/view-api-contracts"
       }
@@ -9131,7 +9131,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — Contracts",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-contracts-landing-page"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Exchange — Requesting Access to an API",
         "url": "https://docs.mulesoft.com/exchange/to-request-access"
       }
@@ -9190,7 +9190,7 @@ window.MCPA_QUESTIONS = [
         "title": "JSON Threat Protection Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-json-threat-protection"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Included Policies Directory",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
@@ -9249,7 +9249,7 @@ window.MCPA_QUESTIONS = [
         "title": "XML Threat Protection Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-xml-threat-protection"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Included Policies Directory",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
@@ -9308,7 +9308,7 @@ window.MCPA_QUESTIONS = [
         "title": "IP Allowlist Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-ip-allowlist"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Included Policies Directory",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
@@ -9367,7 +9367,7 @@ window.MCPA_QUESTIONS = [
         "title": "JWT Validation Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-jwt-validation"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Included Policies Directory",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
@@ -9437,7 +9437,7 @@ window.MCPA_QUESTIONS = [
         "title": "Included Policies Directory",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — Included Policies",
         "url": "https://docs.mulesoft.com/api-manager/latest/policies-ootb-landing-page"
       }
@@ -9496,7 +9496,7 @@ window.MCPA_QUESTIONS = [
         "title": "Client Management in Anypoint Platform",
         "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Configuring OpenID Connect Client Management",
         "url": "https://docs.mulesoft.com/access-management/configure-client-management-openid-task"
       }
@@ -9555,7 +9555,7 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — Configuring an API for OAuth 2.0",
         "url": "https://docs.mulesoft.com/api-manager/latest/about-configure-api-for-oauth"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "OpenID Connect OAuth 2.0 Token Enforcement Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-openid-token-enforcement"
       }
@@ -9614,7 +9614,7 @@ window.MCPA_QUESTIONS = [
         "title": "Configuring OpenID Connect Client Management",
         "url": "https://docs.mulesoft.com/access-management/configure-client-management-openid-task"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Client Management in Anypoint Platform",
         "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
       }
@@ -9673,7 +9673,7 @@ window.MCPA_QUESTIONS = [
         "title": "Client Management in Anypoint Platform",
         "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "PingFederate Access Token Enforcement Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-pingfederate-oauth-token-enforcement"
       }
@@ -9743,7 +9743,7 @@ window.MCPA_QUESTIONS = [
         "title": "Client Management in Anypoint Platform",
         "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — Configuring an API for OAuth 2.0",
         "url": "https://docs.mulesoft.com/api-manager/latest/about-configure-api-for-oauth"
       }
@@ -9802,7 +9802,7 @@ window.MCPA_QUESTIONS = [
         "title": "Getting Started with Custom Policies",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-getting-started"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Flex Gateway Policy Development Kit (PDK)",
         "url": "https://docs.mulesoft.com/pdk/latest/"
       }
@@ -9861,7 +9861,7 @@ window.MCPA_QUESTIONS = [
         "title": "Rate Limiting: SLA-Based Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting-sla"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Getting Started with Custom Policies",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-getting-started"
       }
@@ -9920,7 +9920,7 @@ window.MCPA_QUESTIONS = [
         "title": "Flex Gateway Policy Development Kit (PDK)",
         "url": "https://docs.mulesoft.com/pdk/latest/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Getting Started with Custom Policies",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-getting-started"
       }
@@ -9979,7 +9979,7 @@ window.MCPA_QUESTIONS = [
         "title": "Getting Started with Custom Policies",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-getting-started"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Custom Policy Reference (Mule 4)",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-mule-4-reference"
       }
@@ -10049,7 +10049,7 @@ window.MCPA_QUESTIONS = [
         "title": "Getting Started with Custom Policies",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-getting-started"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Included Policies Directory",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
@@ -10108,7 +10108,7 @@ window.MCPA_QUESTIONS = [
         "title": "Configuring API Autodiscovery in a Mule 4 Application",
         "url": "https://docs.mulesoft.com/api-manager/latest/configure-autodiscovery-4-task"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Autodiscovery",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
       }
@@ -10167,7 +10167,7 @@ window.MCPA_QUESTIONS = [
         "title": "Configuring API Autodiscovery in a Mule 4 Application",
         "url": "https://docs.mulesoft.com/api-manager/latest/configure-autodiscovery-4-task"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Gateway — Autodiscovery (Mule 4)",
         "url": "https://docs.mulesoft.com/mule-gateway/mule-gateway-config-autodiscovery-mule4"
       }
@@ -10226,7 +10226,7 @@ window.MCPA_QUESTIONS = [
         "title": "Configuring API Autodiscovery in a Mule 4 Application",
         "url": "https://docs.mulesoft.com/api-manager/latest/configure-autodiscovery-4-task"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Runtime — Configuring Properties",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/configuring-properties"
       }
@@ -10285,7 +10285,7 @@ window.MCPA_QUESTIONS = [
         "title": "Mule Gateway — Gatekeeper",
         "url": "https://docs.mulesoft.com/mule-gateway/mule-gateway-gatekeeper"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Gateway — Autodiscovery (Mule 4)",
         "url": "https://docs.mulesoft.com/mule-gateway/mule-gateway-config-autodiscovery-mule4"
       }
@@ -10344,7 +10344,7 @@ window.MCPA_QUESTIONS = [
         "title": "Configuring API Autodiscovery in a Mule 4 Application",
         "url": "https://docs.mulesoft.com/api-manager/latest/configure-autodiscovery-4-task"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Autodiscovery",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
       }
@@ -10403,7 +10403,7 @@ window.MCPA_QUESTIONS = [
         "title": "Configuring API Autodiscovery in a Mule 4 Application",
         "url": "https://docs.mulesoft.com/api-manager/latest/configure-autodiscovery-4-task"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — API Proxies",
         "url": "https://docs.mulesoft.com/api-manager/latest/proxy-latest-concept"
       }
@@ -10473,7 +10473,7 @@ window.MCPA_QUESTIONS = [
         "title": "Configuring API Autodiscovery in a Mule 4 Application",
         "url": "https://docs.mulesoft.com/api-manager/latest/configure-autodiscovery-4-task"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Gateway — Autodiscovery (Mule 4)",
         "url": "https://docs.mulesoft.com/mule-gateway/mule-gateway-config-autodiscovery-mule4"
       }
@@ -10532,7 +10532,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Virtual Private Cloud",
         "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint VPC Connectivity Methods",
         "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       }
@@ -10591,7 +10591,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub Dedicated Load Balancer",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Virtual Private Cloud",
         "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       }
@@ -10650,7 +10650,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint VPC Firewall Rules",
         "url": "https://docs.mulesoft.com/cloudhub/vpc-firewall-rules-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Virtual Private Cloud",
         "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       }
@@ -10709,7 +10709,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Virtual Private Cloud",
         "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint VPC Connectivity Methods",
         "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       }
@@ -10768,7 +10768,7 @@ window.MCPA_QUESTIONS = [
         "title": "Provisioning an Anypoint VPC",
         "url": "https://docs.mulesoft.com/cloudhub/vpc-provisioning-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint VPC Connectivity Methods",
         "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       }
@@ -10827,7 +10827,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Virtual Private Cloud",
         "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Provisioning an Anypoint VPC",
         "url": "https://docs.mulesoft.com/cloudhub/vpc-provisioning-concept"
       }
@@ -10886,7 +10886,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub 2.0 Private Spaces",
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-private-space-about"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub 2.0 Overview",
         "url": "https://docs.mulesoft.com/cloudhub-2/"
       }
@@ -10945,7 +10945,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Platform Hosting Overview",
         "url": "https://docs.mulesoft.com/hosting-home/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Deploying to Your Own Servers (Hybrid)",
         "url": "https://docs.mulesoft.com/runtime-manager/deploying-to-your-own-servers"
       }
@@ -11004,7 +11004,7 @@ window.MCPA_QUESTIONS = [
         "title": "Runtime Manager — Clusters",
         "url": "https://docs.mulesoft.com/runtime-manager/cluster-about"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Runtime Manager — Server Groups",
         "url": "https://docs.mulesoft.com/runtime-manager/server-group-about"
       }
@@ -11063,7 +11063,7 @@ window.MCPA_QUESTIONS = [
         "title": "Runtime Fabric on Self-Managed Kubernetes",
         "url": "https://docs.mulesoft.com/runtime-fabric/latest/install-self-managed"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Runtime Fabric Overview",
         "url": "https://docs.mulesoft.com/runtime-fabric/latest/"
       }
@@ -11122,7 +11122,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Runtime Fabric Overview",
         "url": "https://docs.mulesoft.com/runtime-fabric/latest/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Platform Hosting Overview",
         "url": "https://docs.mulesoft.com/hosting-home/"
       }
@@ -11192,7 +11192,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Platform Hosting Overview",
         "url": "https://docs.mulesoft.com/hosting-home/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub 2.0 Overview",
         "url": "https://docs.mulesoft.com/cloudhub-2/"
       }
@@ -11251,7 +11251,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Platform Hosting Overview",
         "url": "https://docs.mulesoft.com/hosting-home/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Deploying to Your Own Servers (Hybrid)",
         "url": "https://docs.mulesoft.com/runtime-manager/deploying-to-your-own-servers"
       }
@@ -11310,7 +11310,7 @@ window.MCPA_QUESTIONS = [
         "title": "MUnit Overview",
         "url": "https://docs.mulesoft.com/munit/latest/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MUnit — Mock When Event Processor",
         "url": "https://docs.mulesoft.com/munit/latest/mock-event-processor"
       }
@@ -11369,7 +11369,7 @@ window.MCPA_QUESTIONS = [
         "title": "MUnit — Test Concepts",
         "url": "https://docs.mulesoft.com/munit/latest/munit-test-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MUnit Overview",
         "url": "https://docs.mulesoft.com/munit/latest/"
       }
@@ -11428,7 +11428,7 @@ window.MCPA_QUESTIONS = [
         "title": "MUnit — Mock When Event Processor",
         "url": "https://docs.mulesoft.com/munit/latest/mock-event-processor"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MUnit — Test Concepts",
         "url": "https://docs.mulesoft.com/munit/latest/munit-test-concept"
       }
@@ -11487,7 +11487,7 @@ window.MCPA_QUESTIONS = [
         "title": "MUnit Maven Plugin",
         "url": "https://docs.mulesoft.com/munit/latest/munit-maven-plugin"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MUnit Overview",
         "url": "https://docs.mulesoft.com/munit/latest/"
       }
@@ -11546,7 +11546,7 @@ window.MCPA_QUESTIONS = [
         "title": "MUnit Overview",
         "url": "https://docs.mulesoft.com/munit/latest/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MUnit — Test Concepts",
         "url": "https://docs.mulesoft.com/munit/latest/munit-test-concept"
       }
@@ -11616,7 +11616,7 @@ window.MCPA_QUESTIONS = [
         "title": "MUnit — Test Concepts",
         "url": "https://docs.mulesoft.com/munit/latest/munit-test-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MUnit — Mock When Event Processor",
         "url": "https://docs.mulesoft.com/munit/latest/mock-event-processor"
       }
@@ -11675,7 +11675,7 @@ window.MCPA_QUESTIONS = [
         "title": "MUnit — Test Concepts",
         "url": "https://docs.mulesoft.com/munit/latest/munit-test-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MUnit Overview",
         "url": "https://docs.mulesoft.com/munit/latest/"
       }
@@ -11734,7 +11734,7 @@ window.MCPA_QUESTIONS = [
         "title": "Mule Maven Plugin",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Deploy Applications to CloudHub 2.0 Using Mule Maven Plugin",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/deploy-to-cloudhub-2"
       }
@@ -11793,7 +11793,7 @@ window.MCPA_QUESTIONS = [
         "title": "Connected Apps Overview",
         "url": "https://docs.mulesoft.com/access-management/connected-apps-overview"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Maven Plugin",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept"
       }
@@ -11852,7 +11852,7 @@ window.MCPA_QUESTIONS = [
         "title": "Mule Runtime — Configuring Properties",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/configuring-properties"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Runtime — Secure Configuration Properties",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/secure-configuration-properties"
       }
@@ -11911,7 +11911,7 @@ window.MCPA_QUESTIONS = [
         "title": "MUnit Maven Plugin",
         "url": "https://docs.mulesoft.com/munit/latest/munit-maven-plugin"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Maven Plugin",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept"
       }
@@ -11970,7 +11970,7 @@ window.MCPA_QUESTIONS = [
         "title": "Exchange — Anypoint Platform APIs",
         "url": "https://docs.mulesoft.com/exchange/about-platform-apis"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint CLI",
         "url": "https://docs.mulesoft.com/anypoint-cli/latest/"
       }
@@ -12040,7 +12040,7 @@ window.MCPA_QUESTIONS = [
         "title": "Publishing Assets to Exchange Using Maven",
         "url": "https://docs.mulesoft.com/exchange/to-publish-assets-maven"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Maven Plugin",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept"
       }
@@ -12099,7 +12099,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub High Availability Features",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Object Store v2 Guide",
         "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
@@ -12158,7 +12158,7 @@ window.MCPA_QUESTIONS = [
         "title": "Object Store v2 Guide",
         "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Runtime — Object Stores",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       }
@@ -12217,7 +12217,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub High Availability Features",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Object Store v2 Guide",
         "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
@@ -12276,7 +12276,7 @@ window.MCPA_QUESTIONS = [
         "title": "Object Store v2 FAQ",
         "url": "https://docs.mulesoft.com/object-store/osv2-faq"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Object Store v2 Guide",
         "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
@@ -12335,7 +12335,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub High Availability Features",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Runtime — Object Stores",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       }
@@ -12405,7 +12405,7 @@ window.MCPA_QUESTIONS = [
         "title": "Object Store v2 Guide",
         "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Object Store v2 FAQ",
         "url": "https://docs.mulesoft.com/object-store/osv2-faq"
       }
@@ -12464,7 +12464,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Deploying to CloudHub",
         "url": "https://docs.mulesoft.com/cloudhub/deploying-to-cloudhub"
       }
@@ -12523,7 +12523,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub High Availability Features",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       }
@@ -12582,7 +12582,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub High Availability Features",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
@@ -12641,7 +12641,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub — Application Monitoring and Automatic Restarts",
         "url": "https://docs.mulesoft.com/cloudhub/worker-monitoring"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
@@ -12700,7 +12700,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub High Availability Features",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub — Managing Queues",
         "url": "https://docs.mulesoft.com/cloudhub/managing-queues"
       }
@@ -12770,7 +12770,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Deploying to CloudHub",
         "url": "https://docs.mulesoft.com/cloudhub/deploying-to-cloudhub"
       }
@@ -12829,7 +12829,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub High Availability Features",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       }
@@ -12888,7 +12888,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub High Availability and Disaster Recovery",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-hadr"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
@@ -12947,7 +12947,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub High Availability and Disaster Recovery",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-hadr"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "High Availability and Disaster Recovery Across Deployment Models",
         "url": "https://docs.mulesoft.com/hosting-home/hadr-guide"
       }
@@ -13006,7 +13006,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Deploying to CloudHub",
         "url": "https://docs.mulesoft.com/cloudhub/deploying-to-cloudhub"
       }
@@ -13065,7 +13065,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Deploying to CloudHub",
         "url": "https://docs.mulesoft.com/cloudhub/deploying-to-cloudhub"
       }
@@ -13135,7 +13135,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub High Availability Features",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       }
@@ -13194,7 +13194,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub Dedicated Load Balancer",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Dedicated Load Balancer — Uploading Certificates",
         "url": "https://docs.mulesoft.com/cloudhub/lb-cert-upload"
       }
@@ -13253,7 +13253,7 @@ window.MCPA_QUESTIONS = [
         "title": "Dedicated Load Balancer Mapping Rules",
         "url": "https://docs.mulesoft.com/cloudhub/lb-mapping-rules"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Dedicated Load Balancer Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/lb-architecture"
       }
@@ -13312,7 +13312,7 @@ window.MCPA_QUESTIONS = [
         "title": "Dedicated Load Balancer Allowlists",
         "url": "https://docs.mulesoft.com/cloudhub/lb-allowlists"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub Dedicated Load Balancer",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
       }
@@ -13371,7 +13371,7 @@ window.MCPA_QUESTIONS = [
         "title": "Dedicated Load Balancer Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/lb-architecture"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub Dedicated Load Balancer",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
       }
@@ -13441,7 +13441,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub Dedicated Load Balancer",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Dedicated Load Balancer Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/lb-architecture"
       }
@@ -13500,7 +13500,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint VPC Connectivity Methods",
         "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Virtual Private Cloud",
         "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       }
@@ -13559,7 +13559,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint VPN",
         "url": "https://docs.mulesoft.com/cloudhub/vpn-about"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint VPC Connectivity Methods",
         "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       }
@@ -13618,7 +13618,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint VPC Connectivity Methods",
         "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Virtual Private Cloud",
         "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       }
@@ -13677,7 +13677,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint VPC Connectivity Methods",
         "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint VPC Network Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/vpc-architecture-concept"
       }
@@ -13747,7 +13747,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint VPC Connectivity Methods",
         "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint VPN",
         "url": "https://docs.mulesoft.com/cloudhub/vpn-about"
       }
@@ -13806,7 +13806,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub High Availability Features",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
@@ -13865,7 +13865,7 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint VPN High Availability",
         "url": "https://docs.mulesoft.com/cloudhub/vpn-high-availability"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint VPN",
         "url": "https://docs.mulesoft.com/cloudhub/vpn-about"
       }
@@ -13924,7 +13924,7 @@ window.MCPA_QUESTIONS = [
         "title": "High Availability and Disaster Recovery Across Deployment Models",
         "url": "https://docs.mulesoft.com/hosting-home/hadr-guide"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub High Availability Features",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       }
@@ -13983,7 +13983,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub High Availability and Disaster Recovery",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-hadr"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "High Availability and Disaster Recovery Across Deployment Models",
         "url": "https://docs.mulesoft.com/hosting-home/hadr-guide"
       }
@@ -14053,7 +14053,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub High Availability Features",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint VPN High Availability",
         "url": "https://docs.mulesoft.com/cloudhub/vpn-high-availability"
       }
@@ -14112,7 +14112,7 @@ window.MCPA_QUESTIONS = [
         "title": "HTTP Caching Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-http-caching"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Runtime — Cache Scope",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/cache-scope"
       }
@@ -14171,7 +14171,7 @@ window.MCPA_QUESTIONS = [
         "title": "Mule Runtime — Cache Scope",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/cache-scope"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "HTTP Caching Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-http-caching"
       }
@@ -14230,7 +14230,7 @@ window.MCPA_QUESTIONS = [
         "title": "Object Store v2 Guide",
         "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Runtime — Object Stores",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       }
@@ -14289,7 +14289,7 @@ window.MCPA_QUESTIONS = [
         "title": "Mule Runtime — Cache Scope",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/cache-scope"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "HTTP Caching Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-http-caching"
       }
@@ -14348,7 +14348,7 @@ window.MCPA_QUESTIONS = [
         "title": "Mule Runtime — Object Stores",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Object Store v2 Guide",
         "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
@@ -14407,7 +14407,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
         "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Runtime — Object Stores",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       }
@@ -14466,7 +14466,7 @@ window.MCPA_QUESTIONS = [
         "title": "Object Store v2 FAQ",
         "url": "https://docs.mulesoft.com/object-store/osv2-faq"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Object Store v2 — Usage Information",
         "url": "https://docs.mulesoft.com/object-store/osv2-usage"
       }
@@ -14536,7 +14536,7 @@ window.MCPA_QUESTIONS = [
         "title": "Mule Runtime — Object Stores",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Object Store v2 Guide",
         "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
@@ -14595,7 +14595,7 @@ window.MCPA_QUESTIONS = [
         "title": "HTTP Caching Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-http-caching"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Runtime — Cache Scope",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/cache-scope"
       }
@@ -14654,7 +14654,7 @@ window.MCPA_QUESTIONS = [
         "title": "HTTP Caching Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-http-caching"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Runtime — Cache Scope",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/cache-scope"
       }
@@ -14713,7 +14713,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
         "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "HTTP Connector — Request Reference",
         "url": "https://docs.mulesoft.com/http-connector/latest/http-request-ref"
       }
@@ -14772,7 +14772,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
         "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Runtime — Until Successful Scope",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/until-successful-scope"
       }
@@ -14831,7 +14831,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
         "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Runtime — Object Stores",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       }
@@ -14890,7 +14890,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
         "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Developers — Circuit Breaker Custom Policy",
         "url": "https://developer.mulesoft.com/tutorials-and-howtos/custom-api-policies-api-manager-circuit-breaker-policy/"
       }
@@ -14949,7 +14949,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
         "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Runtime — Try Scope",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/try-scope-concept"
       }
@@ -15008,7 +15008,7 @@ window.MCPA_QUESTIONS = [
         "title": "Rate Limiting Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
         "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       }
@@ -15067,7 +15067,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
         "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Runtime — Until Successful Scope",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/until-successful-scope"
       }
@@ -15137,7 +15137,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
         "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Runtime — Try Scope",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/try-scope-concept"
       }
@@ -15196,7 +15196,7 @@ window.MCPA_QUESTIONS = [
         "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
         "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Runtime — Try Scope",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/try-scope-concept"
       }
@@ -15255,7 +15255,7 @@ window.MCPA_QUESTIONS = [
         "title": "Spike Control Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-spike-control"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Rate Limiting Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting"
       }
@@ -15314,7 +15314,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub 2.0 Architecture",
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-architecture"
       }
@@ -15373,7 +15373,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Mule Runtime — Back-Pressure and MaxConcurrency",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/tuning-backpressure-maxconcurrency"
       }
@@ -15432,7 +15432,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub 2.0 Architecture",
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-architecture"
       }
@@ -15491,7 +15491,7 @@ window.MCPA_QUESTIONS = [
         "title": "Mule Runtime — Object Stores",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
@@ -15561,7 +15561,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub 2.0 Architecture",
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-architecture"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub 2.0 — Horizontal Autoscaling",
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-configure-horizontal-autoscaling"
       }
@@ -15620,7 +15620,7 @@ window.MCPA_QUESTIONS = [
         "title": "Mule Runtime — High Availability Clusters",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-high-availability-ha-clusters"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
@@ -15679,7 +15679,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub 2.0 — Horizontal Autoscaling",
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-configure-horizontal-autoscaling"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub 2.0 Architecture",
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-architecture"
       }
@@ -15738,7 +15738,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub 2.0 Architecture",
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-architecture"
       }
@@ -15797,7 +15797,7 @@ window.MCPA_QUESTIONS = [
         "title": "Rate Limiting Policy",
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
@@ -15856,7 +15856,7 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub 2.0 Architecture",
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-architecture"
       }
@@ -15914,13 +15914,9 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Visualizer — Real-Time Application Network Topology & Dependency Graph",
         "url": "https://docs.mulesoft.com/visualizer/#visualizer-control-plane"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Monitoring Dashboards & Telemetry Integration",
         "url": "https://docs.mulesoft.com/monitoring/app-dashboards#overview-charts"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     }
   },
@@ -15977,13 +15973,9 @@ window.MCPA_QUESTIONS = [
         "title": "Searching Aggregated Logs in Anypoint Monitoring & Log Retention",
         "url": "https://docs.mulesoft.com/monitoring/logs-search-hf#query-logs-from-the-search-bar"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Using Search Filters in Anypoint Monitoring Logs",
         "url": "https://docs.mulesoft.com/monitoring/logs-search-hf#use-search-filters"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     }
   },
@@ -16039,13 +16031,9 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Monitoring Dashboards — Custom Dashboards for Latency, Throughput, and Errors",
         "url": "https://docs.mulesoft.com/monitoring/app-dashboards#overview-charts"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Configuring Alerts and Telemetry in Anypoint Monitoring",
         "url": "https://docs.mulesoft.com/monitoring/alerts#threshold"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     }
   },
@@ -16102,13 +16090,9 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Visualizer — Real-Time Dependency-Aware Diagram of the Application Network",
         "url": "https://docs.mulesoft.com/visualizer/#visualizer-control-plane"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Monitoring Dashboards & Telemetry Integration",
         "url": "https://docs.mulesoft.com/monitoring/app-dashboards#overview-charts"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     }
   },
@@ -16164,13 +16148,9 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Monitoring — Configuring Operational Alerts for Worker Crashes and Thresholds",
         "url": "https://docs.mulesoft.com/monitoring/alerts#threshold"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Using Built-in Mule App Dashboards for Telemetry and Metric Trends",
         "url": "https://docs.mulesoft.com/monitoring/app-dashboards#overview-charts"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     }
   },
@@ -16226,13 +16206,9 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Visualizer — Visual Impact Analysis of API Dependencies Before Changes",
         "url": "https://docs.mulesoft.com/visualizer/#visualizer-control-plane"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Monitoring Dashboards & Dependency Telemetry",
         "url": "https://docs.mulesoft.com/monitoring/app-dashboards#overview-charts"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     }
   },
@@ -16288,13 +16264,9 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Monitoring — Measuring Event Processing Rates, Backlog, and Throughput Alerts",
         "url": "https://docs.mulesoft.com/monitoring/app-dashboards#overview-charts"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Configuring Operational Alerts and Notifications in Anypoint Monitoring",
         "url": "https://docs.mulesoft.com/monitoring/alerts#threshold"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     }
   },
@@ -16351,13 +16323,9 @@ window.MCPA_QUESTIONS = [
         "title": "Searching and Querying Aggregated Logs in Anypoint Monitoring & SIEM (Splunk/Datadog) Forwarding",
         "url": "https://docs.mulesoft.com/monitoring/logs-search-hf#query-logs-from-the-search-bar"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Using Built-in Mule App Dashboards for Telemetry and Metric Trends",
         "url": "https://docs.mulesoft.com/monitoring/app-dashboards#overview-charts"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     }
   },
@@ -16428,13 +16396,9 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Monitoring — Metrics, Dashboards, and Alerting Overview",
         "url": "https://docs.mulesoft.com/monitoring/#features"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Monitoring — Anypoint Insights Performance Metrics",
         "url": "https://docs.mulesoft.com/monitoring/anypoint-insights#insights-chart-reference"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "A"
@@ -16506,13 +16470,9 @@ window.MCPA_QUESTIONS = [
         "title": "Configuring Alerts in Anypoint Monitoring",
         "url": "https://docs.mulesoft.com/monitoring/alerts-hf#create"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Monitoring — Anypoint Insights Performance Metrics",
         "url": "https://docs.mulesoft.com/monitoring/anypoint-insights#charts-performance"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "D"
@@ -16584,13 +16544,9 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Monitoring — Compare Anypoint Monitoring and Runtime Manager Alerts",
         "url": "https://docs.mulesoft.com/monitoring/alerts-hf#compare-anypoint-monitoring-alerts-and-runtime-manager-alerts"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — SLA Tiers and Client Application Contracts",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-contracts-landing-page#client-application-credentials"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswers": [
@@ -16665,13 +16621,9 @@ window.MCPA_QUESTIONS = [
         "title": "Access Management — Audit Logging and Audit Log Contents",
         "url": "https://docs.mulesoft.com/access-management/audit-logging#audit-log-content"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Monitoring — Exporting Telemetry Data to Third-Party Systems",
         "url": "https://docs.mulesoft.com/monitoring/telemetry-exporter#before-you-begin"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "A"
@@ -16743,13 +16695,9 @@ window.MCPA_QUESTIONS = [
         "title": "Logging in Mule — Changing the Log Level and Configuring Logging",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/logging-in-mule#change-the-log-level"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Logging in Mule — Configuring Custom Logging Settings",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/logging-in-mule#configuring-custom-logging-settings"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "C"
@@ -16886,13 +16834,9 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Monitoring — Traces for End-to-End Request Visibility",
         "url": "https://docs.mulesoft.com/monitoring/traces#trace-overview"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Monitoring — Anypoint Insights Flow Metrics",
         "url": "https://docs.mulesoft.com/monitoring/anypoint-insights#entity-metrics-app-flows"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "D"
@@ -16964,13 +16908,9 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — Instance Alerts for APIs (Response Time and Response Code Alerts with Email Notifications)",
         "url": "https://docs.mulesoft.com/api-manager/latest/using-api-alerts#instance-alerts"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — Reviewing SLA Tiers Concepts (Monitoring SLA Performance)",
         "url": "https://docs.mulesoft.com/api-manager/latest/defining-sla-tiers#preamble"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "A"
@@ -17244,13 +17184,9 @@ window.MCPA_QUESTIONS = [
         "title": "Logging in Mule — Change the Log Level for Specific Packages",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/logging-in-mule#change-the-log-level"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Correlation ID — Identifying a Request Across Logs",
         "url": "https://docs.mulesoft.com/mule-runtime/latest/correlation-id#example-of-identifying-the-correlation-id-in-logs"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "C"
@@ -17387,13 +17323,9 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Monitoring — Anypoint Insights Flow Metrics",
         "url": "https://docs.mulesoft.com/monitoring/anypoint-insights#entity-metrics-app-flows"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Runtime Manager — Flow Metrics for Hybrid Deployments",
         "url": "https://docs.mulesoft.com/runtime-manager/flow-metrics#view-flow-metrics"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "A"
@@ -17534,13 +17466,9 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Insights — Built-in API Dashboards and Request Metrics",
         "url": "https://docs.mulesoft.com/monitoring/anypoint-insights#api-charts"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Monitoring — Create an Alert and Configure Email Notifications",
         "url": "https://docs.mulesoft.com/monitoring/alerts-hf#create"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "C"
@@ -17597,13 +17525,9 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Visualizer — Architecture Visualization and Access",
         "url": "https://docs.mulesoft.com/visualizer/architecture-visualization#access-api-visualizer"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Visualizer — Policy Visualization",
         "url": "https://docs.mulesoft.com/visualizer/policy-visualization#view-information-about-one-service-in-your-network"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "B"
@@ -17660,13 +17584,9 @@ window.MCPA_QUESTIONS = [
         "title": "Runtime Manager — Alert Conditions for CloudHub Applications",
         "url": "https://docs.mulesoft.com/runtime-manager/alerts-on-runtime-manager#conditions-for-applications-deployed-to-cloudhub"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Runtime Manager — Compare Runtime Manager and Anypoint Monitoring Alerts",
         "url": "https://docs.mulesoft.com/runtime-manager/alerts-on-runtime-manager#compare-runtime-manager-alerts-and-anypoint-monitoring-alerts"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "C"
@@ -17723,13 +17643,9 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub — Custom Log Appender and Disabling CloudHub Logging",
         "url": "https://docs.mulesoft.com/cloudhub/custom-log-appender#create-your-log4j-configuration"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub — Enable Custom Log4j Configurations in CloudHub",
         "url": "https://docs.mulesoft.com/cloudhub/custom-log-appender#enable-custom-log4j-configurations-in-cloudhub"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "B"
@@ -17786,13 +17702,9 @@ window.MCPA_QUESTIONS = [
         "title": "API Functional Monitoring — Monitors, Tests, and Schedules",
         "url": "https://docs.mulesoft.com/api-functional-monitoring/#functional-monitoring-concepts"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Functional Monitoring — Add a Schedule and Scheduling Limits",
         "url": "https://docs.mulesoft.com/api-functional-monitoring/afm-add-schedule#scheduling-limits"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "A"
@@ -17849,13 +17761,9 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Visualizer — Set a Layer with Properties",
         "url": "https://docs.mulesoft.com/visualizer/layers#set-a-layer-with-properties"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Visualizer — Architecture Visualization",
         "url": "https://docs.mulesoft.com/visualizer/architecture-visualization#access-api-visualizer"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "B"
@@ -17912,13 +17820,9 @@ window.MCPA_QUESTIONS = [
         "title": "API Manager — Using API Alerts for Contracts and Clients",
         "url": "https://docs.mulesoft.com/api-manager/latest/using-api-alerts#contracts-alerts"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — Defining SLA Tiers and Managing Applications",
         "url": "https://docs.mulesoft.com/api-manager/latest/defining-sla-tiers#managing-applications"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "C"
@@ -17975,13 +17879,9 @@ window.MCPA_QUESTIONS = [
         "title": "API Functional Monitoring — Public and Private Locations",
         "url": "https://docs.mulesoft.com/api-functional-monitoring/#afm-public-locations"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Functional Monitoring — Testing Private APIs from Public Locations",
         "url": "https://docs.mulesoft.com/api-functional-monitoring/afm-monitoring-public-apis#testing-private-apis-from-public-locations"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "D"
@@ -18038,13 +17938,9 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub — Custom Application Alerts with CloudHub Connector",
         "url": "https://docs.mulesoft.com/cloudhub/custom-application-alerts#configure-the-notification-in-cloudhub-connector"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "CloudHub — Create a Custom Alert",
         "url": "https://docs.mulesoft.com/cloudhub/custom-application-alerts#create-a-custom-alert"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "B"
@@ -18101,13 +17997,9 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub — Custom Log Appender Requirements and Restrictions",
         "url": "https://docs.mulesoft.com/cloudhub/custom-log-appender#requirements-and-restrictions"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Monitoring — Data Storage and Retention",
         "url": "https://docs.mulesoft.com/monitoring/#data-storage-retention"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "C"
@@ -18164,13 +18056,9 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Monitoring — Custom Dashboards",
         "url": "https://docs.mulesoft.com/monitoring/custom-dashboards#custom-dashboards"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Monitoring — Dashboard Configuration Reference",
         "url": "https://docs.mulesoft.com/monitoring/dashboard-config-ref#metrics"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "A"
@@ -18227,13 +18115,9 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Visualizer — Troubleshooting Permissions Issues",
         "url": "https://docs.mulesoft.com/visualizer/troubleshoot-visualizer#i-seem-to-have-permissions-issues"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Runtime Manager — Access and Permissions for Deployments",
         "url": "https://docs.mulesoft.com/runtime-manager/deployment-strategies#runtime-manager-features"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "C"
@@ -18291,13 +18175,9 @@ window.MCPA_QUESTIONS = [
         "title": "API Functional Monitoring — BAT CLI Commands",
         "url": "https://docs.mulesoft.com/api-functional-monitoring/bat-command-reference#bat-commands"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Functional Monitoring — Behavior Driven Development (BDD) Language",
         "url": "https://docs.mulesoft.com/api-functional-monitoring/#afm-bdd"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
       }
     },
     "correctAnswer": "B"
@@ -18354,13 +18234,9 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Visualizer — View Metrics for One Service in Your Network",
         "url": "https://docs.mulesoft.com/visualizer/troubleshooting-visualization#view-metrics-for-one-service-in-your-network"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Visualizer — Choosing Your Metric",
         "url": "https://docs.mulesoft.com/visualizer/troubleshooting-visualization#choosing-your-metric"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "B"
@@ -18417,13 +18293,9 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Monitoring — Install the Anypoint Monitoring Agent on On-Premises Hosts",
         "url": "https://docs.mulesoft.com/monitoring/am-installing#install_ap_monitoring_onprem"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Monitoring — Verify the Anypoint Monitoring Agent is Running",
         "url": "https://docs.mulesoft.com/monitoring/am-installing#verify-the-anypoint-monitoring-agent-is-running"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "B"
@@ -18480,13 +18352,9 @@ window.MCPA_QUESTIONS = [
         "title": "Access Management — Audit Logging and Export Audit Logs",
         "url": "https://docs.mulesoft.com/access-management/audit-logging#export-audit-logs"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Access Management — Audit Log Contents for Runtime Manager",
         "url": "https://docs.mulesoft.com/access-management/audit-logging#runtime-manager"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
       }
     },
     "correctAnswer": "C"
@@ -18543,13 +18411,9 @@ window.MCPA_QUESTIONS = [
         "title": "Runtime Manager — Alert Conditions for Applications Deployed to CloudHub",
         "url": "https://docs.mulesoft.com/runtime-manager/alerts-on-runtime-manager#conditions-for-applications-deployed-to-cloudhub"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Runtime Manager — Create an Alert",
         "url": "https://docs.mulesoft.com/runtime-manager/alerts-on-runtime-manager#create-an-alert"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "C"
@@ -18606,13 +18470,9 @@ window.MCPA_QUESTIONS = [
         "title": "Message Logging Policy — Injecting Runtime Logging at the Gateway",
         "url": "https://docs.mulesoft.com/gateway/latest/policies-included-message-logging#how-this-policy-works"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Message Logging Policy — About the Logging Format",
         "url": "https://docs.mulesoft.com/gateway/latest/policies-included-message-logging#about-the-logging-format"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "B"
@@ -18669,13 +18529,9 @@ window.MCPA_QUESTIONS = [
         "title": "Runtime Fabric — Enable and Configure Log Forwarding",
         "url": "https://docs.mulesoft.com/runtime-fabric/latest/use-anypoint-monitoring#logs"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Runtime Fabric — Log Forwarding Architecture",
         "url": "https://docs.mulesoft.com/runtime-fabric/latest/use-anypoint-monitoring#log-forwarding-architecture"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "A"
@@ -18732,13 +18588,9 @@ window.MCPA_QUESTIONS = [
         "title": "Spike Control Policy — How This Policy Works",
         "url": "https://docs.mulesoft.com/gateway/latest/policies-included-spike-control#how-this-policy-works"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — Rate Limiting and Throttling Policy",
         "url": "https://docs.mulesoft.com/gateway/latest/policies-included-rate-limiting#how-this-policy-works"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "B"
@@ -18795,13 +18647,9 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Visualizer — Set the Tag Using Properties",
         "url": "https://docs.mulesoft.com/visualizer/use-tags-in-visualizer#set-the-tag-using-properties"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Visualizer — Set a Layer with Properties",
         "url": "https://docs.mulesoft.com/visualizer/layers#set-a-layer-with-properties"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "B"
@@ -18858,13 +18706,9 @@ window.MCPA_QUESTIONS = [
         "title": "Anypoint Monitoring — Log Searches Across Applications",
         "url": "https://docs.mulesoft.com/monitoring/logs-search-hf#search-logs"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Anypoint Monitoring — Anypoint Platform Packages and Plans",
         "url": "https://docs.mulesoft.com/monitoring/#billing"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "C"
@@ -18921,13 +18765,9 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub — How Application Monitoring Works and Automatic Restarts",
         "url": "https://docs.mulesoft.com/cloudhub/worker-monitoring#how-application-monitoring-works"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Runtime Manager — Alert Conditions for CloudHub Applications",
         "url": "https://docs.mulesoft.com/runtime-manager/alerts-on-runtime-manager#conditions-for-applications-deployed-to-cloudhub"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "C"
@@ -19034,13 +18874,9 @@ window.MCPA_QUESTIONS = [
         "title": "API Autodiscovery — Prerequisites and Proxy vs Basic Endpoint",
         "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept#prerequisites"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Manager — Autodiscovery Schemes",
         "url": "https://docs.mulesoft.com/api-manager/latest/latest-overview-concept#autodiscovery-schemes"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
       }
     },
     "correctAnswer": "B"
@@ -19097,13 +18933,9 @@ window.MCPA_QUESTIONS = [
         "title": "Customize the API Visualizer Canvas — Display Name",
         "url": "https://docs.mulesoft.com/visualizer/customize-your-canvas"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Visualizer Architecture Visualization — Customization",
         "url": "https://docs.mulesoft.com/visualizer/architecture-visualization"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "B"
@@ -19160,13 +18992,9 @@ window.MCPA_QUESTIONS = [
         "title": "Viewing Policies in API Visualizer — Compliance Mode",
         "url": "https://docs.mulesoft.com/visualizer/policy-visualization"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Troubleshooting API Visualizer — Permissions and Metrics",
         "url": "https://docs.mulesoft.com/visualizer/troubleshoot-visualizer"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "B"
@@ -19223,13 +19051,9 @@ window.MCPA_QUESTIONS = [
         "title": "Using Tags in API Visualizer — Set the Tag Using Properties",
         "url": "https://docs.mulesoft.com/visualizer/use-tags-in-visualizer"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Customize the API Visualizer Canvas — Tags",
         "url": "https://docs.mulesoft.com/visualizer/customize-your-canvas"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "B"
@@ -19286,13 +19110,9 @@ window.MCPA_QUESTIONS = [
         "title": "Troubleshooting App Visualization — Connections and Traffic",
         "url": "https://docs.mulesoft.com/visualizer/troubleshooting-visualization"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "API Visualizer Overview — How Connections Are Determined",
         "url": "https://docs.mulesoft.com/visualizer/"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "B"
@@ -19350,13 +19170,9 @@ window.MCPA_QUESTIONS = [
         "title": "Defining a View in API Visualizer — Create a Defined View",
         "url": "https://docs.mulesoft.com/visualizer/view"
       },
-      "architectureGuide": {
+      "secondary": {
         "title": "Troubleshooting API Visualizer — Permissions",
         "url": "https://docs.mulesoft.com/visualizer/troubleshoot-visualizer"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
       }
     },
     "correctAnswer": "C"

@@ -513,17 +513,9 @@
         dom.refLinksContainer.appendChild(link);
         hasReferences = true;
       }
-      if (q.references.architectureGuide && q.references.architectureGuide.url) {
-        const link = createRefLink(q.references.architectureGuide.title, q.references.architectureGuide.url, '🏛️ Architecture Guide / Standard');
+      if (q.references.secondary && q.references.secondary.url) {
+        const link = createRefLink(q.references.secondary.title, q.references.secondary.url, '🏛️ Secondary Reference');
         dom.refLinksContainer.appendChild(link);
-        hasReferences = true;
-      }
-      if (q.references.arc720 && q.references.arc720.lesson) {
-        const lessonDiv = document.createElement('div');
-        lessonDiv.className = 'ref-link';
-        lessonDiv.style.color = 'var(--text-muted)';
-        lessonDiv.innerHTML = `<span>🎓 <strong>ARC720 Alignment:</strong> ${q.references.arc720.lesson}</span>`;
-        dom.refLinksContainer.appendChild(lessonDiv);
         hasReferences = true;
       }
     }
@@ -664,12 +656,11 @@
     dom.examModeBtn.classList.add('active');
 
     const count = state.examQuestionCount;
-    // Shuffle and pick `count` questions
-    const shuffled = [...state.questions].sort(() => 0.5 - Math.random()).slice(0, count);
-    
+    const examQuestions = buildWeightedExam(count);
+
     state.examSession = {
       active: true,
-      questions: shuffled,
+      questions: examQuestions,
       questionCount: count,
       startTime: Date.now(),
       durationSec: count * 2 * 60 // 2 minutes per question
@@ -688,6 +679,72 @@
     saveStorage();
     applyFilters();
     renderQuestion();
+  }
+
+  // Official exam-guide domain weights (sum = 100)
+  const EXAM_WEIGHTS = {
+    'Explaining application network basics': 7,
+    'Establishing organizational and platform foundations': 10,
+    'Designing and sharing APIs': 10,
+    'Designing APIs using System, Process, and Experience Layers': 12,
+    'Governing web APIs on Anypoint Platform': 17,
+    'Architecting and deploying API implementations': 11,
+    'Deploying API implementations to CloudHub': 11,
+    'Meeting API quality goals': 10,
+    'Monitoring and analyzing application networks': 12
+  };
+
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  // Draw a `count`-question exam that mirrors the official domain weights.
+  function buildWeightedExam(count) {
+    const byDomain = {};
+    state.questions.forEach(q => {
+      const d = q.domain || 'General';
+      (byDomain[d] = byDomain[d] || []).push(q);
+    });
+
+    const domains = Object.keys(EXAM_WEIGHTS).filter(d => byDomain[d] && byDomain[d].length);
+    const totalWeight = domains.reduce((s, d) => s + EXAM_WEIGHTS[d], 0) || 100;
+
+    const quotas = domains.map(d => {
+      const exact = (count * EXAM_WEIGHTS[d]) / totalWeight;
+      return { domain: d, base: Math.floor(exact), frac: exact - Math.floor(exact) };
+    });
+
+    let assigned = quotas.reduce((s, q) => s + q.base, 0);
+    quotas.sort((a, b) => b.frac - a.frac);
+    for (let i = 0; assigned < count; i++, assigned++) {
+      quotas[i % quotas.length].base++;
+    }
+
+    const picked = [];
+    const pickedIds = new Set();
+    quotas.forEach(({ domain, base }) => {
+      shuffle(byDomain[domain]).slice(0, base).forEach(q => {
+        picked.push(q);
+        pickedIds.add(q.id);
+      });
+    });
+
+    // Top up if a domain had fewer questions than its quota.
+    if (picked.length < count) {
+      shuffle(state.questions).forEach(q => {
+        if (picked.length < count && !pickedIds.has(q.id)) {
+          picked.push(q);
+          pickedIds.add(q.id);
+        }
+      });
+    }
+
+    return shuffle(picked).slice(0, count);
   }
 
   function startTimer() {
