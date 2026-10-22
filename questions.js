@@ -13464,23 +13464,23 @@ window.MCPA_QUESTIONS = [
         "text": "When the messaging broker must support point-to-point messaging"
       }
     ],
-    "explanation": "Correct answer: B.",
+    "explanation": "Correct answer: B. Anypoint MQ is a multi-tenant, cloud-based message queuing service: it is fully hosted and managed by MuleSoft and cannot be deployed on-premises. An on-premises messaging broker requirement therefore rules Anypoint MQ out, and MuleSoft's guidance is to use an on-premises broker such as Apache ActiveMQ instead. The other requirements do not exclude Anypoint MQ: it supports in-flight TLS encryption and, for encrypted queues, AES-256 encryption at rest; message payloads are serialized to a string, so XML is supported; and its queues provide point-to-point consumption while exchanges provide publish/subscribe.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Anypoint MQ supports encryption: in-flight HTTPS/TLS for transport and AES-256 GCM encryption at rest when a queue is configured as encrypted, so an encryption requirement does not prevent its use."
       },
       "B": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "Anypoint MQ cannot be deployed on-premises; it is a fully hosted, managed cloud service. An on-premises broker requirement is the blocker, and MuleSoft points to ActiveMQ for an on-premises messaging source."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Anypoint MQ serializes message bodies to strings and can carry XML content, so a requirement to use XML does not prevent its use."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Anypoint MQ queues provide point-to-point consumption (one consumer per message) and exchanges provide publish/subscribe, so a point-to-point requirement does not prevent its use."
       }
     },
     "references": {
@@ -13526,23 +13526,23 @@ window.MCPA_QUESTIONS = [
         "text": "Customer-hosted runtimes provisioned by a MuleSoft services partner"
       }
     ],
-    "explanation": "Correct answer: B.",
+    "explanation": "Correct answer: B. The company wants to begin its transformation quickly with APIs that scale, connect to on-premises systems, and can migrate later, while its IT staff has little experience operating integration infrastructure. CloudHub is a fully managed integration platform as a service: MuleSoft runs the hosting environment, so the team does not have to provision or maintain runtimes, and CloudHub scales elastically and can reach on-premises systems through Anypoint VPC and VPN. That combination best matches a strategic first phase with a low operational burden. The customer-hosted options (A, D) require the organization (or a partner on its behalf) to stand up and operate the runtime infrastructure, which reintroduces the very overhead and skills gap the company is trying to avoid, and Runtime Fabric on VMs/bare metal (C) adds Kubernetes infrastructure to manage on top of that.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Customer-hosted self-provisioned runtimes require the organization to provision and operate the infrastructure, which is a poor fit for a staff experienced only with legacy systems."
       },
       "B": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "CloudHub is a fully managed iPaaS: MuleSoft handles hosting, the platform scales on demand, and on-premises systems can be reached securely through Anypoint VPC and VPN, making it the fastest low-overhead starting point."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Runtime Fabric on VMs/bare metal gives control but requires the customer to install and operate Kubernetes and the Runtime Fabric infrastructure, adding operational overhead beyond what a first phase needs."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Customer-hosted runtimes provisioned by a partner are still customer-hosted: the organization retains the hosting burden and adds a partner dependency instead of adopting a managed platform."
       }
     },
     "references": {
@@ -13588,23 +13588,23 @@ window.MCPA_QUESTIONS = [
         "text": "CSV over FTP, YAML over TLS, JSON over HTTPS"
       }
     ],
-    "explanation": "Correct answer: B.",
+    "explanation": "Correct answer: B. The integration needs secured communication, high performance, and asynchronous message exchange. AsyncAPI is a language for describing messaging interfaces and is transport-agnostic, so it can describe an interface carried over SQS; AMQP with RabbitMQ is an asynchronous messaging protocol for which an Anypoint connector exists; and JSON/REST over HTTPS provides a secured, high-performance synchronous interface. Option A mixes in SOAP over HTTPS, gRPC over HTTPS, and 'HOP' — SOAP and gRPC are request/response interfaces, not asynchronous messaging. Option C includes FTP, which is file transfer rather than messaging, and option D combines FTP and YAML over TLS, which are not messaging interface technologies at all.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "SOAP over HTTPS and gRPC over HTTPS are synchronous request/response interfaces, not asynchronous message exchange, and 'HOP' is not a messaging interface technology."
       },
       "B": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "AsyncAPI describes messaging interfaces independent of transport, AMQP with RabbitMQ is an asynchronous messaging protocol with a connector, and JSON/REST over HTTPS is a secured high-performance interface."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "FTP is a file-transfer mechanism, not an asynchronous messaging interface, so 'XML over FTP' does not satisfy the messaging requirement."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "CSV over FTP is batch file transfer and 'YAML over TLS' is not a messaging interface technology; neither provides asynchronous message exchange."
       }
     },
     "references": {
@@ -13650,23 +13650,23 @@ window.MCPA_QUESTIONS = [
         "text": "Perform all communication involving the System API synchronously from within the For Each scope so that responses in RESPONSE_OBJECT are in the exact same order as request objects in the RESP message. Within the For Each scope, use an Async scope configured with a persistent object store."
       }
     ],
-    "explanation": "Correct answer: B.",
+    "explanation": "Correct answer: B. The Experience API splits REQU into individual REQU_OBJECT messages that the System API processes independently and concurrently, so responses can return out of order and the Experience API must reassemble them into the same order and length as the original request. The reliable way to do this while keeping throughput high is to persist, in an object store, the list length and each object's index for both the outbound request objects and the inbound response messages, and to set maxConcurrency greater than 1 on the receiving flow so multiple responses are processed in parallel. Each response can then be matched to its original index rather than relying on arrival order. Collecting responses 'in the order in which they arrive' (A) or serializing the calls (D) does not reliably reproduce request order, and a Scatter-Gather inside the For Each (C) operates on branches within a single event, not across separate queue messages, so it cannot reorder independent responses.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Collecting responses in arrival order does not restore request order: responses can complete out of order, and a second For Each does not track each response back to its original index."
       },
       "B": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "A persistent object store that records the list length and each object index — for both the request objects and the response messages — lets the API match each response to its original position, and maxConcurrency greater than 1 keeps processing parallel for throughput."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Scatter-Gather routes branches of a single event in parallel; it does not order responses that arrive as separate queue messages, so it cannot guarantee request order here."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Making the System API calls synchronous serializes processing and defeats the goal of maximizing throughput, and the Async scope with an object store does not by itself guarantee ordering."
       }
     },
     "references": {
@@ -13712,23 +13712,23 @@ window.MCPA_QUESTIONS = [
         "text": "An external load balancer is required to distribute incoming TCP/HTTP requests throughout the cluster nodes"
       }
     ],
-    "explanation": "Correct answer: D.",
+    "explanation": "Correct answer: D. An active-active Mule cluster runs the application on every node and shares processing across them, but an on-premises Mule cluster does not create a virtual IP and does not include a built-in load balancer. The customer must supply an external load balancer (or client-side failover) to distribute incoming HTTP/TCP requests across the cluster nodes. Option A describes active-passive failover, not active-active: in active-active all nodes process requests. Option B is wrong because clustered nodes are aware of each other and synchronize state rather than running in isolation. Option C is wrong because only schedulers and event sources explicitly marked 'primary node only' run on the primary node; most connector sources are not primary-only by default.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "In an active-active cluster all nodes process requests continuously; requests are not held until an outage is detected by a primary node."
       },
       "B": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Cluster nodes are aware of each other and share information and status, so an application deployed across nodes does not run in isolation."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Only schedulers and sources marked 'primary node only' run on the primary node; not all event sources can be targeted at the primary node."
       },
       "D": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "An on-premises cluster has no built-in load balancer, so an external load balancer is required to distribute incoming TCP/HTTP requests across the cluster nodes."
       }
     },
     "references": {
@@ -13737,8 +13737,8 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-manager/deployment-strategies#load-balancing"
       },
       "architectureGuide": {
-        "title": "Runtime Manager — Multicast vs Unicast Clusters",
-        "url": "https://docs.mulesoft.com/runtime-manager/cluster-about#multicast-vs-unicast-clusters"
+      "title": "On-Premises Mule Runtime High Availability Cluster Overview — Clustering and Load Balancing",
+      "url": "https://docs.mulesoft.com/on-premises/latest/mule-high-availability-ha-clusters#review-clustering-benefits"
       },
       "arc720": {
         "lesson": "Lesson 10 — Production",
@@ -13774,23 +13774,23 @@ window.MCPA_QUESTIONS = [
         "text": "Use an in-memory nonrepeatable stream"
       }
     ],
-    "explanation": "Correct answer: A.",
+    "explanation": "Correct answer: A. The application runs on a single 0.2 vCore CloudHub worker (about 1 GB heap) and must read files that can be as large as 5 GB, then send transformed copies to three downstream SFTP locations. A file-stored repeatable stream is the default Mule 4 strategy: it uses a small in-memory buffer (512 KB by default) and, for larger content, buffers to a temporary file on disk so the payload never overflows the worker's memory. Because it is repeatable, the stream can be read multiple times, which is required to write to the three different SFTP targets. A file-stored nonrepeatable stream (B) spills to disk but can only be read once, so it cannot feed three targets; the in-memory options (C, D) would try to hold a 5 GB payload in a 1 GB heap and fail, and the nonrepeatable in-memory option additionally cannot be re-read.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "File-stored repeatable streaming buffers content on disk beyond the in-memory threshold, so a 5 GB file does not exhaust the small worker's heap, and the repeatable stream can be read multiple times for the three SFTP writes."
       },
       "B": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "A file-stored nonrepeatable stream avoids memory pressure but can only be read once, so it cannot supply the payload to three separate downstream SFTP operations."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "An in-memory repeatable stream would attempt to hold the large payload in memory and would exhaust the 0.2 vCore worker's heap."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "An in-memory nonrepeatable stream fails on both counts: it buffers in memory (unsuitable for 5 GB) and can be read only once."
       }
     },
     "references": {
@@ -13836,23 +13836,23 @@ window.MCPA_QUESTIONS = [
         "text": "Add an ArrayList of all the sensitive properties' names in the mule-artifact.json file of the application"
       }
     ],
-    "explanation": "Correct answer: D.",
+    "explanation": "Correct answer: D. CloudHub supports safely hidden application properties: the property name is visible in Runtime Manager but the value is not displayed or retrievable, and administrators with the right permissions can still set or change it in Runtime Manager. For Mule 4, this is enabled by listing the sensitive property names under the secureProperties key in the application's mule-artifact.json file. That satisfies both requirements — values are never stored or shown in cleartext in Runtime Manager, yet they remain changeable there. Encrypting the values inside the application (A) still leaves the artifact carrying the values and is a different mechanism from safely hidden properties; wrapper.conf (B) holds JVM startup arguments, not secure property masking; and hiding values in the CI/CD scripts (C) does not prevent the values from appearing in Runtime Manager.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Encrypted values as global configuration properties keep the sensitive data inside the application artifact; this is not the safely hidden application property mechanism and does not meet the 'not visible in Runtime Manager' requirement."
       },
       "B": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "wrapper.java.additional parameters in wrapper.conf configure JVM startup options; they do not mask or hide application property values."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Declaring variables as hidden in the CI/CD scripts hides them from the pipeline but does not prevent the values from being stored or displayed in Runtime Manager."
       },
       "D": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "Listing the sensitive property names in the secureProperties array of mule-artifact.json makes them safely hidden application properties: the names are visible, the values are neither displayed nor retrievable, and administrators can still change them in Runtime Manager."
       }
     },
     "references": {
@@ -13898,23 +13898,23 @@ window.MCPA_QUESTIONS = [
         "text": "Build a Mule domain project, add the Database connector and configuration to it, and reference this one domain project from each System API"
       }
     ],
-    "explanation": "Correct answer: D.",
+    "explanation": "Correct answer: D. The goal is to avoid embedding the same Database connector and its configuration in every System API project and to share that configuration as the database is later partitioned. MuleSoft's recommended mechanism for sharing global configuration elements across applications on the same runtime is a Mule domain project: you build one domain project that contains the Database connector and configuration, and each System API references that domain. A per-API domain loading configuration from a shared file store (A) does not centralize the configuration; an API proxy with a policy (B) cannot share a Mule connector configuration; and introducing another System API as a database gateway (C) is a different architectural pattern, not the recommended way to share a connector configuration.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "A separate domain per API that loads configuration from a shared file store does not centralize the Database connector configuration, so each API still manages its own copy."
       },
       "B": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "API proxies and policies operate on the API gateway layer and cannot share a Mule Database connector configuration among System API applications."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Wrapping the database behind yet another System API is a valid architectural pattern but is not the recommended way to share a connector and its configuration across the existing APIs."
       },
       "D": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "A Mule domain project holds the Database connector and configuration as shared global elements, and each System API references that one domain, eliminating duplicated connector configuration."
       }
     },
     "references": {
@@ -13960,23 +13960,23 @@ window.MCPA_QUESTIONS = [
         "text": "Check the Persistent VM queues checkbox in the application deployment configuration"
       }
     ],
-    "explanation": "Correct answer: D.",
+    "explanation": "Correct answer: D. The application must process files asynchronously and reliably from FTPS to a database using VM intermediary queues for load balancing, and it runs on two CloudHub workers. CloudHub's persistent queues feature is the deployment-level setting that provides zero message loss and distributes workloads across the workers, which supports the reliability goal of the VM-queue processing. It is enabled by selecting the Persistent VM queues checkbox in the application's Runtime Manager deployment configuration. Enabling it 'for the FTPS connector' (A) or disabling it for Batch Job scopes (C) misstates how the setting works — persistence is a per-application deployment option, not a per-connector or per-scope property — and option B selects the opposite (non-persistent) behavior.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Persistent queues are enabled at the application deployment level in Runtime Manager, not as a property of the FTPS connector."
       },
       "B": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Checking non-persistent VM queues disables persistence, which is the opposite of the reliability goal."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Disabling persistence for Batch Job scopes is not the deployment configuration the question asks about; the setting is a single per-application deployment option."
       },
       "D": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "Selecting the Persistent VM queues checkbox in the deployment configuration enables CloudHub persistent queues, which ensure zero message loss and distribute workload across workers."
       }
     },
     "references": {
@@ -14085,23 +14085,23 @@ window.MCPA_QUESTIONS = [
         "text": "Download the Google public certificate from a browser, generate a JKS file from it, and add it in KeyStore as part of the TLS context"
       }
     ],
-    "explanation": "Correct answer: B.",
+    "explanation": "Correct answer: B. The Mule application calls the Google Maps API over HTTPS, and Google's certificate is issued by a well-known public Certificate Authority. In a Mule TLS context, if no tls:trust-store is specified, Mule uses the default Java truststore, which contains the certificates for the major CAs and is kept current when Java is updated. Nothing extra therefore needs to be configured in the TLS context for this outbound call. Downloading Google's public certificate and adding it to a truststore (A) is unnecessary because the default truststore already trusts it; requesting a private key from Google and adding it to a keystore (C) is wrong because a one-way TLS client call to a public API does not require a client private key; and placing Google's public certificate in a keystore (D) confuses keystores (private keys and client identity) with truststores (trusted server certificates).",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Manually importing Google's public certificate into a truststore is unnecessary: when no truststore is configured, Mule uses the default Java truststore, which already trusts well-known public CAs."
       },
       "B": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "The default Java truststore already contains the certificates of the major CAs, so nothing extra is required in the TLS context for a one-way HTTPS call to a publicly trusted API."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "A client keystore holds the client's own private key and certificate for client authentication; a one-way TLS call to a public API does not require a private key from Google."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "A server's public certificate belongs in a truststore, not a keystore, and in any case the default truststore already trusts it."
       }
     },
     "references": {
@@ -14147,23 +14147,23 @@ window.MCPA_QUESTIONS = [
         "text": "Wrap the Finance operation in a Parallel For-Each scope. Wrap the Audit operation in a Async scope."
       }
     ],
-    "explanation": "Correct answer: D.",
+    "explanation": "Correct answer: D. The Finance connector can only look up one account at a time, and there are many accounts, so wrapping the Finance operation in a Parallel For Each scope processes those single-record lookups concurrently and aggregates the results in the original order — improving the response time of the balance retrieval. The Audit insert must not add latency to the response, so wrapping the Audit operation in an Async scope lets the flow return the balances while the audit write happens in the background ('fire and forget'). Wrapping both in an Async scope (A) would make the Finance lookups asynchronous too, so their results would not be available for the response; wrapping both in a For Each (B) processes them sequentially and adds latency; and Until-Successful plus Try-Catch (C) addresses retries and error handling, not concurrency or non-blocking behavior.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Wrapping the Finance operation in an Async scope makes it fire-and-forget, so the retrieved balances would not be available to return in the response."
       },
       "B": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Wrapping both operations in a For Each processes the accounts sequentially and adds latency to the response."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Until-Successful handles retries and Try-Catch handles errors; neither parallelizes the single-record lookups nor moves the audit write off the response path."
       },
       "D": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "Parallel For Each runs the single-account Finance lookups concurrently and aggregates results in order, while the Async scope performs the Audit insert without adding latency to the response."
       }
     },
     "references": {
@@ -14271,23 +14271,23 @@ window.MCPA_QUESTIONS = [
         "text": "Anypoint CLI"
       }
     ],
-    "explanation": "Correct answer: D.",
+    "explanation": "Correct answer: D. The organization needs a tool that can apply and promote API Manager policies as part of an automated CI/CD process. The Anypoint CLI provides API Manager commands, including api-mgr:policy:apply to apply a policy to an API instance and api-mgr:api:promote to promote an API instance between environments, so it can be scripted in a pipeline. The Runtime Manager agent (A) monitors and controls deployed Mule applications, not API Manager policies; the Mule Maven plugin (B) packages and deploys Mule applications; and the MUnit Maven plugin (C) runs MUnit tests. None of those manages API Manager policy deployment.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "The Runtime Manager agent monitors and controls Mule applications; it does not apply or promote API Manager policies."
       },
       "B": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "The Mule Maven plugin packages and deploys Mule applications and API proxies, but it is not the tool for applying API Manager policies."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "The MUnit Maven plugin runs MUnit tests as part of a build; it does not manage API Manager policies."
       },
       "D": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "The Anypoint CLI exposes API Manager commands such as api-mgr:policy:apply and api-mgr:api:promote, which can be scripted to apply and promote policies in a CI/CD pipeline."
       }
     },
     "references": {
@@ -14333,23 +14333,23 @@ window.MCPA_QUESTIONS = [
         "text": "The timeout specifies the time allowed to pass between receiving JMS messages on the same JMS connection, and then after the timeout, a new JMS connection is established"
       }
     ],
-    "explanation": "Correct answer: A.",
+    "explanation": "Correct answer: A. The transaction timeout defines the maximum time, in milliseconds, that a transaction can remain active before Mule rolls it back (the default is 30000 ms). For a JMS listener participating in an XA transaction, this means that if the transaction does not end explicitly within the timeout window, Mule rolls it back, so the message is not consumed and can be reprocessed. This informs design decisions about how long the business logic may run before the transaction is committed or rolled back. The other options describe unrelated behaviors: a window between commit and flow completion (B), destroying stale JMS consumer threads (C), or timing between messages on a JMS connection (D) are not what the transaction timeout controls.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "The transaction timeout is the maximum time a transaction can remain active before Mule rolls it back, so an uncommitted transaction is rolled back and the message can be reprocessed."
       },
       "B": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "The timeout does not measure time between committing the transaction and flow completion; it bounds how long the transaction itself may stay active."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "The transaction timeout does not destroy or recreate JMS consumer threads."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "The timeout does not govern the interval between JMS messages on a connection or trigger new JMS connections."
       }
     },
     "references": {
@@ -14395,23 +14395,23 @@ window.MCPA_QUESTIONS = [
         "text": "Update each API specification with comments about the NFR's SLAs and publish each modified API specification to Exchange"
       }
     ],
-    "explanation": "Correct answer: C.",
+    "explanation": "Correct answer: C. The project team needs to convey a new non-functional requirement (rate limiting tied to Gold/Silver/Platinum subscription tiers) to all stakeholders through the API specifications. MuleSoft's recommended best practice is to express reusable specification content as a RAML fragment: create the shared fragment that carries the NFR, then update each API specification to reference it, and publish both the fragment and the modified specifications to Exchange so every stakeholder works from the same governed definition. Creating API proxies and changing baseUrls (A) implements the NFR at the gateway rather than conveying it in the specification; a fragment that lists implementation endpoints (B) misuses a fragment, which describes reusable design, not implementation endpoints; and comments (D) are not machine-readable and cannot be enforced or reused.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "API proxies and baseUrl changes implement the requirement at the gateway layer; they do not convey the NFR through the API specifications as the task requires."
       },
       "B": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "A RAML fragment describes reusable design content; listing implementation endpoints in a fragment is not its purpose and does not convey the NFR."
       },
       "C": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "Creating a shared RAML fragment that carries the NFR, referencing it from each API specification, and publishing both the fragment and the modified specifications to Exchange follows the recommended practice for reusable, governed specifications."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Documenting the NFR only as comments is not machine-readable or reusable and cannot drive policy or SLA enforcement."
       }
     },
     "references": {
@@ -14457,23 +14457,23 @@ window.MCPA_QUESTIONS = [
         "text": "Process Rules API"
       }
     ],
-    "explanation": "Correct answer: C.",
+    "explanation": "Correct answer: C. The Salesforce Metadata API manages customizations and build tools that work with the metadata model, such as custom object definitions, rather than with the data itself, and the Mule Salesforce Connector exposes Metadata API operations such as Deploy Metadata. The sObject Platform Action API (A) exposes actions available on an sObject record, the User Interface API (B) backs custom user interfaces, and the Process Rules API (D) is not the API used to manage customization metadata — none of these deploy or retrieve custom object definitions.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "The sObject Platform Action API returns the actions available for an sObject record; it does not manage customization metadata such as custom object definitions."
       },
       "B": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "The User Interface API supports building custom user interfaces; it is not the API for deploying, retrieving, creating, updating, or deleting customization metadata."
       },
       "C": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "The Metadata API manages customizations and build tools that work with the metadata model, such as custom object definitions, and the connector exposes Metadata API operations such as Deploy Metadata."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "The Process Rules API is not the API used to deploy, retrieve, create, update, or delete customization metadata."
       }
     },
     "references": {
@@ -14519,23 +14519,23 @@ window.MCPA_QUESTIONS = [
         "text": "To leverage a data abstraction layer that shields existing Mule applications from non-backward compatible changes to the model's data structure"
       }
     ],
-    "explanation": "Correct answer: B.",
+    "explanation": "Correct answer: B. A canonical data model defines a single, application-agnostic representation of shared business entities. When many systems that use different data formats are integrated, each system maps to and from the canonical model instead of directly to every other system, which reduces the number of point-to-point dependencies and the brittleness of the transformations. Option A is unrelated (the CDM is a design artifact, not an AI code-generation feature). Option C overstates the benefit: transformations are still required, but they happen between each system and the canonical model rather than pairwise. Option D describes the separate benefit of an abstraction layer; the primary reason to adopt a canonical model is to reduce dependencies across systems with differing formats.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "A canonical data model is a shared design artifact; it is not a mechanism for automating AI-enabled API implementation generation from vendor databases."
       },
       "B": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "Mapping every system to a common canonical model instead of to every other system reduces the number of dependencies and simplifies integration across systems that use different data formats."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "A canonical model does not remove the need for transformation; each system still maps to and from the model, but the transformations are simplified and fewer in number."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Shielding applications from non-backward-compatible changes describes the general value of a data abstraction layer, not the primary reason for adopting an enterprise-wide canonical data model."
       }
     },
     "references": {
@@ -14554,7 +14554,7 @@ window.MCPA_QUESTIONS = [
     },
     "correctAnswer": "B"
   },
-  {
+    {
     "id": "q-238",
     "number": 238,
     "title": "Performance - Refer to the exhibit.",
@@ -14567,48 +14567,48 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Implement locking to synchronize access to the Object Store"
-      },
-      {
-        "letter": "B",
-        "text": "Upgrade the vCore size from 0.1 vCore to 0.2 vCore"
-      },
-      {
-        "letter": "C",
         "text": "Implement the HTTP caching policy for all GET endpoints for the Master Look Up API"
       },
       {
+        "letter": "B",
+        "text": "Add an additional CloudHub worker of 0.1 vCore to provide additional capacity"
+      },
+      {
+        "letter": "C",
+        "text": "Implement locking to synchronize access to the Object Store"
+      },
+      {
         "letter": "D",
-        "text": "Implement an HTTP caching policy for all GET endpoints in the Master Look Up API"
+        "text": "Upgrade the vCore size from 0.1 vCore to 0.2 vCore"
       }
     ],
-    "explanation": "Correct answer: B, D.",
+    "explanation": "Correct answers: A and D. The Master Look Up API is slow because each cache miss triggers a database query to refresh the cache, and the latency of those queries dominates the response time. Two independent levers address this. First, the HTTP Caching policy (A) caches HTTP responses for reuse: according to MuleSoft, \"Caching these responses speeds up the response time for user requests and reduces the load on the backend,\" and on a cache hit \"the stored response is returned\" without calling the backend, so repeated master-data lookups are served from the cache and the database is not queried at all. Second, the API is deployed on 0.1 vCore CloudHub workers, which \"provide limited CPU and I/O for apps with smaller workloads\" and \"can burst to higher CPU speeds for a short time\" rather than delivering consistent performance. Upgrading each worker to 0.2 vCore (D) raises worker memory from 1 GB to 2 GB and heap memory from 500 MB to 1 GB, giving the API more resources to serve the cached lookups. Option B (adding another 0.1 vCore worker) does not help: although CloudHub's HTTP load balancing service distributes requests across workers on a round-robin basis, each request is still served by a single 0.1 vCore worker with the same limited CPU and I/O, so extra workers add capacity rather than reduce the per-request latency caused by the database queries. Option C (locking) is wrong because Object Stores \"do not support transactional access or modification,\" and locking to synchronize access to the Object Store would serialize the cache and tend to increase, not decrease, response time.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "type": "Correct",
+        "text": "The HTTP Caching policy caches HTTP responses for reuse, which \"speeds up the response time for user requests and reduces the load on the backend.\" On a cache hit the stored response is returned without reaching the backend, so the database queries responsible for the latency are avoided for repeated lookups."
       },
       "B": {
-        "type": "Correct",
-        "text": "This is the correct answer."
+        "type": "Incorrect",
+        "text": "Adding another 0.1 vCore worker scales the application horizontally \u2014 CloudHub's HTTP load balancing service distributes requests across workers on a round-robin basis \u2014 but each request is still served by a single 0.1 vCore worker with the same limited CPU and I/O. More workers add capacity, not lower per-request latency, so the database-query delay remains."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "Object Stores do not support transactional access or modification, and locking to synchronize access to the Object Store serializes cache access. It does not reduce the database-query latency that causes the slow responses and can make contention worse."
       },
       "D": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "0.1 vCore workers provide limited CPU and I/O and can only burst to higher CPU speeds for short periods. Upgrading to 0.2 vCore doubles worker memory from 1 GB to 2 GB and heap memory from 500 MB to 1 GB, giving the API more resources to serve the cached lookups."
       }
     },
     "references": {
       "primary": {
-        "title": "HTTP Caching Policy — How This Policy Works",
-        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-http-caching#how-this-policy-works"
+        "title": "HTTP Caching Policy — Summary (speeds up response time and reduces backend load)",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-http-caching#summary"
       },
       "architectureGuide": {
-        "title": "Runtime Fabric — Calculating Memory Allocation on CloudHub and Runtime Fabric",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/deploy-resource-allocation-self-managed#calculating-memory-allocation-on-cloudhub-and-runtime-fabric"
+        "title": "CloudHub Architecture — CloudHub Workers (vCore, memory, and heap sizes)",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#cloudhub-workers"
       },
       "arc720": {
         "lesson": "Lesson 8 — Effective API implementations",
@@ -14616,7 +14616,7 @@ window.MCPA_QUESTIONS = [
       }
     },
     "correctAnswers": [
-      "B",
+      "A",
       "D"
     ]
   },
@@ -14647,23 +14647,23 @@ window.MCPA_QUESTIONS = [
         "text": "The Runtime Manager agent configuration file"
       }
     ],
-    "explanation": "Correct answer: B.",
+    "explanation": "Correct answer: B. The organization wants one mechanism to automate deployments to CloudHub, on-premises, and Runtime Fabric targets. The Mule Maven plugin is designed exactly for this: it integrates packaging and deployment with the Maven lifecycle, and its deploy goal automatically uploads and starts the application in any of the supported deployment targets (CloudHub, Runtime Fabric, or on-premises). The Object Store v2 REST API (A) stores and retrieves application state, not deployments; the Anypoint Monitoring agent configuration file (C) configures monitoring; and the Runtime Manager agent configuration file (D) configures the agent, not multi-target application deployment.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "The Object Store v2 REST API is for storing and retrieving application state and data, not for deploying applications to deployment targets."
       },
       "B": {
         "type": "Correct",
-        "text": "This is the correct answer."
+        "text": "The Mule Maven plugin's deploy goal automates uploading and starting the application in CloudHub, Runtime Fabric, or on-premises targets, so one tool covers all three."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "The Anypoint Monitoring agent configuration file configures monitoring, not application deployment."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This option does not satisfy the requirements."
+        "text": "The Runtime Manager agent configuration file configures the Runtime Manager agent; it is not the multi-target deployment automation the question asks for."
       }
     },
     "references": {
