@@ -12049,3148 +12049,1203 @@ window.MCPA_QUESTIONS = [
   {
     "id": "q-202",
     "number": 202,
-    "title": "Deployment Options - Which Anypoint deployment option is a fully",
+    "title": "CloudHub Deployment - Batch state across redeployments",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
-      "Cloudhub Deployment"
+      "Object Store",
+      "Batch"
     ],
-    "prompt": "Which Anypoint deployment option is a fully managed, multi-tenant cloud runtime hosted by MuleSoft on AWS?",
+    "prompt": "A CloudHub application runs a long batch job. The team learns that if the application is redeployed during the job, the remaining records are not processed. Which CloudHub feature is recommended for persisting state so processing can resume?",
     "options": [
       {
         "letter": "A",
-        "text": "CloudHub"
+        "text": "Persistent queues"
       },
       {
         "letter": "B",
-        "text": "Runtime Fabric (RTF)"
+        "text": "The worker's local disk"
       },
       {
         "letter": "C",
-        "text": "Hybrid (customer-hosted Mule runtime)"
+        "text": "A larger worker size"
       },
       {
         "letter": "D",
-        "text": "Anypoint Service Mesh"
+        "text": "Object Store v2"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "CloudHub is MuleSoft's fully managed iPaaS hosted on AWS. MuleSoft operates the Mule runtimes on multi-tenant workers; customers pick worker size and count. RTF is customer-managed Kubernetes; Hybrid uses customer servers; Service Mesh adds policies to non-Mule services on Istio.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. On CloudHub, batch jobs run on a single worker. If the application is updated or redeployed while a batch is running, the rest of the batch does not continue. MuleSoft's documentation recommends Object Store v2 (Cloud Object Store) for persisting such state.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "CloudHub"
+        "type": "Incorrect",
+        "text": "Persistent queues distribute messages between workers but do not preserve batch job state across redeployment."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Runtime Fabric runs on customer-managed Kubernetes/OpenShift on customer infrastructure."
+        "text": "Local worker storage is replaced when the application is redeployed."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Hybrid deployment runs Mule runtime on customer servers managed via Runtime Manager."
+        "text": "More memory does not keep state when an application is redeployed."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Anypoint Service Mesh extends API governance to services running in Istio service meshes."
+        "type": "Correct",
+        "text": "Object Store v2 is MuleSoft's recommended store for persisting batch state on CloudHub."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub Architecture — Multi-Tenant Cloud Architecture & Worker Isolation",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#workers-and-multitenancy"
+        "title": "CloudHub High Availability Features",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       },
       "architectureGuide": {
-        "title": "CloudHub Workers, Sizing, and Infrastructure Isolation",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#cloudhub-workers"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "Object Store v2 Guide",
+        "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
     }
   },
   {
     "id": "q-203",
     "number": 203,
-    "title": "Deployment Options - Which deployment option lets you run Mule",
+    "title": "CloudHub Deployment - Shared watermark for several workers",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
-      "Runtime Fabric"
+      "Object Store",
+      "Workers"
     ],
-    "prompt": "Which deployment option lets you run Mule runtimes inside your own Kubernetes cluster while still managing them centrally from Anypoint?",
+    "prompt": "A CloudHub application deployed to two workers polls a database incrementally. Both workers must use the same last-processed timestamp. Where should it be stored?",
     "options": [
       {
         "letter": "A",
-        "text": "CloudHub"
+        "text": "In a persistent VM queue"
       },
       {
         "letter": "B",
-        "text": "Anypoint Runtime Fabric (RTF)"
+        "text": "In Object Store v2"
       },
       {
         "letter": "C",
-        "text": "Hybrid Mule Server"
+        "text": "In the application's properties file"
       },
       {
         "letter": "D",
-        "text": "Anypoint Service Mesh"
+        "text": "In an in-memory object store on each worker"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Runtime Fabric runs containerized Mule runtimes on customer-managed Kubernetes (or self-managed RTF on VMs) while remaining managed from Anypoint Runtime Manager. CloudHub is fully managed by MuleSoft; Hybrid runs Mule on customer servers without containers; Service Mesh is for non-Mule services.",
+    "explanation": "Correct answer: B. Persistent object stores on CloudHub are backed by Object Store v2, which keeps data outside individual workers. All workers of the application can read and update the same keys, and the data survives worker restarts.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "CloudHub is MuleSoft-managed multi-tenant cloud; not a customer Kubernetes deployment."
+        "text": "Queues pass messages; they are not key-value storage for a watermark."
       },
       "B": {
         "type": "Correct",
-        "text": "Anypoint Runtime Fabric (RTF)"
+        "text": "Object Store v2 is shared by all workers of the application."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Hybrid uses standalone Mule servers, not Kubernetes."
+        "text": "Properties are static configuration, not changing runtime state."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Service Mesh extends API governance to existing Istio meshes; it does not host Mule apps."
+        "text": "Each worker would keep its own value, which is lost on restart."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Runtime Fabric (RTF) — Kubernetes Architecture & Containerized Deployment",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/#how-application-deployments-work-in-anypoint-runtime-fabric"
+        "title": "Object Store v2 Guide",
+        "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       },
       "architectureGuide": {
-        "title": "Runtime Fabric Custom Ingress & Edge Policies",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/custom-ingress-configuration#how-ingress-resources-templates-work-in-runtime-fabric"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+        "title": "Mule Runtime — Object Stores",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       }
     }
   },
   {
     "id": "q-204",
     "number": 204,
-    "title": "Deployment Options - Which CloudHub configuration enables a managed customercontrolled",
+    "title": "CloudHub Deployment - Object Store versus persistent queues",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
-      "Cloudhub Deployment",
-      "Ha Dr Architecture"
+      "Object Store",
+      "Persistent Queues"
     ],
-    "prompt": "Which CloudHub configuration enables a managed, customer-controlled load balancer with custom certificates, custom URLs, and IP allow-listing?",
+    "prompt": "An architect needs to (1) hand off work items between workers of a CloudHub application with no message loss and (2) cache an OAuth token for reuse until it expires. Which features match these needs?",
     "options": [
       {
         "letter": "A",
-        "text": "Shared Load Balancer (SLB)"
+        "text": "(1) Local disk; (2) a flow variable"
       },
       {
         "letter": "B",
-        "text": "Dedicated Load Balancer (DLB)"
+        "text": "(1) Object Store v2; (2) persistent queues"
       },
       {
         "letter": "C",
-        "text": "Anypoint Service Mesh"
+        "text": "(1) Persistent queues; (2) Object Store v2"
       },
       {
         "letter": "D",
-        "text": "Auto-discovery"
+        "text": "(1) Anypoint Monitoring; (2) Runtime Manager properties"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "A Dedicated Load Balancer is provisioned per Anypoint VPC and supports custom domains, customer-supplied TLS certificates, IP allow-listing, and custom URL mapping. The SLB shares MuleSoft-managed infrastructure and only supports cloudhub.io URLs and standard certificates.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. On CloudHub, persistent queues provide durable, distributed messaging between workers, while Object Store v2 provides persistent key-value storage for state such as cached tokens, watermarks, and duplicate detection.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "SLB is multi-tenant and limited to cloudhub.io URLs and standard TLS settings."
+        "text": "Local disk is not shared, and variables are lost after each event."
       },
       "B": {
-        "type": "Correct",
-        "text": "Dedicated Load Balancer (DLB)"
+        "type": "Incorrect",
+        "text": "These are reversed; queues are not a key-value cache."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Service Mesh governs services in Istio; it is not a CloudHub load balancer option."
+        "type": "Correct",
+        "text": "Queues distribute work durably; Object Store holds key-value state."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Auto-discovery pairs apps with API records and is unrelated to load balancing."
+        "text": "Neither is a messaging or caching mechanism."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub Dedicated Load Balancer (DLB) — SSL Certificates, Custom Domains & mTLS",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer#create-and-configure-a-dedicated-load-balancer"
+        "title": "CloudHub High Availability Features",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       },
       "architectureGuide": {
-        "title": "Anypoint Virtual Private Cloud (VPC) Architecture & Peering",
-        "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept#vpc-peering"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "Object Store v2 Guide",
+        "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
     }
   },
   {
     "id": "q-205",
     "number": 205,
-    "title": "Deployment Options - An organization wants to enforce API policies",
+    "title": "CloudHub Deployment - Retention limit",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
-      "Anypoint Service Mesh"
+      "Object Store",
+      "Object Store v2"
     ],
-    "prompt": "An organization wants to enforce API policies on services that are NOT Mule-based but are deployed in an existing Istio service mesh. Which Anypoint product fits?",
+    "prompt": "A team wants to keep audit records for seven years in Object Store v2 on CloudHub because it is already available to the application. What should the architect advise?",
     "options": [
       {
         "letter": "A",
-        "text": "Anypoint Runtime Fabric"
+        "text": "Proceed, but use the in-memory object store for durability"
       },
       {
         "letter": "B",
-        "text": "Anypoint Service Mesh"
+        "text": "Proceed, because entries never expire"
       },
       {
         "letter": "C",
-        "text": "Anypoint MQ"
+        "text": "Store the records in persistent queues instead"
       },
       {
         "letter": "D",
-        "text": "Anypoint Visualizer"
+        "text": "Use a database; Object Store v2 entries have a limited TTL"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Anypoint Service Mesh extends Anypoint API governance and policies (rate limiting, security, monitoring) to non-Mule microservices running in an Istio mesh. RTF is a Mule runtime; MQ is messaging; Visualizer is topology.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Object Store v2 is designed for application state such as caching, watermarks, and deduplication, and its entries have a maximum time-to-live. Long-term records such as audit data belong in a database or archive.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Runtime Fabric runs Mule runtimes, not arbitrary microservices governed by API Manager."
+        "text": "In-memory stores are less durable."
       },
       "B": {
-        "type": "Correct",
-        "text": "Anypoint Service Mesh"
+        "type": "Incorrect",
+        "text": "Object Store v2 entries expire after their time-to-live."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Anypoint MQ is queue-based messaging, not policy enforcement."
+        "text": "Persistent queue messages are retained for only a few days."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Visualizer renders network graphs but does not enforce policies."
+        "type": "Correct",
+        "text": "Object Store v2 is for transient state, not multi-year retention."
       }
     },
     "references": {
       "primary": {
-        "title": "Runtime Fabric — Custom Ingress & Governing Non-Mule Microservices in Service Mesh",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/custom-ingress-configuration#how-ingress-resources-templates-work-in-runtime-fabric"
+        "title": "Object Store v2 FAQ",
+        "url": "https://docs.mulesoft.com/object-store/osv2-faq"
       },
       "architectureGuide": {
-        "title": "Runtime Fabric Architecture Overview",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/#how-application-deployments-work-in-anypoint-runtime-fabric"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "Object Store v2 Guide",
+        "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
     }
   },
   {
     "id": "q-206",
     "number": 206,
-    "title": "Deployment Options - Which is a TRUE statement about CloudHub",
+    "title": "CloudHub Deployment - Avoiding duplicate processing",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
-      "Cloudhub Deployment"
+      "Object Store",
+      "Idempotency"
     ],
-    "prompt": "Which is a TRUE statement about CloudHub Shared Load Balancer (SLB)?",
+    "prompt": "A CloudHub application with persistent queues enabled occasionally processes the same order twice, because persistent queues do not guarantee one-time-only delivery. How can duplicates be avoided?",
     "options": [
       {
         "letter": "A",
-        "text": "It supports custom certificates and custom domain names"
+        "text": "Track processed IDs in Object Store v2"
       },
       {
         "letter": "B",
-        "text": "It only supports cloudhub.io URLs and MuleSoft-managed certificates"
+        "text": "Use a 0.1 vCore worker to slow processing"
       },
       {
         "letter": "C",
-        "text": "It provides region failover automatically"
+        "text": "Increase the number of workers"
       },
       {
         "letter": "D",
-        "text": "It requires an Anypoint VPC to function"
+        "text": "Disable automatic restarts"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "The Shared Load Balancer is multi-tenant and limited to cloudhub.io URLs and MuleSoft-managed certificates. For custom domains, custom TLS certificates, IP allow-listing, and URL mapping, customers use a Dedicated Load Balancer in an Anypoint VPC.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. CloudHub persistent queues may deliver a message more than once. When one-time processing matters, the application should record processed IDs in a shared persistent store such as Object Store v2 and ignore repeats.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Custom certs/domains require the DLB."
+        "type": "Correct",
+        "text": "A shared store lets every worker detect duplicates."
       },
       "B": {
-        "type": "Correct",
-        "text": "It only supports cloudhub.io URLs and MuleSoft-managed certificates"
+        "type": "Incorrect",
+        "text": "Slower processing does not prevent duplicates."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Region failover requires multi-region deployment with DNS or DLB strategy."
+        "text": "More workers do not prevent duplicate delivery."
       },
       "D": {
         "type": "Incorrect",
-        "text": "The SLB does not require an Anypoint VPC; the DLB does."
+        "text": "Restarts do not cause the duplicate deliveries described."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub Architecture — Shared Load Balancers (SLB) vs Dedicated Load Balancers",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#workers-and-multitenancy"
+        "title": "CloudHub High Availability Features",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       },
       "architectureGuide": {
-        "title": "CloudHub Dedicated Load Balancer (DLB) Architecture & Custom Certificates",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer#create-and-configure-a-dedicated-load-balancer"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "Mule Runtime — Object Stores",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       }
     }
   },
   {
     "id": "q-207",
     "number": 207,
-    "title": "Deployment Options - Which scenario is the strongest case for",
+    "title": "CloudHub Deployment - Choose two: Object Store on CloudHub",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
-      "Runtime Fabric",
-      "Hybrid Deployment"
+      "Object Store",
+      "Use Cases"
     ],
-    "prompt": "Which scenario is the strongest case for deploying to Runtime Fabric instead of CloudHub?",
+    "prompt": "Which two are appropriate uses of Object Store v2 for a CloudHub application? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "Need MuleSoft to manage all infrastructure"
+        "text": "Hosting large files for permanent archival"
       },
       {
         "letter": "B",
-        "text": "Need to run Mule runtimes on customer-managed infrastructure to meet data-residency or networking requirements"
+        "text": "Persisting state needed to resume processing after a redeploy"
       },
       {
         "letter": "C",
-        "text": "Need only a single low-traffic API"
+        "text": "Replacing the CRM as the system of record"
       },
       {
         "letter": "D",
-        "text": "Need to use Anypoint MQ"
+        "text": "Load balancing HTTP requests between workers"
+      },
+      {
+        "letter": "E",
+        "text": "Caching reference data shared by all workers of the application"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Runtime Fabric is the right pick when customers must run Mule on their own infrastructure for data residency, network locality, or strict on-prem connectivity reasons. Customers wanting MuleSoft to operate everything pick CloudHub.",
+    "correctAnswers": [
+      "B",
+      "E"
+    ],
+    "explanation": "Correct answers: B and E. Object Store v2 provides persistent key-value storage shared by an application's workers. It suits caching, watermarks, deduplication, and resumable processing state, but not file archiving or system-of-record data.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Full management is CloudHub's value proposition."
+        "text": "Object Store v2 is not a file archive."
       },
       "B": {
         "type": "Correct",
-        "text": "Need to run Mule runtimes on customer-managed infrastructure to meet data-residency or networking requirements"
+        "text": "Object Store v2 keeps state outside the worker."
       },
       "C": {
         "type": "Incorrect",
-        "text": "RTF has more operational overhead and is overkill for a single small API."
+        "text": "Object Store is not a system of record."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Anypoint MQ works with any deployment target."
+        "text": "Load balancing is done by the CloudHub load balancer."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "All workers can read the same cached keys."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Runtime Fabric (RTF) — Customer-Managed Kubernetes & Data Residency",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/#how-application-deployments-work-in-anypoint-runtime-fabric"
+        "title": "Object Store v2 Guide",
+        "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       },
       "architectureGuide": {
-        "title": "Runtime Fabric Custom Ingress & Edge Policies",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/custom-ingress-configuration#how-ingress-resources-templates-work-in-runtime-fabric"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+        "title": "Object Store v2 FAQ",
+        "url": "https://docs.mulesoft.com/object-store/osv2-faq"
       }
     }
   },
   {
     "id": "q-208",
     "number": 208,
-    "title": "Deployment Options - An organization wants Mule applications running in",
+    "title": "CloudHub Deployment - Consistent performance",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
-      "Runtime Fabric"
+      "Worker Sizes",
+      "Performance"
     ],
-    "prompt": "An organization wants Mule applications running in their AWS account due to networking and compliance constraints, while keeping Anypoint Platform's central management. Which deployment is most appropriate?",
+    "prompt": "A latency-sensitive API runs on a 0.2 vCore CloudHub worker. Response times vary widely under sustained load, although they are fast at startup and during short bursts. What should the architect recommend?",
     "options": [
       {
         "letter": "A",
-        "text": "CloudHub on MuleSoft's AWS"
+        "text": "Add a second 0.2 vCore worker only"
       },
       {
         "letter": "B",
-        "text": "Anypoint Runtime Fabric on the customer's Kubernetes / EKS in the customer AWS account"
+        "text": "Deploy to a different region"
       },
       {
         "letter": "C",
-        "text": "Anypoint MQ"
+        "text": "1 vCore or larger workers"
       },
       {
         "letter": "D",
-        "text": "Anypoint Service Mesh"
+        "text": "Enable persistent queues"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Runtime Fabric on the customer's Kubernetes (e.g., EKS) keeps Mule runtimes inside the customer's AWS account while still managed centrally from Anypoint. CloudHub runs in MuleSoft's AWS, MQ is messaging, and Service Mesh is for non-Mule services.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. CloudHub 0.1 and 0.2 vCore workers provide limited CPU and I/O and can burst to higher speeds only for short periods. For consistent performance, MuleSoft recommends workers with 1 or more vCores.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "CloudHub workers run inside MuleSoft's AWS, not the customer's AWS."
+        "text": "Fractional workers still provide limited, burstable CPU."
       },
       "B": {
-        "type": "Correct",
-        "text": "Anypoint Runtime Fabric on the customer's Kubernetes / EKS in the customer AWS account"
+        "type": "Incorrect",
+        "text": "Region does not change the worker's CPU characteristics."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Anypoint MQ is messaging, not a runtime host."
+        "type": "Correct",
+        "text": "Workers of 1 vCore or more provide consistent performance."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Service Mesh extends governance to existing meshes; it is not a Mule host."
+        "text": "Queues do not change CPU performance."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Runtime Fabric (RTF) on Customer AWS / EKS — Compliance & Central Management",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/#how-application-deployments-work-in-anypoint-runtime-fabric"
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       },
       "architectureGuide": {
-        "title": "Runtime Fabric Custom Ingress & Edge Policies",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/custom-ingress-configuration#how-ingress-resources-templates-work-in-runtime-fabric"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+        "title": "Deploying to CloudHub",
+        "url": "https://docs.mulesoft.com/cloudhub/deploying-to-cloudhub"
       }
     }
   },
   {
     "id": "q-209",
     "number": 209,
-    "title": "Deployment Options - Which CloudHub region minimizes latency for APAC consumers",
+    "title": "CloudHub Deployment - Memory-heavy transformations",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
-      "Cloudhub Deployment",
-      "Ha Dr Architecture"
+      "Worker Sizes",
+      "Vertical Scaling"
     ],
-    "prompt": "Which is a TRUE statement about CloudHub region selection for a customer needing low-latency access from APAC?",
+    "prompt": "A CloudHub application transforms large payloads in memory and fails with out-of-memory errors on a 1 vCore worker. Traffic is low. What should be changed?",
     "options": [
       {
         "letter": "A",
-        "text": "Region does not affect latency"
+        "text": "Enable persistent queues"
       },
       {
         "letter": "B",
-        "text": "Deploy to an APAC CloudHub region (e.g., Asia Pacific Sydney/Singapore) so workers are physically near consumers"
+        "text": "Add more 1 vCore workers"
       },
       {
         "letter": "C",
-        "text": "Always deploy to US-East regardless of consumer location"
+        "text": "Increase the worker size"
       },
       {
         "letter": "D",
-        "text": "Use Hybrid only"
+        "text": "Apply the Spike Control policy"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Choosing a CloudHub region geographically near consumers reduces network round-trip times. APAC consumers are best served by APAC regions like Sydney or Singapore. Region matters for latency.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Each CloudHub worker size has a fixed amount of memory and heap. When individual requests need more memory, vertical scaling to a larger worker is required; adding workers increases concurrency but not per-request memory.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Region directly affects latency over WAN."
+        "text": "Queues do not add memory for the transformation."
       },
       "B": {
-        "type": "Correct",
-        "text": "Deploy to an APAC CloudHub region (e.g., Asia Pacific Sydney/Singapore) so workers are physically near consumers"
+        "type": "Incorrect",
+        "text": "Each request still runs on a worker with the same memory."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "US-East is suboptimal for APAC consumers."
+        "type": "Correct",
+        "text": "A larger worker provides more memory for each request."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Hybrid is unrelated to region selection."
+        "text": "Traffic shaping does not change available memory."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub Architecture — Global Worker Clouds & Geographic Latency Optimization (APAC)",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#global-worker-clouds"
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       },
       "architectureGuide": {
-        "title": "CloudHub High Availability & Disaster Recovery Architecture",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#high-availability"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "CloudHub High Availability Features",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       }
     }
   },
   {
     "id": "q-210",
     "number": 210,
-    "title": "Deployment Options - Which statement about Mule Hybrid deployment is",
+    "title": "CloudHub Deployment - Sizing for availability",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
-      "Hybrid Deployment"
+      "Worker Configuration",
+      "High Availability"
     ],
-    "prompt": "Which statement about Mule Hybrid deployment is TRUE?",
+    "prompt": "An API on CloudHub must stay available if one worker or data center fails. Which configuration meets this requirement at minimum?",
     "options": [
       {
         "letter": "A",
-        "text": "Hybrid is fully managed by MuleSoft"
+        "text": "One worker of the largest size"
       },
       {
         "letter": "B",
-        "text": "Hybrid runs Mule runtimes on customer-managed servers (on-prem or IaaS) but is centrally managed via Anypoint Runtime Manager"
+        "text": "One worker with automatic restarts"
       },
       {
         "letter": "C",
-        "text": "Hybrid does not support API Manager policies"
+        "text": "One worker with persistent queues"
       },
       {
         "letter": "D",
-        "text": "Hybrid can only run one application per server"
+        "text": "At least two workers"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Hybrid runs Mule on customer-managed servers (on-prem or in customer cloud) while connected to Anypoint Runtime Manager for centralized control, policy distribution, monitoring, and deployment. It supports API Manager policies and multiple apps per server.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. CloudHub distributes multiple workers for the same application across two or more data centers. Deploying at least two workers allows the load balancer to keep serving requests if one worker or data center fails.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "MuleSoft does not manage the underlying servers in Hybrid."
+        "text": "A single worker is still a single point of failure."
       },
       "B": {
-        "type": "Correct",
-        "text": "Hybrid runs Mule runtimes on customer-managed servers (on-prem or IaaS) but is centrally managed via Anypoint Runtime Manager"
+        "type": "Incorrect",
+        "text": "Restarts recover the worker but cause downtime."
       },
       "C": {
         "type": "Incorrect",
-        "text": "API Manager policies work with Hybrid via auto-discovery."
+        "text": "Queues protect messages but do not keep the API available."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "A Mule server can host multiple deployed apps."
+        "type": "Correct",
+        "text": "Multiple workers are spread across data centers."
       }
     },
     "references": {
       "primary": {
-        "title": "Managing Standalone Mule Runtimes in Hybrid Cloud via Runtime Manager",
-        "url": "https://docs.mulesoft.com/runtime-manager/servers-create#add-a-server"
+        "title": "CloudHub High Availability Features",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       },
       "architectureGuide": {
-        "title": "Managing Server Groups, Clusters, and Schedules in Hybrid Runtimes",
-        "url": "https://docs.mulesoft.com/runtime-manager/hybrid-schedule-mgmt#view-and-manage-application-schedulers-in-runtime-manager"
-      },
-      "arc720": {
-        "lesson": "Lesson 4 — Organizational and platform foundations",
-        "anchor": "ARC720-Course-Content.md#4-organizational-and-platform-foundations"
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
     }
   },
   {
     "id": "q-211",
     "number": 211,
-    "title": "Deployment Options - Which option exposes ingress inside a Private",
+    "title": "CloudHub Deployment - Automatic restarts",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
-      "Private Spaces",
-      "Flex Gateway"
+      "Worker Configuration",
+      "Monitoring"
     ],
-    "prompt": "In CloudHub 2.0, which option lets architects expose a public ingress endpoint into an isolated private network while still using a MuleSoft-managed gateway?",
+    "prompt": "A CloudHub application occasionally becomes unresponsive due to a memory leak. Until the code is fixed, the team wants the platform to recover it automatically. Which setting helps?",
     "options": [
       {
         "letter": "A",
-        "text": "Deploy a Managed Flex Gateway in the Private Space and enable a public endpoint"
+        "text": "Enable automatic restarts"
       },
       {
         "letter": "B",
-        "text": "Use Anypoint MQ queues as the ingress layer"
+        "text": "Reduce the worker size"
       },
       {
         "letter": "C",
-        "text": "Run Flex Gateway only in local mode on developer laptops"
+        "text": "Disable Anypoint Monitoring"
       },
       {
         "letter": "D",
-        "text": "Replace the Private Space with Visualizer"
+        "text": "Enable persistent queues"
       }
     ],
     "correctAnswer": "A",
-    "explanation": "A Managed Flex Gateway deployed in a CloudHub 2.0 Private Space can front services with a public ingress endpoint while preserving the isolation and traffic controls of the private network. MQ is asynchronous messaging, local developer gateways are not production ingress, and Visualizer is an observability tool rather than a networking control plane.",
+    "explanation": "Correct answer: A. CloudHub monitors workers and, when automatic restarts are enabled, restarts applications that stop responding. This improves availability but does not replace fixing the underlying defect.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Deploy a Managed Flex Gateway in the Private Space and enable a public endpoint"
+        "text": "CloudHub restarts the application when it detects a problem."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Anypoint MQ is for messaging, not for exposing inbound HTTP ingress into a private space."
+        "text": "A smaller worker would fail sooner."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Local developer deployment does not provide managed production ingress or private-space controls."
+        "text": "Monitoring does not cause or fix the issue."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Visualizer maps dependencies; it does not host or expose network endpoints."
+        "text": "Queues do not restart unresponsive applications."
       }
     },
     "references": {
       "primary": {
-        "title": "Deploy a Managed Flex Gateway to CloudHub 2.0 Private Spaces",
-        "url": "https://docs.mulesoft.com/gateway/latest/flex-gateway-managed-set-up"
+        "title": "CloudHub — Application Monitoring and Automatic Restarts",
+        "url": "https://docs.mulesoft.com/cloudhub/worker-monitoring"
       },
       "architectureGuide": {
-        "title": "CloudHub 2.0 Private Space Endpoints and Path Configuration",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-config-endpoints-paths"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
     }
   },
   {
     "id": "q-212",
     "number": 212,
-    "title": "Runtime Auto-Scaling - An online retailer expects a 3× traffic surge during holiday",
+    "title": "CloudHub Deployment - Scaling out with queues",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
-      "Runtime Auto-Scaling"
+      "Worker Configuration",
+      "Persistent Queues"
     ],
-    "prompt": "An online retailer expects a 3× traffic surge during holiday sales and has only two junior ops engineers to manage the integration layer. The team must ensure the integration runtime can auto‑scale without adding operational overhead. What should be done FIRST?",
+    "prompt": "A CloudHub application receives large files and splits them into records for processing. The team adds workers but sees that only one worker does the work. What should be enabled so that records are processed across workers?",
     "options": [
       {
         "letter": "A",
-        "text": "Enable Cloud Hub Auto‑Scaling for the application and define appropriate minimum and maximum worker counts."
+        "text": "Automatic restarts"
       },
       {
         "letter": "B",
-        "text": "Deploy the integration to a Runtime Fabric cluster and manually add workers during peak periods."
+        "text": "Persistent queues"
       },
       {
         "letter": "C",
-        "text": "Increase the v Core size of the existing dedicated Cloud Hub workers to handle higher load."
+        "text": "A larger worker size"
       },
       {
         "letter": "D",
-        "text": "Create a custom monitoring script that uses the Anypoint Platform API to provision additional workers during traffic spikes."
-      },
-      {
-        "letter": "E",
-        "text": "Refactor the APIs to use API‑led connectivity so that each layer handles a smaller portion of the load."
-      },
-      {
-        "letter": "F",
-        "text": "Migrate the integration layer to an on‑premise Mule runtime and rely on scheduled batch jobs to handle traffic peaks."
+        "text": "A new region"
       }
     ],
-    "explanation": "The question tests knowledge of Mule Soft’s built‑in auto‑scaling capabilities, specifically Cloud Hub’s ability to automatically adjust worker counts based on demand. Enabling this feature first ensures the integration runtime can handle a three‑fold traffic increase without requiring the junior ops team to manually intervene, aligning with the goal of minimal operational overhead. Options that suggest manual scaling, custom scripts, or increasing static resources miss the point because they either add operational burden or fail to provide true elasticity. Architectural improvements like API‑led connectivity improve design but do not replace the need for runtime auto‑scaling. Understanding when to leverage platform‑provided automation versus building custom solutions is a key best practice for scalable Mule Soft deployments.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. CloudHub's HTTP load balancer distributes requests, but work produced inside one worker stays there unless it is handed off. Persistent queues let workers share work items and also protect them from loss if a worker fails.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "This is the correct first step because Cloud Hub’s built‑in auto‑scaling feature automatically adds or removes workers based on real‑time load, eliminating the need for manual intervention. By setting sensible min/max limits, the runtime can handle a three‑fold traffic increase while keeping the small ops team from having to monitor or provision resources manually. In practice, many retailers rely on this capability to absorb Black‑Friday spikes without additional staffing."
+        "type": "Incorrect",
+        "text": "Restarts do not distribute work."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "While Runtime Fabric can host integrations, manually adding workers defeats the goal of reducing operational overhead. Junior engineers would need to monitor traffic and trigger scaling actions, which introduces risk of human error and delayed response. This approach is therefore not the best first action when auto‑scaling is required."
+        "type": "Correct",
+        "text": "Persistent queues distribute work across workers."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Upsizing v Cores on dedicated workers may provide more processing power, but it does not provide dynamic scaling as traffic fluctuates. The configuration is static; when traffic drops, excess capacity is wasted, and the ops team still must predict the correct size ahead of time. Hence it does not meet the requirement for automatic scaling without added effort."
+        "text": "A bigger worker does not distribute work."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Writing a custom script introduces additional code, monitoring, and failure points, increasing operational complexity rather than reducing it. The script would need to be maintained, tested, and could misfire, causing over‑provisioning or under‑provisioning. Mule Soft already provides native auto‑scaling, so building a bespoke solution is unnecessary and contrary to the goal."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Applying API‑led connectivity is a good architectural practice for reusability and governance, but it does not automatically adjust the number of runtime workers. It may reduce per‑worker CPU usage, yet the underlying runtime would still need a mechanism to scale out when total traffic triples. Therefore this is not the immediate step to achieve auto‑scaling with minimal ops effort."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Moving to on‑premise infrastructure adds significant operational responsibility, including hardware provisioning, capacity planning, and monitoring. Scheduled batch jobs cannot react in real time to sudden traffic spikes, and they do not provide the elasticity required for a three‑fold surge. This option directly contradicts the requirement for automatic scaling with limited operational staff."
+        "text": "Deploying elsewhere does not distribute work within the application."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Configuring Autoscaling Policies for Applications",
-        "url": "https://docs.mulesoft.com/cloudhub/autoscaling-in-cloudhub#configure-autoscaling"
+        "title": "CloudHub High Availability Features",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       },
       "architectureGuide": {
-        "title": "CloudHub Fabric — Worker Scale-Out and High Availability",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#worker-scale-out"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "CloudHub — Managing Queues",
+        "url": "https://docs.mulesoft.com/cloudhub/managing-queues"
       }
-    },
-    "correctAnswer": "A"
+    }
   },
   {
     "id": "q-213",
     "number": 213,
-    "title": "Runtime Deployment - A Saa S startup plans to deploy Mule runtime on a Kubernetes",
+    "title": "CloudHub Deployment - Choose two: worker facts",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
-      "Runtime Deployment"
+      "Worker Sizes",
+      "CloudHub"
     ],
-    "prompt": "A Saa S startup plans to deploy Mule runtime on a Kubernetes cluster but its developers have limited container‑orchestration expertise and the CFO requires the most cost‑effective licensing model. Which approach BEST meets the requirements?",
+    "prompt": "Which two statements about CloudHub workers are correct? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "Deploy Mule runtime on the Kubernetes cluster using a BYOL (Bring Your Own License) model and let developers manage the containers themselves."
+        "text": "Each worker runs in a separate container"
       },
       {
         "letter": "B",
-        "text": "Use Cloud Hub 2 (Anypoint Platform’s managed Kubernetes service) with consumption‑based licensing, letting Mule Soft handle the orchestration layer."
+        "text": "All workers in a region share one JVM"
       },
       {
         "letter": "C",
-        "text": "Install Mule Runtime Fabric on the Kubernetes cluster and purchase a fixed‑price enterprise subscription."
+        "text": "Fractional workers guarantee consistent CPU under load"
       },
       {
         "letter": "D",
-        "text": "Run Mule applications as Docker containers on Kubernetes but purchase a perpetual license for each runtime instance."
+        "text": "Only stopped applications count toward vCore usage"
       },
       {
         "letter": "E",
-        "text": "Move the workloads to Anypoint Studio local runtime and use a per‑developer license, avoiding Kubernetes altogether."
-      },
-      {
-        "letter": "F",
-        "text": "Adopt Mule Soft’s Anypoint Service Mesh to orchestrate Mule runtimes on Kubernetes, paying a separate service‑mesh licensing fee."
-      }
-    ],
-    "explanation": "The question tests knowledge of Mule Soft deployment options and licensing models, especially in contexts where teams have limited Kubernetes expertise and cost is a primary concern. Cloud Hub 2 provides a fully managed Kubernetes environment with consumption‑based pricing, eliminating the need for deep orchestration skills while aligning spend with usage, making it the optimal choice. Common misconceptions include assuming BYOL or perpetual licenses are always cheaper, or believing that Runtime Fabric or Service Mesh simplify operations without added expertise. In practice, startups should prioritize managed services that reduce operational burden and adopt pay‑as‑you‑go licensing to stay agile and financially lean. Understanding the trade‑offs between managed versus self‑managed deployments is a core competency for Mule Soft architects.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "This option is incorrect because, while BYOL can reduce licensing fees, it places the full burden of container orchestration on the development team. The startup explicitly lacks container‑orchestration expertise, so managing pods, scaling, and health‑checks would be risky and likely increase operational costs. In a real‑world scenario, teams without Kubernetes experience often encounter deployment failures and increased downtime, negating any licensing savings."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "This option is correct. Cloud Hub 2 abstracts the Kubernetes control plane, so developers can focus on building APIs rather than managing clusters. The consumption‑based licensing model aligns cost with actual usage, satisfying the CFO’s need for cost‑effectiveness. Enterprises that adopt Cloud Hub 2 typically see faster time‑to‑market and predictable monthly spend, making it ideal for a startup with limited ops expertise."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "This option is incorrect because Runtime Fabric, although integrated with Anypoint, still requires the team to provision, scale, and maintain the underlying Kubernetes resources. The fixed‑price subscription can be more expensive than a consumption model, especially for a startup with unpredictable traffic. Companies that choose Runtime Fabric without sufficient ops skill often incur hidden infrastructure costs and increased complexity."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. A perpetual license ties the organization to a large upfront cost, which conflicts with the CFO’s desire for a cost‑effective model. Additionally, managing Docker containers on Kubernetes still demands strong orchestration expertise that the developers lack. In practice, teams that opt for perpetual licenses on self‑managed clusters may face budget overruns and operational bottlenecks."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "This option is incorrect because local runtimes are intended for development and testing, not for production Saa S workloads. A per‑developer license does not scale to serve external customers, and it would eliminate the benefits of containerization such as elasticity and high availability. Real‑world deployments that rely on local runtimes for production quickly encounter performance limitations and security concerns."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. Anypoint Service Mesh is designed for advanced traffic management and security between services, not for simplifying cluster management. It adds extra licensing costs and architectural complexity, which the startup wants to avoid. Organizations that mistakenly use Service Mesh as a replacement for basic orchestration often over‑engineer their solution and increase both operational and financial overhead."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub 2.0 Overview — Fully Managed, Containerized iPaaS",
-        "url": "https://docs.mulesoft.com/cloudhub-2/#why-deploy-on-cloudhub-2-0"
-      },
-      "architectureGuide": {
-        "title": "Deployment Options — CloudHub 2.0 vs Runtime Fabric vs Hybrid",
-        "url": "https://docs.mulesoft.com/runtime-manager/deployment-strategies#cloudhub-2-0"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "B"
-  },
-  {
-    "id": "q-214",
-    "number": 214,
-    "title": "Runtime Deployment - A national retail chain processes 10,000 orders per minute and",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "Runtime Deployment"
-    ],
-    "prompt": "A national retail chain processes 10,000 orders per minute and requires sub‑second response times for its checkout APIs. The architecture team is evaluating deployment models for the Mule runtime. Which approach BEST meets the requirements?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Deploy Mule runtime in a highly available, auto‑scaling Kubernetes cluster behind a load balancer."
-      },
-      {
-        "letter": "B",
-        "text": "Deploy a single Mule runtime instance on a dedicated VM with maximum CPU."
-      },
-      {
-        "letter": "C",
-        "text": "Use Cloud Hub Enterprise with multiple workers and static scaling."
-      },
-      {
-        "letter": "D",
-        "text": "Deploy Mule runtime on on‑premises servers in a traditional load‑balanced pair."
-      },
-      {
-        "letter": "E",
-        "text": "Use Anypoint Runtime Fabric on a private data center with horizontal auto‑scaling."
-      },
-      {
-        "letter": "F",
-        "text": "Leverage a hybrid deployment where the API gateway sits in Cloud Hub and the Mule runtime runs on‑premises."
-      }
-    ],
-    "explanation": "The question tests knowledge of Mule runtime deployment models and how they impact scalability and latency. For a workload of 10,000 orders per minute with sub‑second response expectations, the architecture must support horizontal auto‑scaling and low network latency, which Runtime Fabric provides natively on‑premises or in a private cloud. Options that rely on a single instance, static scaling, or traditional load‑balanced pairs cannot dynamically adjust to traffic spikes and risk latency breaches. Kubernetes, while powerful, requires extra effort to match Mule Soft's built‑in capabilities, making Runtime Fabric the preferred Mule‑specific solution. Understanding these distinctions helps architects choose the most efficient, cost‑effective deployment for high‑throughput, latency‑sensitive APIs.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "This option is plausible because Kubernetes provides container orchestration and scaling capabilities. However, Mule Soft’s native Runtime Fabric offers tighter integration with Anypoint Platform features such as policy enforcement, monitoring, and built‑in auto‑scaling, reducing operational overhead. Choosing Kubernetes would require additional custom tooling and does not leverage the out‑of‑the‑box Mule Soft capabilities, making it less optimal for this scenario."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "A single‑instance deployment is incorrect for the stated load. Even with a powerful VM, the lack of horizontal scaling means the runtime cannot reliably handle 10,000 orders per minute while maintaining sub‑second latency, and any failure would cause a total outage. This reflects the common misconception that vertical scaling alone can meet high‑throughput, low‑latency requirements."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Static scaling on Cloud Hub can meet peak demand if over‑provisioned, but it lacks elasticity, leading to unnecessary cost during off‑peak periods. Additionally, routing traffic to Cloud Hub may introduce extra network latency if the retailer’s core systems reside on‑premises. Therefore, while possible, it is not the best fit for the strict sub‑second requirement."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "A traditional two‑node load‑balanced setup provides some redundancy but limits scalability; scaling beyond two nodes is manual and cumbersome. The pair may struggle to sustain 10,000 orders per minute without performance degradation. Consequently, this model does not satisfy the need for rapid, elastic scaling."
-      },
-      "E": {
-        "type": "Correct",
-        "text": "This is the correct answer. Runtime Fabric runs Mule runtime in containers managed by Mule Soft, offering native horizontal auto‑scaling, high availability, and low‑latency intra‑data‑center communication. It can dynamically add or remove worker nodes to sustain the 10,000‑order‑per‑minute load while keeping response times under a second, matching the retailer’s performance and reliability goals."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "A hybrid approach introduces an additional network hop between the Cloud Hub API gateway and the on‑premises runtime, increasing latency and complexity. While it may be useful for certain integration scenarios, it is not optimal for sub‑second checkout APIs that demand minimal round‑trip time. Thus, this option does not best meet the performance requirement."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Runtime Fabric — Configuring Horizontal Pod Autoscaling (HPA)",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/configure-horizontal-autoscaling#configure-horizontal-pod-autoscaling"
-      },
-      "architectureGuide": {
-        "title": "Runtime Fabric Overview — Core Services and Deployment Model",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/#runtime-fabric-core-services"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "E"
-  },
-  {
-    "id": "q-215",
-    "number": 215,
-    "title": "API Migration - A logistics company is migrating its on‑premises APIs to Anypoint",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "API Migration"
-    ],
-    "prompt": "A logistics company is migrating its on‑premises APIs to Anypoint Platform Cloud Hub and has a 48‑hour migration window. The migration must minimize downtime and preserve existing OAuth 2.0 security policies. Which TWO actions should be taken? (Select all correct answers)",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Delete the on‑premises APIs immediately and recreate them from scratch on Cloud Hub, then update the client applications to use the new endpoints."
-      },
-      {
-        "letter": "B",
-        "text": "Export the existing OAuth 2.0 provider configuration from the on‑premises environment and import it into Anypoint Access Management, then configure the Cloud Hub application to use the same client IDs and scopes."
-      },
-      {
-        "letter": "C",
-        "text": "Enable the ‘Automatic Re‑deployer’ feature in Runtime Manager to push updates directly to the on‑premises servers during the migration window."
-      },
-      {
-        "letter": "D",
-        "text": "Deploy the API to Cloud Hub using a blue‑green deployment and configure a domain alias to switch traffic to the new version after health checks pass."
-      },
-      {
-        "letter": "E",
-        "text": "Replace OAuth 2.0 with Basic Authentication in the Cloud Hub deployment to simplify the migration."
-      },
-      {
-        "letter": "F",
-        "text": "Use Anypoint VPC peering to directly expose the on‑premises APIs over the internet without redeploying them."
-      }
-    ],
-    "explanation": "The question tests knowledge of best‑practice migration techniques for moving APIs to Cloud Hub while keeping security and availability intact. Preserving OAuth 2.0 requires moving the provider configuration into Anypoint Access Management so existing client credentials remain valid. Minimizing downtime is achieved with a blue‑green deployment and a domain alias switch, which allows traffic to be rerouted only after the new instance is proven healthy. Common misconceptions include deleting old APIs, changing the security model, or assuming on‑premises servers can be updated automatically from Cloud Hub. In real projects, architects combine security migration (OAuth config) with traffic‑routing strategies (blue‑green) to meet tight migration windows without impacting consumers.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Delete the on‑premises APIs immediately and recreate them from scratch on Cloud Hub, then update the client applications to use the new endpoints.: This approach is incorrect because removing the existing APIs before the new ones are fully validated will cause an immediate service interruption, violating the requirement to minimize downtime. Re‑creating the APIs from scratch also discards the existing OAuth 2.0 configuration, forcing clients to obtain new credentials. In a real‑world migration, such a sudden cut‑over would lead to failed shipments and loss of partner trust."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Export the existing OAuth 2.0 provider configuration from the on‑premises environment and import it into Anypoint Access Management, then configure the Cloud Hub application to use the same client IDs and scopes.: This option is correct. By migrating the OAuth provider settings, the same client identifiers, secrets, and scopes remain valid, so external consumers do not need to change their authentication flow. Anypoint Access Management supports importing custom OAuth providers, allowing a seamless security hand‑off. In practice, partners can continue to request tokens without any code changes, preserving business continuity."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Enable the ‘Automatic Re‑deployer’ feature in Runtime Manager to push updates directly to the on‑premises servers during the migration window.: This is incorrect because the Automatic Re‑deployer only works for applications already running on Cloud Hub; it cannot push changes to on‑premises servers. Moreover, it does not address traffic routing or OAuth migration, so downtime could still occur. Relying on this feature would give a false sense of safety and could leave the APIs in an inconsistent state."
-      },
-      "D": {
-        "type": "Correct",
-        "text": "Deploy the API to Cloud Hub using a blue‑green deployment and configure a domain alias to switch traffic to the new version after health checks pass.: This option is correct. A blue‑green strategy lets the original on‑premises version (blue) remain active while the Cloud Hub version (green) is warmed up and tested. Once the green deployment is verified, the domain alias is repointed, causing an instant cut‑over with no perceived downtime. This pattern is widely recommended for high‑availability migrations."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Replace OAuth 2.0 with Basic Authentication in the Cloud Hub deployment to simplify the migration.: This is incorrect because swapping the security model violates the requirement to preserve existing OAuth 2.0 policies. Basic Authentication provides weaker security and would require all client applications to be re‑engineered, introducing risk and additional downtime. Organizations rarely downgrade security during a migration unless absolutely necessary, which is not the case here."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Use Anypoint VPC peering to directly expose the on‑premises APIs over the internet without redeploying them.: This option is incorrect. VPC peering allows private network connectivity but does not migrate the APIs to Cloud Hub, nor does it address the need to keep OAuth 2.0 policies intact on the new platform. It would leave the on‑premises APIs still in use, defeating the purpose of the migration and potentially creating latency issues. Proper migration requires redeploying the services to Cloud Hub."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "API Manager — OAuth 2.0 Protected Resource and Token Enforcement",
-        "url": "https://docs.mulesoft.com/api-manager/latest/about-configure-api-for-oauth#platform-and-runtime-prerequisites"
-      },
-      "architectureGuide": {
-        "title": "CloudHub — Zero Downtime Updates with Blue-Green Deployment",
-        "url": "https://docs.mulesoft.com/cloudhub/managing-applications-on-cloudhub#zero-downtime-updates-with-cloudhub"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswers": [
-      "B",
-      "D"
-    ]
-  },
-  {
-    "id": "q-216",
-    "number": 216,
-    "title": "Deployment Choices - A mid‑size financial services firm must migrate its core payment ",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "Deployment Choices"
-    ],
-    "prompt": "A mid‑size financial services firm must migrate its core payment APIs to the Anypoint Platform within a $150,000 budget and a three‑month deadline, and is evaluating Cloud Hub versus Runtime Fabric for production deployment. Which option should the team choose?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Deploy the APIs on Cloud Hub using the shared‑workers tier."
-      },
-      {
-        "letter": "B",
-        "text": "Deploy the APIs on Cloud Hub using dedicated workers with a VPC."
-      },
-      {
-        "letter": "C",
-        "text": "Deploy the APIs on Runtime Fabric in a private data‑center."
-      },
-      {
-        "letter": "D",
-        "text": "Deploy the APIs on Runtime Fabric on a public cloud (e. g., AWS) using a self‑managed cluster."
-      },
-      {
-        "letter": "E",
-        "text": "Deploy the APIs on Cloud Hub but use a separate Anypoint VPN for on‑prem connectivity."
-      },
-      {
-        "letter": "F",
-        "text": "Deploy the APIs on Runtime Fabric but use Mule Soft’s managed Runtime Fabric offering (cloud‑managed)."
-      }
-    ],
-    "explanation": "The question tests the candidate's ability to match deployment models to business constraints such as budget, timeline, and regulatory compliance. Cloud Hub dedicated workers with a VPC provide an isolated, fully managed environment that can be provisioned in days, keeping costs predictable and within the $150,000 limit. Runtime Fabric, whether on‑prem or self‑managed in the cloud, introduces infrastructure provisioning and operational responsibilities that typically exceed a short three‑month rollout and a modest budget. Shared‑worker Cloud Hub lacks the isolation needed for financial data, while adding VPNs or using Managed Runtime Fabric adds unnecessary expense and complexity. Therefore, the optimal choice is Cloud Hub dedicated workers with a VPC, which satisfies security, cost, and schedule requirements.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Deploy the APIs on Cloud Hub using the shared‑workers tier.: This option is incorrect. Shared workers are a multi‑tenant offering that does not provide the network isolation required for most financial‑services compliance regimes. In addition, the lack of a dedicated VPC can increase security risk and may force the organization to add extra controls that erode the time and cost advantages of Cloud Hub."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Deploy the APIs on Cloud Hub using dedicated workers with a VPC.: This option is correct. Dedicated workers give each API its own isolated runtime, satisfying regulatory requirements for data segregation, while the VPC provides a private network boundary. Because Cloud Hub is a fully managed i Paa S, the firm can spin up the environment quickly and stay within the $150,000 budget, meeting the three‑month deadline."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Deploy the APIs on Runtime Fabric in a private data‑center.: This option is incorrect. Installing Runtime Fabric on‑premises requires purchasing or repurposing hardware, provisioning the underlying OS, and configuring the fabric, which adds significant upfront cost and time. The three‑month schedule and limited budget make this approach impractical for a mid‑size organization."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Deploy the APIs on Runtime Fabric on a public cloud (e. g., AWS) using a self‑managed cluster.: This option is incorrect. Even though the infrastructure is cloud‑based, the team must still provision the virtual machines, install the Runtime Fabric agents, and manage scaling, which introduces operational overhead and delays. The added management effort can quickly exceed the $150,000 budget when combined with the required expertise."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Deploy the APIs on Cloud Hub but use a separate Anypoint VPN for on‑prem connectivity.: This option is incorrect. Adding an Anypoint VPN introduces extra cost and configuration complexity without addressing the core decision between Cloud Hub and Runtime Fabric. While a VPN can be part of a Cloud Hub solution, the primary recommendation should focus on the worker tier that meets security and budget constraints, which this answer does not specify."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Deploy the APIs on Runtime Fabric but use Mule Soft’s managed Runtime Fabric offering (cloud‑managed).: This option is incorrect. Managed Runtime Fabric is a newer service that still carries higher per‑hour pricing than Cloud Hub dedicated workers and may require additional onboarding steps. For a firm with a tight three‑month window and a strict $150,000 cap, the extra cost and potential delays make it less suitable than a straightforward Cloud Hub deployment."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub Architecture — Workers and Multitenancy",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#workers-and-multitenancy"
-      },
-      "architectureGuide": {
-        "title": "Deployment Options — CloudHub vs Runtime Fabric vs Hybrid",
-        "url": "https://docs.mulesoft.com/runtime-manager/deployment-strategies#cloudhub"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "B"
-  },
-  {
-    "id": "q-217",
-    "number": 217,
-    "title": "Deployment Strategy - A national retail chain plans to launch a new omnichannel experie",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "Deployment Strategy"
-    ],
-    "prompt": "A national retail chain plans to launch a new omnichannel experience and must decide on a deployment strategy that supports rapid scaling of its API‑led connectivity within a six‑week rollout window. Which approach BEST meets the requirements?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Deploy all APIs on Anypoint Runtime Fabric in a private data center with pre‑provisioned nodes, scaling manually as demand grows."
-      },
-      {
-        "letter": "B",
-        "text": "Implement a hybrid model where System APIs run on‑premises, Process APIs on Cloud Hub, and Experience APIs on a public Iaa S, orchestrated via VPN."
-      },
-      {
-        "letter": "C",
-        "text": "Containerize Mule applications and run them on a self‑managed Kubernetes cluster, using Helm charts for deployment and scaling."
-      },
-      {
-        "letter": "D",
-        "text": "Use Cloud Hub (Mule Soft’s i Paa S) with auto‑scale enabled across multiple regions, leveraging API‑led connectivity patterns for rapid rollout."
-      },
-      {
-        "letter": "E",
-        "text": "Deploy Mule runtimes on virtual machines in a traditional data center, using load balancers and scheduled batch jobs for scaling."
-      },
-      {
-        "letter": "F",
-        "text": "Rely solely on Anypoint API Community Manager to expose APIs without deploying any runtime, assuming the platform will handle execution."
-      }
-    ],
-    "explanation": "The question tests knowledge of Mule Soft deployment strategies that enable fast, elastic scaling for an API‑led architecture. Cloud Hub’s fully managed, multi‑region runtime with auto‑scale is purpose‑built for rapid rollouts, allowing a retailer to stand up the required APIs within weeks and automatically adjust capacity as traffic surges. Alternatives such as on‑prem Runtime Fabric, hybrid VPN‑linked environments, self‑managed Kubernetes, or VM‑based scaling introduce additional provisioning, networking, and operational steps that exceed the six‑week window. Misconceptions arise from assuming that any Mule runtime can scale quickly or that governance tools replace the execution layer. Best practice recommends starting with Cloud Hub for time‑to‑market, then evaluating Runtime Fabric or Kubernetes for longer‑term data‑ residency or cost‑optimization needs.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Deploy all APIs on Anypoint Runtime Fabric in a private data center with pre‑provisioned nodes, scaling manually as demand grows.: This option is incorrect because provisioning a private Runtime Fabric requires hardware acquisition, installation, and capacity planning, which cannot be completed within a six‑week window. Manual scaling adds operational overhead and delays the ability to respond to traffic spikes during a fast‑track omnichannel launch. In practice, companies that attempted this approach often missed critical go‑live dates due to infrastructure lead times."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "Implement a hybrid model where System APIs run on‑premises, Process APIs on Cloud Hub, and Experience APIs on a public Iaa S, orchestrated via VPN.: While technically feasible, this hybrid architecture introduces network latency, security complexities, and additional integration effort that slow down deployment. Managing multiple environments in parallel increases the testing matrix and can extend the rollout beyond six weeks. Retailers that chose such hybrids early in their journey frequently reported coordination bottlenecks between teams."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Containerize Mule applications and run them on a self‑managed Kubernetes cluster, using Helm charts for deployment and scaling.: Containerizing Mule apps and operating a Kubernetes cluster is a powerful long‑term strategy, but it requires substantial Dev Ops expertise, cluster setup, and CI/CD pipelines that cannot be spun up quickly enough for a six‑week deadline. The learning curve and operational readiness risk delaying the omnichannel experience launch. Organizations that rushed to Kubernetes without mature processes often faced deployment failures and rollback cycles."
-      },
-      "D": {
-        "type": "Correct",
-        "text": "Use Cloud Hub (Mule Soft’s i Paa S) with auto‑scale enabled across multiple regions, leveraging API‑led connectivity patterns for rapid rollout.: This option is correct because Cloud Hub is a fully managed Saa S offering that can be provisioned in minutes, and its built‑in auto‑scale feature automatically adds workers as traffic increases, meeting the rapid scaling requirement. API‑led connectivity is native to the Anypoint Platform, allowing the retailer to expose System, Process, and Experience APIs without additional infrastructure work. Real‑world deployments of Cloud Hub have consistently achieved sub‑two‑week rollout times for large omnichannel initiatives."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Deploy Mule runtimes on virtual machines in a traditional data center, using load balancers and scheduled batch jobs for scaling.: Deploying on VMs in a legacy data center is a manual approach that relies on pre‑planned capacity and batch scaling, which does not align with the need for rapid, elastic scaling. Load balancer reconfiguration and VM provisioning can take days, jeopardizing the six‑week timeline. Retail cases that stuck with this model often experienced performance bottlenecks during promotional periods."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Rely solely on Anypoint API Community Manager to expose APIs without deploying any runtime, assuming the platform will handle execution.: API Community Manager is a portal and governance tool; it does not execute Mule applications. Without a runtime, there is no engine to process requests, making this option technically invalid. Attempting to use only the community manager would result in non‑functional APIs and a failed omnichannel launch."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub — Configuring Autoscaling Policies for Applications",
-        "url": "https://docs.mulesoft.com/cloudhub/autoscaling-in-cloudhub#configure-autoscaling"
-      },
-      "architectureGuide": {
-        "title": "CloudHub Overview — Easy Scalability and Multi-Region Deployment",
-        "url": "https://docs.mulesoft.com/cloudhub/#easy-scalability"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "D"
-  },
-  {
-    "id": "q-218",
-    "number": 218,
-    "title": "Cloud Hub Deployment - A logistics company is migrating its on‑premise Mule runtimes to ",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "Cloud Hub Deployment"
-    ],
-    "prompt": "A logistics company is migrating its on‑premise Mule runtimes to Cloud Hub and must ensure zero downtime during the cutover and comply with a data residency rule that mandates all transaction data remain within the EU. Which TWO actions should be taken? (Select all correct answers)",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Enable Auto‑Scaling across all Cloud Hub regions to handle peak load."
-      },
-      {
-        "letter": "B",
-        "text": "Deploy the applications to Cloud Hub workers in an EU region such as Europe (Frankfurt)."
-      },
-      {
-        "letter": "C",
-        "text": "Configure a Global Load Balancer that directs requests to the nearest Cloud Hub worker regardless of region."
-      },
-      {
-        "letter": "D",
-        "text": "Store transaction data in an on‑premise data center outside the EU and use a VPN tunnel for access from Cloud Hub."
-      },
-      {
-        "letter": "E",
-        "text": "Perform a blue‑green deployment using Runtime Manager, keeping the old version running while the new version is validated in the same EU region, then switch traffic."
-      },
-      {
-        "letter": "F",
-        "text": "Enable Anypoint Monitoring in the default US‑based region and rely on its dashboards for compliance reporting."
-      }
-    ],
-    "explanation": "The question tests knowledge of how to migrate Mule applications to Cloud Hub while meeting strict EU data residency and zero‑downtime requirements. Selecting an EU region for Cloud Hub workers guarantees that runtime data, logs, and temporary storage stay within the European Economic Area, satisfying GDPR and local regulations. Using a blue‑green deployment strategy allows the old version to remain active while the new version is validated, ensuring a seamless traffic switch with no interruption. Common misconceptions include assuming that auto‑scaling or global load balancing automatically provide compliance; in reality, they can spin up resources in any available region, potentially breaching residency rules. Likewise, placing monitoring or data stores in non‑EU locations defeats the purpose of the residency mandate. Best practice is to confine all runtime and supporting services to EU regions and employ staged deployment techniques such as blue‑green or rolling upgrades to achieve a true zero‑downtime migration.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Enable Auto‑Scaling across all Cloud Hub regions to handle peak load.: This option is incorrect. Auto‑Scaling across multiple regions can cause Mule workers to be instantiated in non‑EU data centers, violating the EU‑only data residency requirement. Additionally, scaling events can introduce brief periods where requests are routed to newly created workers, potentially causing momentary downtime during the cutover."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Deploy the applications to Cloud Hub workers in an EU region such as Europe (Frankfurt).: This option is correct. Selecting an EU region ensures that all runtime memory, logs, and temporary storage remain within the European Economic Area, satisfying the residency rule. By keeping the workloads geographically constrained, the company avoids cross‑border data transfers and complies with GDPR and local regulations."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Configure a Global Load Balancer that directs requests to the nearest Cloud Hub worker regardless of region.: This option is incorrect. A global load balancer will route traffic to the closest worker, which may be outside the EU, breaking the data residency mandate. Moreover, the dynamic routing can introduce latency spikes and brief interruptions during the switchover, contradicting the zero‑downtime goal."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Store transaction data in an on‑premise data center outside the EU and use a VPN tunnel for access from Cloud Hub.: This option is incorrect. Keeping transaction data in a non‑EU data center directly violates the residency requirement, exposing the company to legal penalties. Using a VPN does not change the physical location of the data, and any latency introduced by the tunnel could also affect performance during migration."
-      },
-      "E": {
-        "type": "Correct",
-        "text": "Perform a blue‑green deployment using Runtime Manager, keeping the old version running while the new version is validated in the same EU region, then switch traffic.: This option is correct. Blue‑green deployment allows the existing version to continue serving traffic while the new version is staged, enabling a seamless cutover with no service interruption. By executing the deployment within the same EU‑based workers, the approach also respects the data residency constraint throughout the migration."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Enable Anypoint Monitoring in the default US‑based region and rely on its dashboards for compliance reporting.: This option is incorrect. Monitoring data stored in the US would itself be subject to data residency rules, potentially moving transaction metadata out of the EU. Additionally, using a US‑based monitoring service does not contribute to achieving zero downtime during the cutover."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub — Manage Regions for Data Residency",
-        "url": "https://docs.mulesoft.com/cloudhub/managing-cloudhub-specific-settings#manage-regions"
-      },
-      "architectureGuide": {
-        "title": "CloudHub — Zero Downtime Updates with Blue-Green Deployment",
-        "url": "https://docs.mulesoft.com/cloudhub/managing-applications-on-cloudhub#zero-downtime-updates-with-cloudhub"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswers": [
-      "B",
-      "E"
-    ]
-  },
-  {
-    "id": "q-219",
-    "number": 219,
-    "title": "Deployment Models - A mid-sized financial services firm is migrating its core loan‑or",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "Deployment Models"
-    ],
-    "prompt": "A mid-sized financial services firm is migrating its core loan‑origination APIs to Anypoint Platform. The budget allows only a modest increase in monthly cloud spend and the team must maintain PCI‑DSS compliance. They need a deployment model that isolates workloads but avoids a full‑scale on‑premise data‑center. Which option should the team choose?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Deploy the APIs to Cloud Hub Dedicated (single‑tenant VPC)."
-      },
-      {
-        "letter": "B",
-        "text": "Deploy the APIs to standard Cloud Hub (shared multi‑tenant environment)."
-      },
-      {
-        "letter": "C",
-        "text": "Install Anypoint Runtime Fabric on a private EC2 cluster in a public cloud region."
-      },
-      {
-        "letter": "D",
-        "text": "Run the Mule runtime on‑premise behind the corporate firewall."
-      },
-      {
-        "letter": "E",
-        "text": "Implement a hybrid model: use Cloud Hub for production and Runtime Fabric for development and testing."
-      },
-      {
-        "letter": "F",
-        "text": "Expose the APIs through API Manager only, hosting the runtime on an external third‑party server."
-      }
-    ],
-    "explanation": "The question tests knowledge of Anypoint Platform deployment models and how they align with PCI‑DSS isolation requirements and cost constraints. Cloud Hub Dedicated is the only managed, single‑tenant cloud option that delivers the required workload isolation without the capital expense of building an on‑premise data‑center, making it the optimal choice for a modest cloud‑spend budget. Common misconceptions include assuming a shared Cloud Hub environment is sufficient for compliance or that Runtime Fabric is automatically cheaper, when in fact it adds operational overhead. Hybrid or mixed‑model approaches can complicate governance and increase costs, while pure on‑premise deployments conflict with the stated desire to avoid a full data‑center. Best practice is to select the managed, isolated cloud offering that meets regulatory requirements while keeping operational complexity low.",
-    "rationales": {
-      "A": {
-        "type": "Correct",
-        "text": "Deploy the APIs to Cloud Hub Dedicated (single‑tenant VPC).: This option is correct. Cloud Hub Dedicated provides a single‑tenant virtual private cloud that isolates workloads from other customers, satisfying PCI‑DSS segmentation requirements while still being fully managed by Mule Soft. Because it runs in the public cloud, the firm avoids the capital expense of a full on‑premise data‑center and only incurs a modest increase in monthly subscription fees."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "Deploy the APIs to standard Cloud Hub (shared multi‑tenant environment).: This option is incorrect. Although standard Cloud Hub is the lowest‑cost cloud option, it runs on a shared multi‑tenant infrastructure, which does not meet the isolation needed for PCI‑DSS compliance. Using a shared environment could expose the firm to audit findings and require additional controls that increase operational overhead, negating the cost benefit."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Install Anypoint Runtime Fabric on a private EC2 cluster in a public cloud region.: This option is plausible but not the best fit. Runtime Fabric gives full control over the runtime environment and can provide isolation, but it requires the team to provision, manage, and maintain the underlying infrastructure, adding operational complexity and potentially higher monthly spend. For a modest budget and a desire to avoid extensive management, Cloud Hub Dedicated offers a simpler, managed alternative."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Run the Mule runtime on‑premise behind the corporate firewall.: This option is incorrect. Deploying on‑premise would satisfy isolation and compliance, but the firm explicitly wants to avoid a full‑scale on‑premise data‑center due to cost and resource constraints. Maintaining an on‑premise Mule runtime also incurs capital expenses for hardware, staffing, and ongoing patching, which exceeds the modest cloud‑spend budget."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Implement a hybrid model: use Cloud Hub for production and Runtime Fabric for development and testing.: This option is incorrect. While a hybrid approach can separate environments, it introduces additional licensing, management overhead, and network complexity, which can increase the overall monthly spend beyond the modest budget. Moreover, the production workload would still need isolation, and the simplest way to achieve that is a single‑tenant Cloud Hub Dedicated deployment."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Expose the APIs through API Manager only, hosting the runtime on an external third‑party server.: This option is incorrect. API Manager alone does not provide a runtime; relying on an external server re‑introduces the need for on‑premise or unmanaged cloud infrastructure, which defeats the goal of avoiding a full‑scale data‑center and may not meet PCI‑DSS isolation requirements. Additionally, the firm would lose the operational benefits of Mule Soft‑managed runtimes such as scaling, monitoring, and support."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub Networking Guide — Dedicated Load Balancing and VPC Isolation",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide#dedicated-load-balancing-configurations"
-      },
-      "architectureGuide": {
-        "title": "CloudHub Architecture — Workers and Multitenancy",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#workers-and-multitenancy"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "A"
-  },
-  {
-    "id": "q-220",
-    "number": 220,
-    "title": "Runtime Deployment - A logistics startup plans to host its Mule runtime in a public cl",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "Runtime Deployment"
-    ],
-    "prompt": "A logistics startup plans to host its Mule runtime in a public cloud but must keep monthly infrastructure costs below $2,000 while ensuring scalability for seasonal spikes. What should be done FIRST?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Select the smallest Cloud Hub 1.0 worker size and configure a fixed-size deployment."
-      },
-      {
-        "letter": "B",
-        "text": "Purchase a dedicated VPC and run Mule runtime on EC2 instances."
-      },
-      {
-        "letter": "C",
-        "text": "Run a cost-capacity sizing analysis using Anypoint Platform tooling to pick the appropriate worker size and auto-scaling policy."
-      },
-      {
-        "letter": "D",
-        "text": "Immediately enable Cloud Hub 2.0 auto-scaling with the default settings."
-      },
-      {
-        "letter": "E",
-        "text": "Migrate the runtime to an on-premises data center to avoid cloud costs."
-      },
-      {
-        "letter": "F",
-        "text": "Choose the cheapest worker tier regardless of performance requirements."
-      }
-    ],
-    "explanation": "The question tests the candidate's ability to prioritize cost-aware planning before committing to a deployment model in Mule Soft's public cloud. The first step must be a systematic sizing and cost analysis using Anypoint Platform tools, which identifies the minimum worker configuration and appropriate auto-scaling policies to stay under the $2,000 monthly ceiling while supporting seasonal spikes. Common misconceptions include assuming that the cheapest or smallest worker will automatically meet needs, or that enabling auto-scaling without analysis will control costs. Over-provisioning through fixed-size deployments or unmanaged scaling often leads to budget overruns or performance failures. Best practice is to model expected traffic, calculate required throughput, and then select a managed runtime option (e. g., Cloud Hub 2.0) that can dynamically scale within defined cost boundaries.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Select the smallest Cloud Hub 1.0 worker size and configure a fixed-size deployment.: This option is incorrect because choosing the smallest fixed-size worker without analyzing the actual load may lead to performance bottlenecks during peak seasons. Fixed-size deployments do not automatically adjust to traffic spikes, so the startup could either breach the budget or experience downtime. In practice, many organizations that start with a minimal worker quickly discover they need to upscale, which incurs unexpected costs."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "Purchase a dedicated VPC and run Mule runtime on EC2 instances.: While a dedicated VPC gives network isolation, it is not the first step for cost-constrained, scalable deployments. Provisioning EC2 instances requires detailed capacity planning and often results in higher baseline costs than managed Cloud Hub options. Teams that skip the sizing analysis frequently exceed their budget because they over-provision resources to guarantee scalability."
-      },
-      "C": {
-        "type": "Correct",
-        "text": "Run a cost-capacity sizing analysis using Anypoint Platform tooling to pick the appropriate worker size and auto-scaling policy.: This is the correct first action. The sizing analysis combines expected transaction volumes, peak-load forecasts, and the $2,000 budget to recommend the smallest viable worker tier and an auto-scaling policy that only adds capacity when needed. By doing this upfront, the startup can verify that Cloud Hub 2.0 (or another cloud option) will meet both cost and scalability goals, avoiding costly re-architectures later."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Immediately enable Cloud Hub 2.0 auto-scaling with the default settings.: Enabling auto-scaling without first understanding the workload can lead to uncontrolled scale-out and unexpected monthly charges that surpass the $2,000 limit. Default scaling thresholds are generic and may not align with the startup's seasonal patterns. Proper sizing ensures the scaling rules are tuned to the actual demand, keeping costs predictable."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Migrate the runtime to an on-premises data center to avoid cloud costs.: Moving to on-premises contradicts the requirement to host the runtime in a public cloud and typically involves higher upfront capital expenditure and maintenance overhead. It does not guarantee lower monthly costs, especially for a startup lacking existing infrastructure. Moreover, on-premises environments are less flexible for rapid scaling during seasonal spikes."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Choose the cheapest worker tier regardless of performance requirements.: Selecting the cheapest tier without evaluating performance can cause latency, failed transactions, and poor user experience during peak periods. The cost savings are illusory because the startup may need to add more workers or upgrade later, incurring additional expenses. Proper sizing balances cost with required throughput, which is essential for a logistics business handling variable loads."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub Architecture — CloudHub Workers (Worker Sizes and vCores)",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#cloudhub-workers"
-      },
-      "architectureGuide": {
-        "title": "CloudHub High Availability Features — Worker Scale-out and Cost of Additional Workers",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#use-cases"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "C"
-  },
-  {
-    "id": "q-221",
-    "number": 221,
-    "title": "Deployment Options - CloudHub custom-domain HTTPS with mTLS",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "Dedicated Load Balancer",
-      "mTLS"
-    ],
-    "prompt": "An organization requires a Mule application deployed to CloudHub 1.0 to expose an HTTPS endpoint using a custom domain (`api.company.com`). The security team also mandates that the endpoint must enforce two-way mTLS authentication with external clients. Which CloudHub network component is strictly required to fulfill this requirement?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "The CloudHub Shared Load Balancer (SLB)"
-      },
-      {
-        "letter": "B",
-        "text": "A CloudHub Dedicated Load Balancer (DLB)"
-      },
-      {
-        "letter": "C",
-        "text": "Anypoint API Manager with an automated mTLS policy"
-      },
-      {
-        "letter": "D",
-        "text": "Anypoint VPC Peering"
-      }
-    ],
-    "explanation": "The Shared Load Balancer does not support custom certificates or two-way mTLS. A Dedicated Load Balancer must be provisioned within a VPC to handle custom DNS domains and terminate or enforce mTLS connections.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "The Shared Load Balancer does not support custom certificates or two-way mTLS."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "A Dedicated Load Balancer supports custom domains and two-way mTLS termination."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "An API Manager policy alone does not provide the required CloudHub network component for custom-domain TLS termination."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "VPC Peering connects VPCs; it does not provide custom-domain TLS termination or mTLS enforcement."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub — Create and Configure a Dedicated Load Balancer",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer#create-and-configure-a-dedicated-load-balancer"
-      },
-      "architectureGuide": {
-        "title": "CloudHub — Routing External Requests to the Dedicated Load Balancer",
-        "url": "https://docs.mulesoft.com/cloudhub/lb-architecture#routing-external-requests-to-the-dedicated-load-balancer"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "B"
-  },
-  {
-    "id": "q-222",
-    "number": 222,
-    "title": "Deployment Options - Scheduler behavior across CloudHub workers",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "Scheduler",
-      "Multiple Workers"
-    ],
-    "prompt": "A developer deploys a Mule application to two CloudHub 1.0 workers. The application contains a Scheduler component set to trigger every 5 minutes to read records from a database. How does CloudHub handle the execution of this Scheduler across the multiple workers?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "The Scheduler triggers on both workers simultaneously, so the developer must implement an Idempotent Message Validator to prevent duplicate processing."
-      },
-      {
-        "letter": "B",
-        "text": "CloudHub automatically triggers the Scheduler on only one worker at a time (the primary node) to prevent duplicate processing."
-      },
-      {
-        "letter": "C",
-        "text": "The execution is round-robined between the two workers, meaning each worker triggers every 10 minutes."
-      },
-      {
-        "letter": "D",
-        "text": "Schedulers are not supported in multi-worker deployments; a separate external cron job must be used to trigger an HTTP endpoint."
-      }
-    ],
-    "explanation": "In CloudHub, MuleSoft automatically coordinates polling event sources like Schedulers, SFTP, and Database polling across multiple workers so that only one worker executes the poll at any scheduled time.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "CloudHub coordinates the polling event source rather than requiring simultaneous polling and duplicate suppression."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Only one worker executes the scheduled poll at a time to prevent duplicate processing."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "CloudHub does not round-robin scheduled executions to double the interval."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Schedulers are supported in multi-worker deployments."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub — Manage Schedules (Multi-Worker Execution on a Single Worker)",
-        "url": "https://docs.mulesoft.com/cloudhub/managing-schedules#considerations-and-limitations"
-      },
-      "architectureGuide": {
-        "title": "Scheduler Endpoint — Cluster and Multi-Worker Behavior",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/scheduler-concept"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "B"
-  },
-  {
-    "id": "q-223",
-    "number": 223,
-    "title": "Deployment Options - Runtime behavior during control plane outage",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "Hybrid Deployment",
-      "Control Plane",
-      "Runtime Plane"
-    ],
-    "prompt": "An integration architect is designing a hybrid deployment. The Mule runtime engines are installed on customer-hosted virtual machines within an enterprise data center. A network outage completely disconnects the data center from the Anypoint Platform Control Plane for 4 hours. What happens to the running Mule applications during this outage?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "The applications continue to process traffic normally, but log forwarding and metric reporting to Anypoint Platform are temporarily suspended."
-      },
-      {
-        "letter": "B",
-        "text": "The applications immediately stop accepting new HTTP requests until communication with the Control Plane is restored."
-      },
-      {
-        "letter": "C",
-        "text": "The applications continue running, but any API Manager policies applied to the endpoints are bypassed."
-      },
-      {
-        "letter": "D",
-        "text": "The Mule runtime gracefully shuts down the applications to prevent data inconsistency."
-      }
-    ],
-    "explanation": "The Runtime Plane processes traffic independently of the Control Plane. If the Control Plane is unreachable, apps keep running and enforcing already-downloaded policies; administrative tasks and telemetry are paused until the connection is restored.",
-    "rationales": {
-      "A": {
-        "type": "Correct",
-        "text": "Running applications continue handling traffic with their existing configuration; platform connectivity and telemetry are interrupted."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "A Control Plane outage does not immediately stop the Runtime Plane from processing requests."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Already-downloaded policies continue to be enforced while the Control Plane is unavailable."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "The runtime does not shut down applications solely because of a Control Plane connection outage."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Runtime Fabric Security Architecture — Management Flow (Apps and Gateways Continue When Agent Loses Connectivity)",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/security-architecture#management-flow"
-      },
-      "architectureGuide": {
-        "title": "CloudHub High Availability and Disaster Recovery — Considerations (Runtime Plane Continues, Log/Telemetry Buffered)",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-hadr#considerations-and-limitations"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "A"
-  },
-  {
-    "id": "q-224",
-    "number": 224,
-    "title": "Deployment Options - Object Store v2 sharing between applications",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "Object Store v2",
-      "Application State"
-    ],
-    "prompt": "A Mule application deployed to CloudHub 1.0 exposes a System API. A completely separate Mule application deployed to the same CloudHub environment exposes a Process API. Both applications need to share a temporary caching state (e.g., a counter). The developer attempts to use the Object Store v2 (OSv2) Connector to share this state. What is the expected behavior?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "The applications can seamlessly share the data by configuring both Object Store connectors with the same Object Store name."
-      },
-      {
-        "letter": "B",
-        "text": "OSv2 does not allow data sharing between different Mule applications natively; the data is strictly partitioned by application."
-      },
-      {
-        "letter": "C",
-        "text": "Data sharing is only possible if both applications are deployed to the same AWS region and VPC."
-      },
-      {
-        "letter": "D",
-        "text": "The developer must configure an Anypoint MQ queue to synchronize the Object Store states between the two applications."
-      }
-    ],
-    "explanation": "CloudHub Object Store v2 does not natively share data between different Mule applications through the connector. An app can expose an API for state access, or the applications can use an external caching system such as Redis.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Using the same Object Store name does not make one application's OSv2 data accessible to another."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "OSv2 data is partitioned by application and is not shared across applications through the connector."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Sharing a region and VPC does not remove the application-level data partitioning."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Anypoint MQ could be used to exchange messages, but it is not required to synchronize OSv2 states."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Object Store v2 FAQ — Object Store v2 Isn't Designed for App-to-App Communication (Data Is Partitioned per App)",
-        "url": "https://docs.mulesoft.com/object-store/osv2-faq#can-an-app-deployed-to-cloudhub-access-the-object-store-of-another-cloudhub-app"
-      },
-      "architectureGuide": {
-        "title": "Object Store Connector — Each Mule App Has Its Own Default Object Store",
-        "url": "https://docs.mulesoft.com/object-store-connector/latest/#use-the-default-object-store"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "B"
-  },
-  {
-    "id": "q-225",
-    "number": 225,
-    "title": "Deployment Options - Internal CloudHub worker URL",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "VPC",
-      "Internal Routing"
-    ],
-    "prompt": "An organization is deploying Mule applications to a CloudHub 1.0 VPC. A System API is deployed to listen on port 8081. An internal Process API needs to call this System API securely over the internal VPC network without routing traffic out to the public internet. What URL format should the Process API use to make this internal call?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "`http://mule-worker-internal-<app-name>.region.cloudhub.io:8081`"
-      },
-      {
-        "letter": "B",
-        "text": "`http://<app-name>.region.cloudhub.io:80`"
-      },
-      {
-        "letter": "C",
-        "text": "`http://mule-worker-<app-name>.region.cloudhub.io:8081`"
-      },
-      {
-        "letter": "D",
-        "text": "`https://<app-name>.internal.region.cloudhub.io`"
-      }
-    ],
-    "explanation": "To route traffic internally within a VPC directly to a worker, bypassing the public Shared Load Balancer, use the `mule-worker-internal-` prefix and the worker's listener port.",
-    "rationales": {
-      "A": {
-        "type": "Correct",
-        "text": "The internal worker hostname and listener port route the call within the VPC directly to the worker."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "This hostname uses the public application endpoint and port 80 rather than direct internal worker routing."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "The hostname lacks the `internal-` segment used for the internal worker endpoint."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "This is not the CloudHub internal worker URL format."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub Networking Guide — Internal DNS Records for VPC Communication",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide#dns-records"
-      },
-      "architectureGuide": {
-        "title": "Anypoint VPC Network Architecture — Internal Worker DNS Resolution",
-        "url": "https://docs.mulesoft.com/cloudhub/vpc-architecture-concept#preamble"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "A"
-  },
-  {
-    "id": "q-226",
-    "number": 226,
-    "title": "Deployment Options - Persistent VM queues across workers",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "VM Queues",
-      "Persistent Queues"
-    ],
-    "prompt": "An API implementation must process a high volume of large asynchronous messages. To ensure zero message loss in the event of a worker crash, the architect decides to use VM queues. The application is deployed to three CloudHub 1.0 workers. How must the application and deployment be configured to guarantee that a message published to a VM queue on Worker 1 can be consumed and processed by Worker 2?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Enable the \"Persistent Queues\" checkbox in the Runtime Manager deployment settings."
-      },
-      {
-        "letter": "B",
-        "text": "Configure an Anypoint MQ connector instead, as VM queues cannot span multiple CloudHub workers."
-      },
-      {
-        "letter": "C",
-        "text": "Deploy the application to a Customer-Hosted cluster instead, as CloudHub does not support distributed memory."
-      },
-      {
-        "letter": "D",
-        "text": "Configure a CloudHub Dedicated Load Balancer to round-robin the VM queue traffic."
-      }
-    ],
-    "explanation": "In CloudHub 1.0, enabling Persistent Queues at deployment time changes VM queue behavior so that messages published by one worker can be picked up by another worker in the same application.",
-    "rationales": {
-      "A": {
-        "type": "Correct",
-        "text": "Persistent Queues enable the distributed VM queue behavior needed to share messages across workers."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "Anypoint MQ is an alternative messaging service, but the stated CloudHub configuration supports cross-worker VM queue consumption."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "A customer-hosted cluster is not required to enable CloudHub persistent VM queues."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "A load balancer routes network traffic; it does not distribute VM queue messages."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub — Persistent Queues and Distributed VM Queues",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#persistent-queues"
-      },
-      "architectureGuide": {
-        "title": "CloudHub — Enable Queues and Batch Component Behavior",
-        "url": "https://docs.mulesoft.com/cloudhub/managing-queues#enable-queues"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "A"
-  },
-  {
-    "id": "q-227",
-    "number": 227,
-    "title": "Deployment Options - Private connectivity to on-premises data centers",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "VPC",
-      "VPN",
-      "Direct Connect"
-    ],
-    "prompt": "A company mandates that all on-premises legacy databases must only be accessed by Mule applications via highly secure, private network connections. The Mule applications will be deployed to CloudHub 1.0. Which technology allows a CloudHub VPC to connect securely and privately to a customer's on-premises data center?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Anypoint VPC Peering"
-      },
-      {
-        "letter": "B",
-        "text": "IPsec VPN tunnel or AWS Direct Connect"
-      },
-      {
-        "letter": "C",
-        "text": "CloudHub Dedicated Load Balancer (DLB)"
-      },
-      {
-        "letter": "D",
-        "text": "CloudHub Shared Load Balancer (SLB) with mTLS"
-      }
-    ],
-    "explanation": "VPC Peering connects a CloudHub VPC to another AWS VPC. To connect a CloudHub VPC to an on-premises data center, configure an IPsec VPN, AWS Direct Connect, or AWS Transit Gateway.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "VPC Peering is for connecting AWS VPCs, not directly connecting to an on-premises data center."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "An IPsec VPN or AWS Direct Connect provides private connectivity between the CloudHub VPC and the data center."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "A DLB routes application traffic but does not establish private connectivity to an on-premises network."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "An SLB with mTLS does not provide a private network connection to the data center."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub — VPC Connectivity Methods: IPsec Tunnel and AWS Direct Connect",
-        "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept#ipsec-tunnel"
-      },
-      "architectureGuide": {
-        "title": "CloudHub — AWS Direct Connect and High Availability",
-        "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept#aws-direct-connect"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "B"
-  },
-  {
-    "id": "q-228",
-    "number": 228,
-    "title": "Deployment Options - Masking secure properties in Runtime Manager",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "Secure Properties",
-      "Runtime Manager"
-    ],
-    "prompt": "An organization is deploying Mule applications to CloudHub 1.0. They configure the passwords in a secure properties file (`secure-dev.yaml`) and encrypt them. When deploying via the Runtime Manager UI, they enter the decryption key in the Properties tab. To ensure the decryption key is not visible in plain text to other administrators viewing the Runtime Manager UI, what must the team do?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Store the decryption key in Anypoint Vault."
-      },
-      {
-        "letter": "B",
-        "text": "Declare the property name in the `secureProperties` array inside the `mule-artifact.json` file."
-      },
-      {
-        "letter": "C",
-        "text": "Prefix the property name with `hidden.secure.` in the Runtime Manager UI."
-      },
-      {
-        "letter": "D",
-        "text": "Define the decryption key as an environment variable directly inside the CloudHub worker via an SSH session."
-      }
-    ],
-    "explanation": "Including a property name in the `secureProperties` list inside `mule-artifact.json` instructs Runtime Manager to mask that property's value in the platform UI.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "The question asks how to mask a Runtime Manager property value; the `secureProperties` declaration provides that behavior."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Declaring the key's property name in `secureProperties` causes Runtime Manager to mask its value."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "The `hidden.secure.` prefix is not the mechanism Runtime Manager uses to mask a property."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "This is not the CloudHub configuration mechanism for masking properties in Runtime Manager."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub — Create Safely Hidden Application Properties",
-        "url": "https://docs.mulesoft.com/cloudhub/secure-application-properties#create-safely-hidden-application-properties"
-      },
-      "architectureGuide": {
-        "title": "Mule Artifact JSON — Fields Reference (secureProperties)",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-artifact-json#fields"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "B"
-  },
-  {
-    "id": "q-229",
-    "number": 229,
-    "title": "Deployment Options - Runtime Fabric ingress controller",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "Runtime Fabric",
-      "Ingress",
-      "Traffic Routing"
-    ],
-    "prompt": "A company is moving its Mule applications from Customer-Hosted standalone servers to Runtime Fabric (RTF) installed on their own Self-Managed Kubernetes (BYOK). In a standalone environment, an external load balancer routed HTTP traffic directly to the Mule runtimes on port 8081. In the RTF architecture, what component is responsible for receiving the external HTTP traffic and routing it to the correct Mule application replicas?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "The Anypoint Monitoring Agent"
-      },
-      {
-        "letter": "B",
-        "text": "The RTF Ingress Controller"
-      },
-      {
-        "letter": "C",
-        "text": "The CloudHub Dedicated Load Balancer"
-      },
-      {
-        "letter": "D",
-        "text": "The RTF Ops Center"
-      }
-    ],
-    "explanation": "In Runtime Fabric, traffic reaches the Ingress Controller, which acts as the internal load balancer and reverse proxy and routes requests to the appropriate application replicas.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "The Monitoring Agent supports observability and does not route inbound application requests."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "The Ingress Controller receives inbound traffic and routes it to the correct application replicas."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "The CloudHub DLB is a CloudHub component, not the traffic-routing component in Runtime Fabric."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Ops Center is not the RTF ingress and request-routing component."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Runtime Fabric — Configuring Ingress in Runtime Fabric",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/configure-ingress"
-      },
-      "architectureGuide": {
-        "title": "Runtime Fabric — Configure a Public Endpoint for the Application",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/deploy-to-runtime-fabric#configure-a-public-endpoint-for-the-application"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "B"
-  },
-  {
-    "id": "q-230",
-    "number": 230,
-    "title": "Deployment Options - CloudHub worker size for large payloads",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "Worker Sizing",
-      "Memory"
-    ],
-    "prompt": "An architect is sizing a CloudHub 1.0 worker for a Mule application that needs to load an 800 MB JSON payload entirely into memory to perform a complex DataWeave transformation. What is the minimum CloudHub worker size (vCore) required to ensure the application does not throw an `OutOfMemoryError`?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "0.1 vCores"
-      },
-      {
-        "letter": "B",
-        "text": "0.2 vCores"
-      },
-      {
-        "letter": "C",
-        "text": "1.0 vCores"
-      },
-      {
-        "letter": "D",
-        "text": "0.05 vCores"
-      }
-    ],
-    "explanation": "A 0.1 vCore worker provides 500 MB of heap memory, while a 0.2 vCore worker provides 1 GB of heap memory, the minimum listed size above the 800 MB payload requirement.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "The 500 MB heap is smaller than the 800 MB payload."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "The stated 1 GB heap is the minimum listed size that can accommodate the 800 MB payload."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "A 1.0 vCore worker provides more capacity than the minimum option stated in the question."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "A 0.05 vCore worker provides less capacity than the 800 MB payload requires."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub — Worker Size and vCores",
-        "url": "https://docs.mulesoft.com/cloudhub/deploying-to-cloudhub#worker-size-and-vcores"
-      },
-      "architectureGuide": {
-        "title": "Runtime Fabric — Calculating Memory Allocation on CloudHub and Runtime Fabric",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/deploy-resource-allocation-self-managed#calculating-memory-allocation-on-cloudhub-and-runtime-fabric"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "B"
-  },
-  {
-    "id": "q-231",
-    "number": 231,
-    "title": "Deployment Options - DLB mapping rules for API routing",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "Dedicated Load Balancer",
-      "Mapping Rules"
-    ],
-    "prompt": "An enterprise is using a CloudHub Dedicated Load Balancer (DLB) to route traffic to multiple Experience APIs. The company wants requests made to `https://api.company.com/v1/orders` to be routed to a Mule application named `exp-orders-api-v1`. How is this routing achieved on the DLB?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "By configuring Mapping Rules on the DLB."
-      },
-      {
-        "letter": "B",
-        "text": "By adding a CloudHub network routing policy in API Manager."
-      },
-      {
-        "letter": "C",
-        "text": "By deploying an API Proxy application to act as a router before the DLB."
-      },
-      {
-        "letter": "D",
-        "text": "By modifying the `mule-artifact.json` file of the `exp-orders-api-v1` application to register the `/v1/orders` path."
-      }
-    ],
-    "explanation": "Dedicated Load Balancer Mapping Rules translate a vanity domain and URI path, such as `/v1/orders`, into the internal worker URL of the target Mule application.",
-    "rationales": {
-      "A": {
-        "type": "Correct",
-        "text": "DLB Mapping Rules route requests for the configured host and path to the target application."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "API Manager policies do not configure DLB host-and-path routing."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "A separate API Proxy is not required to configure routing on the DLB."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "The application artifact file does not register a DLB path mapping."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub — Create Mapping Rules on the Dedicated Load Balancer",
-        "url": "https://docs.mulesoft.com/cloudhub/lb-mapping-rules#create-mapping-rules"
-      },
-      "architectureGuide": {
-        "title": "CloudHub — Use Patterns in Mapping Rules",
-        "url": "https://docs.mulesoft.com/cloudhub/lb-mapping-rules#use-patterns-in-mapping-rules"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "A"
-  },
-  {
-    "id": "q-232",
-    "number": 232,
-    "title": "Deployment Options - Static outbound IP for CloudHub",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "Static IP",
-      "Outbound Networking"
-    ],
-    "prompt": "A customer requires a Mule application to maintain a static outbound IP address. A third-party SaaS provider mandates that all incoming API calls must originate from a whitelisted IP address. The Mule application is deployed to CloudHub 1.0. How can the architect satisfy this requirement?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Deploy the application to a CloudHub VPC; all applications in a VPC automatically share a single static outbound IP."
-      },
-      {
-        "letter": "B",
-        "text": "Assign a Static IP to the Mule application through the Runtime Manager deployment settings."
-      },
-      {
-        "letter": "C",
-        "text": "Route all outbound traffic from the Mule application through a CloudHub Dedicated Load Balancer."
-      },
-      {
-        "letter": "D",
-        "text": "Use the CloudHub Object Store to persist the IP address across restarts."
-      }
-    ],
-    "explanation": "CloudHub worker IPs are dynamic by default. To satisfy third-party firewall whitelisting requirements, allocate and assign a Static IP to the application in Runtime Manager.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "A VPC alone does not mean all applications share one static outbound IP."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Assigning a Static IP through Runtime Manager provides the stable outbound address needed for whitelisting."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "A DLB handles inbound routing and does not provide the application's static outbound IP."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Object Store persists data, not network addresses."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Runtime Manager — Assign Static IPs to a CloudHub Application",
-        "url": "https://docs.mulesoft.com/cloudhub/managing-applications-on-cloudhub#static-ips"
-      },
-      "architectureGuide": {
-        "title": "CloudHub Networking Guide — IP Ranges and Static IPs",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide#ip-ranges-and-static-ips"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "B"
-  },
-  {
-    "id": "q-233",
-    "number": 233,
-    "title": "Deployment Options - CloudHub worker availability zones",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "High Availability",
-      "Availability Zones"
-    ],
-    "prompt": "An integration requires strict SLA guarantees. The architect decides to deploy a Mule application to multiple CloudHub 1.0 workers to achieve High Availability (HA). How does the CloudHub architecture support this HA deployment?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "CloudHub automatically deploys the workers into different AWS Availability Zones (AZs) within the selected region."
-      },
-      {
-        "letter": "B",
-        "text": "CloudHub creates a Hazelcast cluster across the workers to synchronize memory state instantly."
-      },
-      {
-        "letter": "C",
-        "text": "CloudHub replicates the application to a secondary failover region automatically."
-      },
-      {
-        "letter": "D",
-        "text": "CloudHub requires the customer to manually provision an external AWS Application Load Balancer to distribute traffic between the workers."
-      }
-    ],
-    "explanation": "When an application is deployed to two or more CloudHub workers, CloudHub provisions the workers in different underlying Availability Zones so the application can remain available if an AZ fails.",
-    "rationales": {
-      "A": {
-        "type": "Correct",
-        "text": "Distributing multiple workers across Availability Zones protects the application from a single-AZ outage."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "CloudHub does not automatically create a Hazelcast cluster that synchronizes all worker memory."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Multiple workers in a region do not automatically replicate the application to another region."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "CloudHub handles traffic distribution for its workers; a customer-provisioned AWS load balancer is not required for this purpose."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub Architecture — High Availability and Worker Scale Out",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#high-availability"
-      },
-      "architectureGuide": {
-        "title": "CloudHub Fabric — How HA is Implemented",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#how-ha-is-implemented"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "A"
-  },
-  {
-    "id": "q-234",
-    "number": 234,
-    "title": "Deployment Options - HTTP traffic in an active-active cluster",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "Customer-Hosted",
-      "Clustering",
-      "HTTP Listener"
-    ],
-    "prompt": "A Mule application is deployed to a Customer-Hosted, multi-node active-active cluster. The application contains an HTTP Listener configured to listen on port `8081`. An external F5 load balancer is placed in front of the cluster to distribute traffic. Which node in the cluster will receive and process an incoming HTTP POST request?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Only the Primary Node receives HTTP traffic."
-      },
-      {
-        "letter": "B",
-        "text": "Whichever node the F5 load balancer routes the request to."
-      },
-      {
-        "letter": "C",
-        "text": "The request is received by the Primary Node and then replicated to all other nodes before processing."
-      },
-      {
-        "letter": "D",
-        "text": "All nodes receive the HTTP request simultaneously, but Hazelcast elects one to process it."
-      }
-    ],
-    "explanation": "In an active-active cluster, HTTP Listeners are active on all nodes concurrently. The external load balancer determines which node receives the request; polling connectors are restricted to the Primary Node.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "The Primary Node restriction applies to polling connectors, not HTTP Listeners in an active-active cluster."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "The F5 load balancer selects the cluster node that receives the HTTP request."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "The request is not first received by the Primary Node and then replicated to all nodes."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "The cluster does not broadcast every HTTP request to all nodes for Hazelcast to select a processor."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "On-Premises Mule Runtime HA Cluster — Add a Load Balancer (Distributing Requests Across Cluster Nodes)",
-        "url": "https://docs.mulesoft.com/on-premises/latest/mule-high-availability-ha-clusters#clustering-and-load-balancing"
-      },
-      "architectureGuide": {
-        "title": "On-Premises Mule Runtime HA Cluster — Understand the Primary Node",
-        "url": "https://docs.mulesoft.com/on-premises/latest/mule-high-availability-ha-clusters#understand-the-primary-node"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "B"
-  },
-  {
-    "id": "q-235",
-    "number": 235,
-    "title": "Deployment Options - Runtime Fabric controller node role",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "Runtime Fabric",
-      "Controller Nodes",
-      "Cluster Architecture"
-    ],
-    "prompt": "An architect is designing an infrastructure migration from CloudHub 1.0 to Runtime Fabric (RTF) on VMs / Bare Metal. The architect must provision the infrastructure to support the Anypoint platform architecture. In RTF, what is the primary role of the Controller nodes?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "They run the actual Mule application replicas and process business data."
-      },
-      {
-        "letter": "B",
-        "text": "They manage the cluster state, run the internal registry, and handle communication with the Anypoint Control Plane."
-      },
-      {
-        "letter": "C",
-        "text": "They host the Anypoint Platform web console so it can run fully air-gapped on-premises."
-      },
-      {
-        "letter": "D",
-        "text": "They act as external load balancers for inbound HTTP traffic."
-      }
-    ],
-    "explanation": "In an appliance-based RTF cluster, Controller nodes handle the Kubernetes control plane, internal Docker registry, Ingress Controller, and communication with MuleSoft. Worker nodes run the Mule applications.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Worker nodes run the Mule application replicas that process business data."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Controller nodes manage cluster services and communication with the Anypoint Control Plane."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Controller nodes do not host the Anypoint Platform web console."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "They host ingress components, but are not themselves external load balancers."
-      }
-    },
-    "references": {},
-    "correctAnswer": "B"
-  },
-  {
-    "id": "q-236",
-    "number": 236,
-    "title": "Deployment Options - CloudHub deployment traffic handling",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "Deployment",
-      "Availability"
-    ],
-    "prompt": "A developer pushes a critical update to a Mule application deployed on a single CloudHub 1.0 worker. During the deployment of the new package via Runtime Manager, what happens to the incoming HTTP requests sent to the application's public URL?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Requests are dropped with a 503 Service Unavailable error until the new worker fully starts."
-      },
-      {
-        "letter": "B",
-        "text": "CloudHub achieves Zero Downtime Deployment by keeping the old worker running and routing traffic to it until the new worker is fully started and passes health checks."
-      },
-      {
-        "letter": "C",
-        "text": "CloudHub automatically queues the HTTP requests in an Anypoint MQ exchange and replays them once the new application is ready."
-      },
-      {
-        "letter": "D",
-        "text": "The deployment fails if there is active traffic; the developer must stop the application first."
-      }
-    ],
-    "explanation": "CloudHub uses Zero Downtime Deployments by starting a parallel worker with the new code. Traffic continues to the old worker until the new worker is ready, after which traffic shifts and the old worker is gracefully terminated.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "CloudHub keeps the old worker serving traffic while the replacement is starting."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "The old worker serves traffic until the new worker is ready and the traffic switch can occur."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "CloudHub does not automatically queue incoming HTTP requests in Anypoint MQ during deployment."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "A deployment does not require stopping the application merely because it has active traffic."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub — Zero Downtime Updates with CloudHub",
-        "url": "https://docs.mulesoft.com/cloudhub/managing-applications-on-cloudhub#zero-downtime-updates-with-cloudhub"
-      },
-      "architectureGuide": {
-        "title": "CloudHub Architecture — Zero-Downtime Updates",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#zero-downtime-updates"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "B"
-  },
-  {
-    "id": "q-237",
-    "number": 237,
-    "title": "Deployment Options - CloudHub ephemeral local files",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "Worker Lifecycle",
-      "Ephemeral Storage"
-    ],
-    "prompt": "A Mule application deployed to CloudHub 1.0 writes temporary files to the local file system (`/tmp`) during the execution of a batch process. The application is manually restarted by an administrator from the Runtime Manager console to apply a new property configuration. What happens to the files stored in the `/tmp` directory after the restart?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "The files are securely backed up to Object Store v2 and restored."
-      },
-      {
-        "letter": "B",
-        "text": "The files are retained because the same underlying AWS EC2 instance is reused."
-      },
-      {
-        "letter": "C",
-        "text": "The files are permanently lost."
-      },
-      {
-        "letter": "D",
-        "text": "The files are automatically moved to a Persistent VM queue."
-      }
-    ],
-    "explanation": "CloudHub local storage is ephemeral. When an application is restarted or redeployed and its worker instance is replaced, files written to local disk such as `/tmp` are lost.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "CloudHub does not automatically back up local files to Object Store v2."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "Local files are not guaranteed to survive a worker restart or replacement."
-      },
-      "C": {
-        "type": "Correct",
-        "text": "Files on the worker's ephemeral local disk are lost when that worker is replaced."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "CloudHub does not automatically transfer local files into a VM queue."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Developing Applications for CloudHub — Understand Local Storage Limitations",
-        "url": "https://docs.mulesoft.com/cloudhub/developing-applications-for-cloudhub#understand-local-storage-limitations"
-      },
-      "architectureGuide": {
-        "title": "CloudHub — Worker Lifecycle and Application Restarts",
-        "url": "https://docs.mulesoft.com/cloudhub/worker-monitoring#application-restarts"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "C"
-  },
-  {
-    "id": "q-238",
-    "number": 238,
-    "title": "Deployment Options - CloudHub VPC network diagnostics",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "VPN",
-      "Network Diagnostics"
-    ],
-    "prompt": "An organization has deployed a Mule application that connects to an internal corporate network using an IPsec VPN tunnel terminating at their CloudHub VPC. The network team notices that the Mule application cannot reach a specific internal IP address. Which platform tool should the architect use to verify network connectivity directly from the CloudHub worker to the internal IP?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Anypoint Monitoring Network Dashboards"
-      },
-      {
-        "letter": "B",
-        "text": "The Network Tools application provided by MuleSoft support (or the built-in VPC diagnostic tool in Runtime Manager)"
-      },
-      {
-        "letter": "C",
-        "text": "Visualizer Troubleshooting View"
-      },
-      {
-        "letter": "D",
-        "text": "API Manager Health Checks"
-      }
-    ],
-    "explanation": "MuleSoft's built-in VPC diagnostic tool or a Network Tools utility application can run connectivity checks such as ping and traceroute from within the CloudHub VPC.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Anypoint Monitoring dashboards do not run direct network connectivity tests from a worker."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "The VPC diagnostic tool or Network Tools application can test connectivity from the CloudHub network."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Visualizer shows application topology and metrics, not direct IP connectivity."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "API Manager health checks do not verify network connectivity from a CloudHub worker to an internal IP."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub 2.0 Networking — Test Private Space Connectivity",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-networking-guide#test-private-space-connectivity"
-      },
-      "architectureGuide": {
-        "title": "CloudHub — Anypoint VPN Troubleshooting",
-        "url": "https://docs.mulesoft.com/cloudhub/vpn-troubleshooting#anypoint-vpn-tunnel-connection-works-but-routes-are-not-propagated"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "B"
-  },
-  {
-    "id": "q-239",
-    "number": 239,
-    "title": "Deployment Options - Dedicated Load Balancer high availability",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "Dedicated Load Balancer",
-      "High Availability"
-    ],
-    "prompt": "An organization requires that their CloudHub Dedicated Load Balancer (DLB) is highly available to prevent a single point of failure. How is High Availability (HA) achieved for a DLB in CloudHub?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "The architect must manually configure an AWS Network Load Balancer in front of the DLB."
-      },
-      {
-        "letter": "B",
-        "text": "HA is not possible; DLBs are single-instance bottlenecks."
-      },
-      {
-        "letter": "C",
-        "text": "By default, a DLB is deployed with at least two workers in different Availability Zones (AZs) within the region."
-      },
-      {
-        "letter": "D",
-        "text": "The DLB automatically fails over to the Shared Load Balancer (SLB) if it crashes."
-      }
-    ],
-    "explanation": "CloudHub provisions a Dedicated Load Balancer across a minimum of two instances in separate Availability Zones to provide high availability.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "A customer does not need to add an AWS Network Load Balancer in front of the DLB for its built-in HA."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "The DLB is not a single-instance bottleneck; it is deployed redundantly."
-      },
-      "C": {
-        "type": "Correct",
-        "text": "Multiple DLB instances in separate Availability Zones provide high availability."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Automatic failover to the Shared Load Balancer is not the DLB's HA mechanism."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub — Dedicated Load Balancer Licensing and Considerations",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer#considerations"
-      },
-      "architectureGuide": {
-        "title": "CloudHub — Routing External Requests to the Dedicated Load Balancer",
-        "url": "https://docs.mulesoft.com/cloudhub/lb-architecture#routing-external-requests-to-the-dedicated-load-balancer"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "C"
-  },
-  {
-    "id": "q-240",
-    "number": 240,
-    "title": "Deployment Options - Runtime Fabric replica load balancing",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "Runtime Fabric",
-      "Ingress",
-      "Load Balancing"
-    ],
-    "prompt": "A company deploys an API implementation to Runtime Fabric (RTF) with 3 replicas. The application exposes an HTTP endpoint. How does the RTF architecture distribute incoming HTTP requests among these 3 replicas?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "The Anypoint VPC SLB distributes the traffic."
-      },
-      {
-        "letter": "B",
-        "text": "The internal RTF Ingress controller uses round-robin or least-connections routing to distribute traffic across the pods."
-      },
-      {
-        "letter": "C",
-        "text": "The Primary Node receives all HTTP traffic and replicates the payloads via Hazelcast."
-      },
-      {
-        "letter": "D",
-        "text": "A DLB must be deployed within the RTF cluster to enable load balancing."
-      }
-    ],
-    "explanation": "In Runtime Fabric, the built-in Ingress Controller manages internal routing and load balancing of incoming external traffic to the application's replicas (pods).",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "The Anypoint VPC Shared Load Balancer is a CloudHub component, not the RTF replica load balancer."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "The RTF Ingress Controller routes incoming requests across the application's replicas."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "RTF does not use a Primary Node to receive and replicate all HTTP payloads via Hazelcast."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "A CloudHub DLB is not required or deployed inside the RTF cluster for replica load balancing."
-      }
-    },
-    "references": {},
-    "correctAnswer": "B"
-  },
-  {
-    "id": "q-241",
-    "number": 241,
-    "title": "Deployment Options - A company is modernizing its legacy systems to accelerate access to ap",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "Deployment Options"
-    ],
-    "prompt": "A company is modernizing its legacy systems to accelerate access to applications and data while supporting the adoption of new technologies. The key to achieving this business goal is unlocking the company's systems and data, including a set of existing services hosted on-premises that can be accessed by authorized external clients. The IT staff is mainly experienced only with supporting its legacy systems. Considering the current aggressive backlog and the project delivery requirements, the company wants to take a strategic approach in the first phase of its transformation projects by quickly deploying APIs in Mule runtimes that are able to scale, connect to on-premises systems, and migrate as needed. Following MuleSoft best practices, what MuleSoft runtime deployment option best meets the company's goals to begin its digital transformation journey?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Customer-hosted self-provisioned runtimes"
-      },
-      {
-        "letter": "B",
-        "text": "CloudHub runtimes"
-      },
-      {
-        "letter": "C",
-        "text": "Runtime Fabric on VMs/bare metal"
-      },
-      {
-        "letter": "D",
-        "text": "Customer-hosted runtimes provisioned by a MuleSoft services partner"
-      }
-    ],
-    "explanation": "Correct answer: B. The company wants to begin its transformation quickly with APIs that scale, connect to on-premises systems, and can migrate later, while its IT staff has little experience operating integration infrastructure. CloudHub is a fully managed integration platform as a service: MuleSoft runs the hosting environment, so the team does not have to provision or maintain runtimes, and CloudHub scales elastically and can reach on-premises systems through Anypoint VPC and VPN. That combination best matches a strategic first phase with a low operational burden. The customer-hosted options (A, D) require the organization (or a partner on its behalf) to stand up and operate the runtime infrastructure, which reintroduces the very overhead and skills gap the company is trying to avoid, and Runtime Fabric on VMs/bare metal (C) adds Kubernetes infrastructure to manage on top of that.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Customer-hosted self-provisioned runtimes require the organization to provision and operate the infrastructure, which is a poor fit for a staff experienced only with legacy systems."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "CloudHub is a fully managed iPaaS: MuleSoft handles hosting, the platform scales on demand, and on-premises systems can be reached securely through Anypoint VPC and VPN, making it the fastest low-overhead starting point."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Runtime Fabric on VMs/bare metal gives control but requires the customer to install and operate Kubernetes and the Runtime Fabric infrastructure, adding operational overhead beyond what a first phase needs."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Customer-hosted runtimes provisioned by a partner are still customer-hosted: the organization retains the hosting burden and adds a partner dependency instead of adopting a managed platform."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub Overview — Deploy Your Application to CloudHub",
-        "url": "https://docs.mulesoft.com/cloudhub/#deploy-your-application-to-cloudhub"
-      },
-      "architectureGuide": {
-        "title": "Deployment Options — CloudHub",
-        "url": "https://docs.mulesoft.com/runtime-manager/deployment-strategies#cloudhub"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "B"
-  },
-  {
-    "id": "q-242",
-    "number": 242,
-    "title": "Deployment Options - An insurance company is designing a hybrid, load-balanced, single-clus",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "Deployment Options"
-    ],
-    "prompt": "An insurance company is designing a hybrid, load-balanced, single-cluster runtime production environment. Due to performance Service Level Agreement (SLA) goals, it is looking into running the Mule applications in an active-active multi-node cluster configuration. What should be considered when running its Mule applications in this type of environment?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Although the cluster environment is fully installed, configured, and running, it will not process any requests until an outage condition is detected by the primary node in the cluster"
-      },
-      {
-        "letter": "B",
-        "text": "A Mule application deployed to multiple nodes runs in isolation from the other nodes in the cluster"
-      },
-      {
-        "letter": "C",
-        "text": "All event sources, regardless of type, can be configured as the target source by the primary node in the cluster"
-      },
-      {
-        "letter": "D",
-        "text": "An external load balancer is required to distribute incoming TCP/HTTP requests throughout the cluster nodes"
-      }
-    ],
-    "explanation": "Correct answer: D. An active-active Mule cluster runs the application on every node and shares processing across them, but an on-premises Mule cluster does not create a virtual IP and does not include a built-in load balancer. The customer must supply an external load balancer (or client-side failover) to distribute incoming HTTP/TCP requests across the cluster nodes. Option A describes active-passive failover, not active-active: in active-active all nodes process requests. Option B is wrong because clustered nodes are aware of each other and synchronize state rather than running in isolation. Option C is wrong because only schedulers and event sources explicitly marked 'primary node only' run on the primary node; most connector sources are not primary-only by default.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "In an active-active cluster all nodes process requests continuously; requests are not held until an outage is detected by a primary node."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "Cluster nodes are aware of each other and share information and status, so an application deployed across nodes does not run in isolation."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Only schedulers and sources marked 'primary node only' run on the primary node; not all event sources can be targeted at the primary node."
-      },
-      "D": {
-        "type": "Correct",
-        "text": "An on-premises cluster has no built-in load balancer, so an external load balancer is required to distribute incoming TCP/HTTP requests across the cluster nodes."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Runtime Manager — Deployment Options: High Availability and Load Balancing",
-        "url": "https://docs.mulesoft.com/runtime-manager/deployment-strategies#load-balancing"
-      },
-      "architectureGuide": {
-        "title": "On-Premises Mule Runtime High Availability Cluster Overview — Clustering and Load Balancing",
-        "url": "https://docs.mulesoft.com/on-premises/latest/mule-high-availability-ha-clusters#review-clustering-benefits"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "D"
-  },
-  {
-    "id": "q-243",
-    "number": 243,
-    "title": "Deployment Options - Refer to the exhibit.",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "Deployment Options"
-    ],
-    "prompt": "Refer to the exhibit.\nA customer is running Mule applications on Runtime Fabric for Self-Managed Kubernetes (RTF-BYOK8) in a multi-cloud environment. Based on this configuration, how do Agents and Runtime Manager communicate, and what is exchanged between them?",
-    "image": "images/q229.svg",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Agents communicate with Runtime Manager to provide updates on cluster status, download images, and update Mule applications (automatically when available) from the container registry"
-      },
-      {
-        "letter": "B",
-        "text": "Agents communicate with Runtime Manager to provide updates on cluster status, download images, and update Mule applications (when available and chosen to do so by customer) from the container registry"
-      },
-      {
-        "letter": "C",
-        "text": "Runtime Manager initiates traffic to Agents to check the status of clusters and auto-deploys new images when updates to Mule applications are available"
-      },
-      {
-        "letter": "D",
-        "text": "Runtime Manager communicates with Agents to provide updates on cluster status, download images, and update Mule applications (when available and chosen to do so by customer) from the container registry"
-      }
-    ],
-    "explanation": "Correct answer: B. Runtime Fabric agents initiate the outbound connection to Runtime Manager over an mTLS tunnel and send cluster and application status updates. Runtime Manager does not push updates to agents: images and Mule application updates are pulled from the container registry only when the customer chooses, not automatically.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Says updates happen automatically when available, but all newer image pulls are triggered by the customer only."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Agents initiate communication to Runtime Manager, and image and Mule application updates happen only when the customer chooses."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Says Runtime Manager initiates traffic to the Agents, but the Runtime Fabric agent initiates and controls the mTLS tunnel."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Reverses the direction: it says Runtime Manager provides the updates to the Agents, but agents communicate outward to Runtime Manager."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Runtime Fabric Security Architecture — Management Flow: \"Runtime Fabric agent initiates and control the tunnel.\"",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/security-architecture#management-flow"
-      },
-      "architectureGuide": {
-        "title": "Runtime Fabric Overview — Runtime Fabric Core Services: \"The Runtime Fabric agent is deployed as a pod in the cluster and communicates with the control plane via an mTLS outbound connection established at startup.\"",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/#runtime-fabric-core-services"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    },
-    "correctAnswer": "B"
-  },
-  {
-    "id": "q-244",
-    "number": 244,
-    "title": "Deployment Options - CloudHub 1.0 vs CloudHub 2.0 shared and private spaces",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "CloudHub 2.0",
-      "Private Spaces"
-    ],
-    "prompt": "An architect must recommend a CloudHub deployment model for a team that wants MuleSoft to manage the runtime while running APIs in a fully managed, multi-tenant cloud, and that may later need an isolated, single-tenant network boundary. Which statement correctly describes the CloudHub 2.0 deployment spaces that satisfy both requirements?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Apps deploy only to private spaces; a shared space is a billing concept with no runtime."
-      },
-      {
-        "letter": "B",
-        "text": "Apps can deploy to a shared space (multi-tenant, shared infrastructure) or to a private space (single-tenant, isolated network boundary created in a specific region)."
-      },
-      {
-        "letter": "C",
-        "text": "Apps deploy to a CloudHub 1.0 VPC, and a CloudHub 2.0 private space is only a naming alias for that VPC."
-      },
-      {
-        "letter": "D",
-        "text": "Apps deploy to a shared space only after a Dedicated Load Balancer (DLB) is created and attached to it."
-      }
-    ],
-    "correctAnswer": "B",
-    "explanation": "CloudHub 2.0 lets you deploy Mule apps to either a shared space or a private space. A private space is a virtual, private, and isolated logical space in CloudHub 2.0 in which to run your apps, and you can create multiple private spaces in the same or different regions. In CloudHub 2.0, private spaces function as improved VPCs from CloudHub 1.0: you can automatically assign a private network for the applications in a private space, and a private ingress load balancer is provided and auto-scales with traffic. There is no DLB to create for a private space, and a shared space is a real deployment target, not a billing alias.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Both shared and private spaces are real deployment targets in CloudHub 2.0; you choose one at deploy time."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Apps can be deployed to a shared (multi-tenant) space or to a single-tenant private space that provides an isolated network boundary in a chosen region."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "A private space is a CloudHub 2.0 construct, not an alias for a CloudHub 1.0 VPC. You cannot create a VPN connection between a CloudHub 1.0 VPC and a CloudHub 2.0 private space."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "CloudHub 2.0 automatically provisions a fully managed ingress load balancer for each private space; there is no DLB to create for shared spaces."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub 2.0 for CloudHub 1.0 Users — Private Spaces vs VPCs",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-comparison"
-      },
-      "architectureGuide": {
-        "title": "Private Spaces — Virtual, Private, and Isolated Space in CloudHub 2.0",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-private-space-about"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
-      }
-    }
-  },
-  {
-    "id": "q-245",
-    "number": 245,
-    "title": "Deployment Options - CloudHub 2.0 private space fully managed ingress load balancer",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 2.0",
-      "Private Spaces",
-      "Dedicated Load Balancer"
-    ],
-    "prompt": "A platform architect is migrating APIs from CloudHub 1.0, where a Dedicated Load Balancer (DLB) was created inside an Anypoint VPC, to CloudHub 2.0 private spaces. The architect wants to know what replaces the manually configured DLB. What does CloudHub 2.0 provide instead?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Nothing; the architect must still create a DLB inside the private space."
-      },
-      {
-        "letter": "B",
-        "text": "A fully managed ingress load balancer provisioned automatically for each private space, which auto-scales to accommodate traffic."
-      },
-      {
-        "letter": "C",
-        "text": "The CloudHub 1.0 Shared Load Balancer (SLB) is reused across all private spaces."
-      },
-      {
-        "letter": "D",
-        "text": "A customer-managed NGINX controller that the architect deploys as a Mule application."
-      }
-    ],
-    "correctAnswer": "B",
-    "explanation": "CloudHub 2.0 automatically provides a fully managed ingress load balancer for each private space with a simplified architecture that removes the need to select or create load balancers. The private space provides load balancing to balance inbound traffic to apps across multiple replicas, and the ingress load balancer auto-scales to accommodate traffic. This replaces the CloudHub 1.0 model, where a Shared Load Balancer (SLB) is provided by default and a Dedicated Load Balancer (DLB) is optional and created within the VPC.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "CloudHub 2.0 removes the need to create a DLB; the ingress load balancer is provisioned automatically per private space."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Each private space gets an automatically provisioned, fully managed ingress load balancer that auto-scales with traffic."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "The CloudHub 1.0 Shared Load Balancer is a CloudHub 1.0 construct; CloudHub 2.0 uses a per-private-space ingress load balancer."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "The ingress load balancer is MuleSoft-managed; no customer-deployed NGINX controller is required."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub to CloudHub 2.0 Migration Configuration — Load Balancing",
-        "url": "https://docs.mulesoft.com/cloudhub/ch-ch2-migration-configuration"
-      },
-      "architectureGuide": {
-        "title": "CloudHub 2.0 Networking Architecture — HTTP Load Balancer",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-networking-guide"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    }
-  },
-  {
-    "id": "q-246",
-    "number": 246,
-    "title": "Deployment Options - CloudHub 1.0 port mapping for HTTP and HTTPS",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "Port Mapping",
-      "HTTP Listener"
-    ],
-    "prompt": "A Mule 4 application is deployed to a single CloudHub 1.0 worker and must expose an HTTPS endpoint through the shared load balancer on the standard port 443. Which configuration is correct?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Configure the HTTP Listener on host 0.0.0.0 and reference the reserved property ${https.port}; CloudHub maps port 443 on the application domain to ${https.port} (8082) on the worker."
-      },
-      {
-        "letter": "B",
-        "text": "Configure the HTTP Listener to bind directly to port 443 on the worker's public IP address."
-      },
-      {
-        "letter": "C",
-        "text": "Configure the HTTP Listener to bind to port 80 and set the CloudHub property https.port to 80."
-      },
-      {
-        "letter": "D",
-        "text": "Configure the HTTP Listener on host localhost and reference the property ${http.private.port}."
-      }
-    ],
-    "correctAnswer": "A",
-    "explanation": "On CloudHub 1.0, applications must listen on host 0.0.0.0 and to either the HTTP port (${http.port}) or the HTTPS port (${https.port}). CloudHub's load balancer automatically proxies http.port :80 to port :8081 for HTTP and https.port :443 to :8082 for HTTPS. Any other values specified for http.port and https.port in mule-app.properties are overwritten at deployment time, so the listener must reference the reserved properties rather than hard-coded ports.",
-    "rationales": {
-      "A": {
-        "type": "Correct",
-        "text": "CloudHub requires host 0.0.0.0 and the reserved ${https.port} property; port 443 on the application domain is proxied to ${https.port} (8082)."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "Mule apps on CloudHub cannot bind directly to privileged ports such as 443; CloudHub assigns and proxies the port."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "http.port is set to 8081 and https.port to 8082; values in mule-app.properties are overwritten at deployment time."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "CloudHub requires host 0.0.0.0; ${http.private.port} (8091) is used for internal VPC traffic via a DLB, not for public HTTPS on 443."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub Networking Guide — Port Mapping and Load Balancing",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide"
-      },
-      "architectureGuide": {
-        "title": "Develop Applications for CloudHub — Provide an External HTTP/HTTPS Port",
-        "url": "https://docs.mulesoft.com/cloudhub/developing-applications-for-cloudhub"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
-      }
-    }
-  },
-  {
-    "id": "q-247",
-    "number": 247,
-    "title": "Deployment Options - DLB internal ports 8091 and 8092",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "Dedicated Load Balancer",
-      "Port Mapping"
-    ],
-    "prompt": "An organization wants a CloudHub 1.0 Dedicated Load Balancer (DLB) to be the only entry point to an API, so that the default public application URL (myapp.region.cloudhub.io) is not publicly reachable. On which ports must the Mule application listen for the DLB to route traffic to it?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "8081 for HTTP and 8082 for HTTPS"
-      },
-      {
-        "letter": "B",
-        "text": "80 for HTTP and 443 for HTTPS"
-      },
-      {
-        "letter": "C",
-        "text": "8091 for HTTP and 8092 for HTTPS (the private ports)"
-      },
-      {
-        "letter": "D",
-        "text": "8083 for HTTP and 8084 for HTTPS"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": "A CloudHub DLB provides an alternative domain name to route HTTP requests to Mule applications listening on port 8091 and HTTPS requests to Mule applications listening on port 8092. To hide the default public URL, you also remove the Anypoint VPC firewall rules for ports 8081 and 8082 so the Shared Load Balancer path is closed. The DLB itself listens on 80/443 externally and forwards to the private ports on the worker.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "8081 and 8082 are the ports used by the shared load balancer path; leaving them open keeps the app publicly reachable."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "80 and 443 are the DLB's external listener ports, not the ports on which the worker app must listen."
-      },
-      "C": {
-        "type": "Correct",
-        "text": "The DLB routes HTTP to 8091 and HTTPS to 8092 on the Mule application."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "8083 and 8084 are not CloudHub worker ports."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Dedicated Load Balancer Architecture — Routing External Requests",
-        "url": "https://docs.mulesoft.com/cloudhub/lb-architecture"
-      },
-      "architectureGuide": {
-        "title": "CloudHub Networking Guide — Avoid Public Discoverability",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    }
-  },
-  {
-    "id": "q-248",
-    "number": 248,
-    "title": "Deployment Options - DLB SSL endpoint and custom certificate configuration",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "Dedicated Load Balancer",
-      "SSL/TLS"
-    ],
-    "prompt": "A security team requires an API exposed through a CloudHub 1.0 Dedicated Load Balancer (DLB) to present a company-issued certificate for api.company.com instead of the default cloudhub.io wildcard certificate. What must the architect configure on the DLB?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "An SSL endpoint on the DLB with a PEM-encoded certificate and its unencrypted private key; a DLB can have multiple independent SSL endpoints, each identified by the certificate's common name."
-      },
-      {
-        "letter": "B",
-        "text": "A keystore inside the Mule application's mule-artifact.json, because the DLB always uses the platform wildcard certificate."
-      },
-      {
-        "letter": "C",
-        "text": "An SSH key pair, because DLB certificates must be provisioned through the Anypoint CLI only."
-      },
-      {
-        "letter": "D",
-        "text": "A JKS truststore on the shared load balancer, since custom certificates are only supported on the SLB."
-      }
-    ],
-    "correctAnswer": "A",
-    "explanation": "A DLB must have at least one certificate associated with it. To serve a custom domain you configure an SSL endpoint by uploading a certificate and private key pair (PEM-encoded, with a passphrase-less private key). A load balancer can have multiple and independent SSL endpoints, each identified by its server certificate common name, which is how a single DLB can host multiple custom domains.",
-    "rationales": {
-      "A": {
-        "type": "Correct",
-        "text": "SSL endpoints on the DLB carry the certificate/private-key pair, and each endpoint is identified by its certificate common name."
-      },
-      "B": {
-        "type": "Incorrect",
-        "text": "The DLB terminates TLS with its own certificate; the app cannot override the platform wildcard certificate for the DLB."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "SSH keys are unrelated to DLB TLS; certificates and keys are uploaded as PEM files via Runtime Manager or the CLI."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Custom certificates are a DLB capability; the Shared Load Balancer uses the platform wildcard certificate and cannot serve custom certificates."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Add Certificates to a Dedicated Load Balancer",
-        "url": "https://docs.mulesoft.com/cloudhub/lb-cert-upload"
-      },
-      "architectureGuide": {
-        "title": "Certificate Validation in Dedicated Load Balancers",
-        "url": "https://docs.mulesoft.com/cloudhub/lb-cert-validation"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    }
-  },
-  {
-    "id": "q-249",
-    "number": 249,
-    "title": "Deployment Options - DLB mapping rules and DNS CNAME for vanity domains",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "Dedicated Load Balancer",
-      "Mapping Rules",
-      "DNS"
-    ],
-    "prompt": "An enterprise owns the domain example.com and wants requests to https://myapp.example.com to reach a CloudHub 1.0 application named myapp, without exposing the cloudhub.io domain to consumers. The DLB is already configured with an SSL endpoint whose certificate is valid for myapp.example.com. Which two mechanisms, used together, accomplish the DNS routing and hostname mapping? (Select all correct answers)",
-    "options": [
-      {
-        "letter": "A",
-        "text": "A CNAME record in the corporate DNS that maps myapp.example.com to the DLB's anypointdns.net address"
-      },
-      {
-        "letter": "B",
-        "text": "A DLB mapping rule that matches the incoming Host header/URI and forwards it to the target Mule application and path"
-      },
-      {
-        "letter": "C",
-        "text": "An API Manager SLA tier that rewrites the request host header before it reaches the DLB"
-      },
-      {
-        "letter": "D",
-        "text": "A firewall rule on the Anypoint VPC that translates the vanity domain into the worker IP address"
+        "text": "Worker size determines the memory and heap available"
       }
     ],
     "correctAnswers": [
       "A",
-      "B"
+      "E"
     ],
-    "explanation": "The DLB exposes an external domain name that resolves to public IP addresses. You set a CNAME record in your corporate DNS nameserver to mask the DLB's anypointdns.net address with your company's vanity domain, and you configure DLB mapping rules that use the HTTP Host header to identify the matching rule and forward the request to a different Mule application name and domain. DNS and mapping rules together hide the CloudHub domain from consumers. For HTTPS, the DLB must also present a certificate valid for the vanity hostname: a CNAME only changes DNS resolution and does not change the hostname the client validates during the TLS handshake, so the DLB needs an SSL endpoint whose certificate (common name or SAN) covers myapp.example.com. SLA tiers govern access/consumption, and VPC firewall rules control port access, not hostname translation.",
+    "explanation": "Correct answers: A and E. CloudHub workers are dedicated Mule runtime instances, each in its own container, deployed and monitored independently. Worker sizes define compute, memory, heap, and disk. Only running applications count toward worker usage.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "A CNAME record routes the vanity domain to the DLB's anypointdns.net address, hiding the CloudHub domain. On its own it does not make HTTPS work: the DLB must also serve a certificate valid for the vanity hostname."
+        "text": "Workers are isolated from other applications."
       },
       "B": {
-        "type": "Correct",
-        "text": "Mapping rules forward requests received by the DLB to a different Mule application name and domain based on the Host header."
+        "type": "Incorrect",
+        "text": "Each worker is a separate Mule runtime instance."
       },
       "C": {
         "type": "Incorrect",
-        "text": "SLA tiers define consumption/access levels; they do not rewrite host headers or perform DLB routing."
+        "text": "Fractional workers are burstable and not consistent."
       },
       "D": {
         "type": "Incorrect",
-        "text": "VPC firewall rules control which ports are reachable; they do not map domains to worker IP addresses."
+        "text": "Only running applications count toward usage."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "Each size has defined memory, heap, and disk."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
+      },
+      "architectureGuide": {
+        "title": "Deploying to CloudHub",
+        "url": "https://docs.mulesoft.com/cloudhub/deploying-to-cloudhub"
+      }
+    }
+  },
+  {
+    "id": "q-214",
+    "number": 214,
+    "title": "CloudHub Deployment - Worker hardware failure",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "Reliability",
+      "Intelligent Healing"
+    ],
+    "prompt": "The underlying hardware of a single-worker CloudHub application fails. What happens?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The application stays down until an administrator redeploys it"
+      },
+      {
+        "letter": "B",
+        "text": "CloudHub migrates the app to a new worker, with some downtime"
+      },
+      {
+        "letter": "C",
+        "text": "The application moves to another region automatically"
+      },
+      {
+        "letter": "D",
+        "text": "Traffic continues on a hidden standby worker with no interruption"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. CloudHub monitors the worker cloud and migrates an application to a new worker if the underlying hardware fails. With only one worker, the application is unavailable until the replacement starts; multiple workers avoid this gap.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "CloudHub recovers the worker automatically."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Intelligent healing replaces the worker, but one worker means a gap."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Recovery happens within the region."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "A single-worker app has no standby."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
+      },
+      "architectureGuide": {
+        "title": "CloudHub High Availability Features",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
+      }
+    }
+  },
+  {
+    "id": "q-215",
+    "number": 215,
+    "title": "CloudHub Deployment - Region outage",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "Reliability",
+      "Disaster Recovery"
+    ],
+    "prompt": "An API is deployed to two workers in one CloudHub region. What happens if the entire region becomes unavailable?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Requests are queued by the load balancer until recovery"
+      },
+      {
+        "letter": "B",
+        "text": "CloudHub moves the workers to another region automatically"
+      },
+      {
+        "letter": "C",
+        "text": "CloudHub moves it to a new worker after a short outage"
+      },
+      {
+        "letter": "D",
+        "text": "The second worker keeps serving from a different region"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. CloudHub spreads an application's workers across data centers within a region, but the application and its load balancer are regional. Protection against a region outage requires deploying the application in another region and routing traffic there, for example with customer-managed DNS.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "The regional load balancer is also affected."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "CloudHub does not fail applications over between regions."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "Workers and their load balancer live in one region."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Both workers are in the same region."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub High Availability and Disaster Recovery",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-hadr"
+      },
+      "architectureGuide": {
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
+      }
+    }
+  },
+  {
+    "id": "q-216",
+    "number": 216,
+    "title": "CloudHub Deployment - Multi-region active-active",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "Reliability",
+      "Multi-Region"
+    ],
+    "prompt": "A global company deploys the same API to CloudHub in US East and EU. It wants clients routed to a healthy region automatically. What else is needed?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "A single dedicated load balancer spanning both regions"
+      },
+      {
+        "letter": "B",
+        "text": "Nothing; myapp.cloudhub.io resolves to both regions"
+      },
+      {
+        "letter": "C",
+        "text": "Persistent queues shared between the two regions"
+      },
+      {
+        "letter": "D",
+        "text": "It is down unless deployed in another region too"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Applications in different CloudHub regions are separate deployments with region-specific domains. Routing clients between regions requires an external mechanism such as a global DNS service with health checks, and any shared state must be replicated by the design.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "A DLB belongs to one VPC in one region."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Each region has its own application domain."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Persistent queues are regional."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "CloudHub does not route traffic between regions itself."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub High Availability and Disaster Recovery",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-hadr"
+      },
+      "architectureGuide": {
+        "title": "High Availability and Disaster Recovery Across Deployment Models",
+        "url": "https://docs.mulesoft.com/hosting-home/hadr-guide"
+      }
+    }
+  },
+  {
+    "id": "q-217",
+    "number": 217,
+    "title": "CloudHub Deployment - Zero-downtime updates",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "Reliability",
+      "Deployment"
+    ],
+    "prompt": "A team redeploys a new version of an API to CloudHub during business hours. What behavior should it expect?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The update is queued until the next maintenance window"
+      },
+      {
+        "letter": "B",
+        "text": "A customer-managed global DNS with health checks"
+      },
+      {
+        "letter": "C",
+        "text": "Both versions process every request in parallel"
+      },
+      {
+        "letter": "D",
+        "text": "All requests fail for several minutes during deployment"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. CloudHub supports zero-downtime updates: while the new version is deploying, the existing version continues to serve requests, and traffic switches over when the new version is running.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Deployments run when requested."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "CloudHub performs zero-downtime updates."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Requests are served by one version at a time."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "CloudHub keeps the old version running during the update."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
+      },
+      "architectureGuide": {
+        "title": "Deploying to CloudHub",
+        "url": "https://docs.mulesoft.com/cloudhub/deploying-to-cloudhub"
+      }
+    }
+  },
+  {
+    "id": "q-218",
+    "number": 218,
+    "title": "CloudHub Deployment - Latency and region choice",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "Performance",
+      "Regions"
+    ],
+    "prompt": "Most consumers of a CloudHub API and its backend systems are in Frankfurt, but the API is deployed to US East. Users report high latency. What is the best improvement?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Enable persistent queues"
+      },
+      {
+        "letter": "B",
+        "text": "Increase the worker size in US East"
+      },
+      {
+        "letter": "C",
+        "text": "Add more workers in US East"
+      },
+      {
+        "letter": "D",
+        "text": "No downtime; old version serves"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. CloudHub offers worker clouds in several regions. The region determines where workers and their load balancer run, so deploying close to consumers and backend systems reduces network latency.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Queues do not reduce request latency."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "CPU does not reduce cross-Atlantic latency."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "More workers do not shorten the network distance."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Deploying near consumers and backends reduces network round trips."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
+      },
+      "architectureGuide": {
+        "title": "Deploying to CloudHub",
+        "url": "https://docs.mulesoft.com/cloudhub/deploying-to-cloudhub"
+      }
+    }
+  },
+  {
+    "id": "q-219",
+    "number": 219,
+    "title": "CloudHub Deployment - Choose two: CloudHub reliability",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "Reliability",
+      "CloudHub"
+    ],
+    "prompt": "Which two statements describe the reliability of applications in the CloudHub shared worker cloud? (Choose two.)",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Persistent queues guarantee one-time-only delivery"
+      },
+      {
+        "letter": "B",
+        "text": "Single-worker apps never experience downtime"
+      },
+      {
+        "letter": "C",
+        "text": "Multiple workers of an app are spread across data centers"
+      },
+      {
+        "letter": "D",
+        "text": "Applications fail over across regions automatically"
+      },
+      {
+        "letter": "E",
+        "text": "Platform services have built-in redundancy across data centers"
+      }
+    ],
+    "correctAnswers": [
+      "C",
+      "E"
+    ],
+    "explanation": "Correct answers: C and E. CloudHub platform services are redundant across at least two data centers, and multiple workers of an application are distributed across data centers. Cross-region failover is not automatic, and persistent queues may deliver duplicates.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Persistent queues may deliver duplicates."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Single-worker apps are down while a worker is replaced."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "This protects against a single data center failure."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Cross-region failover requires customer design."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "CloudHub services are available in at least two data centers."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
+      },
+      "architectureGuide": {
+        "title": "CloudHub High Availability Features",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
+      }
+    }
+  },
+  {
+    "id": "q-220",
+    "number": 220,
+    "title": "CloudHub Deployment - Custom domain and certificate",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "Load Balancers",
+      "Dedicated Load Balancer"
+    ],
+    "prompt": "Partners must call CloudHub APIs at https://api.partner-company.com using the company's own TLS certificate. Which load balancer is required?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "A dedicated load balancer"
+      },
+      {
+        "letter": "B",
+        "text": "The shared load balancer"
+      },
+      {
+        "letter": "C",
+        "text": "A persistent queue"
+      },
+      {
+        "letter": "D",
+        "text": "The Runtime Manager agent"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. The CloudHub shared load balancer exposes applications at their cloudhub.io domain with MuleSoft-provided certificates. A dedicated load balancer, configured in an Anypoint VPC, lets organizations use their own certificates and domains.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "DLBs serve custom certificates and domains."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "It uses the cloudhub.io domain and MuleSoft's certificate."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Queues are not load balancers."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "The agent handles management communication, not traffic."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub Dedicated Load Balancer",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
+      },
+      "architectureGuide": {
+        "title": "Dedicated Load Balancer — Uploading Certificates",
+        "url": "https://docs.mulesoft.com/cloudhub/lb-cert-upload"
+      }
+    }
+  },
+  {
+    "id": "q-221",
+    "number": 221,
+    "title": "CloudHub Deployment - Mapping one domain to several apps",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "Load Balancers",
+      "Mapping Rules"
+    ],
+    "prompt": "A company wants /orders, /customers, and /products on one domain to route to three different CloudHub applications. What provides this?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Dedicated load balancer mapping rules"
+      },
+      {
+        "letter": "B",
+        "text": "Three API instances with the same name"
+      },
+      {
+        "letter": "C",
+        "text": "The shared load balancer's default routing"
+      },
+      {
+        "letter": "D",
+        "text": "One application per worker size"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Dedicated load balancers support mapping rules that translate incoming URLs to specific CloudHub applications and paths, so a single domain can front several applications.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "Mapping rules route URL paths to different applications."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "API Manager instances do not route URLs."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "It routes each app by its own subdomain."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Worker size does not affect routing."
       }
     },
     "references": {
@@ -15199,741 +13254,814 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/lb-mapping-rules"
       },
       "architectureGuide": {
-        "title": "Dedicated Load Balancer Architecture — CNAME and Vanity Domains",
+        "title": "Dedicated Load Balancer Architecture",
         "url": "https://docs.mulesoft.com/cloudhub/lb-architecture"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
       }
     }
   },
   {
-    "id": "q-250",
-    "number": 250,
-    "title": "Deployment Options - Dedicated Load Balancer high availability and units",
+    "id": "q-222",
+    "number": 222,
+    "title": "CloudHub Deployment - Restricting client IPs at the edge",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
-      "CloudHub 1.0",
-      "Dedicated Load Balancer",
-      "High Availability"
+      "Load Balancers",
+      "Allowlists"
     ],
-    "prompt": "An architect must ensure a CloudHub 1.0 Dedicated Load Balancer (DLB) is not a single point of failure. Which statement about DLB high availability is correct?",
+    "prompt": "Only partner IP ranges should reach an API at the load balancer, before any request reaches the workers. Which option supports this?",
     "options": [
       {
         "letter": "A",
-        "text": "A DLB is a single-instance component and cannot be made highly available."
+        "text": "Persistent queues with encryption"
       },
       {
         "letter": "B",
-        "text": "Each DLB unit is the equivalent of two workers; you can assign up to four load balancer units (eight workers) to a DLB for high availability and load distribution."
+        "text": "Automatic restarts"
       },
       {
         "letter": "C",
-        "text": "DLB HA requires a customer-managed AWS Network Load Balancer in front of the DLB."
+        "text": "An allowlist on a dedicated load balancer"
       },
       {
         "letter": "D",
-        "text": "DLB HA is achieved only by deploying the same application to more than one Anypoint VPC."
+        "text": "The shared load balancer with a DNS alias"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Each DLB unit that you purchase is the equivalent of two workers handling load balancing between CloudHub workers, and you can assign up to four load balancer units to a DLB. A DLB with four load balancer units assigned therefore has eight workers, which provides high availability and load distribution. The Shared Load Balancer provides fully managed high availability with no customer configuration required.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Dedicated load balancers support allowlists that restrict which client IP addresses can reach them, so unwanted traffic is rejected at the edge. The shared load balancer does not offer customer-specific allowlists.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "A DLB can be provisioned with multiple load balancer units (workers) for HA."
+        "text": "Queues do not filter client IPs."
       },
       "B": {
-        "type": "Correct",
-        "text": "Each DLB unit equals two workers, and up to four units (eight workers) can be assigned per DLB."
+        "type": "Incorrect",
+        "text": "Restarts do not restrict access."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "MuleSoft manages the DLB instances; a customer-managed NLB is not part of the supported HA model."
+        "type": "Correct",
+        "text": "DLBs can allow only specified client IP ranges."
       },
       "D": {
         "type": "Incorrect",
-        "text": "A DLB is assigned to a single Anypoint VPC; HA comes from multiple load balancer units, not multiple VPCs."
+        "text": "The shared load balancer has no customer allowlists."
       }
     },
     "references": {
       "primary": {
-        "title": "Dedicated Load Balancers — DLB Licensing and Units",
+        "title": "Dedicated Load Balancer Allowlists",
+        "url": "https://docs.mulesoft.com/cloudhub/lb-allowlists"
+      },
+      "architectureGuide": {
+        "title": "CloudHub Dedicated Load Balancer",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
+      }
+    }
+  },
+  {
+    "id": "q-223",
+    "number": 223,
+    "title": "CloudHub Deployment - Shared load balancer ports",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "Load Balancers",
+      "Shared Load Balancer"
+    ],
+    "prompt": "An application on CloudHub must be reachable through the shared load balancer over HTTPS. On which port should its HTTPS listener be configured?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "8081"
+      },
+      {
+        "letter": "B",
+        "text": "443"
+      },
+      {
+        "letter": "C",
+        "text": "8092"
+      },
+      {
+        "letter": "D",
+        "text": "8082"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. The shared load balancer forwards http://myapp.cloudhub.io to the worker's port 8081 and HTTPS on 443 to port 8082. Dedicated load balancers route to ports 8091 (HTTP) and 8092 (HTTPS) inside the VPC.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "8081 receives HTTP traffic from the shared load balancer."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "443 is the external port; the worker listens on 8082."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Port 8092 is used for HTTPS traffic from a dedicated load balancer."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "The shared load balancer forwards HTTPS traffic to port 8082."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Dedicated Load Balancer Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/lb-architecture"
+      },
+      "architectureGuide": {
+        "title": "CloudHub Dedicated Load Balancer",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
+      }
+    }
+  },
+  {
+    "id": "q-224",
+    "number": 224,
+    "title": "CloudHub Deployment - Choose two: DLB versus SLB",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "Load Balancers",
+      "Comparison"
+    ],
+    "prompt": "Which two capabilities does a dedicated load balancer provide that the shared load balancer does not? (Choose two.)",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Load balancing without an Anypoint VPC"
+      },
+      {
+        "letter": "B",
+        "text": "Custom SSL certificates"
+      },
+      {
+        "letter": "C",
+        "text": "Distribution of requests across an app's workers"
+      },
+      {
+        "letter": "D",
+        "text": "Access to applications over HTTPS"
+      },
+      {
+        "letter": "E",
+        "text": "URL mapping rules to multiple applications"
+      }
+    ],
+    "correctAnswers": [
+      "B",
+      "E"
+    ],
+    "explanation": "Correct answers: B and E. Both load balancers distribute HTTP and HTTPS traffic across an application's workers. Dedicated load balancers, which run in an Anypoint VPC, add custom certificates, mapping rules, and allowlists.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "DLBs require an Anypoint VPC."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "DLBs serve the organization's certificates."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Both load balancers distribute requests across workers."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "The shared load balancer also supports HTTPS."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "DLBs can route paths to different apps."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub Dedicated Load Balancer",
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
       },
       "architectureGuide": {
-        "title": "CloudHub to CloudHub 2.0 Migration Configuration — Load Balancer HA",
-        "url": "https://docs.mulesoft.com/cloudhub/ch-ch2-migration-configuration"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "Dedicated Load Balancer Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/lb-architecture"
       }
     }
   },
   {
-    "id": "q-251",
-    "number": 251,
-    "title": "Deployment Options - CloudHub 1.0 high availability with multiple workers and persistent queues",
+    "id": "q-225",
+    "number": 225,
+    "title": "CloudHub Deployment - Connecting to the company's AWS VPC",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
-      "CloudHub 1.0",
-      "High Availability",
-      "Availability Zones",
-      "Persistent Queues"
+      "Networking",
+      "VPC Peering"
     ],
-    "prompt": "An integration is under heavy processing load and must both distribute that load across instances and guarantee zero message loss if an availability zone (AZ) fails. Which CloudHub 1.0 configuration best satisfies both requirements?",
+    "prompt": "CloudHub applications must access databases in the company's own AWS VPC in the same region using private IPs. Which connectivity option fits?",
     "options": [
       {
         "letter": "A",
-        "text": "Deploy to a single worker with persistent queues enabled."
+        "text": "Public internet access to the database"
       },
       {
         "letter": "B",
-        "text": "Deploy to two or more workers with persistent queues enabled, so the workload is distributed and the persistent queue ensures zero message loss during failover."
+        "text": "The shared load balancer"
       },
       {
         "letter": "C",
-        "text": "Deploy to a single worker with persistent queues disabled, relying on in-memory queues."
+        "text": "An IPsec VPN to the on-premises data center"
       },
       {
         "letter": "D",
-        "text": "Deploy to a Dedicated Load Balancer only, because the DLB stores messages during an outage."
+        "text": "Peer the Anypoint VPC with the AWS VPC"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "CloudHub HA features are powered by the scalable load-balancing service, worker scale-out, and persistent queues, and HA is enabled per application in Runtime Manager. The documented HA configurations pair worker count with queue persistence: to distribute processing load across instances, deploy two or more workers so that if one data center experiences an outage, workers remain available in a different data center. To protect against message loss, enable persistent queues, which ensure zero message loss if the data center hosting the worker fails and CloudHub migrates the application to another availability zone. Combining multiple workers with persistent queues satisfies both the load-distribution and zero-message-loss requirements.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. An Anypoint VPC can connect to a customer's AWS VPC through VPC peering, or via other methods such as Direct Connect or transit gateway, so CloudHub workers reach AWS resources over private addresses.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "A single worker with persistent queues protects messages but does not distribute the heavy processing load across instances."
+        "text": "This exposes the databases publicly."
       },
       "B": {
-        "type": "Correct",
-        "text": "Multiple workers with persistent queues combine workload distribution with zero message loss during AZ failover."
+        "type": "Incorrect",
+        "text": "The load balancer handles inbound traffic, not private outbound access."
       },
       "C": {
         "type": "Incorrect",
-        "text": "With persistent queues disabled, a single worker can lose messages during an AZ outage."
+        "text": "The databases are in AWS, not on premises."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "A DLB balances and routes traffic; it does not store messages or provide message durability."
+        "type": "Correct",
+        "text": "Peering connects the two VPCs privately."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub High Availability Features — Worker Scale-Out and Persistent Queues",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
+        "title": "Anypoint VPC Connectivity Methods",
+        "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       },
       "architectureGuide": {
-        "title": "Deployment Options — High Availability by Deployment Target",
-        "url": "https://docs.mulesoft.com/runtime-manager/deployment-strategies"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    }
-  },
-  {
-    "id": "q-252",
-    "number": 252,
-    "title": "Deployment Options - CloudHub 2.0 high availability across replicas and AZs",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 2.0",
-      "High Availability",
-      "Availability Zones",
-      "Replicas"
-    ],
-    "prompt": "An architect is deploying an API to a CloudHub 2.0 private space and wants high availability without manually distributing instances across zones. How does CloudHub 2.0 provide high availability?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "The architect must manually pin each replica to a specific availability zone."
-      },
-      {
-        "letter": "B",
-        "text": "CloudHub 2.0 deploys multiple replicas across two or more availability zones by default; if an AZ fails, CloudHub 2.0 automatically restarts the application in a different AZ."
-      },
-      {
-        "letter": "C",
-        "text": "High availability requires a customer-managed Dedicated Load Balancer spanning two AWS regions."
-      },
-      {
-        "letter": "D",
-        "text": "High availability is provided only when the application is deployed to a shared space."
-      }
-    ],
-    "correctAnswer": "B",
-    "explanation": "CloudHub 2.0 builds high availability into the platform through mechanisms MuleSoft manages automatically. With multiple-replica deployment, CloudHub 2.0 deploys replicas across two or more availability zones (AZs) by default, and if an AZ fails, it automatically restarts the application in a different AZ to maintain availability. A minimum of two replicas is required for high availability, and the platform automatically distributes replicas across two or more AZs.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "CloudHub 2.0 distributes replicas across AZs automatically; no manual pinning is required."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Multiple replicas are spread across two or more AZs by default, with automatic restart in another AZ on failure."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "CloudHub 2.0 provides HA within a region using replicas and AZs; no customer-managed DLB or multi-region setup is required for HA."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "HA applies to apps in both shared and private spaces when multiple replicas are configured."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub 2.0 High Availability and Disaster Recovery",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-ha-dr"
-      },
-      "architectureGuide": {
-        "title": "Deploying Apps to Private Spaces — Replica Count for HA",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-deploy-private-space"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    }
-  },
-  {
-    "id": "q-253",
-    "number": 253,
-    "title": "Deployment Options - Multi-region disaster recovery and Object Store v2 scope",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 2.0",
-      "Object Store v2",
-      "High Availability",
-      "Disaster Recovery"
-    ],
-    "prompt": "A company deploys the same API to CloudHub 2.0 private spaces in two AWS regions for disaster recovery. The API caches OAuth tokens in Object Store v2 and expects the secondary region to read the same cached tokens after a regional failover. What is the expected behavior?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Object Store v2 automatically replicates the cached tokens to the secondary region."
-      },
-      {
-        "letter": "B",
-        "text": "Object Store v2 is a regional service that runs in the same region as the application and provides no region failover; you must bring your own external storage to share or back up data across regions."
-      },
-      {
-        "letter": "C",
-        "text": "Object Store v2 stores tokens in a global namespace accessible from any region."
-      },
-      {
-        "letter": "D",
-        "text": "Object Store v2 replicates data across regions only when the application runs in Runtime Fabric."
-      }
-    ],
-    "correctAnswer": "B",
-    "explanation": "Object Store v2 is a regional service that runs in the same region as the application and provides no region failover. An application deployed in a different region cannot access it, so caching in the object store is region-specific and cannot be transferred to a secondary region. CloudHub 2.0 runs on Amazon AWS, and if an Amazon region goes down, applications in that region become unavailable and CloudHub 2.0 does not automatically replicate them to other regions. For cross-region data access or backup, bring your own external storage.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Object Store v2 does not replicate across regions and provides no region failover."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Object Store v2 is region-specific; cross-region data requires external storage."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Object Store v2 data is localized to the region of the deployed app, not a global namespace."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Region scoping is independent of the runtime target; Runtime Fabric does not make Object Store v2 global."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub 2.0 High Availability and Disaster Recovery — Object Store v2",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-ha-dr"
-      },
-      "architectureGuide": {
-        "title": "Object Store v2 Overview — Regions and Notes",
-        "url": "https://docs.mulesoft.com/object-store"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    }
-  },
-  {
-    "id": "q-254",
-    "number": 254,
-    "title": "Deployment Options - Object Store v2 with multi-worker applications",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "Object Store v2",
-      "Clustering"
-    ],
-    "prompt": "A Mule application deployed to multiple CloudHub workers uses Object Store v2 to update a shared counter. During load testing, several updates fail when multiple components try to update the same key at the same time. What is the cause and the recommended remedy?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Object Store v2 does not support multi-worker applications at all; the only remedy is a single worker."
-      },
-      {
-        "letter": "B",
-        "text": "Distributed Locking is not available in CloudHub when working with Object Store v2, so simultaneous updates can fail; use a distributed key-value store as a lock to synchronize access."
-      },
-      {
-        "letter": "C",
-        "text": "The failures are caused by exceeding the 30-day data retention limit, so increase the TTL."
-      },
-      {
-        "letter": "D",
-        "text": "The remedy is to enable persistent queues on the application."
-      }
-    ],
-    "correctAnswer": "B",
-    "explanation": "Using Object Store v2 with multi-worker CloudHub applications might result in data discrepancies or key clashes. This occurs because the Distributed Locking feature is not available in CloudHub and CloudHub 2.0 when working with Object Store v2, so under certain conditions, when multiple Mule components attempt to update Object Store v2 tables simultaneously, such calls may fail. To avoid these issues, use a distributed key-value store as a lock to synchronize access to Object Store v2.",
-    "rationales": {
-      "A": {
-        "type": "Incorrect",
-        "text": "Object Store v2 is supported with multi-worker apps, but it can produce data discrepancies or key clashes without external locking."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Distributed Locking is unavailable with Object Store v2 on CloudHub, so an external distributed lock is recommended."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "The 30-day retention limit governs data persistence, not concurrent update failures."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Persistent queues protect messages in VM queues; they do not provide locking for Object Store v2 keys."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Object Store v2 Overview — Multi-Worker and Distributed Locking",
-        "url": "https://docs.mulesoft.com/object-store"
-      },
-      "architectureGuide": {
-        "title": "Deployment Options — Object Store per Deployment Target",
-        "url": "https://docs.mulesoft.com/runtime-manager/deployment-strategies"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    }
-  },
-  {
-    "id": "q-255",
-    "number": 255,
-    "title": "Deployment Options - Connecting CloudHub to on-premises and private networks",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 1.0",
-      "VPC",
-      "VPN",
-      "Direct Connect"
-    ],
-    "prompt": "An organization runs APIs on CloudHub 1.0 that must reach databases in an on-premises data center and, separately, resources in a private AWS VPC owned by the company. Which connectivity options are valid for an Anypoint VPC? (Select all correct answers)",
-    "options": [
-      {
-        "letter": "A",
-        "text": "An IPsec VPN tunnel to the on-premises data center"
-      },
-      {
-        "letter": "B",
-        "text": "AWS Direct Connect to the on-premises data center or private AWS VPC"
-      },
-      {
-        "letter": "C",
-        "text": "VPC peering to connect to a private AWS VPC"
-      },
-      {
-        "letter": "D",
-        "text": "A Dedicated Load Balancer, which provides outbound connectivity to on-premises systems"
-      }
-    ],
-    "correctAnswers": [
-      "A",
-      "B",
-      "C"
-    ],
-    "explanation": "An Anypoint VPC can connect to on-premises data centers through a secured IPsec VPN tunnel, a transit gateway attachment, or AWS Direct Connect, and it can connect to a private AWS VPC through VPC peering or AWS Direct Connect. A Dedicated Load Balancer routes inbound HTTP/HTTPS traffic to workers; it is not an outbound connectivity mechanism to on-premises systems.",
-    "rationales": {
-      "A": {
-        "type": "Correct",
-        "text": "IPsec VPN provides a secured tunnel from the Anypoint VPC to on-premises networks."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "AWS Direct Connect provides dedicated private connectivity to on-premises or private AWS networks."
-      },
-      "C": {
-        "type": "Correct",
-        "text": "VPC peering connects an Anypoint VPC to another private AWS VPC."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "A DLB handles inbound traffic routing; it does not provide outbound on-premises connectivity."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "Virtual Private Cloud — Connecting to On-Premises and Private Networks",
+        "title": "Anypoint Virtual Private Cloud",
         "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
+      }
+    }
+  },
+  {
+    "id": "q-226",
+    "number": 226,
+    "title": "CloudHub Deployment - On-premises data center",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "Networking",
+      "VPN"
+    ],
+    "prompt": "CloudHub applications must reach systems in the company's on-premises data center, which has no AWS presence. What is the typical connectivity option?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "VPC peering with the data center"
       },
-      "architectureGuide": {
-        "title": "Anypoint VPN — Two Tunnels and High Availability",
+      {
+        "letter": "B",
+        "text": "A dedicated load balancer in the data center"
+      },
+      {
+        "letter": "C",
+        "text": "An Anypoint IPsec VPN"
+      },
+      {
+        "letter": "D",
+        "text": "Exchange public portal access"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. An Anypoint VPN creates IPsec tunnels between an Anypoint VPC and an on-premises network, extending the corporate network so CloudHub workers can reach internal systems.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Peering connects AWS VPCs, not on-premises networks."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "DLBs run in the Anypoint VPC."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "VPN tunnels connect the Anypoint VPC to on-premises networks."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Portals do not create network connectivity."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint VPN",
         "url": "https://docs.mulesoft.com/cloudhub/vpn-about"
       },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
-      }
-    }
-  },
-  {
-    "id": "q-256",
-    "number": 256,
-    "title": "Deployment Options - CloudHub 2.0 private space ingress ports and firewall rules",
-    "domain": "Deploying API implementations to CloudHub",
-    "topics": [
-      "CloudHub 2.0",
-      "Private Spaces",
-      "Port Mapping"
-    ],
-    "prompt": "A platform architect is hardening a CloudHub 2.0 private space. Which statements about its networking defaults are correct? (Select all correct answers)",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Inbound traffic is allowed by default on ports 80 (HTTP) and 443 (HTTPS) from anywhere (0.0.0.0/0)."
-      },
-      {
-        "letter": "B",
-        "text": "Non-HTTP ingress is closed by default; a fixed list of TCP ports (30500-32500) can be opened and is reachable only from within the private space or from a VPN or transit gateway."
-      },
-      {
-        "letter": "C",
-        "text": "Outbound traffic from the private space is blocked by default and must be explicitly allowed per port."
-      },
-      {
-        "letter": "D",
-        "text": "The private space includes a built-in Web Application Firewall (WAF) and Layer 7 DDoS protection by default."
-      }
-    ],
-    "correctAnswers": [
-      "A",
-      "B"
-    ],
-    "explanation": "By default, CloudHub 2.0 allows inbound traffic to the private space on ports 80 (HTTP) and 443 (HTTPS) from anywhere (0.0.0.0/0); you configure firewall rules to allow connections through specified ports, remove ports, or restrict the source. By default no non-HTTP ports are open, but you can open a fixed list of TCP ports (30500-32500) that are reachable only from within the private space or originated from a VPN or a transit gateway (TGW). By default, CloudHub 2.0 allows all outbound traffic from the private space to destinations outside the private space; you configure firewall rules to restrict it. Private spaces do not include a built-in WAF or Layer 7 DDoS protection; you implement these externally if needed.",
-    "rationales": {
-      "A": {
-        "type": "Correct",
-        "text": "Ports 80 and 443 are open inbound by default from 0.0.0.0/0."
-      },
-      "B": {
-        "type": "Correct",
-        "text": "Non-HTTP ports are closed by default; TCP 30500-32500 can be opened and are reachable only internally, via VPN, or via TGW."
-      },
-      "C": {
-        "type": "Incorrect",
-        "text": "Outbound traffic is allowed by default; you must remove the default rule to restrict egress."
-      },
-      "D": {
-        "type": "Incorrect",
-        "text": "Private spaces do not include a built-in WAF or Layer 7 DDoS protection; those must be implemented externally."
-      }
-    },
-    "references": {
-      "primary": {
-        "title": "CloudHub 2.0 Networking Architecture — Mule Application Ports and Ingress",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-networking-guide"
-      },
       "architectureGuide": {
-        "title": "Private Spaces — Firewall Rules (Inbound and Outbound)",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-private-space-about"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "Anypoint VPC Connectivity Methods",
+        "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       }
     }
   },
   {
-    "id": "q-257",
-    "number": 257,
-    "title": "Deployment Options - CloudHub 2.0 public and internal DNS records",
+    "id": "q-227",
+    "number": 227,
+    "title": "CloudHub Deployment - Many VPCs and sites",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
-      "CloudHub 2.0",
-      "DNS",
-      "Internal Routing"
+      "Networking",
+      "Transit Gateway"
     ],
-    "prompt": "An architect deploys an API to a CloudHub 2.0 private space and wants internal callers to reach it without leaving the private space network. Which DNS record should the internal callers use, and what is its format?",
+    "prompt": "A company has many AWS VPCs and several data centers already connected through an AWS Transit Gateway. It wants CloudHub to reach all of them. Which approach scales best?",
     "options": [
       {
         "letter": "A",
-        "text": "The public DNS name, app.space-id.region.cloudhub.io, because private spaces have no internal DNS."
+        "text": "Create a separate VPC peering for every AWS VPC"
       },
       {
         "letter": "B",
-        "text": "The internal DNS name, app.internal-space-id.region.cloudhub.io, because traffic using it remains within the private space network."
+        "text": "Attach the Anypoint VPC to the Transit Gateway"
       },
       {
         "letter": "C",
-        "text": "The DLB mapping rule hostname internal-lb.anypointdns.net, because CloudHub 2.0 requires a DLB for internal routing."
+        "text": "Create a VPN to every AWS VPC"
       },
       {
         "letter": "D",
-        "text": "The worker DNS record mule-worker-internal-app.region.cloudhub.io, as in CloudHub 1.0."
+        "text": "Route all traffic over the public internet"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Each application deployed to CloudHub 2.0 has both default public and internal DNS records that refer to the load balancer: a public record (<app>.<space-id>.<region>.cloudhub.io) and an internal record (<app>.internal-<space-id>.<region>.cloudhub.io, for example app.internal-sxjsip.aus-s1.cloudhub.io). The internal record inserts the internal- label between the app name and the space ID; it does not append an extra label. If you use the internal DNS name, traffic remains within the private space network, and you can delete or omit the externally exposed endpoint when deploying an application to a private space. The mule-worker-internal record is a CloudHub 1.0 construct.",
+    "explanation": "Correct answer: B. Anypoint VPC supports transit gateway attachments. When a company already uses an AWS Transit Gateway as a hub, attaching the Anypoint VPC to it gives CloudHub access to the connected VPCs and data centers.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "CloudHub 2.0 apps have both public and internal DNS records; the public record routes traffic externally."
+        "text": "Many peerings are harder to manage at scale."
       },
       "B": {
         "type": "Correct",
-        "text": "The internal DNS name (<app>.internal-<space-id>.<region>.cloudhub.io) keeps traffic within the private space network."
+        "text": "A transit gateway attachment reaches all connected networks."
       },
       "C": {
         "type": "Incorrect",
-        "text": "CloudHub 2.0 uses a managed ingress load balancer per private space, not a DLB."
+        "text": "Many tunnels add complexity."
       },
       "D": {
         "type": "Incorrect",
-        "text": "mule-worker-internal-... is the CloudHub 1.0 worker DNS record format."
+        "text": "This loses private connectivity."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub 2.0 Networking Architecture — DNS Records",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-networking-guide"
+        "title": "Anypoint VPC Connectivity Methods",
+        "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       },
       "architectureGuide": {
-        "title": "Configuring Endpoints and Paths for Apps in a Private Space",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-config-endpoints-paths"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "Anypoint Virtual Private Cloud",
+        "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       }
     }
   },
   {
-    "id": "q-258",
-    "number": 258,
-    "title": "Deployment Options - CloudHub 2.0 private space TLS context and custom domains",
+    "id": "q-228",
+    "number": 228,
+    "title": "CloudHub Deployment - Dedicated private link",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
-      "CloudHub 2.0",
-      "Private Spaces",
-      "SSL/TLS",
-      "DNS"
+      "Networking",
+      "Direct Connect"
     ],
-    "prompt": "An architect must serve a CloudHub 2.0 private space application on the custom domain api.company.com with the company's own certificate. Which statement is correct?",
+    "prompt": "A bank requires a dedicated private network connection between its data center and CloudHub with consistent bandwidth rather than VPN tunnels over the internet. Which option fits?",
     "options": [
       {
         "letter": "A",
-        "text": "Upload the certificate and key as a TLS context on the private space; CloudHub 2.0 parses the CN and SAN lists and makes those domains available when deploying apps, and a default TLS context for cloudhub.io is always present."
+        "text": "AWS Direct Connect to the Anypoint VPC"
       },
       {
         "letter": "B",
-        "text": "Custom domains are supported only on shared spaces, not private spaces."
+        "text": "Larger CloudHub workers"
       },
       {
         "letter": "C",
-        "text": "The certificate must be uploaded to a Dedicated Load Balancer attached to the private space."
+        "text": "A second shared load balancer"
       },
       {
         "letter": "D",
-        "text": "The default cloudhub.io TLS context can be removed once a custom TLS context is added."
+        "text": "VPC peering directly with the data center"
       }
     ],
     "correctAnswer": "A",
-    "explanation": "CloudHub 2.0 uses Transport Layer Security (TLS) contexts to encrypt inbound traffic to the private space. TLS contexts enable your apps to be reached at custom domains. Each private space includes one TLS context by default (for traffic to cloudhub.io), which cannot be removed; the default certificate renews automatically. You can create additional TLS contexts with your own keystore (and optional truststore), and CloudHub 2.0 parses the CN and SAN lists from the certificate and makes those domains available when deploying applications.",
+    "explanation": "Correct answer: A. Anypoint VPC supports AWS Direct Connect, which provides a dedicated private connection with more consistent network performance than VPN tunnels over the internet.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "TLS contexts on the private space carry the custom certificate; the default cloudhub.io context always remains."
+        "text": "Direct Connect provides a dedicated private link."
       },
       "B": {
         "type": "Incorrect",
-        "text": "CloudHub 2.0 supports customizing endpoints only for apps deployed to private spaces, not shared spaces."
+        "text": "Worker size does not change network connectivity."
       },
       "C": {
         "type": "Incorrect",
-        "text": "CloudHub 2.0 private spaces use a managed ingress load balancer and TLS contexts; there is no DLB."
+        "text": "Load balancers do not provide private links."
       },
       "D": {
         "type": "Incorrect",
-        "text": "The default TLS context for cloudhub.io cannot be removed."
+        "text": "Peering applies to AWS VPCs, not data centers."
       }
     },
     "references": {
       "primary": {
-        "title": "Configuring Domains and Certificates (TLS Context) for a Private Space",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ps-config-domains"
+        "title": "Anypoint VPC Connectivity Methods",
+        "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       },
       "architectureGuide": {
-        "title": "CloudHub 2.0 Networking Architecture — Custom Certificates and CNAME",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-networking-guide"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "Anypoint VPC Network Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/vpc-architecture-concept"
       }
     }
   },
   {
-    "id": "q-259",
-    "number": 259,
-    "title": "Deployment Options - CloudHub 2.0 differences from CloudHub 1.0",
+    "id": "q-229",
+    "number": 229,
+    "title": "CloudHub Deployment - Choose two: connectivity methods",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
-      "CloudHub 1.0",
-      "CloudHub 2.0",
-      "VPC",
-      "Private Spaces"
+      "Networking",
+      "Anypoint VPC"
     ],
-    "prompt": "A platform architect is planning a migration from CloudHub 1.0 to CloudHub 2.0. Which statements accurately describe differences between the two platforms? (Select all correct answers)",
+    "prompt": "Which two methods can connect an Anypoint VPC to customer networks? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "CloudHub 1.0 VPC peering and Direct Connect are deprecated in CloudHub 2.0; transit gateway attachments are used instead."
+        "text": "API Manager SLA tiers"
       },
       {
         "letter": "B",
-        "text": "Unlike a CloudHub 1.0 VPC, a CloudHub 2.0 private space can be associated with multiple environments based on environment type (for example, sandbox or production)."
+        "text": "Exchange private portals"
       },
       {
         "letter": "C",
-        "text": "You cannot create a VPN connection between a CloudHub 1.0 VPC and a CloudHub 2.0 private space."
+        "text": "Persistent queues"
       },
       {
         "letter": "D",
-        "text": "To move an application to a different region in CloudHub 2.0, you can simply change its region setting in place."
+        "text": "IPsec VPN tunnels"
+      },
+      {
+        "letter": "E",
+        "text": "VPC peering with a customer AWS VPC"
       }
     ],
     "correctAnswers": [
-      "A",
-      "B",
-      "C"
+      "D",
+      "E"
     ],
-    "explanation": "CloudHub 1.0 VPC peering and Direct Connect have been deprecated in CloudHub 2.0; you now use transit gateway attachments, and when you delete a private space that has a transit gateway attached, the transit gateway is preserved for reuse. Unlike VPCs in CloudHub 1.0, you can associate a private space with multiple environments based only on the type of the environment, such as sandbox or production. You cannot create a VPN connection between a CloudHub 1.0 VPC and a CloudHub 2.0 private space. To move applications between regions, you must redeploy the application to another shared or private space in a different region; you cannot move the app to a different region once deployed.",
+    "explanation": "Correct answers: D and E. Anypoint VPC connectivity options include IPsec VPN, transit gateway attachments, VPC peering, and AWS Direct Connect, which extend customer networks to CloudHub workers.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "VPC peering and Direct Connect are deprecated in CloudHub 2.0 in favor of transit gateway attachments."
+        "type": "Incorrect",
+        "text": "SLA tiers govern API access, not networks."
       },
       "B": {
-        "type": "Correct",
-        "text": "A private space can be shared across multiple environments by environment type."
+        "type": "Incorrect",
+        "text": "Portals are documentation, not networking."
       },
       "C": {
-        "type": "Correct",
-        "text": "A VPN connection cannot be created between a CloudHub 1.0 VPC and a CloudHub 2.0 private space."
+        "type": "Incorrect",
+        "text": "Queues are a messaging feature."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "You cannot change an application's region in place; you must redeploy it to a space in another region."
+        "type": "Correct",
+        "text": "VPNs connect to on-premises networks."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "Peering connects to customer AWS VPCs."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub 2.0 for CloudHub 1.0 Users",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-comparison"
+        "title": "Anypoint VPC Connectivity Methods",
+        "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       },
       "architectureGuide": {
-        "title": "CloudHub VPC to CloudHub 2.0 Private Space Upgrade",
-        "url": "https://docs.mulesoft.com/cloudhub/vpc-upgrade"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "Anypoint VPN",
+        "url": "https://docs.mulesoft.com/cloudhub/vpn-about"
       }
     }
   },
   {
-    "id": "q-260",
-    "number": 260,
-    "title": "Api Policies - Refer to the exhibit. CloudHub 2.0 private space ingress with TLS",
+    "id": "q-230",
+    "number": 230,
+    "title": "CloudHub Deployment - Single worker",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
-      "CloudHub 2.0",
-      "Private Spaces",
-      "SSL/TLS",
-      "DNS"
+      "Single Point of Failure",
+      "Workers"
     ],
-    "prompt": "Refer to the exhibit.\nA company deploys an API to a CloudHub 2.0 private space and wants external clients to reach it at the custom domain api.company.com over HTTPS. Based on the exhibit, which alternative correctly describes how this is achieved?",
-    "image": "images/q271.svg",
+    "prompt": "A critical Experience API runs on one 4 vCore CloudHub worker. What is the most significant single point of failure?",
     "options": [
       {
         "letter": "A",
-        "text": "Create a Dedicated Load Balancer in the private space and upload the certificate to it."
+        "text": "The API's Exchange asset"
       },
       {
         "letter": "B",
-        "text": "Create a TLS context on the private space with the company certificate, add api.company.com as an external endpoint in the app's Ingress settings, and point a DNS CNAME at the private space's public DNS target."
+        "text": "The single worker"
       },
       {
         "letter": "C",
-        "text": "Remove the default cloudhub.io TLS context and rely only on the custom certificate."
+        "text": "The number of API policies applied"
       },
       {
         "letter": "D",
-        "text": "Deploy the API to a shared space, because private spaces do not support custom domains."
+        "text": "The vCore size of the worker"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "CloudHub 2.0 uses TLS contexts to encrypt inbound traffic to the private space, and TLS contexts enable your apps to be reached at custom domains. Each private space includes one default TLS context for cloudhub.io that cannot be removed, and you can create additional TLS contexts with your own keystore. CloudHub 2.0 parses the CN and SAN lists from the certificate and makes those domains available when deploying applications. A TLS context and a CNAME alone are not sufficient to route the hostname: you must also configure api.company.com as an external endpoint in the app's Ingress settings (the administrator sets up the TLS context first, then the endpoint is selected from the Domain drop-down on the Ingress tab), and the CNAME must point at the private space's public DNS target. There is no DLB to create for a private space.",
+    "explanation": "Correct answer: B. With a single worker, any worker or data center failure makes the API unavailable until a replacement starts. Two or more smaller workers, spread across data centers, remove this single point of failure.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "CloudHub 2.0 private spaces use a managed ingress load balancer, not a customer-created DLB."
+        "text": "Exchange is not on the request path."
       },
       "B": {
         "type": "Correct",
-        "text": "A private space TLS context plus an external endpoint for the domain in the app's Ingress settings plus a DNS CNAME to the private space's public DNS target maps the custom domain to the app over HTTPS."
+        "text": "A failure of the only worker makes the API unavailable."
       },
       "C": {
         "type": "Incorrect",
-        "text": "The default cloudhub.io TLS context cannot be removed."
+        "text": "Policies do not create redundancy issues."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Custom domains are supported only on private spaces, not shared spaces."
+        "text": "Size affects capacity, not redundancy."
       }
     },
     "references": {
       "primary": {
-        "title": "Configuring Domains and Certificates (TLS Context) for a Private Space",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ps-config-domains"
+        "title": "CloudHub High Availability Features",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       },
       "architectureGuide": {
-        "title": "CloudHub 2.0 Networking Architecture — Custom Certificates and CNAME",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-networking-guide"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
     }
   },
   {
-    "id": "q-261",
-    "number": 261,
+    "id": "q-231",
+    "number": 231,
+    "title": "CloudHub Deployment - Single VPN tunnel",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "Single Point of Failure",
+      "VPN"
+    ],
+    "prompt": "All CloudHub traffic to the on-premises ERP flows through one VPN connection terminating on one customer gateway. How can this single point of failure be removed?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Add more workers in the same region"
+      },
+      {
+        "letter": "B",
+        "text": "Enable persistent queues"
+      },
+      {
+        "letter": "C",
+        "text": "The database server"
+      },
+      {
+        "letter": "D",
+        "text": "Increase the worker size"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Anypoint VPN supports high-availability designs with redundant tunnels and connections. Using redundant VPNs and customer gateway devices avoids a single point of failure in on-premises connectivity.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Workers still depend on the same VPN."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Queues do not provide network redundancy."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "Redundant tunnels and gateways keep connectivity if one fails."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Workers are not the failing component."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint VPN High Availability",
+        "url": "https://docs.mulesoft.com/cloudhub/vpn-high-availability"
+      },
+      "architectureGuide": {
+        "title": "Anypoint VPN",
+        "url": "https://docs.mulesoft.com/cloudhub/vpn-about"
+      }
+    }
+  },
+  {
+    "id": "q-232",
+    "number": 232,
+    "title": "CloudHub Deployment - Downstream SPOF",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "Single Point of Failure",
+      "Dependencies"
+    ],
+    "prompt": "A Process API runs on three CloudHub workers, but every request depends on a single on-premises database server with no failover. What should the architect point out?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The database is still a single point of failure"
+      },
+      {
+        "letter": "B",
+        "text": "The workers will cache all data if the database fails"
+      },
+      {
+        "letter": "C",
+        "text": "CloudHub will fail the database over automatically"
+      },
+      {
+        "letter": "D",
+        "text": "Three workers make the whole solution highly available"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. End-to-end availability depends on every component in the request path. Even with multiple workers, a single non-redundant backend remains a single point of failure, which needs its own redundancy or fallback.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "Scaling the API does not protect against the database failing."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "No caching is described in the design."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "CloudHub does not manage customer databases."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Availability is limited by the least available dependency."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "High Availability and Disaster Recovery Across Deployment Models",
+        "url": "https://docs.mulesoft.com/hosting-home/hadr-guide"
+      },
+      "architectureGuide": {
+        "title": "CloudHub High Availability Features",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
+      }
+    }
+  },
+  {
+    "id": "q-233",
+    "number": 233,
+    "title": "CloudHub Deployment - Regional dependency",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "Single Point of Failure",
+      "Regions"
+    ],
+    "prompt": "A business requires its order API to survive the loss of a whole cloud region. It currently runs four workers in one CloudHub region. What is needed?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Larger workers in the same region"
+      },
+      {
+        "letter": "B",
+        "text": "Persistent queues in the same region"
+      },
+      {
+        "letter": "C",
+        "text": "Deploy to a second region"
+      },
+      {
+        "letter": "D",
+        "text": "Four more workers in the same region"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Multiple workers in one region protect against data-center failures, but the region itself is a single point of failure. A second deployment in another region with a failover mechanism, such as DNS-based routing, removes it.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Size does not change regional dependency."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Queues are regional too."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "Only multi-region deployment protects against a regional outage."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "They would share the same regional failure."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub High Availability and Disaster Recovery",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-hadr"
+      },
+      "architectureGuide": {
+        "title": "High Availability and Disaster Recovery Across Deployment Models",
+        "url": "https://docs.mulesoft.com/hosting-home/hadr-guide"
+      }
+    }
+  },
+  {
+    "id": "q-234",
+    "number": 234,
+    "title": "CloudHub Deployment - Choose two: removing SPOFs",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "Single Point of Failure",
+      "High Availability"
+    ],
+    "prompt": "Which two changes remove single points of failure in a CloudHub deployment? (Choose two.)",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Disabling automatic restarts"
+      },
+      {
+        "letter": "B",
+        "text": "Placing all apps on the same single worker size"
+      },
+      {
+        "letter": "C",
+        "text": "Using one larger worker instead of two smaller ones"
+      },
+      {
+        "letter": "D",
+        "text": "Running at least two workers per application"
+      },
+      {
+        "letter": "E",
+        "text": "Using redundant VPN connections to the data center"
+      }
+    ],
+    "correctAnswers": [
+      "D",
+      "E"
+    ],
+    "explanation": "Correct answers: D and E. Avoiding single points of failure means adding redundancy at every layer: multiple workers per application, redundant network connections, redundant backends, and, if required, multiple regions.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This reduces resilience."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Worker size is unrelated to redundancy."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "This creates a single point of failure."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Workers are spread across data centers."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "Connectivity survives the loss of one tunnel."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub High Availability Features",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
+      },
+      "architectureGuide": {
+        "title": "Anypoint VPN High Availability",
+        "url": "https://docs.mulesoft.com/cloudhub/vpn-high-availability"
+      }
+    }
+  },
+  {
+    "id": "q-235",
+    "number": 235,
     "title": "API Quality Goals - Caching slow-changing reference data",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -15944,35 +14072,35 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Scale the System API to more workers so it can respond faster to each call"
+        "text": "Apply the HTTP Caching policy to the API with a one-hour time-to-live"
       },
       {
         "letter": "B",
-        "text": "Apply a Spike Control policy so that requests are queued during busy periods"
+        "text": "Scale the System API to more workers so it can respond faster to each call"
       },
       {
         "letter": "C",
-        "text": "Apply the HTTP Caching policy to the API with a one-hour time-to-live"
+        "text": "Apply a Spike Control policy so that requests are queued during busy periods"
       },
       {
         "letter": "D",
         "text": "Ask every consumer to poll the API less frequently than once an hour"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. When data changes infrequently and consumers tolerate some staleness, caching responses is the most effective way to improve response time and reduce backend load. The HTTP Caching policy can be applied in API Manager without changing the implementation, and its time-to-live should match how stale the data may be.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. When data changes infrequently and consumers tolerate some staleness, caching responses is the most effective way to improve response time and reduce backend load. The HTTP Caching policy can be applied in API Manager without changing the implementation, and its time-to-live should match how stale the data may be.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "More workers add capacity but do not make each slow backend call faster."
+        "type": "Correct",
+        "text": "The policy caches responses at the gateway, so repeated requests skip the slow backend without code changes."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Spike Control smooths traffic peaks; it does not avoid calling the slow backend."
+        "text": "More workers add capacity but do not make each slow backend call faster."
       },
       "C": {
-        "type": "Correct",
-        "text": "The policy caches responses at the gateway, so repeated requests skip the slow backend without code changes."
+        "type": "Incorrect",
+        "text": "Spike Control smooths traffic peaks; it does not avoid calling the slow backend."
       },
       "D": {
         "type": "Incorrect",
@@ -15991,8 +14119,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-262",
-    "number": 262,
+    "id": "q-236",
+    "number": 236,
     "title": "API Quality Goals - Data that must not be cached",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16007,35 +14135,35 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "A Product Images API that serves static content to many clients"
+        "text": "An Account Balance API used for payments"
       },
       {
         "letter": "C",
-        "text": "A Store Locations API that is updated weekly and read constantly"
+        "text": "A Product Images API that serves static content to many clients"
       },
       {
         "letter": "D",
-        "text": "An Account Balance API used for payments"
+        "text": "A Store Locations API that is updated weekly and read constantly"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. Caching trades freshness for performance. It is appropriate for data that changes rarely or where consumers tolerate staleness, and inappropriate where every response must reflect the latest state, such as account balances used for payments.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Caching trades freshness for performance. It is appropriate for data that changes rarely or where consumers tolerate staleness, and inappropriate where every response must reflect the latest state, such as account balances used for payments.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "Rarely changing reference data is an ideal caching candidate."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Static content can be cached safely and greatly reduces load."
+        "type": "Correct",
+        "text": "Caching would return stale balances, which breaks the requirement for current data."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Read-heavy data with weekly updates benefits from caching with a suitable TTL."
+        "text": "Static content can be cached safely and greatly reduces load."
       },
       "D": {
-        "type": "Correct",
-        "text": "Caching would return stale balances, which breaks the requirement for current data."
+        "type": "Incorrect",
+        "text": "Read-heavy data with weekly updates benefits from caching with a suitable TTL."
       }
     },
     "references": {
@@ -16050,8 +14178,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-263",
-    "number": 263,
+    "id": "q-237",
+    "number": 237,
     "title": "API Quality Goals - Sharing state across CloudHub workers",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16062,11 +14190,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "In an in-memory object store on each worker"
+        "text": "In a persistent object store (Object Store v2)"
       },
       {
         "letter": "B",
-        "text": "In a persistent object store (Object Store v2)"
+        "text": "In an in-memory object store on each worker"
       },
       {
         "letter": "C",
@@ -16077,16 +14205,16 @@ window.MCPA_QUESTIONS = [
         "text": "In a file written to the worker's local disk"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. On CloudHub, persistent object stores are backed by Object Store v2, which keeps data outside individual workers. This lets the stored values, such as watermarks, survive restarts and be shared by all workers of the same application, unlike variables, in-memory stores, or local files.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. On CloudHub, persistent object stores are backed by Object Store v2, which keeps data outside individual workers. This lets the stored values, such as watermarks, survive restarts and be shared by all workers of the same application, unlike variables, in-memory stores, or local files.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "In-memory stores are lost on restart and are not shared between workers."
-      },
-      "B": {
         "type": "Correct",
         "text": "Object Store v2 persists data outside the worker and makes it available to all workers of the application."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "In-memory stores are lost on restart and are not shared between workers."
       },
       "C": {
         "type": "Incorrect",
@@ -16109,8 +14237,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-264",
-    "number": 264,
+    "id": "q-238",
+    "number": 238,
     "title": "API Quality Goals - Cache scope versus caching policy",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16168,8 +14296,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-265",
-    "number": 265,
+    "id": "q-239",
+    "number": 239,
     "title": "API Quality Goals - Idempotent request detection",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16180,39 +14308,39 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Store processed IDs in a persistent object store"
-      },
-      {
-        "letter": "B",
         "text": "Apply the HTTP Caching policy so duplicate requests get the same response"
       },
       {
-        "letter": "C",
+        "letter": "B",
         "text": "Store processed IDs in a variable on each worker"
       },
       {
-        "letter": "D",
+        "letter": "C",
         "text": "Reduce the client timeout so that clients never retry"
+      },
+      {
+        "letter": "D",
+        "text": "Store processed IDs in a persistent object store"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. Detecting duplicates requires remembering which unique IDs have already been processed, in a store shared by all instances. A persistent object store, backed by Object Store v2 on CloudHub, can hold these IDs so that any worker can recognize and reject a repeated request.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Detecting duplicates requires remembering which unique IDs have already been processed, in a store shared by all instances. A persistent object store, backed by Object Store v2 on CloudHub, can hold these IDs so that any worker can recognize and reject a repeated request.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "A shared persistent store lets every worker check whether an ID was already processed."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "Caching is for safe, reusable responses; POST payment requests should not be cached."
       },
-      "C": {
+      "B": {
         "type": "Incorrect",
         "text": "Variables are per event and per worker, so duplicates on another worker are not detected."
       },
-      "D": {
+      "C": {
         "type": "Incorrect",
         "text": "Shorter timeouts make retries more likely, not less."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "A shared persistent store lets every worker check whether an ID was already processed."
       }
     },
     "references": {
@@ -16227,8 +14355,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-266",
-    "number": 266,
+    "id": "q-240",
+    "number": 240,
     "title": "API Quality Goals - Fallback to cached data",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16247,15 +14375,15 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Retry the Process API indefinitely until it responds"
+        "text": "Cache each good response and return it on failure"
       },
       {
         "letter": "D",
-        "text": "Cache each good response and return it on failure"
+        "text": "Retry the Process API indefinitely until it responds"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. A fallback is a resilience strategy in which an API client returns an alternative result when an invocation fails. Saving successful responses in an object store and returning the cached value when the downstream API fails lets the client keep working with acceptably stale data.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. A fallback is a resilience strategy in which an API client returns an alternative result when an invocation fails. Saving successful responses in an object store and returning the cached value when the downstream API fails lets the client keep working with acceptably stale data.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -16266,12 +14394,12 @@ window.MCPA_QUESTIONS = [
         "text": "This is the error experience the business wants to avoid."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Unlimited retries make the client wait or fail instead of returning a usable result."
-      },
-      "D": {
         "type": "Correct",
         "text": "The last good response can serve as a fallback result when the Process API cannot be reached."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Unlimited retries make the client wait or fail instead of returning a usable result."
       }
     },
     "references": {
@@ -16286,8 +14414,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-267",
-    "number": 267,
+    "id": "q-241",
+    "number": 241,
     "title": "API Quality Goals - Object Store data retention",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16302,31 +14430,31 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Proceed, because Object Store v2 retains entries forever unless they are deleted"
+        "text": "Use a database; Object Store v2 entries have a limited TTL"
       },
       {
         "letter": "C",
-        "text": "Use a database; Object Store v2 entries have a limited TTL"
+        "text": "Proceed, because Object Store v2 retains entries forever unless they are deleted"
       },
       {
         "letter": "D",
         "text": "Store the preferences in application properties so they are always available"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. Object Store v2 is intended for application state such as caching, watermarks, and deduplication. Its entries have a maximum time-to-live, so it is not suitable as a permanent system of record. Long-lived business data such as customer preferences belongs in a database or other system of record.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Object Store v2 is intended for application state such as caching, watermarks, and deduplication. Its entries have a maximum time-to-live, so it is not suitable as a permanent system of record. Long-lived business data such as customer preferences belongs in a database or other system of record.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "In-memory stores are less durable, not more."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Object Store v2 enforces a time-to-live on stored entries, so data is not retained indefinitely."
-      },
-      "C": {
         "type": "Correct",
         "text": "Object Store v2 is designed for transient state such as caches and watermarks, not long-term records."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Object Store v2 enforces a time-to-live on stored entries, so data is not retained indefinitely."
       },
       "D": {
         "type": "Incorrect",
@@ -16345,8 +14473,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-268",
-    "number": 268,
+    "id": "q-242",
+    "number": 242,
     "title": "API Quality Goals - Choose two: Object Store use cases",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16415,8 +14543,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-269",
-    "number": 269,
+    "id": "q-243",
+    "number": 243,
     "title": "API Quality Goals - Cache key design",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16474,8 +14602,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-270",
-    "number": 270,
+    "id": "q-244",
+    "number": 244,
     "title": "API Quality Goals - Invalidating cached data",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16486,11 +14614,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Remove caching entirely so that every request goes to the backend"
+        "text": "Reduce the cache time-to-live to five minutes or less"
       },
       {
         "letter": "B",
-        "text": "Reduce the cache time-to-live to five minutes or less"
+        "text": "Remove caching entirely so that every request goes to the backend"
       },
       {
         "letter": "C",
@@ -16501,16 +14629,16 @@ window.MCPA_QUESTIONS = [
         "text": "Scale the backend horizontally so the cache is refreshed faster"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. The time-to-live of a cache entry determines how stale data can become. To meet a five-minute freshness requirement while retaining most of the performance benefit, the TTL should be reduced to five minutes or less instead of disabling caching.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. The time-to-live of a cache entry determines how stale data can become. To meet a five-minute freshness requirement while retaining most of the performance benefit, the TTL should be reduced to five minutes or less instead of disabling caching.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "This meets freshness but gives up the load reduction that is still possible with a short TTL."
-      },
-      "B": {
         "type": "Correct",
         "text": "The TTL defines the maximum staleness, so it must not exceed the freshness requirement."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "This meets freshness but gives up the load reduction that is still possible with a short TTL."
       },
       "C": {
         "type": "Incorrect",
@@ -16533,8 +14661,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-271",
-    "number": 271,
+    "id": "q-245",
+    "number": 245,
     "title": "API Quality Goals - First step toward fault tolerance",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16545,39 +14673,39 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Set a timeout that fits within the 2-second SLA"
-      },
-      {
-        "letter": "B",
         "text": "Increase the Experience API's worker size"
       },
       {
-        "letter": "C",
+        "letter": "B",
         "text": "Apply a rate limiting policy to the Experience API"
       },
       {
-        "letter": "D",
+        "letter": "C",
         "text": "Retry the Process API call five times before responding"
+      },
+      {
+        "letter": "D",
+        "text": "Set a timeout that fits within the 2-second SLA"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. Timeouts are the first fault-tolerance measure for API invocations. They should be set as low as possible and in line with the API client's own SLA, so that a slow or hung dependency does not cause the client to fail its consumers.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Timeouts are the first fault-tolerance measure for API invocations. They should be set as low as possible and in line with the API client's own SLA, so that a slow or hung dependency does not cause the client to fail its consumers.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "A timeout stops waiting for a hung call and lets the client respond in time."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "More CPU and memory do not shorten the time spent waiting for a hung dependency."
       },
-      "C": {
+      "B": {
         "type": "Incorrect",
         "text": "Rate limiting caps traffic but does not stop the client from waiting 30 seconds."
       },
-      "D": {
+      "C": {
         "type": "Incorrect",
         "text": "Retrying a call that hangs multiplies the wait and makes the SLA worse."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "A timeout stops waiting for a hung call and lets the client respond in time."
       }
     },
     "references": {
@@ -16592,8 +14720,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-272",
-    "number": 272,
+    "id": "q-246",
+    "number": 246,
     "title": "API Quality Goals - Retrying transient failures",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16651,8 +14779,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-273",
-    "number": 273,
+    "id": "q-247",
+    "number": 247,
     "title": "API Quality Goals - Retries and non-idempotent operations",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16663,39 +14791,39 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Nothing, because HTTP POST is idempotent by definition"
+        "text": "An idempotency key that lets the API detect repeats"
       },
       {
         "letter": "B",
-        "text": "A Spike Control policy on the Payments API"
+        "text": "Nothing, because HTTP POST is idempotent by definition"
       },
       {
         "letter": "C",
-        "text": "A longer cache time-to-live on the Payments API"
+        "text": "A Spike Control policy on the Payments API"
       },
       {
         "letter": "D",
-        "text": "An idempotency key that lets the API detect repeats"
+        "text": "A longer cache time-to-live on the Payments API"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. Retries are safe only for idempotent operations. Methods such as GET, PUT, and DELETE are idempotent, but POST is not, so retrying a POST can create duplicates. Before retrying, the API must be able to detect repeated requests, for example through a unique ID supplied by the client and stored by the API.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Retries are safe only for idempotent operations. Methods such as GET, PUT, and DELETE are idempotent, but POST is not, so retrying a POST can create duplicates. Before retrying, the API must be able to detect repeated requests, for example through a unique ID supplied by the client and stored by the API.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "POST is not idempotent; repeating it can create duplicate resources."
+        "type": "Correct",
+        "text": "Without duplicate detection, a retried POST may create a second payment."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Spike Control smooths traffic and does not detect duplicate requests."
+        "text": "POST is not idempotent; repeating it can create duplicate resources."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Caching does not prevent duplicate creation by POST requests."
+        "text": "Spike Control smooths traffic and does not detect duplicate requests."
       },
       "D": {
-        "type": "Correct",
-        "text": "Without duplicate detection, a retried POST may create a second payment."
+        "type": "Incorrect",
+        "text": "Caching does not prevent duplicate creation by POST requests."
       }
     },
     "references": {
@@ -16710,8 +14838,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-274",
-    "number": 274,
+    "id": "q-248",
+    "number": 248,
     "title": "API Quality Goals - Stop calling a failing API",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16769,8 +14897,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-275",
-    "number": 275,
+    "id": "q-249",
+    "number": 249,
     "title": "API Quality Goals - Fallback options",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16781,39 +14909,39 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Return a default list of best-selling products"
-      },
-      {
-        "letter": "B",
         "text": "Block the page until the Process API recovers"
       },
       {
-        "letter": "C",
+        "letter": "B",
         "text": "Return HTTP 500 so the page shows an error banner"
       },
       {
-        "letter": "D",
+        "letter": "C",
         "text": "Call the Process API repeatedly until it succeeds"
+      },
+      {
+        "letter": "D",
+        "text": "Return a default list of best-selling products"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. Fallback is a fault-tolerance strategy in which the client uses an alternative when an API invocation fails. Options include calling an alternative API, returning a previously cached result, or returning a static default, such as a list of best-selling products.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Fallback is a fault-tolerance strategy in which the client uses an alternative when an API invocation fails. Options include calling an alternative API, returning a previously cached result, or returning a static default, such as a list of best-selling products.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "A static or default result keeps the page working when the API fails."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "Waiting indefinitely breaks the user experience."
       },
-      "C": {
+      "B": {
         "type": "Incorrect",
         "text": "The requirement is that the page still loads successfully."
       },
-      "D": {
+      "C": {
         "type": "Incorrect",
         "text": "Repeated calls delay the page and do not guarantee a response."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "A static or default result keeps the page working when the API fails."
       }
     },
     "references": {
@@ -16828,8 +14956,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-276",
-    "number": 276,
+    "id": "q-250",
+    "number": 250,
     "title": "API Quality Goals - Handling rate-limit responses",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16887,8 +15015,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-277",
-    "number": 277,
+    "id": "q-251",
+    "number": 251,
     "title": "API Quality Goals - Retries in a layered network",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16907,15 +15035,15 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Retries cancel each other out, so the backend receives fewer calls"
+        "text": "Retries multiply across layers and overload the backend"
       },
       {
         "letter": "D",
-        "text": "Retries multiply across layers and overload the backend"
+        "text": "Retries cancel each other out, so the backend receives fewer calls"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. Retries at every layer of an application network multiply: three retries at three layers can produce many times the original number of calls. Retries should be limited, spaced out, and coordinated with timeouts and circuit breakers so that clients do not overwhelm a recovering dependency.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Retries at every layer of an application network multiply: three retries at three layers can produce many times the original number of calls. Retries should be limited, spaced out, and coordinated with timeouts and circuit breakers so that clients do not overwhelm a recovering dependency.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -16926,12 +15054,12 @@ window.MCPA_QUESTIONS = [
         "text": "Mule runtime executes configured retries regardless of the cause."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Nested retries add calls; they do not cancel out."
-      },
-      "D": {
         "type": "Correct",
         "text": "Each layer's retries multiply the calls reaching the backend."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Nested retries add calls; they do not cancel out."
       }
     },
     "references": {
@@ -16946,8 +15074,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-278",
-    "number": 278,
+    "id": "q-252",
+    "number": 252,
     "title": "API Quality Goals - Choose two client-side strategies",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17016,8 +15144,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-279",
-    "number": 279,
+    "id": "q-253",
+    "number": 253,
     "title": "API Quality Goals - Alternative API as fallback",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17032,31 +15160,31 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Retry the primary carrier indefinitely until it responds"
+        "text": "Call the second carrier's API as a fallback"
       },
       {
         "letter": "C",
-        "text": "Call the second carrier's API as a fallback"
+        "text": "Retry the primary carrier indefinitely until it responds"
       },
       {
         "letter": "D",
         "text": "Return HTTP 503 and ask the client to retry tomorrow"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. One fallback option for fault-tolerant API invocations is to invoke an alternative API that provides an equivalent result. When the primary carrier's API fails, calling the second carrier's API gives the client a usable quote.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. One fallback option for fault-tolerant API invocations is to invoke an alternative API that provides an equivalent result. When the primary carrier's API fails, calling the second carrier's API gives the client a usable quote.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "Rates change, so year-old quotes are not an acceptable fallback."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Indefinite retries leave the client without a quote during an outage."
-      },
-      "C": {
         "type": "Correct",
         "text": "An alternative API provides an equivalent result when the primary invocation fails."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Indefinite retries leave the client without a quote during an outage."
       },
       "D": {
         "type": "Incorrect",
@@ -17075,8 +15203,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-280",
-    "number": 280,
+    "id": "q-254",
+    "number": 254,
     "title": "API Quality Goals - Protecting an API from sudden bursts",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17134,8 +15262,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-281",
-    "number": 281,
+    "id": "q-255",
+    "number": 255,
     "title": "API Quality Goals - Scaling a CPU-bound API",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17193,8 +15321,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-282",
-    "number": 282,
+    "id": "q-256",
+    "number": 256,
     "title": "API Quality Goals - Backend is the bottleneck",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17205,11 +15333,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "The database will automatically allow more concurrent connections"
+        "text": "Little or no improvement, and possibly more database contention"
       },
       {
         "letter": "B",
-        "text": "Little or no improvement, and possibly more database contention"
+        "text": "The database will automatically allow more concurrent connections"
       },
       {
         "letter": "C",
@@ -17220,16 +15348,16 @@ window.MCPA_QUESTIONS = [
         "text": "Throughput will triple because each worker handles the same load"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. Horizontal scaling of an API implementation helps only when the implementation itself is the bottleneck. If response time is dominated by a downstream system with limited capacity, adding instances does not improve response time or throughput and can increase contention on that system.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Horizontal scaling of an API implementation helps only when the implementation itself is the bottleneck. If response time is dominated by a downstream system with limited capacity, adding instances does not improve response time or throughput and can increase contention on that system.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Database limits are not changed by scaling the API."
-      },
-      "B": {
         "type": "Correct",
         "text": "The constraint is the database, which gains no capacity when API workers are added."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Database limits are not changed by scaling the API."
       },
       "C": {
         "type": "Incorrect",
@@ -17252,8 +15380,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-283",
-    "number": 283,
+    "id": "q-257",
+    "number": 257,
     "title": "API Quality Goals - Latency of a single request",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17264,11 +15392,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Extra workers won't speed up one unsaturated request"
+        "text": "Additional workers will reduce network latency to the client"
       },
       {
         "letter": "B",
-        "text": "Additional workers will reduce network latency to the client"
+        "text": "Extra workers won't speed up one unsaturated request"
       },
       {
         "letter": "C",
@@ -17279,16 +15407,16 @@ window.MCPA_QUESTIONS = [
         "text": "Each additional worker will reduce the request time proportionally"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. Horizontal scaling increases the number of requests that can be processed concurrently. It improves response times only when requests are waiting for capacity. Under light load, a single request's latency is determined by its processing steps and dependencies, so it must be optimized directly, for example by parallelizing work or caching.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Horizontal scaling increases the number of requests that can be processed concurrently. It improves response times only when requests are waiting for capacity. Under light load, a single request's latency is determined by its processing steps and dependencies, so it must be optimized directly, for example by parallelizing work or caching.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "With no queuing, each request's duration depends on its own processing path."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "The client's network latency is unaffected by the number of workers."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "With no queuing, each request's duration depends on its own processing path."
       },
       "C": {
         "type": "Incorrect",
@@ -17311,8 +15439,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-284",
-    "number": 284,
+    "id": "q-258",
+    "number": 258,
     "title": "API Quality Goals - Stateful in-memory sessions",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17370,8 +15498,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-285",
-    "number": 285,
+    "id": "q-259",
+    "number": 259,
     "title": "API Quality Goals - Choose two: when scaling out helps",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17440,8 +15568,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-286",
-    "number": 286,
+    "id": "q-260",
+    "number": 260,
     "title": "API Quality Goals - Primary-node-only workloads",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17456,35 +15584,35 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "No gain; only the primary node polls the files"
-      },
-      {
-        "letter": "C",
         "text": "Files will be processed three times faster"
       },
       {
-        "letter": "D",
+        "letter": "C",
         "text": "Polling will stop because clusters do not support FTP"
+      },
+      {
+        "letter": "D",
+        "text": "No gain; only the primary node polls the files"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. In a Mule cluster, some sources, such as file or FTP pollers, are configured to run only on the primary node to avoid duplicate processing. Adding nodes improves availability but not throughput for that work, unless the work is distributed, for example by publishing items to a queue that all nodes consume.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. In a Mule cluster, some sources, such as file or FTP pollers, are configured to run only on the primary node to avoid duplicate processing. Adding nodes improves availability but not throughput for that work, unless the work is distributed, for example by publishing items to a queue that all nodes consume.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "Primary-node-only polling prevents duplicate pickup, not duplicate processing gains."
       },
       "B": {
-        "type": "Correct",
-        "text": "Work that runs only on the primary node does not gain capacity from extra nodes."
-      },
-      "C": {
         "type": "Incorrect",
         "text": "The other nodes do not run the primary-node-only poller."
       },
-      "D": {
+      "C": {
         "type": "Incorrect",
         "text": "Clusters support FTP polling with primary-node configuration."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Work that runs only on the primary node does not gain capacity from extra nodes."
       }
     },
     "references": {
@@ -17499,8 +15627,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-287",
-    "number": 287,
+    "id": "q-261",
+    "number": 261,
     "title": "API Quality Goals - Autoscaling CloudHub 2.0",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17515,35 +15643,35 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Increase the replica size so that two replicas can always handle peaks"
+        "text": "Enable horizontal autoscaling for the application's replicas"
       },
       {
         "letter": "C",
-        "text": "Apply a Rate Limiting policy so peak traffic never exceeds two replicas"
+        "text": "Increase the replica size so that two replicas can always handle peaks"
       },
       {
         "letter": "D",
-        "text": "Enable horizontal autoscaling for the application's replicas"
+        "text": "Apply a Rate Limiting policy so peak traffic never exceeds two replicas"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. CloudHub 2.0 supports horizontal autoscaling, which adjusts the number of replicas of an application based on resource usage within configured minimum and maximum values. This lets stateless APIs follow unpredictable demand without paying for peak capacity at all times.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. CloudHub 2.0 supports horizontal autoscaling, which adjusts the number of replicas of an application based on resource usage within configured minimum and maximum values. This lets stateless APIs follow unpredictable demand without paying for peak capacity at all times.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "This works but wastes capacity outside peaks."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Larger replicas may still be insufficient and are wasted between peaks."
+        "type": "Correct",
+        "text": "Autoscaling adds and removes replicas based on load within configured limits."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Rejecting peak traffic does not meet the goal of serving demand."
+        "text": "Larger replicas may still be insufficient and are wasted between peaks."
       },
       "D": {
-        "type": "Correct",
-        "text": "Autoscaling adds and removes replicas based on load within configured limits."
+        "type": "Incorrect",
+        "text": "Rejecting peak traffic does not meet the goal of serving demand."
       }
     },
     "references": {
@@ -17558,8 +15686,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-288",
-    "number": 288,
+    "id": "q-262",
+    "number": 262,
     "title": "API Quality Goals - Vertical versus horizontal scaling",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17570,11 +15698,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Horizontal scaling to more workers of the same size"
+        "text": "Vertical scaling to a larger worker size"
       },
       {
         "letter": "B",
-        "text": "Vertical scaling to a larger worker size"
+        "text": "Horizontal scaling to more workers of the same size"
       },
       {
         "letter": "C",
@@ -17585,16 +15713,16 @@ window.MCPA_QUESTIONS = [
         "text": "Enabling the HTTP Caching policy"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. Horizontal scaling increases concurrent capacity but leaves the resources available to a single request unchanged. When individual requests need more memory or CPU than one instance provides, vertical scaling to a larger worker or replica size is required.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Horizontal scaling increases concurrent capacity but leaves the resources available to a single request unchanged. When individual requests need more memory or CPU than one instance provides, vertical scaling to a larger worker or replica size is required.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Each request still runs on one worker with the same memory limit."
-      },
-      "B": {
         "type": "Correct",
         "text": "More memory per worker lets each large request be processed."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Each request still runs on one worker with the same memory limit."
       },
       "C": {
         "type": "Incorrect",
@@ -17617,8 +15745,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-289",
-    "number": 289,
+    "id": "q-263",
+    "number": 263,
     "title": "API Quality Goals - Scaling and SLA-limited consumers",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17676,8 +15804,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-290",
-    "number": 290,
+    "id": "q-264",
+    "number": 264,
     "title": "API Quality Goals - Which layer to scale",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17688,35 +15816,35 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Scale out the Inventory System API"
-      },
-      {
-        "letter": "B",
         "text": "Scale out the Order Process API"
       },
       {
-        "letter": "C",
+        "letter": "B",
         "text": "Scale both APIs vertically to the largest worker size"
+      },
+      {
+        "letter": "C",
+        "text": "Scale out the Inventory System API"
       },
       {
         "letter": "D",
         "text": "Apply a Spike Control policy to the Order Process API"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. Horizontal scaling improves throughput only when applied to the component that limits it. Here the Inventory System API is CPU-saturated while its backend has spare capacity, so adding System API workers removes the bottleneck. Scaling the idle Process API would not help and would increase pressure on the saturated System API.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Horizontal scaling improves throughput only when applied to the component that limits it. Here the Inventory System API is CPU-saturated while its backend has spare capacity, so adding System API workers removes the bottleneck. Scaling the idle Process API would not help and would increase pressure on the saturated System API.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "The saturated System API is the bottleneck, so adding its workers adds capacity where it is needed."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "The Process API is mostly idle and waiting; more instances would only send more requests to the saturated System API."
       },
-      "C": {
+      "B": {
         "type": "Incorrect",
         "text": "Larger Process API workers waste money, and vertical scaling alone is not the targeted fix for a stateless, CPU-bound System API."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "The saturated System API is the bottleneck, so adding its workers adds capacity where it is needed."
       },
       "D": {
         "type": "Incorrect",
@@ -17735,8 +15863,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-291",
-    "number": 291,
+    "id": "q-265",
+    "number": 265,
     "title": "Monitoring Analyzing - Which Anypoint Platform feature provides a realtime",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -17797,8 +15925,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-292",
-    "number": 292,
+    "id": "q-266",
+    "number": 266,
     "title": "Monitoring Analyzing - Which Anypoint capability stores Mule application logs",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -17860,8 +15988,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-293",
-    "number": 293,
+    "id": "q-267",
+    "number": 267,
     "title": "Monitoring Analyzing - Which Anypoint Monitoring artifact lets architects build",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -17922,8 +16050,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-294",
-    "number": 294,
+    "id": "q-268",
+    "number": 268,
     "title": "Monitoring Analyzing - Which capability is provided by Anypoint Visualizer",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -17985,8 +16113,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-295",
-    "number": 295,
+    "id": "q-269",
+    "number": 269,
     "title": "Monitoring Analyzing - Which feature provides automatic notification when CloudHub",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18047,8 +16175,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-296",
-    "number": 296,
+    "id": "q-270",
+    "number": 270,
     "title": "Monitoring Analyzing - Which Anypoint feature is most useful for",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18109,8 +16237,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-297",
-    "number": 297,
+    "id": "q-271",
+    "number": 271,
     "title": "Monitoring Analyzing - Which feature in CloudHub measures and exposes",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18171,8 +16299,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-298",
-    "number": 298,
+    "id": "q-272",
+    "number": 272,
     "title": "Monitoring Analyzing - Which is the recommended way to expose",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18234,8 +16362,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-299",
-    "number": 299,
+    "id": "q-273",
+    "number": 273,
     "title": "API Monitoring - A logistics company needs to track API latency and usage across",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18312,8 +16440,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-300",
-    "number": 300,
+    "id": "q-274",
+    "number": 274,
     "title": "Monitoring - A manufacturing company wants real‑time visibility into",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18390,8 +16518,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-301",
-    "number": 301,
+    "id": "q-275",
+    "number": 275,
     "title": "API Monitoring - A logistics company with a 99.9% SLA requirement and a limited mo",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18471,8 +16599,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-302",
-    "number": 302,
+    "id": "q-276",
+    "number": 276,
     "title": "Monitoring - A regional healthcare provider handling protected patient data ne",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18549,8 +16677,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-303",
-    "number": 303,
+    "id": "q-277",
+    "number": 277,
     "title": "Logging Configuration - A logistics startup with a small Dev Ops crew discovers that erro",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18627,8 +16755,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-304",
-    "number": 304,
+    "id": "q-278",
+    "number": 278,
     "title": "Monitoring Deployment - A federal government agency is required to store all monitoring d",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18692,8 +16820,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-305",
-    "number": 305,
+    "id": "q-279",
+    "number": 279,
     "title": "Monitoring - A manufacturing plant’s ERP integration shows intermittent latenc",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18770,8 +16898,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-306",
-    "number": 306,
+    "id": "q-280",
+    "number": 280,
     "title": "API Monitoring - A fintech startup wants to set up real‑time alerts for API SLA br",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18848,8 +16976,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-307",
-    "number": 307,
+    "id": "q-281",
+    "number": 281,
     "title": "API Analytics - A large retail enterprise is rolling out API analytics across its",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18916,8 +17044,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-308",
-    "number": 308,
+    "id": "q-282",
+    "number": 282,
     "title": "Observability - A healthcare integration team must configure logging to retain au",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18985,8 +17113,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-309",
-    "number": 309,
+    "id": "q-283",
+    "number": 283,
     "title": "Audit Logging - A regional healthcare provider operates a patient‑record API that",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19050,8 +17178,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-310",
-    "number": 310,
+    "id": "q-284",
+    "number": 284,
     "title": "Logging and Monitoring - A large retail chain’s order‑processing flow has started returnin",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19128,8 +17256,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-311",
-    "number": 311,
+    "id": "q-285",
+    "number": 285,
     "title": "API Analytics - A federal agency is deploying a citizen-service portal on Anypoin",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19193,8 +17321,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "E"
   },
   {
-    "id": "q-312",
-    "number": 312,
+    "id": "q-286",
+    "number": 286,
     "title": "Performance Monitoring - A manufacturing company's ERP integration is experiencing latency",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19271,8 +17399,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-313",
-    "number": 313,
+    "id": "q-287",
+    "number": 287,
     "title": "API Monitoring & Governance - A hospital network runs dozens of APIs for patient data exchange ",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19340,8 +17468,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-314",
-    "number": 314,
+    "id": "q-288",
+    "number": 288,
     "title": "API Monitoring - A national retail chain wants real-time visibility into API usage",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19418,8 +17546,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-315",
-    "number": 315,
+    "id": "q-289",
+    "number": 289,
     "title": "Monitoring and Observability - Visualizer topology and policy troubleshooting",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19481,8 +17609,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-316",
-    "number": 316,
+    "id": "q-290",
+    "number": 290,
     "title": "Monitoring and Observability - CloudHub worker CPU alert",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19544,8 +17672,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-317",
-    "number": 317,
+    "id": "q-291",
+    "number": 291,
     "title": "Monitoring and Observability - External compliant application logging",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19607,8 +17735,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-318",
-    "number": 318,
+    "id": "q-292",
+    "number": 292,
     "title": "Monitoring and Observability - Scheduled external API tests",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19670,8 +17798,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-319",
-    "number": 319,
+    "id": "q-293",
+    "number": 293,
     "title": "Monitoring and Observability - Assigning Visualizer architecture layers",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19733,8 +17861,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-320",
-    "number": 320,
+    "id": "q-294",
+    "number": 294,
     "title": "Monitoring and Observability - Alerting on API client quota violations",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19796,8 +17924,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-321",
-    "number": 321,
+    "id": "q-295",
+    "number": 295,
     "title": "Monitoring and Observability - Geographic functional testing",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19859,8 +17987,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-322",
-    "number": 322,
+    "id": "q-296",
+    "number": 296,
     "title": "Monitoring and Observability - Custom business-logic notifications",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19922,8 +18050,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-323",
-    "number": 323,
+    "id": "q-297",
+    "number": 297,
     "title": "Monitoring and Observability - Long-term CloudHub log retention",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19985,8 +18113,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-324",
-    "number": 324,
+    "id": "q-298",
+    "number": 298,
     "title": "Monitoring and Observability - Cross-application metrics dashboard",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20048,8 +18176,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-325",
-    "number": 325,
+    "id": "q-299",
+    "number": 299,
     "title": "Monitoring and Observability - Environment visibility in Visualizer",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20111,8 +18239,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-326",
-    "number": 326,
+    "id": "q-300",
+    "number": 300,
     "title": "Monitoring and Observability - BDD API tests in CI/CD",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20175,8 +18303,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-327",
-    "number": 327,
+    "id": "q-301",
+    "number": 301,
     "title": "Monitoring and Observability - Troubleshooting cascading API failures",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20238,8 +18366,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-328",
-    "number": 328,
+    "id": "q-302",
+    "number": 302,
     "title": "Monitoring and Observability - Monitoring customer-hosted runtimes",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20301,8 +18429,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-329",
-    "number": 329,
+    "id": "q-303",
+    "number": 303,
     "title": "Monitoring and Observability - Tracking application deletion",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20364,8 +18492,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-330",
-    "number": 330,
+    "id": "q-304",
+    "number": 304,
     "title": "Monitoring and Observability - Supported Runtime Manager alert conditions",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20427,8 +18555,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-331",
-    "number": 331,
+    "id": "q-305",
+    "number": 305,
     "title": "Monitoring and Observability - Dynamic request logging without redeployment",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20490,8 +18618,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-332",
-    "number": 332,
+    "id": "q-306",
+    "number": 306,
     "title": "Monitoring and Observability - Runtime Fabric cluster log forwarding",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20553,8 +18681,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-333",
-    "number": 333,
+    "id": "q-307",
+    "number": 307,
     "title": "Monitoring and Observability - Diagnosing HTTP 429 responses",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20616,8 +18744,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-334",
-    "number": 334,
+    "id": "q-308",
+    "number": 308,
     "title": "Monitoring and Observability - Custom Visualizer labels",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20679,8 +18807,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-335",
-    "number": 335,
+    "id": "q-309",
+    "number": 309,
     "title": "Monitoring and Observability - Titanium log search capability",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20742,8 +18870,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-336",
-    "number": 336,
+    "id": "q-310",
+    "number": 310,
     "title": "Monitoring and Observability - CloudHub worker unresponsiveness",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20805,8 +18933,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-337",
-    "number": 337,
+    "id": "q-311",
+    "number": 311,
     "title": "Monitoring and Observability - Visualizer error indicator",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20855,8 +18983,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-338",
-    "number": 338,
+    "id": "q-312",
+    "number": 312,
     "title": "Monitoring and Observability - Registering an implementation with API Manager",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20918,8 +19046,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-339",
-    "number": 339,
+    "id": "q-313",
+    "number": 313,
     "title": "Monitoring and Observability - Configuring the Visualizer node display name",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20981,8 +19109,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-340",
-    "number": 340,
+    "id": "q-314",
+    "number": 314,
     "title": "Monitoring and Observability - Visualizer policy compliance indicator",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21044,8 +19172,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-341",
-    "number": 341,
+    "id": "q-315",
+    "number": 315,
     "title": "Monitoring and Observability - Visualizer tags set via application properties",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21107,8 +19235,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-342",
-    "number": 342,
+    "id": "q-316",
+    "number": 316,
     "title": "Monitoring and Observability - Visualizer edges based on recent traffic",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21170,8 +19298,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-343",
-    "number": 343,
+    "id": "q-317",
+    "number": 317,
     "title": "Monitoring and Observability - Visualizer Editor permission for defined views",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
