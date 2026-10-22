@@ -19051,5 +19051,310 @@ window.MCPA_QUESTIONS = [
       }
     },
     "correctAnswer": "C"
+  },
+  {
+    "id": "q-318",
+    "number": 318,
+    "title": "Deployment Options - Refer to the exhibit.",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "Deployment Options"
+    ],
+    "prompt": "Refer to the exhibit.\nA customer is running Mule applications on Runtime Fabric for Self-Managed Kubernetes (RTF-BYOK8) in a multi-cloud environment. Based on this configuration, how do Agents and Runtime Manager communicate, and what is exchanged between them?",
+    "image": "images/q229.svg",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Agents communicate with Runtime Manager to provide updates on cluster status, download images, and update Mule applications (automatically when available) from the container registry"
+      },
+      {
+        "letter": "B",
+        "text": "Agents communicate with Runtime Manager to provide updates on cluster status, download images, and update Mule applications (when available and chosen to do so by customer) from the container registry"
+      },
+      {
+        "letter": "C",
+        "text": "Runtime Manager initiates traffic to Agents to check the status of clusters and auto-deploys new images when updates to Mule applications are available"
+      },
+      {
+        "letter": "D",
+        "text": "Runtime Manager communicates with Agents to provide updates on cluster status, download images, and update Mule applications (when available and chosen to do so by customer) from the container registry"
+      }
+    ],
+    "explanation": "Correct answer: B. Runtime Fabric agents initiate the outbound connection to Runtime Manager over an mTLS tunnel and send cluster and application status updates. Runtime Manager does not push updates to agents: images and Mule application updates are pulled from the container registry only when the customer chooses, not automatically.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Says updates happen automatically when available, but all newer image pulls are triggered by the customer only."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Agents initiate communication to Runtime Manager, and image and Mule application updates happen only when the customer chooses."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Says Runtime Manager initiates traffic to the Agents, but the Runtime Fabric agent initiates and controls the mTLS tunnel."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Reverses the direction: it says Runtime Manager provides the updates to the Agents, but agents communicate outward to Runtime Manager."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Runtime Fabric Security Architecture — Management Flow: \"Runtime Fabric agent initiates and control the tunnel.\"",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/security-architecture#management-flow"
+      },
+      "secondary": {
+        "title": "Runtime Fabric Overview — Runtime Fabric Core Services: \"The Runtime Fabric agent is deployed as a pod in the cluster and communicates with the control plane via an mTLS outbound connection established at startup.\"",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/#runtime-fabric-core-services"
+      }
+    },
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q-319",
+    "number": 319,
+    "title": "Performance - Refer to the exhibit.",
+    "domain": "Meeting API quality goals",
+    "topics": [
+      "Performance"
+    ],
+    "prompt": "Refer to the exhibit.\nA manufacturing company is developing a new set of APIs for its retail business. One of the APIs is a Master Look Up API, which is a System API. The API uses a persistent object-store. This API will be used by almost all other APIs to provide master lookup data. The Master Look Up API is deployed on two CloudHub workers of 0.1 vCore each because there is a lot of master data to be cached. Most of the master lookup data is stored as a key-value pair. The cache gets refreshed if the key is not found in the cache. During performance testing, it was determined that the Master Look Up API has a high response time due to the latency of database queries executed to fetch the master lookup data. What two methods can be used to resolve these performance issues? (Choose two.)",
+    "image": "images/q238.svg",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Implement the HTTP caching policy for all GET endpoints for the Master Look Up API"
+      },
+      {
+        "letter": "B",
+        "text": "Add an additional CloudHub worker of 0.1 vCore to provide additional capacity"
+      },
+      {
+        "letter": "C",
+        "text": "Implement locking to synchronize access to the Object Store"
+      },
+      {
+        "letter": "D",
+        "text": "Upgrade the vCore size from 0.1 vCore to 0.2 vCore"
+      }
+    ],
+    "explanation": "Correct answers: A and D. The Master Look Up API is slow because each cache miss triggers a database query to refresh the cache, and the latency of those queries dominates the response time. Two independent levers address this. First, the HTTP Caching policy (A) caches HTTP responses for reuse: according to MuleSoft, \"Caching these responses speeds up the response time for user requests and reduces the load on the backend,\" and on a cache hit \"the stored response is returned\" without calling the backend, so repeated master-data lookups are served from the cache and the database is not queried at all. Second, the API is deployed on 0.1 vCore CloudHub workers, which \"provide limited CPU and I/O for apps with smaller workloads\" and \"can burst to higher CPU speeds for a short time\" rather than delivering consistent performance. Upgrading each worker to 0.2 vCore (D) raises worker memory from 1 GB to 2 GB and heap memory from 500 MB to 1 GB, giving the API more resources to serve the cached lookups. Option B (adding another 0.1 vCore worker) does not help: although CloudHub's HTTP load balancing service distributes requests across workers on a round-robin basis, each request is still served by a single 0.1 vCore worker with the same limited CPU and I/O, so extra workers add capacity rather than reduce the per-request latency caused by the database queries. Option C (locking) is wrong because Object Stores \"do not support transactional access or modification,\" and locking to synchronize access to the Object Store would serialize the cache and tend to increase, not decrease, response time.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "The HTTP Caching policy caches HTTP responses for reuse, which \"speeds up the response time for user requests and reduces the load on the backend.\" On a cache hit the stored response is returned without reaching the backend, so the database queries responsible for the latency are avoided for repeated lookups."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Adding another 0.1 vCore worker scales the application horizontally — CloudHub's HTTP load balancing service distributes requests across workers on a round-robin basis — but each request is still served by a single 0.1 vCore worker with the same limited CPU and I/O. More workers add capacity, not lower per-request latency, so the database-query delay remains."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Object Stores do not support transactional access or modification, and locking to synchronize access to the Object Store serializes cache access. It does not reduce the database-query latency that causes the slow responses and can make contention worse."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "0.1 vCore workers provide limited CPU and I/O and can only burst to higher CPU speeds for short periods. Upgrading to 0.2 vCore doubles worker memory from 1 GB to 2 GB and heap memory from 500 MB to 1 GB, giving the API more resources to serve the cached lookups."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "HTTP Caching Policy — Summary (speeds up response time and reduces backend load)",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-http-caching#summary"
+      },
+      "secondary": {
+        "title": "CloudHub Architecture — CloudHub Workers (vCore, memory, and heap sizes)",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#cloudhub-workers"
+      }
+    },
+    "correctAnswers": [
+      "A",
+      "D"
+    ]
+  },
+  {
+    "id": "q-320",
+    "number": 320,
+    "title": "Api Policies - Refer to the exhibit. Choosing the better gateway deployment",
+    "domain": "Governing web APIs on Anypoint Platform",
+    "topics": [
+      "Flex Gateway",
+      "Mule Gateway",
+      "API Management"
+    ],
+    "prompt": "Refer to the exhibit.\nAn architect is comparing two ways to govern the same set of APIs: (A) embed governance in the Mule runtime with Mule Gateway, or (B) front the APIs with a dedicated Flex Gateway instance. Based on the exhibit and MuleSoft guidance, which alternative is the better choice for an organization that must protect both Mule and non-Mule APIs in Kubernetes and on-premises, with high availability and high performance?",
+    "image": "images/q269.svg",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Alternative A, because embedding governance in the Mule runtime is the recommended choice for high-availability, high-performance non-Mule APIs running anywhere."
+      },
+      {
+        "letter": "B",
+        "text": "Alternative B, because Flex Gateway is an Envoy-based gateway that MuleSoft recommends for high-availability and high-performance Mule and non-Mule applications."
+      },
+      {
+        "letter": "C",
+        "text": "Alternative A, because non-Mule APIs must be rewritten as Mule applications before policies can be applied."
+      },
+      {
+        "letter": "D",
+        "text": "Neither; API governance rulesets are the only way to protect non-Mule APIs."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Mule Gateway is embedded in the Mule runtime engine and applies governance capabilities to Mule APIs; MuleSoft recommends it for Mule applications on CloudHub that do not require managing and maintaining underlying infrastructure. Note that Mule Gateway can also protect a non-Mule backend: because it runs as a Mule proxy application, you can configure Mule in Runtime Manager as a CloudHub proxy application protecting multiple backends, so a non-Mule backend does not have to be rewritten. Flex Gateway (Omni Gateway) is an Envoy-based, ultrafast lightweight API gateway designed to manage and secure APIs running anywhere, and MuleSoft recommends it for high-availability and high-performance Mule and non-Mule applications. Because the stated requirement emphasizes high availability and high performance across Mule and non-Mule APIs deployed in Kubernetes and on-premises, Flex Gateway is the better alternative.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Mule Gateway can protect a non-Mule backend through a Mule-hosted proxy application, but it is embedded in the Mule runtime and does not match the stated high-availability/high-performance requirement across Kubernetes and on-premises as well as Flex Gateway."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Flex Gateway is the recommended Envoy-based gateway for high-availability and high-performance Mule and non-Mule APIs anywhere."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Non-Mule APIs do not need to be rewritten: Flex Gateway can protect them directly, and Mule Gateway can protect them through a Mule proxy application."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "API Governance checks conformance to rulesets and is not a runtime policy enforcement gateway."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Anypoint Platform Gateways Overview — Gateway Selection Guidance",
+        "url": "https://docs.mulesoft.com/gateway-home"
+      },
+      "secondary": {
+        "title": "Omni Gateway (formerly Flex Gateway) Overview",
+        "url": "https://docs.mulesoft.com/gateway/latest"
+      }
+    }
+  },
+  {
+    "id": "q-321",
+    "number": 321,
+    "title": "Api Policies - Refer to the exhibit. OAuth 2.0 token validation with an external provider",
+    "domain": "Governing web APIs on Anypoint Platform",
+    "topics": [
+      "Oauth2 Policy",
+      "API Security",
+      "Jwt Validation"
+    ],
+    "prompt": "Refer to the exhibit.\nAn organization's API portal registers client applications dynamically with an external OpenID Connect identity provider. Based on the exhibit, which policy should be applied to the API gateway so that only requests presenting a valid OAuth 2.0 access token issued to a registered client application are accepted?",
+    "image": "images/q270.svg",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The OpenID Connect OAuth 2.0 Token Enforcement policy"
+      },
+      {
+        "letter": "B",
+        "text": "The OAuth 2.0 Access Token Enforcement Using Mule OAuth Provider policy"
+      },
+      {
+        "letter": "C",
+        "text": "The IP Allowlist policy"
+      },
+      {
+        "letter": "D",
+        "text": "The JSON Threat Protection policy"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "The OpenID Connect OAuth 2.0 Token Enforcement policy restricts access to a protected resource to only those HTTP requests that provide a valid OAuth 2 token belonging to a client application with API access. It is available only to an organization configured to use the OpenID Connect dynamic client registration as a client-management solution. The policy extracts the token, sends it to the validation endpoint, receives token metadata including the client ID, and then verifies against a local database updated with contracts obtained from Anypoint Platform that the client ID has access to the API. The Mule OAuth Provider variant validates tokens issued by the Mule OAuth provider instead of an external IdP.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "This policy validates OAuth 2.0 tokens for organizations using OpenID Connect dynamic client registration with an external IdP."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "The Mule OAuth Provider policy validates tokens from the Mule OAuth provider, not an external OIDC IdP."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "IP Allowlist filters by source IP address, not by OAuth 2.0 token validity."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "JSON Threat Protection guards against malicious JSON payloads, not token validation."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "OpenID Connect OAuth 2.0 Token Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-openid-token-enforcement"
+      },
+      "secondary": {
+        "title": "Configuring OpenID Connect Client Management in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/configure-client-management-openid-task"
+      }
+    }
+  },
+  {
+    "id": "q-322",
+    "number": 322,
+    "title": "Api Policies - Refer to the exhibit. CloudHub 2.0 private space ingress with TLS",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+      "CloudHub 2.0",
+      "Private Spaces",
+      "SSL/TLS",
+      "DNS"
+    ],
+    "prompt": "Refer to the exhibit.\nA company deploys an API to a CloudHub 2.0 private space and wants external clients to reach it at the custom domain api.company.com over HTTPS. Based on the exhibit, which alternative correctly describes how this is achieved?",
+    "image": "images/q271.svg",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Create a Dedicated Load Balancer in the private space and upload the certificate to it."
+      },
+      {
+        "letter": "B",
+        "text": "Create a TLS context on the private space with the company certificate, add api.company.com as an external endpoint in the app's Ingress settings, and point a DNS CNAME at the private space's public DNS target."
+      },
+      {
+        "letter": "C",
+        "text": "Remove the default cloudhub.io TLS context and rely only on the custom certificate."
+      },
+      {
+        "letter": "D",
+        "text": "Deploy the API to a shared space, because private spaces do not support custom domains."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "CloudHub 2.0 uses TLS contexts to encrypt inbound traffic to the private space, and TLS contexts enable your apps to be reached at custom domains. Each private space includes one default TLS context for cloudhub.io that cannot be removed, and you can create additional TLS contexts with your own keystore. CloudHub 2.0 parses the CN and SAN lists from the certificate and makes those domains available when deploying applications. A TLS context and a CNAME alone are not sufficient to route the hostname: you must also configure api.company.com as an external endpoint in the app's Ingress settings (the administrator sets up the TLS context first, then the endpoint is selected from the Domain drop-down on the Ingress tab), and the CNAME must point at the private space's public DNS target. There is no DLB to create for a private space.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "CloudHub 2.0 private spaces use a managed ingress load balancer, not a customer-created DLB."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "A private space TLS context plus an external endpoint for the domain in the app's Ingress settings plus a DNS CNAME to the private space's public DNS target maps the custom domain to the app over HTTPS."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "The default cloudhub.io TLS context cannot be removed."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Custom domains are supported only on private spaces, not shared spaces."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "Configuring Domains and Certificates (TLS Context) for a Private Space",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ps-config-domains"
+      },
+      "secondary": {
+        "title": "CloudHub 2.0 Networking Architecture — Custom Certificates and CNAME",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-networking-guide"
+      }
+    }
   }
 ]
