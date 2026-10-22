@@ -3066,1416 +3066,1777 @@ window.MCPA_QUESTIONS = [
   {
     "id": "q-052",
     "number": 52,
-    "title": "Designing Sharing Apis - Which Anypoint Platform component is used to",
+    "title": "Designing and Sharing APIs - What clients depend on",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "Raml Oas Design"
+      "API Specification",
+      "Dependencies"
     ],
-    "prompt": "Which Anypoint Platform component is used to design and document API specifications using RAML or OAS?",
+    "prompt": "A team rewrites a Customer API implementation from a legacy Mule 3 application to a Mule 4 application. The RAML specification is unchanged. Which consumers must be changed?",
     "options": [
       {
         "letter": "A",
-        "text": "Runtime Manager"
+        "text": "All clients, because each client is compiled against the implementation"
       },
       {
         "letter": "B",
-        "text": "API Manager"
+        "text": "Only clients written in Java, because Mule 4 uses a different Java version"
       },
       {
         "letter": "C",
-        "text": "Design Center"
+        "text": "Only clients that use the API from Exchange rather than from the gateway"
       },
       {
         "letter": "D",
-        "text": "Anypoint MQ"
+        "text": "None; clients depend on the specification, not the implementation"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Design Center is the web-based tool for designing API specifications (RAML or OAS) and prototyping/mocking APIs before implementation. Runtime Manager deploys/manages running apps; API Manager applies governance policies; Anypoint MQ is messaging.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. API clients depend on the API interface, as defined in its specification, rather than on its implementation. If the implementation is replaced while the specification and behavior stay the same, clients need no changes.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Runtime Manager handles deployment, scaling, and operational management of running Mule apps."
+        "text": "Clients call the published interface; they are not bound to how it is implemented."
       },
       "B": {
         "type": "Incorrect",
-        "text": "API Manager governs APIs after they exist (policies, contracts, SLA tiers)."
+        "text": "Clients communicate over HTTP and are independent of the implementation's language."
       },
       "C": {
-        "type": "Correct",
-        "text": "Design Center"
+        "type": "Incorrect",
+        "text": "Discovery channel does not create a dependency on the implementation."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Anypoint MQ is a managed message broker, not a design tool."
+        "type": "Correct",
+        "text": "The contract is unchanged, so clients are unaffected by the new implementation."
       }
     },
     "references": {
       "primary": {
-        "title": "Design Center — Designing and Documenting API Specifications (RAML & OAS)",
-        "url": "https://docs.mulesoft.com/design-center/#prerequisites-for-using-design-center"
+        "title": "API Manager — Managing Versions and Instances",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
       },
       "architectureGuide": {
-        "title": "APIkit Overview — Specification-Driven Implementation",
-        "url": "https://docs.mulesoft.com/apikit/latest/#features"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "APIkit Overview",
+        "url": "https://docs.mulesoft.com/apikit/latest/"
       }
     }
   },
   {
     "id": "q-053",
     "number": 53,
-    "title": "Designing Sharing Apis - Which Anypoint Platform component is the marketplace",
+    "title": "Designing and Sharing APIs - Implementation generated from the specification",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "Exchange Asset Management"
+      "API Specification",
+      "APIkit"
     ],
-    "prompt": "Which Anypoint Platform component is the marketplace for discovering, sharing, and reusing APIs, fragments, connectors, and other assets?",
+    "prompt": "A developer scaffolds a Mule application from a RAML specification using APIkit. Later, a new resource is added to the specification. What does this imply about the dependency between the specification and the implementation?",
     "options": [
       {
         "letter": "A",
-        "text": "Exchange"
+        "text": "The implementation depends on the spec and must add the new resource"
       },
       {
         "letter": "B",
-        "text": "Visualizer"
+        "text": "Clients must be updated before the implementation can add the resource"
       },
       {
         "letter": "C",
-        "text": "Design Center"
+        "text": "The specification depends on the implementation and is regenerated from the Mule flows"
       },
       {
         "letter": "D",
-        "text": "API Manager"
+        "text": "There is no dependency, so the new resource is automatically implemented at runtime"
       }
     ],
     "correctAnswer": "A",
-    "explanation": "Exchange is the asset catalog where API specs, fragments, connectors, examples, and templates are published for discovery and reuse. It is the publication target from Design Center and the discovery surface for other developers.",
+    "explanation": "Correct answer: A. With a design-first approach, the API specification is the contract and the implementation depends on it. APIkit generates a router and flows from the specification and validates requests against it, so specification changes require corresponding implementation changes.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Exchange"
+        "text": "APIkit routes and flows are generated from the specification, so it drives the implementation."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Visualizer renders the live application network graph from API Manager and Runtime Manager data."
+        "text": "Adding a resource is backward compatible, and the implementation is updated first."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Design Center is for authoring specs, not cataloging them."
+        "text": "With APIkit the specification is the source of the implementation, not the reverse."
       },
       "D": {
         "type": "Incorrect",
-        "text": "API Manager governs runtime behavior of managed APIs."
+        "text": "New resources need implementation logic; nothing is implemented automatically."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — Marketplace for Discovering, Sharing, and Reusing Assets",
-        "url": "https://docs.mulesoft.com/exchange/#view-assets-by-business-group"
+        "title": "APIkit Overview",
+        "url": "https://docs.mulesoft.com/apikit/latest/"
       },
       "architectureGuide": {
-        "title": "Publishing API Specifications & Fragments to Exchange",
-        "url": "https://docs.mulesoft.com/access-management/business-groups#business-group-hierarchy"
-      },
-      "arc720": {
-        "lesson": "Lesson 5 — API identification, publication, and reuse",
-        "anchor": "ARC720-Course-Content.md#5-api-identification-publication-and-reuse"
+        "title": "Design Center — Publishing API Specifications",
+        "url": "https://docs.mulesoft.com/design-center/design-publish"
       }
     }
   },
   {
     "id": "q-054",
     "number": 54,
-    "title": "Designing Sharing Apis - Which approach is recommended for sharing common",
+    "title": "Designing and Sharing APIs - Linking a running app to its API instance",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "Raml Oas Design",
-      "Exchange Asset Management"
+      "API Autodiscovery",
+      "API Manager"
     ],
-    "prompt": "Which approach is recommended for sharing common API design elements like security schemes, data types, and traits across many APIs?",
+    "prompt": "A Mule application implementing an API is deployed, but the policies configured for the API instance in API Manager are not being enforced. What links the deployed implementation to the API instance?",
     "options": [
       {
         "letter": "A",
-        "text": "Copy the snippets between RAML files"
+        "text": "Deploying the application with the same name as the Exchange asset"
       },
       {
         "letter": "B",
-        "text": "Publish reusable RAML fragments to Exchange and reference them"
+        "text": "API Autodiscovery configured with the API instance ID"
       },
       {
         "letter": "C",
-        "text": "Embed them in the Mule application code"
+        "text": "Adding the API instance URL to the client application's configuration"
       },
       {
         "letter": "D",
-        "text": "Regenerate them per API at deployment"
+        "text": "Publishing the API specification to Exchange with the same name"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Reusable RAML fragments (data types, security schemes, traits, libraries) should be published to Exchange and referenced by APIs. This guarantees consistency, allows versioning, and avoids drift between APIs.",
+    "explanation": "Correct answer: B. API Manager manages an API instance, typically created from an Exchange asset. A Mule application implementing that API uses API Autodiscovery, configured with the API instance ID, so the runtime connects to API Manager, downloads the policies, and enforces them.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Copy/paste guarantees drift and breaks reuse."
+        "text": "Names alone do not establish the link; autodiscovery is required."
       },
       "B": {
         "type": "Correct",
-        "text": "Publish reusable RAML fragments to Exchange and reference them"
+        "text": "Autodiscovery pairs the application with its API instance so policies can be applied."
       },
       "C": {
         "type": "Incorrect",
-        "text": "API design lives in the spec, not in implementation code."
+        "text": "Clients do not create the link between implementation and API instance."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Regeneration creates inconsistency and undermines governance."
+        "text": "Exchange publication does not link a running application to API Manager."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — Publishing Reusable RAML Fragments, Types, and Libraries",
-        "url": "https://docs.mulesoft.com/exchange/#view-assets-by-business-group"
+        "title": "API Autodiscovery",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
       },
       "architectureGuide": {
-        "title": "Design Center — Reusable API Fragments and Libraries",
-        "url": "https://docs.mulesoft.com/design-center/#prerequisites-for-using-design-center"
-      },
-      "arc720": {
-        "lesson": "Lesson 5 — API identification, publication, and reuse",
-        "anchor": "ARC720-Course-Content.md#5-api-identification-publication-and-reuse"
+        "title": "API Manager — Managing Versions and Instances",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
       }
     }
   },
   {
     "id": "q-055",
     "number": 55,
-    "title": "Designing Sharing Apis - What is the recommended order of major",
+    "title": "Designing and Sharing APIs - Parallel development with a mock",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "Api Lifecycle"
+      "API Specification",
+      "Mocking Service"
     ],
-    "prompt": "What is the recommended order of major activities in the API lifecycle described by MuleSoft?",
+    "prompt": "A mobile team must start building an app before the Order API is implemented. The API specification has been agreed. How can the mobile team proceed without depending on the implementation?",
     "options": [
       {
         "letter": "A",
-        "text": "Implement, Design, Manage, Retire"
+        "text": "Wait until the implementation is deployed to a sandbox environment"
       },
       {
         "letter": "B",
-        "text": "Design, Implement, Deploy, Manage, Retire"
+        "text": "Connect the app directly to the backend database for now"
       },
       {
         "letter": "C",
-        "text": "Deploy, Design, Implement, Manage, Retire"
+        "text": "Build against the mock generated from the specification"
       },
       {
         "letter": "D",
-        "text": "Manage, Design, Implement, Deploy"
+        "text": "Copy the implementation team's source code into the mobile project"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "MuleSoft promotes a design-first lifecycle: Design (RAML/OAS in Design Center, mock, validate) â Implement (Anypoint Studio) â Deploy (CloudHub/RTF/Hybrid) â Manage (API Manager governance) â Retire. Design first decouples consumers from implementation timing.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Because clients depend only on the API specification, the mocking service in Design Center and Exchange can simulate the API from its specification and examples. This lets client development proceed in parallel with the implementation.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Implementing before designing forces consumers to wait and breaks design-first."
+        "text": "Waiting delays the mobile team although the contract is already agreed."
       },
       "B": {
-        "type": "Correct",
-        "text": "Design, Implement, Deploy, Manage, Retire"
+        "type": "Incorrect",
+        "text": "Direct backend access creates a dependency the app will have to unwind later."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Deploying before designing or implementing is impossible."
+        "type": "Correct",
+        "text": "The mock simulates the API from its specification so clients can start before the implementation exists."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Management governs an API after it exists; it cannot be the first step."
+        "text": "Clients should not depend on implementation code."
       }
     },
     "references": {
       "primary": {
-        "title": "API-Led Lifecycle — Design-First Lifecycle Stages (Design, Implement, Deploy, Manage, Retire)",
-        "url": "https://docs.mulesoft.com/general/api-led-develop#what-you-learned"
+        "title": "Design Center — Mocking Service",
+        "url": "https://docs.mulesoft.com/design-center/design-mocking-service"
       },
       "architectureGuide": {
-        "title": "Martin Fowler — Evolutionary Architecture and API Lifecycle",
-        "url": "https://martinfowler.com/bliki/BoundedContext.html"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "Design Center — Publishing API Specifications",
+        "url": "https://docs.mulesoft.com/design-center/design-publish"
       }
     }
   },
   {
     "id": "q-056",
     "number": 56,
-    "title": "Designing Sharing Apis - When applying breaking changes to an API",
+    "title": "Designing and Sharing APIs - Impact of a breaking specification change",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "Api Versioning"
+      "API Specification",
+      "Dependencies"
     ],
-    "prompt": "When applying breaking changes to an API, which versioning practice is recommended by MuleSoft?",
+    "prompt": "An API team must remove a field from the response of an API that has twelve client applications. Which statement correctly describes the dependencies affected?",
     "options": [
       {
         "letter": "A",
-        "text": "Increment only the patch version"
+        "text": "Only Exchange documentation changes; runtime behavior stays the same"
       },
       {
         "letter": "B",
-        "text": "Increment the major version and publish a new asset version"
+        "text": "Only the implementation changes; the specification is unaffected"
       },
       {
         "letter": "C",
-        "text": "Edit the existing asset in place without re-versioning"
+        "text": "No client is affected because clients ignore fields they do not need"
       },
       {
         "letter": "D",
-        "text": "Delete the previous version immediately"
+        "text": "Spec and implementation change; clients using the field may break"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Breaking changes (removed fields, changed semantics, incompatible schema) require a new major version under semantic versioning. Publish the new spec as a new version in Exchange and run both versions in parallel until consumers migrate.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. The specification defines the contract that both the implementation and clients depend on. Removing a response field changes the specification and the implementation, and it can break clients that rely on that field, which is why it is a breaking change requiring a new major version.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Patch versions are reserved for non-breaking bug fixes."
+        "text": "Removing a field changes runtime responses as well as documentation."
       },
       "B": {
-        "type": "Correct",
-        "text": "Increment the major version and publish a new asset version"
+        "type": "Incorrect",
+        "text": "The response structure is part of the specification, so it changes too."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Editing in place silently breaks consumers and bypasses governance."
+        "text": "Clients that read the removed field will break."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Deleting the prior version forces immediate migration and breaks live consumers."
+        "type": "Correct",
+        "text": "Clients depend on the contract, so a removed field can break those that use it."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — Semantic Versioning, Major Version Breaking Changes, and Publication",
-        "url": "https://docs.mulesoft.com/exchange/#view-assets-by-business-group"
+        "title": "API Manager — Managing Versions and Instances",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
       },
       "architectureGuide": {
-        "title": "Managing API Versions in API Manager",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/defining-sla-tiers#deprecate-a-tier"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "Exchange — Asset Versions",
+        "url": "https://docs.mulesoft.com/exchange/asset-versions"
       }
     }
   },
   {
     "id": "q-057",
     "number": 57,
-    "title": "Designing Sharing Apis - A development team wants to mock and",
+    "title": "Designing and Sharing APIs - Choose two: dependencies",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "Api Lifecycle",
-      "Raml Oas Design"
+      "Dependencies",
+      "API Lifecycle"
     ],
-    "prompt": "A development team wants to mock and validate an API design with consumers before any implementation work begins. Which Anypoint capability supports this directly?",
+    "prompt": "Which two statements correctly describe dependencies between an API, its specification, its implementation, and its clients? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "Mocking Service in Design Center"
+        "text": "The API specification is generated from the clients' code"
       },
       {
         "letter": "B",
-        "text": "API Manager auto-discovery"
+        "text": "API clients depend on the API specification rather than the implementation"
       },
       {
         "letter": "C",
-        "text": "Runtime Manager replay"
+        "text": "The implementation must be published to Exchange before a specification can exist"
       },
       {
         "letter": "D",
-        "text": "MUnit"
+        "text": "Each client must be redeployed whenever the implementation is redeployed"
+      },
+      {
+        "letter": "E",
+        "text": "An API instance in API Manager is associated with a version of an Exchange asset"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Design Center includes a Mocking Service that returns example responses defined in the RAML/OAS spec, letting consumers exercise the contract before implementation. Auto-discovery, Runtime Manager replay, and MUnit operate after the API exists.",
+    "correctAnswers": [
+      "B",
+      "E"
+    ],
+    "explanation": "Correct answers: B and E. In API-led development, the specification is the contract. Clients depend on it, the implementation fulfills it, and API Manager manages API instances associated with Exchange asset versions of that specification.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Mocking Service in Design Center"
+        "type": "Incorrect",
+        "text": "The specification is designed independently and clients are written against it."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Auto-discovery pairs a deployed app with an API record; it does not mock."
+        "type": "Correct",
+        "text": "Clients rely only on the published contract."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Runtime Manager focuses on running app operations."
+        "text": "Specifications are typically designed and published before implementation."
       },
       "D": {
         "type": "Incorrect",
-        "text": "MUnit unit-tests the implementation, not a design-stage spec."
+        "text": "Redeploying the implementation does not require client changes if the contract holds."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "API instances are created from and tied to Exchange asset versions."
       }
     },
     "references": {
       "primary": {
-        "title": "Design Center — Prototyping and Mocking API Specifications with the Mocking Service",
-        "url": "https://docs.mulesoft.com/design-center/#prerequisites-for-using-design-center"
+        "title": "API Manager — Managing Versions and Instances",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
       },
       "architectureGuide": {
-        "title": "APIkit Overview — Generating Flows and Routers from Specifications",
-        "url": "https://docs.mulesoft.com/apikit/latest/#features"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "Anypoint Exchange Overview",
+        "url": "https://docs.mulesoft.com/exchange/"
       }
     }
   },
   {
     "id": "q-058",
     "number": 58,
-    "title": "Designing Sharing Apis - Which artifact does Anypoint Exchange version when",
+    "title": "Designing and Sharing APIs - Reusing common data types",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "Api Versioning",
-      "Exchange Asset Management"
+      "API Fragments",
+      "Exchange"
     ],
-    "prompt": "Which artifact does Anypoint Exchange version when a RAML API specification changes in a backwards-compatible way?",
+    "prompt": "Several API teams define the same Address and Money data types in their specifications, with slight differences. What should the architect recommend to promote consistency and reuse?",
     "options": [
       {
         "letter": "A",
-        "text": "A new major version"
+        "text": "Publish them as an API fragment in Exchange"
       },
       {
         "letter": "B",
-        "text": "A new minor or patch version under the same asset"
+        "text": "Copy the best version of the types into each specification manually"
       },
       {
         "letter": "C",
-        "text": "A new asset entirely"
+        "text": "Define the types in a shared Java library used by all implementations"
       },
       {
         "letter": "D",
-        "text": "Nothing â Exchange overwrites the existing spec"
+        "text": "Put the types in each API's Exchange description as plain text"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Backwards-compatible changes (additive fields, new optional parameters) increment the minor or patch version under the same Exchange asset. Major versions are reserved for breaking changes; new assets are reserved for new APIs entirely.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. API fragments, such as RAML data types, traits, and security schemes, can be created in Design Center and published to Exchange as reusable assets. Specifications reference the fragments, so teams share consistent, versioned definitions.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Major version bumps signal breaking changes."
+        "type": "Correct",
+        "text": "Fragments let teams reuse the same definitions across specifications."
       },
       "B": {
-        "type": "Correct",
-        "text": "A new minor or patch version under the same asset"
+        "type": "Incorrect",
+        "text": "Copies drift over time and are not centrally versioned."
       },
       "C": {
         "type": "Incorrect",
-        "text": "A new asset would lose history and confuse consumers."
+        "text": "Implementation libraries do not make types reusable in API specifications."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Exchange does not silently overwrite published versions."
+        "text": "Text descriptions cannot be referenced by specifications."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — Semantic Versioning (Minor/Patch Backwards-Compatible Changes)",
-        "url": "https://docs.mulesoft.com/exchange/#view-assets-by-business-group"
+        "title": "Design Center — Creating and Publishing API Fragments",
+        "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-fragment"
       },
       "architectureGuide": {
-        "title": "Managing API Versions in API Manager",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/defining-sla-tiers#deprecate-a-tier"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "Anypoint Exchange Overview",
+        "url": "https://docs.mulesoft.com/exchange/"
       }
     }
   },
   {
     "id": "q-059",
     "number": 59,
-    "title": "Designing Sharing Apis - Which approach best supports introducing a breaking",
+    "title": "Designing and Sharing APIs - Publishing a new API specification",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "Api Versioning",
-      "Api Lifecycle"
+      "Exchange",
+      "Design Center"
     ],
-    "prompt": "Which approach best supports introducing a breaking change to an active Process API without disrupting current consumers?",
+    "prompt": "An API specification has been designed and reviewed in Design Center. The team wants other developers to discover it, read its documentation, and try it. What is the next step?",
     "options": [
       {
         "letter": "A",
-        "text": "Edit the running API in place"
+        "text": "Apply a policy to the specification in Runtime Manager"
       },
       {
         "letter": "B",
-        "text": "Publish a new major version, run both versions in parallel, and migrate consumers"
+        "text": "Email the RAML file to all development teams"
       },
       {
         "letter": "C",
-        "text": "Force consumers to upgrade within 24 hours"
+        "text": "Deploy the specification to CloudHub as an application"
       },
       {
         "letter": "D",
-        "text": "Delete the old version once the new one is published"
+        "text": "Publish the specification to Exchange"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Run-both-versions during migration is the standard MuleSoft pattern: publish v2 with the breaking change, keep v1 running, and migrate consumers in their own time before retiring v1. Editing in place breaks consumers immediately.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Design Center publishes API specifications to Exchange as versioned assets. Exchange generates documentation and can provide a mocking service so consumers can discover and try the API, and API Manager can create API instances from the asset.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "In-place edits silently break clients and bypass governance."
+        "text": "Runtime Manager manages applications; it does not publish specifications."
       },
       "B": {
-        "type": "Correct",
-        "text": "Publish a new major version, run both versions in parallel, and migrate consumers"
+        "type": "Incorrect",
+        "text": "Email does not provide discovery, versioning, or try-it capability."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Forcing 24-hour migration is operationally risky and rarely realistic."
+        "text": "A specification is not a deployable application."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Deleting prior versions before consumers migrate is a guaranteed outage."
+        "type": "Correct",
+        "text": "Publishing creates a discoverable, versioned Exchange asset with documentation and a mock."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — Managing Breaking Changes & Parallel API Major Versions",
-        "url": "https://docs.mulesoft.com/exchange/#view-assets-by-business-group"
+        "title": "Design Center — Publishing API Specifications",
+        "url": "https://docs.mulesoft.com/design-center/design-publish"
       },
       "architectureGuide": {
-        "title": "API Manager — Deprecating and Deleting API Versions",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/defining-sla-tiers#deprecate-a-tier"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "Exchange — Publishing Assets",
+        "url": "https://docs.mulesoft.com/exchange/about-sharing-assets"
       }
     }
   },
   {
     "id": "q-060",
     "number": 60,
-    "title": "Designing Sharing Apis - Which is the MOST appropriate way to",
+    "title": "Designing and Sharing APIs - Sharing APIs with external partners",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "Exchange Asset Management"
+      "Exchange",
+      "Public Portal"
     ],
-    "prompt": "Which is the MOST appropriate way to publish a reusable connector for an internal system across many MuleSoft developers?",
+    "prompt": "A company wants external partner developers, who do not have Anypoint Platform accounts in the company's organization, to browse the documentation of selected partner APIs. What should be used?",
     "options": [
       {
         "letter": "A",
-        "text": "Email a JAR file to teams"
+        "text": "Invite all partner developers as Organization Administrators"
       },
       {
         "letter": "B",
-        "text": "Publish a Mule connector to Exchange so it is discoverable and versioned"
+        "text": "Publish the APIs to Design Center projects shared with partners"
       },
       {
         "letter": "C",
-        "text": "Inline the connector code in every project"
+        "text": "An Exchange public portal with the selected assets shared to it"
       },
       {
         "letter": "D",
-        "text": "Use Object Store v2 to share the binary"
+        "text": "Export the specifications from Exchange and host them on a file share"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Reusable connectors should be published to Exchange so other teams discover and consume them via Maven coordinates with proper versioning. Email/JAR sharing and inline copies destroy reuse, traceability, and version control.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Exchange public portals let an organization share selected assets with external developers. Assets are explicitly shared to the portal, where partners can browse documentation and, with an account, request access to APIs.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Email distribution defeats versioning and discoverability."
+        "text": "This grants far too much access to the company's platform."
       },
       "B": {
-        "type": "Correct",
-        "text": "Publish a Mule connector to Exchange so it is discoverable and versioned"
+        "type": "Incorrect",
+        "text": "Design Center is a design tool, not a portal for external consumers."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Inlining duplicates code and breaks upgrade paths."
+        "type": "Correct",
+        "text": "A public portal exposes chosen assets to external developers."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Object Store v2 is for runtime key/value data, not connector binaries."
+        "text": "A file share loses discovery, documentation, and access-request features."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — Publishing and Sharing Reusable Connectors Across Developers",
-        "url": "https://docs.mulesoft.com/exchange/#view-assets-by-business-group"
+        "title": "Exchange Public Portals",
+        "url": "https://docs.mulesoft.com/exchange/about-portals"
       },
       "architectureGuide": {
-        "title": "Developing Custom Policies and Connectors in Mule 4",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/custom-policy-getting-started#setting-up-a-project-with-the-archetype"
-      },
-      "arc720": {
-        "lesson": "Lesson 5 — API identification, publication, and reuse",
-        "anchor": "ARC720-Course-Content.md#5-api-identification-publication-and-reuse"
+        "title": "Exchange — Publishing Assets",
+        "url": "https://docs.mulesoft.com/exchange/about-sharing-assets"
       }
     }
   },
   {
     "id": "q-061",
     "number": 61,
-    "title": "Designing Sharing Apis - Which artifact lets developers consume a published",
+    "title": "Designing and Sharing APIs - Making an asset easy to reuse",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "Exchange Asset Management",
-      "Cicd Maven"
+      "Exchange",
+      "Documentation"
     ],
-    "prompt": "Which artifact lets developers consume a published RAML API specification automatically in their Mule project?",
+    "prompt": "An API is published in Exchange, but other teams rarely reuse it because they cannot tell what it does or how to use it. What should the API owner do?",
     "options": [
       {
         "letter": "A",
-        "text": "A copy/pasted RAML file"
+        "text": "Increase the major version number to attract attention"
       },
       {
         "letter": "B",
-        "text": "Exchange asset Maven dependency referenced in the project's POM"
+        "text": "Restrict the asset so only the owning team can view it"
       },
       {
         "letter": "C",
-        "text": "Anypoint MQ subscription"
+        "text": "Add descriptions, examples, and usage guidance in Exchange"
       },
       {
         "letter": "D",
-        "text": "Object Store key reference"
+        "text": "Deploy another copy of the implementation in each environment"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Published RAML assets are available as Maven dependencies via Exchange, so projects reference them in pom.xml and pull updates centrally. Copy/paste creates drift; MQ and Object Store are unrelated to spec consumption.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Reuse depends on consumers understanding an asset. Exchange lets owners add rich descriptions, documentation pages, examples, categories, and tags so developers can discover the asset and use it correctly.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Copy/paste loses the central source of truth."
+        "text": "Version numbers convey compatibility, not usability."
       },
       "B": {
-        "type": "Correct",
-        "text": "Exchange asset Maven dependency referenced in the project's POM"
+        "type": "Incorrect",
+        "text": "Restricting visibility reduces reuse further."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Anypoint MQ is messaging."
+        "type": "Correct",
+        "text": "Good documentation in Exchange makes an asset discoverable and usable."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Object Store is runtime key/value storage."
+        "text": "More deployments do not explain how to use the API."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — Consuming Published API Specifications via Maven POM Dependency",
-        "url": "https://docs.mulesoft.com/exchange/#view-assets-by-business-group"
+        "title": "Exchange — Describing an Asset",
+        "url": "https://docs.mulesoft.com/exchange/to-describe-an-asset"
       },
       "architectureGuide": {
-        "title": "APIkit Overview — Spec-Driven Mule Implementation",
-        "url": "https://docs.mulesoft.com/apikit/latest/#features"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "Anypoint Exchange Overview",
+        "url": "https://docs.mulesoft.com/exchange/"
       }
     }
   },
   {
     "id": "q-062",
     "number": 62,
-    "title": "Designing Sharing Apis - Which Anypoint Platform feature provides a registrystyle",
+    "title": "Designing and Sharing APIs - Creating an API instance from an asset",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "Exchange Asset Management",
-      "Api Contracts Sla Tiers"
+      "API Manager",
+      "Exchange"
     ],
-    "prompt": "Which Anypoint Platform feature provides a registry-style listing of APIs with their version, status, and contracts for consumer discovery?",
+    "prompt": "An API specification has been published to Exchange. The operations team needs to apply policies and manage client access for the API in production. What should they do in API Manager?",
     "options": [
       {
         "letter": "A",
-        "text": "API Manager / Exchange combined experience (Anypoint Platform UI)"
+        "text": "Create an API instance from the asset version"
       },
       {
         "letter": "B",
-        "text": "Object Store v2"
+        "text": "Publish the API again under a new Exchange asset ID"
       },
       {
         "letter": "C",
-        "text": "Anypoint MQ broker UI"
+        "text": "Create a new Design Center project for production"
       },
       {
         "letter": "D",
-        "text": "Studio Project Explorer"
+        "text": "Upload the RAML file directly into Runtime Manager"
       }
     ],
     "correctAnswer": "A",
-    "explanation": "Discovery and contract requests are surfaced through Anypoint Platform's combined Exchange (asset listing) and API Manager (instance status, contracts) experience. Consumers browse Exchange and request access; API Manager records the contract.",
+    "explanation": "Correct answer: A. In API Manager, an API instance is created from an Exchange asset version. The instance is then linked to its implementation or proxy and used to apply policies, define SLA tiers, and approve client contracts.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "API Manager / Exchange combined experience (Anypoint Platform UI)"
+        "text": "API Manager manages instances that reference an Exchange asset version."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Object Store is runtime data."
+        "text": "A new asset is unnecessary; the existing version is used to create the instance."
       },
       "C": {
         "type": "Incorrect",
-        "text": "MQ broker UI shows queues and exchanges, not APIs."
+        "text": "Design Center projects are for design, not runtime management."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Studio Project Explorer is a developer IDE view."
+        "text": "Runtime Manager deploys applications and does not manage API policies."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — Discovering APIs, Status, Versions, and Requesting Access Contracts",
-        "url": "https://docs.mulesoft.com/exchange/#view-assets-by-business-group"
+        "title": "API Manager — Managing Versions and Instances",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
       },
       "architectureGuide": {
-        "title": "Defining SLA Tiers and Managing API Consumer Contracts in API Manager",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/defining-sla-tiers#defining-a-tier"
-      },
-      "arc720": {
-        "lesson": "Lesson 6 — NFRs at the API-invocation level",
-        "anchor": "ARC720-Course-Content.md#6-nfrs-at-the-api-invocation-level"
+        "title": "API Autodiscovery",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
       }
     }
   },
   {
     "id": "q-063",
     "number": 63,
-    "title": "Api Implementation Design - Which approach lets an architect provide consistent",
+    "title": "Designing and Sharing APIs - Choose two: reusable asset types",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "Raml Oas Design",
-      "Reliability Patterns"
+      "Exchange",
+      "Reusable Assets"
     ],
-    "prompt": "Which approach lets an architect provide consistent error responses across all APIs without coding error handling per API?",
+    "prompt": "Which two types of API-related assets can be published to Anypoint Exchange for reuse by other teams? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "Define a standard error response in a reusable RAML library and a shared error-handler module/template referenced by every API"
+        "text": "Running Mule application instances with their in-memory state"
       },
       {
         "letter": "B",
-        "text": "Hardcode the error response in each flow"
+        "text": "Anypoint Monitoring dashboards from production"
       },
       {
         "letter": "C",
-        "text": "Push errors to Object Store v2"
+        "text": "Access tokens issued to client applications"
       },
       {
         "letter": "D",
-        "text": "Reject all errors at the Shared Load Balancer"
+        "text": "RAML or OAS API specifications"
+      },
+      {
+        "letter": "E",
+        "text": "API fragments such as data types, traits, or security schemes"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Reusable error response definitions in a RAML library plus a shared error-handler template (consumed by every API project) produce consistent error contracts and behavior across the application network. Per-API hardcoding is the anti-pattern this approach replaces.",
+    "correctAnswers": [
+      "D",
+      "E"
+    ],
+    "explanation": "Correct answers: D and E. Exchange catalogs reusable assets such as REST API specifications (RAML and OAS), API fragments, connectors, templates, examples, and policies. Runtime state, dashboards, and credentials are not Exchange assets.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Define a standard error response in a reusable RAML library and a shared error-handler module/template referenced by every API"
+        "type": "Incorrect",
+        "text": "Running instances are managed in Runtime Manager, not shared as assets."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Per-flow hardcoding guarantees drift between APIs."
+        "text": "Dashboards are monitoring artifacts, not Exchange assets."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Object Store is data, not error contract definition."
+        "text": "Credentials must never be shared as reusable assets."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "The SLB does not shape error contracts."
+        "type": "Correct",
+        "text": "API specifications are core reusable Exchange assets."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "Fragments let specifications share common definitions."
       }
     },
     "references": {
       "primary": {
-        "title": "Design Center — Standard Reusable Error Responses in RAML Libraries & Error Handler Modules",
-        "url": "https://docs.mulesoft.com/design-center/#prerequisites-for-using-design-center"
+        "title": "Exchange — Publishing Assets",
+        "url": "https://docs.mulesoft.com/exchange/about-sharing-assets"
       },
       "architectureGuide": {
-        "title": "Mule 4 Error Handling Scopes and Custom Error Mapping",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/transaction-management#error-handling"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "Anypoint Exchange Overview",
+        "url": "https://docs.mulesoft.com/exchange/"
       }
     }
   },
   {
     "id": "q-064",
     "number": 64,
-    "title": "Designing Sharing Apis - Which approach BEST allows architects to compose",
+    "title": "Designing and Sharing APIs - Adding an optional field",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "Raml Oas Design",
-      "Exchange Asset Management"
+      "Semantic Versioning",
+      "Minor Version"
     ],
-    "prompt": "Which approach BEST allows architects to compose APIs from reusable building blocks while still maintaining a single source of truth for shared types and traits?",
+    "prompt": "An API at version 2.3.1 adds a new optional field to its response. Existing clients will continue to work. What should the new version be?",
     "options": [
       {
         "letter": "A",
-        "text": "Inline duplicate definitions in each spec"
+        "text": "3.0.0"
       },
       {
         "letter": "B",
-        "text": "Maintain RAML libraries and fragments published to Exchange and reference them from every API spec"
+        "text": "2.4.0"
       },
       {
         "letter": "C",
-        "text": "Maintain one mega-spec file containing all APIs"
+        "text": "2.3.2"
       },
       {
         "letter": "D",
-        "text": "Use only OAS without libraries"
+        "text": "2.4.1"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Reusable RAML libraries and fragments in Exchange are the single source of truth for types and traits. Specs reference them, ensuring consistency and automatic propagation of updates while preserving small focused spec files.",
+    "explanation": "Correct answer: B. Semantic versioning uses MAJOR.MINOR.PATCH. Backward-compatible additions, such as a new optional response field or a new resource, increment the minor version and reset the patch version to zero.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Inlining duplicates definitions and breaks single-source-of-truth."
+        "text": "A major increment is reserved for backward-incompatible changes."
       },
       "B": {
         "type": "Correct",
-        "text": "Maintain RAML libraries and fragments published to Exchange and reference them from every API spec"
+        "text": "A backward-compatible new feature increments the minor version and resets the patch."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Mega-specs are unmanageable and prevent independent versioning."
+        "text": "A patch increment is for fixes that add no new functionality."
       },
       "D": {
         "type": "Incorrect",
-        "text": "OAS supports references too; the question is about reuse strategy."
+        "text": "The patch component resets to zero when the minor version increments."
       }
     },
     "references": {
       "primary": {
-        "title": "Design Center — Reusable RAML Libraries, Fragments, and Single Source of Truth in Exchange",
-        "url": "https://docs.mulesoft.com/design-center/#prerequisites-for-using-design-center"
+        "title": "Exchange — Asset Versions",
+        "url": "https://docs.mulesoft.com/exchange/asset-versions"
       },
       "architectureGuide": {
-        "title": "Anypoint Exchange — Publishing Reusable API Fragments and Libraries",
-        "url": "https://docs.mulesoft.com/exchange/#view-assets-by-business-group"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "Exchange — Manage Versions",
+        "url": "https://docs.mulesoft.com/exchange/manage-versions"
       }
     }
   },
   {
     "id": "q-065",
     "number": 65,
-    "title": "Designing Sharing Apis - Which Exchange lifecycle state signals an",
+    "title": "Designing and Sharing APIs - Making a parameter required",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "Exchange Asset Management",
-      "Lifecycle States"
+      "Semantic Versioning",
+      "Major Version"
     ],
-    "prompt": "Which Anypoint Exchange lifecycle state should an asset version enter when it is ready for broad reuse and should no longer be overwritten?",
+    "prompt": "An API at version 1.5.0 changes an optional query parameter to required. What type of change is this?",
     "options": [
       {
         "letter": "A",
-        "text": "Development"
+        "text": "A minor change, because no resource was removed"
       },
       {
         "letter": "B",
-        "text": "Stable"
+        "text": "No version change, because query parameters are not part of the contract"
       },
       {
         "letter": "C",
-        "text": "Deprecated"
+        "text": "A patch change, because only one parameter is affected"
       },
       {
         "letter": "D",
-        "text": "Draft"
+        "text": "A major change; existing requests without it will fail"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Stable is the lifecycle state used for an Exchange asset version that is ready for consumption by other teams and should not be republished or overwritten. Development is still mutable, deprecated signals retirement, and draft is not the lifecycle state used by Exchange for released assets.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Any change that can break existing clients is backward incompatible and requires a new major version. Making an optional parameter required means that existing requests that omit it will be rejected.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Development is intended for in-progress work and can still be republished."
+        "text": "Breaking changes need not remove resources; making input stricter also breaks clients."
       },
       "B": {
-        "type": "Correct",
-        "text": "Stable"
+        "type": "Incorrect",
+        "text": "Query parameters are part of the API contract."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Deprecated indicates the asset should be phased out, not newly promoted for broad reuse."
+        "text": "The size of the change does not matter; its compatibility does."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Draft is not the Exchange lifecycle state used to mark a reusable released version."
+        "type": "Correct",
+        "text": "Requiring something previously optional breaks existing clients."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange Asset Lifecycle States",
-        "url": "https://docs.mulesoft.com/exchange/lifecycle"
+        "title": "Exchange — Asset Versions",
+        "url": "https://docs.mulesoft.com/exchange/asset-versions"
       },
       "architectureGuide": {
-        "title": "Publishing Assets Using the Exchange API",
-        "url": "https://docs.mulesoft.com/exchange/publishing-assets-using-the-exchange-api"
-      },
-      "arc720": {
-        "lesson": "Lesson 5 — API identification, publication, and reuse",
-        "anchor": "ARC720-Course-Content.md#5-api-identification-publication-and-reuse"
+        "title": "API Manager — Managing Versions and Instances",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
       }
     }
   },
   {
     "id": "q-066",
     "number": 66,
-    "title": "API Design - A logistics startup with a three‑person Dev Ops team needs to",
+    "title": "Designing and Sharing APIs - Correcting documentation",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "API Design"
+      "Semantic Versioning",
+      "Patch Version"
     ],
-    "prompt": "A logistics startup with a three‑person Dev Ops team needs to expose a shipment‑tracking API quickly, but the developers are more familiar with graphical tools than code. What should be done FIRST?",
+    "prompt": "An API at version 3.2.0 has a typo in a resource description in its specification. The fix does not change any request or response. What should the new version be?",
     "options": [
       {
         "letter": "A",
-        "text": "Write the API implementation directly in Java using Mule SDK."
+        "text": "3.2.1"
       },
       {
         "letter": "B",
-        "text": "Build the API using Mule Soft's XML configuration in Anypoint Studio."
+        "text": "4.0.0"
       },
       {
         "letter": "C",
-        "text": "Use API Designer to create a RAML or OAS definition and publish it to Exchange."
+        "text": "3.2.0"
       },
       {
         "letter": "D",
-        "text": "Deploy a pre‑built API‑gateway template from Anypoint Marketplace without defining the contract."
-      },
-      {
-        "letter": "E",
-        "text": "Create a CI/CD pipeline in Jenkins before any API design work."
-      },
-      {
-        "letter": "F",
-        "text": "Generate a Mule application from a Swagger file using the API Autogeneration wizard."
+        "text": "3.3.0"
       }
     ],
-    "explanation": "The question tests the candidate's understanding of the API‑led connectivity philosophy and the importance of a design‑first approach, especially when the team is more comfortable with graphical tools. The correct answer is to use API Designer to create a RAML or Open API specification and publish it to Exchange, because this leverages the visual interface, creates a reusable contract, and sets the foundation for rapid implementation. Options that suggest coding first, using XML, or deploying templates without a contract are common misconceptions that ignore the benefits of contract‑first design and can lead to integration issues. Building CI/CD pipelines or generating code before a contract exists also misplaces effort, as the pipeline and generated stubs depend on a stable API definition. In real projects, starting with a clear, published API contract accelerates collaboration, enables automated testing, and aligns with Mule Soft best practices.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Patch versions are for backward-compatible fixes, such as documentation corrections, that add no new functionality. Exchange asset versions follow semantic versioning, and changes should be published as a new version.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "This option is incorrect because it bypasses the graphical strengths of the team and introduces a code‑first approach that is slower for rapid delivery. Mule SDK development requires Java expertise and does not leverage the visual design tools provided by Anypoint Platform. Starting with hand‑coded Java would also delay the creation of a reusable contract that other services can discover."
+        "type": "Correct",
+        "text": "A backward-compatible fix with no new functionality increments the patch version."
       },
       "B": {
         "type": "Incorrect",
-        "text": "While Anypoint Studio offers a visual canvas, it still relies heavily on XML configuration, which is less intuitive for developers accustomed to drag‑and‑drop design tools. Implementing the API before defining its contract can lead to mismatches between the intended interface and the actual implementation. Moreover, building the implementation first violates the API‑led design principle that recommends a design‑first approach."
+        "text": "Nothing breaks clients, so a major version is not needed."
       },
       "C": {
-        "type": "Correct",
-        "text": "This is the correct first step because API Designer provides a fully graphical environment for defining the API contract, matching the team's skill set. Publishing the specification to Exchange makes the contract discoverable and reusable across the organization, enabling rapid scaffolding of the implementation. A design‑first approach also reduces rework by clarifying expectations before any code is written."
+        "type": "Incorrect",
+        "text": "Published asset versions should not be overwritten with changed content."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Deploying a template without a contract is a misconception; it may expose an endpoint quickly but offers no clear interface for consumers. Without a RAML or OAS definition, downstream teams cannot generate client code or understand the API behavior. This approach also defeats the purpose of using graphical design tools that help capture business requirements early."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Setting up a CI/CD pipeline first is premature because the pipeline would have nothing to build or test until the API contract and implementation exist. While CI/CD is essential for long‑term maintenance, it should follow the creation of a versioned API definition. Investing time in pipeline configuration before design can waste effort and delay delivery of the actual API."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Generating code from a Swagger file assumes the specification already exists, which is not the case here. Additionally, the team prefers graphical tools, and the autogeneration wizard still produces code that must be manually refined. This step would come after a contract is created, not before, making it an incorrect first action."
+        "text": "No new functionality was added, so the minor version does not change."
       }
     },
     "references": {
       "primary": {
-        "title": "Design Center — Creating and Publishing an API Specification (Share in Exchange)",
-        "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-specs#share-in-exchange-and-api-manager"
+        "title": "Exchange — Asset Versions",
+        "url": "https://docs.mulesoft.com/exchange/asset-versions"
       },
       "architectureGuide": {
-        "title": "Design Center — Best Practices when Using API Designer",
-        "url": "https://docs.mulesoft.com/design-center/design-best-practices#api-designer-best-practices"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "Exchange — Manage Versions",
+        "url": "https://docs.mulesoft.com/exchange/manage-versions"
       }
-    },
-    "correctAnswer": "C"
+    }
   },
   {
     "id": "q-067",
     "number": 67,
-    "title": "API Versioning - A mid-sized finance firm is building a new API to expose customer",
+    "title": "Designing and Sharing APIs - Major version in the API instance",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "API Versioning"
+      "Semantic Versioning",
+      "API Manager"
     ],
-    "prompt": "A mid-sized finance firm is building a new API to expose customer account balances. The solution must comply with PCI DSS, stay within a $50k budget, and support future mobile app integration. The architect must decide how to version the API to avoid breaking existing clients. Which option should the team choose?",
+    "prompt": "An API is published in Exchange as version 1.4.2, and clients call https://api.example.com/orders/v1. The team publishes version 1.5.0. What is the impact on the URL clients use?",
     "options": [
       {
         "letter": "A",
-        "text": "Use URI versioning (e. g., /v1/accounts) and keep the version in the path for all future releases."
+        "text": "Clients must switch to /v2 because the asset version changed"
       },
       {
         "letter": "B",
-        "text": "Use query parameter versioning (e. g., /accounts? version=1) and increment the parameter value for new releases."
+        "text": "No change; v1 in the URL reflects the major version only"
       },
       {
         "letter": "C",
-        "text": "Use HTTP header versioning (e. g., Accept: application/vnd. company. account+json; version=1) and default to the highest version if not supplied."
+        "text": "The v1 URL stops working until clients re-register"
       },
       {
         "letter": "D",
-        "text": "Deploy a new API instance with a different base URL for each version (e. g., https://api-v1. company. com) and keep the old instance running indefinitely."
-      },
-      {
-        "letter": "E",
-        "text": "Implement a single API with backward‑compatible changes only, avoiding explicit versioning altogether."
-      },
-      {
-        "letter": "F",
-        "text": "Use content‑type negotiation (media type versioning) combined with API gateway routing to map each version to a separate flow."
+        "text": "Clients must switch to /v1.5 to use the new version"
       }
     ],
-    "explanation": "The question tests knowledge of API versioning strategies in a regulated, budget‑constrained environment. URI versioning is the preferred approach because it is explicit, simple to implement, and easy for clients—including mobile apps—to use without extra headers or query parameters. It also allows each versioned endpoint to be secured and audited independently, satisfying PCI DSS requirements. The other options introduce hidden complexity, higher operational costs, or risk of breaking existing consumers, which are common misconceptions among developers unfamiliar with enterprise best practices. Remember that the most pragmatic versioning technique balances clarity, cost, and compliance, and URI versioning consistently meets those criteria in real‑world finance projects.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. A common practice is to expose only the major version in the API's URL or instance version, because minor and patch changes are backward compatible. Clients only need to move to a new URL when a new major version introduces breaking changes.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Use URI versioning (e. g., /v1/accounts) and keep the version in the path for all future releases.: This is the correct choice. Placing the version number in the URI makes it explicit, easy for client developers to understand, and requires no additional processing in the gateway, keeping implementation costs low – an important factor for a $50k budget. URI versioning also aligns well with PCI DSS audit requirements because each version can be individually secured and documented. Mobile apps can cache the full endpoint URL, simplifying integration and reducing the chance of accidental calls to an unintended version."
+        "type": "Incorrect",
+        "text": "Only major changes require a new major URL."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Use query parameter versioning (e. g., /accounts? version=1) and increment the parameter value for new releases.: This option is incorrect. While query‑parameter versioning is technically possible, many caching layers and security tools ignore query strings when applying PCI‑DSS‑related controls, which can lead to inconsistent enforcement. It also adds parsing overhead in the API runtime, increasing operational cost and complexity. Mobile developers often forget to include the version parameter, causing unexpected breaking changes for existing users."
+        "type": "Correct",
+        "text": "Minor and patch changes are backward compatible and keep the major-version URL."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Use HTTP header versioning (e. g., Accept: application/vnd. company. account+json; version=1) and default to the highest version if not supplied.: This option is incorrect for the given constraints. Header‑based versioning requires every client to set custom headers, which can be cumbersome for mobile SDKs and may be stripped by some proxies, breaking compliance checks. Defaulting to the highest version can unintentionally expose older clients to breaking changes, violating the requirement to avoid breaking existing consumers. Implementing and testing header negotiation also adds to development effort, pushing the budget beyond the limit."
+        "text": "Compatible updates do not affect existing client contracts."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Deploy a new API instance with a different base URL for each version (e. g., https://api-v1. company. com) and keep the old instance running indefinitely.: This option is incorrect. Maintaining separate infrastructure for each version dramatically increases operational cost, likely exceeding the $50k budget, and adds complexity to security monitoring required by PCI DSS. It also creates DNS management overhead and potential latency issues for mobile clients that need to discover the correct base URL. Keeping old instances running indefinitely can lead to unpatched legacy services, a compliance risk."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Implement a single API with backward‑compatible changes only, avoiding explicit versioning altogether.: This option is incorrect. Although backward‑compatible changes are ideal, the finance domain often requires schema modifications (e. g., adding new fields for regulatory reporting) that are not truly backward compatible for all clients. Without explicit versioning, you cannot guarantee that a future mobile app won't be impacted by subtle contract changes, violating the requirement to avoid breaking existing clients. Additionally, PCI DSS audit trails benefit from clear version identifiers to track which contract was used for each transaction."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Use content‑type negotiation (media type versioning) combined with API gateway routing to map each version to a separate flow.: This option is incorrect. Media‑type versioning demands that every client correctly set the Accept header with a specific vendor‑specific media type, which many mobile frameworks do not handle out of the box. The extra routing logic in the gateway adds processing overhead and increases the chance of misconfiguration, potentially compromising PCI DSS controls. The complexity and testing effort needed to support multiple media types typically exceed the modest budget and can lead to inadvertent breaking changes."
+        "text": "Exposing minor versions in URLs would force clients to change for compatible updates."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — Best Practices for API Versioning",
-        "url": "https://docs.mulesoft.com/exchange/to-change-raml-version#best-practices-api-versioning"
+        "title": "API Manager — Managing Versions and Instances",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
       },
       "architectureGuide": {
-        "title": "API Experience Hub — API Versioning (Breaking Changes and Previous Versions)",
-        "url": "https://docs.mulesoft.com/api-experience-hub/api-versioning-in-api-experience-hub"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "Exchange — Asset Versions",
+        "url": "https://docs.mulesoft.com/exchange/asset-versions"
       }
-    },
-    "correctAnswer": "A"
+    }
   },
   {
     "id": "q-068",
     "number": 68,
-    "title": "Mule Soft Certified Platform Architect (MCPA) - A financial services company is exposing a loan‑application API t",
+    "title": "Designing and Sharing APIs - Renaming a resource",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "Mule Soft Certified Platform Architect (MCPA)"
+      "Semantic Versioning",
+      "Breaking Changes"
     ],
-    "prompt": "A financial services company is exposing a loan‑application API that must support versioning without disrupting existing corporate clients. The API must also meet a regulatory audit requirement within six months. Which versioning strategy is the MOST appropriate? Which option should the team choose?",
+    "prompt": "A team wants to rename the /customers resource to /clients in version 2.6.0 of its API. Many clients use /customers. Which approach follows semantic versioning?",
     "options": [
       {
         "letter": "A",
-        "text": "Version the API using a query‑string parameter, e. g., /loan‑application? version=2"
+        "text": "Release 2.6.1 because the resource's behavior is unchanged"
       },
       {
         "letter": "B",
-        "text": "Version the API through a custom HTTP header such as X‑API‑Version: 2"
+        "text": "Rename it in 2.6.0 without changing the version"
       },
       {
         "letter": "C",
-        "text": "Version the API in the URI path, for example /v2/loan‑application, while keeping /v1/ for existing consumers"
+        "text": "Release 3.0.0 and keep 2.x running during migration"
       },
       {
         "letter": "D",
-        "text": "Apply versioning through content negotiation using the Accept header (e. g., Accept: application/vnd. company. loan‑v2+json)"
-      },
-      {
-        "letter": "E",
-        "text": "Do not version the API; instead, make all changes backward‑compatible within the same contract"
-      },
-      {
-        "letter": "F",
-        "text": "Create separate API instances per client and manage versions individually for each client"
+        "text": "Release 2.7.0 and notify clients of the change"
       }
     ],
-    "explanation": "The question tests knowledge of API versioning strategies in an enterprise, regulated context. URI path versioning is the preferred approach because it provides a clear, immutable version identifier that is easy to route, log, and audit, ensuring no disruption to existing clients while allowing new functionality to be introduced. Header, query‑string, and content‑negotiation methods are often attractive but can be broken by corporate network policies, client limitations, or insufficient logging for compliance. Declaring no versioning or per‑client instances may seem to simplify development but introduces risk of breaking changes and operational complexity, which are unacceptable in financial services. Best practice is to version at the URL level, maintain parallel versions, and ensure all version information is captured in logs for audit purposes.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Renaming or removing resources breaks existing client requests and requires a new major version. Running the previous major version in parallel and deprecating it later gives clients time to migrate.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Version the API using a query‑string parameter, e. g., /loan‑application? version=2: This option is incorrect. Query‑string versioning can work technically, but many corporate firewalls and caching layers strip or ignore query parameters, leading to unpredictable routing. In a regulated financial environment, reliance on query parameters may cause audit trails to miss version information, complicating compliance reporting."
+        "text": "Changing the path breaks client requests regardless of behavior."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Version the API through a custom HTTP header such as X‑API‑Version: 2: This option is incorrect. Header‑based versioning keeps URLs clean, yet it requires every client to modify request headers, which is a breaking change for existing corporate integrations that may not support custom headers. Moreover, headers are often omitted from logs used for audits, making it harder to demonstrate which API version processed each transaction."
+        "text": "Changing a published contract without a new version breaks clients silently."
       },
       "C": {
         "type": "Correct",
-        "text": "Version the API in the URI path, for example /v2/loan‑application, while keeping /v1/ for existing consumers: This option is correct. URI path versioning creates a clear, immutable contract that can be routed by the API gateway without affecting existing client code that points to /v1/. It also ensures that version information is captured in access logs and audit trails, satisfying regulatory requirements. Financial institutions commonly adopt this strategy because it isolates changes and enables parallel support of multiple versions."
+        "text": "Renaming a resource breaks clients, so it requires a new major version and a migration period."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Apply versioning through content negotiation using the Accept header (e. g., Accept: application/vnd. company. loan‑v2+json): This option is incorrect. Content negotiation adds complexity to client implementations and can be problematic with legacy corporate systems that have rigid HTTP client libraries. Additionally, many logging and monitoring tools do not record Accept header values, which can hinder auditability of which version served a request."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Do not version the API; instead, make all changes backward‑compatible within the same contract: This option is incorrect. While backward‑compatible changes avoid version proliferation, the requirement to support a new loan‑application process within six months may introduce breaking changes that cannot be safely added to the existing contract. Without versioning, any inadvertent breaking change could disrupt existing corporate clients and violate audit traceability."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Create separate API instances per client and manage versions individually for each client: This option is incorrect. Managing a distinct API instance for every corporate client dramatically increases operational overhead and makes it difficult to maintain a consistent audit log across instances. In a regulated setting, this approach can lead to fragmented compliance evidence and higher risk of configuration drift."
+        "text": "A minor release must not break existing clients."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — API Version in the Application URL",
-        "url": "https://docs.mulesoft.com/exchange/to-change-raml-version#api-version-in-application-url"
+        "title": "API Manager — Managing Versions and Instances",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
       },
       "architectureGuide": {
-        "title": "Anypoint Exchange — Asset Versions and Semantic Versioning",
-        "url": "https://docs.mulesoft.com/exchange/asset-versions#choose-a-version-number-when-publishing"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "Exchange — Manage Versions",
+        "url": "https://docs.mulesoft.com/exchange/manage-versions"
       }
-    },
-    "correctAnswer": "C"
+    }
   },
   {
     "id": "q-069",
     "number": 69,
-    "title": "API Versioning - A mid‑size financial services firm is designing a new account‑man",
+    "title": "Designing and Sharing APIs - Choose two: changes requiring a minor version",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "API Versioning"
+      "Semantic Versioning",
+      "Minor Version"
     ],
-    "prompt": "A mid‑size financial services firm is designing a new account‑management API that must remain backward compatible for existing mobile apps while staying within a $50,000 budget and a two‑month deadline; the team is debating between using URI versioning, header versioning, or a separate subdomain. Which option should the team choose?",
+    "prompt": "Which two changes to a published API should increment only the minor version? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "Implement header versioning, e. g., require clients to send an X‑API‑Version header with each request."
+        "text": "Removing a deprecated response field"
       },
       {
         "letter": "B",
-        "text": "Create a separate subdomain such as api‑v2. company. com to host the new version of the API."
+        "text": "Adding a new optional query parameter"
       },
       {
         "letter": "C",
-        "text": "Use URI versioning, for example expose the new version at /v2/accounts while keeping the existing /v1/accounts endpoint operational."
+        "text": "Changing a field's data type from string to number"
       },
       {
         "letter": "D",
-        "text": "Add a version query parameter, such as /accounts? version=2, to indicate the API version."
+        "text": "Correcting a spelling mistake in the documentation"
       },
       {
         "letter": "E",
-        "text": "Adopt media‑type versioning, requiring clients to request a versioned MIME type in the Accept header."
-      },
-      {
-        "letter": "F",
-        "text": "Do not version the API at all and add new fields to the existing endpoints, relying on optional parameters for new functionality."
+        "text": "Adding a new resource for an additional capability"
       }
     ],
-    "explanation": "The question tests the candidate's understanding of practical API versioning strategies under real‑world constraints such as budget, schedule, and backward compatibility. URI (path) versioning is the recommended approach because it requires the least amount of code change, introduces no new infrastructure, and preserves existing endpoints for legacy clients, aligning perfectly with the firm’s tight deadline and limited budget. Header, subdomain, query‑parameter, and media‑type versioning each add layers of complexity—whether through client modifications, extra DNS/SSL costs, caching concerns, or sophisticated content negotiation—that are unnecessary for a mid‑size organization seeking a quick, cost‑effective solution. Not versioning at all jeopardizes existing mobile apps and creates future maintenance challenges, a common misconception that developers avoid only when resources are abundant. Best practice is to choose the simplest versioning mechanism that meets compatibility needs, and in most constrained projects URI versioning provides that balance.",
+    "correctAnswers": [
+      "B",
+      "E"
+    ],
+    "explanation": "Correct answers: B and E. Minor versions are incremented for backward-compatible additions such as new optional parameters, fields, or resources. Removals and type changes are breaking and need a major version; fixes without new functionality are patch changes.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Implement header versioning, e. g., require clients to send an X‑API‑Version header with each request.: This option is incorrect. Header versioning forces every client, including existing mobile apps, to modify the HTTP request to include a custom header, which adds development and testing effort beyond the tight two‑month schedule. Additionally, older clients that cannot be updated immediately will break, violating the backward‑compatibility requirement and potentially increasing support costs, which conflicts with the limited $50,000 budget."
+        "text": "Removal can break clients that still read the field and is a major change."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Create a separate subdomain such as api‑v2. company. com to host the new version of the API.: This option is incorrect. Deploying a new subdomain introduces DNS configuration, SSL certificate procurement, and possible load‑balancer changes, all of which increase both time and cost. For a mid‑size firm with a $50,000 cap, the extra infrastructure expenses are unnecessary, and the approach does not provide a clear advantage for backward compatibility compared to simpler methods."
+        "type": "Correct",
+        "text": "Existing requests still work, and new functionality is added."
       },
       "C": {
-        "type": "Correct",
-        "text": "Use URI versioning, for example expose the new version at /v2/accounts while keeping the existing /v1/accounts endpoint operational.: This option is correct. URI versioning is the simplest to implement; it only requires adding a new path segment, leaving existing endpoints untouched, which preserves backward compatibility for current mobile apps. It incurs minimal development effort, avoids extra infrastructure costs, and can be rolled out well within a two‑month timeframe and the $50,000 budget, making it the most pragmatic choice."
+        "type": "Incorrect",
+        "text": "Type changes break clients that parse the field."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Add a version query parameter, such as /accounts? version=2, to indicate the API version.: This option is incorrect. While query‑parameter versioning works, it can interfere with caching layers and URL routing rules, potentially causing performance issues. Implementing and testing proper handling of query parameters adds complexity that is unnecessary given the tighter schedule and budget constraints."
+        "text": "A documentation fix is a patch change."
       },
       "E": {
-        "type": "Incorrect",
-        "text": "Adopt media‑type versioning, requiring clients to request a versioned MIME type in the Accept header.: This option is incorrect. Media‑type versioning demands changes to both client and server code to negotiate and parse custom MIME types, which is a sophisticated approach typically reserved for large, mature APIs. The extra development and testing effort would likely exceed the two‑month deadline and strain the $50,000 budget, making it an impractical choice for this scenario."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Do not version the API at all and add new fields to the existing endpoints, relying on optional parameters for new functionality.: This option is incorrect. Adding new fields to the current API without versioning risks breaking existing mobile applications that expect a specific contract, violating the backward‑compatibility requirement. Moreover, it makes future changes harder to manage and can lead to technical debt, which contradicts the need for a clear, low‑risk rollout within limited resources."
+        "type": "Correct",
+        "text": "New resources are backward-compatible additions."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — API Version Naming Conventions (v Prefix, Major Version in URL)",
-        "url": "https://docs.mulesoft.com/exchange/to-change-raml-version#naming-conventions"
+        "title": "Exchange — Asset Versions",
+        "url": "https://docs.mulesoft.com/exchange/asset-versions"
       },
       "architectureGuide": {
-        "title": "API Experience Hub — API Versioning (Breaking Changes and Previous Versions)",
-        "url": "https://docs.mulesoft.com/api-experience-hub/api-versioning-in-api-experience-hub"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
+        "title": "Exchange — Manage Versions",
+        "url": "https://docs.mulesoft.com/exchange/manage-versions"
       }
-    },
-    "correctAnswer": "C"
+    }
   },
   {
     "id": "q-070",
     "number": 70,
-    "title": "Hypermedia APIs - A fintech startup is building a hypermedia‑driven loan‑applicatio",
+    "title": "Designing and Sharing APIs - Dominant upstream SaaS provider",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "Hypermedia APIs"
+      "Bounded Context",
+      "Anticorruption Layer"
     ],
-    "prompt": "A fintech startup is building a hypermedia‑driven loan‑application API to enable clients to navigate state transitions, must keep payload size under 5 KB, has a one‑month launch window, and the developers are proficient in RAML but not in HAL. Which approach BEST meets the requirements?",
+    "prompt": "A company's Sales context consumes data from a SaaS vendor's API. The vendor will not change its model for any single customer. The Sales team wants to keep its own clean data model and avoid vendor concepts leaking into it. Which mapping strategy is most appropriate?",
     "options": [
       {
         "letter": "A",
-        "text": "Design the API in RAML and use Mule Soft’s Hypermedia (HAL) module to automatically embed state‑transition links in responses, customizing link inclusion to stay under 5 KB."
+        "text": "Customer/Supplier, asking the vendor to adapt its model"
       },
       {
         "letter": "B",
-        "text": "Switch to Open API Specification, then use Mule’s API Designer to generate a Siren‑based hypermedia API, training developers on Siren concepts."
+        "text": "Shared Kernel, jointly owning a model with the vendor"
       },
       {
         "letter": "C",
-        "text": "Build a custom HAL serializer from scratch in Java, manually adding links in each flow to meet hypermedia requirements."
+        "text": "Conformist, adopting the vendor's model in the Sales context"
       },
       {
         "letter": "D",
-        "text": "Abandon hypermedia and expose a simple CRUD REST API described in RAML, relying on client‑side logic for state navigation."
-      },
-      {
-        "letter": "E",
-        "text": "Use RAML to define the API and adopt JSON:API format for hypermedia, assuming JSON:API provides smaller payloads and easier implementation."
-      },
-      {
-        "letter": "F",
-        "text": "Implement Graph QL with schema stitching to handle state transitions, eliminating the need for hypermedia links."
+        "text": "Anticorruption Layer in the Sales context"
       }
     ],
-    "explanation": "The question tests knowledge of selecting an implementation strategy that balances hypermedia requirements, payload constraints, developer expertise, and project timeline. Using Mule Soft’s Hypermedia (HAL) module directly from RAML is the optimal choice because it leverages the team’s existing RAML skills, automatically generates HAL links, and allows fine‑grained control over which links are included to keep payloads under 5 KB. Alternatives that involve switching specifications, building custom serializers, or abandoning hypermedia either introduce steep learning curves, consume excessive time, or fail to meet the business requirement. Common misconceptions include assuming any JSON‑based format (like JSON:API) provides hypermedia navigation or that Graph QL can replace hypermedia, both of which ignore the distinct purpose of hypermedia controls. Best practice is to reuse platform‑provided hypermedia extensions whenever possible to accelerate delivery while adhering to standards.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. When the upstream context is dominant and will not adapt, the downstream context chooses between conforming to the upstream model or building an anticorruption layer that translates it. An anticorruption layer protects the downstream model at the cost of translation effort.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Design the API in RAML and use Mule Soft’s Hypermedia (HAL) module to automatically embed state‑transition links in responses, customizing link inclusion to stay under 5 KB.: This option is correct. Mule Soft provides a Hypermedia (HAL) module that can be configured from RAML to add _links and _embedded sections without the team needing deep HAL expertise. Because the module handles link generation centrally, the payload can be trimmed by selecting only the necessary links, satisfying the 5 KB limit and the one‑month timeline."
+        "type": "Incorrect",
+        "text": "The vendor will not accommodate a single customer, so this relationship is not available."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Switch to Open API Specification, then use Mule’s API Designer to generate a Siren‑based hypermedia API, training developers on Siren concepts.: This option is incorrect. Moving from RAML to Open API adds unnecessary conversion work and learning curve, which jeopardizes the one‑month launch window. Additionally, Siren is a less common hypermedia format than HAL, so the team would need extensive training, and there is no guarantee that Siren payloads will be smaller than 5 KB."
+        "text": "A shared kernel requires close collaboration and joint ownership."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Build a custom HAL serializer from scratch in Java, manually adding links in each flow to meet hypermedia requirements.: This option is incorrect. Writing a custom serializer is time‑intensive and error‑prone, especially given the one‑month deadline. Manual link insertion in every flow also makes it difficult to enforce the payload size constraint consistently across the API."
+        "text": "Conforming would let vendor concepts leak in, which the team wants to avoid."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Abandon hypermedia and expose a simple CRUD REST API described in RAML, relying on client‑side logic for state navigation.: This option is incorrect because the business requirement explicitly calls for a hypermedia‑driven API that guides clients through state transitions. Without hypermedia, clients must hard‑code URLs and state logic, which defeats the purpose of a discoverable API and can lead to tighter coupling and more maintenance overhead."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Use RAML to define the API and adopt JSON:API format for hypermedia, assuming JSON:API provides smaller payloads and easier implementation.: This option is incorrect. JSON:API is primarily a convention for structuring JSON resources and does not provide the link‑driven navigation model required for hypermedia state transitions. Moreover, adopting JSON:API would still require learning its own set of conventions, adding unnecessary effort within the tight schedule."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Implement Graph QL with schema stitching to handle state transitions, eliminating the need for hypermedia links.: This option is incorrect because Graph QL does not use hypermedia links; it relies on query specifications to retrieve data. Switching to Graph QL would require a completely different architectural approach, extensive developer up‑skilling, and would not satisfy the explicit hypermedia‑driven requirement."
+        "type": "Correct",
+        "text": "The downstream context translates the upstream model to protect its own model."
       }
     },
-    "references": {},
-    "correctAnswer": "A"
+    "references": {}
   },
   {
     "id": "q-071",
     "number": 71,
-    "title": "API Versioning - A mid‑size bank is exposing a new customer‑profile service on Any",
+    "title": "Designing and Sharing APIs - Accepting the upstream model",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "API Versioning"
+      "Bounded Context",
+      "Conformist"
     ],
-    "prompt": "A mid‑size bank is exposing a new customer‑profile service on Anypoint Platform. The team must support both existing mobile apps and a planned third‑party fintech partner, but the budget only allows a single API specification effort. They also need to ensure backward compatibility for the next 18 months. Which option should the team choose?",
+    "prompt": "A small Reporting context consumes order data from a large ERP-owned Order context that will not change for it. The Reporting team has no strong model of its own and wants the least integration effort. Which strategy fits best?",
     "options": [
       {
         "letter": "A",
-        "text": "Design a versioned API contract (e. g., /v1/) and add any new fields as optional, preserving the existing contract for 18 months."
+        "text": "Partnership: coordinate releases jointly with the ERP team"
       },
       {
         "letter": "B",
-        "text": "Create two separate API specifications, one for the mobile apps and another for the fintech partner, each with its own versioning scheme."
+        "text": "Customer/Supplier: require the Order context to change for reporting"
       },
       {
         "letter": "C",
-        "text": "Expose a Graph QL endpoint so each client can request exactly the fields it needs, eliminating the need for versioning."
+        "text": "Conformist: adopt the upstream Order model"
       },
       {
         "letter": "D",
-        "text": "Publish a single API spec but enforce a breaking‑changes policy that forces all consumers to upgrade within six months."
-      },
-      {
-        "letter": "E",
-        "text": "Place the service behind an API gateway that performs request transformation for legacy mobile apps while exposing a new spec for the fintech partner."
-      },
-      {
-        "letter": "F",
-        "text": "Adopt header‑based versioning (e. g., X-API-Version) without changing the contract, and deprecate the old version after 12 months."
+        "text": "Anticorruption Layer: translate every order into a new model"
       }
     ],
-    "explanation": "The question tests understanding of API versioning strategies that balance limited resources with long‑term compatibility. The correct choice is to version the contract and add new elements as optional, allowing existing mobile apps to operate unchanged while the fintech partner can leverage the extended capabilities. Common misconceptions include assuming that separate specs or gateway transformations are cheaper, when in fact they increase maintenance effort and cost. Relying on Graph QL or aggressive deprecation policies ignores the reality of legacy client constraints. Best practice is to adopt a clear versioning scheme (URL or header) and evolve the contract in a backward‑compatible manner, documenting deprecation timelines that meet business requirements.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. In a conformist relationship, the downstream context adopts the upstream context's model as-is. It suits cases where the upstream does not accommodate the downstream and the downstream has no strong model to protect, minimizing translation effort.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Design a versioned API contract (e. g., /v1/) and add any new fields as optional, preserving the existing contract for 18 months.: This option is correct. By versioning the contract and making new attributes optional, the original mobile apps can continue to call the API without changes while the fintech partner can use the enhanced contract. This approach satisfies the single‑spec budget constraint and guarantees backward compatibility for the required period."
+        "type": "Incorrect",
+        "text": "Partnership requires mutual commitment, which the upstream team does not offer."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Create two separate API specifications, one for the mobile apps and another for the fintech partner, each with its own versioning scheme.: This option is incorrect. Maintaining two specifications doubles the effort, violating the budget limitation of a single API spec. Additionally, divergent contracts increase operational overhead and can lead to inconsistency in data handling across the two client groups."
+        "text": "The upstream context will not adapt, so this is not available."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Expose a Graph QL endpoint so each client can request exactly the fields it needs, eliminating the need for versioning.: This option is incorrect. While Graph QL reduces over‑fetching, it introduces a completely new API contract and requires clients to adopt a different query language, which is not feasible for existing mobile apps that already use REST. Moreover, it does not address the requirement for a single specification effort within the current budget."
+        "type": "Correct",
+        "text": "With no leverage and no model to protect, adopting the upstream model minimizes effort."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Publish a single API spec but enforce a breaking‑changes policy that forces all consumers to upgrade within six months.: This option is incorrect. Forcing a rapid upgrade would break the existing mobile applications that need 18 months of stability, leading to service disruption and potential loss of customers. It also contradicts the backward‑compatibility requirement and would likely incur additional re‑work costs."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Place the service behind an API gateway that performs request transformation for legacy mobile apps while exposing a new spec for the fintech partner.: This option is partially plausible but ultimately incorrect for the scenario. Although a gateway can hide contract differences, building and maintaining transformation logic adds significant complexity and cost, defeating the single‑spec budget constraint. It also introduces latency and a point of failure that must be managed."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Adopt header‑based versioning (e. g., X-API-Version) without changing the contract, and deprecate the old version after 12 months.: This option is incorrect. Header‑based versioning without contract changes does not guarantee backward compatibility, because any new required fields could still break existing clients. Deprecating the old version after only 12 months falls short of the 18‑month stability window mandated by the business."
+        "text": "Translation adds effort the team does not need to protect a model it does not have."
       }
     },
-    "references": {
-      "primary": {
-        "title": "Anypoint Exchange — When to Change Version Numbers (Backward-Compatible vs. Major)",
-        "url": "https://docs.mulesoft.com/exchange/to-change-raml-version#when-to-change-version-numbers"
-      },
-      "architectureGuide": {
-        "title": "Anypoint Exchange — Asset Versions and Semantic Versioning",
-        "url": "https://docs.mulesoft.com/exchange/asset-versions#choose-a-version-number-when-publishing"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
-      }
-    },
-    "correctAnswer": "A"
+    "references": {}
   },
   {
     "id": "q-072",
     "number": 72,
-    "title": "API Versioning - A logistics startup needs to roll out a new shipment-tracking API",
+    "title": "Designing and Sharing APIs - Upstream accommodates the downstream",
     "domain": "Designing and sharing APIs",
     "topics": [
-      "API Versioning"
+      "Bounded Context",
+      "Customer/Supplier"
     ],
-    "prompt": "A logistics startup needs to roll out a new shipment-tracking API across three geographic regions within two weeks. The team has a small Dev Ops budget and must avoid any downtime for existing tracking services. What should be done FIRST?",
+    "prompt": "Within one company, the Fulfillment context consumes the Order context's API. The Order team has agreed to plan its API changes around Fulfillment's needs and to include Fulfillment's requirements in its roadmap. Which relationship does this describe?",
     "options": [
       {
         "letter": "A",
-        "text": "Create a new version of the tracking API in Anypoint Platform (using API Designer) and enable API versioning."
+        "text": "Customer/Supplier"
       },
       {
         "letter": "B",
-        "text": "Deploy the new API directly to production using the same runtime as the existing tracking services."
+        "text": "Anticorruption Layer"
       },
       {
         "letter": "C",
-        "text": "Spin up separate Mule runtimes in each geographic region before finalizing the API contract."
+        "text": "Separate Ways"
       },
       {
         "letter": "D",
-        "text": "Purchase additional Dev Ops tooling to automate blue-green deployments before any design work."
-      },
-      {
-        "letter": "E",
-        "text": "Decommission the existing tracking API to free resources for the new implementation."
-      },
-      {
-        "letter": "F",
-        "text": "Immediately expose the new API through a public proxy without testing."
+        "text": "Conformist"
       }
     ],
-    "explanation": "The question tests the candidate's understanding of API-first design and versioning as the foundation for a zero-downtime, multi-region rollout on a limited budget. The first action must be to define and version the new API contract in Anypoint Platform, which isolates the new functionality from existing services and enables safe parallel operation. Options that suggest immediate deployment, infrastructure provisioning, or tooling purchase ignore the prerequisite of a stable contract and can cause service interruption or waste resources. Decommissioning the legacy API or exposing an untested API are classic misconceptions that overlook the need for backward compatibility and quality assurance. In real projects, establishing a versioned API contract allows teams to use blue-green or canary patterns later, ensuring a smooth, risk-controlled rollout across regions.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. In a customer/supplier relationship, the upstream (supplier) context takes the downstream (customer) context's needs into account, for example by planning API changes with it. The downstream can then rely on an API model shaped partly by its requirements, reducing translation.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Create a new version of the tracking API in Anypoint Platform (using API Designer) and enable API versioning.: This is the correct first step because a design-first approach guarantees a stable contract before any code is written or deployed. By versioning the API (e.g., v2) you isolate the new functionality from the existing v1 endpoint, allowing both to run concurrently without impact. In practice, this lets the team deploy the new version in each region while legacy consumers continue to use the old version, satisfying the zero-downtime requirement and keeping the Dev Ops effort minimal."
+        "text": "The upstream supplier accommodates the downstream customer's needs."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Deploy the new API directly to production using the same runtime as the existing tracking services.: Deploying straight to production without a versioned contract is incorrect because any change could break existing consumers, violating the no-downtime constraint. Without versioning, the new code would overwrite the current implementation, forcing an immediate cutover that risks service disruption. Additionally, this approach bypasses essential testing and validation steps, which can lead to costly rollbacks in a tight two-week schedule."
+        "text": "An anticorruption layer is a downstream translation, not upstream accommodation."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Spin up separate Mule runtimes in each geographic region before finalizing the API contract.: Provisioning runtimes before the API is defined is a common misconception; it wastes limited budget on infrastructure that may later need reconfiguration. The core risk is that once the contract changes, the pre-provisioned runtimes might require additional networking or scaling adjustments, delaying delivery. Best practice is to first lock down the API contract and version, then allocate runtimes as part of the deployment plan."
+        "text": "Separate Ways means no integration between the contexts."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Purchase additional Dev Ops tooling to automate blue-green deployments before any design work.: While automation is valuable, buying tooling before establishing a clear API design and versioning strategy is premature and costly for a small-budget team. Without a contract in place, automated blue-green releases have no target artifact to promote, leading to wasted effort. The exam expects you to prioritize design and versioning over tooling acquisition in the initial phase."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Decommission the existing tracking API to free resources for the new implementation.: Shutting down the current API contradicts the explicit requirement to avoid any downtime for existing services. Removing the legacy endpoint would immediately break all current clients, causing a loss of business and reputation. A proper migration strategy retains the old version until all consumers have moved to the new, versioned API."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Immediately expose the new API through a public proxy without testing.: Exposing an untested API violates both quality and reliability best practices and risks introducing bugs into production, potentially causing downtime. Without functional and performance testing, the new endpoint could fail under load, especially across three regions, undermining the two-week timeline. Testing should follow the design phase, not precede it."
+        "text": "A conformist downstream adopts the upstream model without influence."
       }
     },
-    "references": {
-      "primary": {
-        "title": "Design Center — Creating and Publishing API Specifications",
-        "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-specs#share-in-exchange-and-api-manager"
-      },
-      "architectureGuide": {
-        "title": "Anypoint Exchange — Best Practices for API Versioning",
-        "url": "https://docs.mulesoft.com/exchange/to-change-raml-version#best-practices-api-versioning"
-      },
-      "arc720": {
-        "lesson": "Lesson 7 — Effective APIs",
-        "anchor": "ARC720-Course-Content.md#7-effective-apis"
-      }
-    },
-    "correctAnswer": "A"
+    "references": {}
   },
   {
     "id": "q-073",
     "number": 73,
+    "title": "Designing and Sharing APIs - Legacy upstream with a poor model",
+    "domain": "Designing and sharing APIs",
+    "topics": [
+      "Bounded Context",
+      "Anticorruption Layer"
+    ],
+    "prompt": "A new Claims context must consume data from a decades-old mainframe policy system whose model is confusing and inconsistent. The mainframe team cannot change it. The Claims team has invested in a clean domain model. What should the architect recommend?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Ask the mainframe team to redesign its data model"
+      },
+      {
+        "letter": "B",
+        "text": "An anticorruption layer in the Claims context"
+      },
+      {
+        "letter": "C",
+        "text": "Conform to the mainframe model to avoid translation"
+      },
+      {
+        "letter": "D",
+        "text": "Share one model between Claims and the mainframe"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. When the upstream model is poor and cannot be changed, and the downstream has a valuable model to protect, an anticorruption layer is the preferred strategy. In API-led architectures this translation often sits in a System API or in the downstream API's implementation.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "The mainframe team cannot change the system."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Translation isolates the Claims model from the legacy system's confusing model."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Conforming would import the confusing legacy model into the clean Claims context."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Joint ownership is impossible when one side cannot change."
+      }
+    },
+    "references": {}
+  },
+  {
+    "id": "q-074",
+    "number": 74,
+    "title": "Designing and Sharing APIs - Choosing a strategy by power",
+    "domain": "Designing and sharing APIs",
+    "topics": [
+      "Bounded Context",
+      "Context Mapping"
+    ],
+    "prompt": "What primarily determines the most appropriate strategy for mapping between the API data models of two bounded contexts?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The power relationship between the two contexts"
+      },
+      {
+        "letter": "B",
+        "text": "The number of policies applied in API Manager"
+      },
+      {
+        "letter": "C",
+        "text": "Whether the APIs are deployed to CloudHub or Runtime Fabric"
+      },
+      {
+        "letter": "D",
+        "text": "The programming language used in each implementation"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Mapping strategies between bounded contexts depend on their relationship. If the upstream accommodates the downstream, a customer/supplier relationship works. If it does not, the downstream either conforms or protects its model with an anticorruption layer.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "Who can influence whom decides whether to conform, translate, or collaborate."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Policies govern runtime behavior, not model mapping."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Deployment target is unrelated to data-model mapping."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Implementation language does not determine the mapping relationship."
+      }
+    },
+    "references": {}
+  },
+  {
+    "id": "q-075",
+    "number": 75,
+    "title": "Designing and Sharing APIs - Choose two: when the upstream will not adapt",
+    "domain": "Designing and sharing APIs",
+    "topics": [
+      "Bounded Context",
+      "Context Mapping"
+    ],
+    "prompt": "An upstream context will not change its API data model for a downstream context. Which two mapping strategies are available to the downstream context? (Choose two.)",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Partnership"
+      },
+      {
+        "letter": "B",
+        "text": "Customer/Supplier"
+      },
+      {
+        "letter": "C",
+        "text": "Conformist"
+      },
+      {
+        "letter": "D",
+        "text": "Shared Kernel"
+      },
+      {
+        "letter": "E",
+        "text": "Anticorruption Layer"
+      }
+    ],
+    "correctAnswers": [
+      "C",
+      "E"
+    ],
+    "explanation": "Correct answers: C and E. When the upstream context does not accommodate the downstream, the downstream's options are to conform to the upstream model or to isolate itself with an anticorruption layer. Collaborative strategies require the upstream's cooperation.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "This requires mutual commitment from both teams."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "This requires the upstream to accommodate the downstream."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "The downstream can adopt the upstream model as-is."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "This requires joint ownership of part of the model."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "The downstream can translate the upstream model to protect its own."
+      }
+    },
+    "references": {}
+  },
+  {
+    "id": "q-076",
+    "number": 76,
+    "title": "Designing and Sharing APIs - Which method is not idempotent",
+    "domain": "Designing and sharing APIs",
+    "topics": [
+      "HTTP Methods",
+      "Idempotency"
+    ],
+    "prompt": "A client may resend a request after a network timeout. For which HTTP method is resending the request most likely to cause an unintended side effect, such as a duplicate record?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "DELETE"
+      },
+      {
+        "letter": "B",
+        "text": "GET"
+      },
+      {
+        "letter": "C",
+        "text": "PUT"
+      },
+      {
+        "letter": "D",
+        "text": "POST"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. An idempotent method produces the same server state whether it is executed once or many times. GET, HEAD, PUT, and DELETE are idempotent, while POST is not, so retrying a POST can create duplicates unless the API detects repeated requests.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Deleting the same resource again leaves the same end state."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "GET is safe and idempotent; it does not change server state."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "PUT replaces a resource with the same state, so repeating it has the same effect."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "POST is not idempotent; repeating it can create another resource."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "MuleSoft — What is a RESTful API?",
+        "url": "https://www.mulesoft.com/resources/api/restful-api"
+      },
+      "architectureGuide": {
+        "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
+        "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
+      }
+    }
+  },
+  {
+    "id": "q-077",
+    "number": 77,
+    "title": "Designing and Sharing APIs - Lost update prevention",
+    "domain": "Designing and sharing APIs",
+    "topics": [
+      "Optimistic Concurrency",
+      "ETag"
+    ],
+    "prompt": "Two agents edit the same customer record through a REST API. Each reads the record, makes a change, and sends a PUT. The second PUT silently overwrites the first agent's change. Which HTTP-native mechanism prevents this?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Require clients to use POST instead of PUT for updates"
+      },
+      {
+        "letter": "B",
+        "text": "Return an ETag on GET and require If-Match on PUT"
+      },
+      {
+        "letter": "C",
+        "text": "Add Cache-Control: no-cache to the GET response"
+      },
+      {
+        "letter": "D",
+        "text": "Lock the record on the server for each client session"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. HTTP supports optimistic concurrency through entity tags. The server returns an ETag representing the resource version; the client sends it back in an If-Match header on updates. If the resource has changed in the meantime, the server rejects the update instead of overwriting it.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "Changing the method does not detect concurrent modifications."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "The server rejects a PUT whose ETag no longer matches the current version."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Disabling caching does not stop one update from overwriting another."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Pessimistic locks conflict with stateless REST and HTTP-native concurrency."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "MuleSoft — What is REST API design?",
+        "url": "https://www.mulesoft.com/resources/api/what-is-rest-api-design"
+      },
+      "architectureGuide": {
+        "title": "MuleSoft — What is a RESTful API?",
+        "url": "https://www.mulesoft.com/resources/api/restful-api"
+      }
+    }
+  },
+  {
+    "id": "q-078",
+    "number": 78,
+    "title": "Designing and Sharing APIs - Response to a stale update",
+    "domain": "Designing and sharing APIs",
+    "topics": [
+      "Optimistic Concurrency",
+      "HTTP Status Codes"
+    ],
+    "prompt": "A client sends PUT /orders/123 with an If-Match header whose ETag no longer matches the current version of the order. Which response should the API return?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "404 Not Found"
+      },
+      {
+        "letter": "B",
+        "text": "200 OK with the update applied"
+      },
+      {
+        "letter": "C",
+        "text": "412 Precondition Failed"
+      },
+      {
+        "letter": "D",
+        "text": "304 Not Modified"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. When a conditional request's precondition, such as If-Match, evaluates to false, the server responds with 412 Precondition Failed. The client should then fetch the current representation and its new ETag before retrying.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "The order exists; only its version has changed."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Applying the update would overwrite another client's change."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "The If-Match precondition is false, so the update is rejected."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "304 applies to conditional GET requests, not failed updates."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "MuleSoft — What is REST API design?",
+        "url": "https://www.mulesoft.com/resources/api/what-is-rest-api-design"
+      },
+      "architectureGuide": {
+        "title": "MuleSoft — What is a RESTful API?",
+        "url": "https://www.mulesoft.com/resources/api/restful-api"
+      }
+    }
+  },
+  {
+    "id": "q-079",
+    "number": 79,
+    "title": "Designing and Sharing APIs - Conditional GET",
+    "domain": "Designing and sharing APIs",
+    "topics": [
+      "ETag",
+      "Caching"
+    ],
+    "prompt": "A mobile client repeatedly downloads a large product catalog that rarely changes. The API returns an ETag with each response. How can the client avoid downloading the catalog again when it has not changed?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Use POST to request the catalog only when needed"
+      },
+      {
+        "letter": "B",
+        "text": "Add a random query parameter to bypass caches"
+      },
+      {
+        "letter": "C",
+        "text": "Send If-Match with the ETag on each GET"
+      },
+      {
+        "letter": "D",
+        "text": "Send If-None-Match and handle 304"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. ETags also support conditional GET requests. The client sends the ETag in an If-None-Match header; if the resource is unchanged, the server responds with 304 Not Modified and no body, saving bandwidth and processing.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "POST is not cacheable in this way and changes the semantics."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "This forces a full download every time."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "If-Match is used to guard updates, not to avoid re-downloads."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "The server returns 304 with no body when the ETag still matches."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "MuleSoft — What is REST API design?",
+        "url": "https://www.mulesoft.com/resources/api/what-is-rest-api-design"
+      },
+      "architectureGuide": {
+        "title": "HTTP Caching Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-http-caching"
+      }
+    }
+  },
+  {
+    "id": "q-080",
+    "number": 80,
+    "title": "Designing and Sharing APIs - Idempotent full update",
+    "domain": "Designing and sharing APIs",
+    "topics": [
+      "HTTP Methods",
+      "Idempotency"
+    ],
+    "prompt": "An API team must choose a method for an operation that sets a customer's complete preferences document. Clients may retry the call after timeouts, and retries must not cause different results. Which method is most appropriate?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "PUT to the customer's preferences resource"
+      },
+      {
+        "letter": "B",
+        "text": "GET with the preferences in query parameters"
+      },
+      {
+        "letter": "C",
+        "text": "POST to a preferences collection"
+      },
+      {
+        "letter": "D",
+        "text": "PATCH with incremental changes"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. PUT replaces the target resource with the supplied representation, so repeating the same PUT leaves the same state. This makes PUT suitable for full updates that clients may retry. POST and PATCH are not guaranteed to be idempotent.",
+    "rationales": {
+      "A": {
+        "type": "Correct",
+        "text": "PUT replaces the resource state and is idempotent, so retries are safe."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "GET must not change server state."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "POST is not idempotent and may create duplicates on retry."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "PATCH is not guaranteed to be idempotent."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "MuleSoft — What is a RESTful API?",
+        "url": "https://www.mulesoft.com/resources/api/restful-api"
+      },
+      "architectureGuide": {
+        "title": "MuleSoft — What is REST API design?",
+        "url": "https://www.mulesoft.com/resources/api/what-is-rest-api-design"
+      }
+    }
+  },
+  {
+    "id": "q-081",
+    "number": 81,
+    "title": "Designing and Sharing APIs - Choose two idempotent methods",
+    "domain": "Designing and sharing APIs",
+    "topics": [
+      "HTTP Methods",
+      "Idempotency"
+    ],
+    "prompt": "Which two HTTP methods are idempotent according to HTTP semantics? (Choose two.)",
+    "options": [
+      {
+        "letter": "A",
+        "text": "PATCH"
+      },
+      {
+        "letter": "B",
+        "text": "POST"
+      },
+      {
+        "letter": "C",
+        "text": "DELETE"
+      },
+      {
+        "letter": "D",
+        "text": "CONNECT"
+      },
+      {
+        "letter": "E",
+        "text": "PUT"
+      }
+    ],
+    "correctAnswers": [
+      "C",
+      "E"
+    ],
+    "explanation": "Correct answers: C and E. HTTP defines GET, HEAD, OPTIONS, PUT, and DELETE as idempotent: making the same request several times has the same effect on the server as making it once. POST and PATCH are not guaranteed to be idempotent, which matters when designing retries.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "PATCH is not guaranteed to be idempotent."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "POST is not idempotent and can create multiple resources."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "Repeated deletes of the same resource leave the same end state."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "CONNECT establishes a tunnel and is not defined as idempotent."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "Repeating the same PUT leaves the resource in the same state."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "MuleSoft — What is a RESTful API?",
+        "url": "https://www.mulesoft.com/resources/api/restful-api"
+      },
+      "architectureGuide": {
+        "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
+        "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
+      }
+    }
+  },
+  {
+    "id": "q-082",
+    "number": 82,
     "title": "API Layers - Order status for a mobile app",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4490,35 +4851,35 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "System APIs for SAP orders, carrier tracking, and Salesforce customers that the mobile app invokes and combines on the device"
+        "text": "System APIs per backend, a reusable Order Status Process API, and a thin Mobile Experience API"
       },
       {
         "letter": "C",
-        "text": "One Mobile Order Status API that calls SAP, the carrier platform, and Salesforce directly and returns the mobile payload"
+        "text": "System APIs for SAP orders, carrier tracking, and Salesforce customers that the mobile app invokes and combines on the device"
       },
       {
         "letter": "D",
-        "text": "System APIs per backend, a reusable Order Status Process API, and a thin Mobile Experience API"
+        "text": "One Mobile Order Status API that calls SAP, the carrier platform, and Salesforce directly and returns the mobile payload"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. API-led connectivity separates concerns into three layers. System APIs unlock data from each system of record, Process APIs orchestrate and combine that data into reusable business capabilities such as order status, and Experience APIs adapt the result for a specific channel. Because the web team will need the same capability, the orchestration must live in a Process API that both channels reuse, while each channel gets its own lightweight Experience API.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. API-led connectivity separates concerns into three layers. System APIs unlock data from each system of record, Process APIs orchestrate and combine that data into reusable business capabilities such as order status, and Experience APIs adapt the result for a specific channel. Because the web team will need the same capability, the orchestration must live in a Process API that both channels reuse, while each channel gets its own lightweight Experience API.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "Without System APIs the backend access is not reusable, and the Process API would have to absorb channel-specific formatting that changes with the mobile UI."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Pushing orchestration into the client duplicates business logic in every channel and increases round trips over mobile networks."
+        "type": "Correct",
+        "text": "Each backend gets a System API, the cross-system orchestration is a reusable Process API that the web team can also consume, and the channel-specific shaping lives in a thin Experience API."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This is a point-to-point design: the orchestration and backend access would have to be rebuilt for the web channel, so nothing is reusable."
+        "text": "Pushing orchestration into the client duplicates business logic in every channel and increases round trips over mobile networks."
       },
       "D": {
-        "type": "Correct",
-        "text": "Each backend gets a System API, the cross-system orchestration is a reusable Process API that the web team can also consume, and the channel-specific shaping lives in a thin Experience API."
+        "type": "Incorrect",
+        "text": "This is a point-to-point design: the orchestration and backend access would have to be rebuilt for the web channel, so nothing is reusable."
       }
     },
     "references": {
@@ -4533,8 +4894,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-074",
-    "number": 74,
+    "id": "q-083",
+    "number": 83,
     "title": "API Layers - Onboarding a new employee",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4592,8 +4953,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-075",
-    "number": 75,
+    "id": "q-084",
+    "number": 84,
     "title": "API Layers - Partner price lookup",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4604,35 +4965,35 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Build a new Distributor Pricing Process API that copies the pricing logic and calls the same System APIs"
+        "text": "Add a Distributor Pricing Experience API that reuses the Pricing Process API"
       },
       {
         "letter": "B",
-        "text": "Modify the Pricing Process API so it returns the partner field names whenever the caller is a distributor"
+        "text": "Build a new Distributor Pricing Process API that copies the pricing logic and calls the same System APIs"
       },
       {
         "letter": "C",
-        "text": "Add a Distributor Pricing Experience API that reuses the Pricing Process API"
+        "text": "Modify the Pricing Process API so it returns the partner field names whenever the caller is a distributor"
       },
       {
         "letter": "D",
         "text": "Expose the pricing System APIs directly to distributors and let them calculate prices themselves"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. When an existing business capability must be offered to a new channel with different data formats or policies, API-led connectivity adds an Experience API in front of the existing Process API. The Process API stays channel-agnostic and reusable, while the Experience API handles the partner-specific shape and lets API Manager apply partner-specific policies such as rate limiting.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. When an existing business capability must be offered to a new channel with different data formats or policies, API-led connectivity adds an Experience API in front of the existing Process API. The Process API stays channel-agnostic and reusable, while the Experience API handles the partner-specific shape and lets API Manager apply partner-specific policies such as rate limiting.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Duplicating the business logic creates two implementations of pricing that will drift apart over time."
+        "type": "Correct",
+        "text": "An Experience API adapts an existing capability to a new consumer's format and policies without changing or duplicating the Process API."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Adding consumer-specific formatting to the Process API couples it to individual channels and risks breaking the internal sales portal."
+        "text": "Duplicating the business logic creates two implementations of pricing that will drift apart over time."
       },
       "C": {
-        "type": "Correct",
-        "text": "An Experience API adapts an existing capability to a new consumer's format and policies without changing or duplicating the Process API."
+        "type": "Incorrect",
+        "text": "Adding consumer-specific formatting to the Process API couples it to individual channels and risks breaking the internal sales portal."
       },
       "D": {
         "type": "Incorrect",
@@ -4651,8 +5012,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-076",
-    "number": 76,
+    "id": "q-085",
+    "number": 85,
     "title": "API Layers - Identify the System APIs",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4710,8 +5071,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-077",
-    "number": 77,
+    "id": "q-086",
+    "number": 86,
     "title": "API Layers - Customer 360 in two channels",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4769,8 +5130,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-078",
-    "number": 78,
+    "id": "q-087",
+    "number": 87,
     "title": "API Layers - Assigning a new API to a layer",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4781,39 +5142,39 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Process layer, because it combines several systems and applies shared business rules"
-      },
-      {
-        "letter": "B",
         "text": "Experience layer, because it is consumed directly by customer-facing applications"
       },
       {
-        "letter": "C",
+        "letter": "B",
         "text": "No layer, because availability calculations should be implemented inside each consuming application"
       },
       {
-        "letter": "D",
+        "letter": "C",
         "text": "System layer, because it reads inventory data directly from the warehouse management systems"
+      },
+      {
+        "letter": "D",
+        "text": "Process layer, because it combines several systems and applies shared business rules"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. Layer assignment depends on the API's responsibility, not on who calls it. An API that orchestrates several systems and applies business rules that are independent of any particular channel belongs in the Process layer, where it can be reused by the e-commerce site, store app, and marketplace integration through their own Experience APIs if needed.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Layer assignment depends on the API's responsibility, not on who calls it. An API that orchestrates several systems and applies business rules that are independent of any particular channel belongs in the Process layer, where it can be reused by the e-commerce site, store app, and marketplace integration through their own Experience APIs if needed.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Aggregating multiple systems and applying channel-independent business rules is the defining responsibility of a Process API."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "Being consumed by channels does not make an API an Experience API; it serves three different channels with the same channel-agnostic result."
       },
-      "C": {
+      "B": {
         "type": "Incorrect",
         "text": "Duplicating the calculation in every channel produces inconsistent results and prevents reuse."
       },
-      "D": {
+      "C": {
         "type": "Incorrect",
         "text": "System APIs front a single system and avoid business rules; this API spans two systems and computes a business value."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Aggregating multiple systems and applying channel-independent business rules is the defining responsibility of a Process API."
       }
     },
     "references": {
@@ -4828,8 +5189,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-079",
-    "number": 79,
+    "id": "q-088",
+    "number": 88,
     "title": "API Layers - Choose two layers for a quote process",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4848,11 +5209,11 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "The discount rules should be implemented in the web portal Experience API because only portal customers receive discounts"
+        "text": "The rating engine, capacity-planning system, and Salesforce should each be fronted by System APIs"
       },
       {
         "letter": "D",
-        "text": "The rating engine, capacity-planning system, and Salesforce should each be fronted by System APIs"
+        "text": "The discount rules should be implemented in the web portal Experience API because only portal customers receive discounts"
       },
       {
         "letter": "E",
@@ -4860,10 +5221,10 @@ window.MCPA_QUESTIONS = [
       }
     ],
     "correctAnswers": [
-      "D",
+      "C",
       "E"
     ],
-    "explanation": "Correct answers: D and E. In API-led connectivity, each backend is unlocked by System APIs, cross-system business logic such as calculating a freight quote with discounts is implemented once in a Process API, and each channel receives its own Experience API in the format it requires. Discounts that depend on the customer rather than the channel belong in the Process layer.",
+    "explanation": "Correct answers: C and E. In API-led connectivity, each backend is unlocked by System APIs, cross-system business logic such as calculating a freight quote with discounts is implemented once in a Process API, and each channel receives its own Experience API in the format it requires. Discounts that depend on the customer rather than the channel belong in the Process layer.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -4874,12 +5235,12 @@ window.MCPA_QUESTIONS = [
         "text": "System APIs should not orchestrate other systems; that hides business logic in the wrong layer and removes reuse."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "The scenario states discounts are customer-specific, not channel-specific, so they must apply to EDI partners as well."
-      },
-      "D": {
         "type": "Correct",
         "text": "Each backend gets a System API so that its data and functions are reusable and its complexity is hidden."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "The scenario states discounts are customer-specific, not channel-specific, so they must apply to EDI partners as well."
       },
       "E": {
         "type": "Correct",
@@ -4898,8 +5259,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-080",
-    "number": 80,
+    "id": "q-089",
+    "number": 89,
     "title": "API Layers - Event-driven step in a process",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -4957,8 +5318,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-081",
-    "number": 81,
+    "id": "q-090",
+    "number": 90,
     "title": "API Layers - Who should own the System APIs?",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5016,8 +5377,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-082",
-    "number": 82,
+    "id": "q-091",
+    "number": 91,
     "title": "API Layers - Rate of change by layer",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5028,35 +5389,35 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Process APIs change most frequently because each new channel requires a new version of every Process API"
+        "text": "Experience APIs change most often, Process APIs moderately, and System APIs least"
       },
       {
         "letter": "B",
-        "text": "System APIs change most frequently because backend systems receive patches and upgrades every quarter"
+        "text": "Process APIs change most frequently because each new channel requires a new version of every Process API"
       },
       {
         "letter": "C",
-        "text": "Experience APIs change most often, Process APIs moderately, and System APIs least"
+        "text": "System APIs change most frequently because backend systems receive patches and upgrades every quarter"
       },
       {
         "letter": "D",
         "text": "All three layers change at the same rate because they are deployed through the same CI/CD pipeline"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. One of the defining characteristics of the three layers is their rate of change. Experience APIs track fast-moving channel and UI requirements, Process APIs evolve with business processes, and System APIs change slowly because they front long-lived systems of record. Separating APIs this way lets fast-changing parts evolve without destabilizing the reusable foundation.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. One of the defining characteristics of the three layers is their rate of change. Experience APIs track fast-moving channel and UI requirements, Process APIs evolve with business processes, and System APIs change slowly because they front long-lived systems of record. Separating APIs this way lets fast-changing parts evolve without destabilizing the reusable foundation.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "New channels should be handled by new Experience APIs that reuse existing Process APIs unchanged."
+        "type": "Correct",
+        "text": "The layers are arranged by rate of change: channels evolve quickly, processes evolve moderately, and systems of record are the most stable."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Backend patches rarely alter a System API contract; System APIs are designed to be the most stable layer."
+        "text": "New channels should be handled by new Experience APIs that reuse existing Process APIs unchanged."
       },
       "C": {
-        "type": "Correct",
-        "text": "The layers are arranged by rate of change: channels evolve quickly, processes evolve moderately, and systems of record are the most stable."
+        "type": "Incorrect",
+        "text": "Backend patches rarely alter a System API contract; System APIs are designed to be the most stable layer."
       },
       "D": {
         "type": "Incorrect",
@@ -5075,8 +5436,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-083",
-    "number": 83,
+    "id": "q-092",
+    "number": 92,
     "title": "API Layers - Functional focus of a System API",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5091,35 +5452,35 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Keep only Salesforce account access in the System API and move the other logic to other layers"
-      },
-      {
-        "letter": "C",
         "text": "Split it into two System APIs: one for Salesforce accounts and one for loyalty tiers and mobile formatting"
       },
       {
-        "letter": "D",
+        "letter": "C",
         "text": "Keep the design because putting everything in one API reduces the number of deployments to manage"
+      },
+      {
+        "letter": "D",
+        "text": "Keep only Salesforce account access in the System API and move the other logic to other layers"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. Each layer has a distinct functional focus. System APIs expose and abstract a single system of record, Process APIs implement business logic and orchestration across systems, and Experience APIs adapt data for a particular channel. Mixing these responsibilities in one System API couples it to other systems and to a single consumer, reducing reuse.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Each layer has a distinct functional focus. System APIs expose and abstract a single system of record, Process APIs implement business logic and orchestration across systems, and Experience APIs adapt data for a particular channel. Mixing these responsibilities in one System API couples it to other systems and to a single consumer, reducing reuse.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "The calculation needs order data from another system; pushing it into Salesforce creates a hidden cross-system dependency."
       },
       "B": {
-        "type": "Correct",
-        "text": "A System API's functional focus is unlocking one system; business rules across systems and channel formatting belong to other layers."
-      },
-      "C": {
         "type": "Incorrect",
         "text": "A loyalty-and-formatting API still mixes cross-system business logic with channel concerns and is not a System API."
       },
-      "D": {
+      "C": {
         "type": "Incorrect",
         "text": "Fewer deployments do not compensate for a System API that is coupled to other systems and to one channel, which destroys reuse."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "A System API's functional focus is unlocking one system; business rules across systems and channel formatting belong to other layers."
       }
     },
     "references": {
@@ -5134,8 +5495,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-084",
-    "number": 84,
+    "id": "q-093",
+    "number": 93,
     "title": "API Layers - Frequent UI changes",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5193,8 +5554,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-085",
-    "number": 85,
+    "id": "q-094",
+    "number": 94,
     "title": "API Layers - Assign APIs by ownership and change",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5213,15 +5574,15 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "(1) System, (2) Experience, (3) Process"
+        "text": "(1) System, (2) Process, (3) Experience"
       },
       {
         "letter": "D",
-        "text": "(1) System, (2) Process, (3) Experience"
+        "text": "(1) System, (2) Experience, (3) Process"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. API layers can be identified from three characteristics: who owns the API, what it focuses on, and how often it changes. Central IT owning a stable API over one system indicates a System API; a business owner applying cross-system rules indicates a Process API; and an app team iterating every sprint indicates an Experience API.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. API layers can be identified from three characteristics: who owns the API, what it focuses on, and how often it changes. Central IT owning a stable API over one system indicates a System API; a business owner applying cross-system rules indicates a Process API; and an app team iterating every sprint indicates an Experience API.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -5232,12 +5593,12 @@ window.MCPA_QUESTIONS = [
         "text": "Student Records fronts a single system of record and Course Enrollment spans two systems, so these are reversed."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Course enrollment applies business rules across systems and is not channel-specific, while the mobile API is clearly channel-specific."
-      },
-      "D": {
         "type": "Correct",
         "text": "Each API matches its layer's ownership, functional focus, and rate of change: stable backend access, cross-system business rules, and a fast-changing channel API."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Course enrollment applies business rules across systems and is not channel-specific, while the mobile API is clearly channel-specific."
       }
     },
     "references": {
@@ -5252,8 +5613,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-086",
-    "number": 86,
+    "id": "q-095",
+    "number": 95,
     "title": "API Layers - LoB ownership of Process APIs",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5311,8 +5672,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-087",
-    "number": 87,
+    "id": "q-096",
+    "number": 96,
     "title": "API Layers - Stable contract over a changing backend",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5331,15 +5692,15 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Expose billing through backend-independent System APIs and re-implement them during migration"
+        "text": "Create new Process APIs for the SaaS platform and ask consumers to move to them after the migration"
       },
       {
         "letter": "D",
-        "text": "Create new Process APIs for the SaaS platform and ask consumers to move to them after the migration"
+        "text": "Expose billing through backend-independent System APIs and re-implement them during migration"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. System APIs insulate the rest of the application network from changes in systems of record. When their contracts are designed independently of a specific backend, the backend can be replaced by changing only the System API implementation, protecting the slower-changing contracts that Process APIs depend on.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. System APIs insulate the rest of the application network from changes in systems of record. When their contracts are designed independently of a specific backend, the backend can be replaced by changing only the System API implementation, protecting the slower-changing contracts that Process APIs depend on.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -5350,12 +5711,12 @@ window.MCPA_QUESTIONS = [
         "text": "Each Process API would need code changes and coordinated testing, multiplying migration effort and risk."
       },
       "C": {
-        "type": "Correct",
-        "text": "A stable System API contract absorbs backend changes, so the dependent Process APIs do not need to change when the system of record is replaced."
-      },
-      "D": {
         "type": "Incorrect",
         "text": "Duplicating Process APIs pushes the migration burden onto every consumer."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "A stable System API contract absorbs backend changes, so the dependent Process APIs do not need to change when the system of record is replaced."
       }
     },
     "references": {
@@ -5370,8 +5731,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-088",
-    "number": 88,
+    "id": "q-097",
+    "number": 97,
     "title": "API Layers - No EDM and limited capacity",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5386,35 +5747,35 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Let each consuming Process API define its own data model for the System API"
+        "text": "Mirror the backend's model and semantics, but in JSON with readable names and only needed fields"
       },
       {
         "letter": "C",
-        "text": "Pause the project until the team defines a complete Enterprise Data Model for the organization"
+        "text": "Let each consuming Process API define its own data model for the System API"
       },
       {
         "letter": "D",
-        "text": "Mirror the backend's model and semantics, but in JSON with readable names and only needed fields"
+        "text": "Pause the project until the team defines a complete Enterprise Data Model for the organization"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. MuleSoft's guidance for System API data models depends on the organization. If an Enterprise Data Model exists, System APIs use its types. Otherwise each System API can use the Bounded Context Data Model of its context. If neither is practical, the System API can use data types that closely mirror the backend system's model, while still abstracting technical details such as proprietary formats and naming so consumers are not tied to the backend's idiosyncrasies.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. MuleSoft's guidance for System API data models depends on the organization. If an Enterprise Data Model exists, System APIs use its types. Otherwise each System API can use the Bounded Context Data Model of its context. If neither is practical, the System API can use data types that closely mirror the backend system's model, while still abstracting technical details such as proprietary formats and naming so consumers are not tied to the backend's idiosyncrasies.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "Leaking proprietary formats and cryptic names to every consumer couples them to the backend and makes the API hard to use."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "A System API needs a single contract; consumer-defined models would produce many inconsistent versions of the same API."
+        "type": "Correct",
+        "text": "When neither an EDM nor clean Bounded Context models are practical, mirroring the backend while removing technical idiosyncrasies keeps translation effort low and still hides proprietary formats."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Waiting for an organization-wide EDM delays delivery and is unrealistic for a small team."
+        "text": "A System API needs a single contract; consumer-defined models would produce many inconsistent versions of the same API."
       },
       "D": {
-        "type": "Correct",
-        "text": "When neither an EDM nor clean Bounded Context models are practical, mirroring the backend while removing technical idiosyncrasies keeps translation effort low and still hides proprietary formats."
+        "type": "Incorrect",
+        "text": "Waiting for an organization-wide EDM delays delivery and is unrealistic for a small team."
       }
     },
     "references": {
@@ -5429,8 +5790,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-089",
-    "number": 89,
+    "id": "q-098",
+    "number": 98,
     "title": "API Layers - EDM already in place",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5441,35 +5802,35 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Use EDM data types and translate to each backend's model in the implementations"
-      },
-      {
-        "letter": "B",
         "text": "Create a new Bounded Context Data Model for each System API that differs from the EDM"
       },
       {
-        "letter": "C",
+        "letter": "B",
         "text": "Use the EDM only in Experience APIs because System APIs should never transform data"
+      },
+      {
+        "letter": "C",
+        "text": "Use EDM data types and translate to each backend's model in the implementations"
       },
       {
         "letter": "D",
         "text": "Expose each backend's native data model so the System APIs remain thin pass-through layers"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. If an organization already uses an Enterprise Data Model, the API data model of its System APIs should use data types from that EDM. The System API implementation translates between those EDM types and the native data model of the backend system, so consumers work with consistent, backend-independent definitions.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. If an organization already uses an Enterprise Data Model, the API data model of its System APIs should use data types from that EDM. The System API implementation translates between those EDM types and the native data model of the backend system, so consumers work with consistent, backend-independent definitions.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "When an EDM is in use, System APIs adopt its types so all consumers share consistent definitions, and the implementation handles translation to the backend."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "Duplicating definitions alongside a working EDM fragments the data model without any benefit."
       },
-      "C": {
+      "B": {
         "type": "Incorrect",
         "text": "System APIs are precisely where translation between the backend model and a shared model belongs."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "When an EDM is in use, System APIs adopt its types so all consumers share consistent definitions, and the implementation handles translation to the backend."
       },
       "D": {
         "type": "Incorrect",
@@ -5488,8 +5849,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-090",
-    "number": 90,
+    "id": "q-099",
+    "number": 99,
     "title": "API Layers - Bounded context for a System API",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5547,8 +5908,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-091",
-    "number": 91,
+    "id": "q-100",
+    "number": 100,
     "title": "API Layers - Hiding backend complexity",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5559,11 +5920,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Let each Process API team transform the SAP fields into its own names as needed"
+        "text": "Expose business-meaningful names and map them to SAP structures in the implementation"
       },
       {
         "letter": "B",
-        "text": "Expose business-meaningful names and map them to SAP structures in the implementation"
+        "text": "Let each Process API team transform the SAP fields into its own names as needed"
       },
       {
         "letter": "C",
@@ -5574,16 +5935,16 @@ window.MCPA_QUESTIONS = [
         "text": "Replace the System API with direct RFC calls from each Process API so they get full SAP functionality"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. A key purpose of System APIs is to hide the complexity of systems of record from their consumers. Exposing understandable, business-oriented data types and handling the mapping to backend-specific structures inside the System API implementation makes the API reusable by teams without backend expertise and reduces the ripple effect of backend changes.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. A key purpose of System APIs is to hide the complexity of systems of record from their consumers. Exposing understandable, business-oriented data types and handling the mapping to backend-specific structures inside the System API implementation makes the API reusable by teams without backend expertise and reduces the ripple effect of backend changes.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "The same mapping would be duplicated across many Process APIs, creating inconsistency and maintenance cost."
-      },
-      "B": {
         "type": "Correct",
         "text": "Abstracting SAP-specific complexity lets non-SAP teams consume the API and limits the impact of SAP changes."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "The same mapping would be duplicated across many Process APIs, creating inconsistency and maintenance cost."
       },
       "C": {
         "type": "Incorrect",
@@ -5606,8 +5967,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-092",
-    "number": 92,
+    "id": "q-101",
+    "number": 101,
     "title": "API Layers - How many System APIs per backend?",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5665,8 +6026,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-093",
-    "number": 93,
+    "id": "q-102",
+    "number": 102,
     "title": "API Layers - Backend replacement planned",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5724,8 +6085,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-094",
-    "number": 94,
+    "id": "q-103",
+    "number": 103,
     "title": "API Layers - Translation responsibility",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5736,11 +6097,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "In the Customer System API's implementation"
+        "text": "In the CRM system itself, by changing its native data model to match the API"
       },
       {
         "letter": "B",
-        "text": "In the CRM system itself, by changing its native data model to match the API"
+        "text": "In the Customer System API's implementation"
       },
       {
         "letter": "C",
@@ -5751,16 +6112,16 @@ window.MCPA_QUESTIONS = [
         "text": "In an API policy applied to the Customer System API in API Manager"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. The System API defines a contract in terms of the chosen API data model, and its implementation translates between those data types and the native data model of the backend system. This keeps the translation in one place and shields every consumer from the backend's model.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. The System API defines a contract in terms of the chosen API data model, and its implementation translates between those data types and the native data model of the backend system. This keeps the translation in one place and shields every consumer from the backend's model.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "The System API implementation owns the mapping between its API data model and the backend system's native model."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "Changing the system of record to fit an API is costly and usually impossible for packaged or SaaS systems."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "The System API implementation owns the mapping between its API data model and the backend system's native model."
       },
       "C": {
         "type": "Incorrect",
@@ -5783,8 +6144,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-095",
-    "number": 95,
+    "id": "q-104",
+    "number": 104,
     "title": "API Layers - Large federated enterprise",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5842,8 +6203,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-096",
-    "number": 96,
+    "id": "q-105",
+    "number": 105,
     "title": "API Layers - Small centralized organization",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5901,8 +6262,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-097",
-    "number": 97,
+    "id": "q-106",
+    "number": 106,
     "title": "API Layers - Meaning of the same term",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -5913,35 +6274,35 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Rename one of the types so that no two contexts in the organization use the same name"
+        "text": "Separate Patient types per context, translated where the contexts interact"
       },
       {
         "letter": "B",
-        "text": "Let the clinical definition win because clinical data is more sensitive"
+        "text": "Rename one of the types so that no two contexts in the organization use the same name"
       },
       {
         "letter": "C",
-        "text": "Separate Patient types per context, translated where the contexts interact"
+        "text": "Let the clinical definition win because clinical data is more sensitive"
       },
       {
         "letter": "D",
         "text": "Merge both definitions into one Patient type containing every billing and clinical field"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. In a Bounded Context Data Model approach, each bounded context is identified by its shared vocabulary and has its own set of data type definitions. Types in different contexts may have the same name, such as Patient, but they are separate definitions. Where contexts interact, APIs map between their models.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. In a Bounded Context Data Model approach, each bounded context is identified by its shared vocabulary and has its own set of data type definitions. Types in different contexts may have the same name, such as Patient, but they are separate definitions. Where contexts interact, APIs map between their models.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Shared names across contexts are expected; renaming does not address the different meanings."
+        "type": "Correct",
+        "text": "In Bounded Context Data Models, each context has its own definitions, which may share names but are formally unrelated."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Choosing one context's model for both ignores the billing context's legitimate needs."
+        "text": "Shared names across contexts are expected; renaming does not address the different meanings."
       },
       "C": {
-        "type": "Correct",
-        "text": "In Bounded Context Data Models, each context has its own definitions, which may share names but are formally unrelated."
+        "type": "Incorrect",
+        "text": "Choosing one context's model for both ignores the billing context's legitimate needs."
       },
       "D": {
         "type": "Incorrect",
@@ -5960,8 +6321,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-098",
-    "number": 98,
+    "id": "q-107",
+    "number": 107,
     "title": "API Layers - Cost of an EDM",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -6019,8 +6380,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-099",
-    "number": 99,
+    "id": "q-108",
+    "number": 108,
     "title": "API Layers - When BCDM translation is required",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -6031,35 +6392,35 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Sales-to-Logistics data mapping is needed where the Process API calls the System API"
-      },
-      {
-        "letter": "B",
         "text": "No mapping is needed because all bounded contexts automatically share the same data types"
       },
       {
-        "letter": "C",
+        "letter": "B",
         "text": "Both APIs must be merged into one bounded context before they can interact"
+      },
+      {
+        "letter": "C",
+        "text": "Sales-to-Logistics data mapping is needed where the Process API calls the System API"
       },
       {
         "letter": "D",
         "text": "The Shipment System API must adopt the Sales context's data model"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. With Bounded Context Data Models, each context maintains its own formally unrelated data types. When an API in one context calls an API in another, data must be mapped between the two models. This mapping is the cost paid for allowing each context to evolve independently.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. With Bounded Context Data Models, each context maintains its own formally unrelated data types. When an API in one context calls an API in another, data must be mapped between the two models. This mapping is the cost paid for allowing each context to evolve independently.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Bounded contexts have independent models, so interactions across a context boundary require translation."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "Bounded contexts are defined precisely so that they do not share data type definitions."
       },
-      "C": {
+      "B": {
         "type": "Incorrect",
         "text": "Contexts can interact through explicit mappings; merging them is not required."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "Bounded contexts have independent models, so interactions across a context boundary require translation."
       },
       "D": {
         "type": "Incorrect",
@@ -6078,8 +6439,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-100",
-    "number": 100,
+    "id": "q-109",
+    "number": 109,
     "title": "API Layers - Reasons for a canonical model",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -6090,11 +6451,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "To shield APIs from all non-backward-compatible changes to the canonical model"
+        "text": "One shared definition per data type, reducing point-to-point format mappings"
       },
       {
         "letter": "B",
-        "text": "One shared definition per data type, reducing point-to-point format mappings"
+        "text": "To shield APIs from all non-backward-compatible changes to the canonical model"
       },
       {
         "letter": "C",
@@ -6105,16 +6466,16 @@ window.MCPA_QUESTIONS = [
         "text": "To allow each line of business to define its own versions of shared entities"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. An enterprise-wide canonical (Enterprise) data model defines each data type once for the whole organization. Systems translate between their native format and the canonical format, which reduces the number of distinct mappings needed. The trade-off is the governance needed to agree on and evolve one shared model.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. An enterprise-wide canonical (Enterprise) data model defines each data type once for the whole organization. Systems translate between their native format and the canonical format, which reduces the number of distinct mappings needed. The trade-off is the governance needed to agree on and evolve one shared model.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Breaking changes to a shared canonical model affect every API that uses it."
-      },
-      "B": {
         "type": "Correct",
         "text": "A canonical model means each system maps to and from one shared format instead of to every other system's format."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Breaking changes to a shared canonical model affect every API that uses it."
       },
       "C": {
         "type": "Incorrect",
@@ -6137,8 +6498,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-101",
-    "number": 101,
+    "id": "q-110",
+    "number": 110,
     "title": "API Layers - Starting point for a new API program",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -6153,31 +6514,31 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Use one data model per API and never share data types between APIs"
+        "text": "Define Bounded Context Data Models aligned with the business domains"
       },
       {
         "letter": "C",
-        "text": "Define Bounded Context Data Models aligned with the business domains"
+        "text": "Use one data model per API and never share data types between APIs"
       },
       {
         "letter": "D",
         "text": "Adopt the e-commerce platform's native model as the company-wide standard"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. When there is no existing Enterprise Data Model and teams are organized by business domain, Bounded Context Data Models aligned with those domains are usually the most practical choice. Each domain team owns its model and shares types within its context, and mappings are added where contexts interact.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. When there is no existing Enterprise Data Model and teams are organized by business domain, Bounded Context Data Models aligned with those domains are usually the most practical choice. Each domain team owns its model and shares types within its context, and mappings are added where contexts interact.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "A year-long EDM effort conflicts with the requirement for fast delivery by domain teams."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Defining a separate model for every API gives up reuse of shared types within a domain."
-      },
-      "C": {
         "type": "Correct",
         "text": "Domain-aligned bounded contexts let each team deliver independently without waiting for an enterprise-wide agreement."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Defining a separate model for every API gives up reuse of shared types within a domain."
       },
       "D": {
         "type": "Incorrect",
@@ -6196,8 +6557,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-102",
-    "number": 102,
+    "id": "q-111",
+    "number": 111,
     "title": "API Layers - Flexible queries for new apps",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -6255,8 +6616,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-103",
-    "number": 103,
+    "id": "q-112",
+    "number": 112,
     "title": "API Layers - DataGraph is not a replacement for System APIs",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -6267,35 +6628,35 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "DataGraph builds on existing REST APIs, so the System APIs are still needed"
-      },
-      {
-        "letter": "B",
         "text": "DataGraph should be deployed inside each System API to expose its data as GraphQL"
       },
       {
-        "letter": "C",
+        "letter": "B",
         "text": "DataGraph is a message broker and should replace Anypoint MQ rather than System APIs"
+      },
+      {
+        "letter": "C",
+        "text": "DataGraph builds on existing REST APIs, so the System APIs are still needed"
       },
       {
         "letter": "D",
         "text": "DataGraph can connect to SAP and Oracle directly, so the System APIs are redundant"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. Anypoint DataGraph supports REST APIs described with RAML or OAS specifications and combines them into a unified schema. It sits on top of the application network, typically consuming System and Process APIs; it does not connect to backend systems directly and does not remove the need for APIs that unlock those systems.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Anypoint DataGraph supports REST APIs described with RAML or OAS specifications and combines them into a unified schema. It sits on top of the application network, typically consuming System and Process APIs; it does not connect to backend systems directly and does not remove the need for APIs that unlock those systems.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "DataGraph consumes REST APIs with RAML or OAS specifications; it does not replace the APIs that unlock backend systems."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "DataGraph is a separate managed service that runs a single GraphQL endpoint for the unified schema."
       },
-      "C": {
+      "B": {
         "type": "Incorrect",
         "text": "DataGraph is a GraphQL query layer, not a message broker."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "DataGraph consumes REST APIs with RAML or OAS specifications; it does not replace the APIs that unlock backend systems."
       },
       "D": {
         "type": "Incorrect",
@@ -6314,8 +6675,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-104",
-    "number": 104,
+    "id": "q-113",
+    "number": 113,
     "title": "API Layers - Unsuitable role for DataGraph",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -6373,8 +6734,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-105",
-    "number": 105,
+    "id": "q-114",
+    "number": 114,
     "title": "API Layers - Securing DataGraph",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -6393,15 +6754,15 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Manage it in API Manager with policies, client contracts, and SLA tiers"
+        "text": "Embed client credentials in the GraphQL queries and validate them in each System API"
       },
       {
         "letter": "D",
-        "text": "Embed client credentials in the GraphQL queries and validate them in each System API"
+        "text": "Manage it in API Manager with policies, client contracts, and SLA tiers"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. Anypoint DataGraph is managed in API Manager. Administrators can configure policies on the unified schema's GraphQL endpoint, manage contracts so only authorized client applications can consume it, and define SLA tiers for each DataGraph instance.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Anypoint DataGraph is managed in API Manager. Administrators can configure policies on the unified schema's GraphQL endpoint, manage contracts so only authorized client applications can consume it, and define SLA tiers for each DataGraph instance.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -6412,12 +6773,12 @@ window.MCPA_QUESTIONS = [
         "text": "DataGraph's GraphQL endpoint can have its own policies and contracts in API Manager."
       },
       "C": {
-        "type": "Correct",
-        "text": "DataGraph is administered in API Manager, where policies, client contracts, and SLA tiers control who can query and how much."
-      },
-      "D": {
         "type": "Incorrect",
         "text": "Client access to the GraphQL endpoint is handled through API Manager, not by custom checks in each downstream API."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "DataGraph is administered in API Manager, where policies, client contracts, and SLA tiers control who can query and how much."
       }
     },
     "references": {
@@ -6432,8 +6793,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-106",
-    "number": 106,
+    "id": "q-115",
+    "number": 115,
     "title": "API Layers - Linking types",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -6491,8 +6852,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-107",
-    "number": 107,
+    "id": "q-116",
+    "number": 116,
     "title": "API Layers - Merging duplicate types",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -6503,11 +6864,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Link the two Customer types so consumers query them separately"
+        "text": "Linking the Order type to the Product type"
       },
       {
         "letter": "B",
-        "text": "Linking the Order type to the Product type"
+        "text": "Link the two Customer types so consumers query them separately"
       },
       {
         "letter": "C",
@@ -6518,16 +6879,16 @@ window.MCPA_QUESTIONS = [
         "text": "Rewrite both APIs so they return identical Customer payloads"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. DataGraph lets you merge object types to combine similar types into a single type, extending its fields and datasets. Merging the CRM and Billing Customer types yields one Customer type in the unified schema that exposes both contact and balance information.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. DataGraph lets you merge object types to combine similar types into a single type, extending its fields and datasets. Merging the CRM and Billing Customer types yields one Customer type in the unified schema that exposes both contact and balance information.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Linking connects different types; it would not present a single Customer type with both sets of fields."
-      },
-      "B": {
         "type": "Correct",
         "text": "Merging combines similar types into one, extending their fields for a richer query result."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Linking connects different types; it would not present a single Customer type with both sets of fields."
       },
       "C": {
         "type": "Incorrect",
@@ -6550,8 +6911,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-108",
-    "number": 108,
+    "id": "q-117",
+    "number": 117,
     "title": "API Layers - Where DataGraph fits in the application network",
     "domain": "Designing APIs using System, Process, and Experience Layers",
     "topics": [
@@ -6620,8 +6981,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-109",
-    "number": 109,
+    "id": "q-118",
+    "number": 118,
     "title": "Api Policies - What is the recommended way to expose",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6683,8 +7044,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-110",
-    "number": 110,
+    "id": "q-119",
+    "number": 119,
     "title": "Api Policies - Which Anypoint policy enforces mutual TLS for",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6745,8 +7106,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-111",
-    "number": 111,
+    "id": "q-120",
+    "number": 120,
     "title": "Api Policies - Which statement about prebuilt MuleSoft API policies",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6807,8 +7168,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-112",
-    "number": 112,
+    "id": "q-121",
+    "number": 121,
     "title": "Api Policies - An architect needs to expose an API",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6870,8 +7231,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-113",
-    "number": 113,
+    "id": "q-122",
+    "number": 122,
     "title": "Api Policies - Which builtin policy can validate a JSON",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6932,8 +7293,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-114",
-    "number": 114,
+    "id": "q-123",
+    "number": 123,
     "title": "Api Policies - Which security control prevents a denialofservice from",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -6994,8 +7355,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-115",
-    "number": 115,
+    "id": "q-124",
+    "number": 124,
     "title": "Api Policies - An architect wants ALL traffic to a",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7056,8 +7417,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-116",
-    "number": 116,
+    "id": "q-125",
+    "number": 125,
     "title": "Api Policies - Which Anypoint capability lets organizations build custom",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7118,8 +7479,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-117",
-    "number": 117,
+    "id": "q-126",
+    "number": 126,
     "title": "Api Policies - An architect is asked to enforce that",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7180,8 +7541,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-118",
-    "number": 118,
+    "id": "q-127",
+    "number": 127,
     "title": "Api Policies - Which control in API Manager records the",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7242,8 +7603,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-119",
-    "number": 119,
+    "id": "q-128",
+    "number": 128,
     "title": "Api Policies - Which Anypoint Platform option enforces API policies",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7305,8 +7666,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-120",
-    "number": 120,
+    "id": "q-129",
+    "number": 129,
     "title": "Api Policies - An API Manager policy is configured for",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7367,8 +7728,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-121",
-    "number": 121,
+    "id": "q-130",
+    "number": 130,
     "title": "Api Policies - Which response best describes how to model",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7430,8 +7791,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-122",
-    "number": 122,
+    "id": "q-131",
+    "number": 131,
     "title": "Api Policies - Which artifact in API Manager allows applying",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7493,8 +7854,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-123",
-    "number": 123,
+    "id": "q-132",
+    "number": 132,
     "title": "Api Policies - Which is the correct way to authenticate",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7556,8 +7917,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-124",
-    "number": 124,
+    "id": "q-133",
+    "number": 133,
     "title": "Api Policies - Which Anypoint capability lets architects create and",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7618,8 +7979,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-125",
-    "number": 125,
+    "id": "q-134",
+    "number": 134,
     "title": "Api Policies - Which approach is valid for keeping access",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7681,8 +8042,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-126",
-    "number": 126,
+    "id": "q-135",
+    "number": 135,
     "title": "API Security - A regional healthcare provider must expose patient appointment",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7759,8 +8120,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-127",
-    "number": 127,
+    "id": "q-136",
+    "number": 136,
     "title": "API Governance - A federal agency is consolidating multiple legacy services into a",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7824,8 +8185,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-128",
-    "number": 128,
+    "id": "q-137",
+    "number": 137,
     "title": "Security and Governance - A healthcare network is integrating a patient portal with an",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7892,8 +8253,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-129",
-    "number": 129,
+    "id": "q-138",
+    "number": 138,
     "title": "API Security - A regional healthcare provider must expose patient data through",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -7970,8 +8331,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-130",
-    "number": 130,
+    "id": "q-139",
+    "number": 139,
     "title": "API Governance - A federal agency follows a strict change‑control process and must",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8048,8 +8409,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-131",
-    "number": 131,
+    "id": "q-140",
+    "number": 140,
     "title": "API Security - A federal government agency is securing an internal API that prov",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8126,8 +8487,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-132",
-    "number": 132,
+    "id": "q-141",
+    "number": 141,
     "title": "Mule Soft Certified Platform Architect (MCPA) - A healthcare startup must secure its patient data APIs to satisfy",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8207,8 +8568,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-133",
-    "number": 133,
+    "id": "q-142",
+    "number": 142,
     "title": "PCI-DSS Compliance - An online retail company must protect credit‑card information flo",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8285,8 +8646,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-134",
-    "number": 134,
+    "id": "q-143",
+    "number": 143,
     "title": "API Governance - A logistics startup plans to launch a public shipment‑tracking AP",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8363,8 +8724,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-135",
-    "number": 135,
+    "id": "q-144",
+    "number": 144,
     "title": "Io T Security - A manufacturing plant wants to secure MQTT telemetry from its Io",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8428,8 +8789,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-136",
-    "number": 136,
+    "id": "q-145",
+    "number": 145,
     "title": "API Management - A national retail chain wants to expose its inventory catalog to",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8510,8 +8871,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-137",
-    "number": 137,
+    "id": "q-146",
+    "number": 146,
     "title": "WS-Security - A government tax department needs to secure a SOAP web service th",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8591,8 +8952,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-138",
-    "number": 138,
+    "id": "q-147",
+    "number": 147,
     "title": "API Security - A global retail chain is rolling out a loyalty API that will be c",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8669,8 +9030,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-139",
-    "number": 139,
+    "id": "q-148",
+    "number": 148,
     "title": "API Security - A government agency is publishing a confidential document‑exchang",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8737,8 +9098,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-140",
-    "number": 140,
+    "id": "q-149",
+    "number": 149,
     "title": "API Security - A mid-sized financial services firm is launching a new mobile ban",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8802,8 +9163,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "E"
   },
   {
-    "id": "q-141",
-    "number": 141,
+    "id": "q-150",
+    "number": 150,
     "title": "API Security Governance - A federal government agency is publishing citizen services APIs t",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8867,8 +9228,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-142",
-    "number": 142,
+    "id": "q-151",
+    "number": 151,
     "title": "Security - A new Mule application has been deployed through Runtime Manager to Cl",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8929,8 +9290,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-143",
-    "number": 143,
+    "id": "q-152",
+    "number": 152,
     "title": "Security - A Mule application is designed to call the Google Maps API to perform",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -8991,8 +9352,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-144",
-    "number": 144,
+    "id": "q-153",
+    "number": 153,
     "title": "API Governance - Following MuleSoft's recommended best practices for API governance and",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -9053,8 +9414,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-145",
-    "number": 145,
+    "id": "q-154",
+    "number": 154,
     "title": "Api Policies - Automated policies scope and priority in API Manager",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -9116,8 +9477,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-146",
-    "number": 146,
+    "id": "q-155",
+    "number": 155,
     "title": "Api Policies - Mule Gateway versus Flex Gateway policy reuse",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -9180,8 +9541,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-147",
-    "number": 147,
+    "id": "q-156",
+    "number": 156,
     "title": "Api Policies - JWT Validation policy signature and claims validation",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -9243,8 +9604,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-148",
-    "number": 148,
+    "id": "q-157",
+    "number": 157,
     "title": "Api Policies - OpenID Connect OAuth 2.0 token enforcement with external client management",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -9306,8 +9667,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-149",
-    "number": 149,
+    "id": "q-158",
+    "number": 158,
     "title": "Api Policies - External identity providers for client management",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -9369,8 +9730,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-150",
-    "number": 150,
+    "id": "q-159",
+    "number": 159,
     "title": "Api Policies - Anypoint Service Mesh for non-Mule microservices",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -9432,8 +9793,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-151",
-    "number": 151,
+    "id": "q-160",
+    "number": 160,
     "title": "Api Policies - Choosing between Mule Gateway and Flex Gateway",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -9496,8 +9857,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-152",
-    "number": 152,
+    "id": "q-161",
+    "number": 161,
     "title": "Api Policies - Applying a policy at the organization or environment level",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -9559,8 +9920,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-153",
-    "number": 153,
+    "id": "q-162",
+    "number": 162,
     "title": "Api Policies - Refer to the exhibit. Choosing the better gateway deployment",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -9624,8 +9985,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-154",
-    "number": 154,
+    "id": "q-163",
+    "number": 163,
     "title": "Api Policies - Refer to the exhibit. OAuth 2.0 token validation with an external provider",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -9689,8 +10050,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-155",
-    "number": 155,
+    "id": "q-164",
+    "number": 164,
     "title": "Api Policies - Refer to the exhibit. Routing with service mesh versus gateway policies",
     "domain": "Governing web APIs on Anypoint Platform",
     "topics": [
@@ -9754,8 +10115,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-156",
-    "number": 156,
+    "id": "q-165",
+    "number": 165,
     "title": "Deploying Managing Apis - Which feature in API Manager pairs a",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -9816,8 +10177,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-157",
-    "number": 157,
+    "id": "q-166",
+    "number": 166,
     "title": "Deploying Managing Apis - Which testing tool is built specifically for",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -9879,8 +10240,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-158",
-    "number": 158,
+    "id": "q-167",
+    "number": 167,
     "title": "Api Implementation Design - What is the recommended approach to manage",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -9941,8 +10302,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-159",
-    "number": 159,
+    "id": "q-168",
+    "number": 168,
     "title": "Deploying Managing Apis - What is the Mule Maven Plugin used",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10003,8 +10364,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-160",
-    "number": 160,
+    "id": "q-169",
+    "number": 169,
     "title": "Api Implementation Design - Which is the BEST place to handle",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10065,8 +10426,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-161",
-    "number": 161,
+    "id": "q-170",
+    "number": 170,
     "title": "Deploying Managing Apis - Which strategy best supports rolling out CloudHub",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10128,8 +10489,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-162",
-    "number": 162,
+    "id": "q-171",
+    "number": 171,
     "title": "Deploying Managing Apis - Which combination is recommended for a CICD",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10191,8 +10552,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-163",
-    "number": 163,
+    "id": "q-172",
+    "number": 172,
     "title": "Api Implementation Design - Which Mule capability enables transactional reliability for",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10253,8 +10614,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-164",
-    "number": 164,
+    "id": "q-173",
+    "number": 173,
     "title": "Deploying Managing Apis - Which combination is correct for promoting a",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10316,8 +10677,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-165",
-    "number": 165,
+    "id": "q-174",
+    "number": 174,
     "title": "Api Implementation Design - Which is the correct reading of a",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10379,8 +10740,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-166",
-    "number": 166,
+    "id": "q-175",
+    "number": 175,
     "title": "Deploying Managing Apis - Which is the correct understanding of API",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10441,8 +10802,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-167",
-    "number": 167,
+    "id": "q-176",
+    "number": 176,
     "title": "Deploying Managing Apis - Which is true about MUnit coverage in",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10504,8 +10865,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-168",
-    "number": 168,
+    "id": "q-177",
+    "number": 177,
     "title": "Api Implementation Design - An architect wants the SAME RAML spec",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10567,8 +10928,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-169",
-    "number": 169,
+    "id": "q-178",
+    "number": 178,
     "title": "Api Implementation Design - Which strategy best handles credentials for Mule",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10629,8 +10990,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-170",
-    "number": 170,
+    "id": "q-179",
+    "number": 179,
     "title": "Deploying Managing Apis - Which option BEST describes the role of",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10692,8 +11053,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-171",
-    "number": 171,
+    "id": "q-180",
+    "number": 180,
     "title": "Deploying Managing Apis - A platform team needs centralized policy control",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10755,8 +11116,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-172",
-    "number": 172,
+    "id": "q-181",
+    "number": 181,
     "title": "API-led Migration - A large financial institution is migrating legacy SOAP services",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10824,8 +11185,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-173",
-    "number": 173,
+    "id": "q-182",
+    "number": 182,
     "title": "HL7 Integration - A healthcare network is integrating three EMR systems that use",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10905,8 +11266,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-174",
-    "number": 174,
+    "id": "q-183",
+    "number": 183,
     "title": "Integration Patterns - A regional healthcare provider needs to integrate its electronic",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -10983,8 +11344,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-175",
-    "number": 175,
+    "id": "q-184",
+    "number": 184,
     "title": "Integration Patterns - A logistics company is orchestrating real‑time shipment tracking",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11061,8 +11422,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-176",
-    "number": 176,
+    "id": "q-185",
+    "number": 185,
     "title": "Event-Driven Architecture - A manufacturing firm is ingesting high‑velocity Io T sensor data",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11139,8 +11500,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-177",
-    "number": 177,
+    "id": "q-186",
+    "number": 186,
     "title": "Application Migration - A retail chain is migrating from a legacy ESB to Anypoint Platfor",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11208,8 +11569,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-178",
-    "number": 178,
+    "id": "q-187",
+    "number": 187,
     "title": "Integration Architecture - A federal agency is orchestrating an approvals workflow that span",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11286,8 +11647,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-179",
-    "number": 179,
+    "id": "q-188",
+    "number": 188,
     "title": "Integration Architecture - A healthcare analytics team must integrate a lab‑result REST API,",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11367,8 +11728,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-180",
-    "number": 180,
+    "id": "q-189",
+    "number": 189,
     "title": "Integration Patterns - A regional healthcare provider is integrating patient‑record syst",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11445,8 +11806,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-181",
-    "number": 181,
+    "id": "q-190",
+    "number": 190,
     "title": "Integration Design Patterns - A manufacturing company is designing an integration solution to s",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11527,8 +11888,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-182",
-    "number": 182,
+    "id": "q-191",
+    "number": 191,
     "title": "CI/CD Pipelines - A multinational bank is standardizing its CI/CD pipeline for Mule",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11608,8 +11969,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-183",
-    "number": 183,
+    "id": "q-192",
+    "number": 192,
     "title": "HL7 Integration - A regional healthcare provider must integrate its legacy HL7 mess",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11686,8 +12047,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-184",
-    "number": 184,
+    "id": "q-193",
+    "number": 193,
     "title": "Messaging - What requirement prevents using Anypoint MQ as the messaging broker fo",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11748,8 +12109,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-185",
-    "number": 185,
+    "id": "q-194",
+    "number": 194,
     "title": "Integration Interfaces - An airline is architecting an API-led connectivity project to integrat",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11810,8 +12171,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-186",
-    "number": 186,
+    "id": "q-195",
+    "number": 195,
     "title": "Messaging - A Mule solution implements an Experience API and System API as Mule ap",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11872,8 +12233,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-187",
-    "number": 187,
+    "id": "q-196",
+    "number": 196,
     "title": "Application Design - An organization has built a large monolithic application over the year",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11934,8 +12295,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-188",
-    "number": 188,
+    "id": "q-197",
+    "number": 197,
     "title": "Messaging - A manufacturing company wants to share inventory updates with dealers",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -11996,8 +12357,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-189",
-    "number": 189,
+    "id": "q-198",
+    "number": 198,
     "title": "CI/CD - An organization is in the process of building automated deployments us",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -12058,8 +12419,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-190",
-    "number": 190,
+    "id": "q-199",
+    "number": 199,
     "title": "Connectors - Which Salesforce API is invoked to deploy, retrieve, create, update, o",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -12120,8 +12481,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-191",
-    "number": 191,
+    "id": "q-200",
+    "number": 200,
     "title": "Application Design - Why would an Enterprise Architect use a single enterprise-wide canonic",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -12182,8 +12543,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-192",
-    "number": 192,
+    "id": "q-201",
+    "number": 201,
     "title": "CI/CD - An organization is using MuleSoft to develop APIs and automatically de",
     "domain": "Architecting and deploying API implementations",
     "topics": [
@@ -12244,8 +12605,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-193",
-    "number": 193,
+    "id": "q-202",
+    "number": 202,
     "title": "Deployment Options - Which Anypoint deployment option is a fully",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12306,8 +12667,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-194",
-    "number": 194,
+    "id": "q-203",
+    "number": 203,
     "title": "Deployment Options - Which deployment option lets you run Mule",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12368,8 +12729,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-195",
-    "number": 195,
+    "id": "q-204",
+    "number": 204,
     "title": "Deployment Options - Which CloudHub configuration enables a managed customercontrolled",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12431,8 +12792,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-196",
-    "number": 196,
+    "id": "q-205",
+    "number": 205,
     "title": "Deployment Options - An organization wants to enforce API policies",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12493,8 +12854,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-197",
-    "number": 197,
+    "id": "q-206",
+    "number": 206,
     "title": "Deployment Options - Which is a TRUE statement about CloudHub",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12555,8 +12916,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-198",
-    "number": 198,
+    "id": "q-207",
+    "number": 207,
     "title": "Deployment Options - Which scenario is the strongest case for",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12618,8 +12979,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-199",
-    "number": 199,
+    "id": "q-208",
+    "number": 208,
     "title": "Deployment Options - An organization wants Mule applications running in",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12680,8 +13041,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-200",
-    "number": 200,
+    "id": "q-209",
+    "number": 209,
     "title": "Deployment Options - Which CloudHub region minimizes latency for APAC consumers",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12743,8 +13104,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-201",
-    "number": 201,
+    "id": "q-210",
+    "number": 210,
     "title": "Deployment Options - Which statement about Mule Hybrid deployment is",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12805,8 +13166,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-202",
-    "number": 202,
+    "id": "q-211",
+    "number": 211,
     "title": "Deployment Options - Which option exposes ingress inside a Private",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12868,8 +13229,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-203",
-    "number": 203,
+    "id": "q-212",
+    "number": 212,
     "title": "Runtime Auto-Scaling - An online retailer expects a 3× traffic surge during holiday",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -12946,8 +13307,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-204",
-    "number": 204,
+    "id": "q-213",
+    "number": 213,
     "title": "Runtime Deployment - A Saa S startup plans to deploy Mule runtime on a Kubernetes",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13024,8 +13385,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-205",
-    "number": 205,
+    "id": "q-214",
+    "number": 214,
     "title": "Runtime Deployment - A national retail chain processes 10,000 orders per minute and",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13102,8 +13463,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "E"
   },
   {
-    "id": "q-206",
-    "number": 206,
+    "id": "q-215",
+    "number": 215,
     "title": "API Migration - A logistics company is migrating its on‑premises APIs to Anypoint",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13183,8 +13544,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-207",
-    "number": 207,
+    "id": "q-216",
+    "number": 216,
     "title": "Deployment Choices - A mid‑size financial services firm must migrate its core payment ",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13261,8 +13622,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-208",
-    "number": 208,
+    "id": "q-217",
+    "number": 217,
     "title": "Deployment Strategy - A national retail chain plans to launch a new omnichannel experie",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13339,8 +13700,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-209",
-    "number": 209,
+    "id": "q-218",
+    "number": 218,
     "title": "Cloud Hub Deployment - A logistics company is migrating its on‑premise Mule runtimes to ",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13420,8 +13781,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-210",
-    "number": 210,
+    "id": "q-219",
+    "number": 219,
     "title": "Deployment Models - A mid-sized financial services firm is migrating its core loan‑or",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13498,8 +13859,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-211",
-    "number": 211,
+    "id": "q-220",
+    "number": 220,
     "title": "Runtime Deployment - A logistics startup plans to host its Mule runtime in a public cl",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13576,8 +13937,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-212",
-    "number": 212,
+    "id": "q-221",
+    "number": 221,
     "title": "Deployment Options - CloudHub custom-domain HTTPS with mTLS",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13640,8 +14001,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-213",
-    "number": 213,
+    "id": "q-222",
+    "number": 222,
     "title": "Deployment Options - Scheduler behavior across CloudHub workers",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13704,8 +14065,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-214",
-    "number": 214,
+    "id": "q-223",
+    "number": 223,
     "title": "Deployment Options - Runtime behavior during control plane outage",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13768,8 +14129,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-215",
-    "number": 215,
+    "id": "q-224",
+    "number": 224,
     "title": "Deployment Options - Object Store v2 sharing between applications",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13832,8 +14193,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-216",
-    "number": 216,
+    "id": "q-225",
+    "number": 225,
     "title": "Deployment Options - Internal CloudHub worker URL",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13896,8 +14257,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-217",
-    "number": 217,
+    "id": "q-226",
+    "number": 226,
     "title": "Deployment Options - Persistent VM queues across workers",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -13960,8 +14321,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-218",
-    "number": 218,
+    "id": "q-227",
+    "number": 227,
     "title": "Deployment Options - Private connectivity to on-premises data centers",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14025,8 +14386,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-219",
-    "number": 219,
+    "id": "q-228",
+    "number": 228,
     "title": "Deployment Options - Masking secure properties in Runtime Manager",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14089,8 +14450,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-220",
-    "number": 220,
+    "id": "q-229",
+    "number": 229,
     "title": "Deployment Options - Runtime Fabric ingress controller",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14153,8 +14514,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-221",
-    "number": 221,
+    "id": "q-230",
+    "number": 230,
     "title": "Deployment Options - CloudHub worker size for large payloads",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14217,8 +14578,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-222",
-    "number": 222,
+    "id": "q-231",
+    "number": 231,
     "title": "Deployment Options - DLB mapping rules for API routing",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14281,8 +14642,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-223",
-    "number": 223,
+    "id": "q-232",
+    "number": 232,
     "title": "Deployment Options - Static outbound IP for CloudHub",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14345,8 +14706,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-224",
-    "number": 224,
+    "id": "q-233",
+    "number": 233,
     "title": "Deployment Options - CloudHub worker availability zones",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14409,8 +14770,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-225",
-    "number": 225,
+    "id": "q-234",
+    "number": 234,
     "title": "Deployment Options - HTTP traffic in an active-active cluster",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14473,8 +14834,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-226",
-    "number": 226,
+    "id": "q-235",
+    "number": 235,
     "title": "Deployment Options - Runtime Fabric controller node role",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14524,8 +14885,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-227",
-    "number": 227,
+    "id": "q-236",
+    "number": 236,
     "title": "Deployment Options - CloudHub deployment traffic handling",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14588,8 +14949,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-228",
-    "number": 228,
+    "id": "q-237",
+    "number": 237,
     "title": "Deployment Options - CloudHub ephemeral local files",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14652,8 +15013,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-229",
-    "number": 229,
+    "id": "q-238",
+    "number": 238,
     "title": "Deployment Options - CloudHub VPC network diagnostics",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14716,8 +15077,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-230",
-    "number": 230,
+    "id": "q-239",
+    "number": 239,
     "title": "Deployment Options - Dedicated Load Balancer high availability",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14780,8 +15141,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-231",
-    "number": 231,
+    "id": "q-240",
+    "number": 240,
     "title": "Deployment Options - Runtime Fabric replica load balancing",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14831,8 +15192,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-232",
-    "number": 232,
+    "id": "q-241",
+    "number": 241,
     "title": "Deployment Options - A company is modernizing its legacy systems to accelerate access to ap",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14893,8 +15254,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-233",
-    "number": 233,
+    "id": "q-242",
+    "number": 242,
     "title": "Deployment Options - An insurance company is designing a hybrid, load-balanced, single-clus",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -14955,8 +15316,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-234",
-    "number": 234,
+    "id": "q-243",
+    "number": 243,
     "title": "Deployment Options - Refer to the exhibit.",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15018,8 +15379,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-235",
-    "number": 235,
+    "id": "q-244",
+    "number": 244,
     "title": "Deployment Options - CloudHub 1.0 vs CloudHub 2.0 shared and private spaces",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15082,8 +15443,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-236",
-    "number": 236,
+    "id": "q-245",
+    "number": 245,
     "title": "Deployment Options - CloudHub 2.0 private space fully managed ingress load balancer",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15146,8 +15507,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-237",
-    "number": 237,
+    "id": "q-246",
+    "number": 246,
     "title": "Deployment Options - CloudHub 1.0 port mapping for HTTP and HTTPS",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15210,8 +15571,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-238",
-    "number": 238,
+    "id": "q-247",
+    "number": 247,
     "title": "Deployment Options - DLB internal ports 8091 and 8092",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15274,8 +15635,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-239",
-    "number": 239,
+    "id": "q-248",
+    "number": 248,
     "title": "Deployment Options - DLB SSL endpoint and custom certificate configuration",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15338,8 +15699,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-240",
-    "number": 240,
+    "id": "q-249",
+    "number": 249,
     "title": "Deployment Options - DLB mapping rules and DNS CNAME for vanity domains",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15406,8 +15767,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-241",
-    "number": 241,
+    "id": "q-250",
+    "number": 250,
     "title": "Deployment Options - Dedicated Load Balancer high availability and units",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15470,8 +15831,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-242",
-    "number": 242,
+    "id": "q-251",
+    "number": 251,
     "title": "Deployment Options - CloudHub 1.0 high availability with multiple workers and persistent queues",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15535,8 +15896,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-243",
-    "number": 243,
+    "id": "q-252",
+    "number": 252,
     "title": "Deployment Options - CloudHub 2.0 high availability across replicas and AZs",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15600,8 +15961,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-244",
-    "number": 244,
+    "id": "q-253",
+    "number": 253,
     "title": "Deployment Options - Multi-region disaster recovery and Object Store v2 scope",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15665,8 +16026,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-245",
-    "number": 245,
+    "id": "q-254",
+    "number": 254,
     "title": "Deployment Options - Object Store v2 with multi-worker applications",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15729,8 +16090,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-246",
-    "number": 246,
+    "id": "q-255",
+    "number": 255,
     "title": "Deployment Options - Connecting CloudHub to on-premises and private networks",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15798,8 +16159,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-247",
-    "number": 247,
+    "id": "q-256",
+    "number": 256,
     "title": "Deployment Options - CloudHub 2.0 private space ingress ports and firewall rules",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15865,8 +16226,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-248",
-    "number": 248,
+    "id": "q-257",
+    "number": 257,
     "title": "Deployment Options - CloudHub 2.0 public and internal DNS records",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15929,8 +16290,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-249",
-    "number": 249,
+    "id": "q-258",
+    "number": 258,
     "title": "Deployment Options - CloudHub 2.0 private space TLS context and custom domains",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -15994,8 +16355,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-250",
-    "number": 250,
+    "id": "q-259",
+    "number": 259,
     "title": "Deployment Options - CloudHub 2.0 differences from CloudHub 1.0",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -16063,8 +16424,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-251",
-    "number": 251,
+    "id": "q-260",
+    "number": 260,
     "title": "Api Policies - Refer to the exhibit. CloudHub 2.0 private space ingress with TLS",
     "domain": "Deploying API implementations to CloudHub",
     "topics": [
@@ -16129,8 +16490,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-252",
-    "number": 252,
+    "id": "q-261",
+    "number": 261,
     "title": "API Quality Goals - Caching slow-changing reference data",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16149,15 +16510,15 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Ask every consumer to poll the API less frequently than once an hour"
+        "text": "Apply the HTTP Caching policy to the API with a one-hour time-to-live"
       },
       {
         "letter": "D",
-        "text": "Apply the HTTP Caching policy to the API with a one-hour time-to-live"
+        "text": "Ask every consumer to poll the API less frequently than once an hour"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. When data changes infrequently and consumers tolerate some staleness, caching responses is the most effective way to improve response time and reduce backend load. The HTTP Caching policy can be applied in API Manager without changing the implementation, and its time-to-live should match how stale the data may be.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. When data changes infrequently and consumers tolerate some staleness, caching responses is the most effective way to improve response time and reduce backend load. The HTTP Caching policy can be applied in API Manager without changing the implementation, and its time-to-live should match how stale the data may be.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -16168,12 +16529,12 @@ window.MCPA_QUESTIONS = [
         "text": "Spike Control smooths traffic peaks; it does not avoid calling the slow backend."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Relying on consumers to change their behavior is unenforceable and does not speed up responses."
-      },
-      "D": {
         "type": "Correct",
         "text": "The policy caches responses at the gateway, so repeated requests skip the slow backend without code changes."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Relying on consumers to change their behavior is unenforceable and does not speed up responses."
       }
     },
     "references": {
@@ -16188,8 +16549,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-253",
-    "number": 253,
+    "id": "q-262",
+    "number": 262,
     "title": "API Quality Goals - Data that must not be cached",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16247,8 +16608,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-254",
-    "number": 254,
+    "id": "q-263",
+    "number": 263,
     "title": "API Quality Goals - Sharing state across CloudHub workers",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16259,11 +16620,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "In a persistent object store (Object Store v2)"
+        "text": "In an in-memory object store on each worker"
       },
       {
         "letter": "B",
-        "text": "In an in-memory object store on each worker"
+        "text": "In a persistent object store (Object Store v2)"
       },
       {
         "letter": "C",
@@ -16274,16 +16635,16 @@ window.MCPA_QUESTIONS = [
         "text": "In a file written to the worker's local disk"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. On CloudHub, persistent object stores are backed by Object Store v2, which keeps data outside individual workers. This lets the stored values, such as watermarks, survive restarts and be shared by all workers of the same application, unlike variables, in-memory stores, or local files.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. On CloudHub, persistent object stores are backed by Object Store v2, which keeps data outside individual workers. This lets the stored values, such as watermarks, survive restarts and be shared by all workers of the same application, unlike variables, in-memory stores, or local files.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Object Store v2 persists data outside the worker and makes it available to all workers of the application."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "In-memory stores are lost on restart and are not shared between workers."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "Object Store v2 persists data outside the worker and makes it available to all workers of the application."
       },
       "C": {
         "type": "Incorrect",
@@ -16306,8 +16667,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-255",
-    "number": 255,
+    "id": "q-264",
+    "number": 264,
     "title": "API Quality Goals - Cache scope versus caching policy",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16365,8 +16726,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-256",
-    "number": 256,
+    "id": "q-265",
+    "number": 265,
     "title": "API Quality Goals - Idempotent request detection",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16377,35 +16738,35 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Apply the HTTP Caching policy so duplicate requests get the same response"
+        "text": "Store processed IDs in a persistent object store"
       },
       {
         "letter": "B",
-        "text": "Store processed IDs in a variable on each worker"
+        "text": "Apply the HTTP Caching policy so duplicate requests get the same response"
       },
       {
         "letter": "C",
-        "text": "Store processed IDs in a persistent object store"
+        "text": "Store processed IDs in a variable on each worker"
       },
       {
         "letter": "D",
         "text": "Reduce the client timeout so that clients never retry"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. Detecting duplicates requires remembering which unique IDs have already been processed, in a store shared by all instances. A persistent object store, backed by Object Store v2 on CloudHub, can hold these IDs so that any worker can recognize and reject a repeated request.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Detecting duplicates requires remembering which unique IDs have already been processed, in a store shared by all instances. A persistent object store, backed by Object Store v2 on CloudHub, can hold these IDs so that any worker can recognize and reject a repeated request.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Caching is for safe, reusable responses; POST payment requests should not be cached."
+        "type": "Correct",
+        "text": "A shared persistent store lets every worker check whether an ID was already processed."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Variables are per event and per worker, so duplicates on another worker are not detected."
+        "text": "Caching is for safe, reusable responses; POST payment requests should not be cached."
       },
       "C": {
-        "type": "Correct",
-        "text": "A shared persistent store lets every worker check whether an ID was already processed."
+        "type": "Incorrect",
+        "text": "Variables are per event and per worker, so duplicates on another worker are not detected."
       },
       "D": {
         "type": "Incorrect",
@@ -16424,8 +16785,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-257",
-    "number": 257,
+    "id": "q-266",
+    "number": 266,
     "title": "API Quality Goals - Fallback to cached data",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16483,8 +16844,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-258",
-    "number": 258,
+    "id": "q-267",
+    "number": 267,
     "title": "API Quality Goals - Object Store data retention",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16499,31 +16860,31 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Use a database; Object Store v2 entries have a limited TTL"
+        "text": "Proceed, because Object Store v2 retains entries forever unless they are deleted"
       },
       {
         "letter": "C",
-        "text": "Proceed, because Object Store v2 retains entries forever unless they are deleted"
+        "text": "Use a database; Object Store v2 entries have a limited TTL"
       },
       {
         "letter": "D",
         "text": "Store the preferences in application properties so they are always available"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. Object Store v2 is intended for application state such as caching, watermarks, and deduplication. Its entries have a maximum time-to-live, so it is not suitable as a permanent system of record. Long-lived business data such as customer preferences belongs in a database or other system of record.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Object Store v2 is intended for application state such as caching, watermarks, and deduplication. Its entries have a maximum time-to-live, so it is not suitable as a permanent system of record. Long-lived business data such as customer preferences belongs in a database or other system of record.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "In-memory stores are less durable, not more."
       },
       "B": {
-        "type": "Correct",
-        "text": "Object Store v2 is designed for transient state such as caches and watermarks, not long-term records."
-      },
-      "C": {
         "type": "Incorrect",
         "text": "Object Store v2 enforces a time-to-live on stored entries, so data is not retained indefinitely."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "Object Store v2 is designed for transient state such as caches and watermarks, not long-term records."
       },
       "D": {
         "type": "Incorrect",
@@ -16542,8 +16903,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-259",
-    "number": 259,
+    "id": "q-268",
+    "number": 268,
     "title": "API Quality Goals - Choose two: Object Store use cases",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16554,19 +16915,19 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Keeping a watermark for incremental polling of a database"
-      },
-      {
-        "letter": "B",
         "text": "Storing large binary documents for long-term archiving"
       },
       {
-        "letter": "C",
+        "letter": "B",
         "text": "Replacing the CRM as the master record of customer accounts"
       },
       {
-        "letter": "D",
+        "letter": "C",
         "text": "Running complex relational queries for reporting"
+      },
+      {
+        "letter": "D",
+        "text": "Keeping a watermark for incremental polling of a database"
       },
       {
         "letter": "E",
@@ -16574,26 +16935,26 @@ window.MCPA_QUESTIONS = [
       }
     ],
     "correctAnswers": [
-      "A",
+      "D",
       "E"
     ],
-    "explanation": "Correct answers: A and E. Object stores are key-value stores for application state. Common uses include watermarks, caching values such as tokens or reference data, and duplicate detection. They are not designed for large binary documents, long-term records, or relational reporting.",
+    "explanation": "Correct answers: D and E. Object stores are key-value stores for application state. Common uses include watermarks, caching values such as tokens or reference data, and duplicate detection. They are not designed for large binary documents, long-term records, or relational reporting.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Watermarks are small, transient state values that must survive restarts."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "Object Store v2 is not designed for large files or long-term retention."
       },
-      "C": {
+      "B": {
         "type": "Incorrect",
         "text": "An object store is not a system of record for business data."
       },
-      "D": {
+      "C": {
         "type": "Incorrect",
         "text": "Object stores are key-value stores and do not support relational queries."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Watermarks are small, transient state values that must survive restarts."
       },
       "E": {
         "type": "Correct",
@@ -16612,8 +16973,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-260",
-    "number": 260,
+    "id": "q-269",
+    "number": 269,
     "title": "API Quality Goals - Cache key design",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16671,8 +17032,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-261",
-    "number": 261,
+    "id": "q-270",
+    "number": 270,
     "title": "API Quality Goals - Invalidating cached data",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16687,31 +17048,31 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Keep the 24-hour TTL and ask users to refresh their browsers"
+        "text": "Reduce the cache time-to-live to five minutes or less"
       },
       {
         "letter": "C",
-        "text": "Reduce the cache time-to-live to five minutes or less"
+        "text": "Keep the 24-hour TTL and ask users to refresh their browsers"
       },
       {
         "letter": "D",
         "text": "Scale the backend horizontally so the cache is refreshed faster"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. The time-to-live of a cache entry determines how stale data can become. To meet a five-minute freshness requirement while retaining most of the performance benefit, the TTL should be reduced to five minutes or less instead of disabling caching.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. The time-to-live of a cache entry determines how stale data can become. To meet a five-minute freshness requirement while retaining most of the performance benefit, the TTL should be reduced to five minutes or less instead of disabling caching.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "This meets freshness but gives up the load reduction that is still possible with a short TTL."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Browser refreshes do not bypass a server-side cache."
-      },
-      "C": {
         "type": "Correct",
         "text": "The TTL defines the maximum staleness, so it must not exceed the freshness requirement."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Browser refreshes do not bypass a server-side cache."
       },
       "D": {
         "type": "Incorrect",
@@ -16730,8 +17091,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-262",
-    "number": 262,
+    "id": "q-271",
+    "number": 271,
     "title": "API Quality Goals - First step toward fault tolerance",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16742,39 +17103,39 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Increase the Experience API's worker size"
+        "text": "Set a timeout that fits within the 2-second SLA"
       },
       {
         "letter": "B",
-        "text": "Apply a rate limiting policy to the Experience API"
+        "text": "Increase the Experience API's worker size"
       },
       {
         "letter": "C",
-        "text": "Retry the Process API call five times before responding"
+        "text": "Apply a rate limiting policy to the Experience API"
       },
       {
         "letter": "D",
-        "text": "Set a timeout that fits within the 2-second SLA"
+        "text": "Retry the Process API call five times before responding"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. Timeouts are the first fault-tolerance measure for API invocations. They should be set as low as possible and in line with the API client's own SLA, so that a slow or hung dependency does not cause the client to fail its consumers.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Timeouts are the first fault-tolerance measure for API invocations. They should be set as low as possible and in line with the API client's own SLA, so that a slow or hung dependency does not cause the client to fail its consumers.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "More CPU and memory do not shorten the time spent waiting for a hung dependency."
+        "type": "Correct",
+        "text": "A timeout stops waiting for a hung call and lets the client respond in time."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Rate limiting caps traffic but does not stop the client from waiting 30 seconds."
+        "text": "More CPU and memory do not shorten the time spent waiting for a hung dependency."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Retrying a call that hangs multiplies the wait and makes the SLA worse."
+        "text": "Rate limiting caps traffic but does not stop the client from waiting 30 seconds."
       },
       "D": {
-        "type": "Correct",
-        "text": "A timeout stops waiting for a hung call and lets the client respond in time."
+        "type": "Incorrect",
+        "text": "Retrying a call that hangs multiplies the wait and makes the SLA worse."
       }
     },
     "references": {
@@ -16789,8 +17150,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-263",
-    "number": 263,
+    "id": "q-272",
+    "number": 272,
     "title": "API Quality Goals - Retrying transient failures",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16848,8 +17209,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-264",
-    "number": 264,
+    "id": "q-273",
+    "number": 273,
     "title": "API Quality Goals - Retries and non-idempotent operations",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16860,39 +17221,39 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "An idempotency key that lets the API detect repeats"
-      },
-      {
-        "letter": "B",
         "text": "Nothing, because HTTP POST is idempotent by definition"
       },
       {
-        "letter": "C",
+        "letter": "B",
         "text": "A Spike Control policy on the Payments API"
       },
       {
-        "letter": "D",
+        "letter": "C",
         "text": "A longer cache time-to-live on the Payments API"
+      },
+      {
+        "letter": "D",
+        "text": "An idempotency key that lets the API detect repeats"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. Retries are safe only for idempotent operations. Methods such as GET, PUT, and DELETE are idempotent, but POST is not, so retrying a POST can create duplicates. Before retrying, the API must be able to detect repeated requests, for example through a unique ID supplied by the client and stored by the API.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Retries are safe only for idempotent operations. Methods such as GET, PUT, and DELETE are idempotent, but POST is not, so retrying a POST can create duplicates. Before retrying, the API must be able to detect repeated requests, for example through a unique ID supplied by the client and stored by the API.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Without duplicate detection, a retried POST may create a second payment."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "POST is not idempotent; repeating it can create duplicate resources."
       },
-      "C": {
+      "B": {
         "type": "Incorrect",
         "text": "Spike Control smooths traffic and does not detect duplicate requests."
       },
-      "D": {
+      "C": {
         "type": "Incorrect",
         "text": "Caching does not prevent duplicate creation by POST requests."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Without duplicate detection, a retried POST may create a second payment."
       }
     },
     "references": {
@@ -16907,8 +17268,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-265",
-    "number": 265,
+    "id": "q-274",
+    "number": 274,
     "title": "API Quality Goals - Stop calling a failing API",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16923,31 +17284,31 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "A circuit breaker that fails fast and probes later"
+        "text": "An HTTP Caching policy on the Process API"
       },
       {
         "letter": "C",
-        "text": "An HTTP Caching policy on the Process API"
+        "text": "A circuit breaker that fails fast and probes later"
       },
       {
         "letter": "D",
         "text": "More retries for each credit check call"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Correct answer: B. A circuit breaker tracks failures of a dependency and, after a threshold, stops calling it for a period, failing fast instead of waiting for timeouts. It then allows trial calls to detect recovery. This prevents failures from propagating to the API client and its consumers.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. A circuit breaker tracks failures of a dependency and, after a threshold, stops calling it for a period, failing fast instead of waiting for timeouts. It then allows trial calls to detect recovery. This prevents failures from propagating to the API client and its consumers.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "Longer timeouts make threads pile up faster during an outage."
       },
       "B": {
-        "type": "Correct",
-        "text": "Opening the circuit stops waiting on a known-failing dependency and protects the client's resources."
-      },
-      "C": {
         "type": "Incorrect",
         "text": "Credit checks are customer-specific and current, and caching does not address the outage."
+      },
+      "C": {
+        "type": "Correct",
+        "text": "Opening the circuit stops waiting on a known-failing dependency and protects the client's resources."
       },
       "D": {
         "type": "Incorrect",
@@ -16966,8 +17327,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-266",
-    "number": 266,
+    "id": "q-275",
+    "number": 275,
     "title": "API Quality Goals - Fallback options",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -16978,39 +17339,39 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Block the page until the Process API recovers"
+        "text": "Return a default list of best-selling products"
       },
       {
         "letter": "B",
-        "text": "Return HTTP 500 so the page shows an error banner"
+        "text": "Block the page until the Process API recovers"
       },
       {
         "letter": "C",
-        "text": "Call the Process API repeatedly until it succeeds"
+        "text": "Return HTTP 500 so the page shows an error banner"
       },
       {
         "letter": "D",
-        "text": "Return a default list of best-selling products"
+        "text": "Call the Process API repeatedly until it succeeds"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. Fallback is a fault-tolerance strategy in which the client uses an alternative when an API invocation fails. Options include calling an alternative API, returning a previously cached result, or returning a static default, such as a list of best-selling products.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Fallback is a fault-tolerance strategy in which the client uses an alternative when an API invocation fails. Options include calling an alternative API, returning a previously cached result, or returning a static default, such as a list of best-selling products.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Waiting indefinitely breaks the user experience."
+        "type": "Correct",
+        "text": "A static or default result keeps the page working when the API fails."
       },
       "B": {
         "type": "Incorrect",
-        "text": "The requirement is that the page still loads successfully."
+        "text": "Waiting indefinitely breaks the user experience."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Repeated calls delay the page and do not guarantee a response."
+        "text": "The requirement is that the page still loads successfully."
       },
       "D": {
-        "type": "Correct",
-        "text": "A static or default result keeps the page working when the API fails."
+        "type": "Incorrect",
+        "text": "Repeated calls delay the page and do not guarantee a response."
       }
     },
     "references": {
@@ -17025,8 +17386,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-267",
-    "number": 267,
+    "id": "q-276",
+    "number": 276,
     "title": "API Quality Goals - Handling rate-limit responses",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17041,31 +17402,31 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Retry immediately in a tight loop until a request succeeds"
+        "text": "Back off and retry after the limit window resets"
       },
       {
         "letter": "C",
-        "text": "Back off and retry after the limit window resets"
+        "text": "Retry immediately in a tight loop until a request succeeds"
       },
       {
         "letter": "D",
         "text": "Create additional client applications to multiply the allowed quota"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. A Rate Limiting policy rejects requests that exceed the configured quota with HTTP 429 and can expose rate-limit headers. Resilient clients treat this as a temporary condition and back off until the window resets, rather than retrying immediately or giving up.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. A Rate Limiting policy rejects requests that exceed the configured quota with HTTP 429 and can expose rate-limit headers. Resilient clients treat this as a temporary condition and back off until the window resets, rather than retrying immediately or giving up.",
     "rationales": {
       "A": {
         "type": "Incorrect",
         "text": "The limit resets after its window, so the condition is temporary."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Immediate retries consume quota and keep the client blocked."
-      },
-      "C": {
         "type": "Correct",
         "text": "429 means the quota is exhausted, so the client should wait rather than retry immediately."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Immediate retries consume quota and keep the client blocked."
       },
       "D": {
         "type": "Incorrect",
@@ -17084,8 +17445,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-268",
-    "number": 268,
+    "id": "q-277",
+    "number": 277,
     "title": "API Quality Goals - Retries in a layered network",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17096,39 +17457,39 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Retries multiply across layers and overload the backend"
-      },
-      {
-        "letter": "B",
         "text": "The Experience API automatically disables retries in lower layers"
       },
       {
-        "letter": "C",
+        "letter": "B",
         "text": "Retries are ignored by Mule runtime when an outage is detected"
       },
       {
-        "letter": "D",
+        "letter": "C",
         "text": "Retries cancel each other out, so the backend receives fewer calls"
+      },
+      {
+        "letter": "D",
+        "text": "Retries multiply across layers and overload the backend"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. Retries at every layer of an application network multiply: three retries at three layers can produce many times the original number of calls. Retries should be limited, spaced out, and coordinated with timeouts and circuit breakers so that clients do not overwhelm a recovering dependency.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Retries at every layer of an application network multiply: three retries at three layers can produce many times the original number of calls. Retries should be limited, spaced out, and coordinated with timeouts and circuit breakers so that clients do not overwhelm a recovering dependency.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Each layer's retries multiply the calls reaching the backend."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "Each layer's retry behavior is configured independently."
       },
-      "C": {
+      "B": {
         "type": "Incorrect",
         "text": "Mule runtime executes configured retries regardless of the cause."
       },
-      "D": {
+      "C": {
         "type": "Incorrect",
         "text": "Nested retries add calls; they do not cancel out."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Each layer's retries multiply the calls reaching the backend."
       }
     },
     "references": {
@@ -17143,8 +17504,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-269",
-    "number": 269,
+    "id": "q-278",
+    "number": 278,
     "title": "API Quality Goals - Choose two client-side strategies",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17155,11 +17516,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Disable timeouts so that slow responses eventually succeed"
+        "text": "Use a timeout aligned with the Experience API's own SLA"
       },
       {
         "letter": "B",
-        "text": "Use a timeout aligned with the Experience API's own SLA"
+        "text": "Disable timeouts so that slow responses eventually succeed"
       },
       {
         "letter": "C",
@@ -17175,18 +17536,18 @@ window.MCPA_QUESTIONS = [
       }
     ],
     "correctAnswers": [
-      "B",
+      "A",
       "E"
     ],
-    "explanation": "Correct answers: B and E. Fault-tolerant API invocations aim to stop failures from propagating to the API client's own consumers. Timeouts, limited retries, circuit breakers, and fallbacks such as cached or default results are the main strategies.",
+    "explanation": "Correct answers: A and E. Fault-tolerant API invocations aim to stop failures from propagating to the API client's own consumers. Timeouts, limited retries, circuit breakers, and fallbacks such as cached or default results are the main strategies.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Without timeouts, slow calls can exhaust threads and break the SLA."
-      },
-      "B": {
         "type": "Correct",
         "text": "A timeout prevents a slow dependency from consuming the client's response time."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Without timeouts, slow calls can exhaust threads and break the SLA."
       },
       "C": {
         "type": "Incorrect",
@@ -17213,8 +17574,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-270",
-    "number": 270,
+    "id": "q-279",
+    "number": 279,
     "title": "API Quality Goals - Alternative API as fallback",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17233,15 +17594,15 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Return HTTP 503 and ask the client to retry tomorrow"
+        "text": "Call the second carrier's API as a fallback"
       },
       {
         "letter": "D",
-        "text": "Call the second carrier's API as a fallback"
+        "text": "Return HTTP 503 and ask the client to retry tomorrow"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. One fallback option for fault-tolerant API invocations is to invoke an alternative API that provides an equivalent result. When the primary carrier's API fails, calling the second carrier's API gives the client a usable quote.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. One fallback option for fault-tolerant API invocations is to invoke an alternative API that provides an equivalent result. When the primary carrier's API fails, calling the second carrier's API gives the client a usable quote.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -17252,12 +17613,12 @@ window.MCPA_QUESTIONS = [
         "text": "Indefinite retries leave the client without a quote during an outage."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "The business wants a quote rather than an error."
-      },
-      "D": {
         "type": "Correct",
         "text": "An alternative API provides an equivalent result when the primary invocation fails."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "The business wants a quote rather than an error."
       }
     },
     "references": {
@@ -17272,8 +17633,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-271",
-    "number": 271,
+    "id": "q-280",
+    "number": 280,
     "title": "API Quality Goals - Protecting an API from sudden bursts",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17284,39 +17645,39 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Spike Control"
-      },
-      {
-        "letter": "B",
         "text": "Client ID Enforcement"
       },
       {
-        "letter": "C",
+        "letter": "B",
         "text": "Rate Limiting"
       },
       {
-        "letter": "D",
+        "letter": "C",
         "text": "HTTP Caching"
+      },
+      {
+        "letter": "D",
+        "text": "Spike Control"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. The Spike Control policy protects an API implementation from traffic spikes by limiting the number of requests in a time window and delaying excess requests, with a configurable number of attempts, before rejecting them. This smooths bursts so that a fragile backend is not overwhelmed.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. The Spike Control policy protects an API implementation from traffic spikes by limiting the number of requests in a time window and delaying excess requests, with a configurable number of attempts, before rejecting them. This smooths bursts so that a fragile backend is not overwhelmed.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Spike Control queues excess requests for a short period and retries them, smoothing bursts."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "Client ID enforcement identifies clients but does not control traffic bursts."
       },
-      "C": {
+      "B": {
         "type": "Incorrect",
         "text": "Rate Limiting enforces a quota and rejects requests beyond it rather than smoothing them."
       },
-      "D": {
+      "C": {
         "type": "Incorrect",
         "text": "Caching can reduce load for cacheable reads but does not shape bursts of requests."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "Spike Control queues excess requests for a short period and retries them, smoothing bursts."
       }
     },
     "references": {
@@ -17331,8 +17692,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-272",
-    "number": 272,
+    "id": "q-281",
+    "number": 281,
     "title": "API Quality Goals - Scaling a CPU-bound API",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17390,8 +17751,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-273",
-    "number": 273,
+    "id": "q-282",
+    "number": 282,
     "title": "API Quality Goals - Backend is the bottleneck",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17449,8 +17810,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-274",
-    "number": 274,
+    "id": "q-283",
+    "number": 283,
     "title": "API Quality Goals - Latency of a single request",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17508,8 +17869,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-275",
-    "number": 275,
+    "id": "q-284",
+    "number": 284,
     "title": "API Quality Goals - Stateful in-memory sessions",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17520,39 +17881,39 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "The load balancer will refuse to route requests to more than one worker"
+        "text": "Carts may be missing when requests reach a different worker"
       },
       {
         "letter": "B",
-        "text": "Memory usage per worker will quadruple"
+        "text": "The load balancer will refuse to route requests to more than one worker"
       },
       {
         "letter": "C",
-        "text": "No problem, because CloudHub replicates worker memory automatically"
+        "text": "Memory usage per worker will quadruple"
       },
       {
         "letter": "D",
-        "text": "Carts may be missing when requests reach a different worker"
+        "text": "No problem, because CloudHub replicates worker memory automatically"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. Horizontal scaling works best for stateless API implementations. If state is kept in a single worker's memory, requests routed to other workers cannot see it. State should be moved to a shared store, such as a persistent object store or database, before scaling out.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Horizontal scaling works best for stateless API implementations. If state is kept in a single worker's memory, requests routed to other workers cannot see it. State should be moved to a shared store, such as a persistent object store or database, before scaling out.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Load balancers distribute requests across all available workers."
+        "type": "Correct",
+        "text": "In-memory state is local to one worker, but the load balancer can route requests anywhere."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Each worker still holds only the carts it has created."
+        "text": "Load balancers distribute requests across all available workers."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Worker memory is not replicated between workers."
+        "text": "Each worker still holds only the carts it has created."
       },
       "D": {
-        "type": "Correct",
-        "text": "In-memory state is local to one worker, but the load balancer can route requests anywhere."
+        "type": "Incorrect",
+        "text": "Worker memory is not replicated between workers."
       }
     },
     "references": {
@@ -17567,8 +17928,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-276",
-    "number": 276,
+    "id": "q-285",
+    "number": 285,
     "title": "API Quality Goals - Choose two: when scaling out helps",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17637,8 +17998,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-277",
-    "number": 277,
+    "id": "q-286",
+    "number": 286,
     "title": "API Quality Goals - Primary-node-only workloads",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17696,8 +18057,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-278",
-    "number": 278,
+    "id": "q-287",
+    "number": 287,
     "title": "API Quality Goals - Autoscaling CloudHub 2.0",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17755,8 +18116,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-279",
-    "number": 279,
+    "id": "q-288",
+    "number": 288,
     "title": "API Quality Goals - Vertical versus horizontal scaling",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17767,11 +18128,11 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Vertical scaling to a larger worker size"
+        "text": "Horizontal scaling to more workers of the same size"
       },
       {
         "letter": "B",
-        "text": "Horizontal scaling to more workers of the same size"
+        "text": "Vertical scaling to a larger worker size"
       },
       {
         "letter": "C",
@@ -17782,16 +18143,16 @@ window.MCPA_QUESTIONS = [
         "text": "Enabling the HTTP Caching policy"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Correct answer: A. Horizontal scaling increases concurrent capacity but leaves the resources available to a single request unchanged. When individual requests need more memory or CPU than one instance provides, vertical scaling to a larger worker or replica size is required.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Horizontal scaling increases concurrent capacity but leaves the resources available to a single request unchanged. When individual requests need more memory or CPU than one instance provides, vertical scaling to a larger worker or replica size is required.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "More memory per worker lets each large request be processed."
-      },
-      "B": {
         "type": "Incorrect",
         "text": "Each request still runs on one worker with the same memory limit."
+      },
+      "B": {
+        "type": "Correct",
+        "text": "More memory per worker lets each large request be processed."
       },
       "C": {
         "type": "Incorrect",
@@ -17814,8 +18175,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-280",
-    "number": 280,
+    "id": "q-289",
+    "number": 289,
     "title": "API Quality Goals - Scaling and SLA-limited consumers",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17834,15 +18195,15 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Nothing for this partner, because the SLA tier limits their throughput"
+        "text": "Response times will drop below the SLA tier's limits"
       },
       {
         "letter": "D",
-        "text": "Response times will drop below the SLA tier's limits"
+        "text": "Nothing for this partner, because the SLA tier limits their throughput"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "Correct answer: C. When throughput is capped by an SLA-based rate limiting policy, the constraint is the consumer's contract, not the API implementation's capacity. Horizontal scaling only helps when the implementation is the bottleneck; here the partner would need a higher SLA tier.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. When throughput is capped by an SLA-based rate limiting policy, the constraint is the consumer's contract, not the API implementation's capacity. Horizontal scaling only helps when the implementation is the bottleneck; here the partner would need a higher SLA tier.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -17853,12 +18214,12 @@ window.MCPA_QUESTIONS = [
         "text": "Rate limiting based on SLA tiers is enforced regardless of worker count."
       },
       "C": {
-        "type": "Correct",
-        "text": "The limit is set by the contract's SLA tier, not by the API's capacity."
-      },
-      "D": {
         "type": "Incorrect",
         "text": "The limit is on request count, not response time."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "The limit is set by the contract's SLA tier, not by the API's capacity."
       }
     },
     "references": {
@@ -17873,8 +18234,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-281",
-    "number": 281,
+    "id": "q-290",
+    "number": 290,
     "title": "API Quality Goals - Which layer to scale",
     "domain": "Meeting API quality goals",
     "topics": [
@@ -17885,39 +18246,39 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Scale out the Order Process API"
+        "text": "Scale out the Inventory System API"
       },
       {
         "letter": "B",
-        "text": "Scale both APIs vertically to the largest worker size"
+        "text": "Scale out the Order Process API"
       },
       {
         "letter": "C",
-        "text": "Apply a Spike Control policy to the Order Process API"
+        "text": "Scale both APIs vertically to the largest worker size"
       },
       {
         "letter": "D",
-        "text": "Scale out the Inventory System API"
+        "text": "Apply a Spike Control policy to the Order Process API"
       }
     ],
-    "correctAnswer": "D",
-    "explanation": "Correct answer: D. Horizontal scaling improves throughput only when applied to the component that limits it. Here the Inventory System API is CPU-saturated while its backend has spare capacity, so adding System API workers removes the bottleneck. Scaling the idle Process API would not help and would increase pressure on the saturated System API.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Horizontal scaling improves throughput only when applied to the component that limits it. Here the Inventory System API is CPU-saturated while its backend has spare capacity, so adding System API workers removes the bottleneck. Scaling the idle Process API would not help and would increase pressure on the saturated System API.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "The Process API is mostly idle and waiting; more instances would only send more requests to the saturated System API."
+        "type": "Correct",
+        "text": "The saturated System API is the bottleneck, so adding its workers adds capacity where it is needed."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Larger Process API workers waste money, and vertical scaling alone is not the targeted fix for a stateless, CPU-bound System API."
+        "text": "The Process API is mostly idle and waiting; more instances would only send more requests to the saturated System API."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Shaping traffic to the Process API does not add capacity to the System API bottleneck."
+        "text": "Larger Process API workers waste money, and vertical scaling alone is not the targeted fix for a stateless, CPU-bound System API."
       },
       "D": {
-        "type": "Correct",
-        "text": "The saturated System API is the bottleneck, so adding its workers adds capacity where it is needed."
+        "type": "Incorrect",
+        "text": "Shaping traffic to the Process API does not add capacity to the System API bottleneck."
       }
     },
     "references": {
@@ -17932,8 +18293,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-282",
-    "number": 282,
+    "id": "q-291",
+    "number": 291,
     "title": "Monitoring Analyzing - Which Anypoint Platform feature provides a realtime",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -17994,8 +18355,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-283",
-    "number": 283,
+    "id": "q-292",
+    "number": 292,
     "title": "Monitoring Analyzing - Which Anypoint capability stores Mule application logs",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18057,8 +18418,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-284",
-    "number": 284,
+    "id": "q-293",
+    "number": 293,
     "title": "Monitoring Analyzing - Which Anypoint Monitoring artifact lets architects build",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18119,8 +18480,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-285",
-    "number": 285,
+    "id": "q-294",
+    "number": 294,
     "title": "Monitoring Analyzing - Which capability is provided by Anypoint Visualizer",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18182,8 +18543,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-286",
-    "number": 286,
+    "id": "q-295",
+    "number": 295,
     "title": "Monitoring Analyzing - Which feature provides automatic notification when CloudHub",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18244,8 +18605,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-287",
-    "number": 287,
+    "id": "q-296",
+    "number": 296,
     "title": "Monitoring Analyzing - Which Anypoint feature is most useful for",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18306,8 +18667,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-288",
-    "number": 288,
+    "id": "q-297",
+    "number": 297,
     "title": "Monitoring Analyzing - Which feature in CloudHub measures and exposes",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18368,8 +18729,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-289",
-    "number": 289,
+    "id": "q-298",
+    "number": 298,
     "title": "Monitoring Analyzing - Which is the recommended way to expose",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18431,8 +18792,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-290",
-    "number": 290,
+    "id": "q-299",
+    "number": 299,
     "title": "API Monitoring - A logistics company needs to track API latency and usage across",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18509,8 +18870,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-291",
-    "number": 291,
+    "id": "q-300",
+    "number": 300,
     "title": "Monitoring - A manufacturing company wants real‑time visibility into",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18587,8 +18948,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-292",
-    "number": 292,
+    "id": "q-301",
+    "number": 301,
     "title": "API Monitoring - A logistics company with a 99.9% SLA requirement and a limited mo",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18668,8 +19029,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-293",
-    "number": 293,
+    "id": "q-302",
+    "number": 302,
     "title": "Monitoring - A regional healthcare provider handling protected patient data ne",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18746,8 +19107,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-294",
-    "number": 294,
+    "id": "q-303",
+    "number": 303,
     "title": "Logging Configuration - A logistics startup with a small Dev Ops crew discovers that erro",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18824,8 +19185,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-295",
-    "number": 295,
+    "id": "q-304",
+    "number": 304,
     "title": "Monitoring Deployment - A federal government agency is required to store all monitoring d",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18889,8 +19250,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-296",
-    "number": 296,
+    "id": "q-305",
+    "number": 305,
     "title": "Monitoring - A manufacturing plant’s ERP integration shows intermittent latenc",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18967,8 +19328,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-297",
-    "number": 297,
+    "id": "q-306",
+    "number": 306,
     "title": "API Monitoring - A fintech startup wants to set up real‑time alerts for API SLA br",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19045,8 +19406,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-298",
-    "number": 298,
+    "id": "q-307",
+    "number": 307,
     "title": "API Analytics - A large retail enterprise is rolling out API analytics across its",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19113,8 +19474,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-299",
-    "number": 299,
+    "id": "q-308",
+    "number": 308,
     "title": "Observability - A healthcare integration team must configure logging to retain au",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19182,8 +19543,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-300",
-    "number": 300,
+    "id": "q-309",
+    "number": 309,
     "title": "Audit Logging - A regional healthcare provider operates a patient‑record API that",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19247,8 +19608,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-301",
-    "number": 301,
+    "id": "q-310",
+    "number": 310,
     "title": "Logging and Monitoring - A large retail chain’s order‑processing flow has started returnin",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19325,8 +19686,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-302",
-    "number": 302,
+    "id": "q-311",
+    "number": 311,
     "title": "API Analytics - A federal agency is deploying a citizen-service portal on Anypoin",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19390,8 +19751,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "E"
   },
   {
-    "id": "q-303",
-    "number": 303,
+    "id": "q-312",
+    "number": 312,
     "title": "Performance Monitoring - A manufacturing company's ERP integration is experiencing latency",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19468,8 +19829,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-304",
-    "number": 304,
+    "id": "q-313",
+    "number": 313,
     "title": "API Monitoring & Governance - A hospital network runs dozens of APIs for patient data exchange ",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19537,8 +19898,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-305",
-    "number": 305,
+    "id": "q-314",
+    "number": 314,
     "title": "API Monitoring - A national retail chain wants real-time visibility into API usage",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19615,8 +19976,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-306",
-    "number": 306,
+    "id": "q-315",
+    "number": 315,
     "title": "Monitoring and Observability - Visualizer topology and policy troubleshooting",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19678,8 +20039,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-307",
-    "number": 307,
+    "id": "q-316",
+    "number": 316,
     "title": "Monitoring and Observability - CloudHub worker CPU alert",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19741,8 +20102,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-308",
-    "number": 308,
+    "id": "q-317",
+    "number": 317,
     "title": "Monitoring and Observability - External compliant application logging",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19804,8 +20165,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-309",
-    "number": 309,
+    "id": "q-318",
+    "number": 318,
     "title": "Monitoring and Observability - Scheduled external API tests",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19867,8 +20228,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-310",
-    "number": 310,
+    "id": "q-319",
+    "number": 319,
     "title": "Monitoring and Observability - Assigning Visualizer architecture layers",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19930,8 +20291,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-311",
-    "number": 311,
+    "id": "q-320",
+    "number": 320,
     "title": "Monitoring and Observability - Alerting on API client quota violations",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19993,8 +20354,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-312",
-    "number": 312,
+    "id": "q-321",
+    "number": 321,
     "title": "Monitoring and Observability - Geographic functional testing",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20056,8 +20417,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-313",
-    "number": 313,
+    "id": "q-322",
+    "number": 322,
     "title": "Monitoring and Observability - Custom business-logic notifications",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20119,8 +20480,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-314",
-    "number": 314,
+    "id": "q-323",
+    "number": 323,
     "title": "Monitoring and Observability - Long-term CloudHub log retention",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20182,8 +20543,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-315",
-    "number": 315,
+    "id": "q-324",
+    "number": 324,
     "title": "Monitoring and Observability - Cross-application metrics dashboard",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20245,8 +20606,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-316",
-    "number": 316,
+    "id": "q-325",
+    "number": 325,
     "title": "Monitoring and Observability - Environment visibility in Visualizer",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20308,8 +20669,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-317",
-    "number": 317,
+    "id": "q-326",
+    "number": 326,
     "title": "Monitoring and Observability - BDD API tests in CI/CD",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20372,8 +20733,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-318",
-    "number": 318,
+    "id": "q-327",
+    "number": 327,
     "title": "Monitoring and Observability - Troubleshooting cascading API failures",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20435,8 +20796,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-319",
-    "number": 319,
+    "id": "q-328",
+    "number": 328,
     "title": "Monitoring and Observability - Monitoring customer-hosted runtimes",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20498,8 +20859,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-320",
-    "number": 320,
+    "id": "q-329",
+    "number": 329,
     "title": "Monitoring and Observability - Tracking application deletion",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20561,8 +20922,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-321",
-    "number": 321,
+    "id": "q-330",
+    "number": 330,
     "title": "Monitoring and Observability - Supported Runtime Manager alert conditions",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20624,8 +20985,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-322",
-    "number": 322,
+    "id": "q-331",
+    "number": 331,
     "title": "Monitoring and Observability - Dynamic request logging without redeployment",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20687,8 +21048,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-323",
-    "number": 323,
+    "id": "q-332",
+    "number": 332,
     "title": "Monitoring and Observability - Runtime Fabric cluster log forwarding",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20750,8 +21111,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-324",
-    "number": 324,
+    "id": "q-333",
+    "number": 333,
     "title": "Monitoring and Observability - Diagnosing HTTP 429 responses",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20813,8 +21174,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-325",
-    "number": 325,
+    "id": "q-334",
+    "number": 334,
     "title": "Monitoring and Observability - Custom Visualizer labels",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20876,8 +21237,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-326",
-    "number": 326,
+    "id": "q-335",
+    "number": 335,
     "title": "Monitoring and Observability - Titanium log search capability",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20939,8 +21300,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-327",
-    "number": 327,
+    "id": "q-336",
+    "number": 336,
     "title": "Monitoring and Observability - CloudHub worker unresponsiveness",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21002,8 +21363,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-328",
-    "number": 328,
+    "id": "q-337",
+    "number": 337,
     "title": "Monitoring and Observability - Visualizer error indicator",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21052,8 +21413,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-329",
-    "number": 329,
+    "id": "q-338",
+    "number": 338,
     "title": "Monitoring and Observability - Registering an implementation with API Manager",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21115,8 +21476,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-330",
-    "number": 330,
+    "id": "q-339",
+    "number": 339,
     "title": "Monitoring and Observability - Configuring the Visualizer node display name",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21178,8 +21539,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-331",
-    "number": 331,
+    "id": "q-340",
+    "number": 340,
     "title": "Monitoring and Observability - Visualizer policy compliance indicator",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21241,8 +21602,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-332",
-    "number": 332,
+    "id": "q-341",
+    "number": 341,
     "title": "Monitoring and Observability - Visualizer tags set via application properties",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21304,8 +21665,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-333",
-    "number": 333,
+    "id": "q-342",
+    "number": 342,
     "title": "Monitoring and Observability - Visualizer edges based on recent traffic",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21367,8 +21728,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-334",
-    "number": 334,
+    "id": "q-343",
+    "number": 343,
     "title": "Monitoring and Observability - Visualizer Editor permission for defined views",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
