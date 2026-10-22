@@ -14554,7 +14554,7 @@ window.MCPA_QUESTIONS = [
     },
     "correctAnswer": "B"
   },
-  {
+    {
     "id": "q-238",
     "number": 238,
     "title": "Performance - Refer to the exhibit.",
@@ -14567,44 +14567,44 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Implement locking to synchronize access to the Object Store"
-      },
-      {
-        "letter": "B",
-        "text": "Upgrade the vCore size from 0.1 vCore to 0.2 vCore"
-      },
-      {
-        "letter": "C",
         "text": "Implement the HTTP caching policy for all GET endpoints for the Master Look Up API"
       },
       {
+        "letter": "B",
+        "text": "Add an additional CloudHub worker of 0.1 vCore to provide additional capacity"
+      },
+      {
+        "letter": "C",
+        "text": "Implement locking to synchronize access to the Object Store"
+      },
+      {
         "letter": "D",
-        "text": "Implement an HTTP caching policy for all GET endpoints in the Master Look Up API"
+        "text": "Upgrade the vCore size from 0.1 vCore to 0.2 vCore"
       }
     ],
-    "explanation": "Correct answer: B, D. The Master Look Up API is slow because of the latency of database queries used to populate its cache. Upgrading the workers from 0.1 vCore to 0.2 vCore (B) doubles the resources available to each worker (worker memory from 1 GB to 2 GB and heap from 500 MB to 1 GB), giving the API more CPU and memory to serve cache lookups. Implementing an HTTP caching policy for all GET endpoints (D) caches responses at the API gateway so repeated lookups are served from the cache instead of hitting the backend and database, directly reducing response time. Implementing locking to synchronize access to the object store (A) would serialize access and tend to make response times worse rather than better, and it does not reduce database latency. Note that options C and D describe the same HTTP caching action.",
+    "explanation": "Correct answers: A and D. The Master Look Up API is slow because each cache miss triggers a database query to refresh the cache, and the latency of those queries dominates the response time. Two independent levers address this. First, the HTTP Caching policy (A) caches HTTP responses for reuse: according to MuleSoft, \"Caching these responses speeds up the response time for user requests and reduces the load on the backend,\" and on a cache hit \"the stored response is returned\" without calling the backend, so repeated master-data lookups are served from the cache and the database is not queried at all. Second, the API is deployed on 0.1 vCore CloudHub workers, which \"provide limited CPU and I/O for apps with smaller workloads\" and \"can burst to higher CPU speeds for a short time\" rather than delivering consistent performance. Upgrading each worker to 0.2 vCore (D) raises worker memory from 1 GB to 2 GB and heap memory from 500 MB to 1 GB, giving the API more resources to serve the cached lookups. Option B (adding another 0.1 vCore worker) does not help: although CloudHub's HTTP load balancing service distributes requests across workers on a round-robin basis, each request is still served by a single 0.1 vCore worker with the same limited CPU and I/O, so extra workers add capacity rather than reduce the per-request latency caused by the database queries. Option C (locking) is wrong because Object Stores \"do not support transactional access or modification,\" and locking to synchronize access to the Object Store would serialize the cache and tend to increase, not decrease, response time.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Adding locking to synchronize access to the Object Store serializes access and does not address the database-query latency that causes the slow responses; it can make contention worse."
+        "type": "Correct",
+        "text": "The HTTP Caching policy caches HTTP responses for reuse, which \"speeds up the response time for user requests and reduces the load on the backend.\" On a cache hit the stored response is returned without reaching the backend, so the database queries responsible for the latency are avoided for repeated lookups."
       },
       "B": {
-        "type": "Correct",
-        "text": "Moving from 0.1 vCore to 0.2 vCore workers increases the CPU and memory available to the API, improving its ability to serve cache lookups and reducing response time."
+        "type": "Incorrect",
+        "text": "Adding another 0.1 vCore worker scales the application horizontally \u2014 CloudHub's HTTP load balancing service distributes requests across workers on a round-robin basis \u2014 but each request is still served by a single 0.1 vCore worker with the same limited CPU and I/O. More workers add capacity, not lower per-request latency, so the database-query delay remains."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option describes the same HTTP caching policy as option D; the intended answers are the vCore upgrade and the HTTP caching policy."
+        "text": "Object Stores do not support transactional access or modification, and locking to synchronize access to the Object Store serializes cache access. It does not reduce the database-query latency that causes the slow responses and can make contention worse."
       },
       "D": {
         "type": "Correct",
-        "text": "The HTTP caching policy caches GET responses at the gateway, so repeat lookups are served from the cache rather than the backend and database, cutting response time."
+        "text": "0.1 vCore workers provide limited CPU and I/O and can only burst to higher CPU speeds for short periods. Upgrading to 0.2 vCore doubles worker memory from 1 GB to 2 GB and heap memory from 500 MB to 1 GB, giving the API more resources to serve the cached lookups."
       }
     },
     "references": {
       "primary": {
-        "title": "HTTP Caching Policy — How This Policy Works",
-        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-http-caching#how-this-policy-works"
+        "title": "HTTP Caching Policy — Summary (speeds up response time and reduces backend load)",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-http-caching#summary"
       },
       "architectureGuide": {
         "title": "CloudHub Architecture — CloudHub Workers (vCore, memory, and heap sizes)",
@@ -14616,7 +14616,7 @@ window.MCPA_QUESTIONS = [
       }
     },
     "correctAnswers": [
-      "B",
+      "A",
       "D"
     ]
   },
