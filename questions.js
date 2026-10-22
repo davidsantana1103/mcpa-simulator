@@ -16131,1869 +16131,1809 @@ window.MCPA_QUESTIONS = [
   {
     "id": "q-252",
     "number": 252,
-    "title": "Non Functional Requirements - What is the unit of compute capacity",
+    "title": "API Quality Goals - Caching slow-changing reference data",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Vcores Capacity",
-      "Worker Sizing"
+      "Caching",
+      "HTTP Caching Policy"
     ],
-    "prompt": "What is the unit of compute capacity used to size Mule applications on CloudHub?",
+    "prompt": "A Product Catalog Process API is called thousands of times per minute, but product descriptions change only once a day. The System API behind it is slow, and consumers accept data that is up to one hour old. Which approach most improves response times without changing the API implementation?",
     "options": [
       {
         "letter": "A",
-        "text": "GB of RAM"
+        "text": "Scale the System API to more workers so it can respond faster to each call"
       },
       {
         "letter": "B",
-        "text": "Number of cores"
+        "text": "Apply a Spike Control policy so that requests are queued during busy periods"
       },
       {
         "letter": "C",
-        "text": "vCores"
+        "text": "Ask every consumer to poll the API less frequently than once an hour"
       },
       {
         "letter": "D",
-        "text": "Worker threads"
+        "text": "Apply the HTTP Caching policy to the API with a one-hour time-to-live"
       }
     ],
-    "correctAnswer": "C",
-    "explanation": "CloudHub measures capacity in vCores. Each worker is allocated a vCore size (0.1, 0.2, 0.5, 1, 2, 4, 8 etc.) that maps to memory and compute. Customers buy vCore entitlements per environment via business groups.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. When data changes infrequently and consumers tolerate some staleness, caching responses is the most effective way to improve response time and reduce backend load. The HTTP Caching policy can be applied in API Manager without changing the implementation, and its time-to-live should match how stale the data may be.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "RAM is a property derived from vCore size, not the billing/allocation unit."
+        "text": "More workers add capacity but do not make each slow backend call faster."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Physical cores are not exposed; vCores are the abstract capacity unit."
+        "text": "Spike Control smooths traffic peaks; it does not avoid calling the slow backend."
       },
       "C": {
-        "type": "Correct",
-        "text": "vCores"
+        "type": "Incorrect",
+        "text": "Relying on consumers to change their behavior is unenforceable and does not speed up responses."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Worker threads are an internal runtime concept and not the sizing unit."
+        "type": "Correct",
+        "text": "The policy caches responses at the gateway, so repeated requests skip the slow backend without code changes."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub Architecture — Worker Compute Capacity & vCore Sizing",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#cloudhub-workers"
+        "title": "HTTP Caching Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-http-caching"
       },
       "architectureGuide": {
-        "title": "CloudHub Fabric & Worker Scale-Out Architecture",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#worker-scale-out"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "Mule Runtime — Cache Scope",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/cache-scope"
       }
     }
   },
   {
     "id": "q-253",
     "number": 253,
-    "title": "Non Functional Requirements - Which Anypoint capability provides reliable asynchronous queuebased",
+    "title": "API Quality Goals - Data that must not be cached",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Anypoint Mq",
-      "Reliability Patterns"
+      "Caching",
+      "Suitability"
     ],
-    "prompt": "Which Anypoint capability provides reliable, asynchronous, queue-based messaging between Mule applications without managing your own broker?",
+    "prompt": "An architect is considering caching for several APIs. For which API is response caching least appropriate?",
     "options": [
       {
         "letter": "A",
-        "text": "Object Store v2"
+        "text": "A Country Codes API whose data changes a few times per year"
       },
       {
         "letter": "B",
-        "text": "Anypoint MQ"
+        "text": "A Product Images API that serves static content to many clients"
       },
       {
         "letter": "C",
-        "text": "VM connector across regions"
+        "text": "A Store Locations API that is updated weekly and read constantly"
       },
       {
         "letter": "D",
-        "text": "Runtime Fabric service mesh"
+        "text": "An Account Balance API used for payments"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Anypoint MQ is a managed cloud messaging service offering queues, FIFO queues, and exchanges (pub/sub) without operating a broker. Object Store v2 is key/value storage; VM is in-memory and per-app; Service Mesh is for governing non-Mule services.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Caching trades freshness for performance. It is appropriate for data that changes rarely or where consumers tolerate staleness, and inappropriate where every response must reflect the latest state, such as account balances used for payments.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Object Store v2 stores key/value data, not message queues."
+        "text": "Rarely changing reference data is an ideal caching candidate."
       },
       "B": {
-        "type": "Correct",
-        "text": "Anypoint MQ"
+        "type": "Incorrect",
+        "text": "Static content can be cached safely and greatly reduces load."
       },
       "C": {
         "type": "Incorrect",
-        "text": "VM queues are local to a single Mule app and not durable across regions."
+        "text": "Read-heavy data with weekly updates benefits from caching with a suitable TTL."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Service Mesh applies API policies to services in a mesh, not message queuing."
+        "type": "Correct",
+        "text": "Caching would return stale balances, which breaks the requirement for current data."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint MQ Overview — Fully Managed Cloud Asynchronous Messaging",
-        "url": "https://docs.mulesoft.com/mq/#anypoint-mq-features"
+        "title": "Mule Runtime — Cache Scope",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/cache-scope"
       },
       "architectureGuide": {
-        "title": "Configuring Queues & Exchanges in Anypoint MQ",
-        "url": "https://docs.mulesoft.com/mq/mq-queues#create-queue"
-      },
-      "arc720": {
-        "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
-        "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
+        "title": "HTTP Caching Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-http-caching"
       }
     }
   },
   {
     "id": "q-254",
     "number": 254,
-    "title": "Non Functional Requirements - Where should durable clustershared keyvalue state be",
+    "title": "API Quality Goals - Sharing state across CloudHub workers",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Object Store V2"
+      "Object Store",
+      "Object Store v2"
     ],
-    "prompt": "Where should durable, cluster-shared key/value state be stored for a CloudHub application running on multiple workers?",
+    "prompt": "A Mule application deployed to CloudHub with two workers stores a watermark that records the last processed record ID. After a restart or when the other worker runs the job, the watermark must still be available. Where should the watermark be stored?",
     "options": [
       {
         "letter": "A",
-        "text": "A static variable in Java code"
+        "text": "In a persistent object store (Object Store v2)"
       },
       {
         "letter": "B",
-        "text": "Object Store v2 (managed)"
+        "text": "In an in-memory object store on each worker"
       },
       {
         "letter": "C",
-        "text": "The Mule flow variable"
+        "text": "In a flow variable that is set at the end of each run"
       },
       {
         "letter": "D",
-        "text": "Local file system on the worker"
+        "text": "In a file written to the worker's local disk"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Object Store v2 is the managed, persistent, cluster-aware key/value store designed for sharing state across CloudHub workers. Static variables, flow variables, and worker-local files are not shared across workers and are lost on restart or scaling.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. On CloudHub, persistent object stores are backed by Object Store v2, which keeps data outside individual workers. This lets the stored values, such as watermarks, survive restarts and be shared by all workers of the same application, unlike variables, in-memory stores, or local files.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Java statics are per-JVM and per-worker; CloudHub workers are isolated."
+        "type": "Correct",
+        "text": "Object Store v2 persists data outside the worker and makes it available to all workers of the application."
       },
       "B": {
-        "type": "Correct",
-        "text": "Object Store v2 (managed)"
+        "type": "Incorrect",
+        "text": "In-memory stores are lost on restart and are not shared between workers."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Flow variables exist only for the duration of a single Mule event."
+        "text": "Variables exist only for one event and are lost when the flow finishes."
       },
       "D": {
         "type": "Incorrect",
-        "text": "CloudHub workers have an ephemeral local file system that is not shared."
+        "text": "Local worker storage is not shared and should not be relied on across restarts or redeployments."
       }
     },
     "references": {
       "primary": {
-        "title": "Object Store v2 — Persistent State & Multi-Worker State Sharing",
-        "url": "https://docs.mulesoft.com/object-store/#object-store-v2-features"
+        "title": "Object Store v2 Guide",
+        "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       },
       "architectureGuide": {
-        "title": "Object Store v2 FAQ — Partitioning, Limits, and Eviction TTL",
-        "url": "https://docs.mulesoft.com/object-store/osv2-faq"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "Mule Runtime — Object Stores",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       }
     }
   },
   {
     "id": "q-255",
     "number": 255,
-    "title": "Non Functional Requirements - What is the purpose of CloudHubs Object",
+    "title": "API Quality Goals - Cache scope versus caching policy",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Object Store V2"
+      "Caching",
+      "Cache Scope"
     ],
-    "prompt": "What is the purpose of CloudHub's Object Store v2 versus the in-memory Object Store v1?",
+    "prompt": "A Process API calls three System APIs. Only the call to the Tax Rate System API returns data that is the same for all requests from the same region and changes monthly. The other two calls return customer-specific, real-time data. What is the best way to apply caching?",
     "options": [
       {
         "letter": "A",
-        "text": "v2 is faster but non-persistent"
+        "text": "Cache all three System API responses for one month"
       },
       {
         "letter": "B",
-        "text": "v2 is persistent, cluster-shared across workers, and managed by MuleSoft"
+        "text": "Wrap only the Tax Rate call in a Cache scope keyed by region"
       },
       {
         "letter": "C",
-        "text": "v2 only works on Runtime Fabric"
+        "text": "Apply the HTTP Caching policy to the whole Process API"
       },
       {
         "letter": "D",
-        "text": "v2 is identical to v1 but with renamed APIs"
+        "text": "Avoid caching because a Process API cannot cache downstream results"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Object Store v2 is a managed, persistent, cluster-aware service with key/value semantics designed for sharing state across CloudHub workers. v1 is local in-memory storage scoped to one worker.",
+    "explanation": "Correct answer: B. The HTTP Caching policy caches whole API responses at the gateway, which suits APIs whose entire response can be reused. When only one downstream call in an implementation is cacheable, the Cache scope can cache that part of the flow, using a key such as the region, while the rest of the flow runs on every request.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "v2 is durable; persistence is its main value."
+        "text": "The customer-specific data is real-time and must not be cached for a month."
       },
       "B": {
         "type": "Correct",
-        "text": "v2 is persistent, cluster-shared across workers, and managed by MuleSoft"
+        "text": "A Cache scope caches the result of part of a flow, so only the stable call is cached."
       },
       "C": {
         "type": "Incorrect",
-        "text": "v2 is a CloudHub managed service; on RTF, persistent stores are configured separately."
+        "text": "Caching entire responses would also serve stale customer-specific, real-time data."
       },
       "D": {
         "type": "Incorrect",
-        "text": "v2 has different semantics (TTL behavior, cluster sharing) not just renamed APIs."
+        "text": "Mule applications can cache downstream results with the Cache scope."
       }
     },
     "references": {
       "primary": {
-        "title": "Object Store v2 — Persistent Key-Value Store Across Cluster Workers",
-        "url": "https://docs.mulesoft.com/object-store/#object-store-v2-features"
+        "title": "Mule Runtime — Cache Scope",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/cache-scope"
       },
       "architectureGuide": {
-        "title": "Object Store v2 FAQ — Partitioning and TTL Expiration",
-        "url": "https://docs.mulesoft.com/object-store/osv2-faq"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "HTTP Caching Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-http-caching"
       }
     }
   },
   {
     "id": "q-256",
     "number": 256,
-    "title": "Non Functional Requirements - What does enabling Persistent Queues on a",
+    "title": "API Quality Goals - Idempotent request detection",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Reliability Patterns",
-      "Cloudhub Deployment"
+      "Object Store",
+      "Idempotency"
     ],
-    "prompt": "What does enabling 'Persistent Queues' on a CloudHub app primarily provide?",
+    "prompt": "A Payments Process API sometimes receives the same request twice because clients retry after timeouts. Each request carries a unique transaction ID. The API runs on several CloudHub workers. How can duplicate processing be prevented?",
     "options": [
       {
         "letter": "A",
-        "text": "Disk-backed buffering for VM queues that survives worker restarts"
+        "text": "Apply the HTTP Caching policy so duplicate requests get the same response"
       },
       {
         "letter": "B",
-        "text": "Cross-region replication of every Mule message"
+        "text": "Store processed IDs in a variable on each worker"
       },
       {
         "letter": "C",
-        "text": "An external Anypoint MQ broker"
+        "text": "Store processed IDs in a persistent object store"
       },
       {
         "letter": "D",
-        "text": "Synchronous JMS bridging to on-prem brokers"
+        "text": "Reduce the client timeout so that clients never retry"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "Persistent Queues for CloudHub use the worker's persistent storage to back VM queues so messages survive worker restarts and can be processed by another worker. They do not provide cross-region replication or external brokers; for global queueing, use Anypoint MQ.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Detecting duplicates requires remembering which unique IDs have already been processed, in a store shared by all instances. A persistent object store, backed by Object Store v2 on CloudHub, can hold these IDs so that any worker can recognize and reject a repeated request.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Disk-backed buffering for VM queues that survives worker restarts"
+        "type": "Incorrect",
+        "text": "Caching is for safe, reusable responses; POST payment requests should not be cached."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Cross-region replication is not what Persistent Queues offer."
+        "text": "Variables are per event and per worker, so duplicates on another worker are not detected."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Anypoint MQ is a separate managed broker, not equivalent to Persistent Queues."
+        "type": "Correct",
+        "text": "A shared persistent store lets every worker check whether an ID was already processed."
       },
       "D": {
         "type": "Incorrect",
-        "text": "JMS bridging requires the JMS connector and external configuration."
+        "text": "Shorter timeouts make retries more likely, not less."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub Fabric — Persistent Queues for Inter-Worker Message Buffering",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#persistent-queues"
+        "title": "Mule Runtime — Object Stores",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       },
       "architectureGuide": {
-        "title": "CloudHub Fabric & Worker Scale-Out Architecture",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#worker-scale-out"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "Object Store v2 Guide",
+        "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
     }
   },
   {
     "id": "q-257",
     "number": 257,
-    "title": "Non Functional Requirements - Which CloudHub feature distributes traffic across multiple",
+    "title": "API Quality Goals - Fallback to cached data",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Ha Dr Architecture",
-      "Cloudhub Deployment"
+      "Caching",
+      "Resilience"
     ],
-    "prompt": "Which CloudHub feature distributes traffic across multiple workers to provide horizontal scaling and high availability within a region?",
+    "prompt": "An Experience API displays loyalty points from a Loyalty Process API. The business accepts showing points that are a few hours old if the Process API is unavailable, rather than showing an error. Which design meets this requirement?",
     "options": [
       {
         "letter": "A",
-        "text": "Static IP addressing"
+        "text": "Apply rate limiting to the Process API so that it does not fail"
       },
       {
         "letter": "B",
-        "text": "Shared load balancer (SLB) and worker scaling"
+        "text": "Return HTTP 500 to the app and let the user try again later"
       },
       {
         "letter": "C",
-        "text": "Dedicated VPN tunnels"
+        "text": "Retry the Process API indefinitely until it responds"
       },
       {
         "letter": "D",
-        "text": "Object Store v2 replication"
+        "text": "Cache each good response and return it on failure"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "CloudHub's shared load balancer routes inbound HTTPS to all workers of an app in a region, providing in-region HA and horizontal scaling. Static IPs and VPNs address connectivity, not load distribution; Object Store v2 stores state.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. A fallback is a resilience strategy in which an API client returns an alternative result when an invocation fails. Saving successful responses in an object store and returning the cached value when the downstream API fails lets the client keep working with acceptably stale data.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Static IPs allow allow-listing on partner systems; they do not load balance."
+        "text": "Rate limiting protects against overload but does not provide data when the API is unavailable."
       },
       "B": {
-        "type": "Correct",
-        "text": "Shared load balancer (SLB) and worker scaling"
+        "type": "Incorrect",
+        "text": "This is the error experience the business wants to avoid."
       },
       "C": {
         "type": "Incorrect",
-        "text": "VPNs are network connectivity, not load balancers."
+        "text": "Unlimited retries make the client wait or fail instead of returning a usable result."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Object Store v2 stores state and is not a load distributor."
+        "type": "Correct",
+        "text": "The last good response can serve as a fallback result when the Process API cannot be reached."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub Architecture — Shared Load Balancers (SLB) & Multi-Worker Horizontal Scaling",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#worker-scale-out-and-data-center-redundancy"
+        "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
+        "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       },
       "architectureGuide": {
-        "title": "CloudHub Architecture — Workers and Multitenancy",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#workers-and-multitenancy"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "Mule Runtime — Object Stores",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       }
     }
   },
   {
     "id": "q-258",
     "number": 258,
-    "title": "Non Functional Requirements - An organization needs failover for a CloudHub",
+    "title": "API Quality Goals - Object Store data retention",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Ha Dr Architecture"
+      "Object Store",
+      "Object Store v2"
     ],
-    "prompt": "An organization needs failover for a CloudHub app across two AWS regions in case of a region-wide outage. Which approach is correct?",
+    "prompt": "A team plans to use Object Store v2 on CloudHub as the permanent system of record for customer preferences, retained indefinitely. What should the architect advise?",
     "options": [
       {
         "letter": "A",
-        "text": "Increase worker count in one region"
+        "text": "Proceed, but use an in-memory object store for better durability"
       },
       {
         "letter": "B",
-        "text": "Deploy the same app to two regions with appropriate DNS or DLB strategy"
+        "text": "Use a database; Object Store v2 entries have a limited TTL"
       },
       {
         "letter": "C",
-        "text": "Enable Persistent Queues only"
+        "text": "Proceed, because Object Store v2 retains entries forever unless they are deleted"
       },
       {
         "letter": "D",
-        "text": "Switch to the Shared Load Balancer"
+        "text": "Store the preferences in application properties so they are always available"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Region failover requires deploying the application to a second region and using DNS routing (e.g., latency-based or health-checked failover) or a Dedicated Load Balancer strategy to redirect traffic when the primary region fails. Worker count, persistent queues, and SLB are all in-region tactics.",
+    "explanation": "Correct answer: B. Object Store v2 is intended for application state such as caching, watermarks, and deduplication. Its entries have a maximum time-to-live, so it is not suitable as a permanent system of record. Long-lived business data such as customer preferences belongs in a database or other system of record.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "More workers in one region cannot survive a region-wide outage."
+        "text": "In-memory stores are less durable, not more."
       },
       "B": {
         "type": "Correct",
-        "text": "Deploy the same app to two regions with appropriate DNS or DLB strategy"
+        "text": "Object Store v2 is designed for transient state such as caches and watermarks, not long-term records."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Persistent Queues survive worker restarts within a region, not region loss."
+        "text": "Object Store v2 enforces a time-to-live on stored entries, so data is not retained indefinitely."
       },
       "D": {
         "type": "Incorrect",
-        "text": "The SLB operates within a single region."
+        "text": "Properties are configuration, not a store for frequently changing business data."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub Fabric — Multi-Worker High Availability & Regional Failover Strategies",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#how-ha-is-implemented"
+        "title": "Object Store v2 FAQ",
+        "url": "https://docs.mulesoft.com/object-store/osv2-faq"
       },
       "architectureGuide": {
-        "title": "CloudHub Architecture — Global Worker Clouds and Regional Resiliency",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#global-worker-clouds"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "Object Store v2 — Usage Information",
+        "url": "https://docs.mulesoft.com/object-store/osv2-usage"
       }
     }
   },
   {
     "id": "q-259",
     "number": 259,
-    "title": "Api Implementation Design - A longrunning batch process consumes far more",
+    "title": "API Quality Goals - Choose two: Object Store use cases",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Reliability Patterns",
-      "Worker Sizing"
+      "Object Store",
+      "Use Cases"
     ],
-    "prompt": "A long-running batch process consumes far more memory than concurrent traffic suggests. What is the most likely root cause to investigate?",
+    "prompt": "Which two scenarios are appropriate uses of a persistent object store in a Mule application deployed to CloudHub? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "Insufficient JWT validation"
+        "text": "Keeping a watermark for incremental polling of a database"
       },
       {
         "letter": "B",
-        "text": "Streaming and batch settings retaining records or full payloads in memory"
+        "text": "Storing large binary documents for long-term archiving"
       },
       {
         "letter": "C",
-        "text": "Too few API contracts in API Manager"
+        "text": "Replacing the CRM as the master record of customer accounts"
       },
       {
         "letter": "D",
-        "text": "Wrong RAML version"
+        "text": "Running complex relational queries for reporting"
+      },
+      {
+        "letter": "E",
+        "text": "Caching access tokens for a downstream API until they expire"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Long-running batch jobs that grow in memory typically have streaming disabled, batch block sizes too large, or transformations that materialize the full payload (e.g., reading the entire stream). Investigating streaming, batch block size, and DataWeave operations is the right path.",
+    "correctAnswers": [
+      "A",
+      "E"
+    ],
+    "explanation": "Correct answers: A and E. Object stores are key-value stores for application state. Common uses include watermarks, caching values such as tokens or reference data, and duplicate detection. They are not designed for large binary documents, long-term records, or relational reporting.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "JWT settings affect auth, not batch memory."
+        "type": "Correct",
+        "text": "Watermarks are small, transient state values that must survive restarts."
       },
       "B": {
-        "type": "Correct",
-        "text": "Streaming and batch settings retaining records or full payloads in memory"
+        "type": "Incorrect",
+        "text": "Object Store v2 is not designed for large files or long-term retention."
       },
       "C": {
         "type": "Incorrect",
-        "text": "API contracts govern access, not batch memory consumption."
+        "text": "An object store is not a system of record for business data."
       },
       "D": {
         "type": "Incorrect",
-        "text": "RAML versioning has no runtime memory effect."
+        "text": "Object stores are key-value stores and do not support relational queries."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "Tokens are short-lived values that are expensive to request and safe to cache until expiry."
       }
     },
     "references": {
       "primary": {
-        "title": "Monitoring JVM Heap, Garbage Collection & Batch Streaming Memory Troubleshooting",
-        "url": "https://docs.mulesoft.com/monitoring/app-dashboards#jvm-charts"
+        "title": "Mule Runtime — Object Stores",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       },
       "architectureGuide": {
-        "title": "CloudHub Architecture — Worker Sizing and Heap Memory Allocation",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#cloudhub-workers"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "Object Store v2 Guide",
+        "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
     }
   },
   {
     "id": "q-260",
     "number": 260,
-    "title": "Non Functional Requirements - Which CloudHub configuration property controls whether outbound",
+    "title": "API Quality Goals - Cache key design",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Cloudhub Deployment",
-      "Reliability Patterns"
+      "Caching",
+      "Cache Key"
     ],
-    "prompt": "Which CloudHub configuration property controls whether outbound traffic from workers can use a static, allow-listable IP address?",
+    "prompt": "An API returns personalized recommendations for each signed-in customer. A developer applies the HTTP Caching policy using only the request path as the cache key. What problem will this cause?",
     "options": [
       {
         "letter": "A",
-        "text": "Persistent Queues"
+        "text": "The cache will never return a hit because the path changes on every request"
       },
       {
         "letter": "B",
-        "text": "Static IPs (per region)"
+        "text": "Responses will be cached forever because the policy has no expiration setting"
       },
       {
         "letter": "C",
-        "text": "Object Store v2"
+        "text": "Customers may receive another customer's cached recommendations"
       },
       {
         "letter": "D",
-        "text": "Worker autoscaling"
+        "text": "The policy will cache only POST requests, so GET requests are unaffected"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "CloudHub Static IPs assign one or more fixed egress IPs per worker so partners or backends can allow-list them. Persistent Queues provide message durability; Object Store stores state; autoscaling adjusts worker count.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. A cache key must include every input that changes the response. For personalized responses, the key must include the customer's identity or the response should not be cached; otherwise one customer's response can be served to another. The HTTP Caching policy allows a custom key expression for this purpose.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Persistent Queues affect VM-queue durability, not IP addressing."
+        "text": "The path is the same for all customers, so the cache will return hits, which is the problem."
       },
       "B": {
-        "type": "Correct",
-        "text": "Static IPs (per region)"
+        "type": "Incorrect",
+        "text": "The policy supports a time-to-live setting."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Object Store v2 is unrelated to networking egress."
+        "type": "Correct",
+        "text": "Requests with the same path share one cache entry, so personalized data can leak between users."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Worker autoscaling controls capacity, not source IP allow-listing."
+        "text": "The policy is typically used with GET responses and would cache them."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub Architecture — Static IP Allocation and Outbound Allow-Listing",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#cloudhub-workers"
+        "title": "HTTP Caching Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-http-caching"
       },
       "architectureGuide": {
-        "title": "CloudHub Dedicated Load Balancer (DLB) Static IPs",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer#static-ip-addresses"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "Mule Runtime — Cache Scope",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/cache-scope"
       }
     }
   },
   {
     "id": "q-261",
     "number": 261,
-    "title": "Non Functional Requirements - What is the primary goal of an",
+    "title": "API Quality Goals - Invalidating cached data",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Cloudhub Deployment",
-      "Reliability Patterns"
+      "Caching",
+      "Freshness"
     ],
-    "prompt": "What is the primary goal of an Anypoint VPC?",
+    "prompt": "Prices for a Price List API are cached for 24 hours. The business now requires that a price change be visible within five minutes, while still reducing backend load as much as possible. What should the architect do?",
     "options": [
       {
         "letter": "A",
-        "text": "Provide isolated networking for CloudHub workers, often connected to customer networks via VPN or peering"
+        "text": "Remove caching entirely so that every request goes to the backend"
       },
       {
         "letter": "B",
-        "text": "Replace Anypoint MQ"
+        "text": "Keep the 24-hour TTL and ask users to refresh their browsers"
       },
       {
         "letter": "C",
-        "text": "Replace Runtime Fabric"
+        "text": "Reduce the cache time-to-live to five minutes or less"
       },
       {
         "letter": "D",
-        "text": "Replace API Manager"
+        "text": "Scale the backend horizontally so the cache is refreshed faster"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "An Anypoint VPC is a private virtual network for CloudHub workers, allowing isolation, custom CIDR ranges, IP allow-listing, and connectivity to customer networks via VPN tunnels or VPC peering. It does not replace MQ, RTF, or API Manager.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. The time-to-live of a cache entry determines how stale data can become. To meet a five-minute freshness requirement while retaining most of the performance benefit, the TTL should be reduced to five minutes or less instead of disabling caching.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Provide isolated networking for CloudHub workers, often connected to customer networks via VPN or peering"
+        "type": "Incorrect",
+        "text": "This meets freshness but gives up the load reduction that is still possible with a short TTL."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Anypoint MQ is messaging; VPCs are networking."
+        "text": "Browser refreshes do not bypass a server-side cache."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "RTF is a different runtime hosting option."
+        "type": "Correct",
+        "text": "The TTL defines the maximum staleness, so it must not exceed the freshness requirement."
       },
       "D": {
         "type": "Incorrect",
-        "text": "API Manager governs APIs; it is not networking."
+        "text": "Backend capacity does not change how long cached entries are served."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Virtual Private Cloud (VPC) — Private Network Isolation & VPN/Peering Connectivity",
-        "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept#vpc-peering"
+        "title": "HTTP Caching Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-http-caching"
       },
       "architectureGuide": {
-        "title": "CloudHub Dedicated Load Balancer (DLB) Integration in VPCs",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer#create-and-configure-a-dedicated-load-balancer"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "Mule Runtime — Cache Scope",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/cache-scope"
       }
     }
   },
   {
     "id": "q-262",
     "number": 262,
-    "title": "Non Functional Requirements - What is the impact of selecting a",
+    "title": "API Quality Goals - First step toward fault tolerance",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Worker Sizing",
-      "Vcores Capacity"
+      "Resilience",
+      "Timeouts"
     ],
-    "prompt": "What is the impact of selecting a smaller worker size (e.g., 0.1 vCore) versus a larger size (e.g., 1 vCore) for a CloudHub app?",
+    "prompt": "An Experience API must respond within 2 seconds. It calls a Process API that occasionally hangs for 30 seconds before failing. Which change should be made first so that the Experience API does not violate its own SLA?",
     "options": [
       {
         "letter": "A",
-        "text": "No measurable impact"
+        "text": "Increase the Experience API's worker size"
       },
       {
         "letter": "B",
-        "text": "Smaller workers reduce per-worker memory and concurrency limits but cost less per worker"
+        "text": "Apply a rate limiting policy to the Experience API"
       },
       {
         "letter": "C",
-        "text": "Smaller workers automatically scale to large size on demand"
+        "text": "Retry the Process API call five times before responding"
       },
       {
         "letter": "D",
-        "text": "Worker size affects only CloudHub.io URL routing"
+        "text": "Set a timeout that fits within the 2-second SLA"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Smaller workers have less memory and lower concurrency capacity but cost less per worker, so they are well suited to low-traffic apps. Workers do not automatically resize at runtime; horizontal scaling adds more workers of the same size.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Timeouts are the first fault-tolerance measure for API invocations. They should be set as low as possible and in line with the API client's own SLA, so that a slow or hung dependency does not cause the client to fail its consumers.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Capacity and pricing both differ across sizes."
+        "text": "More CPU and memory do not shorten the time spent waiting for a hung dependency."
       },
       "B": {
-        "type": "Correct",
-        "text": "Smaller workers reduce per-worker memory and concurrency limits but cost less per worker"
+        "type": "Incorrect",
+        "text": "Rate limiting caps traffic but does not stop the client from waiting 30 seconds."
       },
       "C": {
         "type": "Incorrect",
-        "text": "CloudHub does not vertically resize a running worker."
+        "text": "Retrying a call that hangs multiplies the wait and makes the SLA worse."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "URL routing is independent of worker size."
+        "type": "Correct",
+        "text": "A timeout stops waiting for a hung call and lets the client respond in time."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub Architecture — Worker Sizing (vCore Memory & Concurrency Trade-offs)",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#cloudhub-workers"
+        "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
+        "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       },
       "architectureGuide": {
-        "title": "CloudHub Fabric & Worker Scale-Out Architecture",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#worker-scale-out"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "HTTP Connector — Request Reference",
+        "url": "https://docs.mulesoft.com/http-connector/latest/http-request-ref"
       }
     }
   },
   {
     "id": "q-263",
     "number": 263,
-    "title": "Non Functional Requirements - An architect must support 200 requests per",
+    "title": "API Quality Goals - Retrying transient failures",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Vcores Capacity",
-      "Worker Sizing"
+      "Resilience",
+      "Retries"
     ],
-    "prompt": "An architect must support 200 requests per second peak with average response time under 250 ms on CloudHub. What is the FIRST step in capacity planning?",
+    "prompt": "A Process API calls a System API that sometimes returns HTTP 503 for a few seconds during backend maintenance. The operation is a read and can safely be repeated. Which strategy is most appropriate?",
     "options": [
       {
         "letter": "A",
-        "text": "Buy the largest worker size available"
+        "text": "Retry by calling a different HTTP method on the same resource"
       },
       {
         "letter": "B",
-        "text": "Estimate per-worker concurrency, response time, and use load tests to size workers and worker count"
+        "text": "Retry a limited number of times with a delay between attempts"
       },
       {
         "letter": "C",
-        "text": "Use only the Shared Load Balancer"
+        "text": "Never retry, and always return the error to the consumer"
       },
       {
         "letter": "D",
-        "text": "Use only Persistent Queues"
+        "text": "Retry immediately and continuously until the call succeeds"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Capacity planning starts from realistic per-worker concurrency and response-time measurements, typically via load testing, then derives worker count and size to meet the throughput and SLA targets. Buying max size blindly is wasteful and unproven.",
+    "explanation": "Correct answer: B. Retries help when failures are transient, but they should be limited and spaced out, and only applied to operations that are safe to repeat. In Mule applications, the Until Successful scope supports a maximum number of retries and a delay between attempts.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Bigger workers without measurement may still under- or over-provision."
+        "text": "Changing the method changes the meaning of the request."
       },
       "B": {
         "type": "Correct",
-        "text": "Estimate per-worker concurrency, response time, and use load tests to size workers and worker count"
+        "text": "Limited, spaced retries can overcome transient failures without overloading the API."
       },
       "C": {
         "type": "Incorrect",
-        "text": "SLB choice is a separate networking decision."
+        "text": "Giving up immediately fails requests that would succeed a moment later."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Persistent Queues address durability, not throughput sizing."
+        "text": "Unlimited immediate retries can overload a recovering API and hang the client."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub Worker Architecture — Sizing Concurrency and Capacity via Load Testing",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#cloudhub-workers"
+        "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
+        "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       },
       "architectureGuide": {
-        "title": "CloudHub Fabric & Worker Scale-Out Architecture",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#worker-scale-out"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "Mule Runtime — Until Successful Scope",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/until-successful-scope"
       }
     }
   },
   {
     "id": "q-264",
     "number": 264,
-    "title": "Non Functional Requirements - Which architectural pattern best protects a downstream",
+    "title": "API Quality Goals - Retries and non-idempotent operations",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Anypoint Mq",
-      "Reliability Patterns"
+      "Resilience",
+      "Idempotency"
     ],
-    "prompt": "Which architectural pattern best protects a downstream slow legacy system from being overwhelmed by bursty inbound API traffic?",
+    "prompt": "A client times out while calling POST /payments, and it does not know whether the payment was created. What must be in place before the client automatically retries the request?",
     "options": [
       {
         "letter": "A",
-        "text": "Direct synchronous pass-through"
+        "text": "An idempotency key that lets the API detect repeats"
       },
       {
         "letter": "B",
-        "text": "Anypoint MQ as a buffer between the API and a worker that drains at the legacy system's safe rate"
+        "text": "Nothing, because HTTP POST is idempotent by definition"
       },
       {
         "letter": "C",
-        "text": "Disable all policies"
+        "text": "A Spike Control policy on the Payments API"
       },
       {
         "letter": "D",
-        "text": "Increase the legacy system's vCore allocation"
+        "text": "A longer cache time-to-live on the Payments API"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Asynchronous queueing with Anypoint MQ decouples burst inbound traffic from a slow downstream system: the API enqueues work and a worker drains the queue at a safe rate. Pure synchronous pass-through propagates the burst.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Retries are safe only for idempotent operations. Methods such as GET, PUT, and DELETE are idempotent, but POST is not, so retrying a POST can create duplicates. Before retrying, the API must be able to detect repeated requests, for example through a unique ID supplied by the client and stored by the API.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Pass-through directly exposes the legacy system to bursts."
+        "type": "Correct",
+        "text": "Without duplicate detection, a retried POST may create a second payment."
       },
       "B": {
-        "type": "Correct",
-        "text": "Anypoint MQ as a buffer between the API and a worker that drains at the legacy system's safe rate"
+        "type": "Incorrect",
+        "text": "POST is not idempotent; repeating it can create duplicate resources."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Disabling policies makes things worse."
+        "text": "Spike Control smooths traffic and does not detect duplicate requests."
       },
       "D": {
         "type": "Incorrect",
-        "text": "vCores apply to Mule apps, not to the legacy system."
+        "text": "Caching does not prevent duplicate creation by POST requests."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint MQ Overview — Asynchronous Message Buffering for Slow Downstream Systems",
-        "url": "https://docs.mulesoft.com/mq/#anypoint-mq-features"
+        "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
+        "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       },
       "architectureGuide": {
-        "title": "Microsoft Cloud Architecture Patterns — Queue-Based Load Leveling",
-        "url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/queue-based-load-leveling"
-      },
-      "arc720": {
-        "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
-        "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
+        "title": "Mule Runtime — Object Stores",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       }
     }
   },
   {
     "id": "q-265",
     "number": 265,
-    "title": "Api Implementation Design - A Process API frequently refetches the same",
+    "title": "API Quality Goals - Stop calling a failing API",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Caching Patterns",
-      "Object Store V2"
+      "Resilience",
+      "Circuit Breaker"
     ],
-    "prompt": "A Process API frequently re-fetches the same reference data from a System API, causing latency and load. Which pattern most reduces this load?",
+    "prompt": "A Process API calls a Credit Check System API. When the credit bureau is down, every call waits for a timeout, threads pile up, and the Process API itself becomes slow for all consumers. Which pattern best prevents this cascading failure?",
     "options": [
       {
         "letter": "A",
-        "text": "Increase worker size"
+        "text": "Longer timeouts so that the credit bureau has more time to respond"
       },
       {
         "letter": "B",
-        "text": "Cache the reference data with appropriate TTL using Object Store v2 or Cache scope"
+        "text": "A circuit breaker that fails fast and probes later"
       },
       {
         "letter": "C",
-        "text": "Disable retries"
+        "text": "An HTTP Caching policy on the Process API"
       },
       {
         "letter": "D",
-        "text": "Switch to Hybrid deployment"
+        "text": "More retries for each credit check call"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Caching reference data with a sensible TTL reduces redundant downstream calls and latency. Mule's Cache scope plus Object Store v2 (for cluster-shared, persistent caching on CloudHub) is the canonical pattern.",
+    "explanation": "Correct answer: B. A circuit breaker tracks failures of a dependency and, after a threshold, stops calling it for a period, failing fast instead of waiting for timeouts. It then allows trial calls to detect recovery. This prevents failures from propagating to the API client and its consumers.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Bigger workers do not eliminate redundant downstream calls."
+        "text": "Longer timeouts make threads pile up faster during an outage."
       },
       "B": {
         "type": "Correct",
-        "text": "Cache the reference data with appropriate TTL using Object Store v2 or Cache scope"
+        "text": "Opening the circuit stops waiting on a known-failing dependency and protects the client's resources."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Disabling retries reduces resilience and does not address load."
+        "text": "Credit checks are customer-specific and current, and caching does not address the outage."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Deployment topology change does not address fetch redundancy."
+        "text": "Additional retries increase load and waiting time when the dependency is down."
       }
     },
     "references": {
       "primary": {
-        "title": "Object Store v2 — Caching Reference Data to Protect Downstream Systems",
-        "url": "https://docs.mulesoft.com/object-store/#object-store-v2-features"
+        "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
+        "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       },
       "architectureGuide": {
-        "title": "Object Store v2 FAQ — Partitioning, Limits, and Eviction TTL",
-        "url": "https://docs.mulesoft.com/object-store/osv2-faq"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "MuleSoft Developers — Circuit Breaker Custom Policy",
+        "url": "https://developer.mulesoft.com/tutorials-and-howtos/custom-api-policies-api-manager-circuit-breaker-policy/"
       }
     }
   },
   {
     "id": "q-266",
     "number": 266,
-    "title": "Non Functional Requirements - Which action increases the maximum throughput of",
+    "title": "API Quality Goals - Fallback options",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Vcores Capacity",
-      "Worker Sizing"
+      "Resilience",
+      "Fallback"
     ],
-    "prompt": "Which action increases the maximum throughput of a CloudHub app most directly when the bottleneck is per-worker concurrency?",
+    "prompt": "An Experience API calls a Recommendations Process API to show suggested products. If the Process API fails, the page must still load. Which fallback is most appropriate?",
     "options": [
       {
         "letter": "A",
-        "text": "Increase the number of workers (horizontal scale) and/or increase worker size (vertical scale)"
+        "text": "Block the page until the Process API recovers"
       },
       {
         "letter": "B",
-        "text": "Disable Persistent Queues"
+        "text": "Return HTTP 500 so the page shows an error banner"
       },
       {
         "letter": "C",
-        "text": "Switch from RAML to OAS"
+        "text": "Call the Process API repeatedly until it succeeds"
       },
       {
         "letter": "D",
-        "text": "Add another business group"
+        "text": "Return a default list of best-selling products"
       }
     ],
-    "correctAnswer": "A",
-    "explanation": "When per-worker concurrency caps throughput, scaling horizontally (more workers) or vertically (larger workers) increases capacity. Spec format, queue persistence, and additional business groups do not address compute capacity.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Fallback is a fault-tolerance strategy in which the client uses an alternative when an API invocation fails. Options include calling an alternative API, returning a previously cached result, or returning a static default, such as a list of best-selling products.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Increase the number of workers (horizontal scale) and/or increase worker size (vertical scale)"
+        "type": "Incorrect",
+        "text": "Waiting indefinitely breaks the user experience."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Persistent Queues do not bottleneck throughput in this scenario."
+        "text": "The requirement is that the page still loads successfully."
       },
       "C": {
         "type": "Incorrect",
-        "text": "RAML vs OAS does not affect runtime throughput."
+        "text": "Repeated calls delay the page and do not guarantee a response."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Business groups partition entitlements; they do not add capacity."
+        "type": "Correct",
+        "text": "A static or default result keeps the page working when the API fails."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub Architecture — Worker Concurrency, Horizontal (Worker Count) & Vertical (Worker Size) Scaling",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#cloudhub-workers"
+        "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
+        "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       },
       "architectureGuide": {
-        "title": "CloudHub Fabric & Worker Scale-Out Architecture",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#worker-scale-out"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "Mule Runtime — Try Scope",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/try-scope-concept"
       }
     }
   },
   {
     "id": "q-267",
     "number": 267,
-    "title": "Non Functional Requirements - Which is a true statement about Anypoint",
+    "title": "API Quality Goals - Handling rate-limit responses",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Anypoint Mq",
-      "Reliability Patterns"
+      "Resilience",
+      "Rate Limiting"
     ],
-    "prompt": "Which is a true statement about Anypoint MQ message delivery semantics?",
+    "prompt": "A partner's client application calls an API protected by a Rate Limiting policy and starts receiving HTTP 429 responses during peak hours. How should the client application behave?",
     "options": [
       {
         "letter": "A",
-        "text": "Anypoint MQ guarantees exactly-once delivery without effort"
+        "text": "Treat 429 as a permanent failure and stop calling the API"
       },
       {
         "letter": "B",
-        "text": "Anypoint MQ supports at-least-once delivery; consumers must be designed to be idempotent"
+        "text": "Retry immediately in a tight loop until a request succeeds"
       },
       {
         "letter": "C",
-        "text": "Anypoint MQ does not persist messages"
+        "text": "Back off and retry after the limit window resets"
       },
       {
         "letter": "D",
-        "text": "Anypoint MQ messages are unordered FIFO is unsupported"
+        "text": "Create additional client applications to multiply the allowed quota"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Anypoint MQ delivers at-least-once by default, so consumers must handle potential duplicate deliveries (idempotent processing or deduplication keys). FIFO queues are supported when ordering matters. Messages are persisted by the managed broker.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. A Rate Limiting policy rejects requests that exceed the configured quota with HTTP 429 and can expose rate-limit headers. Resilient clients treat this as a temporary condition and back off until the window resets, rather than retrying immediately or giving up.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Exactly-once is not guaranteed without consumer-side idempotency."
+        "text": "The limit resets after its window, so the condition is temporary."
       },
       "B": {
-        "type": "Correct",
-        "text": "Anypoint MQ supports at-least-once delivery; consumers must be designed to be idempotent"
+        "type": "Incorrect",
+        "text": "Immediate retries consume quota and keep the client blocked."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "MQ persists messages in the managed broker."
+        "type": "Correct",
+        "text": "429 means the quota is exhausted, so the client should wait rather than retry immediately."
       },
       "D": {
         "type": "Incorrect",
-        "text": "FIFO queues exist for ordered delivery scenarios."
+        "text": "Circumventing the contract violates the API's governance and SLA."
       }
     },
     "references": {
       "primary": {
-        "title": "Configuring and Using Anypoint MQ Standard and FIFO Queues (At-Least-Once Delivery)",
-        "url": "https://docs.mulesoft.com/mq/mq-queues#create-queue"
+        "title": "Rate Limiting Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting"
       },
       "architectureGuide": {
-        "title": "Enterprise Integration Patterns — Point-to-Point Message Channel",
-        "url": "https://www.enterpriseintegrationpatterns.com/patterns/messaging/PointToPointChannel.html"
-      },
-      "arc720": {
-        "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
-        "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
+        "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
+        "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       }
     }
   },
   {
     "id": "q-268",
     "number": 268,
-    "title": "Non Functional Requirements - Which choice best supports horizontal scaling of",
+    "title": "API Quality Goals - Retries in a layered network",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Ha Dr Architecture",
-      "Reliability Patterns"
+      "Resilience",
+      "Retries"
     ],
-    "prompt": "Which choice best supports horizontal scaling of an Experience API that aggregates calls to several Process APIs but holds NO server-side session state?",
+    "prompt": "In an application network, the Experience API retries failed calls three times, the Process API retries three times, and the System API retries three times. During a backend outage, what is the main risk?",
     "options": [
       {
         "letter": "A",
-        "text": "Add session state to each worker"
+        "text": "Retries multiply across layers and overload the backend"
       },
       {
         "letter": "B",
-        "text": "Run multiple stateless workers behind the load balancer; stateless design enables linear scaling"
+        "text": "The Experience API automatically disables retries in lower layers"
       },
       {
         "letter": "C",
-        "text": "Pin clients to a single worker"
+        "text": "Retries are ignored by Mule runtime when an outage is detected"
       },
       {
         "letter": "D",
-        "text": "Force a single large worker only"
+        "text": "Retries cancel each other out, so the backend receives fewer calls"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Stateless workers behind a load balancer scale linearly: each worker handles any request without shared in-memory session state. Pinning clients (sticky sessions) and adding state both undermine horizontal scaling.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Retries at every layer of an application network multiply: three retries at three layers can produce many times the original number of calls. Retries should be limited, spaced out, and coordinated with timeouts and circuit breakers so that clients do not overwhelm a recovering dependency.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "Adding session state breaks the stateless design enabling linear scaling."
+        "type": "Correct",
+        "text": "Each layer's retries multiply the calls reaching the backend."
       },
       "B": {
-        "type": "Correct",
-        "text": "Run multiple stateless workers behind the load balancer; stateless design enables linear scaling"
+        "type": "Incorrect",
+        "text": "Each layer's retry behavior is configured independently."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Sticky sessions reduce flexibility and create hot workers."
+        "text": "Mule runtime executes configured retries regardless of the cause."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Forcing a single worker eliminates horizontal scaling."
+        "text": "Nested retries add calls; they do not cancel out."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub Architecture — Stateless Worker Scale-Out and Linear Load Distribution",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#worker-scale-out-and-data-center-redundancy"
+        "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
+        "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       },
       "architectureGuide": {
-        "title": "CloudHub Fabric & Multi-Worker High Availability",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#worker-scale-out"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "Mule Runtime — Until Successful Scope",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/until-successful-scope"
       }
     }
   },
   {
     "id": "q-269",
     "number": 269,
-    "title": "Non Functional Requirements - Which design choice is MOST important for",
+    "title": "API Quality Goals - Choose two client-side strategies",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Caching Patterns",
-      "Reliability Patterns",
-      "Worker Sizing"
+      "Resilience",
+      "Fault Tolerance"
     ],
-    "prompt": "Which design choice is MOST important for a synchronous API SLA target of 95th-percentile response time under 500 ms?",
+    "prompt": "An Experience API calls a Process API that sometimes fails. Which two strategies help the Experience API remain available to its own clients? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "Use only Hybrid deployment"
+        "text": "Disable timeouts so that slow responses eventually succeed"
       },
       {
         "letter": "B",
-        "text": "Minimize chained synchronous calls, cache reference data, parallelize independent calls, and tune connector timeouts and worker capacity"
+        "text": "Use a timeout aligned with the Experience API's own SLA"
       },
       {
         "letter": "C",
-        "text": "Disable Anypoint Monitoring"
+        "text": "Propagate every downstream error unchanged to the end user"
       },
       {
         "letter": "D",
-        "text": "Use only RAML"
+        "text": "Call the Process API with a new client ID on each attempt"
+      },
+      {
+        "letter": "E",
+        "text": "Return a cached or default result when the call fails"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Tail-latency SLAs require minimizing synchronous chains, parallelizing independent calls, caching repeated reference data, and tuning connector timeouts and worker capacity to absorb burstiness. Deployment topology and spec format alone are not sufficient.",
+    "correctAnswers": [
+      "B",
+      "E"
+    ],
+    "explanation": "Correct answers: B and E. Fault-tolerant API invocations aim to stop failures from propagating to the API client's own consumers. Timeouts, limited retries, circuit breakers, and fallbacks such as cached or default results are the main strategies.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Hybrid does not inherently meet tail-latency SLAs."
+        "text": "Without timeouts, slow calls can exhaust threads and break the SLA."
       },
       "B": {
         "type": "Correct",
-        "text": "Minimize chained synchronous calls, cache reference data, parallelize independent calls, and tune connector timeouts and worker capacity"
+        "text": "A timeout prevents a slow dependency from consuming the client's response time."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Disabling Monitoring removes the means to verify SLA compliance."
+        "text": "Propagation spreads the failure to clients rather than containing it."
       },
       "D": {
         "type": "Incorrect",
-        "text": "RAML vs OAS does not affect runtime latency."
+        "text": "Changing credentials does not make calls more reliable and breaks governance."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "A fallback lets the client respond successfully even when the dependency fails."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Monitoring — Performance Charts, Chained Latency Optimization, and 500ms SLAs",
-        "url": "https://docs.mulesoft.com/monitoring/app-dashboards#performance-charts"
+        "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
+        "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       },
       "architectureGuide": {
-        "title": "Configuring Operational Alerts and Thresholds in Anypoint Monitoring",
-        "url": "https://docs.mulesoft.com/monitoring/alerts#threshold"
-      },
-      "arc720": {
-        "lesson": "Lesson 11 — Application network behavior",
-        "anchor": "ARC720-Course-Content.md#11-application-network-behavior"
+        "title": "Mule Runtime — Try Scope",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/try-scope-concept"
       }
     }
   },
   {
     "id": "q-270",
     "number": 270,
-    "title": "Non Functional Requirements - Which Mule pattern provides bulkheadstyle isolation when",
+    "title": "API Quality Goals - Alternative API as fallback",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Reliability Patterns",
-      "Anypoint Mq"
+      "Resilience",
+      "Fallback"
     ],
-    "prompt": "Which Mule pattern provides bulkhead-style isolation when a downstream dependency becomes slow or unstable?",
+    "prompt": "A Shipping Rates Process API calls a primary carrier's rate API. A second carrier offers an equivalent API with similar rates. The business prefers a slightly different quote over no quote. Which strategy should the architect use?",
     "options": [
       {
         "letter": "A",
-        "text": "Increase worker size only"
+        "text": "Cache the primary carrier's quotes for a year"
       },
       {
         "letter": "B",
-        "text": "Use timeouts, retries with backoff, circuit breaker, and bulkhead-style separate flows or queues per dependency"
+        "text": "Retry the primary carrier indefinitely until it responds"
       },
       {
         "letter": "C",
-        "text": "Disable error handling"
+        "text": "Return HTTP 503 and ask the client to retry tomorrow"
       },
       {
         "letter": "D",
-        "text": "Force one global thread pool"
+        "text": "Call the second carrier's API as a fallback"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Resilience patterns â timeouts, capped retries with backoff, circuit-breaker behavior, and isolating slow dependencies in their own flows or queues â keep one bad downstream from exhausting all worker threads. Worker size alone does not provide isolation.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. One fallback option for fault-tolerant API invocations is to invoke an alternative API that provides an equivalent result. When the primary carrier's API fails, calling the second carrier's API gives the client a usable quote.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Bigger workers without isolation still get exhausted by a slow dependency."
+        "text": "Rates change, so year-old quotes are not an acceptable fallback."
       },
       "B": {
-        "type": "Correct",
-        "text": "Use timeouts, retries with backoff, circuit breaker, and bulkhead-style separate flows or queues per dependency"
+        "type": "Incorrect",
+        "text": "Indefinite retries leave the client without a quote during an outage."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Disabling error handling makes failures cascade."
+        "text": "The business wants a quote rather than an error."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "A single global pool is the opposite of bulkhead isolation."
+        "type": "Correct",
+        "text": "An alternative API provides an equivalent result when the primary invocation fails."
       }
     },
     "references": {
       "primary": {
-        "title": "Microsoft Cloud Architecture Patterns — Circuit Breaker, Retries, and Bulkhead Resilience",
-        "url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker"
+        "title": "MuleSoft Blog — Making a Fault-tolerant Application Network",
+        "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       },
       "architectureGuide": {
-        "title": "Anypoint MQ Overview — Asynchronous Message Buffering for Unstable Backends",
-        "url": "https://docs.mulesoft.com/mq/#anypoint-mq-features"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "Mule Runtime — Try Scope",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/try-scope-concept"
       }
     }
   },
   {
     "id": "q-271",
     "number": 271,
-    "title": "Non Functional Requirements - An architect must design an asynchronous notification",
+    "title": "API Quality Goals - Protecting an API from sudden bursts",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Anypoint Mq"
+      "Resilience",
+      "Spike Control"
     ],
-    "prompt": "An architect must design an asynchronous notification fan-out where multiple Mule apps independently consume the same event. Which Anypoint MQ construct fits best?",
+    "prompt": "A System API in front of a fragile legacy backend receives short traffic bursts that cause the backend to fail, although average load is low. The provider wants to smooth the bursts by delaying excess requests briefly instead of rejecting them immediately. Which policy should be applied?",
     "options": [
       {
         "letter": "A",
-        "text": "A single FIFO queue"
+        "text": "Spike Control"
       },
       {
         "letter": "B",
-        "text": "A message exchange (publish/subscribe) with multiple subscribed queues, each consumed by a different app"
+        "text": "Client ID Enforcement"
       },
       {
         "letter": "C",
-        "text": "Object Store v2 keys"
+        "text": "Rate Limiting"
       },
       {
         "letter": "D",
-        "text": "VM connector across regions"
+        "text": "HTTP Caching"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Anypoint MQ exchanges implement publish/subscribe: a publisher sends one message to the exchange, which routes a copy to each subscribed queue. Each consumer reads from its own queue, enabling independent fan-out. Single queues do not natively fan-out across apps.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. The Spike Control policy protects an API implementation from traffic spikes by limiting the number of requests in a time window and delaying excess requests, with a configurable number of attempts, before rejecting them. This smooths bursts so that a fragile backend is not overwhelmed.",
     "rationales": {
       "A": {
-        "type": "Incorrect",
-        "text": "A single queue would compete consumers, not fan out copies."
+        "type": "Correct",
+        "text": "Spike Control queues excess requests for a short period and retries them, smoothing bursts."
       },
       "B": {
-        "type": "Correct",
-        "text": "A message exchange (publish/subscribe) with multiple subscribed queues, each consumed by a different app"
+        "type": "Incorrect",
+        "text": "Client ID enforcement identifies clients but does not control traffic bursts."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Object Store is data, not pub/sub messaging."
+        "text": "Rate Limiting enforces a quota and rejects requests beyond it rather than smoothing them."
       },
       "D": {
         "type": "Incorrect",
-        "text": "VM is in-app, not cross-app or cross-region."
+        "text": "Caching can reduce load for cacheable reads but does not shape bursts of requests."
       }
     },
     "references": {
       "primary": {
-        "title": "Sending Messages to Multiple Queues Using Anypoint MQ Message Exchanges (Pub/Sub)",
-        "url": "https://docs.mulesoft.com/mq/mq-exchanges#create-a-message-exchange"
+        "title": "Spike Control Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-spike-control"
       },
       "architectureGuide": {
-        "title": "Enterprise Integration Patterns — Publish-Subscribe Channel Pattern",
-        "url": "https://www.enterpriseintegrationpatterns.com/patterns/messaging/PublishSubscribeChannel.html"
-      },
-      "arc720": {
-        "lesson": "Lesson 9 — API-led connectivity with event-driven architecture",
-        "anchor": "ARC720-Course-Content.md#9-api-led-connectivity-with-event-driven-architecture"
+        "title": "Rate Limiting Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting"
       }
     }
   },
   {
     "id": "q-272",
     "number": 272,
-    "title": "Non Functional Requirements - Which approach BEST addresses both regulatory dataresidency",
+    "title": "API Quality Goals - Scaling a CPU-bound API",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Cloudhub Deployment",
-      "Runtime Fabric",
-      "Ha Dr Architecture"
+      "Horizontal Scaling",
+      "Throughput"
     ],
-    "prompt": "Which approach BEST addresses both regulatory data-residency for EU customers AND operational simplicity by keeping centralized Anypoint Platform management?",
+    "prompt": "A stateless pricing API performs heavy calculations in memory and has no downstream calls. At peak, CPU usage on its CloudHub workers reaches 100%, and requests queue up. What effect will adding workers most likely have?",
     "options": [
       {
         "letter": "A",
-        "text": "Deploy all apps to a single US CloudHub region"
+        "text": "No effect, because horizontal scaling only helps APIs that call databases"
       },
       {
         "letter": "B",
-        "text": "Deploy EU traffic to an EU CloudHub region (or RTF in EU customer infrastructure) while still managing centrally in Anypoint Platform"
+        "text": "Lower throughput, because the load balancer adds latency to every request"
       },
       {
         "letter": "C",
-        "text": "Skip Anypoint Platform entirely for EU traffic"
+        "text": "Higher throughput and lower response times at peak"
       },
       {
         "letter": "D",
-        "text": "Only run Hybrid in the US"
+        "text": "Faster processing of each individual calculation"
       }
     ],
-    "correctAnswer": "B",
-    "explanation": "Keeping EU customer data inside an EU CloudHub region (or RTF on EU customer infrastructure) addresses data residency, while Anypoint Platform's central control plane provides unified governance, monitoring, and lifecycle management across regions and runtimes.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. Horizontal scaling adds API implementation instances behind a load balancer. For a stateless API whose own CPU is the bottleneck, more instances increase throughput and reduce the time requests wait, improving response times under load, even though each request's processing time is unchanged.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Single US region likely violates EU data-residency requirements."
+        "text": "Horizontal scaling helps whenever the API implementation is the bottleneck."
       },
       "B": {
-        "type": "Correct",
-        "text": "Deploy EU traffic to an EU CloudHub region (or RTF in EU customer infrastructure) while still managing centrally in Anypoint Platform"
+        "type": "Incorrect",
+        "text": "The load balancer overhead is small compared with the queuing removed."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Skipping Anypoint Platform forfeits governance, monitoring, and reuse."
+        "type": "Correct",
+        "text": "The bottleneck is the implementation itself, so more workers reduce queuing."
       },
       "D": {
         "type": "Incorrect",
-        "text": "US-only Hybrid does not satisfy EU residency or low EU latency."
+        "text": "Each calculation still takes the same time; the gain is less waiting in queue."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub Architecture — Global Worker Clouds & Geographic Data Residency (EU)",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#global-worker-clouds"
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       },
       "architectureGuide": {
-        "title": "Anypoint Runtime Fabric (RTF) on Customer Kubernetes Architecture",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "CloudHub 2.0 Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-architecture"
       }
     }
   },
   {
     "id": "q-273",
     "number": 273,
-    "title": "State Management - A fintech startup plans to run Mule runtimes on a Kubernetes",
+    "title": "API Quality Goals - Backend is the bottleneck",
     "domain": "Meeting API quality goals",
     "topics": [
-      "State Management"
+      "Horizontal Scaling",
+      "Bottlenecks"
     ],
-    "prompt": "A fintech startup plans to run Mule runtimes on a Kubernetes cluster to leverage auto‑scaling, but its engineers are concerned about stateful flows. Which approach BEST meets the requirements?",
+    "prompt": "A System API's response time is 4 seconds, of which 3.8 seconds is spent waiting for a legacy database that allows only 20 concurrent connections. The API's workers use little CPU. What will happen if the API is scaled from two to six workers?",
     "options": [
       {
         "letter": "A",
-        "text": "Configure Mule flows to use an external, shared object store (e. g., Redis, a relational database, or an object‑store service) for all stateful data, keeping the runtime instances stateless."
+        "text": "The database will automatically allow more concurrent connections"
       },
       {
         "letter": "B",
-        "text": "Enable Mule's built‑in in‑memory object store and rely on Kubernetes pod affinity to keep the same pod handling the same flow instance."
+        "text": "Little or no improvement, and possibly more database contention"
       },
       {
         "letter": "C",
-        "text": "Use Mule’s clustered object store feature with a built‑in Hazelcast cluster that automatically replicates state across pods."
+        "text": "Response time will drop to roughly a third of the current value"
       },
       {
         "letter": "D",
-        "text": "Deploy a single replica of the Mule runtime in the cluster and route all traffic through a Load Balancer to avoid state duplication."
-      },
-      {
-        "letter": "E",
-        "text": "Store state in a file system mounted via a persistent volume claim (PVC) attached to each Mule pod."
-      },
-      {
-        "letter": "F",
-        "text": "Encode the state into the HTTP session cookie and let the client carry it back on each request."
+        "text": "Throughput will triple because each worker handles the same load"
       }
     ],
-    "explanation": "The question tests the learner's understanding of how to handle stateful Mule flows in a container‑orchestrated environment like Kubernetes. The best practice is to externalize all state to a durable, shared store so that individual runtime instances remain stateless and can be freely added or removed. Options that keep state in memory, rely on pod affinity, or use a single replica ignore the dynamic nature of Kubernetes and introduce single points of failure. Misconceptions such as using built‑in clustering or PVCs stem from a misunderstanding of how state is shared across pods. In real‑world deployments, fintech firms typically use external caches or databases to ensure consistency, compliance, and seamless auto‑scaling.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. Horizontal scaling of an API implementation helps only when the implementation itself is the bottleneck. If response time is dominated by a downstream system with limited capacity, adding instances does not improve response time or throughput and can increase contention on that system.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "This option is correct because externalizing state removes any dependency on the lifecycle of individual pod instances. When Mule runtimes are stateless, Kubernetes can freely add or remove pods in response to load without losing or corrupting data. In practice, a fintech app could write transaction identifiers to a Redis cluster, ensuring any new pod can continue processing without missing context."
+        "type": "Incorrect",
+        "text": "Database limits are not changed by scaling the API."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "This option is incorrect; in‑memory object stores are lost when a pod is terminated or rescheduled, which defeats the purpose of auto‑scaling. Pod affinity does not guarantee that the same pod will always be available, especially under high load or node failures. Relying on volatile memory would cause lost state and potential transaction failures in a production fintech environment."
+        "type": "Correct",
+        "text": "The constraint is the database, which gains no capacity when API workers are added."
       },
       "C": {
         "type": "Incorrect",
-        "text": "This option is incorrect because Mule does not include a built‑in Hazelcast clustering mechanism; it requires an external clustering solution that is not natively supported in Kubernetes. Even if an external Hazelcast were added, managing its lifecycle adds complexity and can become a scaling bottleneck. A fintech startup would face increased operational overhead and risk of state inconsistency."
+        "text": "Scaling the API does not speed up database queries."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This option is incorrect as it negates the benefits of auto‑scaling and high availability. A single replica becomes a single point of failure, and traffic spikes could overload it, leading to latency or downtime. Fintech services require resilient architectures that can scale horizontally, not a monolithic pod."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "This option is incorrect because a PVC is typically bound to a single pod; it does not provide a shared, concurrent store across multiple pods. Concurrent writes can cause data corruption, and pods that are terminated lose their exclusive volume, breaking state continuity. Using a PVC would not satisfy the need for distributed, consistent state across scaled instances."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "This option is incorrect because cookies have size limitations, pose security risks, and are unsuitable for complex transactional state. Relying on the client to maintain critical business state can lead to data loss if the cookie is cleared or tampered with. In a fintech scenario, this approach would violate compliance and reliability requirements."
+        "text": "Throughput is capped by the database's 20 connections."
       }
     },
     "references": {
       "primary": {
-        "title": "Runtime Fabric High Availability and Disaster Recovery — Best Practices (Externalize State)",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/rtf-ha-dr#best-practices"
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       },
       "architectureGuide": {
-        "title": "CloudHub to CloudHub 2.0 Migration — Application Differences (External Shared State)",
-        "url": "https://docs.mulesoft.com/cloudhub/ch-ch2-migration-configuration#application-differences"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "Mule Runtime — Back-Pressure and MaxConcurrency",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/tuning-backpressure-maxconcurrency"
       }
-    },
-    "correctAnswer": "A"
+    }
   },
   {
     "id": "q-274",
     "number": 274,
-    "title": "Scalability and Observability - An e‑commerce retailer expects a 300% traffic surge during the",
+    "title": "API Quality Goals - Latency of a single request",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Scalability and Observability"
+      "Horizontal Scaling",
+      "Response Time"
     ],
-    "prompt": "An e‑commerce retailer expects a 300% traffic surge during the holiday season and needs to ensure high availability, end‑to‑end observability, and automated regression testing, but the QA team can only allocate 20% of its capacity. Which THREE options meet the requirements? (Select all correct answers)",
+    "prompt": "Under light load, a single request to an API takes 900 ms because of a long sequence of processing steps. A stakeholder suggests adding more CloudHub workers to make each request faster. What is the most accurate response?",
     "options": [
       {
         "letter": "A",
-        "text": "Deploy the APIs to Cloud Hub using auto‑scaling workers and enable Anypoint Monitoring for end‑to‑end visibility."
+        "text": "Extra workers won't speed up one unsaturated request"
       },
       {
         "letter": "B",
-        "text": "Use a single high‑memory worker with increased thread pool size to handle the traffic surge, and schedule nightly manual regression tests."
+        "text": "Additional workers will reduce network latency to the client"
       },
       {
         "letter": "C",
-        "text": "Implement a CI/CD pipeline that runs MUnit regression suites on every build and deploys to a multi‑region cluster with active‑active workers."
+        "text": "Requests will run in parallel across all workers automatically"
       },
       {
         "letter": "D",
-        "text": "Enable API Manager rate‑limiting policies and use Anypoint Visualizer to map APIs, but rely on manual log review for observability."
-      },
-      {
-        "letter": "E",
-        "text": "Adopt Anypoint Runtime Fabric on Kubernetes with auto‑scale enabled, integrate Mule Soft’s Monitoring and run MUnit tests in parallel through Maven, consuming only 20% of QA effort."
-      },
-      {
-        "letter": "F",
-        "text": "Move all integration logic to on‑premises Mule runtime and use a load balancer, while the QA team writes new test cases for each peak load scenario."
+        "text": "Each additional worker will reduce the request time proportionally"
       }
     ],
-    "explanation": "The question tests a candidate's ability to design a solution that simultaneously addresses scalability, observability, and automated testing under resource constraints. Correct choices combine cloud‑native auto‑scaling (Cloud Hub or Runtime Fabric) with built‑in monitoring and CI/CD‑driven MUnit testing, ensuring the system can absorb a 300% traffic surge while remaining observable and testable with limited QA effort. Common misconceptions include assuming a single large worker can provide HA, believing manual testing or log review is sufficient for observability, and overlooking the need for multi‑region active‑active deployment. In practice, architects should leverage Anypoint Platform features—auto‑scaling workers, Runtime Fabric, Anypoint Monitoring, and MUnit integrated into pipelines—to meet these enterprise requirements efficiently. Remember to always align the architectural pattern with both performance goals and operational constraints such as limited testing resources.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Horizontal scaling increases the number of requests that can be processed concurrently. It improves response times only when requests are waiting for capacity. Under light load, a single request's latency is determined by its processing steps and dependencies, so it must be optimized directly, for example by parallelizing work or caching.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "This option is correct. Auto‑scaling workers on Cloud Hub automatically add capacity when traffic spikes, providing high availability and fault tolerance. Enabling Anypoint Monitoring delivers real‑time metrics, alerts, and dashboards across the entire flow, satisfying the observability requirement without additional manual effort."
+        "text": "With no queuing, each request's duration depends on its own processing path."
       },
       "B": {
         "type": "Incorrect",
-        "text": "This option is incorrect. A single worker creates a single point of failure, so high availability is not guaranteed during a 300% surge. Manual nightly tests consume valuable QA time and do not provide the continuous automated regression needed to keep pace with rapid deployments."
+        "text": "The client's network latency is unaffected by the number of workers."
       },
       "C": {
-        "type": "Correct",
-        "text": "This option is correct. Running MUnit tests in the pipeline ensures automated regression testing with minimal QA involvement. Deploying to a multi‑region active‑active cluster gives true high availability and geographic redundancy, while the pipeline can also push monitoring configuration for end‑to‑end observability."
+        "type": "Incorrect",
+        "text": "A single request is not distributed across multiple workers."
       },
       "D": {
         "type": "Incorrect",
-        "text": "This option is incorrect. Rate‑limiting helps protect services but does not provide high availability or handle traffic spikes. Relying on manual log review fails to deliver the required end‑to‑end, real‑time observability, and it adds overhead that the limited QA team cannot sustain."
-      },
-      "E": {
-        "type": "Correct",
-        "text": "This option is correct. Runtime Fabric on Kubernetes offers elastic scaling and multi‑node resilience, satisfying high‑availability needs. Built‑in Monitoring gives comprehensive visibility, and parallel MUnit execution automates regression testing while staying within the 20% QA capacity constraint."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "This option is incorrect. On‑premises infrastructure cannot elastically scale to a 300% traffic increase, making high availability unlikely. Requiring the QA team to create new test cases for each scenario exceeds the 20% capacity limit and lacks the automation needed for rapid regression testing."
+        "text": "Requests are handled by one worker at a time and do not split across workers."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Configuring Autoscaling Policies for Applications",
-        "url": "https://docs.mulesoft.com/cloudhub/autoscaling-in-cloudhub#configure-autoscaling"
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       },
       "architectureGuide": {
-        "title": "Runtime Fabric — Configuring Horizontal Pod Autoscaling (HPA) for Deployments",
-        "url": "https://docs.mulesoft.com/runtime-fabric/latest/configure-horizontal-autoscaling#configure-horizontal-pod-autoscaling"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "CloudHub 2.0 Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-architecture"
       }
-    },
-    "correctAnswers": [
-      "A",
-      "C",
-      "E"
-    ]
+    }
   },
   {
     "id": "q-275",
     "number": 275,
-    "title": "Logging and Error Handling - A fashion retailer's mobile app backend is generating frequent va",
+    "title": "API Quality Goals - Stateful in-memory sessions",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Logging and Error Handling"
+      "Horizontal Scaling",
+      "Statelessness"
     ],
-    "prompt": "A fashion retailer's mobile app backend is generating frequent validation errors that are not captured in standard logs, and the Dev Ops team needs to reduce noise in the logging system while still capturing critical error details for SLA reporting. Which TWO actions should be taken?",
+    "prompt": "An API implementation stores each client's shopping cart in the memory of the worker that handled the client's first request. The team plans to scale from one to four workers behind the load balancer. What problem should the architect anticipate?",
     "options": [
       {
         "letter": "A",
-        "text": "Set the global logger level to INFO and add a custom log filter that only writes messages containing the marker \"VALIDATION_ERROR\" to a separate file."
+        "text": "The load balancer will refuse to route requests to more than one worker"
       },
       {
         "letter": "B",
-        "text": "Create a global error handling flow that catches validation errors, logs them at ERROR level with a concise message, and routes the error details to an SLA-monitoring endpoint via an HTTP request."
+        "text": "Memory usage per worker will quadruple"
       },
       {
         "letter": "C",
-        "text": "Increase the log level of the entire application to DEBUG so that all validation errors are automatically logged in the standard log file."
+        "text": "No problem, because CloudHub replicates worker memory automatically"
       },
       {
         "letter": "D",
-        "text": "Disable logging for the validation component entirely and rely on Anypoint Monitoring's default error metrics to generate SLA reports."
-      },
-      {
-        "letter": "E",
-        "text": "Add a custom logger with a Threshold Filter set to WARN and configure a separate appender that writes only WARN and above messages to a dedicated \"validation-errors.log\" file."
-      },
-      {
-        "letter": "F",
-        "text": "Apply a Mule policy that masks validation-error payloads but does not modify the logging configuration."
+        "text": "Carts may be missing when requests reach a different worker"
       }
     ],
-    "explanation": "The question tests the candidate's ability to design a logging and error-handling strategy that balances signal-to-noise ratio with the need for detailed SLA data. Correct actions involve isolating validation errors via markers or dedicated error-handling flows, then routing those errors to a focused log or monitoring endpoint; both approaches capture essential details while keeping the main log stream clean. Options that raise the global log level, disable logging, or use overly broad filters either increase noise or lose critical information, which are common misconceptions among practitioners. Additionally, policies that only mask payloads address security, not logging efficiency. In practice, MuleSoft architects should use marker-based filters or explicit error-handling flows combined with separate appenders or monitoring integrations to meet operational and SLA requirements.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Horizontal scaling works best for stateless API implementations. If state is kept in a single worker's memory, requests routed to other workers cannot see it. State should be moved to a shared store, such as a persistent object store or database, before scaling out.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "Set the global logger level to INFO and add a custom log filter that only writes messages containing the marker \"VALIDATION_ERROR\" to a separate file.: This is correct. By attaching a marker to validation-error log statements and configuring a filter to capture only those marked messages, you isolate the important errors from the bulk of INFO-level traffic. The separate file keeps the main log clean while still providing the detailed error information needed for SLA calculations."
+        "type": "Incorrect",
+        "text": "Load balancers distribute requests across all available workers."
       },
       "B": {
-        "type": "Correct",
-        "text": "Create a global error handling flow that catches validation errors, logs them at ERROR level with a concise message, and routes the error details to an SLA-monitoring endpoint via an HTTP request.: This is correct. A dedicated error-handling flow ensures that every validation failure is captured once, logged at a high severity, and sent to a system that aggregates SLA metrics. It eliminates duplicate or noisy logs and guarantees that the essential data is available for reporting."
+        "type": "Incorrect",
+        "text": "Each worker still holds only the carts it has created."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Increase the log level of the entire application to DEBUG so that all validation errors are automatically logged in the standard log file.: This is incorrect. Raising the global log level to DEBUG floods the log with tracing information that is unrelated to validation errors, dramatically increasing noise rather than reducing it. Moreover, it makes it harder to spot the few critical errors that matter for SLA reporting."
+        "text": "Worker memory is not replicated between workers."
       },
       "D": {
-        "type": "Incorrect",
-        "text": "Disable logging for the validation component entirely and rely on Anypoint Monitoring's default error metrics to generate SLA reports.: This is incorrect. Turning off logging removes the raw error payload and context that SLA reports often require, such as transaction IDs or specific validation codes. While Anypoint Monitoring can surface aggregate metrics, it cannot replace the detailed forensic data needed for precise SLA verification."
-      },
-      "E": {
-        "type": "Incorrect",
-        "text": "Add a custom logger with a Threshold Filter set to WARN and configure a separate appender that writes only WARN and above messages to a dedicated \"validation-errors.log\" file.: This is incorrect for this scenario. Validation errors are usually recorded at INFO or ERROR level; filtering at WARN would miss those logged at INFO, causing gaps in the SLA data. Additionally, using a generic WARN filter does not differentiate validation errors from other warnings, so the log would still contain unrelated entries, defeating the goal of reduced noise."
-      },
-      "F": {
-        "type": "Incorrect",
-        "text": "Apply a Mule policy that masks validation-error payloads but does not modify the logging configuration.: This is incorrect. Masking the payload protects sensitive data but has no impact on the volume or relevance of log entries, so it does not help reduce noise or ensure critical error details are captured. The requirement is about logging strategy, not data masking."
+        "type": "Correct",
+        "text": "In-memory state is local to one worker, but the load balancer can route requests anywhere."
       }
     },
-    "references": {},
-    "correctAnswers": [
-      "A",
-      "B"
-    ]
+    "references": {
+      "primary": {
+        "title": "Mule Runtime — Object Stores",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
+      },
+      "architectureGuide": {
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
+      }
+    }
   },
   {
     "id": "q-276",
     "number": 276,
-    "title": "Performance - A marketing organization is designing a Mule application to process ca",
+    "title": "API Quality Goals - Choose two: when scaling out helps",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Performance"
+      "Horizontal Scaling",
+      "Throughput"
     ],
-    "prompt": "A marketing organization is designing a Mule application to process campaign data. The Mule application will periodically check for a file in an SFTP location and process the records in the file. The size of the file can vary from 10MB to 5GB. Due to the limited availability of vCores, the Mule application is deployed to a single CloudHub worker/replica configured with vCore size 0.2. The application must transform and send different formats of this file to three different downstream SFTP locations. What is the most direct way to configure the SFTP operations or event sources to process the large files to support these deployment requirements?",
+    "prompt": "In which two situations is horizontal scaling of an API implementation likely to improve throughput as seen by API clients? (Choose two.)",
     "options": [
       {
         "letter": "A",
-        "text": "Use a file-stored repeatable stream"
+        "text": "The API processes a single large file one record at a time on one node"
       },
       {
         "letter": "B",
-        "text": "Use a file-stored nonrepeatable stream"
+        "text": "A Rate Limiting policy is rejecting clients that exceed their SLA tier"
       },
       {
         "letter": "C",
-        "text": "Use an in-memory repeatable stream"
+        "text": "The implementation is stateless and its workers are CPU-saturated"
       },
       {
         "letter": "D",
-        "text": "Use an in-memory nonrepeatable stream"
+        "text": "Every request waits on a downstream API limited to a fixed rate"
+      },
+      {
+        "letter": "E",
+        "text": "Requests are queuing because all worker threads are busy"
       }
     ],
-    "explanation": "Correct answer: A. The application runs on a single 0.2 vCore CloudHub worker (about 1 GB heap) and must read files that can be as large as 5 GB, then send transformed copies to three downstream SFTP locations. A file-stored repeatable stream is the default Mule 4 strategy: it uses a small in-memory buffer (512 KB by default) and, for larger content, buffers to a temporary file on disk so the payload never overflows the worker's memory. Because it is repeatable, the stream can be read multiple times, which is required to write to the three different SFTP targets. A file-stored nonrepeatable stream (B) spills to disk but can only be read once, so it cannot feed three targets; the in-memory options (C, D) would try to hold a 5 GB payload in a 1 GB heap and fail, and the nonrepeatable in-memory option additionally cannot be re-read.",
+    "correctAnswers": [
+      "C",
+      "E"
+    ],
+    "explanation": "Correct answers: C and E. Horizontal scaling helps when the API implementation itself limits throughput, for example when stateless workers are CPU-bound or requests queue for threads. It does not help when the limit comes from a downstream system, an SLA-based policy, or work that only one node can perform.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "File-stored repeatable streaming buffers content on disk beyond the in-memory threshold, so a 5 GB file does not exhaust the small worker's heap, and the repeatable stream can be read multiple times for the three SFTP writes."
+        "type": "Incorrect",
+        "text": "Single-node sequential processing does not benefit from more instances."
       },
       "B": {
         "type": "Incorrect",
-        "text": "A file-stored nonrepeatable stream avoids memory pressure but can only be read once, so it cannot supply the payload to three separate downstream SFTP operations."
+        "text": "Policy limits are per contract and do not change with more instances."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "An in-memory repeatable stream would attempt to hold the large payload in memory and would exhaust the 0.2 vCore worker's heap."
+        "type": "Correct",
+        "text": "Adding instances adds processing capacity where the bottleneck is."
       },
       "D": {
         "type": "Incorrect",
-        "text": "An in-memory nonrepeatable stream fails on both counts: it buffers in memory (unsuitable for 5 GB) and can be read only once."
+        "text": "The downstream limit caps throughput regardless of instance count."
+      },
+      "E": {
+        "type": "Correct",
+        "text": "More instances reduce queuing time and increase concurrent processing."
       }
     },
     "references": {
       "primary": {
-        "title": "Streaming in Mule — File-Stored Repeatable Stream",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/streaming-about#file-stored-repeatable-stream"
+        "title": "CloudHub 2.0 Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-architecture"
       },
       "architectureGuide": {
-        "title": "Streaming Strategies Reference — File-Stored Input Stream",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/streaming-strategies-reference#file-stored-input-stream"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "CloudHub 2.0 — Horizontal Autoscaling",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-configure-horizontal-autoscaling"
       }
-    },
-    "correctAnswer": "A"
+    }
   },
   {
     "id": "q-277",
     "number": 277,
-    "title": "Reliability - An architect is designing a Mule application to meet the following two",
+    "title": "API Quality Goals - Primary-node-only workloads",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Reliability"
+      "Horizontal Scaling",
+      "Clustering"
     ],
-    "prompt": "An architect is designing a Mule application to meet the following two requirements:\n1. The application must process files asynchronously and reliably from an FTPS server to a back-end database using VM intermediary queues for load-balancing Mule events.\n2. The application must process a medium rate of records from a source to a target system using a Batch Job scope.\nTo make the Mule application more reliable, the Mule application will be deployed to two CloudHub 1.0 workers. Following MuleSoft-recommended best practices, how should the Mule application deployment typically be configured in Runtime Manager to best support the performance and reliability goals of both the Batch Job scope and the file processing VM queues?",
+    "prompt": "A Mule application polls an FTP directory every minute and processes each file sequentially. The poller is configured to run only on the primary node of a cluster. The team adds two more nodes, hoping to process files faster. What is the likely result?",
     "options": [
       {
         "letter": "A",
-        "text": "In the Runtime Manager Properties tab, enable persistent VM queues for the FTPS connector"
+        "text": "Each file will be processed three times, once per node"
       },
       {
         "letter": "B",
-        "text": "Check the Non-persistent VM queues checkbox in the application deployment configuration"
+        "text": "No gain; only the primary node polls the files"
       },
       {
         "letter": "C",
-        "text": "In the Runtime Manager Properties tab, disable persistent VM queues for Batch Job scopes"
+        "text": "Files will be processed three times faster"
       },
       {
         "letter": "D",
-        "text": "Check the Persistent VM queues checkbox in the application deployment configuration"
+        "text": "Polling will stop because clusters do not support FTP"
       }
     ],
-    "explanation": "Correct answer: D. The application must process files asynchronously and reliably from FTPS to a database using VM intermediary queues for load balancing, and it runs on two CloudHub workers. CloudHub's persistent queues feature is the deployment-level setting that provides zero message loss and distributes workloads across the workers, which supports the reliability goal of the VM-queue processing. It is enabled by selecting the Persistent VM queues checkbox in the application's Runtime Manager deployment configuration. Enabling it 'for the FTPS connector' (A) or disabling it for Batch Job scopes (C) misstates how the setting works — persistence is a per-application deployment option, not a per-connector or per-scope property — and option B selects the opposite (non-persistent) behavior.",
+    "correctAnswer": "B",
+    "explanation": "Correct answer: B. In a Mule cluster, some sources, such as file or FTP pollers, are configured to run only on the primary node to avoid duplicate processing. Adding nodes improves availability but not throughput for that work, unless the work is distributed, for example by publishing items to a queue that all nodes consume.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Persistent queues are enabled at the application deployment level in Runtime Manager, not as a property of the FTPS connector."
+        "text": "Primary-node-only polling prevents duplicate pickup, not duplicate processing gains."
       },
       "B": {
-        "type": "Incorrect",
-        "text": "Checking non-persistent VM queues disables persistence, which is the opposite of the reliability goal."
+        "type": "Correct",
+        "text": "Work that runs only on the primary node does not gain capacity from extra nodes."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Disabling persistence for Batch Job scopes is not the deployment configuration the question asks about; the setting is a single per-application deployment option."
+        "text": "The other nodes do not run the primary-node-only poller."
       },
       "D": {
-        "type": "Correct",
-        "text": "Selecting the Persistent VM queues checkbox in the deployment configuration enables CloudHub persistent queues, which ensure zero message loss and distribute workload across workers."
+        "type": "Incorrect",
+        "text": "Clusters support FTP polling with primary-node configuration."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Persistent Queues for Applications Containing Batch Jobs",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric#persistent-queues-for-applications-containing-batch-jobs"
+        "title": "Mule Runtime — High Availability Clusters",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-high-availability-ha-clusters"
       },
       "architectureGuide": {
-        "title": "CloudHub — Batch Component and Persistent Queues",
-        "url": "https://docs.mulesoft.com/cloudhub/managing-queues#batch-component-and-persistent-queues"
-      },
-      "arc720": {
-        "lesson": "Lesson 10 — Production",
-        "anchor": "ARC720-Course-Content.md#10-production"
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
-    },
-    "correctAnswer": "D"
+    }
   },
   {
     "id": "q-278",
     "number": 278,
-    "title": "Performance - A bank is implementing a REST API in a Mule application to receive an",
+    "title": "API Quality Goals - Autoscaling CloudHub 2.0",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Performance"
+      "Horizontal Scaling",
+      "Autoscaling"
     ],
-    "prompt": "A bank is implementing a REST API in a Mule application to receive an array of accounts from an online banking platform user interface (UI), retrieve account balances for those accounts from a backend Finance system, and then return the account balances so they can be displayed in the online banking platform UI. As part of the processing, the MuleSoft API also needs to insert the retrieved account data into an Audit Database for auditing purposes, the auditing process should not add latency to the account balance retrieval response back to the online banking platform UI. The retrieveBalances flow in the Mule application is designed to use an operation in a connector to the Finance system (the Finance operation) that can only look up one account record at a time, and a operation from a different connector to the Audit system (the Audit operation) that can only insert one account record at a time. To best meet the performance-related requirements, what scope or scopes should be used and how should they be used to incorporate the Finance operation and Audit operation into the retrieveBalances flow?",
+    "prompt": "An Experience API on CloudHub 2.0 has unpredictable daily traffic peaks caused by marketing campaigns. Between peaks, two replicas are sufficient. The team wants capacity to follow demand automatically. What should the architect recommend?",
     "options": [
       {
         "letter": "A",
-        "text": "Wrap both connector operations in a Async scope."
+        "text": "Permanently deploy the maximum number of replicas needed at peak"
       },
       {
         "letter": "B",
-        "text": "Wrap both connector operations in a For-Each scope."
+        "text": "Increase the replica size so that two replicas can always handle peaks"
       },
       {
         "letter": "C",
-        "text": "Wrap the Finance operation in a Until-Successful scope. Wrap the Audit operation in a Try-Catch scope."
+        "text": "Apply a Rate Limiting policy so peak traffic never exceeds two replicas"
       },
       {
         "letter": "D",
-        "text": "Wrap the Finance operation in a Parallel For-Each scope. Wrap the Audit operation in a Async scope."
+        "text": "Enable horizontal autoscaling for the application's replicas"
       }
     ],
-    "explanation": "Correct answer: D. The Finance connector can only look up one account at a time, and there are many accounts, so wrapping the Finance operation in a Parallel For Each scope processes those single-record lookups concurrently and aggregates the results in the original order — improving the response time of the balance retrieval. The Audit insert must not add latency to the response, so wrapping the Audit operation in an Async scope lets the flow return the balances while the audit write happens in the background ('fire and forget'). Wrapping both in an Async scope (A) would make the Finance lookups asynchronous too, so their results would not be available for the response; wrapping both in a For Each (B) processes them sequentially and adds latency; and Until-Successful plus Try-Catch (C) addresses retries and error handling, not concurrency or non-blocking behavior.",
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. CloudHub 2.0 supports horizontal autoscaling, which adjusts the number of replicas of an application based on resource usage within configured minimum and maximum values. This lets stateless APIs follow unpredictable demand without paying for peak capacity at all times.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Wrapping the Finance operation in an Async scope makes it fire-and-forget, so the retrieved balances would not be available to return in the response."
+        "text": "This works but wastes capacity outside peaks."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Wrapping both operations in a For Each processes the accounts sequentially and adds latency to the response."
+        "text": "Larger replicas may still be insufficient and are wasted between peaks."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Until-Successful handles retries and Try-Catch handles errors; neither parallelizes the single-record lookups nor moves the audit write off the response path."
+        "text": "Rejecting peak traffic does not meet the goal of serving demand."
       },
       "D": {
         "type": "Correct",
-        "text": "Parallel For Each runs the single-account Finance lookups concurrently and aggregates results in order, while the Async scope performs the Audit insert without adding latency to the response."
+        "text": "Autoscaling adds and removes replicas based on load within configured limits."
       }
     },
     "references": {
       "primary": {
-        "title": "Parallel For Each — Parallel Processing Within a Flow",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/parallel-foreach-scope#configuration"
+        "title": "CloudHub 2.0 — Horizontal Autoscaling",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-configure-horizontal-autoscaling"
       },
       "architectureGuide": {
-        "title": "Async Scope — Running Parts of a Flow Asynchronously",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/async-scope-reference#async-configuration"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "CloudHub 2.0 Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-architecture"
       }
-    },
-    "correctAnswer": "D"
+    }
   },
   {
     "id": "q-279",
     "number": 279,
-    "title": "Transactions - How does a timeout attribute in a configured transaction manager help",
+    "title": "API Quality Goals - Vertical versus horizontal scaling",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Transactions"
+      "Horizontal Scaling",
+      "Vertical Scaling"
     ],
-    "prompt": "How does a timeout attribute in a configured transaction manager help inform design decisions while using a JMS connector listening for incoming messages in an extended Architecture (XA) transaction managed by the transaction manager?",
+    "prompt": "A batch-style API processes one very large payload per request and fails with out-of-memory errors on its current worker size. Traffic volume is low. Which scaling approach addresses the problem?",
     "options": [
       {
         "letter": "A",
-        "text": "The timeout defines the time that is allowed to pass without the transaction ending explicitly, and after the timeout expires, the transaction rolls back"
+        "text": "Vertical scaling to a larger worker size"
       },
       {
         "letter": "B",
-        "text": "The time allowed to pass between committing the transaction and the completion of the Mule flow, and then after the timeout, flow processing triggers an error"
+        "text": "Horizontal scaling to more workers of the same size"
       },
       {
         "letter": "C",
-        "text": "After the timeout is exceeded, stale JMS consumer threads are destroyed and new threads are created"
+        "text": "Adding a Spike Control policy"
       },
       {
         "letter": "D",
-        "text": "The timeout specifies the time allowed to pass between receiving JMS messages on the same JMS connection, and then after the timeout, a new JMS connection is established"
+        "text": "Enabling the HTTP Caching policy"
       }
     ],
-    "explanation": "Correct answer: A. The transaction timeout defines the maximum time, in milliseconds, that a transaction can remain active before Mule rolls it back (the default is 30000 ms). For a JMS listener participating in an XA transaction, this means that if the transaction does not end explicitly within the timeout window, Mule rolls it back, so the message is not consumed and can be reprocessed. This informs design decisions about how long the business logic may run before the transaction is committed or rolled back. The other options describe unrelated behaviors: a window between commit and flow completion (B), destroying stale JMS consumer threads (C), or timing between messages on a JMS connection (D) are not what the transaction timeout controls.",
+    "correctAnswer": "A",
+    "explanation": "Correct answer: A. Horizontal scaling increases concurrent capacity but leaves the resources available to a single request unchanged. When individual requests need more memory or CPU than one instance provides, vertical scaling to a larger worker or replica size is required.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "The transaction timeout is the maximum time a transaction can remain active before Mule rolls it back, so an uncommitted transaction is rolled back and the message can be reprocessed."
+        "text": "More memory per worker lets each large request be processed."
       },
       "B": {
         "type": "Incorrect",
-        "text": "The timeout does not measure time between committing the transaction and flow completion; it bounds how long the transaction itself may stay active."
+        "text": "Each request still runs on one worker with the same memory limit."
       },
       "C": {
         "type": "Incorrect",
-        "text": "The transaction timeout does not destroy or recreate JMS consumer threads."
+        "text": "Traffic shaping does not change the memory available to process a request."
       },
       "D": {
         "type": "Incorrect",
-        "text": "The timeout does not govern the interval between JMS messages on a connection or trigger new JMS connections."
+        "text": "Caching does not address memory needed to process large payloads."
       }
     },
     "references": {
       "primary": {
-        "title": "Mule Transactions — Transaction Timeout",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/transaction-management#transaction-timeout"
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       },
       "architectureGuide": {
-        "title": "XA Transactions — Configuring a Resource to Use XA Transactions",
-        "url": "https://docs.mulesoft.com/mule-runtime/latest/xa-transactions#configuring-your-resource-to-use-xa-transactions"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "CloudHub 2.0 Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-architecture"
       }
-    },
-    "correctAnswer": "A"
+    }
   },
   {
     "id": "q-280",
     "number": 280,
-    "title": "Performance - Refer to the exhibit.",
+    "title": "API Quality Goals - Scaling and SLA-limited consumers",
     "domain": "Meeting API quality goals",
     "topics": [
-      "Performance"
+      "Horizontal Scaling",
+      "SLA Tiers"
     ],
-    "prompt": "Refer to the exhibit.\nA manufacturing company is developing a new set of APIs for its retail business. One of the APIs is a Master Look Up API, which is a System API. The API uses a persistent object-store. This API will be used by almost all other APIs to provide master lookup data. The Master Look Up API is deployed on two CloudHub workers of 0.1 vCore each because there is a lot of master data to be cached. Most of the master lookup data is stored as a key-value pair. The cache gets refreshed if the key is not found in the cache. During performance testing, it was determined that the Master Look Up API has a high response time due to the latency of database queries executed to fetch the master lookup data. What two methods can be used to resolve these performance issues? (Select all correct answers)",
-    "image": "images/q238.svg",
+    "prompt": "A partner complains that their throughput is capped at 100 requests per minute when calling an API. The API's workers are at 15% CPU. The partner's client application is on the Silver SLA tier, which allows 100 requests per minute. What will adding workers achieve?",
     "options": [
       {
         "letter": "A",
-        "text": "Implement the HTTP caching policy for all GET endpoints for the Master Look Up API"
+        "text": "The SLA tier will be upgraded automatically"
       },
       {
         "letter": "B",
-        "text": "Add an additional CloudHub worker of 0.1 vCore to provide additional capacity"
+        "text": "The partner's throughput will rise in proportion to the number of workers"
       },
       {
         "letter": "C",
-        "text": "Implement locking to synchronize access to the Object Store"
+        "text": "Nothing for this partner, because the SLA tier limits their throughput"
       },
       {
         "letter": "D",
-        "text": "Upgrade the vCore size from 0.1 vCore to 0.2 vCore"
+        "text": "Response times will drop below the SLA tier's limits"
       }
     ],
-    "explanation": "Correct answers: A and D. The Master Look Up API is slow because each cache miss triggers a database query to refresh the cache, and the latency of those queries dominates the response time. Two independent levers address this. First, the HTTP Caching policy (A) caches HTTP responses for reuse: according to MuleSoft, \"Caching these responses speeds up the response time for user requests and reduces the load on the backend,\" and on a cache hit \"the stored response is returned\" without calling the backend, so repeated master-data lookups are served from the cache and the database is not queried at all. Second, the API is deployed on 0.1 vCore CloudHub workers, which \"provide limited CPU and I/O for apps with smaller workloads\" and \"can burst to higher CPU speeds for a short time\" rather than delivering consistent performance. Upgrading each worker to 0.2 vCore (D) raises worker memory from 1 GB to 2 GB and heap memory from 500 MB to 1 GB, giving the API more resources to serve the cached lookups. Option B (adding another 0.1 vCore worker) does not help: although CloudHub's HTTP load balancing service distributes requests across workers on a round-robin basis, each request is still served by a single 0.1 vCore worker with the same limited CPU and I/O, so extra workers add capacity rather than reduce the per-request latency caused by the database queries. Option C (locking) is wrong because Object Stores \"do not support transactional access or modification,\" and locking to synchronize access to the Object Store would serialize the cache and tend to increase, not decrease, response time.",
+    "correctAnswer": "C",
+    "explanation": "Correct answer: C. When throughput is capped by an SLA-based rate limiting policy, the constraint is the consumer's contract, not the API implementation's capacity. Horizontal scaling only helps when the implementation is the bottleneck; here the partner would need a higher SLA tier.",
     "rationales": {
       "A": {
-        "type": "Correct",
-        "text": "The HTTP Caching policy caches HTTP responses for reuse, which \"speeds up the response time for user requests and reduces the load on the backend.\" On a cache hit the stored response is returned without reaching the backend, so the database queries responsible for the latency are avoided for repeated lookups."
+        "type": "Incorrect",
+        "text": "SLA tier changes require a contract change, not more workers."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Adding another 0.1 vCore worker scales the application horizontally — CloudHub's HTTP load balancing service distributes requests across workers on a round-robin basis — but each request is still served by a single 0.1 vCore worker with the same limited CPU and I/O. More workers add capacity, not lower per-request latency, so the database-query delay remains."
+        "text": "Rate limiting based on SLA tiers is enforced regardless of worker count."
       },
       "C": {
-        "type": "Incorrect",
-        "text": "Object Stores do not support transactional access or modification, and locking to synchronize access to the Object Store serializes cache access. It does not reduce the database-query latency that causes the slow responses and can make contention worse."
+        "type": "Correct",
+        "text": "The limit is set by the contract's SLA tier, not by the API's capacity."
       },
       "D": {
-        "type": "Correct",
-        "text": "0.1 vCore workers provide limited CPU and I/O and can only burst to higher CPU speeds for short periods. Upgrading to 0.2 vCore doubles worker memory from 1 GB to 2 GB and heap memory from 500 MB to 1 GB, giving the API more resources to serve the cached lookups."
+        "type": "Incorrect",
+        "text": "The limit is on request count, not response time."
       }
     },
     "references": {
       "primary": {
-        "title": "HTTP Caching Policy — Summary (speeds up response time and reduces backend load)",
-        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-http-caching#summary"
+        "title": "Rate Limiting Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting"
       },
       "architectureGuide": {
-        "title": "CloudHub Architecture — CloudHub Workers (vCore, memory, and heap sizes)",
-        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#cloudhub-workers"
-      },
-      "arc720": {
-        "lesson": "Lesson 8 — Effective API implementations",
-        "anchor": "ARC720-Course-Content.md#8-effective-api-implementations"
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
-    },
-    "correctAnswers": [
-      "A",
-      "D"
-    ]
+    }
   },
   {
     "id": "q-281",
     "number": 281,
+    "title": "API Quality Goals - Which layer to scale",
+    "domain": "Meeting API quality goals",
+    "topics": [
+      "Horizontal Scaling",
+      "Bottlenecks"
+    ],
+    "prompt": "An Order Process API calls an Inventory System API. Under load, the Process API's workers run at 20% CPU and spend most of their time waiting, while the Inventory System API's workers are at 100% CPU and its requests queue. The inventory backend itself has spare capacity. Which change will most improve order throughput?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Scale out the Order Process API"
+      },
+      {
+        "letter": "B",
+        "text": "Scale both APIs vertically to the largest worker size"
+      },
+      {
+        "letter": "C",
+        "text": "Apply a Spike Control policy to the Order Process API"
+      },
+      {
+        "letter": "D",
+        "text": "Scale out the Inventory System API"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Correct answer: D. Horizontal scaling improves throughput only when applied to the component that limits it. Here the Inventory System API is CPU-saturated while its backend has spare capacity, so adding System API workers removes the bottleneck. Scaling the idle Process API would not help and would increase pressure on the saturated System API.",
+    "rationales": {
+      "A": {
+        "type": "Incorrect",
+        "text": "The Process API is mostly idle and waiting; more instances would only send more requests to the saturated System API."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Larger Process API workers waste money, and vertical scaling alone is not the targeted fix for a stateless, CPU-bound System API."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Shaping traffic to the Process API does not add capacity to the System API bottleneck."
+      },
+      "D": {
+        "type": "Correct",
+        "text": "The saturated System API is the bottleneck, so adding its workers adds capacity where it is needed."
+      }
+    },
+    "references": {
+      "primary": {
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
+      },
+      "architectureGuide": {
+        "title": "CloudHub 2.0 Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-architecture"
+      }
+    }
+  },
+  {
+    "id": "q-282",
+    "number": 282,
     "title": "Monitoring Analyzing - Which Anypoint Platform feature provides a realtime",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18054,8 +17994,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-282",
-    "number": 282,
+    "id": "q-283",
+    "number": 283,
     "title": "Monitoring Analyzing - Which Anypoint capability stores Mule application logs",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18117,8 +18057,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-283",
-    "number": 283,
+    "id": "q-284",
+    "number": 284,
     "title": "Monitoring Analyzing - Which Anypoint Monitoring artifact lets architects build",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18179,8 +18119,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-284",
-    "number": 284,
+    "id": "q-285",
+    "number": 285,
     "title": "Monitoring Analyzing - Which capability is provided by Anypoint Visualizer",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18242,8 +18182,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-285",
-    "number": 285,
+    "id": "q-286",
+    "number": 286,
     "title": "Monitoring Analyzing - Which feature provides automatic notification when CloudHub",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18304,8 +18244,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-286",
-    "number": 286,
+    "id": "q-287",
+    "number": 287,
     "title": "Monitoring Analyzing - Which Anypoint feature is most useful for",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18366,8 +18306,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-287",
-    "number": 287,
+    "id": "q-288",
+    "number": 288,
     "title": "Monitoring Analyzing - Which feature in CloudHub measures and exposes",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18428,8 +18368,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-288",
-    "number": 288,
+    "id": "q-289",
+    "number": 289,
     "title": "Monitoring Analyzing - Which is the recommended way to expose",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18491,8 +18431,8 @@ window.MCPA_QUESTIONS = [
     }
   },
   {
-    "id": "q-289",
-    "number": 289,
+    "id": "q-290",
+    "number": 290,
     "title": "API Monitoring - A logistics company needs to track API latency and usage across",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18569,8 +18509,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-290",
-    "number": 290,
+    "id": "q-291",
+    "number": 291,
     "title": "Monitoring - A manufacturing company wants real‑time visibility into",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18647,8 +18587,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-291",
-    "number": 291,
+    "id": "q-292",
+    "number": 292,
     "title": "API Monitoring - A logistics company with a 99.9% SLA requirement and a limited mo",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18728,8 +18668,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-292",
-    "number": 292,
+    "id": "q-293",
+    "number": 293,
     "title": "Monitoring - A regional healthcare provider handling protected patient data ne",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18806,8 +18746,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-293",
-    "number": 293,
+    "id": "q-294",
+    "number": 294,
     "title": "Logging Configuration - A logistics startup with a small Dev Ops crew discovers that erro",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18884,8 +18824,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-294",
-    "number": 294,
+    "id": "q-295",
+    "number": 295,
     "title": "Monitoring Deployment - A federal government agency is required to store all monitoring d",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -18949,8 +18889,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-295",
-    "number": 295,
+    "id": "q-296",
+    "number": 296,
     "title": "Monitoring - A manufacturing plant’s ERP integration shows intermittent latenc",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19027,8 +18967,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-296",
-    "number": 296,
+    "id": "q-297",
+    "number": 297,
     "title": "API Monitoring - A fintech startup wants to set up real‑time alerts for API SLA br",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19105,8 +19045,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-297",
-    "number": 297,
+    "id": "q-298",
+    "number": 298,
     "title": "API Analytics - A large retail enterprise is rolling out API analytics across its",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19173,8 +19113,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-298",
-    "number": 298,
+    "id": "q-299",
+    "number": 299,
     "title": "Observability - A healthcare integration team must configure logging to retain au",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19242,8 +19182,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-299",
-    "number": 299,
+    "id": "q-300",
+    "number": 300,
     "title": "Audit Logging - A regional healthcare provider operates a patient‑record API that",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19307,8 +19247,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-300",
-    "number": 300,
+    "id": "q-301",
+    "number": 301,
     "title": "Logging and Monitoring - A large retail chain’s order‑processing flow has started returnin",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19385,8 +19325,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-301",
-    "number": 301,
+    "id": "q-302",
+    "number": 302,
     "title": "API Analytics - A federal agency is deploying a citizen-service portal on Anypoin",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19450,8 +19390,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "E"
   },
   {
-    "id": "q-302",
-    "number": 302,
+    "id": "q-303",
+    "number": 303,
     "title": "Performance Monitoring - A manufacturing company's ERP integration is experiencing latency",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19528,8 +19468,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-303",
-    "number": 303,
+    "id": "q-304",
+    "number": 304,
     "title": "API Monitoring & Governance - A hospital network runs dozens of APIs for patient data exchange ",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19597,8 +19537,8 @@ window.MCPA_QUESTIONS = [
     ]
   },
   {
-    "id": "q-304",
-    "number": 304,
+    "id": "q-305",
+    "number": 305,
     "title": "API Monitoring - A national retail chain wants real-time visibility into API usage",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19675,8 +19615,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-305",
-    "number": 305,
+    "id": "q-306",
+    "number": 306,
     "title": "Monitoring and Observability - Visualizer topology and policy troubleshooting",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19738,8 +19678,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-306",
-    "number": 306,
+    "id": "q-307",
+    "number": 307,
     "title": "Monitoring and Observability - CloudHub worker CPU alert",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19801,8 +19741,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-307",
-    "number": 307,
+    "id": "q-308",
+    "number": 308,
     "title": "Monitoring and Observability - External compliant application logging",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19864,8 +19804,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-308",
-    "number": 308,
+    "id": "q-309",
+    "number": 309,
     "title": "Monitoring and Observability - Scheduled external API tests",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19927,8 +19867,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-309",
-    "number": 309,
+    "id": "q-310",
+    "number": 310,
     "title": "Monitoring and Observability - Assigning Visualizer architecture layers",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -19990,8 +19930,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-310",
-    "number": 310,
+    "id": "q-311",
+    "number": 311,
     "title": "Monitoring and Observability - Alerting on API client quota violations",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20053,8 +19993,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-311",
-    "number": 311,
+    "id": "q-312",
+    "number": 312,
     "title": "Monitoring and Observability - Geographic functional testing",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20116,8 +20056,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "D"
   },
   {
-    "id": "q-312",
-    "number": 312,
+    "id": "q-313",
+    "number": 313,
     "title": "Monitoring and Observability - Custom business-logic notifications",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20179,8 +20119,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-313",
-    "number": 313,
+    "id": "q-314",
+    "number": 314,
     "title": "Monitoring and Observability - Long-term CloudHub log retention",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20242,8 +20182,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-314",
-    "number": 314,
+    "id": "q-315",
+    "number": 315,
     "title": "Monitoring and Observability - Cross-application metrics dashboard",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20305,8 +20245,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-315",
-    "number": 315,
+    "id": "q-316",
+    "number": 316,
     "title": "Monitoring and Observability - Environment visibility in Visualizer",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20368,8 +20308,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-316",
-    "number": 316,
+    "id": "q-317",
+    "number": 317,
     "title": "Monitoring and Observability - BDD API tests in CI/CD",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20432,8 +20372,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-317",
-    "number": 317,
+    "id": "q-318",
+    "number": 318,
     "title": "Monitoring and Observability - Troubleshooting cascading API failures",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20495,8 +20435,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-318",
-    "number": 318,
+    "id": "q-319",
+    "number": 319,
     "title": "Monitoring and Observability - Monitoring customer-hosted runtimes",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20558,8 +20498,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-319",
-    "number": 319,
+    "id": "q-320",
+    "number": 320,
     "title": "Monitoring and Observability - Tracking application deletion",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20621,8 +20561,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-320",
-    "number": 320,
+    "id": "q-321",
+    "number": 321,
     "title": "Monitoring and Observability - Supported Runtime Manager alert conditions",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20684,8 +20624,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-321",
-    "number": 321,
+    "id": "q-322",
+    "number": 322,
     "title": "Monitoring and Observability - Dynamic request logging without redeployment",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20747,8 +20687,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-322",
-    "number": 322,
+    "id": "q-323",
+    "number": 323,
     "title": "Monitoring and Observability - Runtime Fabric cluster log forwarding",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20810,8 +20750,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "A"
   },
   {
-    "id": "q-323",
-    "number": 323,
+    "id": "q-324",
+    "number": 324,
     "title": "Monitoring and Observability - Diagnosing HTTP 429 responses",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20873,8 +20813,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-324",
-    "number": 324,
+    "id": "q-325",
+    "number": 325,
     "title": "Monitoring and Observability - Custom Visualizer labels",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20936,8 +20876,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-325",
-    "number": 325,
+    "id": "q-326",
+    "number": 326,
     "title": "Monitoring and Observability - Titanium log search capability",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -20999,8 +20939,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-326",
-    "number": 326,
+    "id": "q-327",
+    "number": 327,
     "title": "Monitoring and Observability - CloudHub worker unresponsiveness",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21062,8 +21002,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-327",
-    "number": 327,
+    "id": "q-328",
+    "number": 328,
     "title": "Monitoring and Observability - Visualizer error indicator",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21112,8 +21052,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "C"
   },
   {
-    "id": "q-328",
-    "number": 328,
+    "id": "q-329",
+    "number": 329,
     "title": "Monitoring and Observability - Registering an implementation with API Manager",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21175,8 +21115,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-329",
-    "number": 329,
+    "id": "q-330",
+    "number": 330,
     "title": "Monitoring and Observability - Configuring the Visualizer node display name",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21238,8 +21178,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-330",
-    "number": 330,
+    "id": "q-331",
+    "number": 331,
     "title": "Monitoring and Observability - Visualizer policy compliance indicator",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21301,8 +21241,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-331",
-    "number": 331,
+    "id": "q-332",
+    "number": 332,
     "title": "Monitoring and Observability - Visualizer tags set via application properties",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21364,8 +21304,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-332",
-    "number": 332,
+    "id": "q-333",
+    "number": 333,
     "title": "Monitoring and Observability - Visualizer edges based on recent traffic",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
@@ -21427,8 +21367,8 @@ window.MCPA_QUESTIONS = [
     "correctAnswer": "B"
   },
   {
-    "id": "q-333",
-    "number": 333,
+    "id": "q-334",
+    "number": 334,
     "title": "Monitoring and Observability - Visualizer Editor permission for defined views",
     "domain": "Monitoring and analyzing application networks",
     "topics": [
