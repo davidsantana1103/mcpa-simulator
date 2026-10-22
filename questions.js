@@ -16527,6 +16527,10 @@ window.MCPA_QUESTIONS = [
       {
         "letter": "D",
         "text": "Schedule a nightly log-analysis job to detect performance issues."
+      },
+      {
+        "letter": "E",
+        "text": "Enable CloudHub persistent queues so that in-flight messages are not lost during degradation."
       }
     ],
     "explanation": "Correct answers: A and C. The exam guide asks you to specify alerts for key metrics of API invocations across all API-led layers and for Mule applications. API invocation metrics (error rate, response time) catch problems at the API level, and Mule application metrics (CPU, memory) catch problems at the implementation level, so together they cover both. Autoscaling (B) reacts to load but does not detect or notify on SLA breaches, and a nightly job (D) is too slow to protect a 99.9% SLA.",
@@ -16546,6 +16550,10 @@ window.MCPA_QUESTIONS = [
       "D": {
         "type": "Incorrect",
         "text": "A nightly job cannot provide the timely alerting a 99.9% SLA requires."
+      },
+      "E": {
+        "type": "Incorrect",
+        "text": "Persistent queues improve message reliability during failure; they do not detect or notify on SLA degradation."
       }
     },
     "references": {
@@ -16884,6 +16892,10 @@ window.MCPA_QUESTIONS = [
       {
         "letter": "D",
         "text": "Rely on Anypoint Visualizer alone for detailed usage insight."
+      },
+      {
+        "letter": "E",
+        "text": "Reduce the analytics data-retention period to lower storage cost."
       }
     ],
     "explanation": "Correct answers: A and C. Scoping analytics to the APIs that need them controls data volume and cost, and exporting the metrics through the Anypoint Monitoring metrics API lets stakeholders build custom dashboards in a BI tool without buying more platform capability. Enabling everything with a premium add-on (B) increases cost, and Visualizer (D) shows the application-network graph and its traffic, not detailed usage analytics.",
@@ -16903,6 +16915,10 @@ window.MCPA_QUESTIONS = [
       "D": {
         "type": "Incorrect",
         "text": "Visualizer shows the application-network graph; it is not a detailed usage-analytics tool."
+      },
+      "E": {
+        "type": "Incorrect",
+        "text": "Shortening retention reduces cost but does not give stakeholders the custom dashboards they require."
       }
     },
     "references": {
@@ -16946,6 +16962,10 @@ window.MCPA_QUESTIONS = [
       {
         "letter": "D",
         "text": "Use Anypoint Visualizer flow diagrams in place of configuring alerts."
+      },
+      {
+        "letter": "E",
+        "text": "Turn on API Functional Monitoring to retain the audit records."
       }
     ],
     "explanation": "Correct answers: A and B. Retaining audit-level records satisfies the retention requirement, and an alert policy on the compliance metrics detects deviations as they happen. Setting the log level to INFO (C) does not produce an audit trail, and Visualizer (D) is a graph of the application network, not an alerting mechanism.",
@@ -16965,6 +16985,10 @@ window.MCPA_QUESTIONS = [
       "D": {
         "type": "Incorrect",
         "text": "Visualizer diagrams do not replace alerting on compliance metrics."
+      },
+      "E": {
+        "type": "Incorrect",
+        "text": "Functional Monitoring runs scheduled API tests; it does not produce or retain an audit trail."
       }
     },
     "references": {
@@ -17244,6 +17268,10 @@ window.MCPA_QUESTIONS = [
       {
         "letter": "D",
         "text": "Rely on API Manager client-ID enforcement alone to detect abnormal usage."
+      },
+      {
+        "letter": "E",
+        "text": "Forward logs to an external system using the platform's default retention settings."
       }
     ],
     "explanation": "Correct answers: A and B. Alerts (including anomaly-based detection) on the key API metrics satisfy the proactive-detection goal, and configuring retention to the minimum required with purging satisfies GDPR. Retaining all logs indefinitely (C) violates GDPR, and client-ID enforcement (D) controls access but does not detect abnormal usage patterns.",
@@ -17263,6 +17291,10 @@ window.MCPA_QUESTIONS = [
       "D": {
         "type": "Incorrect",
         "text": "Client-ID enforcement controls access; it does not detect abnormal usage."
+      },
+      "E": {
+        "type": "Incorrect",
+        "text": "The default retention may exceed the GDPR window, so relying on it does not satisfy the data-retention rule."
       }
     },
     "references": {
@@ -19137,6 +19169,10 @@ window.MCPA_QUESTIONS = [
       {
         "letter": "D",
         "text": "Upgrade the vCore size from 0.1 vCore to 0.2 vCore"
+      },
+      {
+        "letter": "E",
+        "text": "Front the API with a Dedicated Load Balancer to reduce the database query latency."
       }
     ],
     "explanation": "Correct answers: A and D. The Master Look Up API is slow because each cache miss triggers a database query to refresh the cache, and the latency of those queries dominates the response time. Two independent levers address this. First, the HTTP Caching policy (A) caches HTTP responses for reuse: according to MuleSoft, \"Caching these responses speeds up the response time for user requests and reduces the load on the backend,\" and on a cache hit \"the stored response is returned\" without calling the backend, so repeated master-data lookups are served from the cache and the database is not queried at all. Second, the API is deployed on 0.1 vCore CloudHub workers, which \"provide limited CPU and I/O for apps with smaller workloads\" and \"can burst to higher CPU speeds for a short time\" rather than delivering consistent performance. Upgrading each worker to 0.2 vCore (D) raises worker memory from 1 GB to 2 GB and heap memory from 500 MB to 1 GB, giving the API more resources to serve the cached lookups. Option B (adding another 0.1 vCore worker) does not help: although CloudHub's HTTP load balancing service distributes requests across workers on a round-robin basis, each request is still served by a single 0.1 vCore worker with the same limited CPU and I/O, so extra workers add capacity rather than reduce the per-request latency caused by the database queries. Option C (locking) is wrong because Object Stores \"do not support transactional access or modification,\" and locking to synchronize access to the Object Store would serialize the cache and tend to increase, not decrease, response time.",
@@ -19156,6 +19192,10 @@ window.MCPA_QUESTIONS = [
       "D": {
         "type": "Correct",
         "text": "0.1 vCore workers provide limited CPU and I/O and can only burst to higher CPU speeds for short periods. Upgrading to 0.2 vCore doubles worker memory from 1 GB to 2 GB and heap memory from 500 MB to 1 GB, giving the API more resources to serve the cached lookups."
+      },
+      "E": {
+        "type": "Incorrect",
+        "text": "A load balancer distributes traffic; it does not reduce the latency of the database queries that dominate the response time."
       }
     },
     "references": {
