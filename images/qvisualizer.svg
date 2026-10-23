@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="260" viewBox="0 0 620 260" font-family="Arial, sans-serif" font-size="12">
+  <text x="310" y="24" text-anchor="middle" font-size="13" font-weight="bold">Visualizer View (partial)</text>
+
+  <rect x="40" y="60" width="160" height="55" rx="8" fill="#e8f4ff" stroke="#4a7bbf" stroke-width="2"/>
+  <text x="120" y="80" text-anchor="middle" font-weight="bold">Checkout Exp API</text>
+  <text x="120" y="97" text-anchor="middle">tags: mobile</text>
+
+  <rect x="240" y="60" width="160" height="55" rx="8" fill="#fff4e0" stroke="#c77b2a" stroke-width="2"/>
+  <text x="320" y="80" text-anchor="middle" font-weight="bold">Order Process API</text>
+  <text x="320" y="97" text-anchor="middle">tags: order</text>
+
+  <rect x="440" y="60" width="160" height="55" rx="8" fill="#f0f0f0" stroke="#666" stroke-width="2"/>
+  <text x="520" y="80" text-anchor="middle" font-weight="bold">SAP Orders API</text>
+  <text x="520" y="97" text-anchor="middle">tags: sap, bronze</text>
+
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/>
+    </marker>
+  </defs>
+  <line x1="200" y1="87" x2="240" y2="87" stroke="#333" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="400" y1="87" x2="440" y2="87" stroke="#333" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="40" y="170" width="280" height="55" rx="8" fill="#fff" stroke="#999" stroke-width="2"/>
+  <text x="180" y="190" text-anchor="middle">Legend: nodes = deployed apps,</text>
+  <text x="180" y="208" text-anchor="middle">edges = observed invocations,</text>
+  <text x="180" y="226" text-anchor="middle">tags = labels from properties</text>
+
+  <rect x="360" y="170" width="240" height="55" rx="8" fill="#fff" stroke="#999" stroke-width="2"/>
+  <text x="480" y="196" text-anchor="middle">Time range selector:</text>
+  <text x="480" y="214" text-anchor="middle">last 1 hour / 24 hours / 7 days</text>
+</svg>
