@@ -342,7 +342,7 @@
     }
 
     // Prompt
-    dom.questionPrompt.textContent = q.image ? 'Refer to the exhibit. ' + q.prompt : q.prompt;
+    dom.questionPrompt.textContent = (q.image && !q.prompt.startsWith('Refer to the exhibit.')) ? 'Refer to the exhibit. ' + q.prompt : q.prompt;
     if (q.image) {
       const img = document.createElement('img');
       img.src = q.image;
