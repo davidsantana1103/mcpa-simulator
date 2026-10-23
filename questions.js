@@ -3512,11 +3512,11 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "D",
-        "text": "Email the RAML file to every development team and ask them to import it into their projects"
+        "text": "Store the RAML file in a shared source-control repository and grant each team read access to it"
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Correct answer: C. Publishing the specification to Exchange makes it discoverable, documents it, and provides a try-it console and a mock for consumers. A specification is not a deployed application (B), policies are applied to API instances rather than specifications (A), and emailing the file (D) provides no discovery or documentation.",
+    "explanation": "Correct answer: C. Publishing the specification to Exchange makes it discoverable, documents it, and provides a try-it console and a mock for consumers. A specification is not a deployed application (B), policies are applied to API instances rather than specifications (A), and a shared repository (D) provides no discovery, documentation, or try-it experience.",
     "rationales": {
       "C": {
         "type": "Correct",
@@ -3532,7 +3532,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "Emailing the file gives no discovery, documentation, or try-it experience."
+        "text": "A shared repository gives no discovery, documentation, or try-it experience, and changes are not visible to consumers."
       }
     },
     "references": {
@@ -11874,15 +11874,15 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Hard-code the URLs and edit them manually in production after deployment"
+        "text": "Deploy a properties file alongside each artifact containing the environment URLs, and load it at runtime by scanning the classpath for a file whose name matches the environment name"
       },
       {
         "letter": "D",
-        "text": "Store the backend URLs in the Exchange asset descriptions for each environment"
+        "text": "Runtime property placeholders resolved at deployment time from environment-specific values in the artifact\u2019s release notes"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Correct answer: B. Mule applications use property placeholders for environment-specific values, so one artifact can be built and the same tested artifact promoted with properties supplied at deployment. Divergent branches (A) make releases inconsistent, manual edits (C) are error-prone and untested, and Exchange descriptions (D) are not runtime configuration.",
+    "explanation": "Correct answer: B. Mule applications use property placeholders for environment-specific values, so one artifact can be built and the same tested artifact promoted with properties supplied at deployment. Divergent branches (A) make releases inconsistent, Ad-hoc file loading (C) recreates hard-coded fragility, and release notes (D) are not runtime configuration.",
     "rationales": {
       "B": {
         "type": "Correct",
@@ -11894,11 +11894,11 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "Manual changes are error-prone and untested."
+        "text": "Ad-hoc file loading adds the same fragility as hard-coded values, without the tested deployment-time override."
       },
       "D": {
         "type": "Incorrect",
-        "text": "Exchange descriptions are not runtime configuration."
+        "text": "Release notes are documentation, not a mechanism the runtime reads; there is no such resolution path."
       }
     },
     "references": {
@@ -12051,7 +12051,7 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Emailing built JAR files to the operations team for manual deployment"
+        "text": "Pushing built JAR files to a shared artifact repository that the operations team pulls from and deploys by hand"
       },
       {
         "letter": "D",
@@ -13142,7 +13142,7 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Single-worker applications never experience downtime"
+        "text": "A single-worker application is automatically cloned to a hot standby worker in another data center"
       },
       {
         "letter": "C",
@@ -13177,7 +13177,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "A single-worker application is down while its worker is replaced."
+        "text": "Hot standby workers are not provided automatically; a single-worker application is down while its worker is replaced."
       },
       "D": {
         "type": "Incorrect",
@@ -17086,7 +17086,7 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Configure an Anypoint Monitoring alert to email the team on every 500 response"
+        "text": "Configure an Anypoint Monitoring alert that pages the team whenever the API returns a 500 response"
       },
       {
         "letter": "D",
@@ -18931,7 +18931,7 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "D",
-        "text": "The tag replaces the node's layer assignment"
+        "text": "The tag replaces the node's layer assignment, so the layer is derived from the tag in Visualizer"
       }
     ],
     "explanation": "Correct answer: C. Tags set through the anypoint.platform.visualizer.tags property are controlled by the application properties: they appear on the node but cannot be overridden in the UI. Such tags cannot be renamed or removed from the UI (A), they are not scoped to one environment (B), and tags are independent of layers (D).",
@@ -19359,7 +19359,7 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Remove the default cloudhub.io TLS context and use the company certificate as the space's only TLS context"
+        "text": "CloudHub propagates the application's TLS context to the private space's shared ingress, so no DNS change is needed"
       },
       {
         "letter": "D",
@@ -19379,7 +19379,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "The default cloudhub.io TLS context cannot be removed."
+        "text": "An app-level TLS context does not configure the space's shared ingress; the DNS CNAME to the space's public DNS target is still required."
       },
       "D": {
         "type": "Incorrect",
@@ -19395,6 +19395,424 @@ window.MCPA_QUESTIONS = [
         "title": "CloudHub 2.0 Networking Architecture — Custom Certificates and CNAME",
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-networking-guide"
       }
+    }
+  },
+  {
+    "id": "q-323",
+    "number": 323,
+    "title": "API Governance - Enforcing mTLS with a custom policy",
+    "domain": "Governing web APIs on Anypoint Platform",
+    "topics": [
+          "Mutual TLS",
+          "Custom Policy"
+    ],
+    "prompt": "A partner API must be called only by partners whose TLS client certificates are issued by the company’s internal certificate authority. The security team requires mutual TLS: the gateway must validate each client’s certificate against the internal CA before the request reaches the implementation. The validation logic must run inside the gateway for every request. How should the architect meet this requirement?",
+    "options": [
+          {
+                "letter": "A",
+                "text": "Use the built-in IP Allowlist policy, because client certificates are always tied to a fixed set of IP addresses"
+          },
+          {
+                "letter": "B",
+                "text": "Write a custom policy that validates the client certificate from the TLS handshake against the internal CA, and apply it in API Manager"
+          },
+          {
+                "letter": "C",
+                "text": "Ask each partner to also send the certificate in an HTTP header and validate it in the implementation"
+          },
+          {
+                "letter": "D",
+                "text": "Rely on the platform’s HTTPS termination alone, because a server-side certificate proves the client’s identity"
+          }
+    ],
+    "correctAnswers": ["B"],
+    "explanation": "Correct answer: B. Mutual TLS requires the gateway to validate each client’s certificate during the TLS handshake. Anypoint Platform’s built-in policies do not include certificate-chain validation against a custom CA, so a custom policy is needed. IP addresses (A) do not identify a client certificate, moving validation into the implementation (C) defeats the gateway’s purpose, and server-side TLS (D) authenticates the server, not the client.",
+    "rationales": {
+          "B": {
+                "type": "Correct",
+                "text": "Certificate validation against a custom CA in every request is custom-policy territory; API Manager applies it without changing the implementation."
+          },
+          "A": {
+                "type": "Incorrect",
+                "text": "IP allowlisting is not certificate validation and does not prove the caller holds a CA-issued certificate."
+          },
+          "C": {
+                "type": "Incorrect",
+                "text": "A header can be forged and bypassed; the validated handshake certificate cannot."
+          },
+          "D": {
+                "type": "Incorrect",
+                "text": "One-way TLS authenticates the server to the client; it says nothing about the client."
+          }
+    },
+    "references": {
+          "primary": {
+                "title": "API Manager — Custom Policies",
+                "url": "https://docs.mulesoft.com/api-manager/2.x/custom-policies"
+          },
+          "secondary": {
+                "title": "MuleSoft — What Is Mutual TLS?",
+                "url": "https://www.mulesoft.com/resources/api/what-is-mutual-tls"
+          }
+    }
+  },
+  {
+    "id": "q-324",
+    "number": 324,
+    "title": "API Governance - Choosing policies that do not require mTLS alternatives",
+    "domain": "Governing web APIs on Anypoint Platform",
+    "topics": [
+          "Mutual TLS",
+          "Client ID Enforcement",
+          "JWT Validation"
+    ],
+    "prompt": "An architect is securing an Experience API consumed by both mobile apps and partner systems. The team evaluates three enforcement mechanisms: Client ID Enforcement, JWT Validation, and mutual TLS. The mobile channel cannot install client certificates because its app store distribution forbids it. Which conclusion is most correct?",
+    "options": [
+          {
+                "letter": "A",
+                "text": "Mutual TLS must be dropped entirely, because a single API cannot combine transport-level and message-level authentication"
+          },
+          {
+                "letter": "B",
+                "text": "The mobile channel can be authenticated with Client ID Enforcement or JWT validation, while mTLS remains available for partner systems that support certificates"
+          },
+          {
+                "letter": "C",
+                "text": "Client ID Enforcement and mutual TLS are interchangeable; either one fully replaces the other"
+          },
+          {
+                "letter": "D",
+                "text": "JWT validation requires a client certificate, so it cannot be used on this API"
+          }
+    ],
+    "correctAnswers": ["B"],
+    "explanation": "Correct answer: B. Enforcement mechanisms can be combined and are not mutually exclusive. Mobile apps commonly authenticate with client credentials or JWTs, while machine-to-machine partner integrations can use mTLS for stronger caller authentication. Exposing mTLS for partners alongside credentials for mobile (B) is the supported approach; dropping mTLS entirely (A) is unnecessary, the mechanisms are not equivalent (C), and JWT validation works over standard HTTPS without client certificates (D).",
+    "rationales": {
+          "B": {
+                "type": "Correct",
+                "text": "Policies are composable per consumer profile: credentials or tokens for the mobile channel, certificates where the partner can present them."
+          },
+          "A": {
+                "type": "Incorrect",
+                "text": "Policies are composable; transport-level and message-level authentication can coexist on one API."
+          },
+          "C": {
+                "type": "Incorrect",
+                "text": "mTLS authenticates the transport-level caller; client IDs and JWTs authenticate the application and user claims at the message level."
+          },
+          "D": {
+                "type": "Incorrect",
+                "text": "JWT validation verifies a signed token presented by the client; no client certificate is involved."
+          }
+    },
+    "references": {
+          "primary": {
+                "title": "API Manager — Supported Policies",
+                "url": "https://docs.mulesoft.com/api-manager/2.x/policies-list"
+          },
+          "secondary": {
+                "title": "MuleSoft — API Security Best Practices",
+                "url": "https://www.mulesoft.com/resources/api/api-security"
+          }
+    }
+  },
+  {
+    "id": "q-325",
+    "number": 325,
+    "title": "CloudHub Deployment - Dedicated versus shared load balancer",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+          "Dedicated Load Balancer",
+          "Shared Load Balancer"
+    ],
+    "prompt": "A company runs a public Orders API on CloudHub 1.0. The security team requires that the API be exposed only through the company’s own domain name with a custom TLS certificate, and that a security group restrict which source addresses may reach the Mule applications. Which load balancer configuration meets these requirements?",
+    "options": [
+          {
+                "letter": "A",
+                "text": "The shared CloudHub load balancer, with the custom domain configured as a CNAME on the shared load balancer’s DNS name"
+          },
+          {
+                "letter": "B",
+                "text": "A dedicated load balancer inside an Anypoint VPC, with the custom certificate uploaded and a security group limiting source addresses"
+          },
+          {
+                "letter": "C",
+                "text": "A dedicated load balancer outside an Anypoint VPC, because dedicated load balancers do not require a VPC"
+          },
+          {
+                "letter": "D",
+                "text": "No load balancer at all: point the custom domain directly at the application’s worker IP addresses"
+          }
+    ],
+    "correctAnswers": ["B"],
+    "explanation": "Correct answer: B. Custom domains with custom TLS certificates and security groups that filter source traffic require a dedicated load balancer, which in turn must be created inside an Anypoint VPC. The shared load balancer uses cloudhub.io domains with platform certificates (A), a DLB cannot exist outside a VPC (C), and worker IPs are not stable addresses for DNS (D).",
+    "rationales": {
+          "B": {
+                "type": "Correct",
+                "text": "A DLB in a VPC supports custom certificates, custom domains, and security group rules."
+          },
+          "A": {
+                "type": "Incorrect",
+                "text": "The shared load balancer does not accept custom certificates or per-customer security groups."
+          },
+          "C": {
+                "type": "Incorrect",
+                "text": "Dedicated load balancers are VPC resources; no VPC means no DLB."
+          },
+          "D": {
+                "type": "Incorrect",
+                "text": "Worker IPs can change and bypass the load balancing and TLS termination the API needs."
+          }
+    },
+    "references": {
+          "primary": {
+                "title": "Dedicated Load Balancers on CloudHub",
+                "url": "https://docs.mulesoft.com/runtime-cloud/dlb-overview"
+          },
+          "secondary": {
+                "title": "Anypoint VPC Overview",
+                "url": "https://docs.mulesoft.com/runtime-cloud/vpc-overview"
+          }
+    }
+  },
+  {
+    "id": "q-326",
+    "number": 326,
+    "title": "CloudHub Deployment - DLB routing to multiple applications",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+          "Dedicated Load Balancer",
+          "Ingress",
+          "URL Mapping"
+    ],
+    "prompt": "A company wants a single external domain, api.company.com, to serve three Mule applications deployed to CloudHub: /orders/{app name}/orders should reach the Orders API, /customers should reach the Customer API, and /inventory should reach the Inventory API, all over the company’s TLS certificate. Which feature of the dedicated load balancer makes this possible?",
+    "options": [
+          {
+                "letter": "A",
+                "text": "The DLB’s default behavior, which automatically routes each path segment to the application with the matching name"
+          },
+          {
+                "letter": "B",
+                "text": "Ingress URL mapping rules configured on the DLB, which forward each path pattern to the named application"
+          },
+          {
+                "letter": "C",
+                "text": "API Manager SLA tiers, which route each client application to the right backend"
+          },
+          {
+                "letter": "D",
+                "text": "One DLB per application, each owning api.company.com at a different time of day"
+          }
+    ],
+    "correctAnswers": ["B"],
+    "explanation": "Correct answer: B. A dedicated load balancer supports ingress (URL) mapping rules: one DLB with one custom domain and certificate can route path patterns to different Mule applications by their internal DNS name. The mapping is explicit (A is wrong), SLA tiers govern quotas and approval rather than routing (C), and multiple DLBs cannot share one external domain simultaneously (D).",
+    "rationales": {
+          "B": {
+                "type": "Correct",
+                "text": "Ingress mapping is the DLB feature for multiplexing several apps behind one custom domain."
+          },
+          "A": {
+                "type": "Incorrect",
+                "text": "Routing is never automatic; each rule maps a path pattern to an explicit target."
+          },
+          "C": {
+                "type": "Incorrect",
+                "text": "SLA tiers control consumption limits and approval, not HTTP routing."
+          },
+          "D": {
+                "type": "Incorrect",
+                "text": "A domain resolves to one DLB; time-sharing DNS is not a real pattern."
+          }
+    },
+    "references": {
+          "primary": {
+                "title": "Dedicated Load Balancer — Ingress Configuration",
+                "url": "https://docs.mulesoft.com/runtime-cloud/dlb-overview"
+          },
+          "secondary": {
+                "title": "CloudHub — Custom Domains and Certificates",
+                "url": "https://docs.mulesoft.com/runtime-cloud/shared-dlb-custom-domains"
+          }
+    }
+  },
+  {
+    "id": "q-327",
+    "number": 327,
+    "title": "Case Study - FleetTrack architecture (part 1 of 3)",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+          "CloudHub Workers",
+          "Dedicated Load Balancer",
+          "Anypoint VPC"
+    ],
+    "prompt": "CASE STUDY (part 1 of 3) — FleetTrack, a logistics company, is deploying a new Orders API to CloudHub 1.0. The API must reach an on-premises SAP system, be exposed only at api.fleettrack.com with the company’s TLS certificate, and survive the loss of any single data center. The deployment will use an Anypoint VPC with a dedicated load balancer. For the application itself, which CloudHub configuration contributes most directly to surviving a data-center loss?",
+    "options": [
+          {
+                "letter": "A",
+                "text": "One large worker (for example, 4.0 vCore), because a single powerful worker processes faster"
+          },
+          {
+                "letter": "B",
+                "text": "Two or more workers, because CloudHub spreads the workers of an application across data centers"
+          },
+          {
+                "letter": "C",
+                "text": "Two applications deployed with identical code, one per data center, kept in sync manually"
+          },
+          {
+                "letter": "D",
+                "text": "A fractional worker with automatic restarts enabled, which guarantees faster recovery"
+          }
+    ],
+    "correctAnswers": ["B"],
+    "explanation": "Correct answer: B. CloudHub distributes an application’s workers across data centers (or availability zones, depending on deployment), so a multi-worker application keeps serving traffic if one data center fails. A single large worker is still a single point of failure (A), duplicate manually-synced applications are an anti-pattern (C), and fractional workers offer no data-center redundancy (D).",
+    "rationales": {
+          "B": {
+                "type": "Correct",
+                "text": "Multiple workers give data-center-level redundancy; the platform handles placement."
+          },
+          "A": {
+                "type": "Incorrect",
+                "text": "One worker, however large, fails entirely with its data center."
+          },
+          "C": {
+                "type": "Incorrect",
+                "text": "Manual dual deployment is error-prone and not the platform’s supported model."
+          },
+          "D": {
+                "type": "Incorrect",
+                "text": "Fractional size and restarts affect capacity, not data-center placement."
+          }
+    },
+    "references": {
+          "primary": {
+                "title": "CloudHub — Application Reliability",
+                "url": "https://docs.mulesoft.com/runtime-cloud/shared-cloudhub-reliability"
+          },
+          "secondary": {
+                "title": "CloudHub — Worker Sizing",
+                "url": "https://docs.mulesoft.com/runtime-cloud/shared-worker-sizing"
+          }
+    }
+  },
+  {
+    "id": "q-328",
+    "number": 328,
+    "title": "Case Study - FleetTrack architecture (part 2 of 3)",
+    "domain": "Deploying API implementations to CloudHub",
+    "topics": [
+          "Dedicated Load Balancer",
+          "TLS",
+          "VPC Peering"
+    ],
+    "prompt": "CASE STUDY (part 2 of 3) — FleetTrack’s Orders API is deployed with two workers inside an Anypoint VPC. The API must be exposed only at api.fleettrack.com with FleetTrack’s own TLS certificate, and nothing but the load balancer may accept public traffic. Which configuration meets these requirements?",
+    "options": [
+          {
+                "letter": "A",
+                "text": "Use the shared CloudHub load balancer with a CNAME from api.fleettrack.com, keeping the default certificate"
+          },
+          {
+                "letter": "B",
+                "text": "Create a dedicated load balancer in the Anypoint VPC, upload the company certificate, point a DNS CNAME at the DLB, and keep the application’s HTTP port private"
+          },
+          {
+                "letter": "C",
+                "text": "Register api.fleettrack.com directly against each worker’s public IP with the certificate embedded in the application"
+          },
+          {
+                "letter": "D",
+                "text": "VPC-peer the Anypoint VPC with the corporate network so partners resolve api.fleettrack.com privately"
+          }
+    ],
+    "correctAnswers": ["B"],
+    "explanation": "Correct answer: B. Custom domain plus custom certificate plus restricted public entry is exactly the dedicated load balancer’s role inside an Anypoint VPC: it terminates TLS with the uploaded certificate and forwards to the application over the private network. The shared load balancer cannot use custom certificates (A), worker IPs are unstable and bypass TLS termination (C), and VPC peering is for private connectivity, not partner-facing DNS (D).",
+    "rationales": {
+          "B": {
+                "type": "Correct",
+                "text": "DLB in a VPC with an uploaded certificate is the platform’s supported custom-domain pattern."
+          },
+          "A": {
+                "type": "Incorrect",
+                "text": "The shared load balancer serves platform certificates on cloudhub.io domains only."
+          },
+          "C": {
+                "type": "Incorrect",
+                "text": "DNS to worker IPs bypasses the LB and breaks with worker changes."
+          },
+          "D": {
+                "type": "Incorrect",
+                "text": "Peering connects networks; it does not publish a public HTTPS domain."
+          }
+    },
+    "references": {
+          "primary": {
+                "title": "Dedicated Load Balancers",
+                "url": "https://docs.mulesoft.com/runtime-cloud/dlb-overview"
+          },
+          "secondary": {
+                "title": "Anypoint VPC — Connectivity",
+                "url": "https://docs.mulesoft.com/runtime-cloud/vpc-peering"
+          }
+    }
+  },
+  {
+    "id": "q-329",
+    "number": 329,
+    "title": "Case Study - FleetTrack architecture (part 3 of 3)",
+    "domain": "Meeting API quality goals",
+    "topics": [
+          "Functional Testing",
+          "MUnit",
+          "CI/CD"
+    ],
+    "prompt": "CASE STUDY (part 3 of 3) — Before any FleetTrack Orders API release goes to production, the team must prove that the SAP-calling flows behave correctly and that a regression in the order-enrichment logic is caught automatically. SAP is not reachable from the CI environment. Which approach meets both needs?",
+    "options": [
+          {
+                "letter": "A",
+                "text": "MUnit tests with the SAP connector mocked, run automatically in the CI pipeline on every commit"
+          },
+          {
+                "letter": "B",
+                "text": "Manual smoke tests against production after each release, because SAP is unreachable from CI"
+          },
+          {
+                "letter": "C",
+                "text": "An Anypoint Monitoring alert on 5xx responses, which catches regressions before users do"
+          },
+          {
+                "letter": "D",
+                "text": "Load tests in Staging after release, which exercise the same code paths as unit tests"
+          }
+    ],
+    "correctAnswers": ["A"],
+    "explanation": "Correct answer: A. MUnit lets the team mock the SAP connector so the flow logic can be tested in CI without connectivity, and running it on every commit makes regression detection automatic. Manual production smoke tests (B) are late and risky, alerts (C) report failures rather than prevent them, and load tests (D) measure performance, not correctness.",
+    "rationales": {
+          "A": {
+                "type": "Correct",
+                "text": "Mocked connectors plus MUnit in CI give deterministic, automated functional verification per commit."
+          },
+          "B": {
+                "type": "Incorrect",
+                "text": "Testing after release in production finds regressions with users already affected."
+          },
+          "C": {
+                "type": "Incorrect",
+                "text": "Alerts are detection of incidents, not verification of logic."
+          },
+          "D": {
+                "type": "Incorrect",
+                "text": "Load testing answers capacity questions, not functional correctness."
+          }
+    },
+    "references": {
+          "primary": {
+                "title": "MUnit — Testing Mule Applications",
+                "url": "https://docs.mulesoft.com/munit/2.3/"
+          },
+          "secondary": {
+                "title": "MUnit — Mock Processors",
+                "url": "https://docs.mulesoft.com/munit/2.3/mock-event-processors"
+          }
     }
   }
 ]
