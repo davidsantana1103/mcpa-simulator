@@ -59,8 +59,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/resources/api/what-is-an-api"
       }
     }
-  }
-,
+  },
   {
     "id": "q-002",
     "number": 2,
@@ -121,8 +120,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/gateway/latest/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-003",
     "number": 3,
@@ -183,8 +181,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/api/what-is-an-application-network"
       }
     }
-  }
-,
+  },
   {
     "id": "q-004",
     "number": 4,
@@ -245,8 +242,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-005",
     "number": 5,
@@ -316,8 +312,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/glossary"
       }
     }
-  }
-,
+  },
   {
     "id": "q-006",
     "number": 6,
@@ -378,8 +373,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/latest-overview-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-007",
     "number": 7,
@@ -440,8 +434,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/resources/api/what-is-rest-api-design"
       }
     }
-  }
-,
+  },
   {
     "id": "q-008",
     "number": 8,
@@ -502,8 +495,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-009",
     "number": 9,
@@ -564,8 +556,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/resources/api/what-is-rest-api-design"
       }
     }
-  }
-,
+  },
   {
     "id": "q-010",
     "number": 10,
@@ -626,8 +617,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/resources/api/restful-api"
       }
     }
-  }
-,
+  },
   {
     "id": "q-011",
     "number": 11,
@@ -688,8 +678,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/api/application-network-integration-middleware"
       }
     }
-  }
-,
+  },
   {
     "id": "q-012",
     "number": 12,
@@ -750,8 +739,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
     }
-  }
-,
+  },
   {
     "id": "q-013",
     "number": 13,
@@ -812,8 +800,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
     }
-  }
-,
+  },
   {
     "id": "q-014",
     "number": 14,
@@ -874,8 +861,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
     }
-  }
-,
+  },
   {
     "id": "q-015",
     "number": 15,
@@ -945,8 +931,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-016",
     "number": 16,
@@ -1007,8 +992,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/api/what-is-an-application-network"
       }
     }
-  }
-,
+  },
   {
     "id": "q-017",
     "number": 17,
@@ -1069,8 +1053,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/glossary"
       }
     }
-  }
-,
+  },
   {
     "id": "q-018",
     "number": 18,
@@ -1131,8 +1114,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/api-gateway-capabilities-mule4"
       }
     }
-  }
-,
+  },
   {
     "id": "q-019",
     "number": 19,
@@ -1193,8 +1175,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-020",
     "number": 20,
@@ -1255,8 +1236,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/glossary"
       }
     }
-  }
-,
+  },
   {
     "id": "q-021",
     "number": 21,
@@ -1317,8 +1297,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-022",
     "number": 22,
@@ -1379,8 +1358,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
     }
-  }
-,
+  },
   {
     "id": "q-023",
     "number": 23,
@@ -1441,8 +1419,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/api-integration/strategy/integration-analytics-dashboard/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-024",
     "number": 24,
@@ -1512,8 +1489,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.salesforce.com/blog/what-is-a-center-for-enablement/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-025",
     "number": 25,
@@ -1574,8 +1550,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://trailhead.salesforce.com/content/learn/modules/mulesoft-catalyst-playbooks/learn-about-the-mulesoft-catalyst-delivery-methodology"
       }
     }
-  }
-,
+  },
   {
     "id": "q-026",
     "number": 26,
@@ -1636,8 +1611,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/api-integration/strategy/build-reusable-apis-track-kpis/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-027",
     "number": 27,
@@ -1698,8 +1672,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
     }
-  }
-,
+  },
   {
     "id": "q-028",
     "number": 28,
@@ -1710,7 +1683,7 @@ window.MCPA_QUESTIONS = [
       "Control Plane",
       "Runtime Plane"
     ],
-    "prompt": "Refer to the exhibit.\nA bank must keep all payment message payloads inside its own data center for regulatory reasons, while its teams continue designing APIs and managing governance through the MuleSoft-hosted console. The exhibit shows four hosting patterns.\nWhich option matches these requirements?",
+    "prompt": "A bank must keep all payment message payloads inside its own data center for regulatory reasons, while its teams continue designing APIs and managing governance through the MuleSoft-hosted console. The exhibit shows four hosting patterns.\nWhich option matches these requirements?",
     "options": [
       {
         "letter": "A",
@@ -1762,8 +1735,7 @@ window.MCPA_QUESTIONS = [
       }
     },
     "image": "images/q028arch.svg"
-  }
-,
+  },
   {
     "id": "q-029",
     "number": 29,
@@ -1824,8 +1796,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/catalyst"
       }
     }
-  }
-,
+  },
   {
     "id": "q-030",
     "number": 30,
@@ -1886,8 +1857,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://trailhead.salesforce.com/content/learn/modules/mulesoft-catalyst-playbooks/learn-about-the-mulesoft-catalyst-delivery-methodology"
       }
     }
-  }
-,
+  },
   {
     "id": "q-031",
     "number": 31,
@@ -1948,8 +1918,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/catalyst"
       }
     }
-  }
-,
+  },
   {
     "id": "q-032",
     "number": 32,
@@ -2010,8 +1979,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/support-and-services/consulting"
       }
     }
-  }
-,
+  },
   {
     "id": "q-033",
     "number": 33,
@@ -2072,8 +2040,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/support-and-services/consulting"
       }
     }
-  }
-,
+  },
   {
     "id": "q-034",
     "number": 34,
@@ -2134,8 +2101,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-manager/deploying-to-your-own-servers"
       }
     }
-  }
-,
+  },
   {
     "id": "q-035",
     "number": 35,
@@ -2196,8 +2162,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/hosting-home/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-036",
     "number": 36,
@@ -2258,8 +2223,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/eu-control-plane/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-037",
     "number": 37,
@@ -2320,8 +2284,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/hosting-home/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-038",
     "number": 38,
@@ -2382,8 +2345,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/hosting-home/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-039",
     "number": 39,
@@ -2444,8 +2406,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/hosting-home/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-040",
     "number": 40,
@@ -2506,8 +2467,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/access-management/conf-saml-sso"
       }
     }
-  }
-,
+  },
   {
     "id": "q-041",
     "number": 41,
@@ -2568,8 +2528,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/access-management/conf-client-mgmt-pf-task"
       }
     }
-  }
-,
+  },
   {
     "id": "q-042",
     "number": 42,
@@ -2630,8 +2589,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
       }
     }
-  }
-,
+  },
   {
     "id": "q-043",
     "number": 43,
@@ -2692,8 +2650,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
       }
     }
-  }
-,
+  },
   {
     "id": "q-044",
     "number": 44,
@@ -2763,8 +2720,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
       }
     }
-  }
-,
+  },
   {
     "id": "q-045",
     "number": 45,
@@ -2825,8 +2781,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
       }
     }
-  }
-,
+  },
   {
     "id": "q-046",
     "number": 46,
@@ -2887,8 +2842,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/hosting-home/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-047",
     "number": 47,
@@ -2949,8 +2903,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/control-planes/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-048",
     "number": 48,
@@ -3011,8 +2964,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-integrate-log-system"
       }
     }
-  }
-,
+  },
   {
     "id": "q-049",
     "number": 49,
@@ -3073,8 +3025,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mq/mq-understanding"
       }
     }
-  }
-,
+  },
   {
     "id": "q-050",
     "number": 50,
@@ -3135,8 +3086,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/hosting-home/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-051",
     "number": 51,
@@ -3206,8 +3156,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-fabric/latest/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-052",
     "number": 52,
@@ -3268,8 +3217,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/apikit/latest/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-053",
     "number": 53,
@@ -3330,8 +3278,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/design-center/design-publish"
       }
     }
-  }
-,
+  },
   {
     "id": "q-054",
     "number": 54,
@@ -3392,8 +3339,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-055",
     "number": 55,
@@ -3454,8 +3400,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/design-center/design-publish"
       }
     }
-  }
-,
+  },
   {
     "id": "q-056",
     "number": 56,
@@ -3516,8 +3461,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/asset-versions"
       }
     }
-  }
-,
+  },
   {
     "id": "q-057",
     "number": 57,
@@ -3587,8 +3531,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-058",
     "number": 58,
@@ -3649,8 +3592,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-059",
     "number": 59,
@@ -3711,8 +3653,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/about-sharing-assets"
       }
     }
-  }
-,
+  },
   {
     "id": "q-060",
     "number": 60,
@@ -3773,8 +3714,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/about-sharing-assets"
       }
     }
-  }
-,
+  },
   {
     "id": "q-061",
     "number": 61,
@@ -3835,8 +3775,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-062",
     "number": 62,
@@ -3897,8 +3836,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-063",
     "number": 63,
@@ -3968,8 +3906,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-064",
     "number": 64,
@@ -4030,8 +3967,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/manage-versions"
       }
     }
-  }
-,
+  },
   {
     "id": "q-065",
     "number": 65,
@@ -4041,7 +3977,7 @@ window.MCPA_QUESTIONS = [
       "Semantic Versioning",
       "Backward Compatibility"
     ],
-    "prompt": "Refer to the exhibit.\nAn Orders API at version 1.5.0 is consumed by several internal teams. The team is about to change an optional query parameter named region into a required parameter, and must decide how to version the change so existing consumers are not broken. The exhibit shows four possible version outcomes.\nWhich option is correct?",
+    "prompt": "An Orders API at version 1.5.0 is consumed by several internal teams. The team is about to change an optional query parameter named region into a required parameter, and must decide how to version the change so existing consumers are not broken. The exhibit shows four possible version outcomes.\nWhich option is correct?",
     "options": [
       {
         "letter": "A",
@@ -4093,8 +4029,7 @@ window.MCPA_QUESTIONS = [
       }
     },
     "image": "images/q065arch.svg"
-  }
-,
+  },
   {
     "id": "q-066",
     "number": 66,
@@ -4155,8 +4090,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/manage-versions"
       }
     }
-  }
-,
+  },
   {
     "id": "q-067",
     "number": 67,
@@ -4217,8 +4151,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/asset-versions"
       }
     }
-  }
-,
+  },
   {
     "id": "q-068",
     "number": 68,
@@ -4279,8 +4212,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/manage-versions"
       }
     }
-  }
-,
+  },
   {
     "id": "q-069",
     "number": 69,
@@ -4350,8 +4282,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/manage-versions"
       }
     }
-  }
-,
+  },
   {
     "id": "q-070",
     "number": 70,
@@ -4412,8 +4343,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/api-integration/strategy/overcome-the-challenges-of-evolving-legacy-architectures"
       }
     }
-  }
-,
+  },
   {
     "id": "q-071",
     "number": 71,
@@ -4474,8 +4404,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/api-integration/strategy/overcome-the-challenges-of-evolving-legacy-architectures"
       }
     }
-  }
-,
+  },
   {
     "id": "q-072",
     "number": 72,
@@ -4536,8 +4465,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/api-integration/strategy/overcome-the-challenges-of-evolving-legacy-architectures"
       }
     }
-  }
-,
+  },
   {
     "id": "q-073",
     "number": 73,
@@ -4598,8 +4526,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/api-integration/strategy/overcome-the-challenges-of-evolving-legacy-architectures"
       }
     }
-  }
-,
+  },
   {
     "id": "q-074",
     "number": 74,
@@ -4660,8 +4587,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/api-integration/strategy/overcome-the-challenges-of-evolving-legacy-architectures"
       }
     }
-  }
-,
+  },
   {
     "id": "q-075",
     "number": 75,
@@ -4731,8 +4657,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/api-integration/strategy/overcome-the-challenges-of-evolving-legacy-architectures"
       }
     }
-  }
-,
+  },
   {
     "id": "q-076",
     "number": 76,
@@ -4793,8 +4718,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-077",
     "number": 77,
@@ -4855,8 +4779,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/resources/api/restful-api"
       }
     }
-  }
-,
+  },
   {
     "id": "q-078",
     "number": 78,
@@ -4917,8 +4840,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/resources/api/restful-api"
       }
     }
-  }
-,
+  },
   {
     "id": "q-079",
     "number": 79,
@@ -4979,8 +4901,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-http-caching"
       }
     }
-  }
-,
+  },
   {
     "id": "q-080",
     "number": 80,
@@ -5041,8 +4962,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/resources/api/what-is-rest-api-design"
       }
     }
-  }
-,
+  },
   {
     "id": "q-081",
     "number": 81,
@@ -5112,8 +5032,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-082",
     "number": 82,
@@ -5174,8 +5093,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
     }
-  }
-,
+  },
   {
     "id": "q-083",
     "number": 83,
@@ -5236,8 +5154,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-084",
     "number": 84,
@@ -5298,8 +5215,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
     }
-  }
-,
+  },
   {
     "id": "q-085",
     "number": 85,
@@ -5360,8 +5276,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-086",
     "number": 86,
@@ -5422,8 +5337,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-087",
     "number": 87,
@@ -5484,8 +5398,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-088",
     "number": 88,
@@ -5555,8 +5468,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
     }
-  }
-,
+  },
   {
     "id": "q-089",
     "number": 89,
@@ -5617,8 +5529,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-090",
     "number": 90,
@@ -5679,8 +5590,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
     }
-  }
-,
+  },
   {
     "id": "q-091",
     "number": 91,
@@ -5741,8 +5651,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-092",
     "number": 92,
@@ -5803,8 +5712,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-093",
     "number": 93,
@@ -5865,8 +5773,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
     }
-  }
-,
+  },
   {
     "id": "q-094",
     "number": 94,
@@ -5927,8 +5834,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-095",
     "number": 95,
@@ -5989,8 +5895,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-096",
     "number": 96,
@@ -6051,8 +5956,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/learn-apis/api-led-connectivity/apis-great-architecture/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-097",
     "number": 97,
@@ -6113,8 +6017,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-098",
     "number": 98,
@@ -6175,8 +6078,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
     }
-  }
-,
+  },
   {
     "id": "q-099",
     "number": 99,
@@ -6237,8 +6139,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-100",
     "number": 100,
@@ -6299,8 +6200,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-101",
     "number": 101,
@@ -6361,8 +6261,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
     }
-  }
-,
+  },
   {
     "id": "q-102",
     "number": 102,
@@ -6423,8 +6322,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-103",
     "number": 103,
@@ -6485,8 +6383,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-104",
     "number": 104,
@@ -6547,8 +6444,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-105",
     "number": 105,
@@ -6609,8 +6505,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
     }
-  }
-,
+  },
   {
     "id": "q-106",
     "number": 106,
@@ -6671,8 +6566,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-107",
     "number": 107,
@@ -6733,8 +6627,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
     }
-  }
-,
+  },
   {
     "id": "q-108",
     "number": 108,
@@ -6795,8 +6688,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-109",
     "number": 109,
@@ -6857,8 +6749,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/lp/whitepaper/api/api-led-connectivity"
       }
     }
-  }
-,
+  },
   {
     "id": "q-110",
     "number": 110,
@@ -6919,8 +6810,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.salesforce.com/blog/api-led-connectivity/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-111",
     "number": 111,
@@ -6981,8 +6871,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/datagraph/query-unified-schema"
       }
     }
-  }
-,
+  },
   {
     "id": "q-112",
     "number": 112,
@@ -7043,8 +6932,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/datagraph/add-api-to-unified-schema"
       }
     }
-  }
-,
+  },
   {
     "id": "q-113",
     "number": 113,
@@ -7105,8 +6993,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/datagraph/query-unified-schema"
       }
     }
-  }
-,
+  },
   {
     "id": "q-114",
     "number": 114,
@@ -7167,8 +7054,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/datagraph/security"
       }
     }
-  }
-,
+  },
   {
     "id": "q-115",
     "number": 115,
@@ -7229,8 +7115,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/datagraph/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-116",
     "number": 116,
@@ -7291,8 +7176,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/datagraph/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-117",
     "number": 117,
@@ -7362,8 +7246,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/datagraph/query-unified-schema"
       }
     }
-  }
-,
+  },
   {
     "id": "q-118",
     "number": 118,
@@ -7424,8 +7307,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/create-instance-task"
       }
     }
-  }
-,
+  },
   {
     "id": "q-119",
     "number": 119,
@@ -7486,8 +7368,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/api-instance-landing-page"
       }
     }
-  }
-,
+  },
   {
     "id": "q-120",
     "number": 120,
@@ -7548,8 +7429,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/access-management/business-groups"
       }
     }
-  }
-,
+  },
   {
     "id": "q-121",
     "number": 121,
@@ -7610,8 +7490,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/access-management/environments"
       }
     }
-  }
-,
+  },
   {
     "id": "q-122",
     "number": 122,
@@ -7681,8 +7560,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/api-contracts-landing-page"
       }
     }
-  }
-,
+  },
   {
     "id": "q-123",
     "number": 123,
@@ -7743,8 +7621,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/defining-sla-tiers"
       }
     }
-  }
-,
+  },
   {
     "id": "q-124",
     "number": 124,
@@ -7805,8 +7682,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-spike-control"
       }
     }
-  }
-,
+  },
   {
     "id": "q-125",
     "number": 125,
@@ -7867,8 +7743,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
     }
-  }
-,
+  },
   {
     "id": "q-126",
     "number": 126,
@@ -7929,8 +7804,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
     }
-  }
-,
+  },
   {
     "id": "q-127",
     "number": 127,
@@ -7991,8 +7865,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
     }
-  }
-,
+  },
   {
     "id": "q-128",
     "number": 128,
@@ -8062,8 +7935,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/policies-ootb-landing-page"
       }
     }
-  }
-,
+  },
   {
     "id": "q-129",
     "number": 129,
@@ -8124,8 +7996,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-fragment"
       }
     }
-  }
-,
+  },
   {
     "id": "q-130",
     "number": 130,
@@ -8186,8 +8057,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-openid-token-enforcement"
       }
     }
-  }
-,
+  },
   {
     "id": "q-131",
     "number": 131,
@@ -8248,8 +8118,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting-sla"
       }
     }
-  }
-,
+  },
   {
     "id": "q-132",
     "number": 132,
@@ -8310,8 +8179,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-fragment"
       }
     }
-  }
-,
+  },
   {
     "id": "q-133",
     "number": 133,
@@ -8372,8 +8240,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
     }
-  }
-,
+  },
   {
     "id": "q-134",
     "number": 134,
@@ -8434,8 +8301,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/api-gateway-capabilities-mule4"
       }
     }
-  }
-,
+  },
   {
     "id": "q-135",
     "number": 135,
@@ -8496,8 +8362,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/gateway/latest/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-136",
     "number": 136,
@@ -8558,8 +8423,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/api-gateway-capabilities-mule4"
       }
     }
-  }
-,
+  },
   {
     "id": "q-137",
     "number": 137,
@@ -8620,8 +8484,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-138",
     "number": 138,
@@ -8682,8 +8545,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/gateway/latest/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-139",
     "number": 139,
@@ -8744,8 +8606,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
       }
     }
-  }
-,
+  },
   {
     "id": "q-140",
     "number": 140,
@@ -8806,8 +8667,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/about-configure-api-for-oauth"
       }
     }
-  }
-,
+  },
   {
     "id": "q-141",
     "number": 141,
@@ -8868,8 +8728,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/api-contracts-landing-page"
       }
     }
-  }
-,
+  },
   {
     "id": "q-142",
     "number": 142,
@@ -8939,8 +8798,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-jwt-validation"
       }
     }
-  }
-,
+  },
   {
     "id": "q-143",
     "number": 143,
@@ -9001,8 +8859,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-ip-allowlist"
       }
     }
-  }
-,
+  },
   {
     "id": "q-144",
     "number": 144,
@@ -9063,8 +8920,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/manage-client-apps-latest-task"
       }
     }
-  }
-,
+  },
   {
     "id": "q-145",
     "number": 145,
@@ -9125,8 +8981,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-basic-auth-simple"
       }
     }
-  }
-,
+  },
   {
     "id": "q-146",
     "number": 146,
@@ -9187,8 +9042,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement"
       }
     }
-  }
-,
+  },
   {
     "id": "q-147",
     "number": 147,
@@ -9249,8 +9103,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/oauth-grant-types-about"
       }
     }
-  }
-,
+  },
   {
     "id": "q-148",
     "number": 148,
@@ -9311,8 +9164,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/oauth-grant-types-about"
       }
     }
-  }
-,
+  },
   {
     "id": "q-149",
     "number": 149,
@@ -9373,8 +9225,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/api-contracts-landing-page"
       }
     }
-  }
-,
+  },
   {
     "id": "q-150",
     "number": 150,
@@ -9435,8 +9286,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/api-sla-tiers"
       }
     }
-  }
-,
+  },
   {
     "id": "q-151",
     "number": 151,
@@ -9497,8 +9347,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/view-api-contracts"
       }
     }
-  }
-,
+  },
   {
     "id": "q-152",
     "number": 152,
@@ -9559,8 +9408,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/view-api-contracts"
       }
     }
-  }
-,
+  },
   {
     "id": "q-153",
     "number": 153,
@@ -9621,8 +9469,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/to-request-access"
       }
     }
-  }
-,
+  },
   {
     "id": "q-154",
     "number": 154,
@@ -9683,8 +9530,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
     }
-  }
-,
+  },
   {
     "id": "q-155",
     "number": 155,
@@ -9745,8 +9591,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
     }
-  }
-,
+  },
   {
     "id": "q-156",
     "number": 156,
@@ -9807,8 +9652,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
     }
-  }
-,
+  },
   {
     "id": "q-157",
     "number": 157,
@@ -9869,8 +9713,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
     }
-  }
-,
+  },
   {
     "id": "q-158",
     "number": 158,
@@ -9940,8 +9783,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/policies-ootb-landing-page"
       }
     }
-  }
-,
+  },
   {
     "id": "q-159",
     "number": 159,
@@ -10002,8 +9844,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/access-management/configure-client-management-openid-task"
       }
     }
-  }
-,
+  },
   {
     "id": "q-160",
     "number": 160,
@@ -10064,8 +9905,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-openid-token-enforcement"
       }
     }
-  }
-,
+  },
   {
     "id": "q-161",
     "number": 161,
@@ -10126,8 +9966,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
       }
     }
-  }
-,
+  },
   {
     "id": "q-162",
     "number": 162,
@@ -10188,8 +10027,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-pingfederate-oauth-token-enforcement"
       }
     }
-  }
-,
+  },
   {
     "id": "q-163",
     "number": 163,
@@ -10259,8 +10097,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/about-configure-api-for-oauth"
       }
     }
-  }
-,
+  },
   {
     "id": "q-164",
     "number": 164,
@@ -10321,8 +10158,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/pdk/latest/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-165",
     "number": 165,
@@ -10383,8 +10219,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-getting-started"
       }
     }
-  }
-,
+  },
   {
     "id": "q-166",
     "number": 166,
@@ -10445,8 +10280,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-getting-started"
       }
     }
-  }
-,
+  },
   {
     "id": "q-167",
     "number": 167,
@@ -10456,7 +10290,7 @@ window.MCPA_QUESTIONS = [
       "Custom Policy",
       "Exchange"
     ],
-    "prompt": "Refer to the exhibit.\nA C4E team has built a Mule 4 custom policy that several API owner teams in different business groups need to apply to their API instances. The team wants versioned, discoverable distribution that owners can apply without code changes. The exhibit shows four distribution patterns.\nWhich option is the correct approach?",
+    "prompt": "A C4E team has built a Mule 4 custom policy that several API owner teams in different business groups need to apply to their API instances. The team wants versioned, discoverable distribution that owners can apply without code changes. The exhibit shows four distribution patterns.\nWhich option is the correct approach?",
     "options": [
       {
         "letter": "A",
@@ -10504,8 +10338,7 @@ window.MCPA_QUESTIONS = [
       }
     },
     "image": "images/q167arch.svg"
-  }
-,
+  },
   {
     "id": "q-168",
     "number": 168,
@@ -10575,8 +10408,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-directory"
       }
     }
-  }
-,
+  },
   {
     "id": "q-169",
     "number": 169,
@@ -10637,8 +10469,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-170",
     "number": 170,
@@ -10699,8 +10530,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/mule-gateway-config-autodiscovery-mule4"
       }
     }
-  }
-,
+  },
   {
     "id": "q-171",
     "number": 171,
@@ -10761,8 +10591,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/configuring-properties"
       }
     }
-  }
-,
+  },
   {
     "id": "q-172",
     "number": 172,
@@ -10823,8 +10652,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/mule-gateway-config-autodiscovery-mule4"
       }
     }
-  }
-,
+  },
   {
     "id": "q-173",
     "number": 173,
@@ -10885,8 +10713,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-174",
     "number": 174,
@@ -10947,8 +10774,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/proxy-latest-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-175",
     "number": 175,
@@ -11018,8 +10844,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/mule-gateway-config-autodiscovery-mule4"
       }
     }
-  }
-,
+  },
   {
     "id": "q-176",
     "number": 176,
@@ -11080,8 +10905,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-177",
     "number": 177,
@@ -11142,8 +10966,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       }
     }
-  }
-,
+  },
   {
     "id": "q-178",
     "number": 178,
@@ -11204,8 +11027,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       }
     }
-  }
-,
+  },
   {
     "id": "q-179",
     "number": 179,
@@ -11266,8 +11088,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-180",
     "number": 180,
@@ -11328,8 +11149,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-181",
     "number": 181,
@@ -11390,8 +11210,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/vpc-provisioning-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-182",
     "number": 182,
@@ -11452,8 +11271,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub-2/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-183",
     "number": 183,
@@ -11514,8 +11332,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-manager/deploying-to-your-own-servers"
       }
     }
-  }
-,
+  },
   {
     "id": "q-184",
     "number": 184,
@@ -11576,8 +11393,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-manager/server-group-about"
       }
     }
-  }
-,
+  },
   {
     "id": "q-185",
     "number": 185,
@@ -11638,8 +11454,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-fabric/latest/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-186",
     "number": 186,
@@ -11700,8 +11515,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/hosting-home/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-187",
     "number": 187,
@@ -11771,8 +11585,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub-2/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-188",
     "number": 188,
@@ -11833,8 +11646,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-manager/deploying-to-your-own-servers"
       }
     }
-  }
-,
+  },
   {
     "id": "q-189",
     "number": 189,
@@ -11895,8 +11707,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/munit/latest/mock-event-processor"
       }
     }
-  }
-,
+  },
   {
     "id": "q-190",
     "number": 190,
@@ -11957,8 +11768,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/munit/latest/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-191",
     "number": 191,
@@ -12019,8 +11829,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/munit/latest/munit-test-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-192",
     "number": 192,
@@ -12081,8 +11890,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/munit/latest/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-193",
     "number": 193,
@@ -12143,8 +11951,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/munit/latest/munit-test-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-194",
     "number": 194,
@@ -12214,8 +12021,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/munit/latest/mock-event-processor"
       }
     }
-  }
-,
+  },
   {
     "id": "q-195",
     "number": 195,
@@ -12276,8 +12082,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/munit/latest/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-196",
     "number": 196,
@@ -12338,8 +12143,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/deploy-to-cloudhub-2"
       }
     }
-  }
-,
+  },
   {
     "id": "q-197",
     "number": 197,
@@ -12400,8 +12204,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-198",
     "number": 198,
@@ -12462,8 +12265,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/secure-configuration-properties"
       }
     }
-  }
-,
+  },
   {
     "id": "q-199",
     "number": 199,
@@ -12524,8 +12326,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-200",
     "number": 200,
@@ -12586,8 +12387,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/anypoint-cli/latest/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-201",
     "number": 201,
@@ -12657,8 +12457,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-202",
     "number": 202,
@@ -12719,8 +12518,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
     }
-  }
-,
+  },
   {
     "id": "q-203",
     "number": 203,
@@ -12781,8 +12579,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       }
     }
-  }
-,
+  },
   {
     "id": "q-204",
     "number": 204,
@@ -12843,8 +12640,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
     }
-  }
-,
+  },
   {
     "id": "q-205",
     "number": 205,
@@ -12905,8 +12701,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
     }
-  }
-,
+  },
   {
     "id": "q-206",
     "number": 206,
@@ -12967,8 +12762,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       }
     }
-  }
-,
+  },
   {
     "id": "q-207",
     "number": 207,
@@ -13038,8 +12832,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/object-store/osv2-faq"
       }
     }
-  }
-,
+  },
   {
     "id": "q-208",
     "number": 208,
@@ -13100,8 +12893,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/deploying-to-cloudhub"
       }
     }
-  }
-,
+  },
   {
     "id": "q-209",
     "number": 209,
@@ -13162,8 +12954,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       }
     }
-  }
-,
+  },
   {
     "id": "q-210",
     "number": 210,
@@ -13224,8 +13015,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
     }
-  }
-,
+  },
   {
     "id": "q-211",
     "number": 211,
@@ -13286,8 +13076,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
     }
-  }
-,
+  },
   {
     "id": "q-212",
     "number": 212,
@@ -13348,8 +13137,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/managing-queues"
       }
     }
-  }
-,
+  },
   {
     "id": "q-213",
     "number": 213,
@@ -13419,8 +13207,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/deploying-to-cloudhub"
       }
     }
-  }
-,
+  },
   {
     "id": "q-214",
     "number": 214,
@@ -13481,8 +13268,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       }
     }
-  }
-,
+  },
   {
     "id": "q-215",
     "number": 215,
@@ -13543,8 +13329,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
     }
-  }
-,
+  },
   {
     "id": "q-216",
     "number": 216,
@@ -13605,8 +13390,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/hosting-home/hadr-guide"
       }
     }
-  }
-,
+  },
   {
     "id": "q-217",
     "number": 217,
@@ -13667,8 +13451,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/deploying-to-cloudhub"
       }
     }
-  }
-,
+  },
   {
     "id": "q-218",
     "number": 218,
@@ -13729,8 +13512,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/deploying-to-cloudhub"
       }
     }
-  }
-,
+  },
   {
     "id": "q-219",
     "number": 219,
@@ -13800,8 +13582,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       }
     }
-  }
-,
+  },
   {
     "id": "q-220",
     "number": 220,
@@ -13862,8 +13643,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/lb-cert-upload"
       }
     }
-  }
-,
+  },
   {
     "id": "q-221",
     "number": 221,
@@ -13924,8 +13704,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/lb-architecture"
       }
     }
-  }
-,
+  },
   {
     "id": "q-222",
     "number": 222,
@@ -13986,8 +13765,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
       }
     }
-  }
-,
+  },
   {
     "id": "q-223",
     "number": 223,
@@ -14048,8 +13826,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
       }
     }
-  }
-,
+  },
   {
     "id": "q-224",
     "number": 224,
@@ -14119,8 +13896,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/lb-architecture"
       }
     }
-  }
-,
+  },
   {
     "id": "q-225",
     "number": 225,
@@ -14181,8 +13957,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       }
     }
-  }
-,
+  },
   {
     "id": "q-226",
     "number": 226,
@@ -14243,8 +14018,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-227",
     "number": 227,
@@ -14305,8 +14079,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       }
     }
-  }
-,
+  },
   {
     "id": "q-228",
     "number": 228,
@@ -14367,8 +14140,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/vpc-architecture-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-229",
     "number": 229,
@@ -14438,8 +14210,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/vpn-about"
       }
     }
-  }
-,
+  },
   {
     "id": "q-230",
     "number": 230,
@@ -14500,8 +14271,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
     }
-  }
-,
+  },
   {
     "id": "q-231",
     "number": 231,
@@ -14562,8 +14332,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/vpn-about"
       }
     }
-  }
-,
+  },
   {
     "id": "q-232",
     "number": 232,
@@ -14624,8 +14393,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       }
     }
-  }
-,
+  },
   {
     "id": "q-233",
     "number": 233,
@@ -14686,8 +14454,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/hosting-home/hadr-guide"
       }
     }
-  }
-,
+  },
   {
     "id": "q-234",
     "number": 234,
@@ -14757,8 +14524,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/vpn-high-availability"
       }
     }
-  }
-,
+  },
   {
     "id": "q-235",
     "number": 235,
@@ -14819,8 +14585,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/cache-scope"
       }
     }
-  }
-,
+  },
   {
     "id": "q-236",
     "number": 236,
@@ -14881,8 +14646,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-http-caching"
       }
     }
-  }
-,
+  },
   {
     "id": "q-237",
     "number": 237,
@@ -14943,8 +14707,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       }
     }
-  }
-,
+  },
   {
     "id": "q-238",
     "number": 238,
@@ -15005,8 +14768,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-http-caching"
       }
     }
-  }
-,
+  },
   {
     "id": "q-239",
     "number": 239,
@@ -15067,8 +14829,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
     }
-  }
-,
+  },
   {
     "id": "q-240",
     "number": 240,
@@ -15129,8 +14890,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       }
     }
-  }
-,
+  },
   {
     "id": "q-241",
     "number": 241,
@@ -15191,8 +14951,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/object-store/osv2-usage"
       }
     }
-  }
-,
+  },
   {
     "id": "q-242",
     "number": 242,
@@ -15262,8 +15021,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
     }
-  }
-,
+  },
   {
     "id": "q-243",
     "number": 243,
@@ -15324,8 +15082,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/cache-scope"
       }
     }
-  }
-,
+  },
   {
     "id": "q-244",
     "number": 244,
@@ -15386,8 +15143,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/cache-scope"
       }
     }
-  }
-,
+  },
   {
     "id": "q-245",
     "number": 245,
@@ -15448,8 +15204,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/http-connector/latest/http-request-ref"
       }
     }
-  }
-,
+  },
   {
     "id": "q-246",
     "number": 246,
@@ -15510,8 +15265,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/until-successful-scope"
       }
     }
-  }
-,
+  },
   {
     "id": "q-247",
     "number": 247,
@@ -15572,8 +15326,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-object-stores"
       }
     }
-  }
-,
+  },
   {
     "id": "q-248",
     "number": 248,
@@ -15634,8 +15387,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://developer.mulesoft.com/tutorials-and-howtos/custom-api-policies-api-manager-circuit-breaker-policy/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-249",
     "number": 249,
@@ -15696,8 +15448,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/try-scope-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-250",
     "number": 250,
@@ -15758,8 +15509,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/dev-guides/application-network-fault-tolerance/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-251",
     "number": 251,
@@ -15820,8 +15570,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/until-successful-scope"
       }
     }
-  }
-,
+  },
   {
     "id": "q-252",
     "number": 252,
@@ -15891,8 +15640,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/try-scope-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-253",
     "number": 253,
@@ -15953,8 +15701,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/try-scope-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-254",
     "number": 254,
@@ -16015,8 +15762,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting"
       }
     }
-  }
-,
+  },
   {
     "id": "q-255",
     "number": 255,
@@ -16077,8 +15823,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-architecture"
       }
     }
-  }
-,
+  },
   {
     "id": "q-256",
     "number": 256,
@@ -16139,8 +15884,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/latest/tuning-backpressure-maxconcurrency"
       }
     }
-  }
-,
+  },
   {
     "id": "q-257",
     "number": 257,
@@ -16201,8 +15945,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-architecture"
       }
     }
-  }
-,
+  },
   {
     "id": "q-258",
     "number": 258,
@@ -16263,8 +16006,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
     }
-  }
-,
+  },
   {
     "id": "q-259",
     "number": 259,
@@ -16334,8 +16076,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-configure-horizontal-autoscaling"
       }
     }
-  }
-,
+  },
   {
     "id": "q-260",
     "number": 260,
@@ -16396,8 +16137,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
     }
-  }
-,
+  },
   {
     "id": "q-261",
     "number": 261,
@@ -16458,8 +16198,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-architecture"
       }
     }
-  }
-,
+  },
   {
     "id": "q-262",
     "number": 262,
@@ -16520,8 +16259,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-architecture"
       }
     }
-  }
-,
+  },
   {
     "id": "q-263",
     "number": 263,
@@ -16582,8 +16320,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
     }
-  }
-,
+  },
   {
     "id": "q-264",
     "number": 264,
@@ -16644,8 +16381,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-architecture"
       }
     }
-  }
-,
+  },
   {
     "id": "q-265",
     "number": 265,
@@ -16705,8 +16441,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/app-dashboards#overview-charts"
       }
     }
-  }
-,
+  },
   {
     "id": "q-266",
     "number": 266,
@@ -16767,8 +16502,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/logs-search-hf#use-search-filters"
       }
     }
-  }
-,
+  },
   {
     "id": "q-267",
     "number": 267,
@@ -16828,8 +16562,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/alerts#threshold"
       }
     }
-  }
-,
+  },
   {
     "id": "q-268",
     "number": 268,
@@ -16890,8 +16623,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/app-dashboards#overview-charts"
       }
     }
-  }
-,
+  },
   {
     "id": "q-269",
     "number": 269,
@@ -16951,8 +16683,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/app-dashboards#overview-charts"
       }
     }
-  }
-,
+  },
   {
     "id": "q-270",
     "number": 270,
@@ -17012,8 +16743,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/app-dashboards#overview-charts"
       }
     }
-  }
-,
+  },
   {
     "id": "q-271",
     "number": 271,
@@ -17073,8 +16803,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/alerts#threshold"
       }
     }
-  }
-,
+  },
   {
     "id": "q-272",
     "number": 272,
@@ -17135,8 +16864,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/app-dashboards#overview-charts"
       }
     }
-  }
-,
+  },
   {
     "id": "q-273",
     "number": 273,
@@ -17197,8 +16925,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/am-faq"
       }
     }
-  }
-,
+  },
   {
     "id": "q-274",
     "number": 274,
@@ -17259,8 +16986,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/am-faq"
       }
     }
-  }
-,
+  },
   {
     "id": "q-275",
     "number": 275,
@@ -17330,8 +17056,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/am-faq"
       }
     }
-  }
-,
+  },
   {
     "id": "q-276",
     "number": 276,
@@ -17392,8 +17117,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-277",
     "number": 277,
@@ -17454,8 +17178,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-278",
     "number": 278,
@@ -17516,8 +17239,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://blogs.mulesoft.com/dev-guides/government-cloud-monitoring-best-practices"
       }
     }
-  }
-,
+  },
   {
     "id": "q-279",
     "number": 279,
@@ -17578,8 +17300,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/visualizer/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-280",
     "number": 280,
@@ -17640,8 +17361,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/am-faq"
       }
     }
-  }
-,
+  },
   {
     "id": "q-281",
     "number": 281,
@@ -17711,8 +17431,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/am-faq"
       }
     }
-  }
-,
+  },
   {
     "id": "q-282",
     "number": 282,
@@ -17782,8 +17501,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-283",
     "number": 283,
@@ -17844,8 +17562,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-284",
     "number": 284,
@@ -17906,8 +17623,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/am-faq"
       }
     }
-  }
-,
+  },
   {
     "id": "q-285",
     "number": 285,
@@ -17968,8 +17684,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/am-faq"
       }
     }
-  }
-,
+  },
   {
     "id": "q-286",
     "number": 286,
@@ -18030,8 +17745,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/am-faq"
       }
     }
-  }
-,
+  },
   {
     "id": "q-287",
     "number": 287,
@@ -18101,8 +17815,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/am-faq"
       }
     }
-  }
-,
+  },
   {
     "id": "q-288",
     "number": 288,
@@ -18163,8 +17876,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/visualizer/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-289",
     "number": 289,
@@ -18225,8 +17937,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/visualizer/policy-visualization#view-information-about-one-service-in-your-network"
       }
     }
-  }
-,
+  },
   {
     "id": "q-290",
     "number": 290,
@@ -18287,8 +17998,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-manager/alerts-on-runtime-manager#compare-runtime-manager-alerts-and-anypoint-monitoring-alerts"
       }
     }
-  }
-,
+  },
   {
     "id": "q-291",
     "number": 291,
@@ -18349,8 +18059,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/custom-log-appender#enable-custom-log4j-configurations-in-cloudhub"
       }
     }
-  }
-,
+  },
   {
     "id": "q-292",
     "number": 292,
@@ -18411,8 +18120,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-functional-monitoring/afm-add-schedule#scheduling-limits"
       }
     }
-  }
-,
+  },
   {
     "id": "q-293",
     "number": 293,
@@ -18473,8 +18181,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/visualizer/architecture-visualization#access-api-visualizer"
       }
     }
-  }
-,
+  },
   {
     "id": "q-294",
     "number": 294,
@@ -18535,8 +18242,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/defining-sla-tiers#managing-applications"
       }
     }
-  }
-,
+  },
   {
     "id": "q-295",
     "number": 295,
@@ -18597,8 +18303,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-functional-monitoring/afm-monitoring-public-apis#testing-private-apis-from-public-locations"
       }
     }
-  }
-,
+  },
   {
     "id": "q-296",
     "number": 296,
@@ -18659,8 +18364,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/custom-application-alerts#create-a-custom-alert"
       }
     }
-  }
-,
+  },
   {
     "id": "q-297",
     "number": 297,
@@ -18721,8 +18425,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/#data-storage-retention"
       }
     }
-  }
-,
+  },
   {
     "id": "q-298",
     "number": 298,
@@ -18783,8 +18486,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/dashboard-config-ref#metrics"
       }
     }
-  }
-,
+  },
   {
     "id": "q-299",
     "number": 299,
@@ -18845,8 +18547,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-manager/deployment-strategies#runtime-manager-features"
       }
     }
-  }
-,
+  },
   {
     "id": "q-300",
     "number": 300,
@@ -18908,8 +18609,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-functional-monitoring/#afm-bdd"
       }
     }
-  }
-,
+  },
   {
     "id": "q-301",
     "number": 301,
@@ -18970,8 +18670,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/visualizer/troubleshooting-visualization#choosing-your-metric"
       }
     }
-  }
-,
+  },
   {
     "id": "q-302",
     "number": 302,
@@ -19032,8 +18731,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/am-installing#verify-the-anypoint-monitoring-agent-is-running"
       }
     }
-  }
-,
+  },
   {
     "id": "q-303",
     "number": 303,
@@ -19094,8 +18792,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/access-management/audit-logging#runtime-manager"
       }
     }
-  }
-,
+  },
   {
     "id": "q-304",
     "number": 304,
@@ -19156,8 +18853,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-manager/alerts-on-runtime-manager#create-an-alert"
       }
     }
-  }
-,
+  },
   {
     "id": "q-305",
     "number": 305,
@@ -19218,8 +18914,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/gateway/latest/policies-included-message-logging#about-the-logging-format"
       }
     }
-  }
-,
+  },
   {
     "id": "q-306",
     "number": 306,
@@ -19280,8 +18975,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-fabric/latest/use-anypoint-monitoring#log-forwarding-architecture"
       }
     }
-  }
-,
+  },
   {
     "id": "q-307",
     "number": 307,
@@ -19342,8 +19036,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/gateway/latest/policies-included-rate-limiting#how-this-policy-works"
       }
     }
-  }
-,
+  },
   {
     "id": "q-308",
     "number": 308,
@@ -19404,8 +19097,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/visualizer/layers#set-a-layer-with-properties"
       }
     }
-  }
-,
+  },
   {
     "id": "q-309",
     "number": 309,
@@ -19466,8 +19158,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/#billing"
       }
     }
-  }
-,
+  },
   {
     "id": "q-310",
     "number": 310,
@@ -19528,8 +19219,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-manager/alerts-on-runtime-manager#conditions-for-applications-deployed-to-cloudhub"
       }
     }
-  }
-,
+  },
   {
     "id": "q-311",
     "number": 311,
@@ -19590,8 +19280,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-312",
     "number": 312,
@@ -19652,8 +19341,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/latest-overview-concept#autodiscovery-schemes"
       }
     }
-  }
-,
+  },
   {
     "id": "q-313",
     "number": 313,
@@ -19714,8 +19402,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/visualizer/architecture-visualization"
       }
     }
-  }
-,
+  },
   {
     "id": "q-314",
     "number": 314,
@@ -19776,8 +19463,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/visualizer/troubleshoot-visualizer"
       }
     }
-  }
-,
+  },
   {
     "id": "q-315",
     "number": 315,
@@ -19838,8 +19524,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/visualizer/customize-your-canvas"
       }
     }
-  }
-,
+  },
   {
     "id": "q-316",
     "number": 316,
@@ -19900,8 +19585,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/visualizer/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-317",
     "number": 317,
@@ -19963,8 +19647,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/visualizer/troubleshoot-visualizer"
       }
     }
-  }
-,
+  },
   {
     "id": "q-318",
     "number": 318,
@@ -19973,7 +19656,7 @@ window.MCPA_QUESTIONS = [
     "topics": [
       "Deployment Options"
     ],
-    "prompt": "Refer to the exhibit.\nA customer runs Mule applications on Runtime Fabric for self-managed Kubernetes in a multi-cloud environment. Based on the configuration, how do the Agents and Runtime Manager communicate, and what is exchanged between them?",
+    "prompt": "A customer runs Mule applications on Runtime Fabric for self-managed Kubernetes in a multi-cloud environment. Based on the configuration, how do the Agents and Runtime Manager communicate, and what is exchanged between them?",
     "image": "images/q229.svg",
     "options": [
       {
@@ -20025,8 +19708,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-fabric/latest/#runtime-fabric-core-services"
       }
     }
-  }
-,
+  },
   {
     "id": "q-319",
     "number": 319,
@@ -20035,7 +19717,7 @@ window.MCPA_QUESTIONS = [
     "topics": [
       "Performance"
     ],
-    "prompt": "Refer to the exhibit.\nA manufacturing company is developing a new set of APIs for its retail business. One of the APIs is a Master Look Up API, which is a System API. The API uses a persistent object-store. This API will be used by almost all other APIs to provide master lookup data. The Master Look Up API is deployed on two CloudHub workers of 0.1 vCore each because there is a lot of master data to be cached. Most of the master lookup data is stored as a key-value pair. The cache gets refreshed if the key is not found in the cache. During performance testing, it was determined that the Master Look Up API has a high response time due to the latency of database queries executed to fetch the master lookup data. What two methods can be used to resolve these performance issues? (Choose two.)",
+    "prompt": "A manufacturing company is developing a new set of APIs for its retail business. One of the APIs is a Master Look Up API, which is a System API. The API uses a persistent object-store. This API will be used by almost all other APIs to provide master lookup data. The Master Look Up API is deployed on two CloudHub workers of 0.1 vCore each because there is a lot of master data to be cached. Most of the master lookup data is stored as a key-value pair. The cache gets refreshed if the key is not found in the cache. During performance testing, it was determined that the Master Look Up API has a high response time due to the latency of database queries executed to fetch the master lookup data. What two methods can be used to resolve these performance issues? (Choose two.)",
     "image": "images/q238.svg",
     "options": [
       {
@@ -20096,8 +19778,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture#cloudhub-workers"
       }
     }
-  }
-,
+  },
   {
     "id": "q-320",
     "number": 320,
@@ -20108,7 +19789,7 @@ window.MCPA_QUESTIONS = [
       "Mule Gateway",
       "API Management"
     ],
-    "prompt": "Refer to the exhibit.\nAn architect is comparing two ways to govern the same set of APIs: (A) embed governance in the Mule runtime with Mule Gateway, or (B) front the APIs with a dedicated Flex Gateway instance. Based on the exhibit and MuleSoft guidance, which alternative is the better choice for an organization that must protect both Mule and non-Mule APIs in Kubernetes and on-premises, with high availability and high performance?",
+    "prompt": "An architect is comparing two ways to govern the same set of APIs: (A) embed governance in the Mule runtime with Mule Gateway, or (B) front the APIs with a dedicated Flex Gateway instance. Based on the exhibit and MuleSoft guidance, which alternative is the better choice for an organization that must protect both Mule and non-Mule APIs in Kubernetes and on-premises, with high availability and high performance?",
     "image": "images/q269.svg",
     "options": [
       {
@@ -20160,8 +19841,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/gateway/latest"
       }
     }
-  }
-,
+  },
   {
     "id": "q-321",
     "number": 321,
@@ -20172,7 +19852,7 @@ window.MCPA_QUESTIONS = [
       "API Security",
       "Jwt Validation"
     ],
-    "prompt": "Refer to the exhibit.\nAn organization's API portal registers client applications dynamically with an external OpenID Connect identity provider. Based on the exhibit, which policy should be applied to the API gateway so that only requests presenting a valid OAuth 2.0 access token issued to a registered client application are accepted?",
+    "prompt": "An organization's API portal registers client applications dynamically with an external OpenID Connect identity provider. Based on the exhibit, which policy should be applied to the API gateway so that only requests presenting a valid OAuth 2.0 access token issued to a registered client application are accepted?",
     "image": "images/q270.svg",
     "options": [
       {
@@ -20224,8 +19904,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/access-management/configure-client-management-openid-task"
       }
     }
-  }
-,
+  },
   {
     "id": "q-322",
     "number": 322,
@@ -20237,7 +19916,7 @@ window.MCPA_QUESTIONS = [
       "SSL/TLS",
       "DNS"
     ],
-    "prompt": "Refer to the exhibit.\nA company deploys an API to a CloudHub 2.0 private space and wants external clients to reach it at the custom domain api.company.com over HTTPS. Based on the exhibit, which alternative correctly describes how this is achieved?",
+    "prompt": "A company deploys an API to a CloudHub 2.0 private space and wants external clients to reach it at the custom domain api.company.com over HTTPS. Based on the exhibit, which alternative correctly describes how this is achieved?",
     "image": "images/q271.svg",
     "options": [
       {
@@ -20289,8 +19968,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-networking-guide"
       }
     }
-  }
-,
+  },
   {
     "id": "q-323",
     "number": 323,
@@ -20351,8 +20029,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/resources/api/what-is-mutual-tls"
       }
     }
-  }
-,
+  },
   {
     "id": "q-324",
     "number": 324,
@@ -20414,8 +20091,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/resources/api/api-security"
       }
     }
-  }
-,
+  },
   {
     "id": "q-325",
     "number": 325,
@@ -20476,8 +20152,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/vpc-overview"
       }
     }
-  }
-,
+  },
   {
     "id": "q-326",
     "number": 326,
@@ -20539,8 +20214,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/shared-dlb-custom-domains"
       }
     }
-  }
-,
+  },
   {
     "id": "q-327",
     "number": 327,
@@ -20602,8 +20276,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/shared-worker-sizing"
       }
     }
-  }
-,
+  },
   {
     "id": "q-328",
     "number": 328,
@@ -20665,8 +20338,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/vpc-peering"
       }
     }
-  }
-,
+  },
   {
     "id": "q-329",
     "number": 329,
@@ -20728,8 +20400,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/munit/2.3/mock-event-processors"
       }
     }
-  }
-,
+  },
   {
     "id": "q-330",
     "number": 330,
@@ -20791,8 +20462,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/glossary"
       }
     }
-  }
-,
+  },
   {
     "id": "q-331",
     "number": 331,
@@ -20853,8 +20523,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/data-residency"
       }
     }
-  }
-,
+  },
   {
     "id": "q-332",
     "number": 332,
@@ -20911,8 +20580,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/anypoint-platform-architecture"
       }
     }
-  }
-,
+  },
   {
     "id": "q-333",
     "number": 333,
@@ -20971,8 +20639,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/overview"
       }
     }
-  }
-,
+  },
   {
     "id": "q-334",
     "number": 334,
@@ -21029,8 +20696,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-335",
     "number": 335,
@@ -21041,7 +20707,7 @@ window.MCPA_QUESTIONS = [
       "API-led Connectivity",
       "Patterns"
     ],
-    "prompt": "Refer to the exhibit.\nAn organization wants to expose its customer data so that a mobile app and a web application can both consume it over HTTP, with a published contract that either channel can call while the backend stays encapsulated. The exhibit shows four candidate integration patterns.\nWhich option best matches the characteristics of a web API in API-led connectivity?",
+    "prompt": "An organization wants to expose its customer data so that a mobile app and a web application can both consume it over HTTP, with a published contract that either channel can call while the backend stays encapsulated. The exhibit shows four candidate integration patterns.\nWhich option best matches the characteristics of a web API in API-led connectivity?",
     "options": [
       {
         "letter": "A",
@@ -21093,8 +20759,7 @@ window.MCPA_QUESTIONS = [
       }
     },
     "image": "images/q335arch.svg"
-  }
-,
+  },
   {
     "id": "q-336",
     "number": 336,
@@ -21159,8 +20824,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-337",
     "number": 337,
@@ -21226,8 +20890,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/overview"
       }
     }
-  }
-,
+  },
   {
     "id": "q-338",
     "number": 338,
@@ -21284,8 +20947,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-339",
     "number": 339,
@@ -21341,8 +21003,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-340",
     "number": 340,
@@ -21399,8 +21060,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-341",
     "number": 341,
@@ -21456,8 +21116,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/resources/api/application-network"
       }
     }
-  }
-,
+  },
   {
     "id": "q-342",
     "number": 342,
@@ -21514,8 +21173,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/resources/api/api-led-vs-point-to-point"
       }
     }
-  }
-,
+  },
   {
     "id": "q-343",
     "number": 343,
@@ -21580,8 +21238,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/studio/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-344",
     "number": 344,
@@ -21638,8 +21295,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/proxy-latest-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-345",
     "number": 345,
@@ -21696,8 +21352,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/manage-api"
       }
     }
-  }
-,
+  },
   {
     "id": "q-346",
     "number": 346,
@@ -21754,8 +21409,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-347",
     "number": 347,
@@ -21821,8 +21475,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/raml/200-tutorial"
       }
     }
-  }
-,
+  },
   {
     "id": "q-348",
     "number": 348,
@@ -21879,8 +21532,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-349",
     "number": 349,
@@ -21937,8 +21589,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/access-management/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-350",
     "number": 350,
@@ -21994,8 +21645,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-351",
     "number": 351,
@@ -22065,8 +21715,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/catalyst/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-352",
     "number": 352,
@@ -22122,8 +21771,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/resources/api/center-for-enablement"
       }
     }
-  }
-,
+  },
   {
     "id": "q-353",
     "number": 353,
@@ -22180,8 +21828,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/catalyst/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-354",
     "number": 354,
@@ -22237,8 +21884,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/catalyst/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-355",
     "number": 355,
@@ -22295,8 +21941,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/catalyst/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-356",
     "number": 356,
@@ -22362,8 +22007,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/deployment-architectures"
       }
     }
-  }
-,
+  },
   {
     "id": "q-357",
     "number": 357,
@@ -22421,8 +22065,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/deployment-architectures"
       }
     }
-  }
-,
+  },
   {
     "id": "q-358",
     "number": 358,
@@ -22479,8 +22122,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/deployment-architectures"
       }
     }
-  }
-,
+  },
   {
     "id": "q-359",
     "number": 359,
@@ -22537,8 +22179,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/access-management/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-360",
     "number": 360,
@@ -22595,8 +22236,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/client-applications"
       }
     }
-  }
-,
+  },
   {
     "id": "q-361",
     "number": 361,
@@ -22653,8 +22293,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-362",
     "number": 362,
@@ -22711,8 +22350,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mq/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-363",
     "number": 363,
@@ -22769,8 +22407,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/resources/api/center-for-enablement"
       }
     }
-  }
-,
+  },
   {
     "id": "q-364",
     "number": 364,
@@ -22837,8 +22474,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/catalyst/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-365",
     "number": 365,
@@ -22895,8 +22531,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/deployment-architectures"
       }
     }
-  }
-,
+  },
   {
     "id": "q-366",
     "number": 366,
@@ -22953,8 +22588,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/access-management/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-367",
     "number": 367,
@@ -23011,8 +22645,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/access-management/business-groups"
       }
     }
-  }
-,
+  },
   {
     "id": "q-368",
     "number": 368,
@@ -23068,8 +22701,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/manage-api"
       }
     }
-  }
-,
+  },
   {
     "id": "q-369",
     "number": 369,
@@ -23126,8 +22758,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/secrets-manager/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-370",
     "number": 370,
@@ -23184,8 +22815,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/catalyst/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-371",
     "number": 371,
@@ -23241,8 +22871,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/access-management/business-groups"
       }
     }
-  }
-,
+  },
   {
     "id": "q-372",
     "number": 372,
@@ -23299,8 +22928,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/oauth-provider"
       }
     }
-  }
-,
+  },
   {
     "id": "q-373",
     "number": 373,
@@ -23357,8 +22985,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/deployment-architectures"
       }
     }
-  }
-,
+  },
   {
     "id": "q-374",
     "number": 374,
@@ -23423,8 +23050,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/resources/api/center-for-enablement"
       }
     }
-  }
-,
+  },
   {
     "id": "q-375",
     "number": 375,
@@ -23481,8 +23107,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-manager/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-376",
     "number": 376,
@@ -23540,8 +23165,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/access-management/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-377",
     "number": 377,
@@ -23597,8 +23221,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/client-applications"
       }
     }
-  }
-,
+  },
   {
     "id": "q-378",
     "number": 378,
@@ -23654,8 +23277,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/data-residency"
       }
     }
-  }
-,
+  },
   {
     "id": "q-379",
     "number": 379,
@@ -23712,8 +23334,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/deployment-architectures"
       }
     }
-  }
-,
+  },
   {
     "id": "q-380",
     "number": 380,
@@ -23770,8 +23391,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.mulesoft.com/resources/api/center-for-enablement"
       }
     }
-  }
-,
+  },
   {
     "id": "q-381",
     "number": 381,
@@ -23828,8 +23448,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/api-versioning"
       }
     }
-  }
-,
+  },
   {
     "id": "q-382",
     "number": 382,
@@ -23886,8 +23505,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/deprecate-assets"
       }
     }
-  }
-,
+  },
   {
     "id": "q-383",
     "number": 383,
@@ -23943,8 +23561,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/api-versioning"
       }
     }
-  }
-,
+  },
   {
     "id": "q-384",
     "number": 384,
@@ -24000,8 +23617,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/api-versioning"
       }
     }
-  }
-,
+  },
   {
     "id": "q-385",
     "number": 385,
@@ -24058,8 +23674,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/api-versioning"
       }
     }
-  }
-,
+  },
   {
     "id": "q-386",
     "number": 386,
@@ -24116,8 +23731,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.rfc-editor.org/rfc/rfc9110"
       }
     }
-  }
-,
+  },
   {
     "id": "q-387",
     "number": 387,
@@ -24174,8 +23788,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.rfc-editor.org/rfc/rfc9110"
       }
     }
-  }
-,
+  },
   {
     "id": "q-388",
     "number": 388,
@@ -24232,8 +23845,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.rfc-editor.org/rfc/rfc9110"
       }
     }
-  }
-,
+  },
   {
     "id": "q-389",
     "number": 389,
@@ -24290,8 +23902,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/data-modeling"
       }
     }
-  }
-,
+  },
   {
     "id": "q-390",
     "number": 390,
@@ -24348,8 +23959,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/data-modeling"
       }
     }
-  }
-,
+  },
   {
     "id": "q-391",
     "number": 391,
@@ -24406,8 +24016,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/fragments"
       }
     }
-  }
-,
+  },
   {
     "id": "q-392",
     "number": 392,
@@ -24464,8 +24073,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/private-portal"
       }
     }
-  }
-,
+  },
   {
     "id": "q-393",
     "number": 393,
@@ -24521,8 +24129,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/glossary"
       }
     }
-  }
-,
+  },
   {
     "id": "q-394",
     "number": 394,
@@ -24579,8 +24186,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/design-center/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-395",
     "number": 395,
@@ -24637,8 +24243,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/design-center/mocking-service"
       }
     }
-  }
-,
+  },
   {
     "id": "q-396",
     "number": 396,
@@ -24703,8 +24308,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/api-versioning"
       }
     }
-  }
-,
+  },
   {
     "id": "q-397",
     "number": 397,
@@ -24760,8 +24364,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.rfc-editor.org/rfc/rfc9110"
       }
     }
-  }
-,
+  },
   {
     "id": "q-398",
     "number": 398,
@@ -24817,8 +24420,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.rfc-editor.org/rfc/rfc9110"
       }
     }
-  }
-,
+  },
   {
     "id": "q-399",
     "number": 399,
@@ -24874,8 +24476,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.rfc-editor.org/rfc/rfc9110"
       }
     }
-  }
-,
+  },
   {
     "id": "q-400",
     "number": 400,
@@ -24931,8 +24532,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://martinfowler.com/articles/richardsonMaturityModel.html"
       }
     }
-  }
-,
+  },
   {
     "id": "q-401",
     "number": 401,
@@ -24997,8 +24597,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-402",
     "number": 402,
@@ -25055,8 +24654,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/publish-connector"
       }
     }
-  }
-,
+  },
   {
     "id": "q-403",
     "number": 403,
@@ -25113,8 +24711,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/design-center/api-testing"
       }
     }
-  }
-,
+  },
   {
     "id": "q-404",
     "number": 404,
@@ -25171,8 +24768,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/raml/200-annotations"
       }
     }
-  }
-,
+  },
   {
     "id": "q-405",
     "number": 405,
@@ -25238,8 +24834,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.rfc-editor.org/rfc/rfc9111"
       }
     }
-  }
-,
+  },
   {
     "id": "q-406",
     "number": 406,
@@ -25295,8 +24890,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/design-center/design-guidelines"
       }
     }
-  }
-,
+  },
   {
     "id": "q-407",
     "number": 407,
@@ -25352,8 +24946,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/design-center/design-guidelines"
       }
     }
-  }
-,
+  },
   {
     "id": "q-408",
     "number": 408,
@@ -25419,8 +25012,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/manage-api"
       }
     }
-  }
-,
+  },
   {
     "id": "q-409",
     "number": 409,
@@ -25477,8 +25069,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-410",
     "number": 410,
@@ -25534,8 +25125,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-411",
     "number": 411,
@@ -25592,8 +25182,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-412",
     "number": 412,
@@ -25650,8 +25239,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/data-modeling"
       }
     }
-  }
-,
+  },
   {
     "id": "q-413",
     "number": 413,
@@ -25708,8 +25296,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/data-modeling"
       }
     }
-  }
-,
+  },
   {
     "id": "q-414",
     "number": 414,
@@ -25765,8 +25352,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/data-modeling"
       }
     }
-  }
-,
+  },
   {
     "id": "q-415",
     "number": 415,
@@ -25777,7 +25363,7 @@ window.MCPA_QUESTIONS = [
       "Process Layer",
       "Composition"
     ],
-    "prompt": "Refer to the exhibit.\nA company has several existing System APIs over its backend systems and needs to serve internal read-only clients that want combined views (customer plus orders) without building a new aggregation Process API for every combination. There is no transactional orchestration, no compensation logic, and no human approval in scope. The exhibit shows four composition approaches.\nWhich option should the architect choose?",
+    "prompt": "A company has several existing System APIs over its backend systems and needs to serve internal read-only clients that want combined views (customer plus orders) without building a new aggregation Process API for every combination. There is no transactional orchestration, no compensation logic, and no human approval in scope. The exhibit shows four composition approaches.\nWhich option should the architect choose?",
     "options": [
       {
         "letter": "A",
@@ -25825,8 +25411,7 @@ window.MCPA_QUESTIONS = [
       }
     },
     "image": "images/q415arch.svg"
-  }
-,
+  },
   {
     "id": "q-416",
     "number": 416,
@@ -25882,8 +25467,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/datagraph/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-417",
     "number": 417,
@@ -25948,8 +25532,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-418",
     "number": 418,
@@ -26006,8 +25589,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-419",
     "number": 419,
@@ -26063,8 +25645,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-420",
     "number": 420,
@@ -26121,8 +25702,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-421",
     "number": 421,
@@ -26179,8 +25759,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-422",
     "number": 422,
@@ -26236,8 +25815,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/datagraph/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-423",
     "number": 423,
@@ -26248,7 +25826,7 @@ window.MCPA_QUESTIONS = [
       "Layers",
       "Reuse"
     ],
-    "prompt": "Refer to the exhibit.\nAn organization implements an order-handling business process whose rules (validation, enrichment, orchestration across the database and CRM backends) must be identical for every channel: web, mobile, and partner. The exhibit shows four placements of that logic.\nWhich option best follows API-led connectivity?",
+    "prompt": "An organization implements an order-handling business process whose rules (validation, enrichment, orchestration across the database and CRM backends) must be identical for every channel: web, mobile, and partner. The exhibit shows four placements of that logic.\nWhich option best follows API-led connectivity?",
     "options": [
       {
         "letter": "A",
@@ -26296,8 +25874,7 @@ window.MCPA_QUESTIONS = [
       }
     },
     "image": "images/q423arch.svg"
-  }
-,
+  },
   {
     "id": "q-424",
     "number": 424,
@@ -26353,8 +25930,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-425",
     "number": 425,
@@ -26411,8 +25987,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/data-modeling"
       }
     }
-  }
-,
+  },
   {
     "id": "q-426",
     "number": 426,
@@ -26478,8 +26053,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-427",
     "number": 427,
@@ -26536,8 +26110,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/data-modeling"
       }
     }
-  }
-,
+  },
   {
     "id": "q-428",
     "number": 428,
@@ -26594,8 +26167,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/datagraph/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-429",
     "number": 429,
@@ -26652,8 +26224,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-430",
     "number": 430,
@@ -26709,8 +26280,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-431",
     "number": 431,
@@ -26767,8 +26337,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-432",
     "number": 432,
@@ -26824,8 +26393,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/data-modeling"
       }
     }
-  }
-,
+  },
   {
     "id": "q-433",
     "number": 433,
@@ -26881,8 +26449,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-434",
     "number": 434,
@@ -26938,8 +26505,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/datagraph/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-435",
     "number": 435,
@@ -26995,8 +26561,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-436",
     "number": 436,
@@ -27052,8 +26617,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/policies"
       }
     }
-  }
-,
+  },
   {
     "id": "q-437",
     "number": 437,
@@ -27109,8 +26673,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-438",
     "number": 438,
@@ -27175,8 +26738,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/datagraph/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-439",
     "number": 439,
@@ -27233,8 +26795,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-440",
     "number": 440,
@@ -27291,8 +26852,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-441",
     "number": 441,
@@ -27349,8 +26909,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-442",
     "number": 442,
@@ -27406,8 +26965,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/data-modeling"
       }
     }
-  }
-,
+  },
   {
     "id": "q-443",
     "number": 443,
@@ -27463,8 +27021,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-444",
     "number": 444,
@@ -27521,8 +27078,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/rate-limiting-policies"
       }
     }
-  }
-,
+  },
   {
     "id": "q-445",
     "number": 445,
@@ -27578,8 +27134,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/sla-tiers"
       }
     }
-  }
-,
+  },
   {
     "id": "q-446",
     "number": 446,
@@ -27635,8 +27190,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/client-id-enforcement-policy"
       }
     }
-  }
-,
+  },
   {
     "id": "q-447",
     "number": 447,
@@ -27693,8 +27247,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/oauth-2.0-token-enforcement-policy"
       }
     }
-  }
-,
+  },
   {
     "id": "q-448",
     "number": 448,
@@ -27751,8 +27304,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/oauth-2.0-token-enforcement-policy"
       }
     }
-  }
-,
+  },
   {
     "id": "q-449",
     "number": 449,
@@ -27809,8 +27361,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/policies-list"
       }
     }
-  }
-,
+  },
   {
     "id": "q-450",
     "number": 450,
@@ -27867,8 +27418,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/json-threat-protection-policy"
       }
     }
-  }
-,
+  },
   {
     "id": "q-451",
     "number": 451,
@@ -27924,8 +27474,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/jwt-validation-policy"
       }
     }
-  }
-,
+  },
   {
     "id": "q-452",
     "number": 452,
@@ -27982,8 +27531,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/enforce-policy"
       }
     }
-  }
-,
+  },
   {
     "id": "q-453",
     "number": 453,
@@ -28039,8 +27587,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/service-mesh/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-454",
     "number": 454,
@@ -28096,8 +27643,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/policies"
       }
     }
-  }
-,
+  },
   {
     "id": "q-455",
     "number": 455,
@@ -28153,8 +27699,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/custom-policies"
       }
     }
-  }
-,
+  },
   {
     "id": "q-456",
     "number": 456,
@@ -28210,8 +27755,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/gateway/latest/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-457",
     "number": 457,
@@ -28268,8 +27812,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/manage-api"
       }
     }
-  }
-,
+  },
   {
     "id": "q-458",
     "number": 458,
@@ -28326,8 +27869,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/request-api-access"
       }
     }
-  }
-,
+  },
   {
     "id": "q-459",
     "number": 459,
@@ -28384,8 +27926,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/client-applications"
       }
     }
-  }
-,
+  },
   {
     "id": "q-460",
     "number": 460,
@@ -28442,8 +27983,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/oauth-provider"
       }
     }
-  }
-,
+  },
   {
     "id": "q-461",
     "number": 461,
@@ -28500,8 +28040,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/policies-list"
       }
     }
-  }
-,
+  },
   {
     "id": "q-462",
     "number": 462,
@@ -28557,8 +28096,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/ip-allowlist-policy"
       }
     }
-  }
-,
+  },
   {
     "id": "q-463",
     "number": 463,
@@ -28614,8 +28152,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/cors-policy"
       }
     }
-  }
-,
+  },
   {
     "id": "q-464",
     "number": 464,
@@ -28672,8 +28209,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/message-logging-policy"
       }
     }
-  }
-,
+  },
   {
     "id": "q-465",
     "number": 465,
@@ -28730,8 +28266,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/auto-discovery"
       }
     }
-  }
-,
+  },
   {
     "id": "q-466",
     "number": 466,
@@ -28788,8 +28323,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/manage-api"
       }
     }
-  }
-,
+  },
   {
     "id": "q-467",
     "number": 467,
@@ -28799,7 +28333,7 @@ window.MCPA_QUESTIONS = [
       "Client ID Enforcement",
       "Security"
     ],
-    "prompt": "Refer to the exhibit.\nAn API applies the Client ID Enforcement policy. A consuming platform can only send credentials in standard HTTP headers, and its team asks where the client_id and client_secret must go, and what the policy validates. The exhibit shows four credential placements.\nWhich option is correct?",
+    "prompt": "An API applies the Client ID Enforcement policy. A consuming platform can only send credentials in standard HTTP headers, and its team asks where the client_id and client_secret must go, and what the policy validates. The exhibit shows four credential placements.\nWhich option is correct?",
     "options": [
       {
         "letter": "A",
@@ -28847,8 +28381,7 @@ window.MCPA_QUESTIONS = [
       }
     },
     "image": "images/q467arch.svg"
-  }
-,
+  },
   {
     "id": "q-468",
     "number": 468,
@@ -28905,8 +28438,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/sla-tiers"
       }
     }
-  }
-,
+  },
   {
     "id": "q-469",
     "number": 469,
@@ -28962,8 +28494,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/client-applications"
       }
     }
-  }
-,
+  },
   {
     "id": "q-470",
     "number": 470,
@@ -29021,8 +28552,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/gateway/latest/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-471",
     "number": 471,
@@ -29078,8 +28608,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/api-lifecycle"
       }
     }
-  }
-,
+  },
   {
     "id": "q-472",
     "number": 472,
@@ -29135,8 +28664,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/sla-tiers"
       }
     }
-  }
-,
+  },
   {
     "id": "q-473",
     "number": 473,
@@ -29193,8 +28721,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/custom-policies"
       }
     }
-  }
-,
+  },
   {
     "id": "q-474",
     "number": 474,
@@ -29260,8 +28787,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/policies-list"
       }
     }
-  }
-,
+  },
   {
     "id": "q-475",
     "number": 475,
@@ -29317,8 +28843,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/access-management/business-groups"
       }
     }
-  }
-,
+  },
   {
     "id": "q-476",
     "number": 476,
@@ -29375,8 +28900,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/proxy-latest-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-477",
     "number": 477,
@@ -29433,8 +28957,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/custom-policies"
       }
     }
-  }
-,
+  },
   {
     "id": "q-478",
     "number": 478,
@@ -29490,8 +29013,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/policies-list"
       }
     }
-  }
-,
+  },
   {
     "id": "q-479",
     "number": 479,
@@ -29547,8 +29069,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/service-mesh/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-480",
     "number": 480,
@@ -29606,8 +29127,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/policies-list"
       }
     }
-  }
-,
+  },
   {
     "id": "q-481",
     "number": 481,
@@ -29664,8 +29184,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/proxy-latest-concept"
       }
     }
-  }
-,
+  },
   {
     "id": "q-482",
     "number": 482,
@@ -29721,8 +29240,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/client-applications"
       }
     }
-  }
-,
+  },
   {
     "id": "q-483",
     "number": 483,
@@ -29778,8 +29296,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/policies"
       }
     }
-  }
-,
+  },
   {
     "id": "q-484",
     "number": 484,
@@ -29836,8 +29353,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/latest/manage-api"
       }
     }
-  }
-,
+  },
   {
     "id": "q-485",
     "number": 485,
@@ -29893,8 +29409,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/cors-policy"
       }
     }
-  }
-,
+  },
   {
     "id": "q-486",
     "number": 486,
@@ -29951,8 +29466,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/oauth-provider"
       }
     }
-  }
-,
+  },
   {
     "id": "q-487",
     "number": 487,
@@ -30009,8 +29523,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/gateway/latest/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-488",
     "number": 488,
@@ -30066,8 +29579,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/auto-discovery"
       }
     }
-  }
-,
+  },
   {
     "id": "q-489",
     "number": 489,
@@ -30123,8 +29635,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/vpc-overview"
       }
     }
-  }
-,
+  },
   {
     "id": "q-490",
     "number": 490,
@@ -30180,8 +29691,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/deployment-architectures"
       }
     }
-  }
-,
+  },
   {
     "id": "q-491",
     "number": 491,
@@ -30238,8 +29748,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/munit/2.3/munit-in-ci-cd"
       }
     }
-  }
-,
+  },
   {
     "id": "q-492",
     "number": 492,
@@ -30296,8 +29805,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/munit/2.3/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-493",
     "number": 493,
@@ -30354,8 +29862,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/4.4/mule-maven-plugin"
       }
     }
-  }
-,
+  },
   {
     "id": "q-494",
     "number": 494,
@@ -30412,8 +29919,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/vpc-overview"
       }
     }
-  }
-,
+  },
   {
     "id": "q-495",
     "number": 495,
@@ -30470,8 +29976,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-manager/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-496",
     "number": 496,
@@ -30527,8 +30032,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/auto-discovery"
       }
     }
-  }
-,
+  },
   {
     "id": "q-497",
     "number": 497,
@@ -30584,8 +30088,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-overview"
       }
     }
-  }
-,
+  },
   {
     "id": "q-498",
     "number": 498,
@@ -30642,8 +30145,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/munit/2.3/mock-event-processors"
       }
     }
-  }
-,
+  },
   {
     "id": "q-499",
     "number": 499,
@@ -30700,8 +30202,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/4.4/config-properties"
       }
     }
-  }
-,
+  },
   {
     "id": "q-500",
     "number": 500,
@@ -30758,8 +30259,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/4.4/mule-maven-plugin"
       }
     }
-  }
-,
+  },
   {
     "id": "q-501",
     "number": 501,
@@ -30769,7 +30269,7 @@ window.MCPA_QUESTIONS = [
       "Anypoint VPC",
       "Networking"
     ],
-    "prompt": "Refer to the exhibit.\nA network architect is creating an Anypoint VPC that CloudHub workers will use to reach an on-premises data center through a VPN and to reach a customer-owned AWS VPC through peering. The customer network uses 10.0.0.0/8 internally. The exhibit shows four planning approaches.\nWhich option is correct?",
+    "prompt": "A network architect is creating an Anypoint VPC that CloudHub workers will use to reach an on-premises data center through a VPN and to reach a customer-owned AWS VPC through peering. The customer network uses 10.0.0.0/8 internally. The exhibit shows four planning approaches.\nWhich option is correct?",
     "options": [
       {
         "letter": "A",
@@ -30821,8 +30321,7 @@ window.MCPA_QUESTIONS = [
       }
     },
     "image": "images/q501arch.svg"
-  }
-,
+  },
   {
     "id": "q-502",
     "number": 502,
@@ -30879,8 +30378,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/deployment-architectures"
       }
     }
-  }
-,
+  },
   {
     "id": "q-503",
     "number": 503,
@@ -30937,8 +30435,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/updating-app"
       }
     }
-  }
-,
+  },
   {
     "id": "q-504",
     "number": 504,
@@ -30994,8 +30491,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/object-store-v2"
       }
     }
-  }
-,
+  },
   {
     "id": "q-505",
     "number": 505,
@@ -31052,8 +30548,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/enforce-policy"
       }
     }
-  }
-,
+  },
   {
     "id": "q-506",
     "number": 506,
@@ -31110,8 +30605,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/munit/2.3/munit-in-ci-cd"
       }
     }
-  }
-,
+  },
   {
     "id": "q-507",
     "number": 507,
@@ -31168,8 +30662,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/munit/2.3/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-508",
     "number": 508,
@@ -31225,8 +30718,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-runtime-fabric/architecture"
       }
     }
-  }
-,
+  },
   {
     "id": "q-509",
     "number": 509,
@@ -31283,8 +30775,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/deployment-architectures"
       }
     }
-  }
-,
+  },
   {
     "id": "q-510",
     "number": 510,
@@ -31341,8 +30832,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-runtime-fabric/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-511",
     "number": 511,
@@ -31398,8 +30888,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/4.4/mule-maven-plugin"
       }
     }
-  }
-,
+  },
   {
     "id": "q-512",
     "number": 512,
@@ -31456,8 +30945,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/vpn-connect"
       }
     }
-  }
-,
+  },
   {
     "id": "q-513",
     "number": 513,
@@ -31514,8 +31002,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-runtime-fabric/architecture"
       }
     }
-  }
-,
+  },
   {
     "id": "q-514",
     "number": 514,
@@ -31572,8 +31059,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/auto-discovery"
       }
     }
-  }
-,
+  },
   {
     "id": "q-515",
     "number": 515,
@@ -31630,8 +31116,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/shared-worker-sizing"
       }
     }
-  }
-,
+  },
   {
     "id": "q-516",
     "number": 516,
@@ -31687,8 +31172,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/scaling-app"
       }
     }
-  }
-,
+  },
   {
     "id": "q-517",
     "number": 517,
@@ -31699,7 +31183,7 @@ window.MCPA_QUESTIONS = [
       "Workers",
       "HA"
     ],
-    "prompt": "Refer to the exhibit.\nA critical Orders API deployed to the CloudHub shared worker cloud must keep serving requests even if an entire data center becomes unavailable. The team is choosing a deployment topology. The exhibit shows four topologies.\nWhich option achieves the requirement on CloudHub 1.0?",
+    "prompt": "A critical Orders API deployed to the CloudHub shared worker cloud must keep serving requests even if an entire data center becomes unavailable. The team is choosing a deployment topology. The exhibit shows four topologies.\nWhich option achieves the requirement on CloudHub 1.0?",
     "options": [
       {
         "letter": "A",
@@ -31751,8 +31235,7 @@ window.MCPA_QUESTIONS = [
       }
     },
     "image": "images/q517arch.svg"
-  }
-,
+  },
   {
     "id": "q-518",
     "number": 518,
@@ -31808,8 +31291,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/shared-regions"
       }
     }
-  }
-,
+  },
   {
     "id": "q-519",
     "number": 519,
@@ -31865,8 +31347,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/dlb-overview"
       }
     }
-  }
-,
+  },
   {
     "id": "q-520",
     "number": 520,
@@ -31922,8 +31403,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/dlb-overview"
       }
     }
-  }
-,
+  },
   {
     "id": "q-521",
     "number": 521,
@@ -31980,8 +31460,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/vpc-peering"
       }
     }
-  }
-,
+  },
   {
     "id": "q-522",
     "number": 522,
@@ -31992,7 +31471,7 @@ window.MCPA_QUESTIONS = [
       "Connectivity",
       "Anypoint VPC"
     ],
-    "prompt": "Refer to the exhibit.\nCloudHub workers running an Order API must reach a mainframe service that is only reachable inside the corporate network, over a private path, with no public exposure of the mainframe. The exhibit shows four connectivity options.\nWhich option should the architect choose?",
+    "prompt": "CloudHub workers running an Order API must reach a mainframe service that is only reachable inside the corporate network, over a private path, with no public exposure of the mainframe. The exhibit shows four connectivity options.\nWhich option should the architect choose?",
     "options": [
       {
         "letter": "A",
@@ -32040,8 +31519,7 @@ window.MCPA_QUESTIONS = [
       }
     },
     "image": "images/q522arch.svg"
-  }
-,
+  },
   {
     "id": "q-523",
     "number": 523,
@@ -32097,8 +31575,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/shared-cloudhub-reliability"
       }
     }
-  }
-,
+  },
   {
     "id": "q-524",
     "number": 524,
@@ -32154,8 +31631,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/object-store-v2"
       }
     }
-  }
-,
+  },
   {
     "id": "q-525",
     "number": 525,
@@ -32211,8 +31687,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/shared-cloudhub-reliability"
       }
     }
-  }
-,
+  },
   {
     "id": "q-526",
     "number": 526,
@@ -32268,8 +31743,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/shared-persistent-queues"
       }
     }
-  }
-,
+  },
   {
     "id": "q-527",
     "number": 527,
@@ -32325,8 +31799,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/shared-vcores"
       }
     }
-  }
-,
+  },
   {
     "id": "q-528",
     "number": 528,
@@ -32383,8 +31856,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/shared-cloudhub-reliability"
       }
     }
-  }
-,
+  },
   {
     "id": "q-529",
     "number": 529,
@@ -32440,8 +31912,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/shared-lb"
       }
     }
-  }
-,
+  },
   {
     "id": "q-530",
     "number": 530,
@@ -32497,8 +31968,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/dlb-overview"
       }
     }
-  }
-,
+  },
   {
     "id": "q-531",
     "number": 531,
@@ -32554,8 +32024,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/object-store-v2"
       }
     }
-  }
-,
+  },
   {
     "id": "q-532",
     "number": 532,
@@ -32612,8 +32081,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-overview"
       }
     }
-  }
-,
+  },
   {
     "id": "q-533",
     "number": 533,
@@ -32669,8 +32137,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub-2/update-restart-app"
       }
     }
-  }
-,
+  },
   {
     "id": "q-534",
     "number": 534,
@@ -32727,8 +32194,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/cloudhub-2/ch2-apps-object-store"
       }
     }
-  }
-,
+  },
   {
     "id": "q-535",
     "number": 535,
@@ -32785,8 +32251,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/static-ip"
       }
     }
-  }
-,
+  },
   {
     "id": "q-536",
     "number": 536,
@@ -32842,8 +32307,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/dlb-overview"
       }
     }
-  }
-,
+  },
   {
     "id": "q-537",
     "number": 537,
@@ -32900,8 +32364,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/shared-cloudhub-reliability"
       }
     }
-  }
-,
+  },
   {
     "id": "q-538",
     "number": 538,
@@ -32958,8 +32421,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/4.4/caching"
       }
     }
-  }
-,
+  },
   {
     "id": "q-539",
     "number": 539,
@@ -33016,8 +32478,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/object-store-v2"
       }
     }
-  }
-,
+  },
   {
     "id": "q-540",
     "number": 540,
@@ -33074,8 +32535,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/4.4/retry"
       }
     }
-  }
-,
+  },
   {
     "id": "q-541",
     "number": 541,
@@ -33132,8 +32592,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/4.4/circuit-breaker"
       }
     }
-  }
-,
+  },
   {
     "id": "q-542",
     "number": 542,
@@ -33189,8 +32648,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/4.4/timeout"
       }
     }
-  }
-,
+  },
   {
     "id": "q-543",
     "number": 543,
@@ -33247,8 +32705,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.rfc-editor.org/rfc/rfc9110"
       }
     }
-  }
-,
+  },
   {
     "id": "q-544",
     "number": 544,
@@ -33305,8 +32762,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/4.4/circuit-breaker"
       }
     }
-  }
-,
+  },
   {
     "id": "q-545",
     "number": 545,
@@ -33363,8 +32819,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/scaling-app"
       }
     }
-  }
-,
+  },
   {
     "id": "q-546",
     "number": 546,
@@ -33420,8 +32875,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/scaling-app"
       }
     }
-  }
-,
+  },
   {
     "id": "q-547",
     "number": 547,
@@ -33477,8 +32931,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.rfc-editor.org/rfc/rfc9111"
       }
     }
-  }
-,
+  },
   {
     "id": "q-548",
     "number": 548,
@@ -33534,8 +32987,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/object-store-v2"
       }
     }
-  }
-,
+  },
   {
     "id": "q-549",
     "number": 549,
@@ -33592,8 +33044,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/4.4/retry"
       }
     }
-  }
-,
+  },
   {
     "id": "q-550",
     "number": 550,
@@ -33650,8 +33101,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-551",
     "number": 551,
@@ -33708,8 +33158,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/rate-limiting-policies"
       }
     }
-  }
-,
+  },
   {
     "id": "q-552",
     "number": 552,
@@ -33766,8 +33215,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/4.4/circuit-breaker"
       }
     }
-  }
-,
+  },
   {
     "id": "q-553",
     "number": 553,
@@ -33824,8 +33272,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-554",
     "number": 554,
@@ -33882,8 +33329,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/object-store-v2"
       }
     }
-  }
-,
+  },
   {
     "id": "q-555",
     "number": 555,
@@ -33939,8 +33385,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/4.4/caching"
       }
     }
-  }
-,
+  },
   {
     "id": "q-556",
     "number": 556,
@@ -33997,8 +33442,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/4.4/retry"
       }
     }
-  }
-,
+  },
   {
     "id": "q-557",
     "number": 557,
@@ -34055,8 +33499,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/object-store-v2"
       }
     }
-  }
-,
+  },
   {
     "id": "q-558",
     "number": 558,
@@ -34113,8 +33556,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/scaling-app"
       }
     }
-  }
-,
+  },
   {
     "id": "q-559",
     "number": 559,
@@ -34170,8 +33612,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.rfc-editor.org/rfc/rfc9111"
       }
     }
-  }
-,
+  },
   {
     "id": "q-560",
     "number": 560,
@@ -34228,8 +33669,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/4.4/tuning"
       }
     }
-  }
-,
+  },
   {
     "id": "q-561",
     "number": 561,
@@ -34285,8 +33725,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.rfc-editor.org/rfc/rfc9110"
       }
     }
-  }
-,
+  },
   {
     "id": "q-562",
     "number": 562,
@@ -34342,8 +33781,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/rate-limiting-policies"
       }
     }
-  }
-,
+  },
   {
     "id": "q-563",
     "number": 563,
@@ -34399,8 +33837,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-564",
     "number": 564,
@@ -34456,8 +33893,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-565",
     "number": 565,
@@ -34513,8 +33949,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-566",
     "number": 566,
@@ -34571,8 +34006,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-567",
     "number": 567,
@@ -34628,8 +34062,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-manager/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-568",
     "number": 568,
@@ -34685,8 +34118,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-569",
     "number": 569,
@@ -34696,7 +34128,7 @@ window.MCPA_QUESTIONS = [
       "Anypoint Visualizer",
       "Monitoring"
     ],
-    "prompt": "Refer to the exhibit.\nA new observability engineer asks which platform view answers the question 'what is connected to what in our application network, as observed in production over the last day?' The exhibit shows four views.\nWhich option is the right tool?",
+    "prompt": "A new observability engineer asks which platform view answers the question 'what is connected to what in our application network, as observed in production over the last day?' The exhibit shows four views.\nWhich option is the right tool?",
     "options": [
       {
         "letter": "A",
@@ -34744,8 +34176,7 @@ window.MCPA_QUESTIONS = [
       }
     },
     "image": "images/q569arch.svg"
-  }
-,
+  },
   {
     "id": "q-570",
     "number": 570,
@@ -34802,8 +34233,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/visualizer/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-571",
     "number": 571,
@@ -34861,8 +34291,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-572",
     "number": 572,
@@ -34919,8 +34348,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/4.4/business-events"
       }
     }
-  }
-,
+  },
   {
     "id": "q-573",
     "number": 573,
@@ -34976,8 +34404,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-574",
     "number": 574,
@@ -35034,8 +34461,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-575",
     "number": 575,
@@ -35092,8 +34518,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-576",
     "number": 576,
@@ -35149,8 +34574,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-577",
     "number": 577,
@@ -35206,8 +34630,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-578",
     "number": 578,
@@ -35217,7 +34640,7 @@ window.MCPA_QUESTIONS = [
       "Anypoint Visualizer",
       "Layers"
     ],
-    "prompt": "Refer to the exhibit.\nA Visualizer view shows a mobile app calling a Checkout Experience API, which calls an Order Process API, which calls SAP Orders and Inventory System APIs. Based on the observed edges, which statement about the topology is correct?",
+    "prompt": "A Visualizer view shows a mobile app calling a Checkout Experience API, which calls an Order Process API, which calls SAP Orders and Inventory System APIs. Based on the observed edges, which statement about the topology is correct?",
     "image": "images/qnetwork.svg",
     "options": [
       {
@@ -35265,8 +34688,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/visualizer/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-579",
     "number": 579,
@@ -35276,7 +34698,7 @@ window.MCPA_QUESTIONS = [
       "Alerts",
       "Metrics"
     ],
-    "prompt": "Refer to the exhibit.\nThe alert board shows: A1 pages on P95 latency over 800ms for 10 minutes; A2 opens a ticket on error rate over 2% for 5 minutes; A3 emails owners on 429 counts above 100/hour; A4 notifies platform on heap over 85% for 15 minutes. A single failed node causes a spike of 3 requests with 500 responses lasting 20 seconds, fully recovered. Which alert(s) fire?",
+    "prompt": "The alert board shows: A1 pages on P95 latency over 800ms for 10 minutes; A2 opens a ticket on error rate over 2% for 5 minutes; A3 emails owners on 429 counts above 100/hour; A4 notifies platform on heap over 85% for 15 minutes. A single failed node causes a spike of 3 requests with 500 responses lasting 20 seconds, fully recovered. Which alert(s) fire?",
     "image": "images/qalerts.svg",
     "options": [
       {
@@ -35324,8 +34746,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-580",
     "number": 580,
@@ -35335,7 +34756,7 @@ window.MCPA_QUESTIONS = [
       "Monitoring",
       "Logs"
     ],
-    "prompt": "Refer to the exhibit.\nAn engineer sees the API dashboard's latency rise from 120ms to 900ms while policy violations stay flat and error rates hold. Where should they look next, and what does the flat error rate suggest?",
+    "prompt": "An engineer sees the API dashboard's latency rise from 120ms to 900ms while policy violations stay flat and error rates hold. Where should they look next, and what does the flat error rate suggest?",
     "image": "images/qmetrics.svg",
     "options": [
       {
@@ -35383,8 +34804,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/monitoring/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-581",
     "number": 581,
@@ -35394,7 +34814,7 @@ window.MCPA_QUESTIONS = [
       "Anypoint Visualizer",
       "Tags"
     ],
-    "prompt": "Refer to the exhibit.\nVisualizer shows nodes with tags (mobile, order, sap, bronze) and a time-range selector (1h / 24h / 7d). A stakeholder asks to see only SAP-related traffic for the last 24 hours. What combination achieves it?",
+    "prompt": "Visualizer shows nodes with tags (mobile, order, sap, bronze) and a time-range selector (1h / 24h / 7d). A stakeholder asks to see only SAP-related traffic for the last 24 hours. What combination achieves it?",
     "image": "images/qvisualizer.svg",
     "options": [
       {
@@ -35442,8 +34862,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/visualizer/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-582",
     "number": 582,
@@ -35500,8 +34919,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/data-modeling"
       }
     }
-  }
-,
+  },
   {
     "id": "q-583",
     "number": 583,
@@ -35557,8 +34975,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/general/api-led"
       }
     }
-  }
-,
+  },
   {
     "id": "q-584",
     "number": 584,
@@ -35615,8 +35032,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/custom-policies"
       }
     }
-  }
-,
+  },
   {
     "id": "q-585",
     "number": 585,
@@ -35672,8 +35088,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://www.rfc-editor.org/rfc/rfc6749"
       }
     }
-  }
-,
+  },
   {
     "id": "q-586",
     "number": 586,
@@ -35730,8 +35145,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://spec.openapis.org/oas/v3.1.0"
       }
     }
-  }
-,
+  },
   {
     "id": "q-587",
     "number": 587,
@@ -35788,8 +35202,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/mule-runtime/4.4/config-properties"
       }
     }
-  }
-,
+  },
   {
     "id": "q-588",
     "number": 588,
@@ -35845,8 +35258,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/munit/2.3/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-589",
     "number": 589,
@@ -35895,8 +35307,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-manager/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-590",
     "number": 590,
@@ -35945,8 +35356,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/dlb-overview"
       }
     }
-  }
-,
+  },
   {
     "id": "q-591",
     "number": 591,
@@ -36003,8 +35413,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/arm-templates/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-592",
     "number": 592,
@@ -36053,8 +35462,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/shared-worker-sizing"
       }
     }
-  }
-,
+  },
   {
     "id": "q-593",
     "number": 593,
@@ -36103,8 +35511,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/dlb-overview"
       }
     }
-  }
-,
+  },
   {
     "id": "q-594",
     "number": 594,
@@ -36145,8 +35552,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/vpc-overview"
       }
     }
-  }
-,
+  },
   {
     "id": "q-595",
     "number": 595,
@@ -36194,8 +35600,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/runtime-cloud/shared-persistent-queues"
       }
     }
-  }
-,
+  },
   {
     "id": "q-596",
     "number": 596,
@@ -36205,7 +35610,7 @@ window.MCPA_QUESTIONS = [
       "Caching",
       "Performance"
     ],
-    "prompt": "Refer to the exhibit.\nA catalog Process API returns pricing data that changes only a few times per day. Consumers call it constantly, and each call reaches the backend System API and the database, so response time and backend load are both high. The exhibit shows four fixes.\nWhich option most directly improves response time and backend load?",
+    "prompt": "A catalog Process API returns pricing data that changes only a few times per day. Consumers call it constantly, and each call reaches the backend System API and the database, so response time and backend load are both high. The exhibit shows four fixes.\nWhich option most directly improves response time and backend load?",
     "options": [
       {
         "letter": "A",
@@ -36257,8 +35662,7 @@ window.MCPA_QUESTIONS = [
       }
     },
     "image": "images/q596arch.svg"
-  }
-,
+  },
   {
     "id": "q-597",
     "number": 597,
@@ -36291,8 +35695,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/api-manager/2.x/rate-limiting-policies"
       }
     }
-  }
-,
+  },
   {
     "id": "q-598",
     "number": 598,
@@ -36325,8 +35728,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/deprecate-assets"
       }
     }
-  }
-,
+  },
   {
     "id": "q-599",
     "number": 599,
@@ -36384,8 +35786,7 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/exchange/"
       }
     }
-  }
-,
+  },
   {
     "id": "q-600",
     "number": 600,
@@ -36443,4 +35844,4 @@ window.MCPA_QUESTIONS = [
       }
     }
   }
-]
+];
