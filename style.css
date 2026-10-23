@@ -624,6 +624,81 @@ body {
   border-color: var(--primary);
 }
 
+/* Timed Exam area multi-select */
+.exam-area-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  max-height: 240px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.exam-area-option {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-main);
+  cursor: pointer;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  transition: all 0.12s ease;
+}
+
+.exam-area-option:hover {
+  border-color: var(--primary);
+}
+
+.exam-area-option input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--primary);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.exam-area-option.checked {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.exam-area-option .area-name {
+  flex: 1;
+}
+
+.exam-area-option .area-count {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.exam-area-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.area-action-btn {
+  flex: 1;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-subtle);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.area-action-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
 .q-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);

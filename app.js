@@ -13,6 +13,7 @@
     filterType: 'all', // 'all' | 'unanswered' | 'correct' | 'incorrect' | 'flagged'
     filterDomain: 'all',
     searchQuery: '',
+    examAreaFilter: [], // array of domain names; empty = all areas
     
     // Stored in localStorage
     userAnswers: {}, // { qId: selectedLetter }
@@ -27,6 +28,7 @@
     FLAGGED: 'mcpa_flagged_v1',
     EXAM: 'mcpa_exam_session_v1',
     EXAM_COUNT: 'mcpa_exam_count_v1',
+    EXAM_AREAS: 'mcpa_exam_areas_v1',
     THEME: 'mcpa_theme_v1',
     LAST_INDEX: 'mcpa_last_index_v1'
   };
@@ -74,6 +76,12 @@
     filterStatus: document.getElementById('filter-status'),
     searchInput: document.getElementById('search-input'),
     qGrid: document.getElementById('q-grid'),
+
+    // Timed Exam area filter
+    examAreaList: document.getElementById('exam-area-list'),
+    examAreaCountLabel: document.getElementById('exam-area-count-label'),
+    examAreaAllBtn: document.getElementById('exam-area-all-btn'),
+    examAreaClearBtn: document.getElementById('exam-area-clear-btn'),
     
     // Modals
     confirmModal: document.getElementById('confirm-modal'),
@@ -97,7 +105,9 @@
       dom.examCountSelect.value = state.examQuestionCount.toString();
     }
     updateExamBtnLabel();
+    sanitizeExamAreaFilter();
     populateDomainFilter();
+    populateExamAreaFilter();
     if (state.mode === 'exam' && state.examSession && state.examSession.active) {
       dom.practiceModeBtn.classList.remove('active');
       dom.examModeBtn.classList.add('active');
@@ -150,6 +160,14 @@
         }
       }
 
+      const savedExamAreas = localStorage.getItem(STORAGE_KEYS.EXAM_AREAS);
+      if (savedExamAreas) {
+        const parsedAreas = JSON.parse(savedExamAreas);
+        if (Array.isArray(parsedAreas)) {
+          state.examAreaFilter = parsedAreas.filter(a => typeof a === 'string');
+        }
+      }
+
       const savedExam = localStorage.getItem(STORAGE_KEYS.EXAM);
       if (savedExam) {
         state.examSession = JSON.parse(savedExam);
@@ -173,6 +191,7 @@
       localStorage.setItem(STORAGE_KEYS.THEME, state.theme);
       localStorage.setItem(STORAGE_KEYS.LAST_INDEX, state.currentIndex.toString());
       localStorage.setItem(STORAGE_KEYS.EXAM_COUNT, state.examQuestionCount.toString());
+      localStorage.setItem(STORAGE_KEYS.EXAM_AREAS, JSON.stringify(state.examAreaFilter));
       if (state.examSession) {
         localStorage.setItem(STORAGE_KEYS.EXAM, JSON.stringify(state.examSession));
       } else {
@@ -186,8 +205,11 @@
   // Update Exam button label
   function updateExamBtnLabel() {
     if (dom.examModeBtn) {
-      dom.examModeBtn.textContent = `Timed Exam (${state.examQuestionCount}Q)`;
-      dom.examModeBtn.title = `${state.examQuestionCount}-question timed exam simulation (${state.examQuestionCount * 2} mins)`;
+      const areaCount = state.examAreaFilter.length;
+      const areaSuffix = areaCount > 0 ? ` · ${areaCount} Area${areaCount > 1 ? 's' : ''}` : '';
+      dom.examModeBtn.textContent = `Timed Exam (${state.examQuestionCount}Q)${areaSuffix}`;
+      const scope = areaCount > 0 ? ` drawn from ${areaCount} selected area${areaCount > 1 ? 's' : ''}` : '';
+      dom.examModeBtn.title = `${state.examQuestionCount}-question timed exam simulation (${state.examQuestionCount * 2} mins)${scope}`;
     }
   }
 
@@ -222,6 +244,94 @@
         dom.filterDomain.appendChild(opt);
       });
     }
+  }
+
+  // Drop any saved area names that no longer exist in the question bank
+  function sanitizeExamAreaFilter() {
+    const valid = new Set(getExamAreas());
+    const filtered = state.examAreaFilter.filter(a => valid.has(a));
+    if (filtered.length !== state.examAreaFilter.length) {
+      state.examAreaFilter = filtered;
+      saveStorage();
+    }
+  }
+
+  // Unique exam areas (domains), sorted alphabetically
+  function getExamAreas() {
+    const areas = new Set();
+    state.questions.forEach(q => {
+      if (q.domain) areas.add(q.domain);
+    });
+    return Array.from(areas).sort();
+  }
+
+  // Populate the Timed Exam area multi-select
+  function populateExamAreaFilter() {
+    if (!dom.examAreaList) return;
+    dom.examAreaList.innerHTML = '';
+
+    getExamAreas().forEach(area => {
+      const count = state.questions.filter(q => q.domain === area).length;
+      const selected = state.examAreaFilter.includes(area);
+
+      const label = document.createElement('label');
+      label.className = `exam-area-option${selected ? ' checked' : ''}`;
+
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.value = area;
+      checkbox.checked = selected;
+      checkbox.addEventListener('change', () => {
+        toggleExamArea(area, checkbox.checked, label);
+      });
+
+      const name = document.createElement('span');
+      name.className = 'area-name';
+      name.textContent = area;
+
+      const countEl = document.createElement('span');
+      countEl.className = 'area-count';
+      countEl.textContent = `${count}`;
+
+      label.appendChild(checkbox);
+      label.appendChild(name);
+      label.appendChild(countEl);
+      dom.examAreaList.appendChild(label);
+    });
+
+    updateExamAreaCountLabel();
+  }
+
+  function toggleExamArea(area, isChecked, labelEl) {
+    if (isChecked) {
+      if (!state.examAreaFilter.includes(area)) state.examAreaFilter.push(area);
+    } else {
+      state.examAreaFilter = state.examAreaFilter.filter(a => a !== area);
+    }
+    if (labelEl) labelEl.classList.toggle('checked', isChecked);
+    saveStorage();
+    updateExamAreaCountLabel();
+    updateExamBtnLabel();
+  }
+
+  function setAllExamAreas(selectAll) {
+    state.examAreaFilter = selectAll ? getExamAreas() : [];
+    saveStorage();
+    populateExamAreaFilter();
+    updateExamBtnLabel();
+  }
+
+  function updateExamAreaCountLabel() {
+    if (!dom.examAreaCountLabel) return;
+    const selected = state.examAreaFilter.length;
+    dom.examAreaCountLabel.textContent = selected === 0 ? 'All areas' : `${selected} selected`;
+  }
+
+  // Question pool for the timed exam, limited to the selected areas
+  function getExamPool() {
+    if (!state.examAreaFilter.length) return state.questions;
+    const selected = new Set(state.examAreaFilter);
+    return state.questions.filter(q => selected.has(q.domain));
   }
 
   // Apply filters
@@ -629,11 +739,17 @@
     if (state.mode === newMode) return;
     
     if (newMode === 'exam') {
-      const count = state.examQuestionCount;
+      const pool = getExamPool();
+      if (!pool.length) return;
+      const count = Math.min(state.examQuestionCount, pool.length);
       const durationMin = count * 2;
+      const areaCount = state.examAreaFilter.length;
+      const scope = areaCount > 0
+        ? ` drawn only from your ${areaCount} selected area${areaCount > 1 ? 's' : ''}`
+        : '';
       showConfirmModal(
         `Start ${count}-Question Timed Exam`,
-        `This will start a timed ${durationMin}-minute exam simulation with ${count} randomized questions. Answers and explanations will be hidden until you submit.`,
+        `This will start a timed ${durationMin}-minute exam simulation with ${count} randomized questions${scope}. Answers and explanations will be hidden until you submit.`,
         () => startExamMode()
       );
     } else {
@@ -646,22 +762,27 @@
       saveStorage();
       applyFilters();
       renderQuestion();
-    }
+      }
   }
 
   // Start Exam Mode
   function startExamMode() {
+    const pool = getExamPool();
+    if (!pool.length) return;
+
     state.mode = 'exam';
     dom.practiceModeBtn.classList.remove('active');
     dom.examModeBtn.classList.add('active');
 
-    const count = state.examQuestionCount;
+    // Never ask for more questions than the selected area(s) can supply.
+    const count = Math.min(state.examQuestionCount, pool.length);
     const examQuestions = buildWeightedExam(count);
 
     state.examSession = {
       active: true,
       questions: examQuestions,
       questionCount: count,
+      areas: [...state.examAreaFilter],
       startTime: Date.now(),
       durationSec: count * 2 * 60 // 2 minutes per question
     };
@@ -704,25 +825,31 @@
   }
 
   // Draw a `count`-question exam that mirrors the official domain weights.
+  // When the user has selected specific areas, the draw is limited to those areas
+  // and re-normalizes the official weights across the selected subset.
   function buildWeightedExam(count) {
+    const pool = getExamPool();
     const byDomain = {};
-    state.questions.forEach(q => {
+    pool.forEach(q => {
       const d = q.domain || 'General';
       (byDomain[d] = byDomain[d] || []).push(q);
     });
 
     const domains = Object.keys(EXAM_WEIGHTS).filter(d => byDomain[d] && byDomain[d].length);
+    const fallbackDomains = Object.keys(byDomain).filter(d => !domains.includes(d));
+    const weightedDomains = domains.concat(fallbackDomains);
     const totalWeight = domains.reduce((s, d) => s + EXAM_WEIGHTS[d], 0) || 100;
 
-    const quotas = domains.map(d => {
-      const exact = (count * EXAM_WEIGHTS[d]) / totalWeight;
+    const quotas = weightedDomains.map(d => {
+      const weight = EXAM_WEIGHTS[d] || 0;
+      const exact = (count * weight) / totalWeight;
       return { domain: d, base: Math.floor(exact), frac: exact - Math.floor(exact) };
     });
 
     let assigned = quotas.reduce((s, q) => s + q.base, 0);
-    quotas.sort((a, b) => b.frac - a.frac);
-    for (let i = 0; assigned < count; i++, assigned++) {
-      quotas[i % quotas.length].base++;
+    const byFrac = [...quotas].sort((a, b) => b.frac - a.frac);
+    for (let i = 0; assigned < count && i < byFrac.length; i++, assigned++) {
+      byFrac[i].base++;
     }
 
     const picked = [];
@@ -736,7 +863,7 @@
 
     // Top up if a domain had fewer questions than its quota.
     if (picked.length < count) {
-      shuffle(state.questions).forEach(q => {
+      shuffle(pool).forEach(q => {
         if (picked.length < count && !pickedIds.has(q.id)) {
           picked.push(q);
           pickedIds.add(q.id);
@@ -843,7 +970,7 @@
         dom.timerBar.style.display = 'none';
         applyFilters();
         renderQuestion();
-      });
+          });
 
       document.getElementById('retake-exam-btn')?.addEventListener('click', () => {
         startExamMode();
@@ -950,9 +1077,11 @@
       updateExamBtnLabel();
 
       if (state.mode === 'exam') {
+        const pool = getExamPool();
+        const effective = Math.min(count, pool.length);
         showConfirmModal(
-          `Restart Exam with ${count} Questions?`,
-          `Changing the question count will start a new timed ${count * 2}-minute exam session with ${count} questions. Your active exam session will be reset.`,
+          `Restart Exam with ${effective} Questions?`,
+          `Changing the question count will start a new timed ${effective * 2}-minute exam session with ${effective} questions. Your active exam session will be reset.`,
           () => startExamMode()
         );
       }
@@ -1002,6 +1131,10 @@
       applyFilters();
       renderQuestion();
     });
+
+    // Timed Exam area filter
+    dom.examAreaAllBtn?.addEventListener('click', () => setAllExamAreas(true));
+    dom.examAreaClearBtn?.addEventListener('click', () => setAllExamAreas(false));
 
     // Keyboard Shortcuts
     window.addEventListener('keydown', handleKeyDown);

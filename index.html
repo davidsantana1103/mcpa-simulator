@@ -156,6 +156,26 @@
         <input type="text" class="search-input" id="search-input" placeholder="Search keywords (e.g. mTLS, vCores, DLB)..." aria-label="Search questions">
       </div>
 
+      <div class="sidebar-card exam-area-card" id="exam-area-card">
+        <div class="sidebar-title">
+          <span>Timed Exam — Areas</span>
+          <span id="exam-area-count-label" style="font-size: 0.72rem; color: var(--text-muted);">All areas</span>
+        </div>
+
+        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: -0.35rem;">
+          Pick one or more areas to focus your timed exam. Only questions from the selected areas will be included. Leave all unchecked to use every area. Changes apply the next time you start an exam.
+        </p>
+
+        <div class="exam-area-list" id="exam-area-list">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <div class="exam-area-actions">
+          <button type="button" class="area-action-btn" id="exam-area-all-btn">Select All</button>
+          <button type="button" class="area-action-btn" id="exam-area-clear-btn">Clear</button>
+        </div>
+      </div>
+
       <div class="sidebar-card">
         <div class="sidebar-title">
           <span>Question Grid</span>
