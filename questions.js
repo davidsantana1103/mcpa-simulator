@@ -845,7 +845,7 @@ window.MCPA_QUESTIONS = [
       "Layers",
       "System API"
     ],
-    "prompt": "Which two characteristics typically apply to System APIs in API-led connectivity? (Choose two.)",
+    "prompt": "A retail company is kicking off its API-led connectivity program. The integration lead is briefing a new architect on which APIs each team will own and how fast each tier’s contracts are expected to change. When describing the System API that will unlock the SAP order management system, which two characteristics should the architect call out?",
     "options": [
       {
         "letter": "A",
@@ -2460,7 +2460,7 @@ window.MCPA_QUESTIONS = [
       "Identity Management",
       "Client Management"
     ],
-    "prompt": "Which statement correctly distinguishes identity management from client management in Anypoint Platform?",
+    "prompt": "A new security administrator is configuring Anypoint Platform and is confused by the console. During onboarding, the platform architect must explain the difference between managing who can sign in to the platform and managing which applications may call governed APIs. Which statement correctly distinguishes identity management from client management in Anypoint Platform?",
     "options": [
       {
         "letter": "A",
@@ -3367,7 +3367,7 @@ window.MCPA_QUESTIONS = [
       "Dependencies",
       "API Lifecycle"
     ],
-    "prompt": "Which two statements correctly describe dependencies between an API, its specification, its implementation, and its clients? (Choose two.)",
+    "prompt": "A developer just joined a team that maintains a Customer API published in Exchange, a Mule implementation deployed to CloudHub, and three consuming applications. The team lead asks the architect to explain which parts of this setup depend on which. Which two statements correctly describe the dependencies between an API, its specification, its implementation, and its clients?",
     "options": [
       {
         "letter": "A",
@@ -3732,7 +3732,7 @@ window.MCPA_QUESTIONS = [
       "Exchange",
       "Reusable Assets"
     ],
-    "prompt": "Which two types of API-related assets can be published to Anypoint Exchange for reuse by other teams? (Choose two.)",
+    "prompt": "An enterprise architect is defining what the C4E should publish so that delivery teams across the organization can discover and reuse assets instead of rebuilding them. The team plans to publish several types of API-related assets to Anypoint Exchange. Which two types of assets can be published to Exchange for reuse by other teams?",
     "options": [
       {
         "letter": "A",
@@ -4097,7 +4097,7 @@ window.MCPA_QUESTIONS = [
       "Semantic Versioning",
       "Minor Version"
     ],
-    "prompt": "Which two changes to a published API should increment only the minor version? (Choose two.)",
+    "prompt": "An Orders API at version 2.1.0 is published in Exchange and consumed by several internal teams. The API team is about to release a change and must decide how to bump the version so existing clients are not broken. Which two changes should increment only the minor version?",
     "options": [
       {
         "letter": "A",
@@ -4827,7 +4827,7 @@ window.MCPA_QUESTIONS = [
       "HTTP Methods",
       "Idempotency"
     ],
-    "prompt": "Which two HTTP methods are idempotent according to HTTP semantics? (Choose two.)",
+    "prompt": "A mobile team is adding an offline retry mechanism to its Fulfillment API client. The architect warns that when connectivity drops mid-request the app may transparently retry the same call, so repeated identical requests must not cause duplicate side effects. Which two HTTP methods are idempotent according to HTTP semantics?",
     "options": [
       {
         "letter": "A",
@@ -7279,7 +7279,7 @@ window.MCPA_QUESTIONS = [
       "API Instances",
       "API Manager"
     ],
-    "prompt": "Which two statements about API instances in API Manager are correct? (Choose two.)",
+    "prompt": "A team manages the same Orders API specification through Development, Staging, and Production. A new hire asks why the API appears multiple times in API Manager and how policies and client contracts are handled for each stage. Which two statements about API instances in API Manager are correct?",
     "options": [
       {
         "letter": "A",
@@ -7644,7 +7644,7 @@ window.MCPA_QUESTIONS = [
       "Policies",
       "NFRs"
     ],
-    "prompt": "Which two pairings of a non-functional requirement with an API Manager policy are correct? (Choose two.)",
+    "prompt": "An API team is translating a set of non-functional security and traffic requirements into API Manager policies. The requirements include validating OAuth tokens on each call, limiting how deeply nested JSON payloads may be, protecting the backend from sudden traffic spikes, and stripping an internal header before responses leave the gateway. Which two pairings of a non-functional requirement with an API Manager policy are correct?",
     "options": [
       {
         "letter": "A",
@@ -9436,7 +9436,7 @@ window.MCPA_QUESTIONS = [
       "Policies",
       "Security"
     ],
-    "prompt": "Which two policies enforce security constraints on API invocations? (Choose two.)",
+    "prompt": "A compliance review of a governed API is under way. The reviewer requires that only approved source addresses may call the API, that XML payloads from partners be checked for excessive structure, and that every request and response be recorded for audit. The architect must map each requirement to an API Manager policy. Which two policies enforce security constraints on API invocations?",
     "options": [
       {
         "letter": "A",
@@ -9742,7 +9742,7 @@ window.MCPA_QUESTIONS = [
       "OAuth 2.0",
       "Client Management"
     ],
-    "prompt": "Which two statements about OAuth 2.0 on Anypoint Platform are correct? (Choose two.)",
+    "prompt": "A company secures its Experience APIs with OAuth 2.0, using PingFederate as the external identity provider for user authentication and a client provider registered in the environment for API clients. A new developer is confused about where client applications are registered and who issues the tokens. Which two statements about OAuth 2.0 on Anypoint Platform are correct?",
     "options": [
       {
         "letter": "A",
@@ -10048,7 +10048,7 @@ window.MCPA_QUESTIONS = [
       "Custom Policies",
       "Scenarios"
     ],
-    "prompt": "Which two scenarios most likely require a custom policy? (Choose two.)",
+    "prompt": "A delivery team is reviewing the security requirements for a governed API before requesting policies from the C4E. The requirements include IP allowlisting, protection against sudden traffic bursts, JWT signature validation against a JWKS endpoint, masking a proprietary account number format in responses, and authorizing each request against an internal entitlement service. Which two of these scenarios most likely require building a custom policy?",
     "options": [
       {
         "letter": "A",
@@ -10472,7 +10472,7 @@ window.MCPA_QUESTIONS = [
       "API Autodiscovery",
       "API Manager"
     ],
-    "prompt": "Which two statements about API Autodiscovery are correct? (Choose two.)",
+    "prompt": "A Mule application that implements the Customer API will be deployed to both Staging and Production. The team wants the application to register itself with the correct API instance in API Manager at startup without manual pairing steps. During a design review, the architect is asked to confirm how API Autodiscovery behaves. Which two statements about API Autodiscovery are correct?",
     "options": [
       {
         "letter": "A",
@@ -11191,7 +11191,7 @@ window.MCPA_QUESTIONS = [
       "Runtime Plane",
       "Hosting"
     ],
-    "prompt": "Which two runtime plane options are fully managed by MuleSoft, including the infrastructure? (Choose two.)",
+    "prompt": "A company evaluating deployment options must run Mule applications in production with zero infrastructure responsibility, including provisioning, patching, and scaling of the runtime hosts. The CIO insists everything below the control plane be handled by MuleSoft. Which two runtime plane options are fully managed by MuleSoft, including the infrastructure?",
     "options": [
       {
         "letter": "A",
@@ -11379,7 +11379,7 @@ window.MCPA_QUESTIONS = [
       "Testing",
       "Integration Tests"
     ],
-    "prompt": "Which statement correctly distinguishes unit tests from integration tests for an API implementation?",
+    "prompt": "A lead developer is defining the testing strategy for a Mule implementation of the Orders API. The team wants fast feedback on every commit and confidence that the flows work against the real SAP and database systems before deploying to Staging. Which statement correctly distinguishes unit tests from integration tests for an API implementation?",
     "options": [
       {
         "letter": "A",
@@ -11615,7 +11615,7 @@ window.MCPA_QUESTIONS = [
       "MUnit",
       "Testing"
     ],
-    "prompt": "Which two MUnit capabilities support unit testing of Mule applications? (Choose two.)",
+    "prompt": "A team is introducing MUnit into the CI pipeline for a Mule application. The pipeline must run the tests on every commit, and several external dependencies are unstable in the build environment, so tests must run quickly and in isolation. Which two MUnit capabilities support unit testing of Mule applications?",
     "options": [
       {
         "letter": "A",
@@ -12039,7 +12039,7 @@ window.MCPA_QUESTIONS = [
       "DevOps",
       "Exchange"
     ],
-    "prompt": "Which two practices support automated building and sharing of API-related artifacts? (Choose two.)",
+    "prompt": "A DevOps engineer is automating the path from source code to a running, governed API: publishing reusable assets, building the application, and deploying it without any manual steps. Which two practices support automated building and sharing of API-related artifacts?",
     "options": [
       {
         "letter": "A",
@@ -12404,7 +12404,7 @@ window.MCPA_QUESTIONS = [
       "Object Store",
       "Use Cases"
     ],
-    "prompt": "Which two are appropriate uses of Object Store v2 for a CloudHub application? (Choose two.)",
+    "prompt": "A CloudHub application must resume processing where it left off after a redeploy, and its multiple workers need to share the same cached reference data. The architect is evaluating Object Store v2 for these needs. Which two are appropriate uses of Object Store v2 for a CloudHub application?",
     "options": [
       {
         "letter": "A",
@@ -12769,7 +12769,7 @@ window.MCPA_QUESTIONS = [
       "Worker Sizes",
       "CloudHub"
     ],
-    "prompt": "Which two statements about CloudHub workers are correct? (Choose two.)",
+    "prompt": "An operations manager is right-sizing a new CloudHub application and asks the architect to explain what buying workers actually means for CPU, memory, and heap, and whether fractional workers guarantee a consistent share of capacity under load. Which two statements about CloudHub workers are correct?",
     "options": [
       {
         "letter": "A",
@@ -13134,7 +13134,7 @@ window.MCPA_QUESTIONS = [
       "Reliability",
       "CloudHub"
     ],
-    "prompt": "Which two statements describe the reliability of applications in the CloudHub shared worker cloud? (Choose two.)",
+    "prompt": "An architect is preparing a high-availability design for a critical CloudHub application and must explain which redundancy guarantees the platform provides and what the application itself must do to avoid downtime. Which two statements describe the reliability of applications in the CloudHub shared worker cloud?",
     "options": [
       {
         "letter": "A",
@@ -13440,7 +13440,7 @@ window.MCPA_QUESTIONS = [
       "Load Balancers",
       "Comparison"
     ],
-    "prompt": "Which two capabilities does a dedicated load balancer provide that the shared load balancer does not? (Choose two.)",
+    "prompt": "A company runs a CloudHub application inside an Anypoint VPC and must expose it at a custom domain with its own SSL certificate, while other applications continue using the shared load balancer. Which two capabilities does a dedicated load balancer provide that the shared load balancer does not?",
     "options": [
       {
         "letter": "A",
@@ -13746,7 +13746,7 @@ window.MCPA_QUESTIONS = [
       "Networking",
       "Anypoint VPC"
     ],
-    "prompt": "Which two methods can connect an Anypoint VPC to customer networks? (Choose two.)",
+    "prompt": "A company must connect its Anypoint VPC to its corporate network and to its AWS environment so that Mule applications can reach on-premises systems and private AWS resources. Which two methods can connect an Anypoint VPC to customer networks?",
     "options": [
       {
         "letter": "A",
@@ -14052,7 +14052,7 @@ window.MCPA_QUESTIONS = [
       "Single Point of Failure",
       "High Availability"
     ],
-    "prompt": "Which two changes remove single points of failure in a CloudHub deployment? (Choose two.)",
+    "prompt": "An architect is reviewing a single-worker CloudHub deployment that is critical to the business and that reaches the corporate data center through a single VPN connection. Management asks what changes would eliminate single points of failure in this deployment. Which two changes remove single points of failure in a CloudHub deployment?",
     "options": [
       {
         "letter": "A",
@@ -14535,7 +14535,7 @@ window.MCPA_QUESTIONS = [
       "Object Store",
       "Use Cases"
     ],
-    "prompt": "Which two scenarios are appropriate uses of a persistent object store in a Mule application deployed to CloudHub? (Choose two.)",
+    "prompt": "A Mule application deployed to CloudHub must keep a watermark of the last processed record for incremental database polling and cache access tokens for a downstream API until they expire. The architect is evaluating a persistent object store for these needs. Which two scenarios are appropriate uses of a persistent object store in a Mule application deployed to CloudHub?",
     "options": [
       {
         "letter": "A",
