@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="270" viewBox="0 0 600 270" font-family="Arial, sans-serif" font-size="12">
+  <text x="300" y="24" text-anchor="middle" font-size="13" font-weight="bold">Alert Policy Board</text>
+  <text x="20" y="50" fill="#555">Configured alerts for the Orders application:</text>
+
+  <rect x="20" y="62" width="560" height="40" fill="#ffeeee" stroke="#c33" stroke-width="1"/>
+  <text x="32" y="87">A1: P95 response time &gt; 800 ms for 10 min  →  notify #oncall  (SEV: high)</text>
+
+  <rect x="20" y="108" width="560" height="40" fill="#fffbe0" stroke="#b8a13a" stroke-width="1"/>
+  <text x="32" y="133">A2: error rate &gt; 2% for 5 min  →  create ticket  (SEV: medium)</text>
+
+  <rect x="20" y="154" width="560" height="40" fill="#eef8ee" stroke="#2a8f4a" stroke-width="1"/>
+  <text x="32" y="179">A3: policy violations (rate-limit 429) count &gt; 100 in 1 h  →  email owners (SEV: low)</text>
+
+  <rect x="20" y="200" width="560" height="40" fill="#f3eaff" stroke="#7b4abf" stroke-width="1"/>
+  <text x="32" y="225">A4: heap usage &gt; 85% for 15 min  →  notify #platform  (SEV: medium)</text>
+
+  <text x="20" y="258" fill="#888">All alerts evaluate metrics collected per application and per API instance.</text>
+</svg>

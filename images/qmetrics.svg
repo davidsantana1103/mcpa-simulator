@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300" viewBox="0 0 600 300" font-family="Arial, sans-serif" font-size="12">
+  <text x="300" y="24" text-anchor="middle" font-size="13" font-weight="bold">Platform Metrics Configuration</text>
+
+  <rect x="40" y="60" width="250" height="110" rx="8" fill="#eef8ee" stroke="#2a8f4a" stroke-width="2"/>
+  <text x="165" y="82" text-anchor="middle" font-weight="bold">Anypoint Monitoring</text>
+  <text x="165" y="104" text-anchor="middle">API dashboard:</text>
+  <text x="165" y="122" text-anchor="middle">requests, responses, latency,</text>
+  <text x="165" y="140" text-anchor="middle">policy violations</text>
+  <text x="165" y="158" text-anchor="middle">per API instance, per environment</text>
+
+  <rect x="310" y="60" width="250" height="110" rx="8" fill="#f3eaff" stroke="#7b4abf" stroke-width="2"/>
+  <text x="435" y="82" text-anchor="middle" font-weight="bold">Alert configuration</text>
+  <text x="435" y="104" text-anchor="middle">"Notify when the Orders API</text>
+  <text x="435" y="122" text-anchor="middle">P95 response time exceeds</text>
+  <text x="435" y="140" text-anchor="middle">500 ms for 5 minutes"</text>
+  <text x="435" y="158" text-anchor="middle">(email + Slack webhook)</text>
+
+  <line x1="290" y1="115" x2="310" y2="115" stroke="#333" stroke-width="2"/>
+
+  <rect x="40" y="200" width="520" height="60" rx="8" fill="#fffbe8" stroke="#b8a13a" stroke-width="2"/>
+  <text x="300" y="225" text-anchor="middle" font-weight="bold">Application logs</text>
+  <text x="300" y="245" text-anchor="middle">available per application in Runtime Manager / Monitoring (lines, errors)</text>
+</svg>
