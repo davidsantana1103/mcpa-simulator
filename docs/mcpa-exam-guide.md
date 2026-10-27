@@ -100,6 +100,16 @@ Recommended Trailhead Academy course:
 
 Documentation, Tip Sheets, and User Guides are searchable through [Salesforce Help](https://help.salesforce.com/).
 
+## Source Documentation
+
+All exam content and references in this guide come from official MuleSoft/Salesforce sources:
+- **Official MuleSoft Documentation Portal**: https://docs.mulesoft.com/
+- **Salesforce Help / Article Portal**: https://help.salesforce.com/
+- **Catalyst and Strategy Articles**: https://blogs.mulesoft.com/
+- **Salesforce Blog (API-led, Architecture)**: https://www.salesforce.com/blog/
+
+This document reflects the Spring '24 exam release (Help ID 005298956). Questions and exam weights may be updated with new releases.
+
 ## Maintaining the Certification
 
 There is no required maintenance for the Salesforce Certified MuleSoft Platform Architect certification at this time. Continued learning is encouraged through the Trailblazer Community, Trailhead, and Trailhead Academy.
