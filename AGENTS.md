@@ -1,12 +1,12 @@
 # MCPA Exam Simulator Repository Documentation
 
 ## Overview
-This repository contains a **standalone web application** that simulates the **Salesforce Certified MuleSoft Platform Architect I (MCPA Level 1)** exam. The application provides 322 practice questions designed to be ~5.4x the real 60-question exam, with comprehensive explanations and references to official MuleSoft/Salesforce documentation.
+This repository contains a **standalone web application** that simulates the **Salesforce Certified MuleSoft Platform Architect I (MCPA Level 1)** exam. The application provides 600 practice questions designed to be ~5.4x the real 60-question exam, with comprehensive explanations and references to official MuleSoft/Salesforce documentation.
 
 ## Key Features
 
 ### Core Functionality
-- **322 Practice Questions**: Complete question bank with verified answers, option-by-option rationales, and official documentation references
+- **600 Practice Questions**: Complete question bank with verified answers, option-by-option rationales, and official documentation references
 - **Exam-Aligned Domain Weighting**: Questions tagged to 9 official exam domains (7%/10%/10%/12%/17%/11%/11%/10%/12% weights)
 - **Two Study Modes**:
   - **Practice Mode**: Instant feedback per question with detailed rationales and study links

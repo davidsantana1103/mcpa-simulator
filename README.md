@@ -4,7 +4,7 @@ A standalone, client-side web application designed to simulate the **Salesforce 
 
 ## Features
 
-- **600 Practice Questions** (322 core questions): Question bank sized at ~5.4x the real 60-question exam, with verified answers, full explanations, option-by-option rationales, and references to official MuleSoft/Salesforce documentation.
+- **600 Practice Questions**: Question bank sized at ~5.4x the real 60-question exam, with verified answers, full explanations, option-by-option rationales, and references to official MuleSoft/Salesforce documentation.
 - **Exam-Aligned Domain Weighting**: Questions are tagged to the 9 official exam domains, and Timed Exam mode draws each 60-question test in proportion to the official domain weights (7/10/10/12/17/11/11/10/12%).
 - **Two Study Modes**:
   - **Practice Mode**: Instant feedback per question, detailed rationale breakdowns for every option (correct and incorrect), and study references.
