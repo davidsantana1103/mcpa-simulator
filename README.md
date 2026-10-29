@@ -12,6 +12,7 @@ A standalone, client-side web application designed to simulate the **Salesforce 
   - **Timed Exam Area Filter**: In Timed Exam mode, a multi-select lets you focus the simulation on one or more of the 9 exam domains (areas). The exam then draws questions only from the areas you select, so you can drill into your weak certification areas. Leave all areas unchecked to use the full question bank. Selections are saved in the browser.
 - **Exhibit Questions**: Scenario questions with diagrams ("Refer to the exhibit") mirroring the real exam's exhibit-based items.
 - **Zero Backend / 100% Local**: Works offline by saving test progress, answers, flags, and theme directly in the browser's `localStorage`.
+- **Optional Google Drive Sync**: Connect your own Google account to keep one shared progress file across devices and browsers. The app loads your progress on connect and saves changes automatically afterwards. Purely local use still works with no account. See [Google Drive Sync](#google-drive-sync).
 - **Keyboard Shortcuts**:
   - `A`-`E` or `1`-`5`: Select or toggle options
   - `Enter`: Check answer
@@ -61,6 +62,49 @@ open index.html
 python3 -m http.server 8000
 ```
 
+## Google Drive Sync
+
+By default the app is 100% local (`localStorage`). Optionally, a user can connect their own
+Google account so the same progress follows them across devices and browsers.
+
+How it works:
+
+- Clicking **Connect Drive** in the header opens Google's consent screen and returns a
+  short-lived access token to the browser. There is no backend and no client secret.
+- The app stores progress in a single file, `mcpa-simulator-progress.json`, that it creates
+  in the user's **My Drive** using the `drive.file` scope. The app can only ever see files it
+  created itself; it cannot read anything else in the Drive.
+- On connect (and on each later page load while connected) the app reads that file, merges it
+  with local progress, and writes the result back. Changes after that are saved automatically
+  (debounced) and flushed when the tab is hidden.
+- When the access token expires (about an hour), the app first tries a silent refresh. If
+  Google requires interaction, a prompt asks whether to **Reauthorize** or **Stay Offline**.
+  Choosing offline keeps saving locally and leaves the cloud copy untouched.
+
+Conflict handling: answers and flags are merged as a union (they are only ever removed by an
+explicit reset), and the newer side wins for the remaining settings.
+
+### Enabling it
+
+The sync button is inert until you supply a Google OAuth client ID:
+
+1. In [Google Cloud Console](https://console.cloud.google.com/), create (or pick) a project.
+2. Enable the **Google Drive API**.
+3. Configure the OAuth consent screen. Add the `https://www.googleapis.com/auth/drive.file`
+   scope. While the app is in "Testing" status, only added test users can authorize.
+4. Create an **OAuth client ID** of type **Web application** and add every origin that will
+   serve the app under **Authorized JavaScript origins**, for example:
+   - `https://davidsantana1103.github.io`
+   - `http://localhost:8000` (for local testing)
+5. Paste the client ID into `GOOGLE_CLIENT_ID` at the top of `drive-sync.js`.
+
+Notes:
+
+- The app must be served over `https://` or `http://localhost`. Opening `index.html` directly
+  from disk (`file://`) disables Google sign-in.
+- `drive.file` is a sensitive scope, so users will see Google's "unverified app" warning until
+  the consent screen is verified.
+
 ## Architecture
 
 ### Technology Stack
@@ -73,6 +117,7 @@ python3 -m http.server 8000
 mcpa-simulator/
 ├── index.html          # Main application entry point
 ├── app.js              # Core application logic (state, rendering, events)
+├── drive-sync.js       # Optional Google Drive progress sync (GIS + Drive REST)
 ├── questions.js        # Question bank (600 questions)
 ├── style.css           # Complete styling
 ├── images/             # SVG diagrams for exhibit questions

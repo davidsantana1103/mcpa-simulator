@@ -19,7 +19,8 @@
     userAnswers: {}, // { qId: selectedLetter }
     flagged: new Set(), // Set of qIds
     examSession: null, // { active: bool, questions: [], questionCount: number, answers: {}, startTime: number, durationSec: number }
-    theme: 'light'
+    theme: 'light',
+    updatedAt: 0 // last local change; used to resolve sync conflicts
   };
 
   // LocalStorage keys
@@ -30,7 +31,8 @@
     EXAM_COUNT: 'mcpa_exam_count_v1',
     EXAM_AREAS: 'mcpa_exam_areas_v1',
     THEME: 'mcpa_theme_v1',
-    LAST_INDEX: 'mcpa_last_index_v1'
+    LAST_INDEX: 'mcpa_last_index_v1',
+    UPDATED_AT: 'mcpa_updated_at_v1'
   };
 
   // DOM Elements
@@ -91,10 +93,19 @@
     modalCancelBtn: document.getElementById('modal-cancel-btn'),
     
     // Results
-    resultView: document.getElementById('result-view')
+    resultView: document.getElementById('result-view'),
+
+    // Google Drive sync
+    driveBtn: document.getElementById('drive-btn'),
+    driveDisconnectBtn: document.getElementById('drive-disconnect-btn'),
+    reauthModal: document.getElementById('reauth-modal'),
+    reauthNowBtn: document.getElementById('reauth-now-btn'),
+    reauthOfflineBtn: document.getElementById('reauth-offline-btn')
   };
 
   let timerInterval = null;
+  let lastSyncedSignature = null;
+  let reauthPrompted = false;
 
   // Initialize
   function init() {
@@ -119,6 +130,22 @@
     renderQuestion();
     updateStats();
     renderGrid();
+
+    lastSyncedSignature = getPayloadSignature();
+    initDriveSync();
+  }
+
+  // Configure and (if previously connected) start Google Drive sync.
+  function initDriveSync() {
+    const drive = window.MCPA_DRIVE;
+    if (!drive) return;
+    drive.configure({
+      getPayload: buildSyncPayload,
+      applyPayload: applySyncPayload,
+      onStatus: handleDriveStatus
+    });
+    updateDriveButton();
+    drive.init();
   }
 
   function initializeQuestionCountPlaceholders() {
@@ -178,13 +205,17 @@
           }
         }
       }
+
+      const savedUpdatedAt = localStorage.getItem(STORAGE_KEYS.UPDATED_AT);
+      if (savedUpdatedAt) state.updatedAt = parseInt(savedUpdatedAt, 10) || 0;
     } catch (e) {
       console.error('Failed to load localStorage', e);
     }
   }
 
-  // Save to localStorage
+  // Save to localStorage and notify Drive sync (if connected)
   function saveStorage() {
+    state.updatedAt = Date.now();
     try {
       localStorage.setItem(STORAGE_KEYS.ANSWERS, JSON.stringify(state.userAnswers));
       localStorage.setItem(STORAGE_KEYS.FLAGGED, JSON.stringify(Array.from(state.flagged)));
@@ -192,6 +223,7 @@
       localStorage.setItem(STORAGE_KEYS.LAST_INDEX, state.currentIndex.toString());
       localStorage.setItem(STORAGE_KEYS.EXAM_COUNT, state.examQuestionCount.toString());
       localStorage.setItem(STORAGE_KEYS.EXAM_AREAS, JSON.stringify(state.examAreaFilter));
+      localStorage.setItem(STORAGE_KEYS.UPDATED_AT, state.updatedAt.toString());
       if (state.examSession) {
         localStorage.setItem(STORAGE_KEYS.EXAM, JSON.stringify(state.examSession));
       } else {
@@ -200,6 +232,175 @@
     } catch (e) {
       console.error('Failed to save localStorage', e);
     }
+
+    const signature = getPayloadSignature();
+    if (signature !== lastSyncedSignature && window.MCPA_DRIVE) {
+      window.MCPA_DRIVE.onLocalChange();
+    }
+    lastSyncedSignature = signature;
+  }
+
+  // Portable representation of the progress that is shared across devices.
+  function buildSyncPayload() {
+    return {
+      version: 1,
+      updatedAt: state.updatedAt,
+      userAnswers: state.userAnswers,
+      flagged: Array.from(state.flagged),
+      theme: state.theme,
+      examQuestionCount: state.examQuestionCount,
+      examAreaFilter: state.examAreaFilter,
+      examSession: state.examSession
+    };
+  }
+
+  function getPayloadSignature() {
+    return JSON.stringify({
+      a: state.userAnswers,
+      f: Array.from(state.flagged).sort(),
+      c: state.examQuestionCount,
+      e: state.examAreaFilter,
+      s: state.examSession
+    });
+  }
+
+  // Apply progress received from Drive and refresh the UI.
+  function applySyncPayload(payload) {
+    if (!payload) return;
+    if (payload.userAnswers && typeof payload.userAnswers === 'object') {
+      state.userAnswers = payload.userAnswers;
+    }
+    if (Array.isArray(payload.flagged)) {
+      state.flagged = new Set(payload.flagged);
+    }
+    if (typeof payload.examQuestionCount === 'number' && [20, 40, 60, 80, 100].includes(payload.examQuestionCount)) {
+      state.examQuestionCount = payload.examQuestionCount;
+    }
+    if (Array.isArray(payload.examAreaFilter)) {
+      state.examAreaFilter = payload.examAreaFilter.filter(a => typeof a === 'string');
+    }
+    if (typeof payload.theme === 'string') {
+      state.theme = payload.theme;
+      setupTheme();
+    }
+    if (payload.examSession) {
+      state.examSession = payload.examSession;
+      state.mode = payload.examSession.active ? 'exam' : 'practice';
+    } else {
+      state.examSession = null;
+      if (state.mode === 'exam') state.mode = 'practice';
+    }
+
+    state.updatedAt = payload.updatedAt || Date.now();
+
+    // Persist locally without echoing the change back to Drive.
+    try {
+      localStorage.setItem(STORAGE_KEYS.ANSWERS, JSON.stringify(state.userAnswers));
+      localStorage.setItem(STORAGE_KEYS.FLAGGED, JSON.stringify(Array.from(state.flagged)));
+      localStorage.setItem(STORAGE_KEYS.THEME, state.theme);
+      localStorage.setItem(STORAGE_KEYS.EXAM_COUNT, state.examQuestionCount.toString());
+      localStorage.setItem(STORAGE_KEYS.EXAM_AREAS, JSON.stringify(state.examAreaFilter));
+      localStorage.setItem(STORAGE_KEYS.UPDATED_AT, state.updatedAt.toString());
+      if (state.examSession) {
+        localStorage.setItem(STORAGE_KEYS.EXAM, JSON.stringify(state.examSession));
+      } else {
+        localStorage.removeItem(STORAGE_KEYS.EXAM);
+      }
+    } catch (e) {
+      console.error('Failed to persist synced progress', e);
+    }
+    lastSyncedSignature = getPayloadSignature();
+
+    refreshAfterSync();
+  }
+
+  // Re-render everything that depends on restored progress.
+  function refreshAfterSync() {
+    if (dom.examCountSelect) dom.examCountSelect.value = state.examQuestionCount.toString();
+    updateExamBtnLabel();
+    sanitizeExamAreaFilter();
+    populateExamAreaFilter();
+    applyFilters();
+    renderQuestion();
+    updateStats();
+    renderGrid();
+    if (state.mode === 'exam' && state.examSession && state.examSession.active) {
+      dom.practiceModeBtn.classList.remove('active');
+      dom.examModeBtn.classList.add('active');
+      dom.timerBar.style.display = 'block';
+      startTimer();
+    } else {
+      stopTimer();
+      dom.practiceModeBtn.classList.add('active');
+      dom.examModeBtn.classList.remove('active');
+      dom.timerBar.style.display = 'none';
+    }
+    updateDriveButton();
+  }
+
+  // ---- Google Drive sync UI ------------------------------------------------
+  function updateDriveButton() {
+    if (!dom.driveBtn) return;
+    const drive = window.MCPA_DRIVE;
+    if (!drive) {
+      dom.driveBtn.style.display = 'none';
+      return;
+    }
+    dom.driveBtn.style.display = 'inline-flex';
+    if (dom.driveDisconnectBtn) {
+      dom.driveDisconnectBtn.style.display = drive.isConnected() ? 'inline-flex' : 'none';
+    }
+    if (drive.getNeedsReauth()) {
+      dom.driveBtn.textContent = 'Drive: Reconnect';
+      dom.driveBtn.classList.remove('active');
+      dom.driveBtn.title = 'Google Drive session expired. Click to reauthorize.';
+      dom.driveBtn.disabled = false;
+      return;
+    }
+    if (drive.isConnected()) {
+      dom.driveBtn.textContent = 'Drive: On';
+      dom.driveBtn.classList.add('active');
+      dom.driveBtn.title = 'Progress is synced to your Google Drive. Click to sync now.';
+      dom.driveBtn.disabled = false;
+    } else {
+      dom.driveBtn.textContent = 'Connect Drive';
+      dom.driveBtn.classList.remove('active');
+      dom.driveBtn.title = drive.isConfigured()
+        ? 'Save and load your progress across devices with Google Drive.'
+        : 'Google Drive sync is not configured (missing OAuth client ID). See README.';
+      dom.driveBtn.disabled = false;
+    }
+  }
+
+  function handleDriveStatus(status, detail) {
+    updateDriveButton();
+    if (status === 'needs-reauth' && !reauthPrompted) {
+      reauthPrompted = true;
+      if (dom.reauthModal) dom.reauthModal.style.display = 'flex';
+    } else if (status === 'error') {
+      console.warn('Drive sync error:', detail && detail.message);
+    }
+  }
+
+  function promptDriveSyncChoice() {
+    const drive = window.MCPA_DRIVE;
+    if (!drive) return;
+    if (!drive.isConnected()) {
+      if (!drive.isConfigured()) {
+        showConfirmModal(
+          'Google Drive Sync Not Configured',
+          'This build has no Google OAuth client ID yet. See the README "Google Drive Sync" section to enable it.',
+          () => {}
+        );
+        return;
+      }
+      drive.connect().then(updateDriveButton).catch((err) => {
+        showConfirmModal('Could Not Connect', (err && err.message) || 'Google authorization was not completed.', () => {});
+      });
+      return;
+    }
+    // Already connected: pull the latest from Drive now.
+    drive.init();
   }
 
   // Update Exam button label
@@ -1138,6 +1339,34 @@
 
     // Keyboard Shortcuts
     window.addEventListener('keydown', handleKeyDown);
+
+    // Google Drive sync
+    dom.driveBtn?.addEventListener('click', promptDriveSyncChoice);
+    dom.driveDisconnectBtn?.addEventListener('click', () => {
+      showConfirmModal(
+        'Disconnect Google Drive',
+        'Progress will stop syncing to Drive on this device. Your local progress stays intact and the file in your Drive is left untouched.',
+        () => {
+          window.MCPA_DRIVE?.disconnect();
+          updateDriveButton();
+        }
+      );
+    });
+    dom.reauthNowBtn?.addEventListener('click', () => {
+      if (dom.reauthModal) dom.reauthModal.style.display = 'none';
+      reauthPrompted = false;
+      window.MCPA_DRIVE?.reauth();
+    });
+    dom.reauthOfflineBtn?.addEventListener('click', () => {
+      if (dom.reauthModal) dom.reauthModal.style.display = 'none';
+      reauthPrompted = false;
+    });
+
+    // Flush pending changes when the tab is hidden or closing.
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') window.MCPA_DRIVE?.flush();
+    });
+    window.addEventListener('pagehide', () => window.MCPA_DRIVE?.flush());
   }
 
   // Run on DOM ready
