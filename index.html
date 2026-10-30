@@ -241,6 +241,30 @@
     </div>
   </div>
 
+  <!-- Google Drive conflict resolution: both sides hold different progress -->
+  <div class="modal-overlay" id="conflict-modal">
+    <div class="modal-card">
+      <h3 class="modal-title">Progress Found in Two Places</h3>
+      <p style="color: var(--text-muted); font-size: 0.92rem;">
+        This browser and your Google Drive hold different progress. Choose which one to
+        continue with — the version you pick is saved to Drive and used on every device.
+      </p>
+      <div class="conflict-options">
+        <button class="conflict-option" id="conflict-local-btn" type="button">
+          <span class="conflict-option-title">This browser (local)</span>
+          <span class="conflict-option-meta" id="conflict-local-meta">—</span>
+        </button>
+        <button class="conflict-option" id="conflict-drive-btn" type="button">
+          <span class="conflict-option-title">Google Drive</span>
+          <span class="conflict-option-meta" id="conflict-drive-meta">—</span>
+        </button>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" id="conflict-cancel-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="questions.js"></script>
   <script src="drive-sync.js"></script>

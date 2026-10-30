@@ -74,15 +74,24 @@ How it works:
 - The app stores progress in a single file, `mcpa-simulator-progress.json`, that it creates
   in the user's **My Drive** using the `drive.file` scope. The app can only ever see files it
   created itself; it cannot read anything else in the Drive.
-- On connect (and on each later page load while connected) the app reads that file, merges it
-  with local progress, and writes the result back. Changes after that are saved automatically
-  (debounced) and flushed when the tab is hidden.
+- On connect (and on each later page load while connected) the app reconciles that file with
+  local progress, then writes changes back automatically (debounced) and flushes when the tab
+  is hidden.
+- Disconnecting stops syncing on that device. Local progress is kept and the Drive file is
+  left untouched, so reconnecting later resumes from wherever you are.
 - When the access token expires (about an hour), the app first tries a silent refresh. If
   Google requires interaction, a prompt asks whether to **Reauthorize** or **Stay Offline**.
   Choosing offline keeps saving locally and leaves the cloud copy untouched.
 
-Conflict handling: answers and flags are merged as a union (they are only ever removed by an
-explicit reset), and the newer side wins for the remaining settings.
+Conflict handling: progress is never merged field-by-field, because doing so would overwrite
+one side's answers for every question both sides answered. Instead:
+
+- Drive has no file yet → the current local progress is uploaded (first-time migration).
+- Local progress is empty → the Drive snapshot is loaded.
+- Both sides hold the same progress → nothing changes.
+- Both sides hold **different** progress → a dialog shows each version with its last-changed
+  time and answer count, and asks which one to continue with. The chosen version is written
+  to Drive and used everywhere.
 
 ### Enabling it
 
