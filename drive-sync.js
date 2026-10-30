@@ -16,7 +16,7 @@
 
   // ---- Configuration -------------------------------------------------------
   // Paste your Google OAuth 2.0 "Web application" client ID here.
-  const GOOGLE_CLIENT_ID = '';
+  const GOOGLE_CLIENT_ID = '1073823961546-8o0uf7tfj5k2tl9c7eta8qobrqbmmp59.apps.googleusercontent.com';
 
   const SCOPE = 'https://www.googleapis.com/auth/drive.file';
   const FILE_NAME = 'mcpa-simulator-progress.json';
