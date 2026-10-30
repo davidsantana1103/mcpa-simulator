@@ -100,7 +100,13 @@
     driveDisconnectBtn: document.getElementById('drive-disconnect-btn'),
     reauthModal: document.getElementById('reauth-modal'),
     reauthNowBtn: document.getElementById('reauth-now-btn'),
-    reauthOfflineBtn: document.getElementById('reauth-offline-btn')
+    reauthOfflineBtn: document.getElementById('reauth-offline-btn'),
+    conflictModal: document.getElementById('conflict-modal'),
+    conflictLocalBtn: document.getElementById('conflict-local-btn'),
+    conflictDriveBtn: document.getElementById('conflict-drive-btn'),
+    conflictCancelBtn: document.getElementById('conflict-cancel-btn'),
+    conflictLocalMeta: document.getElementById('conflict-local-meta'),
+    conflictDriveMeta: document.getElementById('conflict-drive-meta')
   };
 
   let timerInterval = null;
@@ -377,14 +383,55 @@
     if (status === 'needs-reauth' && !reauthPrompted) {
       reauthPrompted = true;
       if (dom.reauthModal) dom.reauthModal.style.display = 'flex';
+    } else if (status === 'conflict') {
+      showConflictModal(detail && detail.local, detail && detail.remote);
     } else if (status === 'error') {
       console.warn('Drive sync error:', detail && detail.message);
     }
   }
 
+  // Human-friendly summary of a snapshot: when it changed and how much is in it.
+  function describeSnapshot(payload) {
+    const answers = payload && payload.userAnswers ? Object.keys(payload.userAnswers).length : 0;
+    const flagged = payload && Array.isArray(payload.flagged) ? payload.flagged.length : 0;
+    let when = 'unknown time';
+    if (payload && payload.updatedAt) {
+      const d = new Date(payload.updatedAt);
+      when = d.toLocaleString(undefined, {
+        year: 'numeric', month: 'short', day: 'numeric',
+        hour: '2-digit', minute: '2-digit'
+      });
+    }
+    return { when, answers, flagged };
+  }
+
+  function showConflictModal(local, remote) {
+    if (!dom.conflictModal) return;
+    const l = describeSnapshot(local);
+    const r = describeSnapshot(remote);
+    if (dom.conflictLocalMeta) {
+      dom.conflictLocalMeta.textContent =
+        `Last changed ${l.when} — ${l.answers} answer${l.answers === 1 ? '' : 's'}, ${l.flagged} flagged`;
+    }
+    if (dom.conflictDriveMeta) {
+      dom.conflictDriveMeta.textContent =
+        `Last changed ${r.when} — ${r.answers} answer${r.answers === 1 ? '' : 's'}, ${r.flagged} flagged`;
+    }
+    dom.conflictModal.style.display = 'flex';
+  }
+
+  function hideConflictModal() {
+    if (dom.conflictModal) dom.conflictModal.style.display = 'none';
+  }
+
   function promptDriveSyncChoice() {
     const drive = window.MCPA_DRIVE;
     if (!drive) return;
+    if (drive.hasPendingConflict && drive.hasPendingConflict()) {
+      // A conflict is still unresolved: reopen the dialog instead of syncing.
+      showConflictModalFromDrive();
+      return;
+    }
     if (!drive.isConnected()) {
       if (!drive.isConfigured()) {
         showConfirmModal(
@@ -401,6 +448,14 @@
     }
     // Already connected: pull the latest from Drive now.
     drive.init();
+  }
+
+  // Re-open the conflict dialog for a conflict that is still pending.
+  function showConflictModalFromDrive() {
+    const drive = window.MCPA_DRIVE;
+    if (!drive || !drive.getPendingConflict) return;
+    const pending = drive.getPendingConflict();
+    if (pending) showConflictModal(pending.local, pending.remote);
   }
 
   // Update Exam button label
@@ -1347,11 +1402,21 @@
         'Disconnect Google Drive',
         'Progress will stop syncing to Drive on this device. Your local progress stays intact and the file in your Drive is left untouched.',
         () => {
+          saveStorage();
           window.MCPA_DRIVE?.disconnect();
           updateDriveButton();
         }
       );
     });
+    dom.conflictLocalBtn?.addEventListener('click', () => {
+      hideConflictModal();
+      window.MCPA_DRIVE?.resolveConflict('local');
+    });
+    dom.conflictDriveBtn?.addEventListener('click', () => {
+      hideConflictModal();
+      window.MCPA_DRIVE?.resolveConflict('drive');
+    });
+    dom.conflictCancelBtn?.addEventListener('click', hideConflictModal);
     dom.reauthNowBtn?.addEventListener('click', () => {
       if (dom.reauthModal) dom.reauthModal.style.display = 'none';
       reauthPrompted = false;

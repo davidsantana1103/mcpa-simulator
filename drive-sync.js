@@ -8,6 +8,10 @@
 // (and only to files this app created). It appears in the user's "My Drive" and
 // the user may delete it; local progress always remains in localStorage.
 //
+// Conflict policy: snapshots are never merged. Connecting migrates local
+// progress up when Drive is empty, adopts Drive when local is empty, and asks
+// the user to choose when both sides hold different progress.
+//
 // Requires an OAuth 2.0 Web application client ID with this app's origin
 // registered under "Authorized JavaScript origins". See README "Google Drive
 // Sync" for setup.
@@ -39,6 +43,7 @@
   let gisLoading = null;
   let uploadTimer = null;
   let applyingRemote = false; // suppress uploads while applying remote state
+  let pendingConflict = null; // { remote, local } awaiting the user's choice
 
   let hooks = {
     getPayload: () => null,
@@ -188,23 +193,137 @@
     });
   }
 
-  // ---- Merge / sync --------------------------------------------------------
-  // Answers are only ever removed by an explicit reset, so unioning the two
-  // maps is the safe conflict resolution. Newer metadata wins for the rest.
-  function mergePayloads(remote, local) {
-    if (!remote) return local;
-    if (!local) return remote;
-    const newer = (remote.updatedAt || 0) >= (local.updatedAt || 0) ? remote : local;
-    const older = newer === remote ? local : remote;
-    const userAnswers = Object.assign({}, older.userAnswers || {}, newer.userAnswers || {});
-    const flagged = Array.from(new Set([].concat(older.flagged || [], newer.flagged || [])));
-    const merged = Object.assign({}, older, newer, { userAnswers, flagged });
-    merged.updatedAt = Math.max(remote.updatedAt || 0, local.updatedAt || 0);
-    return merged;
+  // ---- Reconciliation ------------------------------------------------------
+  // Progress is never merged field-by-field. Two snapshots are either the same,
+  // or the user is asked which one to keep. Silently unioning answers would
+  // overwrite one side's values for every question id both sides answered.
+
+  function normalize(payload) {
+    if (!payload || typeof payload !== 'object') return null;
+    const answers = (payload.userAnswers && typeof payload.userAnswers === 'object')
+      ? payload.userAnswers : {};
+    return {
+      version: 1,
+      updatedAt: payload.updatedAt || 0,
+      userAnswers: answers,
+      flagged: Array.isArray(payload.flagged) ? payload.flagged : [],
+      theme: typeof payload.theme === 'string' ? payload.theme : 'light',
+      examQuestionCount: payload.examQuestionCount || 60,
+      examAreaFilter: Array.isArray(payload.examAreaFilter) ? payload.examAreaFilter : [],
+      examSession: payload.examSession || null
+    };
+  }
+
+  function isEmptyProgress(p) {
+    return !p || Object.keys(p.userAnswers || {}).length === 0;
+  }
+
+  // True when both snapshots carry the same progress (ignoring timestamps).
+  function sameProgress(a, b) {
+    const na = normalize(a), nb = normalize(b);
+    if (!na || !nb) return false;
+    const key = (p) => JSON.stringify({
+      a: Object.keys(p.userAnswers).sort().map((k) => [k, p.userAnswers[k]]),
+      f: p.flagged.slice().sort(),
+      c: p.examQuestionCount,
+      e: p.examAreaFilter.slice().sort(),
+      s: p.examSession ? { active: !!p.examSession.active, q: p.examSession.questionCount || 0,
+                           start: p.examSession.startTime || 0 } : null
+    });
+    return key(na) === key(nb);
+  }
+
+  function setConnected(value) {
+    connected = value;
+    try {
+      if (value) localStorage.setItem(CONNECTED_KEY, '1');
+      else localStorage.removeItem(CONNECTED_KEY);
+    } catch (e) { /* ignore */ }
+  }
+
+  // Read the remote file, or null when the app has not created one yet.
+  function pullRemote() {
+    return findFile().then((file) => {
+      if (!file) { fileId = null; return null; }
+      fileId = file.id;
+      return readFile(fileId).then((remote) => normalize(remote));
+    });
+  }
+
+  function applyAndUpload(payload) {
+    applyingRemote = true;
+    try { hooks.applyPayload(payload); } finally { applyingRemote = false; }
+    return writeRemote(payload).then(() => {
+      report('synced', { updatedAt: payload.updatedAt, source: 'conflict-choice' });
+    });
+  }
+
+  // Decide what to do when the user opts in (first connect, reconnect, or a
+  // manual pull). Never merges: identical -> no-op, one side empty -> copy it,
+  // both populated and different -> ask the user.
+  function reconcile() {
+    if (syncing) return Promise.resolve();
+    syncing = true;
+    pendingConflict = null;
+    return ensureToken(false)
+      .then(() => pullRemote())
+      .then((remote) => {
+        const local = normalize(hooks.getPayload());
+        if (!remote) {
+          // No Drive file yet: migrate the current local progress up.
+          return writeRemote(local).then(() => report('synced', { updatedAt: local.updatedAt, source: 'local-uploaded' }));
+        }
+        if (isEmptyProgress(local)) {
+          // Nothing local to lose: adopt Drive.
+          applyingRemote = true;
+          try { hooks.applyPayload(remote); } finally { applyingRemote = false; }
+          return report('synced', { updatedAt: remote.updatedAt, source: 'drive-loaded' });
+        }
+        if (sameProgress(remote, local)) {
+          return report('synced', { updatedAt: remote.updatedAt, source: 'in-sync' });
+        }
+        // Diverged with data on both sides: let the user choose.
+        pendingConflict = { remote, local };
+        report('conflict', { remote, local });
+      })
+      .catch(handleSyncError)
+      .then(() => { syncing = false; });
+  }
+
+  // Adopt the remote snapshot without uploading (used on load while connected).
+  function pullLatest() {
+    if (syncing) return Promise.resolve();
+    syncing = true;
+    return ensureToken(false)
+      .then(() => pullRemote())
+      .then((remote) => {
+        if (!remote) return;
+        const local = normalize(hooks.getPayload());
+        if (isEmptyProgress(local)) {
+          applyingRemote = true;
+          try { hooks.applyPayload(remote); } finally { applyingRemote = false; }
+          report('synced', { updatedAt: remote.updatedAt, source: 'drive-loaded' });
+        } else if (!sameProgress(remote, local)) {
+          pendingConflict = { remote, local };
+          report('conflict', { remote, local });
+        }
+      })
+      .catch(handleSyncError)
+      .then(() => { syncing = false; });
+  }
+
+  function handleSyncError(err) {
+    if (err && (err.code === 401 || /interaction|consent|Authorization/i.test(err.message || ''))) {
+      needsReauth = true;
+      report('needs-reauth', {});
+    } else {
+      lastError = (err && err.message) || String(err);
+      report('error', { message: lastError });
+    }
   }
 
   function pushNow() {
-    if (!connected || syncing) return Promise.resolve();
+    if (!connected || syncing || pendingConflict) return Promise.resolve();
     const payload = hooks.getPayload();
     if (!payload) return Promise.resolve();
     syncing = true;
@@ -217,51 +336,15 @@
       })
       .catch((err) => {
         syncing = false;
-        if (err.code === 401 || /interaction|consent|Authorization/i.test(err.message)) {
-          needsReauth = true;
-          report('needs-reauth', {});
-        } else {
-          lastError = err.message || String(err);
-          report('error', { message: lastError });
-        }
+        handleSyncError(err);
       })
       .then(() => { syncing = false; });
   }
 
   function scheduleUpload() {
-    if (!connected || applyingRemote) return;
+    if (!connected || applyingRemote || pendingConflict) return;
     if (uploadTimer) clearTimeout(uploadTimer);
     uploadTimer = setTimeout(() => { uploadTimer = null; pushNow(); }, UPLOAD_DEBOUNCE_MS);
-  }
-
-  function doInitialSync() {
-    return ensureToken(false)
-      .then(() => findFile())
-      .then((file) => {
-        if (!file) {
-          fileId = null;
-          return pushNow();
-        }
-        fileId = file.id;
-        return readFile(fileId).then((remote) => {
-          const local = hooks.getPayload();
-          const merged = mergePayloads(remote, local);
-          applyingRemote = true;
-          try { hooks.applyPayload(merged); } finally { applyingRemote = false; }
-          return ensureToken(false).then(() => writeRemote(merged)).then(() => {
-            report('synced', { updatedAt: merged.updatedAt });
-          });
-        });
-      })
-      .catch((err) => {
-        if (err.code === 401 || /interaction|consent|Authorization/i.test(err.message)) {
-          needsReauth = true;
-          report('needs-reauth', {});
-        } else {
-          lastError = err.message || String(err);
-          report('error', { message: lastError });
-        }
-      });
   }
 
   // ---- Public API ----------------------------------------------------------
@@ -277,42 +360,60 @@
     getLastError() { return lastError; },
 
     // Called after the app has rendered. If the user previously connected,
-    // refresh silently and pull the latest progress.
+    // refresh silently and pull the latest progress (or surface a conflict).
     init() {
-      if (connected) doInitialSync();
+      if (connected) pullLatest();
     },
 
     // First-time connect from the UI button (shows the Google consent popup).
     connect() {
       return ensureToken(true).then(() => {
-        connected = true;
+        setConnected(true);
         needsReauth = false;
         lastError = '';
-        try { localStorage.setItem(CONNECTED_KEY, '1'); } catch (e) { /* ignore */ }
-        return doInitialSync();
+        return reconcile();
       });
     },
 
     disconnect() {
-      connected = false;
+      setConnected(false);
       needsReauth = false;
       lastError = '';
+      pendingConflict = null;
       accessToken = null;
       tokenExpiresAt = 0;
       fileId = null;
-      try { localStorage.removeItem(CONNECTED_KEY); } catch (e) { /* ignore */ }
       report('disconnected', {});
     },
 
     // Re-authorize after the token expired (user chose "Reauthorize").
     reauth() {
       return ensureToken(true)
-        .then(() => { needsReauth = false; return doInitialSync(); })
+        .then(() => { needsReauth = false; return reconcile(); })
         .catch((err) => {
           lastError = err.message || String(err);
           report('error', { message: lastError });
         });
     },
+
+    // The user picked a side in the conflict dialog.
+    // 'drive' adopts the remote snapshot and writes it back; 'local' uploads
+    // the local snapshot. Either way Drive and this device end up identical.
+    resolveConflict(choice) {
+      const conflict = pendingConflict;
+      pendingConflict = null;
+      if (!conflict) return Promise.resolve();
+      if (choice === 'drive') {
+        return ensureToken(false).then(() => applyAndUpload(conflict.remote)).catch(handleSyncError);
+      }
+      return ensureToken(false).then(() => {
+        const payload = normalize(hooks.getPayload());
+        return writeRemote(payload).then(() => report('synced', { updatedAt: payload.updatedAt, source: 'conflict-choice' }));
+      }).catch(handleSyncError);
+    },
+
+    hasPendingConflict() { return !!pendingConflict; },
+    getPendingConflict() { return pendingConflict; },
 
     // Local progress changed -> schedule a debounced upload.
     onLocalChange() { scheduleUpload(); },
