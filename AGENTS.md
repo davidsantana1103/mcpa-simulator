@@ -111,6 +111,7 @@ All questions and references are sourced from:
 ### Files in Repository
 - **`index.html`**: Main application template with navigation and UI structure
 - **`app.js`**: Core application logic and state management
+- **`drive-sync.js`**: Optional Google Drive progress sync (Google Identity Services token flow + Drive REST `drive.file` scope). No backend; inert until `GOOGLE_CLIENT_ID` is set. Exposes `window.MCPA_DRIVE` (`configure/init/connect/reauth/disconnect/onLocalChange/flush`).
 - **`questions.js`**: Complete question bank (600 questions total)
 - **`style.css`**: Styling for the application
 - **`images/`**: SVG diagrams for exhibit questions
