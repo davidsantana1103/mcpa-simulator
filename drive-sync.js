@@ -25,6 +25,10 @@
   const SCOPE = 'https://www.googleapis.com/auth/drive.file';
   const FILE_NAME = 'mcpa-simulator-progress.json';
   const FILE_MIME = 'application/json';
+  // Drive allows duplicate file names, so the name is only a human-friendly
+  // label. This app-property tag is the real identity used to find our file.
+  const APP_MARKER_KEY = 'mcpaProgress';
+  const APP_MARKER_VALUE = '1';
   const UPLOAD_URL = 'https://www.googleapis.com/upload/drive/v3/files';
   const DRIVE_FILES_URL = 'https://www.googleapis.com/drive/v3/files';
   const GIS_SRC = 'https://accounts.google.com/gsi/client';
@@ -44,6 +48,7 @@
   let uploadTimer = null;
   let applyingRemote = false; // suppress uploads while applying remote state
   let pendingConflict = null; // { remote, local } awaiting the user's choice
+  let mergedOnPull = false;   // a duplicate merge already folded local progress in
 
   let hooks = {
     getPayload: () => null,
@@ -142,12 +147,27 @@
   }
 
   // ---- Drive operations ----------------------------------------------------
-  function findFile() {
-    const q = encodeURIComponent(`name='${FILE_NAME}' and trashed=false`);
-    const url = `${DRIVE_FILES_URL}?spaces=drive&q=${q}&fields=files(id,modifiedTime)`;
-    return driveFetch(url).then((res) => res.json()).then((data) => {
-      const files = (data && data.files) || [];
-      return files.length ? files[0] : null;
+  // Every file this app created: tagged with our marker, plus any legacy file
+  // that carries the old well-known name (pre-marker versions). Newest first.
+  function findAppFiles() {
+    const fields = 'files(id,modifiedTime,name,appProperties)';
+    const markerQ = `appProperties has { key='${APP_MARKER_KEY}' and value='${APP_MARKER_VALUE}' } and trashed=false`;
+    const nameQ = `name='${FILE_NAME}' and trashed=false`;
+    const buildUrl = (q) =>
+      `${DRIVE_FILES_URL}?spaces=drive&q=${encodeURIComponent(q)}&orderBy=modifiedTime desc&fields=${encodeURIComponent(fields)}`;
+
+    const query = (q) => driveFetch(buildUrl(q))
+      .then((res) => res.json())
+      .then((data) => (data && data.files) || [])
+      .catch(() => []);
+
+    return Promise.all([query(markerQ), query(nameQ)]).then((groups) => {
+      const byId = new Map();
+      groups.forEach((files) => files.forEach((f) => {
+        if (f && f.id && !byId.has(f.id)) byId.set(f.id, f);
+      }));
+      return Array.from(byId.values())
+        .sort((a, b) => (b.modifiedTime || '').localeCompare(a.modifiedTime || ''));
     });
   }
 
@@ -157,7 +177,11 @@
   }
 
   function createFile(payload) {
-    const metadata = { name: FILE_NAME, mimeType: FILE_MIME };
+    const metadata = {
+      name: FILE_NAME,
+      mimeType: FILE_MIME,
+      appProperties: { [APP_MARKER_KEY]: APP_MARKER_VALUE }
+    };
     const boundary = 'mcpa' + Date.now();
     const body =
       `--${boundary}\r\n` +
@@ -175,6 +199,23 @@
       fileId = data.id;
       return fileId;
     });
+  }
+
+  // Tag an existing (legacy) file with our marker so it is found by identity.
+  function tagFile(id) {
+    return driveFetch(`${DRIVE_FILES_URL}/${id}?fields=id`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ appProperties: { [APP_MARKER_KEY]: APP_MARKER_VALUE } })
+    }).then((res) => res.json());
+  }
+
+  function trashFile(id) {
+    return driveFetch(`${DRIVE_FILES_URL}/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ trashed: true })
+    }).then((res) => res.json());
   }
 
   function updateFile(payload) {
@@ -207,6 +248,7 @@
       updatedAt: payload.updatedAt || 0,
       userAnswers: answers,
       flagged: Array.isArray(payload.flagged) ? payload.flagged : [],
+      studied: Array.isArray(payload.studied) ? payload.studied : [],
       theme: typeof payload.theme === 'string' ? payload.theme : 'light',
       examQuestionCount: payload.examQuestionCount || 60,
       examAreaFilter: Array.isArray(payload.examAreaFilter) ? payload.examAreaFilter : [],
@@ -225,6 +267,7 @@
     const key = (p) => JSON.stringify({
       a: Object.keys(p.userAnswers).sort().map((k) => [k, p.userAnswers[k]]),
       f: p.flagged.slice().sort(),
+      d: p.studied.slice().sort(),
       c: p.examQuestionCount,
       e: p.examAreaFilter.slice().sort(),
       s: p.examSession ? { active: !!p.examSession.active, q: p.examSession.questionCount || 0,
@@ -241,13 +284,102 @@
     } catch (e) { /* ignore */ }
   }
 
-  // Read the remote file, or null when the app has not created one yet.
+  // Read every progress file, merge them and clean up the duplicates.
+  //
+  // One-time migration for users who accumulated several files (the old code
+  // matched by name, which Drive allows to repeat). Merge keeps as much as
+  // possible: union of answered questions, newest value wins on conflicts,
+  // flags/studied unioned, the most recent exam session kept. The merged result
+  // is written back to a single file; the others are trashed.
   function pullRemote() {
-    return findFile().then((file) => {
-      if (!file) { fileId = null; return null; }
-      fileId = file.id;
-      return readFile(fileId).then((remote) => normalize(remote));
+    return findAppFiles().then((files) => {
+      if (!files.length) { fileId = null; return null; }
+
+      fileId = files[0].id; // canonical = most recently modified
+      const rest = files.slice(1);
+      // Ensure the canonical file carries our marker (legacy files may not).
+      if (!files[0].appProperties || files[0].appProperties[APP_MARKER_KEY] !== APP_MARKER_VALUE) {
+        tagFile(files[0].id).catch(() => {});
+      }
+
+      if (!rest.length) {
+        return readFile(fileId).then((remote) => normalize(remote));
+      }
+
+      return Promise.all(rest.map((f) => readFile(f.id).catch(() => null)))
+        .then((others) => {
+          const snapshots = others.map(normalize).filter(Boolean);
+          // Read the canonical file last so it wins tie-breaks.
+          return readFile(fileId).then((canonical) => {
+            // Fold the local snapshot into the merge too, so consolidating the
+            // duplicates never loses local progress and needs no conflict prompt.
+            const local = normalize(hooks.getPayload());
+            if (local) snapshots.push(local);
+            snapshots.push(normalize(canonical));
+            const merged = mergeSnapshots(snapshots);
+            // Write the merged snapshot back, then trash the duplicates.
+            return updateFile(merged)
+              .catch(() => {})
+              .then(() => Promise.all(rest.map((f) => trashFile(f.id).catch(() => {}))))
+              .then(() => { mergedOnPull = true; return merged; });
+          });
+        });
     });
+  }
+
+  // Merge snapshots, preserving as many answered questions as possible.
+  // Answer conflicts are resolved by the snapshot's updatedAt (newest wins);
+  // ties fall back to the last snapshot in the list.
+  function mergeSnapshots(snapshots) {
+    const list = snapshots.filter(Boolean);
+    if (!list.length) return null;
+
+    const newest = list.reduce((a, b) => (b.updatedAt > a.updatedAt ? b : a));
+    const answers = {};
+    const answerStamp = {};
+    const flagged = new Set();
+    const studied = new Set();
+    let examSession = null;
+
+    list.forEach((snap) => {
+      Object.keys(snap.userAnswers || {}).forEach((qId) => {
+        const stamp = snap.updatedAt || 0;
+        if (!(qId in answers) || stamp >= (answerStamp[qId] || 0)) {
+          answers[qId] = snap.userAnswers[qId];
+          answerStamp[qId] = stamp;
+        }
+      });
+      (snap.flagged || []).forEach((id) => flagged.add(id));
+      (snap.studied || []).forEach((id) => studied.add(id));
+      const es = snap.examSession;
+      if (es) {
+        const cur = examSession;
+        const esTime = es.startTime || 0;
+        const curTime = cur ? (cur.startTime || 0) : -1;
+        if (!cur || esTime > curTime) examSession = es;
+      }
+    });
+
+    // Any question that has an answer counts as studied.
+    Object.keys(answers).forEach((qId) => {
+      if (answers[qId] !== undefined && answers[qId] !== null &&
+          !(Array.isArray(answers[qId]) && answers[qId].length === 0) &&
+          answers[qId] !== '') {
+        studied.add(qId);
+      }
+    });
+
+    return {
+      version: 1,
+      updatedAt: Math.max.apply(null, list.map((s) => s.updatedAt || 0)),
+      userAnswers: answers,
+      flagged: Array.from(flagged),
+      studied: Array.from(studied),
+      theme: newest.theme,
+      examQuestionCount: newest.examQuestionCount,
+      examAreaFilter: newest.examAreaFilter,
+      examSession
+    };
   }
 
   function applyAndUpload(payload) {
@@ -279,6 +411,12 @@
           try { hooks.applyPayload(remote); } finally { applyingRemote = false; }
           return report('synced', { updatedAt: remote.updatedAt, source: 'drive-loaded' });
         }
+        // A duplicate merge already folded local progress in: just adopt it.
+        if (mergedOnPull) {
+          applyingRemote = true;
+          try { hooks.applyPayload(remote); } finally { applyingRemote = false; }
+          return report('synced', { updatedAt: remote.updatedAt, source: 'merged-duplicates' });
+        }
         if (sameProgress(remote, local)) {
           return report('synced', { updatedAt: remote.updatedAt, source: 'in-sync' });
         }
@@ -287,7 +425,7 @@
         report('conflict', { remote, local });
       })
       .catch(handleSyncError)
-      .then(() => { syncing = false; });
+      .then(() => { mergedOnPull = false; syncing = false; });
   }
 
   // Adopt the remote snapshot without uploading (used on load while connected).
@@ -299,17 +437,17 @@
       .then((remote) => {
         if (!remote) return;
         const local = normalize(hooks.getPayload());
-        if (isEmptyProgress(local)) {
+        if (isEmptyProgress(local) || mergedOnPull) {
           applyingRemote = true;
           try { hooks.applyPayload(remote); } finally { applyingRemote = false; }
-          report('synced', { updatedAt: remote.updatedAt, source: 'drive-loaded' });
+          report('synced', { updatedAt: remote.updatedAt, source: mergedOnPull ? 'merged-duplicates' : 'drive-loaded' });
         } else if (!sameProgress(remote, local)) {
           pendingConflict = { remote, local };
           report('conflict', { remote, local });
         }
       })
       .catch(handleSyncError)
-      .then(() => { syncing = false; });
+      .then(() => { mergedOnPull = false; syncing = false; });
   }
 
   function handleSyncError(err) {
