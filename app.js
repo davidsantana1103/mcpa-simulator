@@ -12,13 +12,16 @@
     examQuestionCount: 60,
     filterType: 'all', // 'all' | 'unanswered' | 'correct' | 'incorrect' | 'flagged'
     filterDomain: 'all',
+    filterStudy: 'all', // 'all' | 'studied' | 'unstudied'
     searchQuery: '',
     examAreaFilter: [], // array of domain names; empty = all areas
-    
+
     // Stored in localStorage
-    userAnswers: {}, // { qId: selectedLetter }
+    userAnswers: {}, // { qId: selectedLetter | [letters] } — practice answers
     flagged: new Set(), // Set of qIds
-    examSession: null, // { active: bool, questions: [], questionCount: number, answers: {}, startTime: number, durationSec: number }
+    studied: new Set(), // Set of qIds the user has answered at least once (any mode)
+    // { active: bool, submitted: bool, questions: [], questionCount, answers: {}, startTime, durationSec }
+    examSession: null,
     theme: 'light',
     updatedAt: 0 // last local change; used to resolve sync conflicts
   };
@@ -27,6 +30,7 @@
   const STORAGE_KEYS = {
     ANSWERS: 'mcpa_user_answers_v1',
     FLAGGED: 'mcpa_flagged_v1',
+    STUDIED: 'mcpa_studied_v1',
     EXAM: 'mcpa_exam_session_v1',
     EXAM_COUNT: 'mcpa_exam_count_v1',
     EXAM_AREAS: 'mcpa_exam_areas_v1',
@@ -39,6 +43,7 @@
   const dom = {
     themeBtn: document.getElementById('theme-btn'),
     resetBtn: document.getElementById('reset-btn'),
+    eraseBtn: document.getElementById('erase-btn'),
     practiceModeBtn: document.getElementById('mode-practice'),
     examModeBtn: document.getElementById('mode-exam'),
     examCountSelect: document.getElementById('exam-count-select'),
@@ -76,6 +81,7 @@
     // Sidebar
     filterDomain: document.getElementById('filter-domain'),
     filterStatus: document.getElementById('filter-status'),
+    filterStudy: document.getElementById('filter-study'),
     searchInput: document.getElementById('search-input'),
     qGrid: document.getElementById('q-grid'),
 
@@ -116,6 +122,7 @@
   // Initialize
   function init() {
     loadStorage();
+    backfillStudied();
     setupTheme();
     initializeQuestionCountPlaceholders();
     if (dom.examCountSelect) {
@@ -130,10 +137,17 @@
       dom.examModeBtn.classList.add('active');
       dom.timerBar.style.display = 'block';
       startTimer();
+    } else if (state.mode === 'exam' && isExamReview()) {
+      dom.practiceModeBtn.classList.remove('active');
+      dom.examModeBtn.classList.add('active');
+      dom.timerBar.style.display = 'none';
     }
     applyFilters();
     bindEvents();
     renderQuestion();
+    if (state.mode === 'exam' && isExamReview()) {
+      showExamResults();
+    }
     updateStats();
     renderGrid();
 
@@ -179,6 +193,9 @@
       const savedFlagged = localStorage.getItem(STORAGE_KEYS.FLAGGED);
       if (savedFlagged) state.flagged = new Set(JSON.parse(savedFlagged));
 
+      const savedStudied = localStorage.getItem(STORAGE_KEYS.STUDIED);
+      if (savedStudied) state.studied = new Set(JSON.parse(savedStudied));
+
       const savedTheme = localStorage.getItem(STORAGE_KEYS.THEME);
       if (savedTheme) state.theme = savedTheme;
 
@@ -209,6 +226,11 @@
           if (state.examSession.questionCount) {
             state.examQuestionCount = state.examSession.questionCount;
           }
+        } else if (state.examSession && state.examSession.submitted) {
+          // A submitted exam is being reviewed: reopen it in exam mode.
+          state.mode = 'exam';
+        } else {
+          state.examSession = null;
         }
       }
 
@@ -219,12 +241,45 @@
     }
   }
 
+  // One-time migration: any question that already has a saved answer counts as studied.
+  function backfillStudied() {
+    if (backfillStudiedFromAnswers()) saveStorage();
+  }
+
+  // Rebuild the studied set from saved answers (practice + exam). Returns true if it grew.
+  function backfillStudiedFromAnswers() {
+    let changed = false;
+    Object.keys(state.userAnswers).forEach(qId => {
+      if (hasAnswer(state.userAnswers[qId]) && !state.studied.has(qId)) {
+        state.studied.add(qId);
+        changed = true;
+      }
+    });
+    const examAnswers = state.examSession && state.examSession.answers;
+    if (examAnswers && typeof examAnswers === 'object') {
+      Object.keys(examAnswers).forEach(qId => {
+        if (hasAnswer(examAnswers[qId]) && !state.studied.has(qId)) {
+          state.studied.add(qId);
+          changed = true;
+        }
+      });
+    }
+    return changed;
+  }
+
+  // Mark a question as studied (it has been answered at least once, any mode).
+  function markStudied(qId) {
+    if (!qId || state.studied.has(qId)) return;
+    state.studied.add(qId);
+  }
+
   // Save to localStorage and notify Drive sync (if connected)
   function saveStorage() {
     state.updatedAt = Date.now();
     try {
       localStorage.setItem(STORAGE_KEYS.ANSWERS, JSON.stringify(state.userAnswers));
       localStorage.setItem(STORAGE_KEYS.FLAGGED, JSON.stringify(Array.from(state.flagged)));
+      localStorage.setItem(STORAGE_KEYS.STUDIED, JSON.stringify(Array.from(state.studied)));
       localStorage.setItem(STORAGE_KEYS.THEME, state.theme);
       localStorage.setItem(STORAGE_KEYS.LAST_INDEX, state.currentIndex.toString());
       localStorage.setItem(STORAGE_KEYS.EXAM_COUNT, state.examQuestionCount.toString());
@@ -253,6 +308,7 @@
       updatedAt: state.updatedAt,
       userAnswers: state.userAnswers,
       flagged: Array.from(state.flagged),
+      studied: Array.from(state.studied),
       theme: state.theme,
       examQuestionCount: state.examQuestionCount,
       examAreaFilter: state.examAreaFilter,
@@ -264,6 +320,7 @@
     return JSON.stringify({
       a: state.userAnswers,
       f: Array.from(state.flagged).sort(),
+      d: Array.from(state.studied).sort(),
       c: state.examQuestionCount,
       e: state.examAreaFilter,
       s: state.examSession
@@ -279,6 +336,13 @@
     if (Array.isArray(payload.flagged)) {
       state.flagged = new Set(payload.flagged);
     }
+    if (Array.isArray(payload.studied)) {
+      state.studied = new Set(payload.studied);
+    } else {
+      // Older snapshots had no studied field: rebuild it from saved answers.
+      state.studied = new Set();
+      backfillStudiedFromAnswers();
+    }
     if (typeof payload.examQuestionCount === 'number' && [20, 40, 60, 80, 100].includes(payload.examQuestionCount)) {
       state.examQuestionCount = payload.examQuestionCount;
     }
@@ -291,7 +355,11 @@
     }
     if (payload.examSession) {
       state.examSession = payload.examSession;
-      state.mode = payload.examSession.active ? 'exam' : 'practice';
+      if (payload.examSession.active || payload.examSession.submitted) {
+        state.mode = 'exam';
+      } else {
+        state.mode = 'practice';
+      }
     } else {
       state.examSession = null;
       if (state.mode === 'exam') state.mode = 'practice';
@@ -303,6 +371,7 @@
     try {
       localStorage.setItem(STORAGE_KEYS.ANSWERS, JSON.stringify(state.userAnswers));
       localStorage.setItem(STORAGE_KEYS.FLAGGED, JSON.stringify(Array.from(state.flagged)));
+      localStorage.setItem(STORAGE_KEYS.STUDIED, JSON.stringify(Array.from(state.studied)));
       localStorage.setItem(STORAGE_KEYS.THEME, state.theme);
       localStorage.setItem(STORAGE_KEYS.EXAM_COUNT, state.examQuestionCount.toString());
       localStorage.setItem(STORAGE_KEYS.EXAM_AREAS, JSON.stringify(state.examAreaFilter));
@@ -330,11 +399,18 @@
     renderQuestion();
     updateStats();
     renderGrid();
+    if (state.mode === 'exam' && isExamReview()) {
+      showExamResults();
+    }
     if (state.mode === 'exam' && state.examSession && state.examSession.active) {
       dom.practiceModeBtn.classList.remove('active');
       dom.examModeBtn.classList.add('active');
       dom.timerBar.style.display = 'block';
       startTimer();
+    } else if (state.mode === 'exam' && isExamReview()) {
+      dom.practiceModeBtn.classList.remove('active');
+      dom.examModeBtn.classList.add('active');
+      dom.timerBar.style.display = 'none';
     } else {
       stopTimer();
       dom.practiceModeBtn.classList.add('active');
@@ -592,20 +668,33 @@
 
   // Apply filters
   function applyFilters() {
-    let list = state.mode === 'exam' && state.examSession ? state.examSession.questions : state.questions;
+    let list;
+    if (state.mode === 'exam' && state.examSession) {
+      list = state.examSession.questions;
+    } else {
+      list = state.questions;
+    }
 
     // Filter by domain
     if (state.filterDomain !== 'all') {
       list = list.filter(q => q.domain === state.filterDomain);
     }
 
-    // Filter by status
+    // Filter by study status (has the question ever been answered?)
+    if (state.filterStudy === 'studied') {
+      list = list.filter(q => state.studied.has(q.id));
+    } else if (state.filterStudy === 'unstudied') {
+      list = list.filter(q => !state.studied.has(q.id));
+    }
+
+    // Filter by status (exam/review use the exam's own answer store)
+    const answers = getActiveAnswerMap();
     if (state.filterStatus === 'unanswered') {
-      list = list.filter(q => !hasAnswer(state.userAnswers[q.id]));
+      list = list.filter(q => !hasAnswer(answers[q.id]));
     } else if (state.filterStatus === 'correct') {
-      list = list.filter(q => answersMatch(q, state.userAnswers[q.id]));
+      list = list.filter(q => answersMatch(q, answers[q.id]));
     } else if (state.filterStatus === 'incorrect') {
-      list = list.filter(q => hasAnswer(state.userAnswers[q.id]) && !answersMatch(q, state.userAnswers[q.id]));
+      list = list.filter(q => hasAnswer(answers[q.id]) && !answersMatch(q, answers[q.id]));
     } else if (state.filterStatus === 'flagged') {
       list = list.filter(q => state.flagged.has(q.id));
     }
@@ -613,7 +702,7 @@
     // Filter by search query
     if (state.searchQuery.trim()) {
       const query = state.searchQuery.toLowerCase();
-      list = list.filter(q => 
+      list = list.filter(q =>
         q.prompt.toLowerCase().includes(query) ||
         q.title.toLowerCase().includes(query) ||
         (q.domain && q.domain.toLowerCase().includes(query)) ||
@@ -625,6 +714,25 @@
     if (state.currentIndex >= state.filteredQuestions.length) {
       state.currentIndex = Math.max(0, state.filteredQuestions.length - 1);
     }
+  }
+
+  // In exam mode the exam's own answer store is authoritative.
+  function getActiveAnswerMap() {
+    if (state.mode === 'exam' && state.examSession && state.examSession.answers) {
+      return state.examSession.answers;
+    }
+    return state.userAnswers;
+  }
+
+  // True while the timed exam is running (answers editable, correctness hidden).
+  function isExamInProgress() {
+    return state.mode === 'exam' && state.examSession && state.examSession.active;
+  }
+
+  // True when a submitted exam is being reviewed (answers locked, correctness shown).
+  function isExamReview() {
+    return state.mode === 'exam' && state.examSession &&
+      !state.examSession.active && !!state.examSession.submitted;
   }
 
   function getCorrectAnswers(question) {
@@ -719,9 +827,11 @@
 
     // Render Options
     dom.optionsList.innerHTML = '';
-    const selectedAnswer = state.userAnswers[q.id];
-    const isAnswered = hasAnswer(selectedAnswer);
     const isPractice = state.mode === 'practice';
+    const isReview = isExamReview();
+    const answers = getActiveAnswerMap();
+    const selectedAnswer = answers[q.id];
+    const isAnswered = hasAnswer(selectedAnswer);
     const correctAnswers = getCorrectAnswers(q);
 
     q.options.forEach((opt, idx) => {
@@ -734,8 +844,8 @@
         item.classList.add('selected');
       }
 
-      // If answered in practice mode, reveal feedback
-      if (isPractice && isAnswered) {
+      // Reveal correctness feedback in practice (after checking) and in review.
+      if ((isPractice && isAnswered) || isReview) {
         item.classList.add('disabled');
         if (correctAnswers.includes(opt.letter)) {
           item.classList.add('correct');
@@ -756,6 +866,7 @@
       item.appendChild(textEl);
 
       item.addEventListener('click', () => {
+        if (isReview) return; // Locked during review
         if (isPractice && isAnswered) return; // Locked after check
         selectOption(q.id, opt.letter);
       });
@@ -763,8 +874,12 @@
       dom.optionsList.appendChild(item);
     });
 
-    // Check Answer button & Explanation in Practice Mode
-    if (isPractice) {
+    // Footer: practice shows Check/Explanation, exam shows Submit, review shows Explanation.
+    if (isReview) {
+      dom.checkBtn.style.display = 'none';
+      dom.submitExamBtn.style.display = 'none';
+      renderExplanation(q, selectedAnswer);
+    } else if (isPractice) {
       if (isAnswered) {
         dom.checkBtn.style.display = 'none';
         renderExplanation(q, selectedAnswer);
@@ -793,27 +908,33 @@
 
   // Select Option
   function selectOption(qId, letter) {
+    if (isExamReview()) return; // Answers are locked during review
     const q = state.filteredQuestions[state.currentIndex] || state.questions.find(question => question.id === qId);
     if (!q) return;
+    const isExam = state.mode === 'exam';
+    const store = isExam && state.examSession && state.examSession.answers
+      ? state.examSession.answers
+      : state.userAnswers;
     if (state.mode === 'practice' && dom.checkBtn.style.display === 'none' && hasAnswer(state.userAnswers[qId])) return;
 
     if (isMultiAnswerQuestion(q)) {
       const order = q.options.map(opt => opt.letter);
-      const currentAnswers = Array.isArray(state.userAnswers[qId]) ? [...state.userAnswers[qId]] : [];
+      const currentAnswers = Array.isArray(store[qId]) ? [...store[qId]] : [];
       const nextAnswers = currentAnswers.includes(letter)
         ? currentAnswers.filter(item => item !== letter)
         : [...currentAnswers, letter];
 
       nextAnswers.sort((a, b) => order.indexOf(a) - order.indexOf(b));
-      state.userAnswers[qId] = nextAnswers;
+      store[qId] = nextAnswers;
     } else {
-      state.userAnswers[qId] = letter;
+      store[qId] = letter;
     }
+    markStudied(qId);
     
     // Update selected styling in UI
     const optionItems = dom.optionsList.querySelectorAll('.option-item');
     optionItems.forEach(item => {
-      if (isAnswerSelected(state.userAnswers[qId], item.dataset.letter)) {
+      if (isAnswerSelected(store[qId], item.dataset.letter)) {
         item.classList.add('selected');
       } else {
         item.classList.remove('selected');
@@ -900,15 +1021,16 @@
 
   // Stats bar update
   function updateStats() {
-    const isExamActive = state.mode === 'exam' && state.examSession && state.examSession.active;
+    const isExamActive = isExamInProgress();
     const activeQuestions = isExamActive ? state.examSession.questions : state.questions;
     const total = activeQuestions.length;
+    const answers = isExamActive ? (state.examSession.answers || {}) : state.userAnswers;
 
     let answeredCount = 0;
     let correctCount = 0;
 
     activeQuestions.forEach(q => {
-      const userAns = state.userAnswers[q.id];
+      const userAns = answers[q.id];
       if (hasAnswer(userAns)) {
         answeredCount++;
         if (answersMatch(q, userAns)) {
@@ -946,19 +1068,17 @@
         btn.classList.add('current');
       }
 
-      const ans = state.userAnswers[q.id];
+      const ans = getActiveAnswerMap()[q.id];
       if (hasAnswer(ans)) {
-        if (state.mode === 'practice') {
-          if (answersMatch(q, ans)) {
-            btn.classList.add('correct');
-          } else {
-            btn.classList.add('incorrect');
-          }
-        } else {
-          // In exam mode, answered is marked without revealing correctness
+        if (isExamInProgress()) {
+          // While the exam is in progress, mark answered without revealing correctness
           btn.classList.add('answered-exam');
           btn.style.background = 'var(--primary-light)';
           btn.style.color = 'var(--primary)';
+        } else if (answersMatch(q, ans)) {
+          btn.classList.add('correct');
+        } else {
+          btn.classList.add('incorrect');
         }
       }
 
@@ -992,8 +1112,13 @@
 
   // Switch Mode (Practice vs Exam)
   function setMode(newMode) {
+    // A finished (submitted) exam is being reviewed: clicking Exam reopens its summary.
+    if (newMode === 'exam' && isExamReview()) {
+      showExamResults();
+      return;
+    }
     if (state.mode === newMode) return;
-    
+
     if (newMode === 'exam') {
       const pool = getExamPool();
       if (!pool.length) return;
@@ -1034,11 +1159,15 @@
     const count = Math.min(state.examQuestionCount, pool.length);
     const examQuestions = buildWeightedExam(count);
 
+    // The exam keeps its own answers so it always starts clean and never
+    // inherits (or overwrites) practice-mode answers.
     state.examSession = {
       active: true,
+      submitted: false,
       questions: examQuestions,
       questionCount: count,
       areas: [...state.examAreaFilter],
+      answers: {},
       startTime: Date.now(),
       durationSec: count * 2 * 60 // 2 minutes per question
     };
@@ -1046,9 +1175,11 @@
     state.currentIndex = 0;
     state.filterDomain = 'all';
     state.filterStatus = 'all';
+    state.filterStudy = 'all';
     state.searchQuery = '';
     if (dom.filterDomain) dom.filterDomain.value = 'all';
     if (dom.filterStatus) dom.filterStatus.value = 'all';
+    if (dom.filterStudy) dom.filterStudy.value = 'all';
     if (dom.searchInput) dom.searchInput.value = '';
 
     dom.timerBar.style.display = 'block';
@@ -1163,75 +1294,109 @@
   // Submit Exam
   function submitExam() {
     stopTimer();
-    const examQuestions = state.examSession ? state.examSession.questions : state.questions;
+    const session = state.examSession;
+    const examQuestions = session ? session.questions : state.questions;
+    const examAnswers = session ? (session.answers || {}) : state.userAnswers;
     let correct = 0;
-    let answered = 0;
     const domainScores = {};
 
     examQuestions.forEach(q => {
-      const userAns = state.userAnswers[q.id];
+      const userAns = examAnswers[q.id];
       const d = q.domain || 'General';
       if (!domainScores[d]) domainScores[d] = { total: 0, correct: 0 };
       domainScores[d].total++;
 
-      if (hasAnswer(userAns)) {
-        answered++;
-        if (answersMatch(q, userAns)) {
-          correct++;
-          domainScores[d].correct++;
-        }
+      if (hasAnswer(userAns) && answersMatch(q, userAns)) {
+        correct++;
+        domainScores[d].correct++;
       }
     });
 
-    const scorePercent = Math.round((correct / examQuestions.length) * 100);
+    // Exam is now finished: mark it inactive so a reload does not resume it.
+    if (session) {
+      session.active = false;
+      session.submitted = true;
+    }
+    saveStorage();
+    renderExamResult(examQuestions, correct, domainScores);
+  }
+
+  // Draw the score summary for a submitted exam. Shared by submit and restore.
+  function renderExamResult(examQuestions, correct, domainScores) {
+    const total = examQuestions.length || 1;
+    const scorePercent = Math.round((correct / total) * 100);
     const passed = scorePercent >= 70;
 
-    // Render Result View
     if (dom.questionArea) dom.questionArea.style.display = 'none';
-    if (dom.resultView) {
-      dom.resultView.style.display = 'block';
-      dom.resultView.innerHTML = `
-        <div class="result-card">
-          <div class="result-circle ${passed ? 'pass' : 'fail'}">
-            ${scorePercent}%
-          </div>
-          <h2>${passed ? '🎉 Congratulations! You Passed' : '❌ Needs Review — Did Not Pass'}</h2>
-          <p style="color: var(--text-muted)">Passing score is 70%. You scored <strong>${correct}</strong> out of <strong>${examQuestions.length}</strong> questions.</p>
-          
-          <div class="domain-breakdown">
-            <h3 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem;">Domain Performance Breakdown</h3>
-            ${Object.keys(domainScores).map(d => {
-              const sc = domainScores[d];
-              const pct = Math.round((sc.correct / sc.total) * 100);
-              return `
-                <div class="domain-row">
-                  <span>${d}</span>
-                  <strong>${sc.correct}/${sc.total} (${pct}%)</strong>
-                </div>
-              `;
-            }).join('')}
-          </div>
+    if (!dom.resultView) return;
 
-          <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
-            <button class="btn btn-primary" id="review-exam-btn">Review All Questions with Explanations</button>
-            <button class="btn btn-secondary" id="retake-exam-btn">Retake New Exam</button>
-          </div>
+    dom.resultView.style.display = 'block';
+    dom.resultView.innerHTML = `
+      <div class="result-card">
+        <div class="result-circle ${passed ? 'pass' : 'fail'}">
+          ${scorePercent}%
         </div>
-      `;
+        <h2>${passed ? '🎉 Congratulations! You Passed' : '❌ Needs Review — Did Not Pass'}</h2>
+        <p style="color: var(--text-muted)">Passing score is 70%. You scored <strong>${correct}</strong> out of <strong>${examQuestions.length}</strong> questions.</p>
 
-      document.getElementById('review-exam-btn')?.addEventListener('click', () => {
-        state.mode = 'practice';
-        dom.practiceModeBtn.classList.add('active');
-        dom.examModeBtn.classList.remove('active');
-        dom.timerBar.style.display = 'none';
-        applyFilters();
-        renderQuestion();
-          });
+        <div class="domain-breakdown">
+          <h3 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem;">Domain Performance Breakdown</h3>
+          ${Object.keys(domainScores).map(d => {
+            const sc = domainScores[d];
+            const pct = Math.round((sc.correct / sc.total) * 100);
+            return `
+              <div class="domain-row">
+                <span>${d}</span>
+                <strong>${sc.correct}/${sc.total} (${pct}%)</strong>
+              </div>
+            `;
+          }).join('')}
+        </div>
 
-      document.getElementById('retake-exam-btn')?.addEventListener('click', () => {
-        startExamMode();
-      });
-    }
+        <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
+          <button class="btn btn-primary" id="review-exam-btn">Review All Questions with Explanations</button>
+          <button class="btn btn-secondary" id="retake-exam-btn">Retake New Exam</button>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('review-exam-btn')?.addEventListener('click', () => {
+      // Keep the submitted exam session so the review shows the exam's own
+      // questions and answers, with correctness revealed and answers locked.
+      state.currentIndex = 0;
+      dom.timerBar.style.display = 'none';
+      applyFilters();
+      renderQuestion();
+      updateStats();
+      renderGrid();
+    });
+
+    document.getElementById('retake-exam-btn')?.addEventListener('click', () => {
+      startExamMode();
+    });
+  }
+
+  // Re-open the score summary of the submitted exam (e.g. after a reload).
+  function showExamResults() {
+    const session = state.examSession;
+    if (!session) return;
+    const examQuestions = session.questions || [];
+    const examAnswers = session.answers || {};
+    let correct = 0;
+    const domainScores = {};
+
+    examQuestions.forEach(q => {
+      const userAns = examAnswers[q.id];
+      const d = q.domain || 'General';
+      if (!domainScores[d]) domainScores[d] = { total: 0, correct: 0 };
+      domainScores[d].total++;
+      if (hasAnswer(userAns) && answersMatch(q, userAns)) {
+        correct++;
+        domainScores[d].correct++;
+      }
+    });
+
+    renderExamResult(examQuestions, correct, domainScores);
   }
 
   // Modal helpers
@@ -1257,17 +1422,48 @@
     dom.modalCancelBtn.addEventListener('click', handleCancel);
   }
 
-  // Reset Progress
+  // Reset Answers: clears answers, flags and the exam session but keeps the
+  // studied history (questions remain marked as studied).
   function resetAllProgress() {
     showConfirmModal(
-      'Reset All Progress',
-      'Are you sure you want to clear all your answers and progress? This will reset your score to 0.',
+      'Reset Answers',
+      'This clears your answers, flags and any exam session so your score returns to 0. Your studied-question history is kept. Use "Erase Everything" to also clear that.',
       () => {
         state.userAnswers = {};
         state.flagged.clear();
         state.currentIndex = 0;
         state.examSession = null;
+        state.mode = 'practice';
         stopTimer();
+        dom.timerBar.style.display = 'none';
+        dom.practiceModeBtn.classList.add('active');
+        dom.examModeBtn.classList.remove('active');
+        saveStorage();
+        applyFilters();
+        renderQuestion();
+      }
+    );
+  }
+
+  // Erase Everything: clears answers, flags, the exam session AND the studied
+  // history. This is a full wipe of all progress.
+  function eraseEverything() {
+    showConfirmModal(
+      'Erase Everything?',
+      'WARNING: This permanently erases ALL progress — every answer, flag, exam session and your entire studied-question history. This cannot be undone.',
+      () => {
+        state.userAnswers = {};
+        state.flagged.clear();
+        state.studied.clear();
+        state.currentIndex = 0;
+        state.examSession = null;
+        state.mode = 'practice';
+        state.filterStudy = 'all';
+        if (dom.filterStudy) dom.filterStudy.value = 'all';
+        stopTimer();
+        dom.timerBar.style.display = 'none';
+        dom.practiceModeBtn.classList.add('active');
+        dom.examModeBtn.classList.remove('active');
         saveStorage();
         applyFilters();
         renderQuestion();
@@ -1314,8 +1510,9 @@
       saveStorage();
     });
 
-    // Reset
+    // Reset (answers only) and Erase Everything (full wipe)
     dom.resetBtn?.addEventListener('click', resetAllProgress);
+    dom.eraseBtn?.addEventListener('click', eraseEverything);
 
     // Mode Buttons
     dom.practiceModeBtn?.addEventListener('click', () => setMode('practice'));
@@ -1376,6 +1573,13 @@
 
     dom.filterStatus?.addEventListener('change', (e) => {
       state.filterStatus = e.target.value;
+      state.currentIndex = 0;
+      applyFilters();
+      renderQuestion();
+    });
+
+    dom.filterStudy?.addEventListener('change', (e) => {
+      state.filterStudy = e.target.value;
       state.currentIndex = 0;
       applyFilters();
       renderQuestion();
