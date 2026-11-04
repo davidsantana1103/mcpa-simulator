@@ -35756,7 +35756,7 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Applying backpressure: signaling the consumer (or producer) to slow down (for example, 429 with Retry-After, bounded queues) rather than dropping everything"
+        "text": "Applying backpressure: signaling the consumer (or producer) to slow down (for example, an API gateway returns 429 with the rate-limit headers such as X-RateLimit-Reset, and Spike Control queues and retries the request) rather than dropping everything"
       },
       {
         "letter": "B",
@@ -35774,11 +35774,11 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Backpressure bounds the mismatch between producer and consumer by explicitly signaling a slow-down — for example, an API gateway rate-limiting or spike-control policy returns HTTP 429 when a quota is exceeded, and clients honor Retry-After before retrying. Sending faster (B) increases the overload, silently dropping messages (C) loses data, and restarting the consumer (D) neither reduces load nor preserves the in-flight data.",
+    "explanation": "Correct answer: A. Backpressure bounds the mismatch between producer and consumer by explicitly signaling a slow-down: a Rate Limiting policy rejects requests with HTTP 429 once the quota for the current window is reached and exposes the rate-limit headers (X-RateLimit-Remaining, X-RateLimit-Limit, X-RateLimit-Reset) so clients know when to retry, and the Spike Control policy queues and retries requests instead of forwarding them immediately. Sending faster (B) increases the overload, silently dropping messages (C) loses data, and restarting the consumer (D) neither reduces load nor preserves the in-flight data.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Explicit slow-down signaling (429/Retry-After, bounded queues) is the flow-control pattern."
+        "text": "Explicit slow-down signaling (429 with rate-limit headers, queued retries) is the flow-control pattern."
       },
       "B": {
         "type": "Incorrect",
