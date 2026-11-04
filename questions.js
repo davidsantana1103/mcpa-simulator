@@ -35280,31 +35280,43 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Roll forward blindly and hope"
+        "text": "Roll forward blindly and hope the next release fixes it"
+      },
+      {
+        "letter": "D",
+        "text": "Rebuild the Mule app from the current branch source and deploy the freshly built artifact"
       }
     ],
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Rollback = redeploy the last known-good artifact; versioned artifacts in CI make this one command. Hot-editing (B) is untraceable, and blind roll-forward (C) is gambling. (Note: option C's text is corrupted in this record and should read 'Roll forward blindly and hope the next release fixes it'.)",
+    "explanation": "Correct answer: A. Rollback is redeploying the last known-good artifact, and keeping versioned artifacts deployable in the pipeline makes that a repeatable one-step operation. Hand-editing the running app (B) is untraceable and not reproducible, rolling forward blindly (C) is gambling on the next release, and rebuilding from the current branch (D) redeploys the very bug you are trying to remove.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Known-good redeploy is the rollback primitive."
+        "text": "Redeploying a known-good, versioned artifact is the rollback primitive."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Live code edits destroy reproducibility."
+        "text": "Live code edits destroy reproducibility and cannot be audited."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Hope is not a rollback strategy."
+        "text": "Hope is not a rollback strategy; the bad release keeps serving traffic."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "The current branch still contains the defect, so a rebuild does not revert it."
       }
     },
     "references": {
       "primary": {
-        "title": "Runtime Manager — Deploying Applications",
-        "url": "https://docs.mulesoft.com/runtime-manager/"
+        "title": "Manage Deployed Applications — Runtime Manager",
+        "url": "https://docs.mulesoft.com/runtime-manager/managing-deployed-applications"
+      },
+      "secondary": {
+        "title": "Updating Apps Deployed to CloudHub 2.0 (Roll Back to a Previous Configuration)",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-update-apps"
       }
     }
   },
@@ -35325,35 +35337,47 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "A second Anypoint organization per domain"
+        "text": "A separate Anypoint Platform organization per custom domain"
       },
       {
         "letter": "C",
-        "text": "Nothing; DLBs exist outside any VPC"
+        "text": "Nothing; dedicated load balancers exist outside any VPC"
+      },
+      {
+        "letter": "D",
+        "text": "A Runtime Fabric target, because dedicated load balancers are only available on Runtime Fabric"
       }
     ],
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. DLBs are VPC resources; the VPC must exist first. (Note: option B's text is corrupted in this record and should read 'A separate subscription per custom domain'.)",
+    "explanation": "Correct answer: A. A CloudHub dedicated load balancer is an optional component that routes external traffic to workers inside an Anypoint VPC, so the VPC must exist before the DLB can be created. A separate organization per domain (B) is unnecessary, DLBs are VPC resources rather than outside them (C), and DLBs are a CloudHub capability that does not require Runtime Fabric (D).",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "VPC-first is a hard prerequisite for DLB creation."
+        "text": "VPC-first is a hard prerequisite: DLBs are created inside an Anypoint VPC."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Custom domains need no extra org/subscription."
+        "text": "Custom domains do not require an extra organization or subscription."
       },
       "C": {
         "type": "Incorrect",
-        "text": "DLBs live inside Anypoint VPCs."
+        "text": "Dedicated load balancers live inside an Anypoint VPC."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Dedicated load balancers are a CloudHub feature and are unrelated to Runtime Fabric."
       }
     },
     "references": {
       "primary": {
-        "title": "Dedicated Load Balancers",
-        "url": "https://docs.mulesoft.com/runtime-cloud/dlb-overview"
+        "title": "Dedicated Load Balancers (CloudHub)",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
+      },
+      "secondary": {
+        "title": "CloudHub Load Balancers",
+        "url": "https://docs.mulesoft.com/cloudhub/dedicated-load-balancer-tutorial"
       }
     }
   },
@@ -35431,35 +35455,47 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "B",
-        "text": "Reduce monitoring to free memory"
+        "text": "Disable Anypoint Monitoring to reduce JVM overhead and free memory"
       },
       {
         "letter": "C",
-        "text": "Add more small workers to spread the same large transforms"
+        "text": "Add more 0.2 vCore workers so the same large transforms are spread across more lanes"
+      },
+      {
+        "letter": "D",
+        "text": "Nothing; the heap usage is expected and CloudHub will automatically restart the worker before it fails"
       }
     ],
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Per-worker heap pressure is a vertical-scale problem. More lanes (B) each still hit the same per-transform heap ceiling, and cutting telemetry (C) is negligibly small and blindfolds you. (Note: option B's text is corrupted in this record and should read 'Disable monitoring to reduce overhead'.)",
+    "explanation": "Correct answer: A. GC pauses at 95% heap are per-worker heap pressure, so the fix is to scale the worker vertically to a size with more heap memory (for example, 0.2 vCores provides 1 GB of heap while larger sizes provide proportionally more). Disabling monitoring (B) frees negligible memory and removes the telemetry you need, adding more workers (C) gives each lane the same per-transform ceiling because concurrency does not shrink a single transform's footprint, and relying on automatic restarts (D) does not remove the heap pressure that causes the pauses.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Bigger lane fixes per-lane heap limits."
+        "text": "A larger worker size raises the per-worker heap, which is where the pressure is."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Monitoring overhead is minor; blindness is major."
+        "text": "Monitoring overhead is minor; disabling it blinds you without fixing the heap."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Concurrency does not shrink a single transform's footprint."
+        "text": "Concurrency does not reduce a single transform's memory footprint."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Auto-restart is a safety net, not a remedy for sustained heap pressure."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Worker Sizing",
-        "url": "https://docs.mulesoft.com/runtime-cloud/shared-worker-sizing"
+        "title": "CloudHub Architecture — Worker Sizes",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
+      },
+      "secondary": {
+        "title": "Autoscaling in CloudHub",
+        "url": "https://docs.mulesoft.com/cloudhub/autoscaling-in-cloudhub"
       }
     }
   },
@@ -35476,39 +35512,51 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "The shared LB presents platform-managed certificates for cloudhub.io domains; a DLB presents customer-uploaded certificates for custom domains"
+        "text": "The shared load balancer presents platform-managed certificates for cloudhub.io domains; a dedicated load balancer presents customer-uploaded certificates for custom domains"
       },
       {
         "letter": "B",
-        "text": "Neither LB terminates TLS; TLS is always end-to-end to workers"
+        "text": "Neither load balancer can terminate TLS in any configuration"
       },
       {
         "letter": "C",
-        "text": "Both present only MuleSoft-internal certificates"
+        "text": "Both load balancers present only MuleSoft-internal certificates"
+      },
+      {
+        "letter": "D",
+        "text": "Only the shared load balancer supports custom certificates; the dedicated load balancer always uses the platform certificate"
       }
     ],
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Cert ownership is the split: platform certs on shared, customer certs on DLB. (Note: option B's text is corrupted in this record and should read 'Neither load balancer can terminate TLS in any configuration'.)",
+    "explanation": "Correct answer: A. Certificate ownership is the defining difference: the shared load balancer has its own platform-managed SSL certificate and does not allow custom certificates or proxy rules, whereas a dedicated load balancer lets you define SSL configurations that provide custom certificates and map applications to custom domains. Both load balancers terminate TLS (so B is wrong), DLBs are not limited to internal certificates (C), and custom certificates are a DLB feature rather than a shared-LB feature (D).",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Certificate authority split is the defining difference."
+        "text": "Platform-managed certificates on the shared LB versus customer certificates on the DLB."
       },
       "B": {
         "type": "Incorrect",
-        "text": "Both terminate TLS by design."
+        "text": "Both load balancers terminate TLS by design."
       },
       "C": {
         "type": "Incorrect",
-        "text": "DLBs take customer certificates."
+        "text": "Dedicated load balancers accept customer-uploaded certificates."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "It is the reverse: only the DLB supports custom certificates."
       }
     },
     "references": {
       "primary": {
-        "title": "Dedicated Load Balancer",
-        "url": "https://docs.mulesoft.com/runtime-cloud/dlb-overview"
+        "title": "CloudHub Load Balancers (Shared and Dedicated)",
+        "url": "https://docs.mulesoft.com/cloudhub/dedicated-load-balancer-tutorial"
+      },
+      "secondary": {
+        "title": "Dedicated Load Balancers (CloudHub)",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
       }
     }
   },
@@ -35525,31 +35573,51 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Nothing; VPCs are open to the internet by default"
+        "text": "Nothing; a new VPC is automatically open to the whole internet"
       },
       {
         "letter": "B",
         "text": "DLB creation and associated firewall/security-group rules permitting the intended ingress, since a new VPC starts closed to outside traffic"
+      },
+      {
+        "letter": "C",
+        "text": "Nothing beyond attaching the app to the VPC; the shared load balancer automatically routes external traffic to VPC workers"
+      },
+      {
+        "letter": "D",
+        "text": "A VPN connection to the corporate network, which is the only way to expose VPC workers externally"
       }
     ],
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. VPCs begin closed; DLB plus explicit ingress rules open controlled paths. (Note: option A's text is corrupted in this record and should read 'Nothing; a new VPC is automatically open to the whole internet'.)",
+    "explanation": "Correct answer: B. All traffic that is not explicitly allowed by a firewall rule is blocked by default in an Anypoint VPC, so you must create the dedicated load balancer and add the firewall rules that permit the intended ingress before external clients can reach workers through it. A new VPC is not open by default (A), the shared load balancer does not publish VPC workers externally without the required rules (C), and a VPN is one connectivity option rather than a requirement for external exposure (D).",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Default-open would defeat the VPC's purpose."
+        "text": "Default-open would defeat the purpose of an isolated VPC network."
       },
       "B": {
         "type": "Correct",
-        "text": "Explicit opening is the security model."
+        "text": "Explicit DLB plus firewall rules is the VPC security model."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "External exposure still requires DLB and firewall rules; attachment alone is not enough."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "A VPN connects private networks; it is not the only path for external traffic."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint VPC",
-        "url": "https://docs.mulesoft.com/runtime-cloud/vpc-overview"
+        "title": "VPC Network Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/vpc-architecture-concept"
+      },
+      "secondary": {
+        "title": "Virtual Private Cloud",
+        "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       }
     }
   },
@@ -35565,39 +35633,51 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Bundling messages into the worker's log"
+        "text": "Writing every message into the application log so it can be replayed after a restart"
       },
       {
         "letter": "B",
-        "text": "Enabling persistent queues on the application, which stores in-flight messages durably so a surviving/redone worker can process them"
+        "text": "Enabling persistent queues on the application, which stores in-flight messages durably so a surviving or redone worker can process them"
       },
       {
         "letter": "C",
-        "text": "Trusting the default in-memory queue"
+        "text": "Trusting the default in-memory queue, which already survives worker restarts"
+      },
+      {
+        "letter": "D",
+        "text": "Enabling CloudHub high availability, which by itself persists queued messages across restarts"
       }
     ],
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Persistent queues are the toggle for durable in-flight message survival. Memory queues (A) drop on worker loss, and logs (B) are not a transport. (Note: option A's text is corrupted in this record and should read 'Writing messages into the application log for later replay'.)",
+    "explanation": "Correct answer: B. Enabling persistent queues makes CloudHub replace the default Mule queue manager with a persistent one, so in-flight messages are stored durably and can be processed by a surviving or restarted worker. Logs are not a transport and cannot be replayed as a queue (A), the default in-memory queue is volatile and loses in-flight messages on worker loss (C), and high availability (multiple workers) alone does not make the queue durable (D).",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "Logs are not a message broker."
+        "text": "The application log is not a message broker and cannot replay queued messages."
       },
       "B": {
         "type": "Correct",
-        "text": "Durable queues are the designed mechanism."
+        "text": "Persistent queues are the designed mechanism for durable in-flight messages."
       },
       "C": {
         "type": "Incorrect",
-        "text": "Volatile queues lose in-flight work."
+        "text": "The default in-memory queue is volatile and loses in-flight work."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Worker redundancy does not by itself persist the queue; the persistent queue setting does."
       }
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Persistent Queues",
-        "url": "https://docs.mulesoft.com/runtime-cloud/shared-persistent-queues"
+        "title": "Manage Queues (Persistent Queues) — CloudHub",
+        "url": "https://docs.mulesoft.com/cloudhub/managing-queues"
+      },
+      "secondary": {
+        "title": "CloudHub High Availability Features",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric"
       }
     }
   },
@@ -35676,23 +35756,51 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Applying backpressure: signaling the consumer (or producer) to slow down (e.g., 429 with Retry-After, bounded queues) rather than dropping everything"
+        "text": "Applying backpressure: signaling the consumer (or producer) to slow down (for example, an API gateway returns 429 with the rate-limit headers such as X-RateLimit-Reset, and Spike Control queues and retries the request) rather than dropping everything"
+      },
+      {
+        "letter": "B",
+        "text": "Increasing the producer's send rate so the backlog clears faster"
+      },
+      {
+        "letter": "C",
+        "text": "Dropping messages silently whenever the consumer buffer is full"
+      },
+      {
+        "letter": "D",
+        "text": "Restarting the consumer on a fixed schedule to periodically clear its buffer"
       }
     ],
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Backpressure bounds the mismatch explicitly. (Note: options B-D are corrupted in this record; they should read: B 'Send faster to catch up', C 'Drop all data silently', D 'Restart the consumer hourly'.)",
+    "explanation": "Correct answer: A. Backpressure bounds the mismatch between producer and consumer by explicitly signaling a slow-down: a Rate Limiting policy rejects requests with HTTP 429 once the quota for the current window is reached and exposes the rate-limit headers (X-RateLimit-Remaining, X-RateLimit-Limit, X-RateLimit-Reset) so clients know when to retry, and the Spike Control policy queues and retries requests instead of forwarding them immediately. Sending faster (B) increases the overload, silently dropping messages (C) loses data, and restarting the consumer (D) neither reduces load nor preserves the in-flight data.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "Explicit slow-down signaling is the flow-control pattern."
+        "text": "Explicit slow-down signaling (429 with rate-limit headers, queued retries) is the flow-control pattern."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Pushing harder widens the gap between production and consumption."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Silent drops cause data loss instead of controlled flow."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Restarting does not change the arrival rate and can lose buffered data."
       }
     },
     "references": {
       "primary": {
-        "title": "API Manager — Rate Limiting",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/rate-limiting-policies"
+        "title": "Rate Limiting Policy — MuleSoft API Gateway",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-rate-limiting"
+      },
+      "secondary": {
+        "title": "Spike Control Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-spike-control"
       }
     }
   },
@@ -35710,22 +35818,50 @@ window.MCPA_QUESTIONS = [
       {
         "letter": "A",
         "text": "Ship v2 as a new major version, keep v1 running and marked deprecated with a published sunset date, and give consumers the migration window"
+      },
+      {
+        "letter": "B",
+        "text": "Force-update v1 in place by removing the endpoint from the existing version"
+      },
+      {
+        "letter": "C",
+        "text": "Delete v1 immediately when v2 is released so consumers move to the new version"
+      },
+      {
+        "letter": "D",
+        "text": "Change the endpoint in v1 without a new version so both v1 and v2 return the new behavior"
       }
     ],
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Breaking changes ship as new majors with the old version honored through a communicated window. (Note: options B-D are corrupted in this record; they should read: B 'Force-update v1 in place with the removed endpoint', C 'Delete v1 immediately upon v2 release', D 'Let consumers discover the removal in production'.)",
+    "explanation": "Correct answer: A. Breaking changes are introduced as a new major version while the old version keeps working; Exchange asset versions follow semantic versioning, and the old version can be moved to the deprecated lifecycle state with a documented, multi-month deprecation schedule so existing consumers have a migration window. Removing an endpoint from v1 in place (B) breaks the existing contract, deleting v1 on release (C) gives consumers no migration time, and silently changing v1's behavior (D) breaks backward compatibility without a new version.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "New major + deprecation window is the compatible practice."
+        "text": "A new major version plus a deprecated old version and sunset date is the compatible practice."
+      },
+      "B": {
+        "type": "Incorrect",
+        "text": "Editing v1 in place is a breaking change with no migration path."
+      },
+      "C": {
+        "type": "Incorrect",
+        "text": "Immediate deletion leaves consumers no window to migrate."
+      },
+      "D": {
+        "type": "Incorrect",
+        "text": "Changing v1 without a version bump breaks backward compatibility."
       }
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — Deprecation",
-        "url": "https://docs.mulesoft.com/exchange/deprecate-assets"
+        "title": "Changing the Version of an API Asset",
+        "url": "https://docs.mulesoft.com/exchange/to-change-raml-version"
+      },
+      "secondary": {
+        "title": "Managing Asset Lifecycle States",
+        "url": "https://docs.mulesoft.com/exchange/lifecycle"
       }
     }
   },
