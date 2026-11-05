@@ -11,11 +11,12 @@ This repository contains a **standalone web application** that simulates the **S
 - **Two Study Modes**:
   - **Practice Mode**: Instant feedback per question with detailed rationales and study links
   - **Timed Exam Mode (60Q / 120 Min)**: Full exam simulation with 120-minute timer, scoring, and domain breakdown. The exam keeps its own answer set, so it always starts clean regardless of practice answers. After submitting, "Review All Questions with Explanations" shows every exam question with its answer, rationale, and correctness.
+  - **New Questions First**: A "New questions only" toggle (default ON) makes the timed exam prefer questions you have not studied, then questions you answered incorrectly, and only falls back to already-correct questions when there are not enough new ones. The official domain weighting is always preserved. The toggle and the eligible-question counts are shown in the exam dialog and the exam button tooltip.
 - **Exhibit Questions**: Scenario questions with diagrams matching real exam format
 - **Zero Backend / 100% Local**: Operates completely offline using browser localStorage
 - **Keyboard Shortcuts**: Full keyboard navigation support for efficient studying
 - **Search & Filtering**: Advanced filtering by domain, status, study status (new vs. already studied), and keyword search
-- **Studied Tracking**: Every question the user has answered (any mode) is flagged as studied, with a "Not Studied (New)" filter to focus on fresh questions. The studied history is kept by "Reset Answers" and cleared only by "Erase Everything".
+- **Studied Tracking**: Every question the user has answered (any mode) is flagged as studied, with a "Not Studied (New)" filter to focus on fresh questions. Each question also keeps the outcome of the user's latest answer (correct/incorrect, any mode), which drives the "new questions only" exam selection. The studied history and per-question results are kept by "Reset Answers" and cleared only by "Erase Everything".
 - **Verified References**: Every question links to primary/secondary sources from official MuleSoft documentation
 
 ### Exam Domains (Weighted)
@@ -112,7 +113,7 @@ All questions and references are sourced from:
 ### Files in Repository
 - **`index.html`**: Main application template with navigation and UI structure
 - **`app.js`**: Core application logic and state management
-- **`drive-sync.js`**: Optional Google Drive progress sync (Google Identity Services token flow + Drive REST `drive.file` scope). No backend; inert until `GOOGLE_CLIENT_ID` is set. Exposes `window.MCPA_DRIVE` (`configure/init/connect/reauth/disconnect/resolveConflict/onLocalChange/flush`). Files are identified by a custom `appProperties.mcpaProgress` marker rather than by name (Drive allows duplicate names), so the app always reuses a single file. When several progress files already exist, they are merged once on connect (union of answers, newest value wins on conflicts, flags/studied unioned, most recent exam session kept) and the duplicates are trashed. Otherwise progress is reconciled, never merged: empty side copies from the other, divergent sides raise a `conflict` status that the UI resolves via a dialog.
+- **`drive-sync.js`**: Optional Google Drive progress sync (Google Identity Services token flow + Drive REST `drive.file` scope). No backend; inert until `GOOGLE_CLIENT_ID` is set. Exposes `window.MCPA_DRIVE` (`configure/init/connect/reauth/disconnect/resolveConflict/onLocalChange/flush`). Files are identified by a custom `appProperties.mcpaProgress` marker rather than by name (Drive allows duplicate names), so the app always reuses a single file. When several progress files already exist, they are merged once on connect (union of answers, newest value wins on conflicts, flags/studied unioned, most recent exam session kept) and the duplicates are trashed. Otherwise progress is reconciled, never merged: empty side copies from the other, divergent sides raise a `conflict` status that the UI resolves via a dialog. The payload includes the per-question results and the "new questions only" toggle.
 - **`questions.js`**: Complete question bank (600 questions total)
 - **`style.css`**: Styling for the application
 - **`images/`**: SVG diagrams for exhibit questions

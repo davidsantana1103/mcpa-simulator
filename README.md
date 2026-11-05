@@ -9,6 +9,7 @@ A standalone, client-side web application designed to simulate the **Salesforce 
 - **Two Study Modes**:
   - **Practice Mode**: Instant feedback per question, detailed rationale breakdowns for every option (correct and incorrect), and study references.
   - **Timed Exam Mode (60Q / 120 Min)**: Simulates the real test environment with 60 weighted-random questions and a 120-minute timer. Provides a final score, 70% pass/fail indicator, and domain performance breakdown.
+  - **New Questions First**: A "New questions only" toggle (default on) makes the timed exam prefer questions you have not studied yet, then questions you answered incorrectly, and only reuses already-correct questions when there are not enough new ones. The official domain weighting is always respected, and the exam dialog shows how many new questions are available.
   - **Timed Exam Area Filter**: In Timed Exam mode, a multi-select lets you focus the simulation on one or more of the 9 exam domains (areas). The exam then draws questions only from the areas you select, so you can drill into your weak certification areas. Leave all areas unchecked to use the full question bank. Selections are saved in the browser.
 - **Exhibit Questions**: Scenario questions with diagrams ("Refer to the exhibit") mirroring the real exam's exhibit-based items.
 - **Zero Backend / 100% Local**: Works offline by saving test progress, answers, flags, and theme directly in the browser's `localStorage`.

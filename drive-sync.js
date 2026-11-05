@@ -243,15 +243,19 @@
     if (!payload || typeof payload !== 'object') return null;
     const answers = (payload.userAnswers && typeof payload.userAnswers === 'object')
       ? payload.userAnswers : {};
+    const results = (payload.questionResults && typeof payload.questionResults === 'object')
+      ? payload.questionResults : {};
     return {
       version: 1,
       updatedAt: payload.updatedAt || 0,
       userAnswers: answers,
       flagged: Array.isArray(payload.flagged) ? payload.flagged : [],
       studied: Array.isArray(payload.studied) ? payload.studied : [],
+      questionResults: results,
       theme: typeof payload.theme === 'string' ? payload.theme : 'light',
       examQuestionCount: payload.examQuestionCount || 60,
       examAreaFilter: Array.isArray(payload.examAreaFilter) ? payload.examAreaFilter : [],
+      examNewQuestionsOnly: payload.examNewQuestionsOnly !== false,
       examSession: payload.examSession || null
     };
   }
@@ -268,8 +272,10 @@
       a: Object.keys(p.userAnswers).sort().map((k) => [k, p.userAnswers[k]]),
       f: p.flagged.slice().sort(),
       d: p.studied.slice().sort(),
+      r: Object.keys(p.questionResults).sort().map((k) => [k, p.questionResults[k]]),
       c: p.examQuestionCount,
       e: p.examAreaFilter.slice().sort(),
+      n: p.examNewQuestionsOnly,
       s: p.examSession ? { active: !!p.examSession.active, q: p.examSession.questionCount || 0,
                            start: p.examSession.startTime || 0 } : null
     });
@@ -337,6 +343,8 @@
     const newest = list.reduce((a, b) => (b.updatedAt > a.updatedAt ? b : a));
     const answers = {};
     const answerStamp = {};
+    const results = {};
+    const resultStamp = {};
     const flagged = new Set();
     const studied = new Set();
     let examSession = null;
@@ -347,6 +355,13 @@
         if (!(qId in answers) || stamp >= (answerStamp[qId] || 0)) {
           answers[qId] = snap.userAnswers[qId];
           answerStamp[qId] = stamp;
+        }
+      });
+      Object.keys(snap.questionResults || {}).forEach((qId) => {
+        const stamp = snap.updatedAt || 0;
+        if (!(qId in results) || stamp >= (resultStamp[qId] || 0)) {
+          results[qId] = snap.questionResults[qId];
+          resultStamp[qId] = stamp;
         }
       });
       (snap.flagged || []).forEach((id) => flagged.add(id));
@@ -375,9 +390,11 @@
       userAnswers: answers,
       flagged: Array.from(flagged),
       studied: Array.from(studied),
+      questionResults: results,
       theme: newest.theme,
       examQuestionCount: newest.examQuestionCount,
       examAreaFilter: newest.examAreaFilter,
+      examNewQuestionsOnly: newest.examNewQuestionsOnly,
       examSession
     };
   }

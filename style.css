@@ -709,6 +709,40 @@ body {
   gap: 0.5rem;
 }
 
+/* Timed Exam: "new questions only" toggle */
+.exam-new-only {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-main);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 0.12s ease;
+}
+
+.exam-new-only:hover {
+  border-color: var(--primary);
+}
+
+.exam-new-only input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--primary);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.exam-new-only-hint {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin: -0.1rem 0 0;
+  line-height: 1.35;
+}
+
 .area-action-btn {
   flex: 1;
   padding: 0.35rem 0.5rem;
