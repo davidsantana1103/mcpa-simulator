@@ -5,10 +5,11 @@ A standalone, client-side web application designed to simulate the **Salesforce 
 ## Features
 
 - **600 Practice Questions**: Question bank sized at ~5.4x the real 60-question exam, with verified answers, full explanations, option-by-option rationales, and references to official MuleSoft/Salesforce documentation.
-- **Exam-Aligned Domain Weighting**: Questions are tagged to the 9 official exam domains, and Timed Exam mode draws each 60-question test in proportion to the official domain weights (7/10/10/12/17/11/11/10/12%).
+- **Exam-Aligned Domain Weighting**: Questions are tagged to the 9 official exam domains, and Timed Exam mode draws every test in proportion to the official domain weights (7/10/10/12/17/11/11/10/12%), regardless of the selected length.
 - **Two Study Modes**:
   - **Practice Mode**: Instant feedback per question, detailed rationale breakdowns for every option (correct and incorrect), and study references.
   - **Timed Exam Mode (60Q / 120 Min)**: Simulates the real test environment with 60 weighted-random questions and a 120-minute timer. Provides a final score, 70% pass/fail indicator, and domain performance breakdown.
+  - **Selectable Exam Length**: Choose 5, 10, 15, 20, 40, 60, 80, or 100 questions from the dropdown next to the mode buttons. Every length keeps the official domain proportions and the "new questions first" priority, and the timer stays at 2 minutes per question.
   - **New Questions First**: A "New questions only" toggle (default on) makes the timed exam prefer questions you have not studied yet, then questions you answered incorrectly, and only reuses already-correct questions when there are not enough new ones. The official domain weighting is always respected, and the exam dialog shows how many new questions are available.
   - **Timed Exam Area Filter**: In Timed Exam mode, a multi-select lets you focus the simulation on one or more of the 9 exam domains (areas). The exam then draws questions only from the areas you select, so you can drill into your weak certification areas. Leave all areas unchecked to use the full question bank. Selections are saved in the browser.
 - **Exhibit Questions**: Scenario questions with diagrams ("Refer to the exhibit") mirroring the real exam's exhibit-based items.
@@ -48,7 +49,7 @@ A standalone, client-side web application designed to simulate the **Salesforce 
 | **Total** | **600** | **100%** |
 
 - **Exam Weighting**: Questions are weighted to match the official Salesforce MCPA exam proportions
-- **Timed Exam Mode**: Draws 60 questions proportionally from the question bank based on these weights
+- **Timed Exam Mode**: Draws 5, 10, 15, 20, 40, 60, 80, or 100 questions proportionally from the question bank based on these weights
 - **Every Objective**: All 47 official exam objectives are covered by at least 2 questions
 
 ## How to Run

@@ -11,6 +11,7 @@ This repository contains a **standalone web application** that simulates the **S
 - **Two Study Modes**:
   - **Practice Mode**: Instant feedback per question with detailed rationales and study links
   - **Timed Exam Mode (60Q / 120 Min)**: Full exam simulation with 120-minute timer, scoring, and domain breakdown. The exam keeps its own answer set, so it always starts clean regardless of practice answers. After submitting, "Review All Questions with Explanations" shows every exam question with its answer, rationale, and correctness.
+  - **Selectable Exam Length**: The exam-length dropdown offers 5, 10, 15, 20, 40, 60, 80, or 100 questions (2 minutes each). Every length preserves the official domain proportions and the "new questions first" priority.
   - **New Questions First**: A "New questions only" toggle (default ON) makes the timed exam prefer questions you have not studied, then questions you answered incorrectly, and only falls back to already-correct questions when there are not enough new ones. The official domain weighting is always preserved. The toggle and the eligible-question counts are shown in the exam dialog and the exam button tooltip.
 - **Exhibit Questions**: Scenario questions with diagrams matching real exam format
 - **Zero Backend / 100% Local**: Operates completely offline using browser localStorage
