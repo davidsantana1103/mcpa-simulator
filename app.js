@@ -28,6 +28,9 @@
     updatedAt: 0 // last local change; used to resolve sync conflicts
   };
 
+  // Selectable Timed Exam question counts (2 minutes per question)
+  const EXAM_COUNT_OPTIONS = [5, 10, 15, 20, 40, 60, 80, 100];
+
   // LocalStorage keys
   const STORAGE_KEYS = {
     ANSWERS: 'mcpa_user_answers_v1',
@@ -221,7 +224,7 @@
       const savedExamCount = localStorage.getItem(STORAGE_KEYS.EXAM_COUNT);
       if (savedExamCount) {
         const parsedCount = parseInt(savedExamCount, 10);
-        if ([20, 40, 60, 80, 100].includes(parsedCount)) {
+        if (EXAM_COUNT_OPTIONS.includes(parsedCount)) {
           state.examQuestionCount = parsedCount;
         }
       }
@@ -404,7 +407,7 @@
       state.questionResults = {};
       backfillResults();
     }
-    if (typeof payload.examQuestionCount === 'number' && [20, 40, 60, 80, 100].includes(payload.examQuestionCount)) {
+    if (typeof payload.examQuestionCount === 'number' && EXAM_COUNT_OPTIONS.includes(payload.examQuestionCount)) {
       state.examQuestionCount = payload.examQuestionCount;
     }
     if (Array.isArray(payload.examAreaFilter)) {
