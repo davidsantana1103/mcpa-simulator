@@ -46,7 +46,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "B RAML definition contains no executable logic, and a consuming app is not the interface it calls."
+        "text": "A RAML definition contains no executable logic, and a consuming app is not the interface it calls."
       }
     },
     "references": {
@@ -95,7 +95,7 @@ window.MCPA_QUESTIONS = [
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "D gateway in front of the implementation enforces API Manager policies without requiring changes to the implementation code."
+        "text": "A gateway in front of the implementation enforces API Manager policies without requiring changes to the implementation code."
       },
       "B": {
         "type": "Incorrect",
@@ -213,11 +213,11 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. RAML and OAS are formal API contract languages; defining the API in Design Center lets the team agree on operations, resources, and data types, mock it for consumers to try, and publish it to Exchange. Building first and generating the contract later (C) inverts the contract-first approach, REST APIs do have formal contracts (A), and a wiki page is not a machine-readable contract (B).",
+    "explanation": "Correct answer: D. RAML and OAS are formal API contract languages; defining the API in Design Center lets the team agree on operations, resources, and data types, mock it for consumers to try, and publish it to Exchange. Building first and generating the contract later (B) inverts the contract-first approach, REST APIs do have formal contracts (C), and a wiki page is not a machine-readable contract (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "B wiki page is not a machine-readable contract and gives consumers nothing to try."
+        "text": "A wiki page is not a machine-readable contract and gives consumers nothing to try."
       },
       "B": {
         "type": "Incorrect",
@@ -344,7 +344,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Flex Gateway runs in Kubernetes, applies API Manager policies to non-Mule APIs, and provides analytics without rewriting the services. Reimplementing the microservices as a Mule application (A) is exactly the rewrite the company wants to avoid, MQ queues (C) are messaging rather than policy enforcement, and Exchange pages (D) document assets rather than enforce policies.",
+    "explanation": "Correct answer: B. Flex Gateway runs in Kubernetes, applies API Manager policies to non-Mule APIs, and provides analytics without rewriting the services. Reimplementing the microservices as a Mule application (D) is exactly the rewrite the company wants to avoid, MQ queues (C) are messaging rather than policy enforcement, and Exchange pages (A) document assets rather than enforce policies.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -405,7 +405,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. RESTful web APIs expose resources identified by URIs, manipulate them with standard HTTP methods, and keep requests stateless. A single endpoint carrying the operation name in the body (A) is RPC style, server-side sessions (C) contradict statelessness, and WSDL and SOAP (B) describe a SOAP web service rather than a RESTful one.",
+    "explanation": "Correct answer: B. RESTful web APIs expose resources identified by URIs, manipulate them with standard HTTP methods, and keep requests stateless. A single endpoint carrying the operation name in the body (A) is RPC style, server-side sessions (D) contradict statelessness, and WSDL and SOAP (C) describe a SOAP web service rather than a RESTful one.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -466,7 +466,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. C web API defines a contract between consumers and the provider. Consumers rely on the interface, including resources, methods, and data types, and not on how it is implemented. As long as the implementation continues to honor the contract, backends can be replaced or refactored without changing the consumers.",
+    "explanation": "Correct answer: B. A web API defines a contract between consumers and the provider. Consumers rely on the interface, including resources, methods, and data types, and not on how it is implemented. As long as the implementation continues to honor the contract, backends can be replaced or refactored without changing the consumers.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -588,7 +588,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. A malformed request is a client error, so the API returns 400 Bad Request with an error body that names the missing fields, letting every consumer handle it consistently. A 500 (A) wrongly blames the server, a 200 with an error flag (C) hides the failure from standard HTTP handling, and a bodyless 422 (D) omits the detail consumers need.",
+    "explanation": "Correct answer: C. A malformed request is a client error, so the API returns 400 Bad Request with an error body that names the missing fields, letting every consumer handle it consistently. A 500 (A) wrongly blames the server, a 200 with an error flag (B) hides the failure from standard HTTP handling, and a bodyless 422 (D) omits the detail consumers need.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -771,7 +771,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Experience APIs are owned by the channel or app team, adapt data to a specific consumer, and change at the pace of that experience. Reusing a Process API does not move an API into the Process tier (A), the API does not unlock a system of record (D), and reuse by another channel is not what makes an API an Experience API (B).",
+    "explanation": "Correct answer: B. Experience APIs are owned by the channel or app team, adapt data to a specific consumer, and change at the pace of that experience. Reusing a Process API does not move an API into the Process tier (D), the API does not unlock a system of record (C), and reuse by another channel is not what makes an API an Experience API (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -898,7 +898,7 @@ window.MCPA_QUESTIONS = [
       "B",
       "D"
     ],
-    "explanation": "Correct answers: B and D. System APIs unlock a system of record, so they are typically owned by the team that runs that system and their contracts change slowly. Implementing cross-system business processes (A) is the Process tier, tailoring to one channel (D) is the Experience tier, and System APIs are usually kept internal rather than exposed publicly (B).",
+    "explanation": "Correct answers: B and D. System APIs unlock a system of record, so they are typically owned by the team that runs that system and their contracts change slowly. Implementing cross-system business processes (A) is the Process tier, tailoring to one channel (E) is the Experience tier, and System APIs are usually kept internal rather than exposed publicly (C).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -1024,7 +1024,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Exchange is the catalog where teams discover reusable APIs and other assets and self-serve them. Runtime Manager (B) lists deployed applications but not the reusable assets, Monitoring (C) shows runtime traffic rather than available APIs, and Access Management (D) controls permissions rather than discovery.",
+    "explanation": "Correct answer: B. Exchange is the catalog where teams discover reusable APIs and other assets and self-serve them. Runtime Manager (A) lists deployed applications but not the reusable assets, Monitoring (B) shows runtime traffic rather than available APIs, and Access Management (D) controls permissions rather than discovery.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -1085,7 +1085,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. API Manager applies policies such as rate limiting, manages client application contracts and their approval, and reports API usage analytics. Exchange (C) catalogs assets, Visualizer (B) shows the dependency graph, and Design Center (D) authors the specification.",
+    "explanation": "Correct answer: C. API Manager applies policies such as rate limiting, manages client application contracts and their approval, and reports API usage analytics. Exchange (B) catalogs assets, Visualizer (A) shows the dependency graph, and Design Center (D) authors the specification.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -1207,7 +1207,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Visualizer draws the application network from observed traffic and groups the nodes by API-led layer, so the impact of retiring a System API is visible. Runtime Manager (D) lists deployments, Monitoring (C) charts metrics rather than dependencies, and Exchange (B) catalogs assets without runtime call relationships.",
+    "explanation": "Correct answer: B. Visualizer draws the application network from observed traffic and groups the nodes by API-led layer, so the impact of retiring a System API is visible. Runtime Manager (D) lists deployments, Monitoring (C) charts metrics rather than dependencies, and Exchange (A) catalogs assets without runtime call relationships.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -1329,15 +1329,15 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. D C4E is an enablement function: it helps distributed teams deliver their own integrations by supplying reusable assets, standards, and guidance. Owning delivery (B) recreates the central bottleneck, gating every design (C) slows teams without building capability, and tooling-only support (A) leaves delivery practices unaddressed.",
+    "explanation": "Correct answer: A. The C4E is an enablement function: it helps distributed teams deliver their own integrations by supplying reusable assets, standards, and guidance. Owning delivery (B) recreates the central bottleneck, gating every design (C) slows teams without building capability, and tooling-only support (A) leaves delivery practices unaddressed.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "D C4E enables LoB teams to self-serve with assets, standards, and guidance."
+        "text": "The C4E enables LoB teams to self-serve with assets, standards, and guidance."
       },
       "B": {
         "type": "Incorrect",
-        "text": "D C4E also enables delivery practices and reusable assets, not just tooling."
+        "text": "The C4E also enables delivery practices and reusable assets, not just tooling."
       },
       "C": {
         "type": "Incorrect",
@@ -1460,7 +1460,7 @@ window.MCPA_QUESTIONS = [
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "B rising share of C4E-delivered projects indicates centralization, not enablement."
+        "text": "A rising share of C4E-delivered projects indicates centralization, not enablement."
       },
       "B": {
         "type": "Incorrect",
@@ -1472,7 +1472,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "B C4E should enable self-service rather than measure how much work it does itself."
+        "text": "A C4E should enable self-service rather than measure how much work it does itself."
       },
       "E": {
         "type": "Correct",
@@ -1521,7 +1521,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. The recommended way to start a C4E is to seed it alongside the first strategic projects, capture reusable assets as you go, and let the team grow. Front-loading a year of standards (D) delays delivery, outsourcing all delivery (A) prevents the C4E from building capability, and waiting for a large API estate (B) leaves early projects inconsistent.",
+    "explanation": "Correct answer: B. The recommended way to start a C4E is to seed it alongside the first strategic projects, capture reusable assets as you go, and let the team grow. Front-loading a year of standards (C) delays delivery, outsourcing all delivery (D) prevents the C4E from building capability, and waiting for a large API estate (A) leaves early projects inconsistent.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -1533,7 +1533,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "B year of upfront standards delays value and rarely anticipates real needs."
+        "text": "A year of upfront standards delays value and rarely anticipates real needs."
       },
       "D": {
         "type": "Incorrect",
@@ -1582,7 +1582,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Anypoint Platform exposes the required data through the Exchange, API Manager, and Runtime Manager APIs, so a dashboard can collect the metrics automatically. Counting only specifications in repositories (D) misses managed APIs, clients, and deployments; spreadsheets (B) require manual effort and drift; and log parsing (A) cannot reliably infer asset or contract counts.",
+    "explanation": "Correct answer: D. Anypoint Platform exposes the required data through the Exchange, API Manager, and Runtime Manager APIs, so a dashboard can collect the metrics automatically. Counting only specifications in repositories (B) misses managed APIs, clients, and deployments; spreadsheets (A) require manual effort and drift; and log parsing (C) cannot reliably infer asset or contract counts.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -1643,7 +1643,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Traditional ICCs or centers of excellence concentrate integration delivery in one central team, which often becomes a bottleneck. C C4E is a cross-functional team that enables lines of business to deliver themselves, by producing reusable assets, best practices, and lightweight governance and by measuring success through adoption and reuse.",
+    "explanation": "Correct answer: D. Traditional ICCs or centers of excellence concentrate integration delivery in one central team, which often becomes a bottleneck. A C4E is a cross-functional team that enables lines of business to deliver themselves, by producing reusable assets, best practices, and lightweight governance and by measuring success through adoption and reuse.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -1651,11 +1651,11 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "C C4E still defines standards and lightweight governance to keep the network consistent."
+        "text": "A C4E still defines standards and lightweight governance to keep the network consistent."
       },
       "C": {
         "type": "Incorrect",
-        "text": "C C4E is cross-functional and includes business and IT roles."
+        "text": "A C4E is cross-functional and includes business and IT roles."
       },
       "D": {
         "type": "Correct",
@@ -1726,12 +1726,12 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Platform Deployment Architectures",
-        "url": "https://docs.mulesoft.com/general/deployment-architectures"
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
       },
       "secondary": {
-        "title": "MuleSoft — Data Residency",
-        "url": "https://docs.mulesoft.com/general/data-residency"
+        "title": "Anypoint Platform Control Planes Overview",
+        "url": "https://docs.mulesoft.com/control-planes/"
       }
     },
     "image": "images/q028arch.svg"
@@ -1767,7 +1767,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. MuleSoft Catalyst provides the playbooks, best practices, and templates through the Catalyst Knowledge Hub. Policy templates (A), dashboard templates (C), and application settings (B) are platform features rather than MuleSoft's methodology and operating guidance.",
+    "explanation": "Correct answer: B. MuleSoft Catalyst provides the playbooks, best practices, and templates through the Catalyst Knowledge Hub. Policy templates (D), dashboard templates (C), and application settings (A) are platform features rather than MuleSoft's methodology and operating guidance.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -1828,7 +1828,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. The business outcomes pillar starts by defining what success means, with KPIs, and aligning stakeholders so the technical work is tied to business goals. Publishing assets (A), training (C), and installing runtimes (D) are delivery and enablement activities that come after the outcomes are agreed.",
+    "explanation": "Correct answer: A. The business outcomes pillar starts by defining what success means, with KPIs, and aligning stakeholders so the technical work is tied to business goals. Publishing assets (B), training (D), and installing runtimes (C) are delivery and enablement activities that come after the outcomes are agreed.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -1889,7 +1889,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Catalyst is an outcome-driven approach that combines a methodology, reusable assets, and services to speed time to value. It is not a code generator (A), a different runtime engine (B), or a licensing model (D).",
+    "explanation": "Correct answer: C. Catalyst is an outcome-driven approach that combines a methodology, reusable assets, and services to speed time to value. It is not a code generator (D), a different runtime engine (B), or a licensing model (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -1950,7 +1950,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Organizational enablement covers the people and operating model: establishing a C4E and providing training and internal support. Configuring private spaces (B) and implementing a System API (D) are technology delivery, and defining revenue targets (C) belongs to business outcomes.",
+    "explanation": "Correct answer: B. Organizational enablement covers the people and operating model: establishing a C4E and providing training and internal support. Configuring private spaces (D) and implementing a System API (A) are technology delivery, and defining revenue targets (C) belongs to business outcomes.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -2011,7 +2011,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Catalyst playbooks follow a plan, establish foundation, scale, and measure approach for each path. Design through deploy (B) is a project lifecycle, discover through retire (C) describes an asset lifecycle, and assess through archive (D) describes a migration.",
+    "explanation": "Correct answer: D. Catalyst playbooks follow a plan, establish foundation, scale, and measure approach for each path. Design through deploy (C) is a project lifecycle, discover through retire (B) describes an asset lifecycle, and assess through archive (A) describes a migration.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -2255,7 +2255,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. MuleSoft Government Cloud is the FedRAMP-authorized managed environment, which meets both the managed-cloud and authorization requirements. PCE (D) is customer-managed rather than MuleSoft-managed, and the commercial control plane (B) and EU control plane (C) are not FedRAMP-authorized.",
+    "explanation": "Correct answer: A. MuleSoft Government Cloud is the FedRAMP-authorized managed environment, which meets both the managed-cloud and authorization requirements. PCE (C) is customer-managed rather than MuleSoft-managed, and the commercial control plane (D) and EU control plane (B) are not FedRAMP-authorized.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -2316,7 +2316,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Runtime Fabric runs containerized Mule applications on the company's own Kubernetes clusters with centralized management from Anypoint Platform. CloudHub 2.0 (A) runs in MuleSoft's cloud rather than the company's clusters, standalone runtimes on EC2 (D) require managing individual runtime servers, and agents without a control-plane connection (B) provide no centralized management.",
+    "explanation": "Correct answer: D. Runtime Fabric runs containerized Mule applications on the company's own Kubernetes clusters with centralized management from Anypoint Platform. CloudHub 2.0 (A) runs in MuleSoft's cloud rather than the company's clusters, standalone runtimes on EC2 (B) require managing individual runtime servers, and agents without a control-plane connection (C) provide no centralized management.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -2377,7 +2377,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. With no residency or on-premises constraints, the fully managed option is the MuleSoft-hosted control plane with CloudHub 2.0, which minimizes operations while providing high availability and scaling. Runtime Fabric (B) and hybrid runtimes (C) require the team to run infrastructure, and PCE (D) is the most operationally demanding option.",
+    "explanation": "Correct answer: B. With no residency or on-premises constraints, the fully managed option is the MuleSoft-hosted control plane with CloudHub 2.0, which minimizes operations while providing high availability and scaling. Runtime Fabric (C) and hybrid runtimes (D) require the team to run infrastructure, and PCE (A) is the most operationally demanding option.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -2438,7 +2438,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Platform sign-in and group-based team membership are handled by identity management with Okta as an external identity provider. Client management (D) is for API client applications rather than platform users, a connected app per user (B) is for programmatic access rather than SSO, and a token enforcement policy (A) protects APIs rather than platform sign-in.",
+    "explanation": "Correct answer: A. Platform sign-in and group-based team membership are handled by identity management with Okta as an external identity provider. Client management (C) is for API client applications rather than platform users, a connected app per user (B) is for programmatic access rather than SSO, and a token enforcement policy (D) protects APIs rather than platform sign-in.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -2454,7 +2454,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "C token enforcement policy protects APIs, not platform sign-in."
+        "text": "A token enforcement policy protects APIs, not platform sign-in."
       }
     },
     "references": {
@@ -2621,7 +2621,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Anypoint Platform supports client providers that comply with OpenID Connect Dynamic Client Registration; when such a provider is configured in Client Management and associated with environments, client applications created through Exchange are registered with the provider automatically. SAML identity management (A) is for user sign-in, a custom database-writing policy (B) is unsupported and unnecessary, and a shared client (D) defeats per-consumer governance.",
+    "explanation": "Correct answer: A. Anypoint Platform supports client providers that comply with OpenID Connect Dynamic Client Registration; when such a provider is configured in Client Management and associated with environments, client applications created through Exchange are registered with the provider automatically. SAML identity management (C) is for user sign-in, a custom database-writing policy (D) is unsupported and unnecessary, and a shared client (B) defeats per-consumer governance.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -2629,7 +2629,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "C single shared client removes per-consumer identity and breaks governance."
+        "text": "A single shared client removes per-consumer identity and breaks governance."
       },
       "C": {
         "type": "Incorrect",
@@ -2752,7 +2752,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. When no external client provider is configured, Anypoint Platform acts as the default client provider and generates a client ID and secret for each client application created in Exchange, which the client ID enforcement policy validates. C SAML session cookie (B) is not an API credential, a shared password (C) is not how the policy works, and an external provider (D) is optional.",
+    "explanation": "Correct answer: C. When no external client provider is configured, Anypoint Platform acts as the default client provider and generates a client ID and secret for each client application created in Exchange, which the client ID enforcement policy validates. A SAML session cookie (B) is not an API credential, a shared password (A) is not how the policy works, and an external provider (D) is optional.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -2813,7 +2813,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Hybrid runtimes run in the customer's data center and process the payloads locally; only management metadata such as application status and metrics is sent to the MuleSoft-hosted control plane. Payloads (A) and backend credentials (C) stay in the data center, and hybrid runtimes do maintain a control-plane connection (D).",
+    "explanation": "Correct answer: A. Hybrid runtimes run in the customer's data center and process the payloads locally; only management metadata such as application status and metrics is sent to the MuleSoft-hosted control plane. Payloads (A) and backend credentials (D) stay in the data center, and hybrid runtimes do maintain a control-plane connection (C).",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -2935,7 +2935,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Logs are produced by the application's Log4j2 configuration, so a custom appender can ship them to the SIEM, and disabling CloudHub log storage keeps them out of MuleSoft-managed storage. D Message Logging policy (C) logs API traffic at the gateway rather than the application's own logs, lowering the level (B) still stores entries in CloudHub, and the control-plane region (D) has nothing to do with where logs are stored.",
+    "explanation": "Correct answer: C. Logs are produced by the application's Log4j2 configuration, so a custom appender can ship them to the SIEM, and disabling CloudHub log storage keeps them out of MuleSoft-managed storage. A Message Logging policy (D) logs API traffic at the gateway rather than the application's own logs, lowering the level (C) still stores entries in CloudHub, and the control-plane region (A) has nothing to do with where logs are stored.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -2947,7 +2947,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Correct",
-        "text": "D custom appender forwards application logs to the SIEM, and disabling CloudHub logs keeps them out of platform storage."
+        "text": "A custom appender forwards application logs to the SIEM, and disabling CloudHub logs keeps them out of platform storage."
       },
       "D": {
         "type": "Incorrect",
@@ -3123,7 +3123,7 @@ window.MCPA_QUESTIONS = [
       "D",
       "E"
     ],
-    "explanation": "Correct answers: E and D. The control plane stores design-time and governance data such as published assets and API Manager configuration. Message payloads (A), backend database contents (E), and the Kubernetes nodes (C) remain in the customer's environment.",
+    "explanation": "Correct answers: E and D. The control plane stores design-time and governance data such as published assets and API Manager configuration. Message payloads (A), backend database contents (C), and the Kubernetes nodes (B) remain in the customer's environment.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -3310,7 +3310,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. API Manager manages an API instance, typically created from an Exchange asset. D Mule application implementing that API uses API Autodiscovery, configured with the API instance ID, so the runtime connects to API Manager, downloads the policies, and enforces them.",
+    "explanation": "Correct answer: B. API Manager manages an API instance, typically created from an Exchange asset. A Mule application implementing that API uses API Autodiscovery, configured with the API instance ID, so the runtime connects to API Manager, downloads the policies, and enforces them.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -3432,7 +3432,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. The specification defines the contract that both the implementation and clients depend on. Removing a response field changes the specification and the implementation and can break clients that read that field, which is why it is a breaking change requiring a new major version. The other options understate the impact: the response shape is part of the contract (C, D), and clients that rely on the field are affected (A).",
+    "explanation": "Correct answer: A. The specification defines the contract that both the implementation and clients depend on. Removing a response field changes the specification and the implementation and can break clients that read that field, which is why it is a breaking change requiring a new major version. The other options understate the impact: the response shape is part of the contract (C, D), and clients that rely on the field are affected (D).",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -3563,7 +3563,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. API fragments such as RAML data types, traits, and security schemes can be created in Design Center and published to Exchange as reusable assets, so specifications reference consistent, versioned definitions. B Java library (C) is not reusable from a specification, plain-text descriptions (A) cannot be referenced by specs, and per-spec copies (B) drift and are not centrally versioned.",
+    "explanation": "Correct answer: C. API fragments such as RAML data types, traits, and security schemes can be created in Design Center and published to Exchange as reusable assets, so specifications reference consistent, versioned definitions. A Java library (B) is not reusable from a specification, plain-text descriptions (D) cannot be referenced by specs, and per-spec copies (A) drift and are not centrally versioned.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -3624,15 +3624,15 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Publishing the specification to Exchange makes it discoverable, documents it, and provides a try-it console and a mock for consumers. C specification is not a deployed application (B), policies are applied to API instances rather than specifications (D), and a shared repository (C) provides no discovery, documentation, or try-it experience.",
+    "explanation": "Correct answer: D. Publishing the specification to Exchange makes it discoverable, documents it, and provides a try-it console and a mock for consumers. A specification is not a deployed application (B), policies are applied to API instances rather than specifications (C), and a shared repository (A) provides no discovery, documentation, or try-it experience.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "C shared repository gives no discovery, documentation, or try-it experience, and changes are not visible to consumers."
+        "text": "A shared repository gives no discovery, documentation, or try-it experience, and changes are not visible to consumers."
       },
       "B": {
         "type": "Incorrect",
-        "text": "C specification is a contract; deploying it as an application is not how it becomes discoverable."
+        "text": "A specification is a contract; deploying it as an application is not how it becomes discoverable."
       },
       "C": {
         "type": "Incorrect",
@@ -3746,11 +3746,11 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Reuse depends on an asset being understandable: clear descriptions, examples, and usage guidance on the Exchange page tell other teams what the API does and how to adopt it. Bumping the version (C) adds no information, restricting visibility (A) hides the asset, and extra deployments (D) do not make it easier to understand.",
+    "explanation": "Correct answer: C. Reuse depends on an asset being understandable: clear descriptions, examples, and usage guidance on the Exchange page tell other teams what the API does and how to adopt it. Bumping the version (A) adds no information, restricting visibility (B) hides the asset, and extra deployments (D) do not make it easier to understand.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "C higher version number does not explain what the API does."
+        "text": "A higher version number does not explain what the API does."
       },
       "B": {
         "type": "Incorrect",
@@ -3815,7 +3815,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "B new asset is unnecessary; the existing version is used to create the instance."
+        "text": "A new asset is unnecessary; the existing version is used to create the instance."
       },
       "C": {
         "type": "Incorrect",
@@ -3873,7 +3873,7 @@ window.MCPA_QUESTIONS = [
       "D",
       "E"
     ],
-    "explanation": "Correct answers: E and D. Exchange catalogs reusable design-time assets, including API specifications (RAML or OAS) and API fragments such as data types, traits, and security schemes. Monitoring dashboards (C), access tokens (E), and running application instances with their state (B) are runtime artifacts, not reusable design assets.",
+    "explanation": "Correct answers: E and D. Exchange catalogs reusable design-time assets, including API specifications (RAML or OAS) and API fragments such as data types, traits, and security schemes. Monitoring dashboards (B), access tokens (C), and running application instances with their state (A) are runtime artifacts, not reusable design assets.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -3938,19 +3938,19 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Adding a new optional field is a backward-compatible change, so the minor version is incremented to 2.4.0. The patch version (A) is for backward-compatible fixes that do not change the interface, a major version (B) is for breaking changes, and both minor and patch (C) over-increments.",
+    "explanation": "Correct answer: C. Adding a new optional field is a backward-compatible change, so the minor version is incremented to 2.4.0. The patch version (B) is for backward-compatible fixes that do not change the interface, a major version (A) is for breaking changes, and both minor and patch (D) over-increments.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "B major version is reserved for breaking changes."
+        "text": "A major version is reserved for breaking changes."
       },
       "B": {
         "type": "Incorrect",
-        "text": "B patch version is for fixes that do not change the interface."
+        "text": "A patch version is for fixes that do not change the interface."
       },
       "C": {
         "type": "Correct",
-        "text": "B backward-compatible addition increments the minor version."
+        "text": "A backward-compatible addition increments the minor version."
       },
       "D": {
         "type": "Incorrect",
@@ -4020,8 +4020,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — API Versioning",
-        "url": "https://docs.mulesoft.com/exchange/api-versioning"
+        "title": "Manage Versions",
+        "url": "https://docs.mulesoft.com/exchange/manage-versions"
       },
       "secondary": {
         "title": "Semantic Versioning 2.0.0",
@@ -4061,7 +4061,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. A documentation-only fix that changes no request or response is backward-compatible, so the patch version is incremented to 3.2.1. A minor version (A) is for backward-compatible interface additions, a major version (C) is for breaking changes, and leaving the version unchanged (D) loses the record of the published change.",
+    "explanation": "Correct answer: C. A documentation-only fix that changes no request or response is backward-compatible, so the patch version is incremented to 3.2.1. A minor version (A) is for backward-compatible interface additions, a major version (B) is for breaking changes, and leaving the version unchanged (D) loses the record of the published change.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -4122,7 +4122,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. B common practice is to expose only the major version in the API's URL or instance version, because minor and patch changes are backward compatible. Clients only need to move to a new URL when a new major version introduces breaking changes.",
+    "explanation": "Correct answer: C. A common practice is to expose only the major version in the API's URL or instance version, because minor and patch changes are backward compatible. Clients only need to move to a new URL when a new major version introduces breaking changes.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -4249,7 +4249,7 @@ window.MCPA_QUESTIONS = [
       "C",
       "D"
     ],
-    "explanation": "Correct answers: C and D. Adding an optional query parameter and adding a new resource are both backward-compatible additions, so they increment the minor version. Removing a field (C) and changing a field's type (D) are breaking changes that require a major version, and a spelling correction (A) is a patch change.",
+    "explanation": "Correct answers: C and D. Adding an optional query parameter and adding a new resource are both backward-compatible additions, so they increment the minor version. Removing a field (A) and changing a field's type (E) are breaking changes that require a major version, and a spelling correction (B) is a patch change.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -4257,7 +4257,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "C spelling correction is a patch change, not a minor one."
+        "text": "A spelling correction is a patch change, not a minor one."
       },
       "C": {
         "type": "Correct",
@@ -4318,7 +4318,7 @@ window.MCPA_QUESTIONS = [
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "B shared kernel requires close collaboration and joint ownership."
+        "text": "A shared kernel requires close collaboration and joint ownership."
       },
       "B": {
         "type": "Incorrect",
@@ -4436,7 +4436,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. When the upstream team plans around the downstream's needs, the relationship is Customer/Supplier. Conformist (D) is the opposite, where the downstream has no influence; an anticorruption layer (B) is a translation strategy used when the upstream will not adapt; and Separate Ways (A) means no integration at all.",
+    "explanation": "Correct answer: A. When the upstream team plans around the downstream's needs, the relationship is Customer/Supplier. Conformist (C) is the opposite, where the downstream has no influence; an anticorruption layer (B) is a translation strategy used when the upstream will not adapt; and Separate Ways (D) means no integration at all.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -4558,7 +4558,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. The mapping strategy follows the power relationship between the contexts: whether the upstream will adapt for the downstream, whether the downstream must conform, or whether a translation layer is needed. Policies (B), the runtime option (D), and the implementation language (C) do not determine the mapping strategy.",
+    "explanation": "Correct answer: C. The mapping strategy follows the power relationship between the contexts: whether the upstream will adapt for the downstream, whether the downstream must conform, or whether a translation layer is needed. Policies (D), the runtime option (A), and the implementation language (B) do not determine the mapping strategy.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -4624,7 +4624,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "B"
     ],
-    "explanation": "Correct answers: A and B. When the upstream will not adapt, the downstream either conforms to the upstream model or protects its own model behind an anticorruption layer. Partnership (B), Customer/Supplier (C), and Shared Kernel (A) all require some agreement or influence between the two contexts.",
+    "explanation": "Correct answers: A and B. When the upstream will not adapt, the downstream either conforms to the upstream model or protects its own model behind an anticorruption layer. Partnership (E), Customer/Supplier (D), and Shared Kernel (C) all require some agreement or influence between the two contexts.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -4811,7 +4811,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. If-Match fails when the ETag does not match the current version, so the API returns 412 Precondition Failed. D 409 (A) signals a resource-state conflict without expressing the failed precondition, a 304 (C) is a response to a conditional GET, and a 428 (D) asks the client to include a precondition it has not sent.",
+    "explanation": "Correct answer: C. If-Match fails when the ETag does not match the current version, so the API returns 412 Precondition Failed. D 409 (A) signals a resource-state conflict without expressing the failed precondition, a 304 (D) is a response to a conditional GET, and a 428 (B) asks the client to include a precondition it has not sent.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -4872,11 +4872,11 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. If-None-Match with the stored ETag makes the API return 304 Not Modified when the representation is unchanged, so the client reuses its copy. If-Match (C) is for conditional writes, a random query parameter (D) defeats caching rather than using it, and POST (B) is not how conditional GET works.",
+    "explanation": "Correct answer: B. If-None-Match with the stored ETag makes the API return 304 Not Modified when the representation is unchanged, so the client reuses its copy. If-Match (D) is for conditional writes, a random query parameter (A) defeats caching rather than using it, and POST (C) is not how conditional GET works.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "D random query parameter defeats caching instead of using it."
+        "text": "A random query parameter defeats caching instead of using it."
       },
       "B": {
         "type": "Correct",
@@ -4933,7 +4933,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. PUT replaces the resource with the supplied representation, so repeating the same call leaves the resource in the same state, which suits a retried full update. POST (A) is not idempotent, PATCH (B) is a partial update rather than a full replacement, and GET (C) must not change state at all.",
+    "explanation": "Correct answer: A. PUT replaces the resource with the supplied representation, so repeating the same call leaves the resource in the same state, which suits a retried full update. POST (D) is not idempotent, PATCH (A) is a partial update rather than a full replacement, and GET (B) must not change state at all.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -4999,7 +4999,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "E"
     ],
-    "explanation": "Correct answers: E and A. DELETE and PUT are idempotent: repeating the same request leaves the resource in the same state. POST (D) is not idempotent, PATCH (B) is not guaranteed to be idempotent, and CONNECT (C) is a tunnel-establishment method.",
+    "explanation": "Correct answers: E and A. DELETE and PUT are idempotent: repeating the same request leaves the resource in the same state. POST (C) is not idempotent, PATCH (D) is not guaranteed to be idempotent, and CONNECT (B) is a tunnel-establishment method.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -5687,11 +5687,11 @@ window.MCPA_QUESTIONS = [
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "D System API's functional focus is unlocking one system; business rules across systems and channel formatting belong to other layers."
+        "text": "A System API's functional focus is unlocking one system; business rules across systems and channel formatting belong to other layers."
       },
       "B": {
         "type": "Incorrect",
-        "text": "D loyalty-and-formatting API still mixes cross-system business logic with channel concerns and is not a System API."
+        "text": "A loyalty-and-formatting API still mixes cross-system business logic with channel concerns and is not a System API."
       },
       "C": {
         "type": "Incorrect",
@@ -5943,7 +5943,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Correct",
-        "text": "C stable System API contract absorbs backend changes, so the dependent Process APIs do not need to change when the system of record is replaced."
+        "text": "A stable System API contract absorbs backend changes, so the dependent Process APIs do not need to change when the system of record is replaced."
       }
     },
     "references": {
@@ -6049,7 +6049,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. When an organization already governs an Enterprise Data Model, its System APIs should use the EDM's data types and let the implementation translate between those types and the backend's native model, so all consumers share consistent, backend-independent definitions. Duplicating definitions alongside a working EDM (A) fragments the model, exposing the native model (C) forces every consumer to translate, and restricting the EDM to the Experience tier (D) misplaces the translation.",
+    "explanation": "Correct answer: D. When an organization already governs an Enterprise Data Model, its System APIs should use the EDM's data types and let the implementation translate between those types and the backend's native model, so all consumers share consistent, backend-independent definitions. Duplicating definitions alongside a working EDM (C) fragments the model, exposing the native model (D) forces every consumer to translate, and restricting the EDM to the Experience tier (B) misplaces the translation.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -6171,7 +6171,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. B key purpose of System APIs is to hide the complexity of systems of record from their consumers. Exposing understandable, business-oriented data types and handling the mapping to backend-specific structures inside the System API implementation makes the API reusable by teams without backend expertise and reduces the ripple effect of backend changes.",
+    "explanation": "Correct answer: A. A key purpose of System APIs is to hide the complexity of systems of record from their consumers. Exposing understandable, business-oriented data types and handling the mapping to backend-specific structures inside the System API implementation makes the API reusable by teams without backend expertise and reduces the ripple effect of backend changes.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -6232,7 +6232,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. System APIs, like all APIs, should be defined at a granularity that makes business sense and follows the single responsibility principle. B non-trivial backend system is therefore usually fronted by several System APIs, each focused on a coherent set of business entities, rather than by a single monolithic API or by table-level APIs.",
+    "explanation": "Correct answer: B. System APIs, like all APIs, should be defined at a granularity that makes business sense and follows the single responsibility principle. A non-trivial backend system is therefore usually fronted by several System APIs, each focused on a coherent set of business entities, rather than by a single monolithic API or by table-level APIs.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -6244,7 +6244,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "B huge API is hard to understand, version, and govern, and every change risks affecting all consumers."
+        "text": "A huge API is hard to understand, version, and govern, and every change risks affecting all consumers."
       },
       "D": {
         "type": "Incorrect",
@@ -6305,11 +6305,11 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Correct",
-        "text": "B business-defined model is independent of the current backend, so replacing the system changes only the System API implementation."
+        "text": "A business-defined model is independent of the current backend, so replacing the system changes only the System API implementation."
       },
       "D": {
         "type": "Incorrect",
-        "text": "B pass-through proxy leaks the backend's interface, which will disappear when the system is replaced."
+        "text": "A pass-through proxy leaks the backend's interface, which will disappear when the system is replaced."
       }
     },
     "references": {
@@ -6549,7 +6549,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "B merged type is the Enterprise Data Model approach and forces both departments to coordinate on every change."
+        "text": "A merged type is the Enterprise Data Model approach and forces both departments to coordinate on every change."
       },
       "D": {
         "type": "Incorrect",
@@ -6598,7 +6598,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. MuleSoft guidance is that a single enterprise-wide data model requires broad agreement and ongoing governance, and that effort can stall delivery, which is why bounded-context models are often preferred. Shared types can be published as fragments (A), RAML and Mule applications are not limited to XML or unable to transform (B, D).",
+    "explanation": "Correct answer: D. MuleSoft guidance is that a single enterprise-wide data model requires broad agreement and ongoing governance, and that effort can stall delivery, which is why bounded-context models are often preferred. Shared types can be published as fragments (B), RAML and Mule applications are not limited to XML or unable to transform (B, D).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -6720,7 +6720,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. C single canonical model gives one agreed definition per data type, so integrations map to and from the canonical form instead of pairwise between every system, reducing point-to-point mappings. Allowing each line of business its own version (B) is the opposite of a canonical model, and it neither eliminates transformation (A) nor prevents breaking changes to the model (C).",
+    "explanation": "Correct answer: C. A single canonical model gives one agreed definition per data type, so integrations map to and from the canonical form instead of pairwise between every system, reducing point-to-point mappings. Allowing each line of business its own version (B) is the opposite of a canonical model, and it neither eliminates transformation (D) nor prevents breaking changes to the model (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -6728,11 +6728,11 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "C canonical model centralizes definitions; per-line-of-business versions defeat that purpose."
+        "text": "A canonical model centralizes definitions; per-line-of-business versions defeat that purpose."
       },
       "C": {
         "type": "Correct",
-        "text": "C single canonical definition reduces the pairwise mappings between systems."
+        "text": "A single canonical definition reduces the pairwise mappings between systems."
       },
       "D": {
         "type": "Incorrect",
@@ -6781,11 +6781,11 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. With no existing EDM and teams organized by business domain, domain-aligned bounded-context models let each team deliver independently, sharing types within its context and mapping where contexts interact. D year-long EDM effort (B) conflicts with fast delivery, per-API models with no sharing (D) give up reuse within a domain, and elevating one system's model (C) couples every domain to that system.",
+    "explanation": "Correct answer: C. With no existing EDM and teams organized by business domain, domain-aligned bounded-context models let each team deliver independently, sharing types within its context and mapping where contexts interact. A year-long EDM effort (D) conflicts with fast delivery, per-API models with no sharing (C) give up reuse within a domain, and elevating one system's model (B) couples every domain to that system.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "D separate model per API gives up reuse of shared types within a domain."
+        "text": "A separate model per API gives up reuse of shared types within a domain."
       },
       "B": {
         "type": "Incorrect",
@@ -6797,7 +6797,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "D year-long EDM effort conflicts with the requirement for fast delivery by domain teams."
+        "text": "A year-long EDM effort conflicts with the requirement for fast delivery by domain teams."
       }
     },
     "references": {
@@ -7025,7 +7025,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. D DataGraph is exposed as a managed API instance, so API Manager applies policies, client contracts, and SLA tiers to it just like any other API. DataGraph can have its own policies (B), embedding credentials in queries (C) is insecure and unmanaged, and a network rule (A) neither registers clients nor throttles heavy users.",
+    "explanation": "Correct answer: A. DataGraph is exposed as a managed API instance, so API Manager applies policies, client contracts, and SLA tiers to it just like any other API. DataGraph can have its own policies (A), embedding credentials in queries (C) is insecure and unmanaged, and a network rule (B) neither registers clients nor throttles heavy users.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -7033,7 +7033,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "D firewall rule does not register clients or throttle usage per consumer."
+        "text": "A firewall rule does not register clients or throttle usage per consumer."
       },
       "C": {
         "type": "Incorrect",
@@ -7041,7 +7041,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "D DataGraph is a managed API instance and can have its own policies."
+        "text": "DataGraph is a managed API instance and can have its own policies."
       }
     },
     "references": {
@@ -7068,7 +7068,7 @@ window.MCPA_QUESTIONS = [
     "options": [
       {
         "letter": "A",
-        "text": "Merge the two Customer types into one type"
+        "text": "Linking the Order and Product types so a single query can follow the relationship between them"
       },
       {
         "letter": "B",
@@ -7213,7 +7213,7 @@ window.MCPA_QUESTIONS = [
       "D",
       "E"
     ],
-    "explanation": "Correct answers: D and E. DataGraph builds a unified GraphQL schema over data that existing APIs already expose, so consumers can issue flexible queries and teams need fewer new APIs for each new combination of data. It does not replace System APIs by reaching into backends directly (B), it does not provide guaranteed messaging (D), and a DataGraph is a managed API instance that is secured with policies (A).",
+    "explanation": "Correct answers: D and E. DataGraph builds a unified GraphQL schema over data that existing APIs already expose, so consumers can issue flexible queries and teams need fewer new APIs for each new combination of data. It does not replace System APIs by reaching into backends directly (B), it does not provide guaranteed messaging (A), and a DataGraph is a managed API instance that is secured with policies (C).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -7225,7 +7225,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "D DataGraph is a managed API instance and can be secured with policies."
+        "text": "A DataGraph is a managed API instance and can be secured with policies."
       },
       "D": {
         "type": "Correct",
@@ -7339,7 +7339,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. B single specification can back multiple API instances, so the team creates one v1 instance for internal apps and another v1 instance for partners, each with its own policies and endpoint. Applying both policy sets to one instance (C) cannot differentiate consumers reliably, a new major version (D) is unnecessary because the contract is unchanged, and exposing the System API (B) breaks layering.",
+    "explanation": "Correct answer: D. A single specification can back multiple API instances, so the team creates one v1 instance for internal apps and another v1 instance for partners, each with its own policies and endpoint. Applying both policy sets to one instance (B) cannot differentiate consumers reliably, a new major version (C) is unnecessary because the contract is unchanged, and exposing the System API (A) breaks layering.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -7596,7 +7596,7 @@ window.MCPA_QUESTIONS = [
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "D single limit cannot distinguish free from premium consumers."
+        "text": "A single limit cannot distinguish free from premium consumers."
       },
       "B": {
         "type": "Incorrect",
@@ -7665,7 +7665,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Correct",
-        "text": "B non-SLA rate limit caps total traffic to the API instance."
+        "text": "A non-SLA rate limit caps total traffic to the API instance."
       },
       "D": {
         "type": "Incorrect",
@@ -7775,7 +7775,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. The Message Logging policy records request metadata such as the client ID and resource path at the gateway without changing the implementation. Header Injection (B) adds headers rather than recording them, HTTP Basic Authentication (A) authenticates callers, and Client ID Enforcement (D) validates credentials rather than logging them.",
+    "explanation": "Correct answer: A. The Message Logging policy records request metadata such as the client ID and resource path at the gateway without changing the implementation. Header Injection (C) adds headers rather than recording them, HTTP Basic Authentication (B) authenticates callers, and Client ID Enforcement (D) validates credentials rather than logging them.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -7836,7 +7836,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. HTTP Caching stores the response for a configurable time, so repeated identical requests are served from the gateway cache, cutting response time and backend load. Rate Limiting (C) rejects excess traffic rather than serving it, Client ID Enforcement (B) does not collapse requests, and JSON Threat Protection (A) inspects payloads rather than caching responses.",
+    "explanation": "Correct answer: A. HTTP Caching stores the response for a configurable time, so repeated identical requests are served from the gateway cache, cutting response time and backend load. Rate Limiting (D) rejects excess traffic rather than serving it, Client ID Enforcement (B) does not collapse requests, and JSON Threat Protection (C) inspects payloads rather than caching responses.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -7902,7 +7902,7 @@ window.MCPA_QUESTIONS = [
       "C",
       "D"
     ],
-    "explanation": "Correct answers: D and C. Spike Control smooths short bursts by throttling to a configured rate, and Header Removal strips a header before the response leaves the gateway. Validating OAuth tokens is done by a token enforcement policy, not Message Logging (A); limiting JSON nesting depth is done by JSON Threat Protection, not CORS (B); and per-consumer quotas are enforced by SLA-based rate limiting, not an IP allowlist (C).",
+    "explanation": "Correct answers: D and C. Spike Control smooths short bursts by throttling to a configured rate, and Header Removal strips a header before the response leaves the gateway. Validating OAuth tokens is done by a token enforcement policy, not Message Logging (B); limiting JSON nesting depth is done by JSON Threat Protection, not CORS (A); and per-consumer quotas are enforced by SLA-based rate limiting, not an IP allowlist (E).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -8028,7 +8028,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. An OAuth 2.0 token enforcement policy means callers present a bearer token, so the contract should declare an OAuth 2.0 security scheme on the secured resources. Putting the secret in a query parameter (A) is insecure and not how tokens are sent, tokens travel in the Authorization header rather than the body (C), and a 429 response (D) documents rate limiting, not token enforcement.",
+    "explanation": "Correct answer: C. An OAuth 2.0 token enforcement policy means callers present a bearer token, so the contract should declare an OAuth 2.0 security scheme on the secured resources. Putting the secret in a query parameter (D) is insecure and not how tokens are sent, tokens travel in the Authorization header rather than the body (B), and a 429 response (A) documents rate limiting, not token enforcement.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -8040,7 +8040,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Correct",
-        "text": "D token enforcement policy corresponds to an OAuth 2.0 security scheme on secured resources."
+        "text": "A token enforcement policy corresponds to an OAuth 2.0 security scheme on secured resources."
       },
       "D": {
         "type": "Incorrect",
@@ -8089,7 +8089,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. D Rate Limiting policy that exposes rate-limit headers changes the contract, so the specification should document the 429 response and the rate-limit headers consumers can read. D client_secret header (B) and an OAuth 2.0 scheme (A) describe different concerns, and removing response codes (C) hides information consumers need.",
+    "explanation": "Correct answer: A. A Rate Limiting policy that exposes rate-limit headers changes the contract, so the specification should document the 429 response and the rate-limit headers consumers can read. A client_secret header (D) and an OAuth 2.0 scheme (C) describe different concerns, and removing response codes (B) hides information consumers need.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -8105,7 +8105,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "D required secret header relates to credential enforcement, not rate limiting."
+        "text": "A required secret header relates to credential enforcement, not rate limiting."
       }
     },
     "references": {
@@ -8150,7 +8150,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. The HTTP Basic Authentication policy expects credentials in the Authorization header, so the contract should declare a Basic Authentication security scheme. Client credentials as query parameters (D) describe client ID enforcement, a token resource (C) describes OAuth 2.0, and a username in the body (B) is not how the policy reads credentials.",
+    "explanation": "Correct answer: C. The HTTP Basic Authentication policy expects credentials in the Authorization header, so the contract should declare a Basic Authentication security scheme. Client credentials as query parameters (B) describe client ID enforcement, a token resource (D) describes OAuth 2.0, and a username in the body (A) is not how the policy reads credentials.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -8166,7 +8166,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "B token-issuing resource belongs to an OAuth 2.0 flow, not Basic Authentication."
+        "text": "A token-issuing resource belongs to an OAuth 2.0 flow, not Basic Authentication."
       }
     },
     "references": {
@@ -8211,7 +8211,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Message Logging records traffic at the gateway without requiring the consumer to send anything new, so the contract normally needs no change. Client ID Enforcement (B), OAuth 2.0 Token Enforcement (C), and SLA-based rate limiting (D) all introduce credentials, schemes, or responses that the contract should declare.",
+    "explanation": "Correct answer: D. Message Logging records traffic at the gateway without requiring the consumer to send anything new, so the contract normally needs no change. Client ID Enforcement (B), OAuth 2.0 Token Enforcement (C), and SLA-based rate limiting (A) all introduce credentials, schemes, or responses that the contract should declare.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -8272,11 +8272,11 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. API Autodiscovery embeds the Mule gateway in the application, so API Manager policies are enforced in-process with no extra hop or extra deployment. C separate proxy (D) adds both, hand-written DataWeave (A) is not policy enforcement, and a service mesh (C) is for non-Mule microservices, not an embedded Mule application.",
+    "explanation": "Correct answer: B. API Autodiscovery embeds the Mule gateway in the application, so API Manager policies are enforced in-process with no extra hop or extra deployment. A separate proxy (C) adds both, hand-written DataWeave (D) is not policy enforcement, and a service mesh (A) is for non-Mule microservices, not an embedded Mule application.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "C service mesh targets non-Mule microservices, not an embedded Mule application."
+        "text": "A service mesh targets non-Mule microservices, not an embedded Mule application."
       },
       "B": {
         "type": "Correct",
@@ -8284,7 +8284,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "C separate proxy adds a network hop and a second deployment."
+        "text": "A separate proxy adds a network hop and a second deployment."
       },
       "D": {
         "type": "Incorrect",
@@ -8333,7 +8333,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. D non-Mule implementation that cannot be changed is governed by placing an API proxy or Flex Gateway in front of it and managing that gateway in API Manager. Autodiscovery (C) requires modifying the application, policies are not applied to Exchange assets (B), and asking clients to validate each other (A) is not central enforcement.",
+    "explanation": "Correct answer: A. A non-Mule implementation that cannot be changed is governed by placing an API proxy or Flex Gateway in front of it and managing that gateway in API Manager. Autodiscovery (D) requires modifying the application, policies are not applied to Exchange assets (B), and asking clients to validate each other (C) is not central enforcement.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -8455,7 +8455,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. B separate proxy enforces policies in its own process, which adds a network hop and another application to deploy and operate compared with the gateway embedded in a Mule implementation. Proxy policies are changed centrally at runtime (B), a proxy can enforce client ID and rate limiting (C), and it can protect a non-Mule backend without rewriting it (D).",
+    "explanation": "Correct answer: B. A separate proxy enforces policies in its own process, which adds a network hop and another application to deploy and operate compared with the gateway embedded in a Mule implementation. Proxy policies are changed centrally at runtime (A), a proxy can enforce client ID and rate limiting (C), and it can protect a non-Mule backend without rewriting it (D).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -8463,15 +8463,15 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Correct",
-        "text": "B separate proxy adds a network hop and a second application to deploy and operate."
+        "text": "A separate proxy adds a network hop and a second application to deploy and operate."
       },
       "C": {
         "type": "Incorrect",
-        "text": "B proxy can enforce client ID enforcement and rate limiting, among other policies."
+        "text": "A proxy can enforce client ID enforcement and rate limiting, among other policies."
       },
       "D": {
         "type": "Incorrect",
-        "text": "B proxy protects a non-Mule backend without rewriting it."
+        "text": "A proxy protects a non-Mule backend without rewriting it."
       }
     },
     "references": {
@@ -8577,7 +8577,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Restricting a System API to known Process APIs is done by combining Client ID Enforcement, which authenticates each calling application, with an IP Allowlist, which restricts the source addresses. CORS and caching (C) are unrelated to caller identity, an end-user consent flow (A) is for user-facing Experience APIs, and leaving internal APIs unprotected (D) ignores the requirement.",
+    "explanation": "Correct answer: A. Restricting a System API to known Process APIs is done by combining Client ID Enforcement, which authenticates each calling application, with an IP Allowlist, which restricts the source addresses. CORS and caching (B) are unrelated to caller identity, an end-user consent flow (C) is for user-facing Experience APIs, and leaving internal APIs unprotected (D) ignores the requirement.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -8638,7 +8638,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Tying access to the authenticated user requires validating the user's token, so an OAuth 2.0 token enforcement policy that trusts the company's identity provider is appropriate. Client ID Enforcement (B) identifies the application, not the user; a shared Basic account (A) loses per-user identity; and an IP allowlist (D) cannot identify a user.",
+    "explanation": "Correct answer: A. Tying access to the authenticated user requires validating the user's token, so an OAuth 2.0 token enforcement policy that trusts the company's identity provider is appropriate. Client ID Enforcement (C) identifies the application, not the user; a shared Basic account (D) loses per-user identity; and an IP allowlist (B) cannot identify a user.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -8654,7 +8654,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "C shared account removes per-user identity and accountability."
+        "text": "A shared account removes per-user identity and accountability."
       }
     },
     "references": {
@@ -8699,7 +8699,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Process APIs are normally protected with Client ID Enforcement so that only registered internal applications with a contract can call them. CORS (B) is for browser origins, Header Injection (D) modifies headers rather than authenticating the caller, and caching (A) is a performance policy, not a security baseline.",
+    "explanation": "Correct answer: D. Process APIs are normally protected with Client ID Enforcement so that only registered internal applications with a contract can call them. CORS (B) is for browser origins, Header Injection (A) modifies headers rather than authenticating the caller, and caching (C) is a performance policy, not a security baseline.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -8765,11 +8765,11 @@ window.MCPA_QUESTIONS = [
       "B",
       "E"
     ],
-    "explanation": "Correct answers: B and E. For partner-facing APIs that accept large JSON payloads, token enforcement authenticates and authorizes each call, and JSON Threat Protection defends against oversized or deeply nested payloads. Logging full payloads (A) risks exposing sensitive data, allowing all origins (C) widens the attack surface, and a high quota (D) removes a protective limit.",
+    "explanation": "Correct answers: B and E. For partner-facing APIs that accept large JSON payloads, token enforcement authenticates and authorizes each call, and JSON Threat Protection defends against oversized or deeply nested payloads. Logging full payloads (D) risks exposing sensitive data, allowing all origins (C) widens the attack surface, and a high quota (A) removes a protective limit.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "D high quota removes a protective limit rather than adding security."
+        "text": "A high quota removes a protective limit rather than adding security."
       },
       "B": {
         "type": "Correct",
@@ -8891,7 +8891,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. With its default configuration, Client ID Enforcement reads the credentials from the client_id and client_secret headers, or from equivalent query parameters. B platform sign-in cookie (A), a JSON credentials object (B), and credentials in the path (C) are not how the policy reads them.",
+    "explanation": "Correct answer: D. With its default configuration, Client ID Enforcement reads the credentials from the client_id and client_secret headers, or from equivalent query parameters. A platform sign-in cookie (B), a JSON credentials object (A), and credentials in the path (C) are not how the policy reads them.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -8899,7 +8899,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "B platform sign-in cookie is not an API credential."
+        "text": "A platform sign-in cookie is not an API credential."
       },
       "C": {
         "type": "Incorrect",
@@ -8952,7 +8952,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Client ID Enforcement can be configured to read the credentials from the Basic Authorization header, which fits a client that can send only that header. Removing the policy (B) drops enforcement, putting the secret in the path (C) is insecure, and CORS (D) does not authenticate clients.",
+    "explanation": "Correct answer: A. Client ID Enforcement can be configured to read the credentials from the Basic Authorization header, which fits a client that can send only that header. Removing the policy (C) drops enforcement, putting the secret in the path (B) is insecure, and CORS (D) does not authenticate clients.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -9013,7 +9013,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. SLA-based rate limiting applies the quota associated with the client application's contract, so the client must identify itself with its credentials on each request. Plain Rate Limiting (B) applies one fixed quota and does not require per-client identification, an IP allowlist (C) identifies a source address rather than an application, and JSON Threat Protection (A) inspects payloads.",
+    "explanation": "Correct answer: A. SLA-based rate limiting applies the quota associated with the client application's contract, so the client must identify itself with its credentials on each request. Plain Rate Limiting (D) applies one fixed quota and does not require per-client identification, an IP allowlist (C) identifies a source address rather than an application, and JSON Threat Protection (B) inspects payloads.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -9074,7 +9074,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Client secrets must be kept confidential, but code shipped to a browser is public, so anyone can extract the secret. Secrets do not rotate hourly (A), browsers can send custom headers subject to CORS (B), and the policy is not limited to mobile applications (D).",
+    "explanation": "Correct answer: C. Client secrets must be kept confidential, but code shipped to a browser is public, so anyone can extract the secret. Secrets do not rotate hourly (A), browsers can send custom headers subject to CORS (D), and the policy is not limited to mobile applications (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -9135,7 +9135,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. With OAuth 2.0, the client authenticates to the authorization server with its credentials and receives an access token, then sends only the token to the API, where the policy validates it. Sending the secret to the API (A) is unnecessary, platform sign-in (C) uses identity management, and tokens are issued to registered clients rather than anonymously (D).",
+    "explanation": "Correct answer: C. With OAuth 2.0, the client authenticates to the authorization server with its credentials and receives an access token, then sends only the token to the API, where the policy validates it. Sending the secret to the API (A) is unnecessary, platform sign-in (D) uses identity management, and tokens are issued to registered clients rather than anonymously (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -9196,7 +9196,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. B developer requests access to the API from its Exchange page, which creates a client application and a contract request that the API owner can approve. Reusing another team's credentials (C) breaks governance and attribution, Runtime Manager (B) does not issue credentials, and a proxy (A) does not bypass the policy.",
+    "explanation": "Correct answer: B. A developer requests access to the API from its Exchange page, which creates a client application and a contract request that the API owner can approve. Reusing another team's credentials (D) breaks governance and attribution, Runtime Manager (A) does not issue credentials, and a proxy (C) does not bypass the policy.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -9208,7 +9208,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "B proxy enforces policies rather than bypassing them."
+        "text": "A proxy enforces policies rather than bypassing them."
       },
       "D": {
         "type": "Incorrect",
@@ -9257,7 +9257,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Each SLA tier carries its own approval setting, so Bronze can be auto-approved for self-service while Gold requires manual review. Making both manual (D) delays low-risk internal access, making both automatic (B) grants premium access without review, and approval is a property of the tier rather than the client (A).",
+    "explanation": "Correct answer: A. Each SLA tier carries its own approval setting, so Bronze can be auto-approved for self-service while Gold requires manual review. Making both manual (A) delays low-risk internal access, making both automatic (C) grants premium access without review, and approval is a property of the tier rather than the client (B).",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -9379,7 +9379,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Revoking the specific client's contract in API Manager immediately stops that client while leaving other contracts intact. Deleting the API instance (C) stops every client, removing the policy (D) removes enforcement for everyone, and a new major version (A) disrupts all consumers unnecessarily.",
+    "explanation": "Correct answer: C. Revoking the specific client's contract in API Manager immediately stops that client while leaving other contracts intact. Deleting the API instance (D) stops every client, removing the policy (A) removes enforcement for everyone, and a new major version (B) disrupts all consumers unnecessarily.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -9387,7 +9387,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "D new major version disrupts all consumers unnecessarily."
+        "text": "A new major version disrupts all consumers unnecessarily."
       },
       "C": {
         "type": "Correct",
@@ -9501,7 +9501,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. JSON Threat Protection inspects JSON payloads and rejects documents whose nesting depth, size, or field lengths exceed configured limits, protecting the implementation from memory exhaustion. CORS (B), caching (D), and client ID enforcement (C) do not examine payload structure.",
+    "explanation": "Correct answer: C. JSON Threat Protection inspects JSON payloads and rejects documents whose nesting depth, size, or field lengths exceed configured limits, protecting the implementation from memory exhaustion. CORS (D), caching (A), and client ID enforcement (B) do not examine payload structure.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -9562,7 +9562,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. XML Threat Protection inspects XML payloads and rejects documents whose element depth, attribute count, or size exceed configured limits. JSON Threat Protection (B) targets JSON, Spike Control (D) manages request rate rather than payload structure, and Header Removal (A) modifies headers.",
+    "explanation": "Correct answer: C. XML Threat Protection inspects XML payloads and rejects documents whose element depth, attribute count, or size exceed configured limits. JSON Threat Protection (D) targets JSON, Spike Control (A) manages request rate rather than payload structure, and Header Removal (B) modifies headers.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -9623,7 +9623,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. An IP allowlist accepts only the listed source addresses, so listing the partner's two egress addresses restricts the API to that partner. B blocklist (A) would have to enumerate every address except the partner's, CORS (B) governs browser origins rather than network sources, and rate limiting (C) does not restrict who may call.",
+    "explanation": "Correct answer: D. An IP allowlist accepts only the listed source addresses, so listing the partner's two egress addresses restricts the API to that partner. A blocklist (B) would have to enumerate every address except the partner's, CORS (A) governs browser origins rather than network sources, and rate limiting (C) does not restrict who may call.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -9631,7 +9631,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "B blocklist would need to list every other address, which is impractical."
+        "text": "A blocklist would need to list every other address, which is impractical."
       },
       "C": {
         "type": "Incorrect",
@@ -9684,7 +9684,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. JWT Validation verifies the token's signature and claims at the gateway using the identity provider's keys, so no call to the provider is needed per request. Client ID Enforcement (C) validates client credentials, Basic Authentication (B) validates a username and password, and Header Injection (A) does not validate tokens.",
+    "explanation": "Correct answer: B. JWT Validation verifies the token's signature and claims at the gateway using the identity provider's keys, so no call to the provider is needed per request. Client ID Enforcement (D) validates client credentials, Basic Authentication (A) validates a username and password, and Header Injection (C) does not validate tokens.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -9750,7 +9750,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "C"
     ],
-    "explanation": "Correct answers: A and C. IP Allowlist restricts callers by network address and XML Threat Protection constrains XML payload structure, both enforcing security constraints. Message Logging (B) is observability, Spike Control (C) is traffic shaping, and HTTP Caching (A) is a performance policy.",
+    "explanation": "Correct answers: A and C. IP Allowlist restricts callers by network address and XML Threat Protection constrains XML payload structure, both enforcing security constraints. Message Logging (D) is observability, Spike Control (E) is traffic shaping, and HTTP Caching (B) is a performance policy.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -9815,7 +9815,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. External client providers are configured in the root organization and then linked to the environments that use them. Runtime Manager (A) deploys applications rather than configuring providers, Exchange (B) catalogs assets, and a Mule configuration file (D) is not where client providers are defined.",
+    "explanation": "Correct answer: D. External client providers are configured in the root organization and then linked to the environments that use them. Runtime Manager (B) deploys applications rather than configuring providers, Exchange (A) catalogs assets, and a Mule configuration file (C) is not where client providers are defined.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -9937,7 +9937,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. With an OpenID Connect client provider that supports Dynamic Client Registration, creating a client application in Anypoint Platform registers the client in the identity provider, so it can obtain tokens. Manual registration (B) is what DCR removes, the consumer does not become a platform user (C), and the client can obtain tokens (D).",
+    "explanation": "Correct answer: D. With an OpenID Connect client provider that supports Dynamic Client Registration, creating a client application in Anypoint Platform registers the client in the identity provider, so it can obtain tokens. Manual registration (C) is what DCR removes, the consumer does not become a platform user (B), and the client can obtain tokens (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -10064,7 +10064,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "C"
     ],
-    "explanation": "Correct answers: A and C. Client applications are registered with the client provider linked to the environment, and a token enforcement policy validates the tokens that the provider issues. Tokens are not stored in Exchange (B), business groups can use external client providers (C), and identity management is for platform users rather than API clients (E).",
+    "explanation": "Correct answers: A and C. Client applications are registered with the client provider linked to the environment, and a token enforcement policy validates the tokens that the provider issues. Tokens are not stored in Exchange (D), business groups can use external client providers (E), and identity management is for platform users rather than API clients (B).",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -10076,7 +10076,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Correct",
-        "text": "D token enforcement policy validates the tokens issued by the provider."
+        "text": "A token enforcement policy validates the tokens issued by the provider."
       },
       "D": {
         "type": "Incorrect",
@@ -10129,7 +10129,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. When no included policy supports a proprietary signature scheme, a custom policy can implement the verification and be applied through API Manager. Header Injection (A) adds a header rather than verifying a signature, Client ID Enforcement (B) validates a client secret rather than an HMAC, and JSON Threat Protection (C) inspects payload structure.",
+    "explanation": "Correct answer: D. When no included policy supports a proprietary signature scheme, a custom policy can implement the verification and be applied through API Manager. Header Injection (B) adds a header rather than verifying a signature, Client ID Enforcement (A) validates a client secret rather than an HMAC, and JSON Threat Protection (C) inspects payload structure.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -10145,7 +10145,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Correct",
-        "text": "B custom policy can implement the HMAC verification and be applied through API Manager."
+        "text": "A custom policy can implement the HMAC verification and be applied through API Manager."
       }
     },
     "references": {
@@ -10190,7 +10190,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Per-client quotas by SLA tier are provided by the SLA-based Rate Limiting policy, so a custom policy would duplicate built-in behavior. Calling an external service (B), verifying a proprietary signature (C), and enforcing a custom header format (D) are all cases where no included policy fits and a custom policy is justified.",
+    "explanation": "Correct answer: B. Per-client quotas by SLA tier are provided by the SLA-based Rate Limiting policy, so a custom policy would duplicate built-in behavior. Calling an external service (A), verifying a proprietary signature (C), and enforcing a custom header format (D) are all cases where no included policy fits and a custom policy is justified.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -10202,7 +10202,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "B proprietary signature scheme is a case for a custom policy."
+        "text": "A proprietary signature scheme is a case for a custom policy."
       },
       "D": {
         "type": "Incorrect",
@@ -10251,7 +10251,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Custom policies for Flex Gateway are built with the Flex Gateway Policy Development Kit (PDK). Visualizer layers (B) are display groupings, DataWeave scripts (D) are not policies, and API fragments (C) are design-time contract pieces.",
+    "explanation": "Correct answer: C. Custom policies for Flex Gateway are built with the Flex Gateway Policy Development Kit (PDK). Visualizer layers (D) are display groupings, DataWeave scripts (A) are not policies, and API fragments (B) are design-time contract pieces.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -10333,8 +10333,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Custom Policies",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/custom-policies"
+        "title": "Mule 4 Custom Policy Workflow",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-getting-started"
       }
     },
     "image": "images/q167arch.svg"
@@ -10375,7 +10375,7 @@ window.MCPA_QUESTIONS = [
       "D",
       "E"
     ],
-    "explanation": "Correct answers: E and D. Masking a proprietary account format and calling an internal entitlement service both require logic that no included policy provides, so they call for a custom policy. IP allowlisting (A), burst smoothing (B), and JWT validation (C) are all covered by included policies.",
+    "explanation": "Correct answers: E and D. Masking a proprietary account format and calling an internal entitlement service both require logic that no included policy provides, so they call for a custom policy. IP allowlisting (B), burst smoothing (A), and JWT validation (C) are all covered by included policies.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -10440,11 +10440,11 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. API Autodiscovery, configured with the API instance's API ID and the flow that serves the API, pairs the deployed application with its API instance so API Manager policies are enforced. Copying policy definitions (B) is not how policies are applied, the API ID alone without Autodiscovery (A) does not pair the application, and a hand-written DataWeave flow (C) is not policy enforcement.",
+    "explanation": "Correct answer: C. API Autodiscovery, configured with the API instance's API ID and the flow that serves the API, pairs the deployed application with its API instance so API Manager policies are enforced. Copying policy definitions (B) is not how policies are applied, the API ID alone without Autodiscovery (D) does not pair the application, and a hand-written DataWeave flow (A) is not policy enforcement.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "C hand-written DataWeave flow is not API Manager policy enforcement."
+        "text": "A hand-written DataWeave flow is not API Manager policy enforcement."
       },
       "B": {
         "type": "Incorrect",
@@ -10623,7 +10623,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. The Mule gateway's gatekeeper blocks API requests until all of the API's policies have been applied, so an API is never exposed unprotected while policies are still downloading. Spike Control (A) is a policy that runs after policies load, API Manager does not delete instances (D), and MUnit tests (B) run at build time.",
+    "explanation": "Correct answer: B. The Mule gateway's gatekeeper blocks API requests until all of the API's policies have been applied, so an API is never exposed unprotected while policies are still downloading. Spike Control (A) is a policy that runs after policies load, API Manager does not delete instances (C), and MUnit tests (D) run at build time.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -10811,7 +10811,7 @@ window.MCPA_QUESTIONS = [
       "C",
       "E"
     ],
-    "explanation": "Correct answers: E and C. Autodiscovery pairs a deployed Mule application with one API instance, and the flow it references must use an HTTP Listener so the gateway can intercept requests. An application pairs with one instance in one environment (A), it needs platform credentials to reach API Manager (B), and it does not publish specifications to Exchange (D).",
+    "explanation": "Correct answers: E and C. Autodiscovery pairs a deployed Mule application with one API instance, and the flow it references must use an HTTP Listener so the gateway can intercept requests. An application pairs with one instance in one environment (D), it needs platform credentials to reach API Manager (B), and it does not publish specifications to Exchange (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -10937,7 +10937,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Custom domains, customer-supplied certificates, and URL mapping rules require a dedicated load balancer, which is associated with an Anypoint VPC. The shared load balancer uses MuleSoft-managed certificates and a cloudhub.io domain (C), a rate limiting policy does not map domains (A), and a firewall rule does not perform URL mapping (D).",
+    "explanation": "Correct answer: C. Custom domains, customer-supplied certificates, and URL mapping rules require a dedicated load balancer, which is associated with an Anypoint VPC. The shared load balancer uses MuleSoft-managed certificates and a cloudhub.io domain (D), a rate limiting policy does not map domains (A), and a firewall rule does not perform URL mapping (C).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -10949,11 +10949,11 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Correct",
-        "text": "C dedicated load balancer supports custom domains, customer certificates, and URL mapping rules."
+        "text": "A dedicated load balancer supports custom domains, customer certificates, and URL mapping rules."
       },
       "D": {
         "type": "Incorrect",
-        "text": "C firewall rule filters traffic; it does not map a domain to workers."
+        "text": "A firewall rule filters traffic; it does not map a domain to workers."
       }
     },
     "references": {
@@ -10998,7 +10998,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Network-level restriction is enforced with VPC firewall rules that permit only the corporate CIDR block, so no request from the public internet reaches the workers. Client ID Enforcement (A) authenticates applications rather than source networks, an Exchange private portal (C) controls asset visibility, and CORS (D) governs browser origins.",
+    "explanation": "Correct answer: D. Network-level restriction is enforced with VPC firewall rules that permit only the corporate CIDR block, so no request from the public internet reaches the workers. Client ID Enforcement (C) authenticates applications rather than source networks, an Exchange private portal (A) controls asset visibility, and CORS (B) governs browser origins.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -11059,7 +11059,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. An Anypoint VPC provides private networking, custom load balancing, and firewall control; calling a public SaaS API over the internet needs none of these. B dedicated load balancer with custom certificates (C), private connectivity to an AWS VPC (D), and restricting inbound traffic to corporate ranges (B) all depend on a VPC.",
+    "explanation": "Correct answer: D. An Anypoint VPC provides private networking, custom load balancing, and firewall control; calling a public SaaS API over the internet needs none of these. A dedicated load balancer with custom certificates (B), private connectivity to an AWS VPC (C), and restricting inbound traffic to corporate ranges (A) all depend on a VPC.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -11067,7 +11067,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "B dedicated load balancer requires an Anypoint VPC."
+        "text": "A dedicated load balancer requires an Anypoint VPC."
       },
       "C": {
         "type": "Incorrect",
@@ -11075,7 +11075,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Correct",
-        "text": "B public SaaS API is reached over the internet, so no private networking is required."
+        "text": "A public SaaS API is reached over the internet, so no private networking is required."
       }
     },
     "references": {
@@ -11120,7 +11120,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Because the VPC is connected to the corporate network over a VPN, its CIDR block must not overlap the corporate ranges, or routing becomes ambiguous. It does not have to match them (A), it is a private range rather than a MuleSoft-owned public range (B), and it cannot be changed freely once applications are deployed (C).",
+    "explanation": "Correct answer: B. Because the VPC is connected to the corporate network over a VPN, its CIDR block must not overlap the corporate ranges, or routing becomes ambiguous. It does not have to match them (C), it is a private range rather than a MuleSoft-owned public range (D), and it cannot be changed freely once applications are deployed (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -11181,7 +11181,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. The base Anypoint VPC subscription includes two VPCs, and each VPC can be associated with multiple environments. B common pattern is one VPC for production and one for non-production environments.",
+    "explanation": "Correct answer: B. The base Anypoint VPC subscription includes two VPCs, and each VPC can be associated with multiple environments. A common pattern is one VPC for production and one for non-production environments.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -11258,7 +11258,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "D gateway does not create private network connectivity."
+        "text": "A gateway does not create private network connectivity."
       }
     },
     "references": {
@@ -11364,7 +11364,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. In hybrid deployments, Runtime Manager can group servers. B server group deploys the same applications to several servers without coordination, while a cluster shares state and coordinates processing, providing high availability and failover.",
+    "explanation": "Correct answer: C. In hybrid deployments, Runtime Manager can group servers. A server group deploys the same applications to several servers without coordination, while a cluster shares state and coordinates processing, providing high availability and failover.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -11486,11 +11486,11 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Runtime Fabric runs Mule applications as containers on customer-managed Kubernetes with resource isolation between applications and centralized management from Anypoint Platform. Hybrid server groups (A) use standalone runtimes without container isolation, PCE alone (C) isolates the control plane rather than the runtimes, and a shared load balancer (D) is a CloudHub networking feature.",
+    "explanation": "Correct answer: C. Runtime Fabric runs Mule applications as containers on customer-managed Kubernetes with resource isolation between applications and centralized management from Anypoint Platform. Hybrid server groups (D) use standalone runtimes without container isolation, PCE alone (B) isolates the control plane rather than the runtimes, and a shared load balancer (A) is a CloudHub networking feature.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "D shared load balancer is a CloudHub networking feature, not a runtime option."
+        "text": "A shared load balancer is a CloudHub networking feature, not a runtime option."
       },
       "B": {
         "type": "Incorrect",
@@ -11552,7 +11552,7 @@ window.MCPA_QUESTIONS = [
       "B",
       "C"
     ],
-    "explanation": "Correct answers: B and C. CloudHub and CloudHub 2.0 are fully managed by MuleSoft, including the underlying infrastructure. Runtime Fabric (A) runs on customer-managed Kubernetes, hybrid standalone runtimes (C) run on customer-managed hosts, and disconnected on-premises runtimes (D) are customer-managed by definition.",
+    "explanation": "Correct answers: B and C. CloudHub and CloudHub 2.0 are fully managed by MuleSoft, including the underlying infrastructure. Runtime Fabric (D) runs on customer-managed Kubernetes, hybrid standalone runtimes (E) run on customer-managed hosts, and disconnected on-premises runtimes (A) are customer-managed by definition.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -11617,19 +11617,19 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Placing the runtime that makes the fine-grained calls near the mainframe removes the network latency of sending each call across the VPN. C larger Experience replica (A) or a larger CloudHub worker (C) does not shorten the distance to the mainframe, and caching (B) does not help fine-grained calls to a changing system of record.",
+    "explanation": "Correct answer: B. Placing the runtime that makes the fine-grained calls near the mainframe removes the network latency of sending each call across the VPN. A larger Experience replica (C) or a larger CloudHub worker (A) does not shorten the distance to the mainframe, and caching (B) does not help fine-grained calls to a changing system of record.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "C larger worker does not reduce the network distance."
+        "text": "A larger worker does not reduce the network distance."
       },
       "B": {
         "type": "Correct",
-        "text": "C customer-hosted runtime near the mainframe removes the per-call network latency."
+        "text": "A customer-hosted runtime near the mainframe removes the per-call network latency."
       },
       "C": {
         "type": "Incorrect",
-        "text": "C larger Experience replica does not shorten the distance to the mainframe."
+        "text": "A larger Experience replica does not shorten the distance to the mainframe."
       },
       "D": {
         "type": "Incorrect",
@@ -11678,7 +11678,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. MUnit is the testing framework for Mule applications and is best for unit tests that exercise flows, transformations, and error handling in isolation, with mocks replacing calls to external systems. Manual production tests (B) are slow and risky, load tests (D) measure performance rather than logic, and monitoring alerts (A) detect runtime problems rather than build-time regressions.",
+    "explanation": "Correct answer: D. MUnit is the testing framework for Mule applications and is best for unit tests that exercise flows, transformations, and error handling in isolation, with mocks replacing calls to external systems. Manual production tests (B) are slow and risky, load tests (A) measure performance rather than logic, and monitoring alerts (C) detect runtime problems rather than build-time regressions.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -11861,7 +11861,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. The MUnit Maven plugin can enforce a coverage threshold and fail the build when coverage falls below it. Manual review (B) is not automated enforcement, API Manager policies (D) do not inspect test coverage, and Monitoring (C) observes runtime metrics rather than build coverage.",
+    "explanation": "Correct answer: B. The MUnit Maven plugin can enforce a coverage threshold and fail the build when coverage falls below it. Manual review (D) is not automated enforcement, API Manager policies (A) do not inspect test coverage, and Monitoring (C) observes runtime metrics rather than build coverage.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -11988,7 +11988,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "B"
     ],
-    "explanation": "Correct answers: A and B. MUnit can mock processors to return predefined responses and can assert how many times a processor was called, which are core unit-testing capabilities. It does not deploy applications to CloudHub (D), generate API specifications (E), or apply rate limiting policies (B).",
+    "explanation": "Correct answers: A and B. MUnit can mock processors to return predefined responses and can assert how many times a processor was called, which are core unit-testing capabilities. It does not deploy applications to CloudHub (C), generate API specifications (D), or apply rate limiting policies (E).",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -12053,15 +12053,15 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Confirming that the deployed API works against the real ERP test instance, including credentials and network access, is an integration test. B unit test with mocks (C) deliberately avoids the real system, static analysis (D) inspects code without running it, and a code review (B) is a manual inspection.",
+    "explanation": "Correct answer: D. Confirming that the deployed API works against the real ERP test instance, including credentials and network access, is an integration test. A unit test with mocks (B) deliberately avoids the real system, static analysis (C) inspects code without running it, and a code review (A) is a manual inspection.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "B code review is a manual inspection, not a test against the system."
+        "text": "A code review is a manual inspection, not a test against the system."
       },
       "B": {
         "type": "Incorrect",
-        "text": "B mocked unit test does not touch the real system."
+        "text": "A mocked unit test does not touch the real system."
       },
       "C": {
         "type": "Incorrect",
@@ -12114,7 +12114,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. The Mule Maven Plugin builds the application and deploys it to CloudHub, so it is the tool configured in a CI pipeline. API Designer (A) designs specifications, Visualizer (B) shows topology, and an Exchange portal (C) publishes assets rather than deploying applications.",
+    "explanation": "Correct answer: A. The Mule Maven Plugin builds the application and deploys it to CloudHub, so it is the tool configured in a CI pipeline. API Designer (D) designs specifications, Visualizer (C) shows topology, and an Exchange portal (B) publishes assets rather than deploying applications.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -12297,7 +12297,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. The MUnit Maven plugin runs tests during the Maven build, so running them in CI before deployment stops a failing build from being deployed. API Manager (A) does not run tests, testing after production deployment (C) defeats the purpose, and MUnit (B) runs in CI as part of the build.",
+    "explanation": "Correct answer: B. The MUnit Maven plugin runs tests during the Maven build, so running them in CI before deployment stops a failing build from being deployed. API Manager (A) does not run tests, testing after production deployment (D) defeats the purpose, and MUnit (B) runs in CI as part of the build.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -12424,7 +12424,7 @@ window.MCPA_QUESTIONS = [
       "D",
       "E"
     ],
-    "explanation": "Correct answers: E and D. Publishing specifications and fragments to Exchange with Maven, and deploying applications with the Mule Maven Plugin from CI, are both automated, repeatable ways to build and share artifacts. Skipping tests (E) reduces quality, emailing JAR files (A) is a manual hand-off, and editing production configuration by hand (B) is not automation.",
+    "explanation": "Correct answers: E and D. Publishing specifications and fragments to Exchange with Maven, and deploying applications with the Mule Maven Plugin from CI, are both automated, repeatable ways to build and share artifacts. Skipping tests (A) reduces quality, emailing JAR files (B) is a manual hand-off, and editing production configuration by hand (C) is not automation.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -12489,7 +12489,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Object Store v2 provides shared persistent state so the application can record its progress and resume after a redeployment. Persistent queues (A) deliver messages rather than store batch progress, the worker's local disk (C) is not preserved when the worker is replaced, and a larger worker (D) does not persist state.",
+    "explanation": "Correct answer: C. Object Store v2 provides shared persistent state so the application can record its progress and resume after a redeployment. Persistent queues (A) deliver messages rather than store batch progress, the worker's local disk (B) is not preserved when the worker is replaced, and a larger worker (D) does not persist state.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -12550,7 +12550,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. A shared persistent store such as Object Store v2 lets both workers read and update the same watermark. An in-memory store (A) is per worker, the properties file (B) is read-only configuration, and a queue (D) is a messaging construct rather than shared state.",
+    "explanation": "Correct answer: B. A shared persistent store such as Object Store v2 lets both workers read and update the same watermark. An in-memory store (A) is per worker, the properties file (C) is read-only configuration, and a queue (D) is a messaging construct rather than shared state.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -12611,7 +12611,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Persistent queues provide reliable hand-off of work items between workers, and Object Store v2 holds the cached token until it expires. Reversing the two (A) matches neither need, the local disk and a flow variable (D) are not reliable hand-off or shared cache, and a flow variable (B) is scoped to one event.",
+    "explanation": "Correct answer: B. Persistent queues provide reliable hand-off of work items between workers, and Object Store v2 holds the cached token until it expires. Reversing the two (A) matches neither need, the local disk and a flow variable (D) are not reliable hand-off or shared cache, and a flow variable (C) is scoped to one event.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -12672,7 +12672,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Object Store v2 is designed for transient application state such as caching, watermarks, and deduplication, and its entries have a maximum time-to-live, so it is not a long-term archive. An in-memory store is less durable (B), entries do expire (C), and persistent queues retain messages for only a few days (D).",
+    "explanation": "Correct answer: D. Object Store v2 is designed for transient application state such as caching, watermarks, and deduplication, and its entries have a maximum time-to-live, so it is not a long-term archive. An in-memory store is less durable (B), entries do expire (D), and persistent queues retain messages for only a few days (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -12733,7 +12733,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Persistent queues may deliver a message more than once, so the application records processed IDs in a shared store such as Object Store v2 and ignores repeats. Slower processing (A) does not prevent duplicates, more workers (C) do not prevent duplicate delivery, and restarts (D) are not the cause described.",
+    "explanation": "Correct answer: D. Persistent queues may deliver a message more than once, so the application records processed IDs in a shared store such as Object Store v2 and ignores repeats. Slower processing (A) does not prevent duplicates, more workers (C) do not prevent duplicate delivery, and restarts (B) are not the cause described.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -12799,7 +12799,7 @@ window.MCPA_QUESTIONS = [
       "C",
       "D"
     ],
-    "explanation": "Correct answers: C and D. Object Store v2 provides shared, persistent key-value state, so it is well suited to watermarks and state that must survive a redeploy and to caching reference data shared by all workers. It is not for permanent archival (A), it does not replace a system of record (D), and it does not load-balance HTTP traffic (E).",
+    "explanation": "Correct answers: C and D. Object Store v2 provides shared, persistent key-value state, so it is well suited to watermarks and state that must survive a redeploy and to caching reference data shared by all workers. It is not for permanent archival (A), it does not replace a system of record (E), and it does not load-balance HTTP traffic (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -12864,7 +12864,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Fractional workers share CPU with other tenants, so performance degrades under sustained load; a full 1 vCore worker provides dedicated CPU. Adding another fractional worker (A) does not give dedicated CPU, changing region (B) does not change the worker's CPU share, and persistent queues (C) buffer messages rather than provide CPU.",
+    "explanation": "Correct answer: C. Fractional workers share CPU with other tenants, so performance degrades under sustained load; a full 1 vCore worker provides dedicated CPU. Adding another fractional worker (B) does not give dedicated CPU, changing region (A) does not change the worker's CPU share, and persistent queues (D) buffer messages rather than provide CPU.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -12876,7 +12876,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Correct",
-        "text": "B full vCore worker provides the dedicated CPU that sustained load requires."
+        "text": "A full vCore worker provides the dedicated CPU that sustained load requires."
       },
       "D": {
         "type": "Incorrect",
@@ -12925,7 +12925,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. The failure is out-of-memory while transforming a large payload, so the application needs a larger heap, which a larger worker provides. Adding workers (A) does not increase the memory available to one transformation, persistent queues (D) buffer messages rather than add heap, and Spike Control (C) throttles traffic rather than add memory.",
+    "explanation": "Correct answer: D. The failure is out-of-memory while transforming a large payload, so the application needs a larger heap, which a larger worker provides. Adding workers (C) does not increase the memory available to one transformation, persistent queues (A) buffer messages rather than add heap, and Spike Control (B) throttles traffic rather than add memory.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -12941,7 +12941,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Correct",
-        "text": "D larger worker provides the heap needed to transform a large payload."
+        "text": "A larger worker provides the heap needed to transform a large payload."
       }
     },
     "references": {
@@ -13047,7 +13047,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. CloudHub monitors workers and, when automatic restarts are enabled, restarts an application that stops responding. B smaller worker (C) would fail sooner, monitoring (A) does not cause the leak, and persistent queues (D) do not restart the application.",
+    "explanation": "Correct answer: A. CloudHub monitors workers and, when automatic restarts are enabled, restarts an application that stops responding. A smaller worker (B) would fail sooner, monitoring (C) does not cause the leak, and persistent queues (D) do not restart the application.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -13055,7 +13055,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "B smaller worker would fail sooner, not recover the application."
+        "text": "A smaller worker would fail sooner, not recover the application."
       },
       "C": {
         "type": "Incorrect",
@@ -13108,7 +13108,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Persistent queues distribute the records across the application's workers so they can be processed in parallel. Automatic restarts (D) do not distribute work, a larger worker (B) keeps the work on one worker, and a second region (A) does not split records between workers.",
+    "explanation": "Correct answer: A. Persistent queues distribute the records across the application's workers so they can be processed in parallel. Automatic restarts (C) do not distribute work, a larger worker (B) keeps the work on one worker, and a second region (D) does not split records between workers.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -13116,7 +13116,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "C larger worker keeps the work on a single worker."
+        "text": "A larger worker keeps the work on a single worker."
       },
       "C": {
         "type": "Incorrect",
@@ -13124,7 +13124,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "C second region does not split records between workers."
+        "text": "A second region does not split records between workers."
       }
     },
     "references": {
@@ -13174,7 +13174,7 @@ window.MCPA_QUESTIONS = [
       "C",
       "E"
     ],
-    "explanation": "Correct answers: E and C. Each CloudHub worker runs in its own container, and the worker size determines the memory and heap available to the application. Workers do not share a single JVM (B), fractional workers share CPU with other tenants so their share is not guaranteed (A), and running applications count toward vCore usage (E).",
+    "explanation": "Correct answers: E and C. Each CloudHub worker runs in its own container, and the worker size determines the memory and heap available to the application. Workers do not share a single JVM (B), fractional workers share CPU with other tenants so their share is not guaranteed (D), and running applications count toward vCore usage (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -13239,7 +13239,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. When hardware fails, CloudHub migrates the application to a new worker, which involves some downtime. Manual redeployment is not required (A), the application is not moved to another region (C), and a single-worker application has no hidden standby (D).",
+    "explanation": "Correct answer: B. When hardware fails, CloudHub migrates the application to a new worker, which involves some downtime. Manual redeployment is not required (A), the application is not moved to another region (D), and a single-worker application has no hidden standby (C).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -13300,7 +13300,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. The two workers are in one region, and CloudHub does not fail over across regions automatically, so the application is unavailable until it is deployed to a second region. There is no automatic cross-region failover (A), the load balancer does not queue requests during a region outage (B), and the second worker is in the same failed region (D).",
+    "explanation": "Correct answer: B. The two workers are in one region, and CloudHub does not fail over across regions automatically, so the application is unavailable until it is deployed to a second region. There is no automatic cross-region failover (A), the load balancer does not queue requests during a region outage (C), and the second worker is in the same failed region (D).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -13361,11 +13361,11 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. CloudHub does not fail over across regions automatically, so the customer must provide global traffic management, typically a customer-managed DNS with health checks, to send clients to a healthy region. The CloudHub hostname resolves to one region (C), persistent queues are not shared across regions (A), and a dedicated load balancer operates within a single region and VPC (B).",
+    "explanation": "Correct answer: D. CloudHub does not fail over across regions automatically, so the customer must provide global traffic management, typically a customer-managed DNS with health checks, to send clients to a healthy region. The CloudHub hostname resolves to one region (D), persistent queues are not shared across regions (C), and a dedicated load balancer operates within a single region and VPC (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "B dedicated load balancer operates within one region and VPC."
+        "text": "A dedicated load balancer operates within one region and VPC."
       },
       "B": {
         "type": "Incorrect",
@@ -13422,7 +13422,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. On CloudHub, a redeployment brings up the new version and switches traffic over once it is ready, so a rolling update avoids a hard outage. The deployment is not deferred to a maintenance window (B), both versions do not serve the same requests at once (C), and the application does not fail for several minutes (D).",
+    "explanation": "Correct answer: C. On CloudHub, a redeployment brings up the new version and switches traffic over once it is ready, so a rolling update avoids a hard outage. The deployment is not deferred to a maintenance window (D), both versions do not serve the same requests at once (C), and the application does not fail for several minutes (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -13430,7 +13430,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "C rolling update avoids a multi-minute total outage."
+        "text": "A rolling update avoids a multi-minute total outage."
       },
       "C": {
         "type": "Correct",
@@ -13483,7 +13483,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. The latency comes from the distance between the API, its consumers, and its backends, so deploying the API to the EU region places it near both. Persistent queues (A) do not reduce network distance, and a larger worker (C) or more workers (D) do not shorten the round trip.",
+    "explanation": "Correct answer: A. The latency comes from the distance between the API, its consumers, and its backends, so deploying the API to the EU region places it near both. Persistent queues (B) do not reduce network distance, and a larger worker (C) or more workers (D) do not shorten the round trip.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -13495,7 +13495,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "B larger worker does not reduce the round-trip distance."
+        "text": "A larger worker does not reduce the round-trip distance."
       },
       "D": {
         "type": "Incorrect",
@@ -13549,7 +13549,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "E"
     ],
-    "explanation": "Correct answers: E and A. CloudHub platform services are redundant across at least two data centers, and multiple workers of an application are distributed across data centers. Persistent queues may deliver duplicates (E), a single-worker application is down while its worker is replaced (B), and cross-region failover requires customer design (D).",
+    "explanation": "Correct answers: E and A. CloudHub platform services are redundant across at least two data centers, and multiple workers of an application are distributed across data centers. Persistent queues may deliver duplicates (C), a single-worker application is down while its worker is replaced (B), and cross-region failover requires customer design (D).",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -13614,7 +13614,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Custom domains and customer-supplied TLS certificates require a dedicated load balancer, which is associated with an Anypoint VPC. The shared load balancer uses MuleSoft-managed certificates and a cloudhub.io domain (C), persistent queues are messaging (D), and the Runtime Manager agent reports application state (A).",
+    "explanation": "Correct answer: C. Custom domains and customer-supplied TLS certificates require a dedicated load balancer, which is associated with an Anypoint VPC. The shared load balancer uses MuleSoft-managed certificates and a cloudhub.io domain (B), persistent queues are messaging (A), and the Runtime Manager agent reports application state (D).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -13626,7 +13626,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Correct",
-        "text": "D dedicated load balancer supports custom domains and customer certificates."
+        "text": "A dedicated load balancer supports custom domains and customer certificates."
       },
       "D": {
         "type": "Incorrect",
@@ -13675,7 +13675,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. D dedicated load balancer supports URL mapping rules that route different paths on one domain to different applications. API instances (B) govern APIs rather than HTTP routing, the shared load balancer does not offer custom path mapping (C), and worker size (D) has nothing to do with routing.",
+    "explanation": "Correct answer: D. A dedicated load balancer supports URL mapping rules that route different paths on one domain to different applications. API instances (B) govern APIs rather than HTTP routing, the shared load balancer does not offer custom path mapping (C), and worker size (A) has nothing to do with routing.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -13736,7 +13736,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. B dedicated load balancer supports an IP allowlist that filters requests at the edge, before they reach the workers. Persistent queues (C) buffer messages rather than filter traffic, automatic restarts (B) recover the application rather than restrict sources, and the shared load balancer (D) does not support an IP allowlist.",
+    "explanation": "Correct answer: C. A dedicated load balancer supports an IP allowlist that filters requests at the edge, before they reach the workers. Persistent queues (B) buffer messages rather than filter traffic, automatic restarts (A) recover the application rather than restrict sources, and the shared load balancer (D) does not support an IP allowlist.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -13748,7 +13748,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Correct",
-        "text": "B dedicated load balancer can allowlist partner IP ranges at the edge."
+        "text": "A dedicated load balancer can allowlist partner IP ranges at the edge."
       },
       "D": {
         "type": "Incorrect",
@@ -13863,7 +13863,7 @@ window.MCPA_QUESTIONS = [
       "C",
       "E"
     ],
-    "explanation": "Correct answers: C and E. B dedicated load balancer adds customer-supplied certificates with a custom domain and URL mapping rules that route paths to multiple applications. It still requires an Anypoint VPC, so it does not provide load balancing without one (D); both load balancers distribute requests across workers (C) and serve applications over HTTPS (B).",
+    "explanation": "Correct answers: C and E. A dedicated load balancer adds customer-supplied certificates with a custom domain and URL mapping rules that route paths to multiple applications. It still requires an Anypoint VPC, so it does not provide load balancing without one (B); both load balancers distribute requests across workers (D) and serve applications over HTTPS (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -13871,7 +13871,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "B dedicated load balancer still requires an Anypoint VPC."
+        "text": "A dedicated load balancer still requires an Anypoint VPC."
       },
       "C": {
         "type": "Correct",
@@ -13928,7 +13928,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. For private IP access to a database in the company's own AWS VPC in the same region, the Anypoint VPC is peered with that AWS VPC. Public internet access (A) does not use private IPs, the shared load balancer (D) serves inbound traffic rather than database connectivity, and an IPsec VPN (C) is for on-premises networks.",
+    "explanation": "Correct answer: D. For private IP access to a database in the company's own AWS VPC in the same region, the Anypoint VPC is peered with that AWS VPC. Public internet access (C) does not use private IPs, the shared load balancer (A) serves inbound traffic rather than database connectivity, and an IPsec VPN (B) is for on-premises networks.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -13989,7 +13989,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Reaching an on-premises data center that has no AWS presence is done with an IPsec VPN from the Anypoint VPC to the customer network. VPC peering (C) works only between VPCs, a dedicated load balancer (A) fronts inbound traffic within a VPC, and an Exchange portal (B) publishes assets rather than connecting networks.",
+    "explanation": "Correct answer: A. Reaching an on-premises data center that has no AWS presence is done with an IPsec VPN from the Anypoint VPC to the customer network. VPC peering (D) works only between VPCs, a dedicated load balancer (B) fronts inbound traffic within a VPC, and an Exchange portal (C) publishes assets rather than connecting networks.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -13997,7 +13997,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "D dedicated load balancer fronts inbound traffic; it does not connect to on-premises systems."
+        "text": "A dedicated load balancer fronts inbound traffic; it does not connect to on-premises systems."
       },
       "C": {
         "type": "Incorrect",
@@ -14050,7 +14050,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Because the AWS VPCs and data centers are already joined through a Transit Gateway, attaching the Anypoint VPC to that gateway provides access to all of them with one connection. D peering connection per VPC (A) or a VPN per VPC (B) does not scale, and routing over the public internet (D) is not private connectivity.",
+    "explanation": "Correct answer: C. Because the AWS VPCs and data centers are already joined through a Transit Gateway, attaching the Anypoint VPC to that gateway provides access to all of them with one connection. A peering connection per VPC (D) or a VPN per VPC (B) does not scale, and routing over the public internet (A) is not private connectivity.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -14058,7 +14058,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "D VPN per VPC does not scale with many networks."
+        "text": "A VPN per VPC does not scale with many networks."
       },
       "C": {
         "type": "Correct",
@@ -14066,7 +14066,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "D peering connection per VPC grows with the estate and does not scale."
+        "text": "A peering connection per VPC grows with the estate and does not scale."
       }
     },
     "references": {
@@ -14111,7 +14111,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. C dedicated private connection such as AWS Direct Connect provides consistent bandwidth and a private path instead of VPN tunnels over the internet. Larger workers (D) do not change network connectivity, a second shared load balancer (B) does not create a private circuit, and VPC peering (A) works only between VPCs.",
+    "explanation": "Correct answer: A. A dedicated private connection such as AWS Direct Connect provides consistent bandwidth and a private path instead of VPN tunnels over the internet. Larger workers (C) do not change network connectivity, a second shared load balancer (B) does not create a private circuit, and VPC peering (D) works only between VPCs.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -14119,7 +14119,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "C second shared load balancer does not provide a private circuit."
+        "text": "A second shared load balancer does not provide a private circuit."
       },
       "C": {
         "type": "Incorrect",
@@ -14177,7 +14177,7 @@ window.MCPA_QUESTIONS = [
       "B",
       "E"
     ],
-    "explanation": "Correct answers: B and E. An Anypoint VPC connects to customer networks through IPsec VPN tunnels or through VPC peering with a customer AWS VPC. SLA tiers (A) and Exchange portals (B) govern access to APIs and assets rather than providing network connectivity, and persistent queues (D) are a messaging feature.",
+    "explanation": "Correct answers: B and E. An Anypoint VPC connects to customer networks through IPsec VPN tunnels or through VPC peering with a customer AWS VPC. SLA tiers (C) and Exchange portals (A) govern access to APIs and assets rather than providing network connectivity, and persistent queues (D) are a messaging feature.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -14258,7 +14258,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Correct",
-        "text": "B failure of the only worker makes the API unavailable."
+        "text": "A failure of the only worker makes the API unavailable."
       }
     },
     "references": {
@@ -14303,11 +14303,11 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. C single VPN connection to one customer gateway is a single point of failure, so removing it means adding a second VPN connection that terminates on a different customer gateway. More workers (A) or larger workers (D) do not add a network path, and persistent queues (B) buffer messages but do not remove the connectivity single point of failure.",
+    "explanation": "Correct answer: A. A single VPN connection to one customer gateway is a single point of failure, so removing it means adding a second VPN connection that terminates on a different customer gateway. More workers (C) or larger workers (D) do not add a network path, and persistent queues (B) buffer messages but do not remove the connectivity single point of failure.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "C second VPN on a different customer gateway removes the network single point of failure."
+        "text": "A second VPN on a different customer gateway removes the network single point of failure."
       },
       "B": {
         "type": "Incorrect",
@@ -14319,7 +14319,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "C larger worker does not provide network redundancy."
+        "text": "A larger worker does not provide network redundancy."
       }
     },
     "references": {
@@ -14491,7 +14491,7 @@ window.MCPA_QUESTIONS = [
       "B",
       "D"
     ],
-    "explanation": "Correct answers: B and D. Avoiding single points of failure means adding redundancy at every layer: at least two workers per application and redundant network connections to the data center. Disabling automatic restarts (A) reduces resilience, standardizing on one worker size (C) is unrelated to redundancy, and replacing two workers with one larger worker (D) actually creates a single point of failure.",
+    "explanation": "Correct answers: B and D. Avoiding single points of failure means adding redundancy at every layer: at least two workers per application and redundant network connections to the data center. Disabling automatic restarts (A) reduces resilience, standardizing on one worker size (C) is unrelated to redundancy, and replacing two workers with one larger worker (E) actually creates a single point of failure.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -14556,11 +14556,11 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Consumers accept data up to an hour old and the catalog changes once a day, so caching the Process API's responses with a one-hour TTL removes almost all backend calls while staying within the freshness the consumers accept. C five-minute TTL on the System API (A) still lets far more calls through, and adding workers or a larger worker (B, D) does not reduce the number of calls the slow System API must serve.",
+    "explanation": "Correct answer: A. Consumers accept data up to an hour old and the catalog changes once a day, so caching the Process API's responses with a one-hour TTL removes almost all backend calls while staying within the freshness the consumers accept. A five-minute TTL on the System API (B) still lets far more calls through, and adding workers or a larger worker (B, D) does not reduce the number of calls the slow System API must serve.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "C one-hour TTL matches the accepted staleness and removes most backend calls."
+        "text": "A one-hour TTL matches the accepted staleness and removes most backend calls."
       },
       "B": {
         "type": "Incorrect",
@@ -14568,11 +14568,11 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "C five-minute TTL is far stricter than the consumers require, so it removes much less load."
+        "text": "A five-minute TTL is far stricter than the consumers require, so it removes much less load."
       },
       "D": {
         "type": "Incorrect",
-        "text": "C larger worker does not reduce the number of calls reaching the System API."
+        "text": "A larger worker does not reduce the number of calls reaching the System API."
       }
     },
     "references": {
@@ -14617,7 +14617,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Response caching is appropriate when the same response can safely be reused, which is true of slowly changing reference data and static content (C, B, D). D real-time account balance used to authorize a payment must reflect the current state on every call, so a cached response could authorize a payment against a stale balance.",
+    "explanation": "Correct answer: C. Response caching is appropriate when the same response can safely be reused, which is true of slowly changing reference data and static content (C, B, D). A real-time account balance used to authorize a payment must reflect the current state on every call, so a cached response could authorize a payment against a stale balance.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -14678,7 +14678,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. D shared persistent store such as Object Store v2 keeps the watermark available to both workers and across restarts. An in-memory store (B) is per worker, a flow variable (C) is scoped to one event, and the worker's local disk (D) is not shared or durable.",
+    "explanation": "Correct answer: D. A shared persistent store such as Object Store v2 keeps the watermark available to both workers and across restarts. An in-memory store (C) is per worker, a flow variable (B) is scoped to one event, and the worker's local disk (A) is not shared or durable.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -14686,7 +14686,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "D flow variable is scoped to a single event."
+        "text": "A flow variable is scoped to a single event."
       },
       "C": {
         "type": "Incorrect",
@@ -14739,7 +14739,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Only the Tax Rate call returns data that is the same for every request from a region and changes monthly, so wrapping just that call in a Cache scope keyed by region reuses it safely. Caching all three (B) would serve stale customer-specific data, caching the whole Process API (D) would mix responses across customers, and caching the customer-specific calls (C) would return another customer's data.",
+    "explanation": "Correct answer: D. Only the Tax Rate call returns data that is the same for every request from a region and changes monthly, so wrapping just that call in a Cache scope keyed by region reuses it safely. Caching all three (C) would serve stale customer-specific data, caching the whole Process API (B) would mix responses across customers, and caching the customer-specific calls (A) would return another customer's data.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -14755,7 +14755,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Correct",
-        "text": "C region-keyed cache around the Tax Rate call reuses data that is identical per region."
+        "text": "A region-keyed cache around the Tax Rate call reuses data that is identical per region."
       }
     },
     "references": {
@@ -14800,7 +14800,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Detecting duplicates requires remembering which transaction IDs have already been processed, in a store shared by all workers; a persistent object store such as Object Store v2 does this. Caching a POST (A) is not appropriate for payment requests, a flow variable (D) is scoped to one event and one worker, and persistent queues (C) provide at-least-once delivery rather than deduplication.",
+    "explanation": "Correct answer: D. Detecting duplicates requires remembering which transaction IDs have already been processed, in a store shared by all workers; a persistent object store such as Object Store v2 does this. Caching a POST (A) is not appropriate for payment requests, a flow variable (C) is scoped to one event and one worker, and persistent queues (B) provide at-least-once delivery rather than deduplication.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -14861,7 +14861,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. The requirement is a fallback that returns recently cached data when the Process API is unavailable, so the Experience API caches each good response and serves it on failure. Rate limiting (B) does not provide a fallback, caching at the gateway (A) does not define what happens on failure and would also mix per-user responses, and retrying until success (D) makes the client wait rather than respond.",
+    "explanation": "Correct answer: B. The requirement is a fallback that returns recently cached data when the Process API is unavailable, so the Experience API caches each good response and serves it on failure. Rate limiting (D) does not provide a fallback, caching at the gateway (C) does not define what happens on failure and would also mix per-user responses, and retrying until success (A) makes the client wait rather than respond.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -14873,7 +14873,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "D gateway cache reuses responses but does not implement the failure fallback, and risks mixing users' data."
+        "text": "A gateway cache reuses responses but does not implement the failure fallback, and risks mixing users' data."
       },
       "D": {
         "type": "Incorrect",
@@ -14922,7 +14922,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Object Store v2 is designed for transient application state such as caching, watermarks, and deduplication, and its entries have a maximum time-to-live, so it is not a permanent system of record. An in-memory store is less durable (C), entries do expire (B), and application properties are configuration rather than mutable records (A).",
+    "explanation": "Correct answer: C. Object Store v2 is designed for transient application state such as caching, watermarks, and deduplication, and its entries have a maximum time-to-live, so it is not a permanent system of record. An in-memory store is less durable (A), entries do expire (C), and application properties are configuration rather than mutable records (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -14988,11 +14988,11 @@ window.MCPA_QUESTIONS = [
       "A",
       "B"
     ],
-    "explanation": "Correct answers: A and B. D persistent object store holds shared key-value state such as a polling watermark and cached access tokens that must be visible to every worker. It is not for permanent large-file archiving (C), it is not a system of record (B), and it cannot run relational queries (E).",
+    "explanation": "Correct answers: A and B. A persistent object store holds shared key-value state such as a polling watermark and cached access tokens that must be visible to every worker. It is not for permanent large-file archiving (D), it is not a system of record (E), and it cannot run relational queries (C).",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "D watermark is shared, persistent state that suits a persistent object store."
+        "text": "A watermark is shared, persistent state that suits a persistent object store."
       },
       "B": {
         "type": "Correct",
@@ -15004,11 +15004,11 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "D persistent object store has a limited TTL and is not a permanent archive."
+        "text": "A persistent object store has a limited TTL and is not a permanent archive."
       },
       "E": {
         "type": "Incorrect",
-        "text": "D persistent object store is application state, not a system of record."
+        "text": "A persistent object store is application state, not a system of record."
       }
     },
     "references": {
@@ -15053,7 +15053,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. C cache key must include every input that changes the response. With only the path as the key, every customer's request maps to the same entry, so one customer's recommendations can be served to another; the key must include the customer's identity or the response must not be cached. The path does not vary per customer (A), the problem is cross-user leakage rather than cache churn (B), and the policy caches the response rather than headers only (D).",
+    "explanation": "Correct answer: A. The cache key must include every input that changes the response. With only the path as the key, every customer's request maps to the same entry, so one customer's recommendations can be served to another; the key must include the customer's identity or the response must not be cached. The path does not vary per customer (A), the problem is cross-user leakage rather than cache churn (B), and the policy caches the response rather than headers only (D).",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -15114,11 +15114,11 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Lowering the TTL to five minutes or less makes a price change visible within the required window while still absorbing repeated reads between refreshes. Removing caching (C) removes all load reduction, a date-based cache key (D) still serves data up to a day old, and scaling the backend (A) does not satisfy the freshness requirement.",
+    "explanation": "Correct answer: A. Lowering the TTL to five minutes or less makes a price change visible within the required window while still absorbing repeated reads between refreshes. Removing caching (B) removes all load reduction, a date-based cache key (C) still serves data up to a day old, and scaling the backend (D) does not satisfy the freshness requirement.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "B five-minute TTL meets the freshness requirement while still reducing backend load."
+        "text": "A five-minute TTL meets the freshness requirement while still reducing backend load."
       },
       "B": {
         "type": "Incorrect",
@@ -15126,7 +15126,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "B date-based key still serves data that can be up to a day old."
+        "text": "A date-based key still serves data that can be up to a day old."
       },
       "D": {
         "type": "Incorrect",
@@ -15191,7 +15191,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Correct",
-        "text": "D timeout stops waiting for a hung call and lets the client respond in time."
+        "text": "A timeout stops waiting for a hung call and lets the client respond in time."
       }
     },
     "references": {
@@ -15236,7 +15236,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Retries help when failures are transient, but they should be limited and spaced out, and applied only to operations that are safe to repeat; Mule's Until Successful scope supports a maximum number of retries and a delay. Changing the method (A) changes the meaning of the request, returning the error immediately (D) fails requests that would succeed a moment later, and continuous retries (B) can overload a recovering API.",
+    "explanation": "Correct answer: D. Retries help when failures are transient, but they should be limited and spaced out, and applied only to operations that are safe to repeat; Mule's Until Successful scope supports a maximum number of retries and a delay. Changing the method (A) changes the meaning of the request, returning the error immediately (B) fails requests that would succeed a moment later, and continuous retries (C) can overload a recovering API.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -15358,7 +15358,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. C circuit breaker tracks failures of a dependency and, after a threshold, stops calling it for a period, failing fast instead of waiting for timeouts. It then allows trial calls to detect recovery. This prevents failures from propagating to the API client and its consumers.",
+    "explanation": "Correct answer: A. A circuit breaker tracks failures of a dependency and, after a threshold, stops calling it for a period, failing fast instead of waiting for timeouts. It then allows trial calls to detect recovery. This prevents failures from propagating to the API client and its consumers.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -15419,7 +15419,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. The requirement is that the page still loads, so the Experience API should return a sensible fallback such as a default list of best-selling products. Blocking the page (B) or retrying until success (D) makes the user wait, and a gateway cache (C) reuses responses but does not define the fallback behavior when the dependency fails.",
+    "explanation": "Correct answer: A. The requirement is that the page still loads, so the Experience API should return a sensible fallback such as a default list of best-selling products. Blocking the page (B) or retrying until success (C) makes the user wait, and a gateway cache (D) reuses responses but does not define the fallback behavior when the dependency fails.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -15480,7 +15480,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. HTTP 429 means the client exceeded its quota for the current window; the correct behavior is to back off and retry after the window resets, honoring any Retry-After header. Treating it as permanent (C) gives up a transient condition, a tight retry loop (A) makes the throttling worse, and rotating the secret (B) does not change the quota.",
+    "explanation": "Correct answer: C. HTTP 429 means the client exceeded its quota for the current window; the correct behavior is to back off and retry after the window resets, honoring any Retry-After header. Treating it as permanent (B) gives up a transient condition, a tight retry loop (D) makes the throttling worse, and rotating the secret (A) does not change the quota.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -15541,7 +15541,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Retries at every layer compound: retries at one layer multiply the calls made by the layer above, so three retries at three layers can produce many times the original number of calls and overload a recovering backend. The gateway does not deduplicate retries across layers (D), Mule executes configured retries regardless of the cause (B), and nested retries add calls rather than cancel them (C).",
+    "explanation": "Correct answer: D. Retries at every layer compound: retries at one layer multiply the calls made by the layer above, so three retries at three layers can produce many times the original number of calls and overload a recovering backend. The gateway does not deduplicate retries across layers (D), Mule executes configured retries regardless of the cause (B), and nested retries add calls rather than cancel them (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -15607,15 +15607,15 @@ window.MCPA_QUESTIONS = [
       "A",
       "B"
     ],
-    "explanation": "Correct answers: B and A. Fault-tolerant invocations stop a dependency's failures from reaching the API's own consumers: a timeout aligned with the SLA bounds the wait, and a fallback such as a cached or default result lets the API still respond. E very long timeout (A) lets a slow dependency consume the response time, propagating errors (B) spreads the failure, and changing the client ID per attempt (C) breaks governance and does not improve reliability.",
+    "explanation": "Correct answers: B and A. Fault-tolerant invocations stop a dependency's failures from reaching the API's own consumers: a timeout aligned with the SLA bounds the wait, and a fallback such as a cached or default result lets the API still respond. A very long timeout (E) lets a slow dependency consume the response time, propagating errors (D) spreads the failure, and changing the client ID per attempt (C) breaks governance and does not improve reliability.",
     "rationales": {
       "A": {
         "type": "Correct",
-        "text": "E fallback lets the API respond successfully even when the dependency fails."
+        "text": "A fallback lets the API respond successfully even when the dependency fails."
       },
       "B": {
         "type": "Correct",
-        "text": "E timeout aligned with the SLA prevents a slow dependency from consuming the client's response time."
+        "text": "A timeout aligned with the SLA prevents a slow dependency from consuming the client's response time."
       },
       "C": {
         "type": "Incorrect",
@@ -15627,7 +15627,7 @@ window.MCPA_QUESTIONS = [
       },
       "E": {
         "type": "Incorrect",
-        "text": "E very long timeout lets a slow call exhaust threads and break the SLA."
+        "text": "A very long timeout lets a slow call exhaust threads and break the SLA."
       }
     },
     "references": {
@@ -15672,7 +15672,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Because an equivalent carrier API is available and the business prefers a slightly different quote over no quote, calling the second carrier as a fallback meets the requirement. Caching quotes for a year (C) serves stale rates, retrying until success (B) makes the client wait, and returning 503 (A) returns no quote at all.",
+    "explanation": "Correct answer: C. Because an equivalent carrier API is available and the business prefers a slightly different quote over no quote, calling the second carrier as a fallback meets the requirement. Caching quotes for a year (A) serves stale rates, retrying until success (D) makes the client wait, and returning 503 (B) returns no quote at all.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -15684,7 +15684,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Correct",
-        "text": "C second carrier API provides an equivalent quote when the primary fails."
+        "text": "A second carrier API provides an equivalent quote when the primary fails."
       },
       "D": {
         "type": "Incorrect",
@@ -15733,7 +15733,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Spike Control smooths short bursts by delaying excess requests to a configured rate instead of rejecting them, which is exactly what the provider wants. Client ID Enforcement (B) restricts callers rather than smoothing load, Rate Limiting (C) rejects requests rather than delaying them, and caching (A) only helps repeated identical requests.",
+    "explanation": "Correct answer: A. Spike Control smooths short bursts by delaying excess requests to a configured rate instead of rejecting them, which is exactly what the provider wants. Client ID Enforcement (D) restricts callers rather than smoothing load, Rate Limiting (C) rejects requests rather than delaying them, and caching (B) only helps repeated identical requests.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -15794,7 +15794,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. The API is stateless and CPU-bound with no downstream calls, so each worker is an independent unit of capacity: adding workers lets the workers share the queued requests, raising throughput and reducing queuing time. Horizontal scaling is not limited to database-bound APIs (B), the load balancer does not reduce throughput (D), and adding workers does not make any single calculation faster (A).",
+    "explanation": "Correct answer: C. The API is stateless and CPU-bound with no downstream calls, so each worker is an independent unit of capacity: adding workers lets the workers share the queued requests, raising throughput and reducing queuing time. Horizontal scaling is not limited to database-bound APIs (D), the load balancer does not reduce throughput (A), and adding workers does not make any single calculation faster (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -15855,7 +15855,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Nearly all of the response time is spent waiting on a legacy database that allows only 20 concurrent connections, so the bottleneck is the database rather than the API's CPU. Adding workers gives little or no improvement and can add contention as more workers compete for the same limited connections; the limit does not scale automatically (C), and neither the response time (A) nor throughput (B) improves proportionally.",
+    "explanation": "Correct answer: B. Nearly all of the response time is spent waiting on a legacy database that allows only 20 concurrent connections, so the bottleneck is the database rather than the API's CPU. Adding workers gives little or no improvement and can add contention as more workers compete for the same limited connections; the limit does not scale automatically (A), and neither the response time (C) nor throughput (D) improves proportionally.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -15916,7 +15916,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. The 900 ms is the time the request spends passing through a long sequence of processing steps within one request, so it is not caused by capacity contention; adding workers raises how many requests can run at once but does not shorten one request. Network latency is unrelated to worker count (C), a request is not split across workers (A), and request time does not fall proportionally with workers (D).",
+    "explanation": "Correct answer: C. The 900 ms is the time the request spends passing through a long sequence of processing steps within one request, so it is not caused by capacity contention; adding workers raises how many requests can run at once but does not shorten one request. Network latency is unrelated to worker count (A), a request is not split across workers (B), and request time does not fall proportionally with workers (D).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -15924,7 +15924,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "C single request is not split across workers."
+        "text": "A single request is not split across workers."
       },
       "C": {
         "type": "Correct",
@@ -16043,7 +16043,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "C"
     ],
-    "explanation": "Correct answers: C and A. Horizontal scaling helps when the implementation itself is the bottleneck: stateless workers that are CPU-saturated and queues caused by all worker threads being busy both add capacity when workers are added. D single-node sequential job (E) does not parallelize, rejected clients (B) are a policy limit, and a downstream API with a fixed rate (A) remains the bottleneck.",
+    "explanation": "Correct answers: C and A. Horizontal scaling helps when the implementation itself is the bottleneck: stateless workers that are CPU-saturated and queues caused by all worker threads being busy both add capacity when workers are added. A single-node sequential job (D) does not parallelize, rejected clients (B) are a policy limit, and a downstream API with a fixed rate (E) remains the bottleneck.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -16059,11 +16059,11 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "D single-node sequential job does not gain from more workers."
+        "text": "A single-node sequential job does not gain from more workers."
       },
       "E": {
         "type": "Incorrect",
-        "text": "D downstream fixed-rate limit remains the bottleneck."
+        "text": "A downstream fixed-rate limit remains the bottleneck."
       }
     },
     "references": {
@@ -16108,7 +16108,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. When a poller is configured to run only on the primary node, adding nodes does not add polling capacity, so throughput does not improve. The poller runs on one node, so files are not processed three times (C) and throughput does not triple (B), and clustering does not prevent FTP polling (D).",
+    "explanation": "Correct answer: C. When a poller is configured to run only on the primary node, adding nodes does not add polling capacity, so throughput does not improve. The poller runs on one node, so files are not processed three times (D) and throughput does not triple (B), and clustering does not prevent FTP polling (C).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -16169,7 +16169,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. CloudHub 2.0 supports horizontal autoscaling, which adjusts the number of replicas based on resource usage within configured minimum and maximum values, so capacity follows unpredictable demand. Permanently deploying peak capacity (B) wastes resources between peaks, a larger fixed replica size (C) may still be insufficient and is wasted off-peak, and rate limiting (D) rejects demand rather than serving it.",
+    "explanation": "Correct answer: A. CloudHub 2.0 supports horizontal autoscaling, which adjusts the number of replicas based on resource usage within configured minimum and maximum values, so capacity follows unpredictable demand. Permanently deploying peak capacity (B) wastes resources between peaks, a larger fixed replica size (D) may still be insufficient and is wasted off-peak, and rate limiting (C) rejects demand rather than serving it.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -16230,7 +16230,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. The failure is out-of-memory on a single large payload, so each request needs more memory; increasing the worker size gives the application a larger heap. Adding workers of the same size (A) does not increase the memory available to one request, and neither Spike Control (D) nor HTTP Caching (B) addresses memory.",
+    "explanation": "Correct answer: D. The failure is out-of-memory on a single large payload, so each request needs more memory; increasing the worker size gives the application a larger heap. Adding workers of the same size (A) does not increase the memory available to one request, and neither Spike Control (B) nor HTTP Caching (C) addresses memory.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -16412,7 +16412,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Anypoint Visualizer builds a real-time graph of the application network from observed traffic, showing which applications and APIs call each other. Anypoint Monitoring charts metrics rather than dependencies (B), Runtime Manager lists applications and workers without their call relationships (A), and Exchange catalogs assets without runtime traffic (C).",
+    "explanation": "Correct answer: C. Anypoint Visualizer builds a real-time graph of the application network from observed traffic, showing which applications and APIs call each other. Anypoint Monitoring charts metrics rather than dependencies (B), Runtime Manager lists applications and workers without their call relationships (D), and Exchange catalogs assets without runtime traffic (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -16473,7 +16473,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Anypoint Monitoring log management stores application logs centrally for a default retention period of 30 days and lets you search across applications. Visualizer retains traffic data for the graph (A), API Manager applies policies rather than storing payloads (C), and Exchange stores design-time assets (D).",
+    "explanation": "Correct answer: B. Anypoint Monitoring log management stores application logs centrally for a default retention period of 30 days and lets you search across applications. Visualizer retains traffic data for the graph (A), API Manager applies policies rather than storing payloads (D), and Exchange stores design-time assets (C).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -16533,7 +16533,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Anypoint Monitoring custom dashboards let you assemble charts for latency, throughput, and error metrics across multiple APIs. A Visualizer canvas shows topology rather than a combined metrics view (A), API Manager analytics covers policies and contracts (B), and Exchange pages present design-time documentation (D).",
+    "explanation": "Correct answer: C. Anypoint Monitoring custom dashboards let you assemble charts for latency, throughput, and error metrics across multiple APIs. A Visualizer canvas shows topology rather than a combined metrics view (A), API Manager analytics covers policies and contracts (D), and Exchange pages present design-time documentation (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -16594,7 +16594,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Visualizer's distinctive capability is the dependency-aware graph of the application network; Monitoring provides time-series charts (A), centralized log search (B), and metric alert policies (C).",
+    "explanation": "Correct answer: D. Visualizer's distinctive capability is the dependency-aware graph of the application network; Monitoring provides time-series charts (C), centralized log search (B), and metric alert policies (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -16654,7 +16654,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Anypoint Monitoring alert policies evaluate application and API metrics and send notifications when a threshold is crossed or a condition such as a worker crash or scale event occurs. Visualizer highlights failing nodes but does not notify (D), API Manager alerts concern contracts (A), and the log viewer displays logs without notifying (B).",
+    "explanation": "Correct answer: B. Anypoint Monitoring alert policies evaluate application and API metrics and send notifications when a threshold is crossed or a condition such as a worker crash or scale event occurs. Visualizer highlights failing nodes but does not notify (B), API Manager alerts concern contracts (D), and the log viewer displays logs without notifying (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -16714,7 +16714,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Visualizer's dependency graph shows which APIs call the System API, so the architect can see the impact of a change. Monitoring dashboards show metrics rather than call relationships (A), Exchange asset pages do not list runtime dependencies (D), and Runtime Manager groups applications by business group rather than by calls (B).",
+    "explanation": "Correct answer: D. Visualizer's dependency graph shows which APIs call the System API, so the architect can see the impact of a change. Monitoring dashboards show metrics rather than call relationships (A), Exchange asset pages do not list runtime dependencies (B), and Runtime Manager groups applications by business group rather than by calls (C).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -16774,7 +16774,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Anypoint Monitoring exposes application metrics such as throughput, and alert policies can fire when the rate falls or a backlog grows. Worker count and size (C) describe capacity rather than the processing rate, Object Store TTL (B) is a state expiry, and MQ queue depth (A) measures a queue rather than the application's own processing rate.",
+    "explanation": "Correct answer: A. Anypoint Monitoring exposes application metrics such as throughput, and alert policies can fire when the rate falls or a backlog grows. Worker count and size (D) describe capacity rather than the processing rate, Object Store TTL (B) is a state expiry, and MQ queue depth (C) measures a queue rather than the application's own processing rate.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -16835,7 +16835,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Centralized observability is achieved with Anypoint Monitoring integrations or a custom Log4j2 appender that ship logs and metrics to the enterprise stack. Scheduled file exports (A) are not real-time and are fragile, embedding a dashboard (B) keeps the data inside the platform, and polling the log viewer (C) is not how metrics are exported.",
+    "explanation": "Correct answer: B. Centralized observability is achieved with Anypoint Monitoring integrations or a custom Log4j2 appender that ship logs and metrics to the enterprise stack. Scheduled file exports (C) are not real-time and are fragile, embedding a dashboard (D) keeps the data inside the platform, and polling the log viewer (A) is not how metrics are exported.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -16896,7 +16896,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Anypoint Monitoring collects API and Mule application metrics and exposes them through dashboards and alerts. API Manager applies policies and tracks contracts but is not the metrics engine (A), Exchange tracks asset reuse rather than invocation metrics (B), and API Designer records design-time mocks (D).",
+    "explanation": "Correct answer: B. Anypoint Monitoring collects API and Mule application metrics and exposes them through dashboards and alerts. API Manager applies policies and tracks contracts but is not the metrics engine (C), Exchange tracks asset reuse rather than invocation metrics (A), and API Designer records design-time mocks (D).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -17023,7 +17023,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "B"
     ],
-    "explanation": "Correct answers: A and B. Alerting on API invocation metrics and on application health metrics covers both the API-level and the runtime-level signals of degradation. Autoscaling (B) reacts to load but does not alert, a nightly job (A) is not timely, and persistent queues (D) protect messages rather than alert on health.",
+    "explanation": "Correct answers: A and B. Alerting on API invocation metrics and on application health metrics covers both the API-level and the runtime-level signals of degradation. Autoscaling (E) reacts to load but does not alert, a nightly job (C) is not timely, and persistent queues (D) protect messages rather than alert on health.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -17035,7 +17035,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "E nightly job is not timely enough for a 99.9% SLA."
+        "text": "A nightly job is not timely enough for a 99.9% SLA."
       },
       "D": {
         "type": "Incorrect",
@@ -17088,7 +17088,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. The Anypoint Platform audit log natively records user and administrative actions and can be exported, satisfying the audit requirement without extra licensing or custom code. D Message Logging policy (B) records API traffic rather than who changed configuration, API Analytics (D) records usage metrics, and a third-party APM agent (C) does not produce platform audit records.",
+    "explanation": "Correct answer: B. The Anypoint Platform audit log natively records user and administrative actions and can be exported, satisfying the audit requirement without extra licensing or custom code. A Message Logging policy (D) records API traffic rather than who changed configuration, API Analytics (A) records usage metrics, and a third-party APM agent (C) does not produce platform audit records.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -17100,7 +17100,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "D third-party APM agent does not produce Anypoint Platform audit records."
+        "text": "A third-party APM agent does not produce Anypoint Platform audit records."
       },
       "D": {
         "type": "Incorrect",
@@ -17149,7 +17149,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Mule's logging is driven by Log4j2; raising the root logger level to ERROR suppresses lower-severity messages while still emitting errors and their stack traces. Adding INFO loggers (C) increases volume, disabling logging (B) removes the evidence needed to diagnose failures, and a larger console buffer (A) keeps more noise rather than filtering it.",
+    "explanation": "Correct answer: B. Mule's logging is driven by Log4j2; raising the root logger level to ERROR suppresses lower-severity messages while still emitting errors and their stack traces. Adding INFO loggers (D) increases volume, disabling logging (A) removes the evidence needed to diagnose failures, and a larger console buffer (C) keeps more noise rather than filtering it.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -17161,7 +17161,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "B larger console buffer retains more output but does not filter it."
+        "text": "A larger console buffer retains more output but does not filter it."
       },
       "D": {
         "type": "Incorrect",
@@ -17210,7 +17210,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Anypoint Platform Private Cloud Edition supports Anypoint Monitoring, which keeps monitoring data within the customer's environment and satisfies the residency requirement. The SaaS service (A) stores data in MuleSoft's cloud, the on-premises agent with SaaS storage (C) still forwards data to the cloud, and CSV exports (D) are not a monitoring capability.",
+    "explanation": "Correct answer: C. Anypoint Platform Private Cloud Edition supports Anypoint Monitoring, which keeps monitoring data within the customer's environment and satisfies the residency requirement. The SaaS service (A) stores data in MuleSoft's cloud, the on-premises agent with SaaS storage (B) still forwards data to the cloud, and CSV exports (C) are not a monitoring capability.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -17271,7 +17271,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Anypoint Monitoring exposes per-flow and per-processor metrics, so you can see which step is slow and target the fix. Raising the heap (A), throttling requests (B), and scaling out (D) are all changes that may or may not help; without metrics they are guesses at the cause.",
+    "explanation": "Correct answer: C. Anypoint Monitoring exposes per-flow and per-processor metrics, so you can see which step is slow and target the fix. Raising the heap (D), throttling requests (B), and scaling out (C) are all changes that may or may not help; without metrics they are guesses at the cause.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -17332,7 +17332,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Anypoint Monitoring alert policies evaluate the monitored metrics and notify when a threshold is crossed, giving real-time alerting with no custom code. A custom polling application (A) adds maintenance overhead, a third-party APM tool (B) adds cost and integration effort, and a daily review (C) is neither real-time nor low-overhead.",
+    "explanation": "Correct answer: B. Anypoint Monitoring alert policies evaluate the monitored metrics and notify when a threshold is crossed, giving real-time alerting with no custom code. A custom polling application (A) adds maintenance overhead, a third-party APM tool (D) adds cost and integration effort, and a daily review (C) is neither real-time nor low-overhead.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -17398,7 +17398,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "E"
     ],
-    "explanation": "Correct answers: E and A. Limiting analytics to the high-value APIs controls cost, and exporting analytics through the Anypoint Monitoring metrics API lets an external BI tool build the custom dashboards stakeholders want. Enabling everything with a premium add-on (B) conflicts with the budget, Visualizer (C) shows topology rather than usage insight, and built-in dashboards alone (D) do not meet the custom-dashboard requirement.",
+    "explanation": "Correct answers: E and A. Limiting analytics to the high-value APIs controls cost, and exporting analytics through the Anypoint Monitoring metrics API lets an external BI tool build the custom dashboards stakeholders want. Enabling everything with a premium add-on (D) conflicts with the budget, Visualizer (C) shows topology rather than usage insight, and built-in dashboards alone (B) do not meet the custom-dashboard requirement.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -17468,7 +17468,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "D"
     ],
-    "explanation": "Correct answers: A and D. Audit-level logging with a configured retention retains the required records, and an Anypoint Monitoring alert policy detects deviation from the compliance metrics. INFO logging (B) is not audit-level and is not retained for compliance, Visualizer (A) shows topology rather than detecting deviations, and Functional Monitoring (D) runs tests rather than retaining audit records.",
+    "explanation": "Correct answers: A and D. Audit-level logging with a configured retention retains the required records, and an Anypoint Monitoring alert policy detects deviation from the compliance metrics. INFO logging (C) is not audit-level and is not retained for compliance, Visualizer (B) shows topology rather than detecting deviations, and Functional Monitoring (E) runs tests rather than retaining audit records.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -17484,7 +17484,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Correct",
-        "text": "C monitoring alert policy detects deviation from the compliance metrics."
+        "text": "A monitoring alert policy detects deviation from the compliance metrics."
       },
       "E": {
         "type": "Incorrect",
@@ -17533,7 +17533,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. The built-in audit log records user and administrative actions, and its entries can be forwarded to a long-term archive to meet a multi-year retention requirement without custom code. B custom Logger (D) captures only chosen events, API Analytics (C) records usage rather than an audit trail and has limited retention, and OS-level logging (A) is not an audit trail of platform actions.",
+    "explanation": "Correct answer: A. The built-in audit log records user and administrative actions, and its entries can be forwarded to a long-term archive to meet a multi-year retention requirement without custom code. A custom Logger (B) captures only chosen events, API Analytics (D) records usage rather than an audit trail and has limited retention, and OS-level logging (C) is not an audit trail of platform actions.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -17541,7 +17541,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "B custom Logger is not a complete audit trail and requires code."
+        "text": "A custom Logger is not a complete audit trail and requires code."
       },
       "C": {
         "type": "Incorrect",
@@ -17594,7 +17594,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Runtime Manager's log viewer lets you inspect application logs, and raising the level for a specific Mule package captures the exception detail while filtering by correlation ID isolates the failing request. D custom Java logger (B) adds code for no benefit, a global DEBUG level (A) floods the logs and needs a restart, and an alert on every 500 (D) reports the symptom rather than the cause.",
+    "explanation": "Correct answer: B. Runtime Manager's log viewer lets you inspect application logs, and raising the level for a specific Mule package captures the exception detail while filtering by correlation ID isolates the failing request. A custom Java logger (D) adds code for no benefit, a global DEBUG level (C) floods the logs and needs a restart, and an alert on every 500 (A) reports the symptom rather than the cause.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -17606,11 +17606,11 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "D global DEBUG level increases noise and requires a restart."
+        "text": "A global DEBUG level increases noise and requires a restart."
       },
       "D": {
         "type": "Incorrect",
-        "text": "D custom Java logger adds code without giving better access to the exception."
+        "text": "A custom Java logger adds code without giving better access to the exception."
       }
     },
     "references": {
@@ -17655,11 +17655,11 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Anypoint Monitoring exposes API usage metrics and integrates with Anypoint Platform's role-based access control, so access can be limited to cleared personnel natively. There is no platform-wide 'Encrypt API Analytics' setting (B), exporting to S3 (C) moves the data outside the platform, and a third-party gateway (D) is exactly the kind of external tool the agency wants to avoid.",
+    "explanation": "Correct answer: D. Anypoint Monitoring exposes API usage metrics and integrates with Anypoint Platform's role-based access control, so access can be limited to cleared personnel natively. There is no platform-wide 'Encrypt API Analytics' setting (B), exporting to S3 (C) moves the data outside the platform, and a third-party gateway (A) is exactly the kind of external tool the agency wants to avoid.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "D third-party gateway is an external tool the agency wants to avoid."
+        "text": "A third-party gateway is an external tool the agency wants to avoid."
       },
       "B": {
         "type": "Incorrect",
@@ -17716,7 +17716,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Flow activity metrics show how long each processor takes, so the team can pinpoint and fix the slow step instead of guessing. Scaling out (C), custom latency loggers (B), and a larger heap (D) are changes made without first locating the bottleneck, and none of them identifies the inefficient processor.",
+    "explanation": "Correct answer: C. Flow activity metrics show how long each processor takes, so the team can pinpoint and fix the slow step instead of guessing. Scaling out (C), custom latency loggers (A), and a larger heap (D) are changes made without first locating the bottleneck, and none of them identifies the inefficient processor.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -17732,7 +17732,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "B larger heap addresses memory, not necessarily the flow's inefficiency."
+        "text": "A larger heap addresses memory, not necessarily the flow's inefficiency."
       }
     },
     "references": {
@@ -17782,7 +17782,7 @@ window.MCPA_QUESTIONS = [
       "B",
       "C"
     ],
-    "explanation": "Correct answers: B and C. Anypoint Monitoring alerts, including anomaly-based detection, surface abnormal usage, and setting retention to the minimum required with purging keeps the data within the GDPR window. Relying on the SIEM to filter personal data (A) is not a retention control, client ID enforcement (C) authenticates callers rather than detecting anomalies, and the default retention (D) may exceed the allowed window.",
+    "explanation": "Correct answers: B and C. Anypoint Monitoring alerts, including anomaly-based detection, surface abnormal usage, and setting retention to the minimum required with purging keeps the data within the GDPR window. Relying on the SIEM to filter personal data (A) is not a retention control, client ID enforcement (E) authenticates callers rather than detecting anomalies, and the default retention (D) may exceed the allowed window.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -17847,7 +17847,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Anypoint Monitoring's built-in dashboards aggregate API and application metrics, and alert policies notify the team when something needs attention, so a small team can watch many APIs from one view. B dashboard per runtime (D) multiplies the views the team cannot manage, watching raw log streams (C) is not scalable monitoring, and API Autodiscovery (B) links implementations to API instances rather than feeding a SIEM.",
+    "explanation": "Correct answer: C. Anypoint Monitoring's built-in dashboards aggregate API and application metrics, and alert policies notify the team when something needs attention, so a small team can watch many APIs from one view. A dashboard per runtime (B) multiplies the views the team cannot manage, watching raw log streams (D) is not scalable monitoring, and API Autodiscovery (A) links implementations to API instances rather than feeding a SIEM.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -17908,7 +17908,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Visualizer shows the dependency topology in real time and includes a policy visualization that indicates whether policies are applied and where failures occur. Monitoring dashboards chart metrics rather than dependencies (C), API Manager analytics reports usage and policy data but not the live topology (B), and Functional Monitoring runs external tests (A).",
+    "explanation": "Correct answer: C. Visualizer shows the dependency topology in real time and includes a policy visualization that indicates whether policies are applied and where failures occur. Monitoring dashboards chart metrics rather than dependencies (A), API Manager analytics reports usage and policy data but not the live topology (D), and Functional Monitoring runs external tests (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -17969,7 +17969,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Worker CPU conditions for CloudHub 1.0 applications are configured as Runtime Manager alerts. Anypoint Monitoring alerts (B) evaluate API and application metrics rather than the Runtime Manager worker conditions, API Manager alerts (D) concern contracts and quotas, and the CloudHub Connector (C) emits notifications from within a flow.",
+    "explanation": "Correct answer: C. Worker CPU conditions for CloudHub 1.0 applications are configured as Runtime Manager alerts. Anypoint Monitoring alerts (D) evaluate API and application metrics rather than the Runtime Manager worker conditions, API Manager alerts (C) concern contracts and quotas, and the CloudHub Connector (B) emits notifications from within a flow.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -18030,7 +18030,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. D custom Log4j2 appender forwards logs from the application to the external SIEM, and selecting \"Disable CloudHub logs\" prevents the platform from retaining them. An Anypoint Monitoring forwarder (B) is not a native third-party log forwarder, sending logs from a flow (D) couples log delivery to application processing, and a support reroute (A) is not the standard configuration.",
+    "explanation": "Correct answer: C. A custom Log4j2 appender forwards logs from the application to the external SIEM, and selecting \"Disable CloudHub logs\" prevents the platform from retaining them. An Anypoint Monitoring forwarder (D) is not a native third-party log forwarder, sending logs from a flow (A) couples log delivery to application processing, and a support reroute (B) is not the standard configuration.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -18038,7 +18038,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "D support reroute is not the standard application logging configuration."
+        "text": "A support reroute is not the standard application logging configuration."
       },
       "C": {
         "type": "Correct",
@@ -18091,7 +18091,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Anypoint Functional Monitoring runs scheduled API tests from external locations, sending a defined payload and asserting the response. Monitoring Alerts (A) react to metrics rather than sending test requests, Runtime Manager health checks (B) monitor the application from inside CloudHub, and API Manager policies (C) enforce rules on live traffic.",
+    "explanation": "Correct answer: D. Anypoint Functional Monitoring runs scheduled API tests from external locations, sending a defined payload and asserting the response. Monitoring Alerts (B) react to metrics rather than sending test requests, Runtime Manager health checks (A) monitor the application from inside CloudHub, and API Manager policies (C) enforce rules on live traffic.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -18152,7 +18152,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. An application's Visualizer layer is assigned with the anypoint.platform.visualizer.layer property at deployment. Business group membership (B) controls access rather than the layer, an API Manager policy (C) cannot set the layer, and an Exchange tag (D) is not how the layer is assigned.",
+    "explanation": "Correct answer: A. An application's Visualizer layer is assigned with the anypoint.platform.visualizer.layer property at deployment. Business group membership (D) controls access rather than the layer, an API Manager policy (C) cannot set the layer, and an Exchange tag (B) is not how the layer is assigned.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -18213,7 +18213,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Quota conditions tied to a client application's SLA contract are configured as API Manager alerts. Anypoint Monitoring alerts (D) evaluate invocation metrics rather than contract quotas, Runtime Manager alerts (A) cover worker and application health, and audit logs (C) record access changes rather than raising alerts.",
+    "explanation": "Correct answer: B. Quota conditions tied to a client application's SLA contract are configured as API Manager alerts. Anypoint Monitoring alerts (C) evaluate invocation metrics rather than contract quotas, Runtime Manager alerts (D) cover worker and application health, and audit logs (A) record access changes rather than raising alerts.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -18274,7 +18274,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Anypoint Functional Monitoring runs scheduled tests from external geographic locations, sending defined payloads and asserting the responses. Monitoring dashboards (A) chart metrics, Runtime Manager alerts (B) monitor worker health, and API Manager policies (D) enforce rules on live traffic.",
+    "explanation": "Correct answer: C. Anypoint Functional Monitoring runs scheduled tests from external geographic locations, sending defined payloads and asserting the responses. Monitoring dashboards (A) chart metrics, Runtime Manager alerts (D) monitor worker health, and API Manager policies (B) enforce rules on live traffic.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -18335,7 +18335,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. D Mule flow can emit a Custom Application Notification through the CloudHub Connector, and Runtime Manager can alert on that notification. An HTTP 400 alert (A) does not represent the internal business condition, monitoring alerts cannot be configured by scanning logs for an arbitrary string (B), and Visualizer (C) displays topology rather than creating business alerts.",
+    "explanation": "Correct answer: A. A Mule flow can emit a Custom Application Notification through the CloudHub Connector, and Runtime Manager can alert on that notification. An HTTP 400 alert (D) does not represent the internal business condition, monitoring alerts cannot be configured by scanning logs for an arbitrary string (C), and Visualizer (B) displays topology rather than creating business alerts.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -18396,7 +18396,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Forwarding logs to an external SIEM provides durable, centrally managed retention beyond CloudHub's application log limits, and CloudHub logging can then be disabled if needed. Scheduled downloads (D) are operationally fragile, a subscription tier (C) does not guarantee one-year CloudHub log retention, and Object Store (A) is not a log-archiving mechanism.",
+    "explanation": "Correct answer: D. Forwarding logs to an external SIEM provides durable, centrally managed retention beyond CloudHub's application log limits, and CloudHub logging can then be disabled if needed. Scheduled downloads (A) are operationally fragile, a subscription tier (C) does not guarantee one-year CloudHub log retention, and Object Store (B) is not a log-archiving mechanism.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -18408,7 +18408,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "D subscription tier does not guarantee one-year CloudHub log retention."
+        "text": "A subscription tier does not guarantee one-year CloudHub log retention."
       },
       "D": {
         "type": "Correct",
@@ -18457,7 +18457,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Custom dashboards let you place charts for several applications and metrics on one canvas. Built-in dashboards (C) are oriented to one application at a time, Visualizer (A) shows topology with metrics overlaid, and API Manager analytics (B) reports policy and contract data.",
+    "explanation": "Correct answer: C. Custom dashboards let you place charts for several applications and metrics on one canvas. Built-in dashboards (B) are oriented to one application at a time, Visualizer (D) shows topology with metrics overlaid, and API Manager analytics (A) reports policy and contract data.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -18580,7 +18580,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. BAT CLI is designed to execute BDD API test suites from the command line in a CI/CD pipeline. The MUnit Maven Plugin (C) runs unit tests inside the Mule application build, and Anypoint CLI and API Manager CLI (A, B) manage platform assets, policies, and deployments rather than running BDD API tests.",
+    "explanation": "Correct answer: D. BAT CLI is designed to execute BDD API test suites from the command line in a CI/CD pipeline. The MUnit Maven Plugin (B) runs unit tests inside the Mule application build, and Anypoint CLI and API Manager CLI (A, B) manage platform assets, policies, and deployments rather than running BDD API tests.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -18641,7 +18641,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Visualizer's graph shows the failure chain across the APIs, so the failing downstream API is visible quickly. Runtime Manager's dashboard (C) shows worker health rather than the call chain, API Manager alerts (D) report policy violations, and audit logs (B) record configuration changes.",
+    "explanation": "Correct answer: A. Visualizer's graph shows the failure chain across the APIs, so the failing downstream API is visible quickly. Runtime Manager's dashboard (D) shows worker health rather than the call chain, API Manager alerts (B) report policy violations, and audit logs (C) record configuration changes.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -18702,7 +18702,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Customer-hosted Mule runtimes require the Anypoint Monitoring Agent to collect and send metrics to the monitoring plane. A CloudHub proxy (A) is not required to enable monitoring, Titanium alone (D) does not install or configure the agent, and the analytics_base_uri property (B) is not the stated mechanism.",
+    "explanation": "Correct answer: D. Customer-hosted Mule runtimes require the Anypoint Monitoring Agent to collect and send metrics to the monitoring plane. A CloudHub proxy (A) is not required to enable monitoring, Titanium alone (B) does not install or configure the agent, and the analytics_base_uri property (C) is not the stated mechanism.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -18763,7 +18763,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Access Management audit logs record administrative actions, including who deleted an application. Runtime Manager alerts (B) notify when an application stops but do not attribute the action, runtime logs (C) record the application's own output, and API Manager analytics (D) reports API usage.",
+    "explanation": "Correct answer: B. Access Management audit logs record administrative actions, including who deleted an application. Runtime Manager alerts (C) notify when an application stops but do not attribute the action, runtime logs (A) record the application's own output, and API Manager analytics (D) reports API usage.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -18824,7 +18824,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Runtime Manager Alerts support worker-level conditions such as CPU utilization. Response time and error rate (A, C) are API metrics evaluated by Anypoint Monitoring, and invalid OAuth tokens (D) are handled by a token enforcement policy rather than a Runtime Manager alert.",
+    "explanation": "Correct answer: C. Runtime Manager Alerts support worker-level conditions such as CPU utilization. Response time and error rate (A, C) are API metrics evaluated by Anypoint Monitoring, and invalid OAuth tokens (B) are handled by a token enforcement policy rather than a Runtime Manager alert.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -18885,7 +18885,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. B Message Logging policy can be applied in API Manager to log request and response headers and payloads without touching the application. Verbose Logging (B) changes the volume of the application's own logs, a custom appender (C) still requires configuration outside the platform UI, and the Visualizer overlay (D) shows topology rather than payloads.",
+    "explanation": "Correct answer: B. A Message Logging policy can be applied in API Manager to log request and response headers and payloads without touching the application. Verbose Logging (A) changes the volume of the application's own logs, a custom appender (D) still requires configuration outside the platform UI, and the Visualizer overlay (C) shows topology rather than payloads.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -18893,7 +18893,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Correct",
-        "text": "B Message Logging policy logs headers and payloads without changing the application."
+        "text": "A Message Logging policy logs headers and payloads without changing the application."
       },
       "C": {
         "type": "Incorrect",
@@ -18901,7 +18901,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "B custom appender requires configuration outside the platform UI."
+        "text": "A custom appender requires configuration outside the platform UI."
       }
     },
     "references": {
@@ -18946,7 +18946,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Runtime Fabric container logs are emitted to standard output, and cluster-level log forwarding centralizes their collection without per-application changes. Editing every application's logging configuration (B) or installing a connector in every application (C) is more costly and error-prone, and BAT CLI (A) runs functional tests rather than collecting logs.",
+    "explanation": "Correct answer: A. Runtime Fabric container logs are emitted to standard output, and cluster-level log forwarding centralizes their collection without per-application changes. Editing every application's logging configuration (D) or installing a connector in every application (C) is more costly and error-prone, and BAT CLI (A) runs functional tests rather than collecting logs.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -18958,7 +18958,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "D connector in every application is not the recommended infrastructure-level method."
+        "text": "A connector in every application is not the recommended infrastructure-level method."
       },
       "D": {
         "type": "Incorrect",
@@ -19007,7 +19007,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. HTTP 429 is returned by a Rate Limiting or Spike Control policy when a caller exceeds the allowed rate. D load balancer dropping connections (C) would surface as connection errors, a downstream timeout (B) would surface as a 504 or 500, and an out-of-memory worker (A) would surface as 500 errors or restarts.",
+    "explanation": "Correct answer: A. HTTP 429 is returned by a Rate Limiting or Spike Control policy when a caller exceeds the allowed rate. A load balancer dropping connections (D) would surface as connection errors, a downstream timeout (B) would surface as a 504 or 500, and an out-of-memory worker (C) would surface as 500 errors or restarts.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -19015,7 +19015,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "D downstream timeout surfaces as a 504 or 500, not a 429."
+        "text": "A downstream timeout surfaces as a 504 or 500, not a 429."
       },
       "C": {
         "type": "Incorrect",
@@ -19023,7 +19023,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "D dropped connection surfaces as a connection error, not a 429."
+        "text": "A dropped connection surfaces as a connection error, not a 429."
       }
     },
     "references": {
@@ -19129,7 +19129,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Titanium adds advanced log management, including searching logs across all applications in an environment at once. Basic CPU and memory metrics (D) and Visualizer (C) are available at lower tiers, and SLA-based rate limiting (A) is an API Manager policy rather than a monitoring tier feature.",
+    "explanation": "Correct answer: D. Titanium adds advanced log management, including searching logs across all applications in an environment at once. Basic CPU and memory metrics (A) and Visualizer (C) are available at lower tiers, and SLA-based rate limiting (B) is an API Manager policy rather than a monitoring tier feature.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -19190,7 +19190,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. CloudHub infrastructure watches the underlying instance and the Mule Agent heartbeats from the worker to decide that it is unresponsive. There is no /api/status ping every 10 seconds (A), the check is not the Hazelcast heartbeat (D), and sustained 100% CPU is a different condition (B).",
+    "explanation": "Correct answer: D. CloudHub infrastructure watches the underlying instance and the Mule Agent heartbeats from the worker to decide that it is unresponsive. There is no /api/status ping every 10 seconds (A), the check is not the Hazelcast heartbeat (B), and sustained 100% CPU is a different condition (C).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -19251,7 +19251,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. The red indicator highlights request failures in the selected time range, rather than worker health, CPU thresholds, or Autodiscovery configuration. It does not represent a CPU threshold (C), a crashed worker (D), or a missing Autodiscovery configuration (B).",
+    "explanation": "Correct answer: B. The red indicator highlights request failures in the selected time range, rather than worker health, CPU thresholds, or Autodiscovery configuration. It does not represent a CPU threshold (D), a crashed worker (A), or a missing Autodiscovery configuration (C).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -19312,7 +19312,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. API Autodiscovery, configured with the API Manager API ID, pairs the deployed application with its API instance so policies and analytics are activated. B monitoring agent dependency (A) collects metrics but does not register the API, the analytics_base_uri property (B) is not a registration switch, and a Log4j2 appender (C) does not register the API.",
+    "explanation": "Correct answer: C. API Autodiscovery, configured with the API Manager API ID, pairs the deployed application with its API instance so policies and analytics are activated. A monitoring agent dependency (B) collects metrics but does not register the API, the analytics_base_uri property (A) is not a registration switch, and a Log4j2 appender (D) does not register the API.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -19320,7 +19320,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "B monitoring agent collects metrics but does not register the API."
+        "text": "A monitoring agent collects metrics but does not register the API."
       },
       "C": {
         "type": "Correct",
@@ -19328,7 +19328,7 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "B Log4j2 appender does not register the API with API Manager."
+        "text": "A Log4j2 appender does not register the API with API Manager."
       }
     },
     "references": {
@@ -19495,7 +19495,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Tags set through the anypoint.platform.visualizer.tags property are controlled by the application properties: they appear on the node but cannot be overridden in the UI. Such tags cannot be renamed or removed from the UI (D), they are not scoped to one environment (B), and tags are independent of layers (C).",
+    "explanation": "Correct answer: D. Tags set through the anypoint.platform.visualizer.tags property are controlled by the application properties: they appear on the node but cannot be overridden in the UI. Such tags cannot be renamed or removed from the UI (C), they are not scoped to one environment (B), and tags are independent of layers (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -19556,7 +19556,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Visualizer draws edges from observed traffic in the last seven days, so a pair without traffic in that window shows no edge. Edges are not limited to APIs in the same layer (A), policies are not a prerequisite (B), and enabling the Monitoring agent would add metrics rather than reveal edges (C).",
+    "explanation": "Correct answer: B. Visualizer draws edges from observed traffic in the last seven days, so a pair without traffic in that window shows no edge. Edges are not limited to APIs in the same layer (A), policies are not a prerequisite (D), and enabling the Monitoring agent would add metrics rather than reveal edges (C).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -19618,7 +19618,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. The Visualizer Editor permission is required to create and save defined views. Organization Administrator (C) is broader than necessary, API Manager Policy Editor (A) governs policies, and CloudHub Network Viewer (D) governs network settings.",
+    "explanation": "Correct answer: C. The Visualizer Editor permission is required to create and save defined views. Organization Administrator (A) is broader than necessary, API Manager Policy Editor (B) governs policies, and CloudHub Network Viewer (D) governs network settings.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -19745,7 +19745,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "E"
     ],
-    "explanation": "Correct answers: A and E. The Master Look Up API is slow because each cache miss triggers a database query to refresh the cache, and the latency of those queries dominates the response time. Two independent levers address this. First, the HTTP Caching policy (C) caches HTTP responses for reuse: according to MuleSoft, \"Caching these responses speeds up the response time for user requests and reduces the load on the backend,\" and on a cache hit \"the stored response is returned\" without calling the backend, so repeated master-data lookups are served from the cache and the database is not queried at all. Second, the API is deployed on 0.1 vCore CloudHub workers, which \"provide limited CPU and I/O for apps with smaller workloads\" and \"can burst to higher CPU speeds for a short time\" rather than delivering consistent performance. Upgrading each worker to 0.2 vCore (E) raises worker memory from 1 GB to 2 GB and heap memory from 500 MB to 1 GB, giving the API more resources to serve the cached lookups. Option C (adding another 0.1 vCore worker) does not help: although CloudHub's HTTP load balancing service distributes requests across workers on a round-robin basis, each request is still served by a single 0.1 vCore worker with the same limited CPU and I/O, so extra workers add capacity rather than reduce the per-request latency caused by the database queries. Option D (locking) is wrong because Object Stores \"do not support transactional access or modification,\" and locking to synchronize access to the Object Store would serialize the cache and tend to increase, not decrease, response time.",
+    "explanation": "Correct answers: A and E. The Master Look Up API is slow because each cache miss triggers a database query to refresh the cache, and the latency of those queries dominates the response time. Two independent levers address this. First, the HTTP Caching policy (A) caches HTTP responses for reuse: according to MuleSoft, \"Caching these responses speeds up the response time for user requests and reduces the load on the backend,\" and on a cache hit \"the stored response is returned\" without calling the backend, so repeated master-data lookups are served from the cache and the database is not queried at all. Second, the API is deployed on 0.1 vCore CloudHub workers, which \"provide limited CPU and I/O for apps with smaller workloads\" and \"can burst to higher CPU speeds for a short time\" rather than delivering consistent performance. Upgrading each worker to 0.2 vCore (E) raises worker memory from 1 GB to 2 GB and heap memory from 500 MB to 1 GB, giving the API more resources to serve the cached lookups. Option C (adding another 0.1 vCore worker) does not help: although CloudHub's HTTP load balancing service distributes requests across workers on a round-robin basis, each request is still served by a single 0.1 vCore worker with the same limited CPU and I/O, so extra workers add capacity rather than reduce the per-request latency caused by the database queries. Option D (locking) is wrong because Object Stores \"do not support transactional access or modification,\" and locking to synchronize access to the Object Store would serialize the cache and tend to increase, not decrease, response time.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -19753,7 +19753,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "C load balancer distributes traffic; it does not reduce the latency of the database queries that dominate the response time."
+        "text": "A load balancer distributes traffic; it does not reduce the latency of the database queries that dominate the response time."
       },
       "C": {
         "type": "Incorrect",
@@ -19812,7 +19812,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Mule Gateway is embedded in the Mule runtime and is recommended for Mule applications on CloudHub that do not require managing the underlying infrastructure. Flex Gateway is an Envoy-based gateway recommended for high-availability and high-performance Mule and non-Mule APIs running anywhere, so it is the better fit here. Non-Mule APIs do not have to be rewritten (D), and API Governance rulesets check conformance rather than enforce runtime policies (A).",
+    "explanation": "Correct answer: A. Mule Gateway is embedded in the Mule runtime and is recommended for Mule applications on CloudHub that do not require managing the underlying infrastructure. Flex Gateway is an Envoy-based gateway recommended for high-availability and high-performance Mule and non-Mule APIs running anywhere, so it is the better fit here. Non-Mule APIs do not have to be rewritten (C), and API Governance rulesets check conformance rather than enforce runtime policies (D).",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -19875,7 +19875,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Because tokens are issued by an external OpenID Connect identity provider, the OpenID Connect OAuth 2.0 Token Enforcement policy validates them at the gateway. The Mule OAuth Provider variant (C) is for tokens issued by Anypoint Platform itself, IP Allowlist (B) restricts source addresses, and JSON Threat Protection (A) inspects payload structure.",
+    "explanation": "Correct answer: C. Because tokens are issued by an external OpenID Connect identity provider, the OpenID Connect OAuth 2.0 Token Enforcement policy validates them at the gateway. The Mule OAuth Provider variant (C) is for tokens issued by Anypoint Platform itself, IP Allowlist (A) restricts source addresses, and JSON Threat Protection (B) inspects payload structure.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -19939,7 +19939,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. CloudHub 2.0 uses TLS contexts to encrypt inbound traffic and enable custom domains; you create a TLS context with the company certificate, set the domain as an external endpoint in the app's Ingress settings, and point a DNS CNAME at the private space's public DNS target. C private space uses a managed ingress rather than a customer-created DLB (D), the default cloudhub.io TLS context cannot be removed (A), and custom domains are supported only on private spaces, not shared spaces (C).",
+    "explanation": "Correct answer: B. CloudHub 2.0 uses TLS contexts to encrypt inbound traffic and enable custom domains; you create a TLS context with the company certificate, set the domain as an external endpoint in the app's Ingress settings, and point a DNS CNAME at the private space's public DNS target. A private space uses a managed ingress rather than a customer-created DLB (C), the default cloudhub.io TLS context cannot be removed (B), and custom domains are supported only on private spaces, not shared spaces (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -19947,11 +19947,11 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Correct",
-        "text": "C TLS context plus an external endpoint plus a DNS CNAME maps the custom domain to the app over HTTPS."
+        "text": "A TLS context plus an external endpoint plus a DNS CNAME maps the custom domain to the app over HTTPS."
       },
       "C": {
         "type": "Incorrect",
-        "text": "C private space uses a managed ingress load balancer, not a customer-created DLB."
+        "text": "A private space uses a managed ingress load balancer, not a customer-created DLB."
       },
       "D": {
         "type": "Incorrect",
@@ -20000,7 +20000,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Mutual TLS requires the gateway to validate each client’s certificate during the TLS handshake. Anypoint Platform’s built-in policies do not include certificate-chain validation against a custom CA, so a custom policy is needed. IP addresses (B) do not identify a client certificate, moving validation into the implementation (D) defeats the gateway’s purpose, and server-side TLS (C) authenticates the server, not the client.",
+    "explanation": "Correct answer: D. Mutual TLS requires the gateway to validate each client’s certificate during the TLS handshake. Anypoint Platform’s built-in policies do not include certificate-chain validation against a custom CA, so a custom policy is needed. IP addresses (C) do not identify a client certificate, moving validation into the implementation (D) defeats the gateway’s purpose, and server-side TLS (A) authenticates the server, not the client.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -20008,7 +20008,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "C header can be forged and bypassed; the validated handshake certificate cannot."
+        "text": "A header can be forged and bypassed; the validated handshake certificate cannot."
       },
       "C": {
         "type": "Incorrect",
@@ -20021,12 +20021,12 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Custom Policies",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/custom-policies"
+        "title": "Mule 4 Custom Policy Workflow",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-getting-started"
       },
       "secondary": {
-        "title": "MuleSoft — What Is Mutual TLS?",
-        "url": "https://www.mulesoft.com/resources/api/what-is-mutual-tls"
+        "title": "Guide to Maximizing your API Security",
+        "url": "https://www.mulesoft.com/resources/api/api-security"
       }
     }
   },
@@ -20083,8 +20083,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Supported Policies",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/policies-list"
+        "title": "Gateway Policies in API Manager",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-policies-overview"
       },
       "secondary": {
         "title": "MuleSoft — API Security Best Practices",
@@ -20123,7 +20123,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Custom domains with custom TLS certificates and security groups that filter source traffic require a dedicated load balancer, which in turn must be created inside an Anypoint VPC. The shared load balancer uses cloudhub.io domains with platform certificates (D), a DLB cannot exist outside a VPC (B), and worker IPs are not stable addresses for DNS (A).",
+    "explanation": "Correct answer: D. Custom domains with custom TLS certificates and security groups that filter source traffic require a dedicated load balancer, which in turn must be created inside an Anypoint VPC. The shared load balancer uses cloudhub.io domains with platform certificates (D), a DLB cannot exist outside a VPC (A), and worker IPs are not stable addresses for DNS (C).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -20139,17 +20139,17 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Correct",
-        "text": "B DLB in a VPC supports custom certificates, custom domains, and security group rules."
+        "text": "A DLB in a VPC supports custom certificates, custom domains, and security group rules."
       }
     },
     "references": {
       "primary": {
-        "title": "Dedicated Load Balancers on CloudHub",
-        "url": "https://docs.mulesoft.com/runtime-cloud/dlb-overview"
+        "title": "Dedicated Load Balancers",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
       },
       "secondary": {
-        "title": "Anypoint VPC Overview",
-        "url": "https://docs.mulesoft.com/runtime-cloud/vpc-overview"
+        "title": "Virtual Private Cloud",
+        "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       }
     }
   },
@@ -20185,11 +20185,11 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. B dedicated load balancer supports ingress (URL) mapping rules: one DLB with one custom domain and certificate can route path patterns to different Mule applications by their internal DNS name. The mapping is explicit (B is wrong), SLA tiers govern quotas and approval rather than routing (A), and multiple DLBs cannot share one external domain simultaneously (B).",
+    "explanation": "Correct answer: C. A dedicated load balancer supports ingress (URL) mapping rules: one DLB with one custom domain and certificate can route path patterns to different Mule applications by their internal DNS name. The mapping is explicit (B is wrong), SLA tiers govern quotas and approval rather than routing (B), and multiple DLBs cannot share one external domain simultaneously (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "B domain resolves to one DLB; time-sharing DNS is not a real pattern."
+        "text": "A domain resolves to one DLB; time-sharing DNS is not a real pattern."
       },
       "B": {
         "type": "Incorrect",
@@ -20206,12 +20206,12 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Dedicated Load Balancer — Ingress Configuration",
-        "url": "https://docs.mulesoft.com/runtime-cloud/dlb-overview"
+        "title": "Dedicated Load Balancers",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
       },
       "secondary": {
-        "title": "CloudHub — Custom Domains and Certificates",
-        "url": "https://docs.mulesoft.com/runtime-cloud/shared-dlb-custom-domains"
+        "title": "Dedicated Load Balancer Mapping Rules",
+        "url": "https://docs.mulesoft.com/cloudhub/lb-mapping-rules"
       }
     }
   },
@@ -20247,7 +20247,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. CloudHub distributes an application’s workers across data centers (or availability zones, depending on deployment), so a multi-worker application keeps serving traffic if one data center fails. D single large worker is still a single point of failure (B), duplicate manually-synced applications are an anti-pattern (C), and fractional workers offer no data-center redundancy (A).",
+    "explanation": "Correct answer: A. CloudHub distributes an application’s workers across data centers (or availability zones, depending on deployment), so a multi-worker application keeps serving traffic if one data center fails. A single large worker is still a single point of failure (B), duplicate manually-synced applications are an anti-pattern (C), and fractional workers offer no data-center redundancy (A).",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -20268,12 +20268,12 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Application Reliability",
-        "url": "https://docs.mulesoft.com/runtime-cloud/shared-cloudhub-reliability"
+        "title": "CloudHub High Availability and Disaster Recovery",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-hadr"
       },
       "secondary": {
-        "title": "CloudHub — Worker Sizing",
-        "url": "https://docs.mulesoft.com/runtime-cloud/shared-worker-sizing"
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
     }
   },
@@ -20309,7 +20309,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Custom domain plus custom certificate plus restricted public entry is exactly the dedicated load balancer’s role inside an Anypoint VPC: it terminates TLS with the uploaded certificate and forwards to the application over the private network. The shared load balancer cannot use custom certificates (D), worker IPs are unstable and bypass TLS termination (B), and VPC peering is for private connectivity, not partner-facing DNS (A).",
+    "explanation": "Correct answer: D. Custom domain plus custom certificate plus restricted public entry is exactly the dedicated load balancer’s role inside an Anypoint VPC: it terminates TLS with the uploaded certificate and forwards to the application over the private network. The shared load balancer cannot use custom certificates (B), worker IPs are unstable and bypass TLS termination (A), and VPC peering is for private connectivity, not partner-facing DNS (D).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -20331,11 +20331,11 @@ window.MCPA_QUESTIONS = [
     "references": {
       "primary": {
         "title": "Dedicated Load Balancers",
-        "url": "https://docs.mulesoft.com/runtime-cloud/dlb-overview"
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
       },
       "secondary": {
-        "title": "Anypoint VPC — Connectivity",
-        "url": "https://docs.mulesoft.com/runtime-cloud/vpc-peering"
+        "title": "Anypoint VPC Connectivity Methods",
+        "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       }
     }
   },
@@ -20371,7 +20371,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. MUnit lets the team mock the SAP connector so the flow logic can be tested in CI without connectivity, and running it on every commit makes regression detection automatic. Manual production smoke tests (B) are late and risky, alerts (C) report failures rather than prevent them, and load tests (D) measure performance, not correctness.",
+    "explanation": "Correct answer: D. MUnit lets the team mock the SAP connector so the flow logic can be tested in CI without connectivity, and running it on every commit makes regression detection automatic. Manual production smoke tests (B) are late and risky, alerts (C) report failures rather than prevent them, and load tests (A) measure performance, not correctness.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -20396,8 +20396,8 @@ window.MCPA_QUESTIONS = [
         "url": "https://docs.mulesoft.com/munit/2.3/"
       },
       "secondary": {
-        "title": "MUnit — Mock Processors",
-        "url": "https://docs.mulesoft.com/munit/2.3/mock-event-processors"
+        "title": "MUnit Mock When Event Processor",
+        "url": "https://docs.mulesoft.com/munit/latest/mock-event-processor"
       }
     }
   },
@@ -20433,7 +20433,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Wrapping a legacy SOAP backend behind a REST System API lets modern channels consume a simple contract while the SOAP specifics remain the implementation's concern. REST does not inherently outperform SOAP (B), the legacy service still backs the API (D), and both styles can carry WS-Security or TLS (C).",
+    "explanation": "Correct answer: C. Wrapping a legacy SOAP backend behind a REST System API lets modern channels consume a simple contract while the SOAP specifics remain the implementation's concern. REST does not inherently outperform SOAP (C), the legacy service still backs the API (D), and both styles can carry WS-Security or TLS (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -20454,8 +20454,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       },
       "secondary": {
         "title": "Anypoint Platform Glossary",
@@ -20494,7 +20494,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Message payloads flow only through the runtime plane where the application executes. In a hybrid deployment the payloads stay in the customer's EU data center. The control plane (API Manager, Exchange) manages metadata, not messages (D, A), and Exchange stores specifications, not runtime data (C).",
+    "explanation": "Correct answer: B. Message payloads flow only through the runtime plane where the application executes. In a hybrid deployment the payloads stay in the customer's EU data center. The control plane (API Manager, Exchange) manages metadata, not messages (D, A), and Exchange stores specifications, not runtime data (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -20515,12 +20515,12 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Platform Deployment Architectures",
-        "url": "https://docs.mulesoft.com/general/deployment-architectures"
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
       },
       "secondary": {
-        "title": "MuleSoft — Data Residency",
-        "url": "https://docs.mulesoft.com/general/data-residency"
+        "title": "Anypoint Platform Control Planes Overview",
+        "url": "https://docs.mulesoft.com/control-planes/"
       }
     }
   },
@@ -20576,8 +20576,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Platform Architecture",
-        "url": "https://docs.mulesoft.com/general/anypoint-platform-architecture"
+        "title": "Anypoint Platform Control Planes Overview",
+        "url": "https://docs.mulesoft.com/control-planes/"
       }
     }
   },
@@ -20635,8 +20635,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Platform Products Overview",
-        "url": "https://docs.mulesoft.com/general/overview"
+        "title": "MuleSoft Documentation",
+        "url": "https://docs.mulesoft.com/general/"
       }
     }
   },
@@ -20671,7 +20671,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Experience APIs are tailored to a specific channel and change at that channel's pace, which is typically the fastest of the three tiers. System (D) and Process (B) APIs are owned by backend and orchestration teams respectively, and channel APIs absolutely belong in the network under governance (C).",
+    "explanation": "Correct answer: D. Experience APIs are tailored to a specific channel and change at that channel's pace, which is typically the fastest of the three tiers. System (C) and Process (B) APIs are owned by backend and orchestration teams respectively, and channel APIs absolutely belong in the network under governance (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -20692,8 +20692,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -20750,12 +20750,12 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — What Is a Web API?",
-        "url": "https://www.mulesoft.com/resources/api/what-is-a-web-api"
+        "title": "What is a REST (RESTful) API?",
+        "url": "https://www.mulesoft.com/resources/api/restful-api"
       },
       "secondary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     },
     "image": "images/q335arch.svg"
@@ -20795,7 +20795,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "E"
     ],
-    "explanation": "Correct answer: E and A. REST with HTTP/JSON is the default for new APIs, while SOAP remains common for existing enterprise backends. JMS-only (E), raw JDBC (A), and FTP flat files (C) are point-to-point integration styles, not the contract-based network API-led prescribes.",
+    "explanation": "Correct answer: E and A. REST with HTTP/JSON is the default for new APIs, while SOAP remains common for existing enterprise backends. JMS-only (E), raw JDBC (C), and FTP flat files (D) are point-to-point integration styles, not the contract-based network API-led prescribes.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -20820,8 +20820,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -20861,7 +20861,7 @@ window.MCPA_QUESTIONS = [
       "D",
       "E"
     ],
-    "explanation": "Correct answer: D, C, and E. Design Center, Exchange, and API Manager are core platform components. Hosting choices for Mule apps are CloudHub, private spaces, or customer infrastructure (D), and API testing tools like Postman are external, not bundled as platform components (C).",
+    "explanation": "Correct answer: D, C, and E. Design Center, Exchange, and API Manager are core platform components. Hosting choices for Mule apps are CloudHub, private spaces, or customer infrastructure (A), and API testing tools like Postman are external, not bundled as platform components (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -20886,8 +20886,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Platform Products Overview",
-        "url": "https://docs.mulesoft.com/general/overview"
+        "title": "MuleSoft Documentation",
+        "url": "https://docs.mulesoft.com/general/"
       }
     }
   },
@@ -20922,7 +20922,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. C shared System API turns three connection builds into one, with consistent security and change management. The database is not copied (A), backend upgrades are independent (C), and governance is precisely why the shared API is valuable (D).",
+    "explanation": "Correct answer: D. A shared System API turns three connection builds into one, with consistent security and change management. The database is not copied (C), backend upgrades are independent (A), and governance is precisely why the shared API is valuable (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -20943,8 +20943,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -20978,7 +20978,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. The Process layer implements business logic that composes multiple System APIs. Channel shapes (A) are Experience, database hosting (C) is the system of record's job, and publishing specs (D) is the System API team's job in Exchange.",
+    "explanation": "Correct answer: D. The Process layer implements business logic that composes multiple System APIs. Channel shapes (C) are Experience, database hosting (A) is the system of record's job, and publishing specs (B) is the System API team's job in Exchange.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -20999,8 +20999,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -21035,7 +21035,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Process APIs are typically consumed by Experience APIs and by other Process APIs; channels reach them indirectly through Experience APIs tailored to their needs. Direct external consumption (C) couples channels to business logic, reporting (A) is a different concern, and (B) misstates their role.",
+    "explanation": "Correct answer: A. Process APIs are typically consumed by Experience APIs and by other Process APIs; channels reach them indirectly through Experience APIs tailored to their needs. Direct external consumption (D) couples channels to business logic, reporting (B) is a different concern, and (A) misstates their role.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -21056,8 +21056,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -21091,7 +21091,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. The application network grows node by node: projects reuse what exists and contribute what is new, so each project both consumes and extends the network's value. Replacement (C), zero growth (D), and single-use retirement (A) all contradict the model.",
+    "explanation": "Correct answer: B. The application network grows node by node: projects reuse what exists and contribute what is new, so each project both consumes and extends the network's value. Replacement (D), zero growth (B), and single-use retirement (C) all contradict the model.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -21112,8 +21112,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — The Application Network",
-        "url": "https://www.mulesoft.com/resources/api/application-network"
+        "title": "What is an application network?",
+        "url": "https://www.mulesoft.com/api/what-is-an-application-network"
       }
     }
   },
@@ -21148,7 +21148,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. The classic ESB funnelled projects through a central team with implicit, undiscoverable interfaces; API-led connectivity keeps central governance while enabling distributed delivery teams to build on discoverable contracts. They are not the same (A), transformation exists in both (C), and governance remains central to API-led (D).",
+    "explanation": "Correct answer: B. The classic ESB funnelled projects through a central team with implicit, undiscoverable interfaces; API-led connectivity keeps central governance while enabling distributed delivery teams to build on discoverable contracts. They are not the same (A), transformation exists in both (C), and governance remains central to API-led (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -21169,8 +21169,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led vs Point-to-point Integration",
-        "url": "https://www.mulesoft.com/resources/api/api-led-vs-point-to-point"
+        "title": "Application networks are the next generation of integration middleware",
+        "url": "https://www.mulesoft.com/api/application-network-integration-middleware"
       }
     }
   },
@@ -21209,7 +21209,7 @@ window.MCPA_QUESTIONS = [
       "D",
       "E"
     ],
-    "explanation": "Correct answer: D and E. Studio is the developer IDE for building and locally running/debugging Mule applications. Policies are applied in API Manager (B), production execution happens on Mule runtimes such as CloudHub (E), and the catalog lives in Exchange (D).",
+    "explanation": "Correct answer: D and E. Studio is the developer IDE for building and locally running/debugging Mule applications. Policies are applied in API Manager (B), production execution happens on Mule runtimes such as CloudHub (E), and the catalog lives in Exchange (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -21270,7 +21270,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. D proxy is a gateway endpoint that fronts the backend, enforcing policies before forwarding traffic; the backend is untouched. It does not rewrite implementations (B), does not persist responses by design (C), and never replaces data stores (A).",
+    "explanation": "Correct answer: A. A proxy is a gateway endpoint that fronts the backend, enforcing policies before forwarding traffic; the backend is untouched. It does not rewrite implementations (D), does not persist responses by design (A), and never replaces data stores (B).",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -21348,8 +21348,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Managing API Instances",
-        "url": "https://docs.mulesoft.com/api-manager/latest/manage-api"
+        "title": "Managing API Instances",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-instance-landing-page"
       }
     }
   },
@@ -21384,7 +21384,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Exchange is the platform's catalog: the first stop to discover and reuse assets. Runtime Manager shows deployments (C), Monitoring shows traffic health (B), and Access Management handles permissions (D) — none of them is the discovery point.",
+    "explanation": "Correct answer: C. Exchange is the platform's catalog: the first stop to discover and reuse assets. Runtime Manager shows deployments (B), Monitoring shows traffic health (A), and Access Management handles permissions (D) — none of them is the discovery point.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -21446,7 +21446,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "E"
     ],
-    "explanation": "Correct answer: A and E. RAML and OAS are the two dominant REST description languages, and publishing a spec to Exchange makes it a reusable contract. Specifications contain no executable logic (E), OAS is an open standard readable by any tool (D), and specs are versioned semantically like any asset (C).",
+    "explanation": "Correct answer: A and E. RAML and OAS are the two dominant REST description languages, and publishing a spec to Exchange makes it a reusable contract. Specifications contain no executable logic (C), OAS is an open standard readable by any tool (D), and specs are versioned semantically like any asset (B).",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -21471,8 +21471,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "RAML 200 Tutorial",
-        "url": "https://docs.mulesoft.com/raml/200-tutorial"
+        "title": "Getting Started with API Designer",
+        "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-specs"
       }
     }
   },
@@ -21528,8 +21528,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -21564,7 +21564,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Access Management governs platform users, roles, and permissions, and federates external identity providers. API Manager governs API clients (B), Monitoring observes events (C), and Runtime Manager manages deployments (D).",
+    "explanation": "Correct answer: C. Access Management governs platform users, roles, and permissions, and federates external identity providers. API Manager governs API clients (D), Monitoring observes events (A), and Runtime Manager manages deployments (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -21620,7 +21620,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. C universal channel API couples every channel's change cadence: each new requirement forces a change that all consumers must retest. Experience APIs exist precisely to localize channel-specific change. (B) is not an objection, (A) is false, and (D) misstates security, which applies per API instance regardless of count.",
+    "explanation": "Correct answer: A. A universal channel API couples every channel's change cadence: each new requirement forces a change that all consumers must retest. Experience APIs exist precisely to localize channel-specific change. (B) is not an objection, (A) is false, and (D) misstates security, which applies per API instance regardless of count.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -21641,8 +21641,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -21707,12 +21707,12 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — Center for Enablement",
-        "url": "https://www.mulesoft.com/resources/api/center-for-enablement"
+        "title": "What Is a Center for Enablement (C4E)?",
+        "url": "https://www.salesforce.com/blog/what-is-a-center-for-enablement/"
       },
       "secondary": {
-        "title": "MuleSoft Catalyst — Methodology",
-        "url": "https://docs.mulesoft.com/catalyst/"
+        "title": "MuleSoft Catalyst",
+        "url": "https://www.mulesoft.com/catalyst"
       }
     }
   },
@@ -21746,11 +21746,11 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. C starting C4E is a small enablement pod: architect, reusable-asset developer, evangelist. Building everything centrally (D) recreates the ESB bottleneck the C4E exists to avoid, contractors-only (A) forfeits institutional knowledge, and everyone-in (C) dilutes enablement focus.",
+    "explanation": "Correct answer: B. A starting C4E is a small enablement pod: architect, reusable-asset developer, evangelist. Building everything centrally (C) recreates the ESB bottleneck the C4E exists to avoid, contractors-only (D) forfeits institutional knowledge, and everyone-in (A) dilutes enablement focus.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "C C4E of everyone is a C4E of no one."
+        "text": "A C4E of everyone is a C4E of no one."
       },
       "B": {
         "type": "Correct",
@@ -21767,8 +21767,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — Center for Enablement",
-        "url": "https://www.mulesoft.com/resources/api/center-for-enablement"
+        "title": "What Is a Center for Enablement (C4E)?",
+        "url": "https://www.salesforce.com/blog/what-is-a-center-for-enablement/"
       }
     }
   },
@@ -21803,7 +21803,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. The C4E enables and curates: standards, templates, shared assets, coaching. Delivery teams own their APIs. Central building (B), no standards (C), and line-by-line approval (A) all either bottleneck or fragment the network.",
+    "explanation": "Correct answer: A. The C4E enables and curates: standards, templates, shared assets, coaching. Delivery teams own their APIs. Central building (D), no standards (A), and line-by-line approval (B) all either bottleneck or fragment the network.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -21824,8 +21824,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft Catalyst — Methodology",
-        "url": "https://docs.mulesoft.com/catalyst/"
+        "title": "MuleSoft Catalyst",
+        "url": "https://www.mulesoft.com/catalyst"
       }
     }
   },
@@ -21859,7 +21859,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Catalyst integrates subscription, accelerators, methodology (including playbooks for paths such as C4E or API program), and enablement. It is not methodology-free (A), not training-only (C), and does not replace the customer's own teams (D).",
+    "explanation": "Correct answer: B. Catalyst integrates subscription, accelerators, methodology (including playbooks for paths such as C4E or API program), and enablement. It is not methodology-free (A), not training-only (D), and does not replace the customer's own teams (C).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -21880,8 +21880,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft Catalyst Overview",
-        "url": "https://docs.mulesoft.com/catalyst/"
+        "title": "MuleSoft Catalyst",
+        "url": "https://www.mulesoft.com/catalyst"
       }
     }
   },
@@ -21937,8 +21937,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft Catalyst — Playbooks",
-        "url": "https://docs.mulesoft.com/catalyst/"
+        "title": "MuleSoft Catalyst",
+        "url": "https://www.mulesoft.com/catalyst"
       }
     }
   },
@@ -22003,8 +22003,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Platform Deployment Architectures",
-        "url": "https://docs.mulesoft.com/general/deployment-architectures"
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
       }
     }
   },
@@ -22061,8 +22061,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Platform Deployment Architectures",
-        "url": "https://docs.mulesoft.com/general/deployment-architectures"
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
       }
     }
   },
@@ -22097,7 +22097,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Hybrid is precisely this: control plane in the MuleSoft cloud, runtime plane on customer infrastructure. CloudHub alone (A) processes payloads in the cloud, the control plane never carries payloads (C), and hybrid is a supported model (D).",
+    "explanation": "Correct answer: C. Hybrid is precisely this: control plane in the MuleSoft cloud, runtime plane on customer infrastructure. CloudHub alone (D) processes payloads in the cloud, the control plane never carries payloads (B), and hybrid is a supported model (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -22118,8 +22118,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Platform Deployment Architectures",
-        "url": "https://docs.mulesoft.com/general/deployment-architectures"
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
       }
     }
   },
@@ -22154,7 +22154,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Anypoint federates external IdPs via SAML/OIDC so platform users authenticate against Okta. Client ID enforcement governs API consumers (D), VPC peering is network connectivity (C), and an Okta API proxy (A) does not control platform login.",
+    "explanation": "Correct answer: D. Anypoint federates external IdPs via SAML/OIDC so platform users authenticate against Okta. Client ID enforcement governs API consumers (A), VPC peering is network connectivity (C), and an Okta API proxy (B) does not control platform login.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -22162,7 +22162,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "D proxy does not authenticate platform users."
+        "text": "A proxy does not authenticate platform users."
       },
       "C": {
         "type": "Incorrect",
@@ -22211,7 +22211,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. API client applications are registered and credentialed centrally; their access to API instances and tiers can be approved and revoked. Partner employees as platform admins (A) exposes far too much, static passwords (B) are unmanageable and insecure, and worker SSH (D) is neither possible on shared runtimes nor appropriate.",
+    "explanation": "Correct answer: B. API client applications are registered and credentialed centrally; their access to API instances and tiers can be approved and revoked. Partner employees as platform admins (C) exposes far too much, static passwords (A) are unmanageable and insecure, and worker SSH (D) is neither possible on shared runtimes nor appropriate.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -22232,8 +22232,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Platform — Client Application Management",
-        "url": "https://docs.mulesoft.com/exchange/client-applications"
+        "title": "Manage Client Applications",
+        "url": "https://docs.mulesoft.com/exchange/about-my-applications"
       }
     }
   },
@@ -22268,7 +22268,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Anypoint Monitoring stores metrics in the region of the deployment (subject to the platform's data residency behavior), so EU-run apps report EU-stored metrics. (C) misstates residency, (A) contradicts retention needed for dashboards and alerting, and (D) confuses contracts with infrastructure.",
+    "explanation": "Correct answer: C. Anypoint Monitoring stores metrics in the region of the deployment (subject to the platform's data residency behavior), so EU-run apps report EU-stored metrics. (D) misstates residency, (A) contradicts retention needed for dashboards and alerting, and (B) confuses contracts with infrastructure.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -22403,8 +22403,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — Center for Enablement",
-        "url": "https://www.mulesoft.com/resources/api/center-for-enablement"
+        "title": "What Is a Center for Enablement (C4E)?",
+        "url": "https://www.salesforce.com/blog/what-is-a-center-for-enablement/"
       }
     }
   },
@@ -22445,7 +22445,7 @@ window.MCPA_QUESTIONS = [
       "D",
       "E"
     ],
-    "explanation": "Correct answer: A, D, and E. Network value grows with published reusable assets, governed consumption, and breadth of consumers. Email volume (D) and heap size (E) say nothing about network growth.",
+    "explanation": "Correct answer: A, D, and E. Network value grows with published reusable assets, governed consumption, and breadth of consumers. Email volume (B) and heap size (C) say nothing about network growth.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -22470,8 +22470,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft Catalyst — Methodology",
-        "url": "https://docs.mulesoft.com/catalyst/"
+        "title": "MuleSoft Catalyst",
+        "url": "https://www.mulesoft.com/catalyst"
       }
     }
   },
@@ -22527,8 +22527,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Platform Deployment Architectures",
-        "url": "https://docs.mulesoft.com/general/deployment-architectures"
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
       }
     }
   },
@@ -22620,7 +22620,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Business groups partition the platform per organization unit, each with its own environments and assets. SLA tiers meter consumption (C), runtimes execute applications without organizational semantics (A), and portals are Exchange-sharing constructs within a group (D).",
+    "explanation": "Correct answer: C. Business groups partition the platform per organization unit, each with its own environments and assets. SLA tiers meter consumption (A), runtimes execute applications without organizational semantics (C), and portals are Exchange-sharing constructs within a group (D).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -22676,7 +22676,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Same asset version, one API instance per environment, each independently configured and governed. Specs are not re-authored per environment (B), production policy is configured deliberately (C), and instances are per-environment (D).",
+    "explanation": "Correct answer: A. Same asset version, one API instance per environment, each independently configured and governed. Specs are not re-authored per environment (B), production policy is configured deliberately (D), and instances are per-environment (C).",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -22697,8 +22697,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Environments",
-        "url": "https://docs.mulesoft.com/api-manager/latest/manage-api"
+        "title": "Managing API Instances",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-instance-landing-page"
       }
     }
   },
@@ -22733,7 +22733,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Secrets Manager centralizes secure secret storage and runtime injection. Publishing secrets to Exchange (B) exposes them, Monitoring observes but does not store (C), and Object Store is not a secret store (D).",
+    "explanation": "Correct answer: D. Secrets Manager centralizes secure secret storage and runtime injection. Publishing secrets to Exchange (C) exposes them, Monitoring observes but does not store (D), and Object Store is not a secret store (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -22741,7 +22741,7 @@ window.MCPA_QUESTIONS = [
       },
       "B": {
         "type": "Incorrect",
-        "text": "D catalog is the opposite of a secret store."
+        "text": "A catalog is the opposite of a secret store."
       },
       "C": {
         "type": "Incorrect",
@@ -22754,8 +22754,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Secrets Manager",
-        "url": "https://docs.mulesoft.com/secrets-manager/"
+        "title": "Anypoint Security Secrets Manager Overview",
+        "url": "https://docs.mulesoft.com/anypoint-security/index-secrets-manager"
       }
     }
   },
@@ -22811,8 +22811,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft Catalyst Overview",
-        "url": "https://docs.mulesoft.com/catalyst/"
+        "title": "MuleSoft Catalyst",
+        "url": "https://www.mulesoft.com/catalyst"
       }
     }
   },
@@ -22924,8 +22924,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Platform — OpenID Connect and OAuth",
-        "url": "https://docs.mulesoft.com/api-manager/oauth-provider"
+        "title": "Configure OAuth 2.0 Provider in Mule",
+        "url": "https://docs.mulesoft.com/api-manager/latest/mule-oauth-provider-landing-page"
       }
     }
   },
@@ -22981,8 +22981,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Platform Deployment Architectures",
-        "url": "https://docs.mulesoft.com/general/deployment-architectures"
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
       }
     }
   },
@@ -23021,7 +23021,7 @@ window.MCPA_QUESTIONS = [
       "B",
       "C"
     ],
-    "explanation": "Correct answer: B and C. Bottlenecking all delivery (D) and rule-dropping without enablement (E) are classic anti-patterns. Curation, coaching with team ownership (C, A), and reuse KPIs (B) are healthy patterns.",
+    "explanation": "Correct answer: B and C. Bottlenecking all delivery (E) and rule-dropping without enablement (C) are classic anti-patterns. Curation, coaching with team ownership (C, A), and reuse KPIs (A) are healthy patterns.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -23046,8 +23046,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — Center for Enablement",
-        "url": "https://www.mulesoft.com/resources/api/center-for-enablement"
+        "title": "What Is a Center for Enablement (C4E)?",
+        "url": "https://www.salesforce.com/blog/what-is-a-center-for-enablement/"
       }
     }
   },
@@ -23082,7 +23082,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Runtime Manager is the unified control-plane view for registered on-prem servers and their apps. It is not per-server software (B), and hybrid management is fully supported (C, D).",
+    "explanation": "Correct answer: D. Runtime Manager is the unified control-plane view for registered on-prem servers and their apps. It is not per-server software (C), and hybrid management is fully supported (C, D).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -23196,7 +23196,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Client applications are registered on the platform, yielding credentials that can be approved per API instance and SLA tier. Design Center (C), Monitoring (A), and hand-typed properties (D) are not the registration path.",
+    "explanation": "Correct answer: C. Client applications are registered on the platform, yielding credentials that can be approved per API instance and SLA tier. Design Center (A), Monitoring (B), and hand-typed properties (D) are not the registration path.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -23217,8 +23217,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — Client Applications",
-        "url": "https://docs.mulesoft.com/exchange/client-applications"
+        "title": "Manage Client Applications",
+        "url": "https://docs.mulesoft.com/exchange/about-my-applications"
       }
     }
   },
@@ -23252,7 +23252,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Residency concerns where data lives and is processed, frequently a compliance constraint. Retention (B), load balancer IPs (C), and staff addresses (D) are different concepts.",
+    "explanation": "Correct answer: A. Residency concerns where data lives and is processed, frequently a compliance constraint. Retention (D), load balancer IPs (C), and staff addresses (B) are different concepts.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -23273,8 +23273,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — Data Residency",
-        "url": "https://docs.mulesoft.com/general/data-residency"
+        "title": "Anypoint Platform Control Planes Overview",
+        "url": "https://docs.mulesoft.com/control-planes/"
       }
     }
   },
@@ -23309,7 +23309,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Dedicated control planes exist for isolation/compliance needs on the management plane itself. Theming (B) and latency (C) are unrelated, and proxy placement (D) is a runtime-plane decision.",
+    "explanation": "Correct answer: B. Dedicated control planes exist for isolation/compliance needs on the management plane itself. Theming (B) and latency (D) are unrelated, and proxy placement (C) is a runtime-plane decision.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -23330,8 +23330,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Platform Deployment Architectures",
-        "url": "https://docs.mulesoft.com/general/deployment-architectures"
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
       }
     }
   },
@@ -23366,11 +23366,11 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Mature C4Es grow specialized roles while delivery stays distributed. Disbanding (D), centralizing delivery (A), and renaming (B) all degrade the enablement model.",
+    "explanation": "Correct answer: B. Mature C4Es grow specialized roles while delivery stays distributed. Disbanding (C), centralizing delivery (D), and renaming (A) all degrade the enablement model.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "B name change without role change fixes nothing."
+        "text": "A name change without role change fixes nothing."
       },
       "B": {
         "type": "Correct",
@@ -23387,8 +23387,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — Center for Enablement",
-        "url": "https://www.mulesoft.com/resources/api/center-for-enablement"
+        "title": "What Is a Center for Enablement (C4E)?",
+        "url": "https://www.salesforce.com/blog/what-is-a-center-for-enablement/"
       }
     }
   },
@@ -23423,7 +23423,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Removing a field is a breaking change; semantic versioning requires a major version bump, with the old version supported during migration. Minor (B) and patch (C) bumps signal backward-compatible changes only, and (D) breaks consumers without warning.",
+    "explanation": "Correct answer: A. Removing a field is a breaking change; semantic versioning requires a major version bump, with the old version supported during migration. Minor (C) and patch (B) bumps signal backward-compatible changes only, and (A) breaks consumers without warning.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -23444,8 +23444,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Versioning and Semantic Versioning",
-        "url": "https://docs.mulesoft.com/exchange/api-versioning"
+        "title": "Manage Versions",
+        "url": "https://docs.mulesoft.com/exchange/manage-versions"
       }
     }
   },
@@ -23501,8 +23501,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — Deprecating Assets",
-        "url": "https://docs.mulesoft.com/exchange/deprecate-assets"
+        "title": "Managing Asset Lifecycle States",
+        "url": "https://docs.mulesoft.com/exchange/lifecycle"
       }
     }
   },
@@ -23536,7 +23536,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Optional (additive) changes are backward compatible and merit a minor bump (4.2.0). Major is for breaking changes (A), patch is for fixes to the implementation (C), and unversioned contract changes (D) leave consumers without a signal.",
+    "explanation": "Correct answer: D. Optional (additive) changes are backward compatible and merit a minor bump (4.2.0). Major is for breaking changes (C), patch is for fixes to the implementation (A), and unversioned contract changes (D) leave consumers without a signal.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -23557,8 +23557,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Versioning and Semantic Versioning",
-        "url": "https://docs.mulesoft.com/exchange/api-versioning"
+        "title": "Manage Versions",
+        "url": "https://docs.mulesoft.com/exchange/manage-versions"
       }
     }
   },
@@ -23592,7 +23592,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. C non-breaking, non-functional correction is a patch. Documentation wording does not change behavior (D, C), and specifications are versioned assets like any other (A).",
+    "explanation": "Correct answer: D. A non-breaking, non-functional correction is a patch. Documentation wording does not change behavior (D, C), and specifications are versioned assets like any other (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -23613,8 +23613,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Versioning and Semantic Versioning",
-        "url": "https://docs.mulesoft.com/exchange/api-versioning"
+        "title": "Manage Versions",
+        "url": "https://docs.mulesoft.com/exchange/manage-versions"
       }
     }
   },
@@ -23670,8 +23670,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Versioning and Semantic Versioning",
-        "url": "https://docs.mulesoft.com/exchange/api-versioning"
+        "title": "Manage Versions",
+        "url": "https://docs.mulesoft.com/exchange/manage-versions"
       }
     }
   },
@@ -23763,7 +23763,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. ETags plus conditional requests implement HTTP-native optimistic concurrency: writes with stale tags fail with 412. Polling (D) is racy, server locks (B) are a different (pessimistic) model, and (C) abandons the feature.",
+    "explanation": "Correct answer: A. ETags plus conditional requests implement HTTP-native optimistic concurrency: writes with stale tags fail with 412. Polling (C) is racy, server locks (D) are a different (pessimistic) model, and (B) abandons the feature.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -23820,7 +23820,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. If-None-Match with the stored ETag yields 304 when unchanged — the cache-validation pattern. GET bodies (D), diff endpoints (A), and delete/poll (B) are non-native approaches.",
+    "explanation": "Correct answer: B. If-None-Match with the stored ETag yields 304 when unchanged — the cache-validation pattern. GET bodies (C), diff endpoints (D), and delete/poll (A) are non-native approaches.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -23898,8 +23898,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API Data Modeling and Bounded Contexts",
-        "url": "https://docs.mulesoft.com/general/data-modeling"
+        "title": "Mule Data Types",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-data-types"
       }
     }
   },
@@ -23934,7 +23934,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Decentralized ownership and independent change favor bounded contexts with boundary contracts. C single canonical model (B) centralizes every change, no modeling (C) destroys reuse, and (D) misstates tier responsibilities.",
+    "explanation": "Correct answer: C. Decentralized ownership and independent change favor bounded contexts with boundary contracts. A single canonical model (D) centralizes every change, no modeling (B) destroys reuse, and (C) misstates tier responsibilities.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -23950,13 +23950,13 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "C monolithic model couples all domains."
+        "text": "A monolithic model couples all domains."
       }
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API Data Modeling",
-        "url": "https://docs.mulesoft.com/general/data-modeling"
+        "title": "Mule Data Types",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-data-types"
       }
     }
   },
@@ -24012,8 +24012,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — Fragments",
-        "url": "https://docs.mulesoft.com/exchange/fragments"
+        "title": "Create and Publish an API Fragment",
+        "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-fragment"
       }
     }
   },
@@ -24048,7 +24048,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Private portals restrict visibility to chosen org units. Public publication (B, C) exposes contracts externally, and local files (D) are undiscoverable and unversioned.",
+    "explanation": "Correct answer: D. Private portals restrict visibility to chosen org units. Public publication (B, C) exposes contracts externally, and local files (A) are undiscoverable and unversioned.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -24069,8 +24069,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — Private Portal",
-        "url": "https://docs.mulesoft.com/exchange/private-portal"
+        "title": "Exchange Public Portals",
+        "url": "https://docs.mulesoft.com/exchange/about-portals"
       }
     }
   },
@@ -24104,7 +24104,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. The contract is the stable dependency; implementations evolve behind it. Implementation coupling (A), lockstep versioning (B), and inherent fragility (D) contradict contract-based integration.",
+    "explanation": "Correct answer: B. The contract is the stable dependency; implementations evolve behind it. Implementation coupling (C), lockstep versioning (A), and inherent fragility (D) contradict contract-based integration.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -24218,11 +24218,11 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Design Center's mocking service exposes the spec as a callable mock, enabling early consumer work. Waiting (B) serializes delivery, spreadsheets (C) are not callable contracts, and DB access (D) couples channels to internals.",
+    "explanation": "Correct answer: C. Design Center's mocking service exposes the spec as a callable mock, enabling early consumer work. Waiting (C) serializes delivery, spreadsheets (D) are not callable contracts, and DB access (B) couples channels to internals.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "C spreadsheet is not an interface."
+        "text": "A spreadsheet is not an interface."
       },
       "B": {
         "type": "Incorrect",
@@ -24239,8 +24239,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Design Center — Mocking Service",
-        "url": "https://docs.mulesoft.com/design-center/mocking-service"
+        "title": "Simulate API Calls with the Mocking Service",
+        "url": "https://docs.mulesoft.com/design-center/design-mocking-service"
       }
     }
   },
@@ -24304,8 +24304,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Versioning and Semantic Versioning",
-        "url": "https://docs.mulesoft.com/exchange/api-versioning"
+        "title": "Manage Versions",
+        "url": "https://docs.mulesoft.com/exchange/manage-versions"
       }
     }
   },
@@ -24339,7 +24339,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Retrieval is the definition of GET: safe, idempotent, cacheable. Uniform POST (C), consuming DELETE (B), and state-changing PATCH (A) misuse method semantics.",
+    "explanation": "Correct answer: B. Retrieval is the definition of GET: safe, idempotent, cacheable. Uniform POST (D), consuming DELETE (A), and state-changing PATCH (C) misuse method semantics.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -24395,7 +24395,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. 201 Created plus Location is the semantic for resource creation. 200 (B) hides creation semantics, 204 (A) omits the resource URI, and (C) is an error status.",
+    "explanation": "Correct answer: C. 201 Created plus Location is the semantic for resource creation. 200 (A) hides creation semantics, 204 (B) omits the resource URI, and (C) is an error status.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -24507,7 +24507,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Hypermedia is the top of the REST maturity model: powerful but costly; pragmatic networks often stop lower. (A) is dogmatic, (C) is wrong — links reduce URL coupling, and (B) confuses runtime affordances with design-time contracts.",
+    "explanation": "Correct answer: B. Hypermedia is the top of the REST maturity model: powerful but costly; pragmatic networks often stop lower. (A) is dogmatic, (B) is wrong — links reduce URL coupling, and (C) confuses runtime affordances with design-time contracts.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -24650,8 +24650,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — Publishing Connectors",
-        "url": "https://docs.mulesoft.com/exchange/publish-connector"
+        "title": "Publishing Connectors to Exchange",
+        "url": "https://docs.mulesoft.com/mule-sdk/latest/publishing-connectors-exchange"
       }
     }
   },
@@ -24686,7 +24686,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Contract conformance is checked by validating traffic/examples against the spec, automated in CI. Manual reads and clicks (A, D) are late and shallow, and log dates (C) prove nothing about conformance.",
+    "explanation": "Correct answer: C. Contract conformance is checked by validating traffic/examples against the spec, automated in CI. Manual reads and clicks (A, D) are late and shallow, and log dates (A) prove nothing about conformance.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -24707,8 +24707,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API Testing",
-        "url": "https://docs.mulesoft.com/design-center/api-testing"
+        "title": "Step 4. Test the API",
+        "url": "https://docs.mulesoft.com/general/api-led-test"
       }
     }
   },
@@ -24743,7 +24743,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Deprecation belongs in the machine-readable contract (annotations/description) and in the asset's lifecycle status. Removing docs (D), renaming in traffic (B), and chat history (C) are not reliable signals.",
+    "explanation": "Correct answer: A. Deprecation belongs in the machine-readable contract (annotations/description) and in the asset's lifecycle status. Removing docs (C), renaming in traffic (D), and chat history (B) are not reliable signals.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -24764,8 +24764,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "RAML 200 — Annotations",
-        "url": "https://docs.mulesoft.com/raml/200-annotations"
+        "title": "Create and Publish an API Fragment",
+        "url": "https://docs.mulesoft.com/design-center/design-create-publish-api-fragment"
       }
     }
   },
@@ -24805,7 +24805,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "E"
     ],
-    "explanation": "Correct answer: E and A. Freshness lifetimes and validators are the HTTP-native caching toolkit. Personal tokens in shared caches (C), random URIs (A), and no-store-everything (B) all defeat caching.",
+    "explanation": "Correct answer: E and A. Freshness lifetimes and validators are the HTTP-native caching toolkit. Personal tokens in shared caches (C), random URIs (B), and no-store-everything (D) all defeat caching.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -24865,7 +24865,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Contract-enforced pagination bounds response size and memory. Unbounded responses (C), unbounded limits (D), and random samples (B) are unsafe, unsafe, and incorrect respectively.",
+    "explanation": "Correct answer: A. Contract-enforced pagination bounds response size and memory. Unbounded responses (D), unbounded limits (B), and random samples (C) are unsafe, unsafe, and incorrect respectively.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -24886,8 +24886,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API Design Guidelines",
-        "url": "https://docs.mulesoft.com/design-center/design-guidelines"
+        "title": "Best Practices when using API Designer",
+        "url": "https://docs.mulesoft.com/design-center/design-best-practices"
       }
     }
   },
@@ -24921,7 +24921,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. C shared, versioned error contract lowers integration cost across the network. Per-API formats (B) multiply client work, stack traces (A) leak internals, and 200-for-errors (C) breaks status semantics.",
+    "explanation": "Correct answer: C. A shared, versioned error contract lowers integration cost across the network. Per-API formats (B) multiply client work, stack traces (D) leak internals, and 200-for-errors (A) breaks status semantics.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -24942,8 +24942,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API Design Guidelines",
-        "url": "https://docs.mulesoft.com/design-center/design-guidelines"
+        "title": "Best Practices when using API Designer",
+        "url": "https://docs.mulesoft.com/design-center/design-best-practices"
       }
     }
   },
@@ -24983,7 +24983,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "D"
     ],
-    "explanation": "Correct answer: A and D. API Manager governs instances of Exchange-published versions; the recommended flow publishes the asset first, though instances can be created from unpublished specs in some flows. Exchange does not enforce policies (D), does not hold runtime logs (B), and the two are complementary (C).",
+    "explanation": "Correct answer: A and D. API Manager governs instances of Exchange-published versions; the recommended flow publishes the asset first, though instances can be created from unpublished specs in some flows. Exchange does not enforce policies (C), does not hold runtime logs (E), and the two are complementary (B).",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -25008,8 +25008,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Managing APIs",
-        "url": "https://docs.mulesoft.com/api-manager/latest/manage-api"
+        "title": "Managing API Instances",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-instance-landing-page"
       }
     }
   },
@@ -25044,7 +25044,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. An API that composes multiple System APIs to execute a business process is a Process API. (D) confuses reach with role, (B) confuses downstream visibility with channel tailoring, and (A) contradicts API-led design.",
+    "explanation": "Correct answer: A. An API that composes multiple System APIs to execute a business process is a Process API. (C) confuses reach with role, (A) confuses downstream visibility with channel tailoring, and (D) contradicts API-led design.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -25065,8 +25065,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -25100,7 +25100,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Channel-tailored aggregation is the Experience layer's job. Direct System API reuse (D), SQL views (A), and reaching for an unrelated system (B) all violate the layering.",
+    "explanation": "Correct answer: B. Channel-tailored aggregation is the Experience layer's job. Direct System API reuse (C), SQL views (A), and reaching for an unrelated system (B) all violate the layering.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -25121,8 +25121,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -25157,7 +25157,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Ownership follows tier: fast-changing channel APIs belong to channel teams; slow-changing System APIs belong to system teams. Swapped ownership (D) misaligns incentives, single-owner (C) bottlenecks, and (B) is false.",
+    "explanation": "Correct answer: A. Ownership follows tier: fast-changing channel APIs belong to channel teams; slow-changing System APIs belong to system teams. Swapped ownership (B) misaligns incentives, single-owner (C) bottlenecks, and (D) is false.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -25178,8 +25178,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -25214,7 +25214,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. System APIs should expose the backend's data model with light, pragmatic cleanup; they are not universal models (D), channel views (C), or aggregators (B).",
+    "explanation": "Correct answer: C. System APIs should expose the backend's data model with light, pragmatic cleanup; they are not universal models (D), channel views (A), or aggregators (C).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -25235,8 +25235,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — System API Data Modeling",
-        "url": "https://docs.mulesoft.com/general/data-modeling"
+        "title": "Mule Data Types",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-data-types"
       }
     }
   },
@@ -25271,7 +25271,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. When central governance, a mandated vocabulary, and domain stability exist, a canonical enterprise model can pay off. Ad hoc models (B), prose contracts (A), and per-screen models (C) contradict the stated context.",
+    "explanation": "Correct answer: C. When central governance, a mandated vocabulary, and domain stability exist, a canonical enterprise model can pay off. Ad hoc models (B), prose contracts (D), and per-screen models (A) contradict the stated context.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -25292,8 +25292,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — Data Modeling Approaches",
-        "url": "https://docs.mulesoft.com/general/data-modeling"
+        "title": "Mule Data Types",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-data-types"
       }
     }
   },
@@ -25327,11 +25327,11 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Autonomy and decentralized cadence favor bounded contexts with boundary contracts. Central canonical models (D) stall change, direct DB queries (C) couple schemas, and spreadsheets (A) are not contracts.",
+    "explanation": "Correct answer: D. Autonomy and decentralized cadence favor bounded contexts with boundary contracts. Central canonical models (D) stall change, direct DB queries (A) couple schemas, and spreadsheets (B) are not contracts.",
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "D global change board is the bottleneck this org cannot staff."
+        "text": "A global change board is the bottleneck this org cannot staff."
       },
       "B": {
         "type": "Incorrect",
@@ -25348,8 +25348,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — Data Modeling Approaches",
-        "url": "https://docs.mulesoft.com/general/data-modeling"
+        "title": "Mule Data Types",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-data-types"
       }
     }
   },
@@ -25528,8 +25528,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -25585,8 +25585,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -25620,7 +25620,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Unlocking one backend transaction with no cross-system logic is a System API. Legacy origin does not exclude it from the network (C), and it neither orchestrates (A) nor serves a channel shape (D).",
+    "explanation": "Correct answer: C. Unlocking one backend transaction with no cross-system logic is a System API. Legacy origin does not exclude it from the network (A), and it neither orchestrates (C) nor serves a channel shape (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -25641,8 +25641,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -25681,7 +25681,7 @@ window.MCPA_QUESTIONS = [
     "rationales": {
       "A": {
         "type": "Incorrect",
-        "text": "B mandatory pass-through is ceremony, not architecture."
+        "text": "A mandatory pass-through is ceremony, not architecture."
       },
       "B": {
         "type": "Correct",
@@ -25698,8 +25698,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -25755,8 +25755,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -25869,8 +25869,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     },
     "image": "images/q423arch.svg"
@@ -25905,7 +25905,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Cross-system aggregation with business rules is a Process API, reusable across channels. Frontend embedding (B), file merges (A), and system-to-system reach-inside (C) each break layering or reuse.",
+    "explanation": "Correct answer: C. Cross-system aggregation with business rules is a Process API, reusable across channels. Frontend embedding (B), file merges (D), and system-to-system reach-inside (A) each break layering or reuse.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -25926,8 +25926,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -25983,8 +25983,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — System API Design",
-        "url": "https://docs.mulesoft.com/general/data-modeling"
+        "title": "Mule Data Types",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-data-types"
       }
     }
   },
@@ -26024,7 +26024,7 @@ window.MCPA_QUESTIONS = [
       "B",
       "C"
     ],
-    "explanation": "Correct answer: C and B. System APIs belong to system teams; Experience APIs to channel teams. Central-only ownership (D), forced same-team ownership across layers (C), and random assignment (A) contradict the model.",
+    "explanation": "Correct answer: C and B. System APIs belong to system teams; Experience APIs to channel teams. Central-only ownership (E), forced same-team ownership across layers (C), and random assignment (D) contradict the model.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -26049,8 +26049,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -26085,7 +26085,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Divergence in System APIs is for hygiene and abstraction of backend quirks; consumer preference (A) and channel formats (B) are higher-layer concerns, and byte fidelity (D) is impractical dogma.",
+    "explanation": "Correct answer: B. Divergence in System APIs is for hygiene and abstraction of backend quirks; consumer preference (C) and channel formats (A) are higher-layer concerns, and byte fidelity (D) is impractical dogma.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -26106,8 +26106,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — System API Data Modeling",
-        "url": "https://docs.mulesoft.com/general/data-modeling"
+        "title": "Mule Data Types",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-data-types"
       }
     }
   },
@@ -26220,8 +26220,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -26255,7 +26255,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Channel-independent business rules belong in Process APIs so they execute uniformly. Frontend duplication (A) diverges per channel, vendor docs (B) are not code, and post-shipment screening (D) is too late.",
+    "explanation": "Correct answer: B. Channel-independent business rules belong in Process APIs so they execute uniformly. Frontend duplication (C) diverges per channel, vendor docs (A) are not code, and post-shipment screening (D) is too late.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -26276,8 +26276,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -26333,8 +26333,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -26368,7 +26368,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. B small stable domain under one data office can carry a light canonical model; proportionality matters. Fragmented contexts (D), ad hoc shapes (A), and org redesigns (B) are disproportionate.",
+    "explanation": "Correct answer: B. A small stable domain under one data office can carry a light canonical model; proportionality matters. Fragmented contexts (C), ad hoc shapes (D), and org redesigns (A) are disproportionate.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -26389,8 +26389,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — Data Modeling Approaches",
-        "url": "https://docs.mulesoft.com/general/data-modeling"
+        "title": "Mule Data Types",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-data-types"
       }
     }
   },
@@ -26440,13 +26440,13 @@ window.MCPA_QUESTIONS = [
       },
       "D": {
         "type": "Incorrect",
-        "text": "C single-system unlock is System, not Process."
+        "text": "A single-system unlock is System, not Process."
       }
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -26480,7 +26480,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. DataGraph's unified query moves the join from the client into the composition layer. (C) understates it, (B) bypasses governance, and (A) is wrong.",
+    "explanation": "Correct answer: C. DataGraph's unified query moves the join from the client into the composition layer. (B) understates it, (A) bypasses governance, and (D) is wrong.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -26536,7 +26536,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Experience APIs exist for genuine channel variation; uncontrolled per-team cloning is sprawl, so consolidate where variation is absent. (B) confuses size with value, (C) breaks layering, (D) is category confusion.",
+    "explanation": "Correct answer: B. Experience APIs exist for genuine channel variation; uncontrolled per-team cloning is sprawl, so consolidate where variation is absent. (C) confuses size with value, (B) breaks layering, (D) is category confusion.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -26557,8 +26557,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -26613,8 +26613,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Policy Application",
-        "url": "https://docs.mulesoft.com/api-manager/latest/policies"
+        "title": "Gateway Policies in API Manager",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-policies-overview"
       }
     }
   },
@@ -26660,7 +26660,7 @@ window.MCPA_QUESTIONS = [
       },
       "C": {
         "type": "Incorrect",
-        "text": "D wrapper cannot outperform its backend."
+        "text": "A wrapper cannot outperform its backend."
       },
       "D": {
         "type": "Correct",
@@ -26669,8 +26669,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -26709,7 +26709,7 @@ window.MCPA_QUESTIONS = [
       "B",
       "D"
     ],
-    "explanation": "Correct answer: D and B. Unified schema plus query-time composition are DataGraph's roles. It complements rather than replaces Process APIs with real logic (C), is not a batch tool (A), and is unrelated to dashboards (D).",
+    "explanation": "Correct answer: D and B. Unified schema plus query-time composition are DataGraph's roles. It complements rather than replaces Process APIs with real logic (C), is not a batch tool (E), and is unrelated to dashboards (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -26770,7 +26770,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Dependencies point downward: Experience→Process→System. B System API reaching up into Process logic inverts the flow and creates cycles of dependency. (A) is a documented pragmatic exception; (B, D) are canonical.",
+    "explanation": "Correct answer: B. Dependencies point downward: Experience→Process→System. A System API reaching up into Process logic inverts the flow and creates cycles of dependency. (A) is a documented pragmatic exception; (B, D) are canonical.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -26791,8 +26791,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -26827,7 +26827,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Reuse what the network already offers; build only the delta. Duplication (C) defeats reuse, DB access (D) breaks contracts, and waiting for a universal design (B) is the analysis-paralysis anti-pattern.",
+    "explanation": "Correct answer: A. Reuse what the network already offers; build only the delta. Duplication (D) defeats reuse, DB access (A) breaks contracts, and waiting for a universal design (C) is the analysis-paralysis anti-pattern.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -26848,8 +26848,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -26905,8 +26905,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -26940,7 +26940,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Regional divergence is a textbook bounded-context split with explicit boundary contracts. Superset models (B) bloat every consumer, client-side tax (C) invites noncompliance, and pricing is a domain concern, not a UI one (D).",
+    "explanation": "Correct answer: C. Regional divergence is a textbook bounded-context split with explicit boundary contracts. Superset models (C) bloat every consumer, client-side tax (D) invites noncompliance, and pricing is a domain concern, not a UI one (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -26961,8 +26961,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — Data Modeling Approaches",
-        "url": "https://docs.mulesoft.com/general/data-modeling"
+        "title": "Mule Data Types",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-data-types"
       }
     }
   },
@@ -27017,8 +27017,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -27053,7 +27053,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Rate limiting enforces the hourly cap; spike control queues/smooths bursts so legitimate sudden traffic is not all rejected. Logging/allowlisting (B) do not meter, XML threat (A) is payload security, and (C) abandons governance.",
+    "explanation": "Correct answer: C. Rate limiting enforces the hourly cap; spike control queues/smooths bursts so legitimate sudden traffic is not all rejected. Logging/allowlisting (B) do not meter, XML threat (A) is payload security, and (D) abandons governance.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -27074,8 +27074,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Rate Limiting Policies",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/rate-limiting-policies"
+        "title": "Rate Limiting Policy",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-rate-limiting"
       }
     }
   },
@@ -27109,7 +27109,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. SLA tiers carry per-tier limits and approval modes; client apps contract a specific tier. Splitting specs (A) fragments the contract, uniform limits (D) cannot differentiate, and alerts (C) observe rather than enforce.",
+    "explanation": "Correct answer: C. SLA tiers carry per-tier limits and approval modes; client apps contract a specific tier. Splitting specs (C) fragments the contract, uniform limits (B) cannot differentiate, and alerts (A) observe rather than enforce.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -27130,8 +27130,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — SLA Tiers",
-        "url": "https://docs.mulesoft.com/api-manager/latest/sla-tiers"
+        "title": "SLA Tiers",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-sla-tiers"
       }
     }
   },
@@ -27186,8 +27186,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Client ID Enforcement",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/client-id-enforcement-policy"
+        "title": "Client ID Enforcement Policy",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-client-id-enforcement"
       }
     }
   },
@@ -27243,8 +27243,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — OAuth 2.0 Token Enforcement",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/oauth-2.0-token-enforcement-policy"
+        "title": "OpenID Connect Access Token Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-openid-token-enforcement"
       }
     }
   },
@@ -27279,7 +27279,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Token enforcement requires the contract to declare the security scheme so clients know to obtain and present tokens. (B) hides the requirement from consumers/tooling, (A) is a regression, and (C) documents the opposite of reality.",
+    "explanation": "Correct answer: C. Token enforcement requires the contract to declare the security scheme so clients know to obtain and present tokens. (A) hides the requirement from consumers/tooling, (C) is a regression, and (B) documents the opposite of reality.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -27300,8 +27300,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Policy Effects on the API Specification",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/oauth-2.0-token-enforcement-policy"
+        "title": "OpenID Connect Access Token Enforcement Policy",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-included-openid-token-enforcement"
       }
     }
   },
@@ -27336,7 +27336,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Response header removal (via the platform's message/headers policy capabilities or a custom policy) strips internal headers at the edge. CORS (C) governs browser exposure rules, rate limiting (A) meters, and (D) is false.",
+    "explanation": "Correct answer: C. Response header removal (via the platform's message/headers policy capabilities or a custom policy) strips internal headers at the edge. CORS (A) governs browser exposure rules, rate limiting (B) meters, and (D) is false.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -27357,8 +27357,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Message Policies",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/policies-list"
+        "title": "Gateway Policies in API Manager",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-policies-overview"
       }
     }
   },
@@ -27393,7 +27393,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. JSON threat protection caps structural complexity and sizes before parsing. Allowlists (D) are too coarse for public APIs, client ID enforcement (A) authenticates but does not bound payloads, and caching (B) serves responses, not defense.",
+    "explanation": "Correct answer: B. JSON threat protection caps structural complexity and sizes before parsing. Allowlists (C) are too coarse for public APIs, client ID enforcement (D) authenticates but does not bound payloads, and caching (A) serves responses, not defense.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -27414,8 +27414,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — JSON Threat Protection",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/json-threat-protection-policy"
+        "title": "JSON Threat Protection Policy",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-json-threat-protection"
       }
     }
   },
@@ -27449,7 +27449,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. JWT Validation checks signatures against the configured JWKS and claims at the edge. Logging (B) records, spike control (C) smooths, and tier throttling (D) meters — none validates signatures.",
+    "explanation": "Correct answer: B. JWT Validation checks signatures against the configured JWKS and claims at the edge. Logging (A) records, spike control (C) smooths, and tier throttling (D) meters — none validates signatures.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -27470,8 +27470,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — JWT Validation",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/jwt-validation-policy"
+        "title": "JWT Validation Policy",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-jwt-validation"
       }
     }
   },
@@ -27506,7 +27506,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Owned implementations register themselves via Autodiscovery; unchangeable backends get a gateway in front. Editing third-party code (C) is impossible, leaving the third-party ungoverned (B) is the risk, and (A) is fiction.",
+    "explanation": "Correct answer: B. Owned implementations register themselves via Autodiscovery; unchangeable backends get a gateway in front. Editing third-party code (D) is impossible, leaving the third-party ungoverned (A) is the risk, and (B) is fiction.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -27527,8 +27527,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Enforcing Policies",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/enforce-policy"
+        "title": "Gateway Policies in API Manager",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-policies-overview"
       }
     }
   },
@@ -27562,7 +27562,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Service Mesh extends API Manager governance to service-to-service Kubernetes traffic. DLBs (A) load-balance ingress, workers (C) scale apps, and portals (B) share assets.",
+    "explanation": "Correct answer: B. Service Mesh extends API Manager governance to service-to-service Kubernetes traffic. DLBs (D) load-balance ingress, workers (C) scale apps, and portals (A) share assets.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -27583,8 +27583,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Service Mesh",
-        "url": "https://docs.mulesoft.com/service-mesh/"
+        "title": "Getting started with Anypoint Service Mesh",
+        "url": "https://developer.mulesoft.com/tutorials-and-howtos/anypoint-service-mesh/getting-started-with-anypoint-service-mesh-provisioning/"
       }
     }
   },
@@ -27639,8 +27639,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Applying Policies",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/policies"
+        "title": "Gateway Policies in API Manager",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-policies-overview"
       }
     }
   },
@@ -27695,8 +27695,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Custom Policies",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/custom-policies"
+        "title": "Mule 4 Custom Policy Workflow",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-getting-started"
       }
     }
   },
@@ -27730,7 +27730,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Flex Gateway is a lightweight standalone gateway runnable in customer environments (VM, container, Kubernetes) and managed by API Manager. CloudHub workers are MuleSoft-hosted (B), MUnit is testing (C), and Monitoring observes (D).",
+    "explanation": "Correct answer: D. Flex Gateway is a lightweight standalone gateway runnable in customer environments (VM, container, Kubernetes) and managed by API Manager. CloudHub workers are MuleSoft-hosted (C), MUnit is testing (B), and Monitoring observes (A).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -27787,7 +27787,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Instances are per-environment; policy configuration attaches to the instance. Shared spec-level policy config (C) is not the model, differing limits are routine (D), and (B) is absurd.",
+    "explanation": "Correct answer: A. Instances are per-environment; policy configuration attaches to the instance. Shared spec-level policy config (D) is not the model, differing limits are routine (B), and (C) is absurd.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -27808,8 +27808,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Managing API Instances",
-        "url": "https://docs.mulesoft.com/api-manager/latest/manage-api"
+        "title": "Managing API Instances",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-instance-landing-page"
       }
     }
   },
@@ -27865,8 +27865,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Requesting Access",
-        "url": "https://docs.mulesoft.com/api-manager/latest/request-api-access"
+        "title": "Requesting Access",
+        "url": "https://docs.mulesoft.com/exchange/to-request-access"
       }
     }
   },
@@ -27922,8 +27922,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Managing Client Applications",
-        "url": "https://docs.mulesoft.com/api-manager/latest/client-applications"
+        "title": "Client Management in Anypoint Platform",
+        "url": "https://docs.mulesoft.com/access-management/managing-api-clients"
       }
     }
   },
@@ -27979,8 +27979,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Platform — OAuth Provider",
-        "url": "https://docs.mulesoft.com/api-manager/oauth-provider"
+        "title": "Configure OAuth 2.0 Provider in Mule",
+        "url": "https://docs.mulesoft.com/api-manager/latest/mule-oauth-provider-landing-page"
       }
     }
   },
@@ -28036,8 +28036,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Policies",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/policies-list"
+        "title": "Gateway Policies in API Manager",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-policies-overview"
       }
     }
   },
@@ -28071,7 +28071,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Source-address restriction is the allowlist policy's exact function. Logging (D) records, threat protection (A) bounds payloads, and caching (B) accelerates.",
+    "explanation": "Correct answer: B. Source-address restriction is the allowlist policy's exact function. Logging (C) records, threat protection (D) bounds payloads, and caching (A) accelerates.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -28092,8 +28092,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — IP Allowlist",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/ip-allowlist-policy"
+        "title": "IP Allowlist Policy",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-ip-allowlist"
       }
     }
   },
@@ -28127,7 +28127,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. CORS governs browser cross-origin consent via response headers. Spike control (C) smooths traffic, client ID enforcement (A) authenticates (though note browser-exposed secrets are a design consideration), and browsers do enforce origin rules (D).",
+    "explanation": "Correct answer: C. CORS governs browser cross-origin consent via response headers. Spike control (A) smooths traffic, client ID enforcement (B) authenticates (though note browser-exposed secrets are a design consideration), and browsers do enforce origin rules (D).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -28262,8 +28262,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Autodiscovery",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/auto-discovery"
+        "title": "API Autodiscovery",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
       }
     }
   },
@@ -28298,7 +28298,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "D"
     ],
-    "explanation": "Correct answer: A and D. An instance binds a version to an environment, and policies attach to that instance. (D) contradicts per-environment binding, and (B) is false — proxies and non-Mule APIs are governed too.",
+    "explanation": "Correct answer: A and D. An instance binds a version to an environment, and policies attach to that instance. (D) contradicts per-environment binding, and (A) is false — proxies and non-Mule APIs are governed too.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -28319,8 +28319,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — API Instances",
-        "url": "https://docs.mulesoft.com/api-manager/latest/manage-api"
+        "title": "Managing API Instances",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-instance-landing-page"
       }
     }
   },
@@ -28376,8 +28376,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Client ID Enforcement Policy",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/client-id-enforcement-policy"
+        "title": "Client ID Enforcement Policy",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-client-id-enforcement"
       }
     },
     "image": "images/q467arch.svg"
@@ -28434,8 +28434,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — SLA Tiers",
-        "url": "https://docs.mulesoft.com/api-manager/latest/sla-tiers"
+        "title": "SLA Tiers",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-sla-tiers"
       }
     }
   },
@@ -28469,7 +28469,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Credentials are platform-issued upon client registration and access request. Invented strings (B) fail validation, support does not issue them (C), and reuse of another's credentials (D) is both broken and a security violation.",
+    "explanation": "Correct answer: A. Credentials are platform-issued upon client registration and access request. Invented strings (D) fail validation, support does not issue them (C), and reuse of another's credentials (B) is both broken and a security violation.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -28490,8 +28490,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — Client Applications",
-        "url": "https://docs.mulesoft.com/exchange/client-applications"
+        "title": "Manage Client Applications",
+        "url": "https://docs.mulesoft.com/exchange/about-my-applications"
       }
     }
   },
@@ -28583,7 +28583,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Real networks run multiple versions with deliberate states (active, deprecated, maintained). Immediate deletion (D), single-version dogma (A), and meaninglessness (B) contradict API lifecycle practice.",
+    "explanation": "Correct answer: D. Real networks run multiple versions with deliberate states (active, deprecated, maintained). Immediate deletion (A), single-version dogma (B), and meaninglessness (C) contradict API lifecycle practice.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -28604,8 +28604,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — API Lifecycle",
-        "url": "https://docs.mulesoft.com/exchange/api-lifecycle"
+        "title": "Managing Asset Lifecycle States",
+        "url": "https://docs.mulesoft.com/exchange/lifecycle"
       }
     }
   },
@@ -28660,8 +28660,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — SLA Tiers",
-        "url": "https://docs.mulesoft.com/api-manager/latest/sla-tiers"
+        "title": "SLA Tiers",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-sla-tiers"
       }
     }
   },
@@ -28696,7 +28696,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Field masking before egress is a policy/custom-policy function, ideally per consumer tier. Client-side masking (B) releases the data, logging (C) records rather than transforms the response, and rate limiting (D) does not edit payloads.",
+    "explanation": "Correct answer: A. Field masking before egress is a policy/custom-policy function, ideally per consumer tier. Client-side masking (A) releases the data, logging (C) records rather than transforms the response, and rate limiting (D) does not edit payloads.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -28717,8 +28717,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Custom Policies",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/custom-policies"
+        "title": "Mule 4 Custom Policy Workflow",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-getting-started"
       }
     }
   },
@@ -28758,7 +28758,7 @@ window.MCPA_QUESTIONS = [
       "C",
       "D"
     ],
-    "explanation": "Correct answer: D, B, and C. Authentication, payload threat defense, and token validation are security enforcement. Caching (A) is performance, and spike control (D) is availability.",
+    "explanation": "Correct answer: D, B, and C. Authentication, payload threat defense, and token validation are security enforcement. Caching (E) is performance, and spike control (A) is availability.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -28783,8 +28783,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Policies",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/policies-list"
+        "title": "Gateway Policies in API Manager",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-policies-overview"
       }
     }
   },
@@ -28818,7 +28818,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Business groups are the platform's isolation boundary for assets and governance. Prefixes (B), shared portals (D), and naming rules (A) are conventions, not controls.",
+    "explanation": "Correct answer: D. Business groups are the platform's isolation boundary for assets and governance. Prefixes (B), shared portals (A), and naming rules (C) are conventions, not controls.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -28932,7 +28932,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Header injection at the gateway is a policy/custom-policy function, versioned and centrally managed. Client-side edits (B) are unmaintainable, zero-quota (C) breaks rather than warns, and radio (D) is not software.",
+    "explanation": "Correct answer: A. Header injection at the gateway is a policy/custom-policy function, versioned and centrally managed. Client-side edits (C) are unmaintainable, zero-quota (B) breaks rather than warns, and radio (D) is not software.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -28953,8 +28953,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Custom Policies",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/custom-policies"
+        "title": "Mule 4 Custom Policy Workflow",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-getting-started"
       }
     }
   },
@@ -28988,7 +28988,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Public APIs warrant authn, quota, burst, payload defense, and (for web) CORS. Logging-only (B) and none (C) are unguarded, and XML defense on a JSON API (D) targets the wrong format.",
+    "explanation": "Correct answer: B. Public APIs warrant authn, quota, burst, payload defense, and (for web) CORS. Logging-only (A) and none (C) are unguarded, and XML defense on a JSON API (D) targets the wrong format.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -29009,8 +29009,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Policies",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/policies-list"
+        "title": "Gateway Policies in API Manager",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-policies-overview"
       }
     }
   },
@@ -29065,8 +29065,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Service Mesh",
-        "url": "https://docs.mulesoft.com/service-mesh/"
+        "title": "Getting started with Anypoint Service Mesh",
+        "url": "https://developer.mulesoft.com/tutorials-and-howtos/anypoint-service-mesh/getting-started-with-anypoint-service-mesh-provisioning/"
       }
     }
   },
@@ -29102,7 +29102,7 @@ window.MCPA_QUESTIONS = [
       "B",
       "C"
     ],
-    "explanation": "Correct answer: B and C. Logging captures audit metadata, and spike control shields backends from bursts. Token validation is JWT/OAuth enforcement, not allowlisting (B), and payload depth is threat protection, not caching (D).",
+    "explanation": "Correct answer: B and C. Logging captures audit metadata, and spike control shields backends from bursts. Token validation is JWT/OAuth enforcement, not allowlisting (A), and payload depth is threat protection, not caching (D).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -29123,8 +29123,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Policies",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/policies-list"
+        "title": "Gateway Policies in API Manager",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-policies-overview"
       }
     }
   },
@@ -29159,7 +29159,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Governance binds contract version to environment; the proxy does the enforcing while the backend stays untouched. Repo binding (B), schema binding (C), and ungovernability (D) are wrong.",
+    "explanation": "Correct answer: C. Governance binds contract version to environment; the proxy does the enforcing while the backend stays untouched. Repo binding (C), schema binding (A), and ungovernability (D) are wrong.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -29215,7 +29215,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Client apps are the identity of integrations, distinct from human platform users. Admin roles (C), shared human logins (D), and root credential sharing (B) are security failures.",
+    "explanation": "Correct answer: A. Client apps are the identity of integrations, distinct from human platform users. Admin roles (D), shared human logins (B), and root credential sharing (C) are security failures.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -29236,8 +29236,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Exchange — Client Applications",
-        "url": "https://docs.mulesoft.com/exchange/client-applications"
+        "title": "Manage Client Applications",
+        "url": "https://docs.mulesoft.com/exchange/about-my-applications"
       }
     }
   },
@@ -29271,7 +29271,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. API Manager supports method/resource-scoped policy application alongside instance-wide defaults. All-or-nothing (B) is false, instance splitting (C) is unnecessary, and backend edits (D) defeat the purpose.",
+    "explanation": "Correct answer: D. API Manager supports method/resource-scoped policy application alongside instance-wide defaults. All-or-nothing (C) is false, instance splitting (D) is unnecessary, and backend edits (A) defeat the purpose.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -29292,8 +29292,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Applying Policies",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/policies"
+        "title": "Gateway Policies in API Manager",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-policies-overview"
       }
     }
   },
@@ -29328,7 +29328,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Deprecation is communication; enforcement persists until retirement. Auto-disable (D) opens a hole exactly when attackers look, unauthenticated deprecated APIs (C) are worse, and no such platform rule exists (A).",
+    "explanation": "Correct answer: D. Deprecation is communication; enforcement persists until retirement. Auto-disable (A) opens a hole exactly when attackers look, unauthenticated deprecated APIs (C) are worse, and no such platform rule exists (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -29349,8 +29349,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Managing API Instances",
-        "url": "https://docs.mulesoft.com/api-manager/latest/manage-api"
+        "title": "Managing API Instances",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-instance-landing-page"
       }
     }
   },
@@ -29384,7 +29384,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Browser preflights must succeed for web consumers; scoping policy so OPTIONS is not blocked by client-ID checks is the standard accommodation. Blocking preflight (B) breaks web consumers, disabling CORS (C) excludes browsers, and (D) denies reality.",
+    "explanation": "Correct answer: A. Browser preflights must succeed for web consumers; scoping policy so OPTIONS is not blocked by client-ID checks is the standard accommodation. Blocking preflight (D) breaks web consumers, disabling CORS (C) excludes browsers, and (B) denies reality.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -29462,8 +29462,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Platform — OAuth",
-        "url": "https://docs.mulesoft.com/api-manager/oauth-provider"
+        "title": "Configure OAuth 2.0 Provider in Mule",
+        "url": "https://docs.mulesoft.com/api-manager/latest/mule-oauth-provider-landing-page"
       }
     }
   },
@@ -29498,7 +29498,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Layered edge: WAF/LB first, API gateway second, is the common composition. Putting the API gateway outermost (B) couples it to unfiltered traffic, splitting (C) is bizarre, and coexistence is normal (D).",
+    "explanation": "Correct answer: A. Layered edge: WAF/LB first, API gateway second, is the common composition. Putting the API gateway outermost (B) couples it to unfiltered traffic, splitting (D) is bizarre, and coexistence is normal (C).",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -29554,7 +29554,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Autodiscovery binds a deployed app to the API instance of its environment, driven by the configured API ID and properties. Cross-environment pairing (A) is not the model, manual registry edits (D) defeat its purpose, and it is protocol-agnostic (C).",
+    "explanation": "Correct answer: D. Autodiscovery binds a deployed app to the API instance of its environment, driven by the configured API ID and properties. Cross-environment pairing (C) is not the model, manual registry edits (A) defeat its purpose, and it is protocol-agnostic (D).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -29575,8 +29575,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Autodiscovery",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/auto-discovery"
+        "title": "API Autodiscovery",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
       }
     }
   },
@@ -29610,7 +29610,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. VPCs exist to give CloudHub workloads a private, routable network for VPN connectivity to customer infrastructure. Cosmetics (B, C) and marketing (D) are unrelated.",
+    "explanation": "Correct answer: D. VPCs exist to give CloudHub workloads a private, routable network for VPN connectivity to customer infrastructure. Cosmetics (B, C) and marketing (A) are unrelated.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -29631,8 +29631,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint VPC",
-        "url": "https://docs.mulesoft.com/runtime-cloud/vpc-overview"
+        "title": "Virtual Private Cloud",
+        "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       }
     }
   },
@@ -29687,8 +29687,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Runtime Plane Options",
-        "url": "https://docs.mulesoft.com/general/deployment-architectures"
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
       }
     }
   },
@@ -29723,7 +29723,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Tests gate the pipeline pre-deployment. Post-production testing (A) is too late, manual-only (D) is a regression risk, and prod-time testing (C) is upside down.",
+    "explanation": "Correct answer: C. Tests gate the pipeline pre-deployment. Post-production testing (D) is too late, manual-only (B) is a regression risk, and prod-time testing (C) is upside down.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -29744,8 +29744,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MUnit — CI Integration",
-        "url": "https://docs.mulesoft.com/munit/2.3/munit-in-ci-cd"
+        "title": "MUnit Maven Plugin",
+        "url": "https://docs.mulesoft.com/munit/latest/munit-maven-plugin"
       }
     }
   },
@@ -29837,7 +29837,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Maven-based build/deploy plus automated Exchange publishing is the standard CI path. Browser uploads (A), screenshots (D), and live memory edits (C) are manual fictions.",
+    "explanation": "Correct answer: D. Maven-based build/deploy plus automated Exchange publishing is the standard CI path. Browser uploads (C), screenshots (D), and live memory edits (B) are manual fictions.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -29859,7 +29859,7 @@ window.MCPA_QUESTIONS = [
     "references": {
       "primary": {
         "title": "Mule Maven Plugin",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/mule-maven-plugin"
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept"
       }
     }
   },
@@ -29894,7 +29894,7 @@ window.MCPA_QUESTIONS = [
       "B",
       "C"
     ],
-    "explanation": "Correct answer: C and B. VPN reachability and DLB creation both require a VPC (DLBs are VPC resources). Font preferences (C) are irrelevant, and (D) — while a common real requirement — is delivered through VPC peering with a customer VPC, which presupposes an Anypoint VPC; the strongest pairings here remain C and B.",
+    "explanation": "Correct answer: C and B. VPN reachability and DLB creation both require a VPC (DLBs are VPC resources). Font preferences (A) are irrelevant, and (D) — while a common real requirement — is delivered through VPC peering with a customer VPC, which presupposes an Anypoint VPC; the strongest pairings here remain C and B.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -29915,8 +29915,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint VPC",
-        "url": "https://docs.mulesoft.com/runtime-cloud/vpc-overview"
+        "title": "Virtual Private Cloud",
+        "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       }
     }
   },
@@ -29951,7 +29951,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Registered servers are managed deploy targets under the same console. KVM control (D) is nonsense, invisibility (A) contradicts hybrid management, and OS rewrites (B) are not a feature.",
+    "explanation": "Correct answer: D. Registered servers are managed deploy targets under the same console. KVM control (A) is nonsense, invisibility (B) contradicts hybrid management, and OS rewrites (D) are not a feature.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -30028,8 +30028,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Autodiscovery",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/auto-discovery"
+        "title": "API Autodiscovery",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
       }
     }
   },
@@ -30084,8 +30084,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub 2.0",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-overview"
+        "title": "CloudHub 2.0 Overview",
+        "url": "https://docs.mulesoft.com/cloudhub-2/"
       }
     }
   },
@@ -30120,7 +30120,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "B"
     ],
-    "explanation": "Correct answer: B and A. Mocks plus assertions are MUnit's core. DB rewriting (C) is not a feature, and release notes (D) are not MUnit's job.",
+    "explanation": "Correct answer: B and A. Mocks plus assertions are MUnit's core. DB rewriting (D) is not a feature, and release notes (C) are not MUnit's job.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -30141,8 +30141,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MUnit — Mocking",
-        "url": "https://docs.mulesoft.com/munit/2.3/mock-event-processors"
+        "title": "MUnit Mock When Event Processor",
+        "url": "https://docs.mulesoft.com/munit/latest/mock-event-processor"
       }
     }
   },
@@ -30177,7 +30177,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Externalized, deployment-time properties are the idiom: one tested artifact, N configurations. Branch divergence (B) is a classic anti-pattern, human checks (C) are not automation, and in-place JAR editing (D) is corrupt practice.",
+    "explanation": "Correct answer: D. Externalized, deployment-time properties are the idiom: one tested artifact, N configurations. Branch divergence (C) is a classic anti-pattern, human checks (D) are not automation, and in-place JAR editing (A) is corrupt practice.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -30198,8 +30198,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Mule — Configuration Properties",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/config-properties"
+        "title": "Configuring Properties",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/configuring-properties"
       }
     }
   },
@@ -30255,8 +30255,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Mule Maven Plugin — Deployment Credentials",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/mule-maven-plugin"
+        "title": "Mule Maven Plugin",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept"
       }
     }
   },
@@ -30312,12 +30312,12 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint VPC — Creating",
-        "url": "https://docs.mulesoft.com/runtime-cloud/vpc-create"
+        "title": "Provision a VPC",
+        "url": "https://docs.mulesoft.com/cloudhub/vpc-provisioning-concept"
       },
       "secondary": {
-        "title": "Anypoint VPC Overview",
-        "url": "https://docs.mulesoft.com/runtime-cloud/vpc-overview"
+        "title": "Virtual Private Cloud",
+        "url": "https://docs.mulesoft.com/cloudhub/virtual-private-cloud"
       }
     },
     "image": "images/q501arch.svg"
@@ -30353,7 +30353,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "D"
     ],
-    "explanation": "Correct answer: D and A. MuleSoft's runtime planes are the CloudHub family and RTF (plus hybrid standalone servers). Lambda (A) is not a Mule runtime, and plain Node (B) is not Mule at all.",
+    "explanation": "Correct answer: D and A. MuleSoft's runtime planes are the CloudHub family and RTF (plus hybrid standalone servers). Lambda (B) is not a Mule runtime, and plain Node (C) is not Mule at all.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -30374,8 +30374,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Runtime Plane Options",
-        "url": "https://docs.mulesoft.com/general/deployment-architectures"
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
       }
     }
   },
@@ -30431,8 +30431,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Updating Applications",
-        "url": "https://docs.mulesoft.com/runtime-cloud/updating-app"
+        "title": "Updating Apps Deployed to CloudHub 2.0",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-update-apps"
       }
     }
   },
@@ -30487,8 +30487,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Object Store v2",
-        "url": "https://docs.mulesoft.com/runtime-cloud/object-store-v2"
+        "title": "Using Object Store v2",
+        "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
     }
   },
@@ -30523,7 +30523,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. In-runtime enforcement versus edge enforcement with the modify-the-backend constraint is the real trade-off. Protocol splits (A) are false, proxies never touch backend code (B), and (D) is fiction.",
+    "explanation": "Correct answer: B. In-runtime enforcement versus edge enforcement with the modify-the-backend constraint is the real trade-off. Protocol splits (C) are false, proxies never touch backend code (A), and (D) is fiction.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -30544,8 +30544,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Enforcement Options",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/enforce-policy"
+        "title": "Gateway Policies in API Manager",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-policies-overview"
       }
     }
   },
@@ -30580,7 +30580,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Gating is the point of pipeline testing. Deploy-anyway (D) is the exact failure mode gates exist to stop, retry-until-green (A) is result laundering, and (B) is manual chaos.",
+    "explanation": "Correct answer: B. Gating is the point of pipeline testing. Deploy-anyway (C) is the exact failure mode gates exist to stop, retry-until-green (B) is result laundering, and (A) is manual chaos.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -30601,8 +30601,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MUnit in CI/CD",
-        "url": "https://docs.mulesoft.com/munit/2.3/munit-in-ci-cd"
+        "title": "MUnit Maven Plugin",
+        "url": "https://docs.mulesoft.com/munit/latest/munit-maven-plugin"
       }
     }
   },
@@ -30637,7 +30637,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "C"
     ],
-    "explanation": "Correct answer: C and A. Spy/observe and runtime-managed endpoints/connectors are MUnit's integration tools. Native compilation (B) and test-time LB (A) are not features.",
+    "explanation": "Correct answer: C and A. Spy/observe and runtime-managed endpoints/connectors are MUnit's integration tools. Native compilation (D) and test-time LB (A) are not features.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -30693,7 +30693,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. RTF agents initiate outbound connections to the control plane; ingress stays closed. Open SSH (D), fiber ownership (A), and full offline (B) are wrong.",
+    "explanation": "Correct answer: B. RTF agents initiate outbound connections to the control plane; ingress stays closed. Open SSH (C), fiber ownership (D), and full offline (A) are wrong.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -30714,8 +30714,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Runtime Fabric — Architecture",
-        "url": "https://docs.mulesoft.com/runtime-runtime-fabric/architecture"
+        "title": "Anypoint Runtime Fabric Security Architecture",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/security-architecture"
       }
     }
   },
@@ -30750,7 +30750,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. On-prem runtime plus cloud console is hybrid by definition. Bigger workers (B) do not move CloudHub into your data center, (C) is false, and (D) is absurd.",
+    "explanation": "Correct answer: A. On-prem runtime plus cloud console is hybrid by definition. Bigger workers (C) do not move CloudHub into your data center, (B) is false, and (D) is absurd.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -30771,8 +30771,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint Deployment Architectures",
-        "url": "https://docs.mulesoft.com/general/deployment-architectures"
+        "title": "Anypoint Platform Hosting Overview",
+        "url": "https://docs.mulesoft.com/hosting-home/"
       }
     }
   },
@@ -30807,7 +30807,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. RTF apps autodiscover into their instances (or sit behind a gateway), with central management from API Manager. Manual YAML (B) is not the mechanism, (C) is false, and (D) is nonsense.",
+    "explanation": "Correct answer: C. RTF apps autodiscover into their instances (or sit behind a gateway), with central management from API Manager. Manual YAML (D) is not the mechanism, (B) is false, and (C) is nonsense.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -30828,8 +30828,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Runtime Fabric — API Management",
-        "url": "https://docs.mulesoft.com/runtime-runtime-fabric/"
+        "title": "Anypoint Runtime Fabric Overview",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/"
       }
     }
   },
@@ -30863,7 +30863,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Immutable artifact promotion is the DevOps core principle. Compiler-luck (B), compiled-in secrets (C), and noncommittal artifacts (D) all undermine reproducibility or security.",
+    "explanation": "Correct answer: B. Immutable artifact promotion is the DevOps core principle. Compiler-luck (B), compiled-in secrets (D), and noncommittal artifacts (C) all undermine reproducibility or security.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -30885,7 +30885,7 @@ window.MCPA_QUESTIONS = [
     "references": {
       "primary": {
         "title": "Mule Maven Plugin",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/mule-maven-plugin"
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept"
       }
     }
   },
@@ -30920,7 +30920,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Redundant tunnels remove the connectivity SPOF. Invulnerability (D), instant magic (B), and couriers (C) are wrong.",
+    "explanation": "Correct answer: A. Redundant tunnels remove the connectivity SPOF. Invulnerability (C), instant magic (D), and couriers (B) are wrong.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -30941,8 +30941,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint VPC — VPN Connectivity",
-        "url": "https://docs.mulesoft.com/runtime-cloud/vpn-connect"
+        "title": "Anypoint VPN",
+        "url": "https://docs.mulesoft.com/cloudhub/vpn-about"
       }
     }
   },
@@ -30977,7 +30977,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "B"
     ],
-    "explanation": "Correct answer: A and B. Compliance-driven on-prem hosting and deep private-infrastructure integration are the RTF drivers. Avoiding consoles (C) is not possible (the control plane remains), and (D) is impossible.",
+    "explanation": "Correct answer: A and B. Compliance-driven on-prem hosting and deep private-infrastructure integration are the RTF drivers. Avoiding consoles (D) is not possible (the control plane remains), and (C) is impossible.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -30998,8 +30998,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Runtime Fabric Overview",
-        "url": "https://docs.mulesoft.com/runtime-runtime-fabric/architecture"
+        "title": "Anypoint Runtime Fabric Security Architecture",
+        "url": "https://docs.mulesoft.com/runtime-fabric/latest/security-architecture"
       }
     }
   },
@@ -31034,7 +31034,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Per-environment pairing applies equally to hybrid deployments. (C) is false — autodiscovery works on registered runtimes, (B) contradicts scoping, and (A) is fiction.",
+    "explanation": "Correct answer: C. Per-environment pairing applies equally to hybrid deployments. (B) is false — autodiscovery works on registered runtimes, (A) contradicts scoping, and (C) is fiction.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -31055,8 +31055,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Autodiscovery",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/auto-discovery"
+        "title": "API Autodiscovery",
+        "url": "https://docs.mulesoft.com/api-manager/latest/api-auto-discovery-new-concept"
       }
     }
   },
@@ -31112,8 +31112,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Worker Sizing",
-        "url": "https://docs.mulesoft.com/runtime-cloud/shared-worker-sizing"
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
     }
   },
@@ -31168,8 +31168,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Scaling",
-        "url": "https://docs.mulesoft.com/runtime-cloud/scaling-app"
+        "title": "Autoscaling in CloudHub",
+        "url": "https://docs.mulesoft.com/cloudhub/autoscaling-in-cloudhub"
       }
     }
   },
@@ -31226,12 +31226,12 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Application Reliability",
-        "url": "https://docs.mulesoft.com/runtime-cloud/shared-cloudhub-reliability"
+        "title": "CloudHub High Availability and Disaster Recovery",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-hadr"
       },
       "secondary": {
-        "title": "CloudHub — Worker Sizing",
-        "url": "https://docs.mulesoft.com/runtime-cloud/shared-worker-sizing"
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
     },
     "image": "images/q517arch.svg"
@@ -31287,8 +31287,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Regions",
-        "url": "https://docs.mulesoft.com/runtime-cloud/shared-regions"
+        "title": "CloudHub 2.0 Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-architecture"
       }
     }
   },
@@ -31344,7 +31344,7 @@ window.MCPA_QUESTIONS = [
     "references": {
       "primary": {
         "title": "Dedicated Load Balancers",
-        "url": "https://docs.mulesoft.com/runtime-cloud/dlb-overview"
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
       }
     }
   },
@@ -31378,7 +31378,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. DLBs are configured with TLS contexts and protocol enforcement options. HTTP-only (A) is false, cron checks (B) are not a thing, and raw worker IPs (D) bypass the DLB.",
+    "explanation": "Correct answer: B. DLBs are configured with TLS contexts and protocol enforcement options. HTTP-only (C) is false, cron checks (A) are not a thing, and raw worker IPs (D) bypass the DLB.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -31399,8 +31399,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Dedicated Load Balancer — TLS",
-        "url": "https://docs.mulesoft.com/runtime-cloud/dlb-overview"
+        "title": "Dedicated Load Balancers",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
       }
     }
   },
@@ -31456,8 +31456,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint VPC Peering",
-        "url": "https://docs.mulesoft.com/runtime-cloud/vpc-peering"
+        "title": "Anypoint VPC Connectivity Methods",
+        "url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept"
       }
     }
   },
@@ -31514,8 +31514,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint VPC — VPN Connectivity",
-        "url": "https://docs.mulesoft.com/runtime-cloud/vpn-connect"
+        "title": "Anypoint VPN",
+        "url": "https://docs.mulesoft.com/cloudhub/vpn-about"
       }
     },
     "image": "images/q522arch.svg"
@@ -31550,7 +31550,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Single worker and single tunnel are SPOFs; the DLB service and persistent object store are platform-redundant. (D) ignores worker/tunnel counts, (A) overcounts platform services, and (B) is false — topology suffices.",
+    "explanation": "Correct answer: B. Single worker and single tunnel are SPOFs; the DLB service and persistent object store are platform-redundant. (C) ignores worker/tunnel counts, (B) overcounts platform services, and (D) is false — topology suffices.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -31571,8 +31571,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Reliability",
-        "url": "https://docs.mulesoft.com/runtime-cloud/shared-cloudhub-reliability"
+        "title": "CloudHub High Availability and Disaster Recovery",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-hadr"
       }
     }
   },
@@ -31606,7 +31606,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Shared persistent OS deduplicates state across workers. Memory inflation (A) is cost, email (C) is absurd, and per-request reloads (B) hammer the backend.",
+    "explanation": "Correct answer: B. Shared persistent OS deduplicates state across workers. Memory inflation (D) is cost, email (C) is absurd, and per-request reloads (A) hammer the backend.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -31627,8 +31627,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Object Store v2",
-        "url": "https://docs.mulesoft.com/runtime-cloud/object-store-v2"
+        "title": "Using Object Store v2",
+        "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
     }
   },
@@ -31662,7 +31662,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Worker replacement means heap loss; persistent state and idempotency are the defensive design. Guaranteed durability (B), never-migrate (C), and magic (D) are all false.",
+    "explanation": "Correct answer: B. Worker replacement means heap loss; persistent state and idempotency are the defensive design. Guaranteed durability (A), never-migrate (D), and magic (C) are all false.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -31683,8 +31683,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Application Reliability",
-        "url": "https://docs.mulesoft.com/runtime-cloud/shared-cloudhub-reliability"
+        "title": "CloudHub High Availability and Disaster Recovery",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-hadr"
       }
     }
   },
@@ -31739,8 +31739,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Persistent Queues",
-        "url": "https://docs.mulesoft.com/runtime-cloud/shared-persistent-queues"
+        "title": "Manage Queues",
+        "url": "https://docs.mulesoft.com/cloudhub/managing-queues"
       }
     }
   },
@@ -31795,8 +31795,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — vCores",
-        "url": "https://docs.mulesoft.com/runtime-cloud/shared-vcores"
+        "title": "CloudHub Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-architecture"
       }
     }
   },
@@ -31831,7 +31831,7 @@ window.MCPA_QUESTIONS = [
       "C",
       "D"
     ],
-    "explanation": "Correct answer: D and C. Worker spread and service redundancy are platform guarantees; hot standby (D) and automatic cross-region failover (C) are not provided.",
+    "explanation": "Correct answer: D and C. Worker spread and service redundancy are platform guarantees; hot standby (A) and automatic cross-region failover (B) are not provided.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -31852,8 +31852,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Reliability",
-        "url": "https://docs.mulesoft.com/runtime-cloud/shared-cloudhub-reliability"
+        "title": "CloudHub High Availability and Disaster Recovery",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-hadr"
       }
     }
   },
@@ -31887,7 +31887,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Shared LB forwards to well-known per-app ports with TLS at the edge. Direct 443 binding (A) is not the model, MAC routing (D) is fiction, and FTP (C) is wrong.",
+    "explanation": "Correct answer: C. Shared LB forwards to well-known per-app ports with TLS at the edge. Direct 443 binding (A) is not the model, MAC routing (C) is fiction, and FTP (D) is wrong.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -31908,8 +31908,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Shared Load Balancer",
-        "url": "https://docs.mulesoft.com/runtime-cloud/shared-lb"
+        "title": "Dedicated Load Balancer Architecture",
+        "url": "https://docs.mulesoft.com/cloudhub/lb-architecture"
       }
     }
   },
@@ -31943,7 +31943,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. DLB services/forwards can differ per target: re-encrypt or forward plain. Global mode (A) is false, no-TLS-termination (C) is false, and (B) is false.",
+    "explanation": "Correct answer: B. DLB services/forwards can differ per target: re-encrypt or forward plain. Global mode (D) is false, no-TLS-termination (B) is false, and (A) is false.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -31964,8 +31964,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Dedicated Load Balancer — SSL Forwarding",
-        "url": "https://docs.mulesoft.com/runtime-cloud/dlb-overview"
+        "title": "Dedicated Load Balancers",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
       }
     }
   },
@@ -31999,7 +31999,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. TTLs govern per-entry expiry on access; capacity policies evict under pressure. Forever-accumulation (C), ignored TTLs (B), and whole-store deletion (A) are wrong.",
+    "explanation": "Correct answer: B. TTLs govern per-entry expiry on access; capacity policies evict under pressure. Forever-accumulation (D), ignored TTLs (A), and whole-store deletion (B) are wrong.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -32020,8 +32020,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Object Store v2 — TTL",
-        "url": "https://docs.mulesoft.com/runtime-cloud/object-store-v2"
+        "title": "Using Object Store v2",
+        "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
     }
   },
@@ -32056,7 +32056,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "B"
     ],
-    "explanation": "Correct answer: A and B. Shared and private spaces are the two CH2 deployment isolation levels. Control-plane removal (C) is false, and node patching stays with the platform (D).",
+    "explanation": "Correct answer: A and B. Shared and private spaces are the two CH2 deployment isolation levels. Control-plane removal (D) is false, and node patching stays with the platform (C).",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -32078,7 +32078,7 @@ window.MCPA_QUESTIONS = [
     "references": {
       "primary": {
         "title": "CloudHub 2.0 Overview",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-overview"
+        "url": "https://docs.mulesoft.com/cloudhub-2/"
       }
     }
   },
@@ -32133,8 +32133,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub 2.0 — Updating Apps",
-        "url": "https://docs.mulesoft.com/cloudhub-2/update-restart-app"
+        "title": "Updating Apps Deployed to CloudHub 2.0",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-update-apps"
       }
     }
   },
@@ -32169,7 +32169,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. CH2 provides a managed persistent object store shared across replicas. emptyDir (A) is per-replica scratch, singletons (C) are per-pod, and baking state into images (B) is not state at all.",
+    "explanation": "Correct answer: B. CH2 provides a managed persistent object store shared across replicas. emptyDir (D) is per-replica scratch, singletons (C) are per-pod, and baking state into images (A) is not state at all.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -32190,8 +32190,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub 2.0 — Object Store",
-        "url": "https://docs.mulesoft.com/cloudhub-2/ch2-apps-object-store"
+        "title": "Using Object Store v2",
+        "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
     }
   },
@@ -32226,7 +32226,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Static egress is achieved via NAT/dedicated egress arrangements, not default shared-cloud behavior. Internet whitelisting (B) removes the control, randomization (C) is noise, and default IPs are not guaranteed static (D).",
+    "explanation": "Correct answer: A. Static egress is achieved via NAT/dedicated egress arrangements, not default shared-cloud behavior. Internet whitelisting (B) removes the control, randomization (D) is noise, and default IPs are not guaranteed static (C).",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -32247,8 +32247,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Static IP Egress",
-        "url": "https://docs.mulesoft.com/runtime-cloud/static-ip"
+        "title": "Configuring Application-Level Egress Rules",
+        "url": "https://docs.mulesoft.com/cloudhub-2/ps-config-app-level-egress"
       }
     }
   },
@@ -32282,7 +32282,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. DLB services support health checking to gate rotation. Blind round-robin (C) routes to broken targets, newest-only (A) discards capacity, and (D) is false.",
+    "explanation": "Correct answer: C. DLB services support health checking to gate rotation. Blind round-robin (A) routes to broken targets, newest-only (B) discards capacity, and (D) is false.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -32303,8 +32303,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Dedicated Load Balancer — Services",
-        "url": "https://docs.mulesoft.com/runtime-cloud/dlb-overview"
+        "title": "Dedicated Load Balancers",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer"
       }
     }
   },
@@ -32339,7 +32339,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "D"
     ],
-    "explanation": "Correct answer: D and A. Worker and path redundancy are the concrete SPOF fixes. One-big-worker (C) recreates the SPOF, and silencing alerts (A) hides the failure.",
+    "explanation": "Correct answer: D and A. Worker and path redundancy are the concrete SPOF fixes. One-big-worker (C) recreates the SPOF, and silencing alerts (B) hides the failure.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -32360,8 +32360,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Avoiding SPOF",
-        "url": "https://docs.mulesoft.com/runtime-cloud/shared-cloudhub-reliability"
+        "title": "CloudHub High Availability and Disaster Recovery",
+        "url": "https://docs.mulesoft.com/cloudhub/cloudhub-hadr"
       }
     }
   },
@@ -32396,7 +32396,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Repeated reads of slowly-changing data are a caching problem: serve from cache until stale. Audit persistence (B) is not a latency fix, deletion (C) is absurd, and email (D) is not an API.",
+    "explanation": "Correct answer: D. Repeated reads of slowly-changing data are a caching problem: serve from cache until stale. Audit persistence (B) is not a latency fix, deletion (D) is absurd, and email (A) is not an API.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -32417,8 +32417,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Mule — Caching",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/caching"
+        "title": "Cache Scope",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/cache-scope"
       }
     }
   },
@@ -32453,7 +32453,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Durable, mutable, per-key state is Object Store territory. HTTP caches (B) serve responses, not counters; heap maps (C) die with workers; grep (D) is not a data structure.",
+    "explanation": "Correct answer: A. Durable, mutable, per-key state is Object Store territory. HTTP caches (B) serve responses, not counters; heap maps (D) die with workers; grep (C) is not a data structure.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -32474,8 +32474,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Object Store v2",
-        "url": "https://docs.mulesoft.com/runtime-cloud/object-store-v2"
+        "title": "Using Object Store v2",
+        "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
     }
   },
@@ -32510,7 +32510,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Bounded backoff retries absorb transient faults. Instant fail (B) surfaces noise, infinite tight retries (A) hammer the service, and no handling (C) is chaos.",
+    "explanation": "Correct answer: C. Bounded backoff retries absorb transient faults. Instant fail (B) surfaces noise, infinite tight retries (C) hammer the service, and no handling (A) is chaos.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -32531,8 +32531,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — Resilience Patterns",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/retry"
+        "title": "Until Successful Scope",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/until-successful-scope"
       }
     }
   },
@@ -32567,7 +32567,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Breakers fail fast during outages and half-open probes check recovery. Retrying into a dead service (C) deepens the hole, unchecking (B) is the status quo being fixed, and parallel waiting (A) multiplies waste.",
+    "explanation": "Correct answer: C. Breakers fail fast during outages and half-open probes check recovery. Retrying into a dead service (C) deepens the hole, unchecking (A) is the status quo being fixed, and parallel waiting (B) multiplies waste.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -32588,8 +32588,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — Circuit Breakers",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/circuit-breaker"
+        "title": "Circuit Breaker Policy",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-outbound-circuit-breaker"
       }
     }
   },
@@ -32644,8 +32644,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — Timeout Handling",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/timeout"
+        "title": "Configure HTTP Request Operation",
+        "url": "https://docs.mulesoft.com/http-connector/latest/http-request-ref"
       }
     }
   },
@@ -32680,7 +32680,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Idempotency keys make retries safe for unsafe methods. Shifting blame (D) leaves broken UX, doubling down (A) multiplies duplicates, and banning retries (B) is unenforceable and user-hostile.",
+    "explanation": "Correct answer: B. Idempotency keys make retries safe for unsafe methods. Shifting blame (D) leaves broken UX, doubling down (B) multiplies duplicates, and banning retries (A) is unenforceable and user-hostile.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -32737,7 +32737,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "C"
     ],
-    "explanation": "Correct answer: A and C. Backoff retries and circuit breakers are the canonical pair. Tight loops (B) are an anti-pattern, and silence (C) hides failures.",
+    "explanation": "Correct answer: A and C. Backoff retries and circuit breakers are the canonical pair. Tight loops (D) are an anti-pattern, and silence (B) hides failures.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -32758,8 +32758,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — Resilience",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/circuit-breaker"
+        "title": "Circuit Breaker Policy",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-outbound-circuit-breaker"
       }
     }
   },
@@ -32815,8 +32815,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Scaling Apps",
-        "url": "https://docs.mulesoft.com/runtime-cloud/scaling-app"
+        "title": "Autoscaling in CloudHub",
+        "url": "https://docs.mulesoft.com/cloudhub/autoscaling-in-cloudhub"
       }
     }
   },
@@ -32850,7 +32850,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Downstream saturation is untouched by lane count and often worsens. Magic speedups (A), complexity reduction (D), and guaranteed multipliers (C) are false.",
+    "explanation": "Correct answer: D. Downstream saturation is untouched by lane count and often worsens. Magic speedups (A), complexity reduction (B), and guaranteed multipliers (D) are false.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -32871,8 +32871,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Scaling",
-        "url": "https://docs.mulesoft.com/runtime-cloud/scaling-app"
+        "title": "Autoscaling in CloudHub",
+        "url": "https://docs.mulesoft.com/cloudhub/autoscaling-in-cloudhub"
       }
     }
   },
@@ -32983,8 +32983,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Object Store v2",
-        "url": "https://docs.mulesoft.com/runtime-cloud/object-store-v2"
+        "title": "Using Object Store v2",
+        "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
     }
   },
@@ -33019,7 +33019,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Serving degraded-but-useful data beats hard failure for availability. Blanket 500s (D) and random junk (A) harm users; full shutdown (B) maximizes downtime.",
+    "explanation": "Correct answer: D. Serving degraded-but-useful data beats hard failure for availability. Blanket 500s (A) and random junk (B) harm users; full shutdown (C) maximizes downtime.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -33040,8 +33040,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — Resilience Patterns",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/retry"
+        "title": "Until Successful Scope",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/until-successful-scope"
       }
     }
   },
@@ -33097,8 +33097,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API Quality",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -33133,7 +33133,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Tiered limits keep aggregate load inside backend capacity. API removal (B) discards the product, fonts (C) are irrelevant, and waiting (D) is negligence.",
+    "explanation": "Correct answer: D. Tiered limits keep aggregate load inside backend capacity. API removal (C) discards the product, fonts (D) are irrelevant, and waiting (A) is negligence.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -33154,8 +33154,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Rate Limiting",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/rate-limiting-policies"
+        "title": "Rate Limiting Policy",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-rate-limiting"
       }
     }
   },
@@ -33190,7 +33190,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Per-tenant pools contain failure to their own bulkhead. Global pools (B) are the vulnerability, reject-all (C) overcorrect, and favoritism (D) is not engineering.",
+    "explanation": "Correct answer: A. Per-tenant pools contain failure to their own bulkhead. Global pools (C) are the vulnerability, reject-all (B) overcorrect, and favoritism (D) is not engineering.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -33211,8 +33211,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — Resilience Patterns",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/circuit-breaker"
+        "title": "Circuit Breaker Policy",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-outbound-circuit-breaker"
       }
     }
   },
@@ -33325,8 +33325,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Object Store v2",
-        "url": "https://docs.mulesoft.com/runtime-cloud/object-store-v2"
+        "title": "Using Object Store v2",
+        "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
     }
   },
@@ -33360,7 +33360,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Either short TTL or event-driven invalidation meets freshness. Eternal caching (A) guarantees staleness, selective disabling (B) is inconsistent, and restart-based invalidation (D) is downtime as a cache strategy.",
+    "explanation": "Correct answer: B. Either short TTL or event-driven invalidation meets freshness. Eternal caching (B) guarantees staleness, selective disabling (A) is inconsistent, and restart-based invalidation (C) is downtime as a cache strategy.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -33381,8 +33381,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Mule — Caching Strategies",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/caching"
+        "title": "Cache Scope",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/cache-scope"
       }
     }
   },
@@ -33417,7 +33417,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Retry-without-timeout holds resources unboundedly and stacks attempts. (B) ignores the missing bound, (C) is the exact inversion, and waiting does not heal dependencies (D).",
+    "explanation": "Correct answer: B. Retry-without-timeout holds resources unboundedly and stacks attempts. (B) ignores the missing bound, (D) is the exact inversion, and waiting does not heal dependencies (C).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -33438,8 +33438,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — Resilience Patterns",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/retry"
+        "title": "Until Successful Scope",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/until-successful-scope"
       }
     }
   },
@@ -33474,7 +33474,7 @@ window.MCPA_QUESTIONS = [
       "C",
       "D"
     ],
-    "explanation": "Correct answer: C and D. Ephemeral caches and dedup keys are OS sweet spots. Long archival (C) is a records-management store, and master records belong in systems of record (D).",
+    "explanation": "Correct answer: C and D. Ephemeral caches and dedup keys are OS sweet spots. Long archival (D) is a records-management store, and master records belong in systems of record (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -33495,8 +33495,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Object Store v2",
-        "url": "https://docs.mulesoft.com/runtime-cloud/object-store-v2"
+        "title": "Using Object Store v2",
+        "url": "https://docs.mulesoft.com/object-store/osv2-guide"
       }
     }
   },
@@ -33531,7 +33531,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Lanes raise concurrency/throughput; per-request latency moves with per-lane capacity or optimization. (C) confuses the axes, (A) is false, and (D) ignores the distinction.",
+    "explanation": "Correct answer: C. Lanes raise concurrency/throughput; per-request latency moves with per-lane capacity or optimization. (B) confuses the axes, (D) is false, and (C) ignores the distinction.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -33552,8 +33552,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "CloudHub — Scaling",
-        "url": "https://docs.mulesoft.com/runtime-cloud/scaling-app"
+        "title": "Autoscaling in CloudHub",
+        "url": "https://docs.mulesoft.com/cloudhub/autoscaling-in-cloudhub"
       }
     }
   },
@@ -33587,7 +33587,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Serve-then-refresh matches the requirement exactly. Always-blocking (D) costs latency, never-refreshing (B) is unbounded staleness, and coin flips (C) are not design.",
+    "explanation": "Correct answer: A. Serve-then-refresh matches the requirement exactly. Always-blocking (C) costs latency, never-refreshing (B) is unbounded staleness, and coin flips (D) are not design.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -33665,8 +33665,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — Performance Best Practices",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/tuning"
+        "title": "Performance Tuning Guide",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/tuning-guide"
       }
     }
   },
@@ -33756,7 +33756,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Priority-aware shedding protects critical traffic and keeps admitted work inside SLO. Equal degradation (A) fails everything, random shedding (B) drops criticals, and internal-only (D) is arbitrary discrimination.",
+    "explanation": "Correct answer: B. Priority-aware shedding protects critical traffic and keeps admitted work inside SLO. Equal degradation (A) fails everything, random shedding (C) drops criticals, and internal-only (D) is arbitrary discrimination.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -33777,8 +33777,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Spike Control and Limits",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/rate-limiting-policies"
+        "title": "Rate Limiting Policy",
+        "url": "https://docs.mulesoft.com/gateway/latest/policies-included-rate-limiting"
       }
     }
   },
@@ -33812,7 +33812,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Edge enforcement points and the applications themselves emit invocation data that Monitoring aggregates into dashboards and alerts. Client-local logs (B), backend-only logs (C), and hand-drawn boards (D) are wrong.",
+    "explanation": "Correct answer: A. Edge enforcement points and the applications themselves emit invocation data that Monitoring aggregates into dashboards and alerts. Client-local logs (B), backend-only logs (D), and hand-drawn boards (C) are wrong.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -33868,7 +33868,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Volume, status distribution, and latency percentiles per instance are the standard collected set. Executive browsing (B) and weather (C) are nonsense, and metrics are automatic (D).",
+    "explanation": "Correct answer: D. Volume, status distribution, and latency percentiles per instance are the standard collected set. Executive browsing (C) and weather (B) are nonsense, and metrics are automatic (D).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -33924,7 +33924,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Alerts bind metric + condition + window + notification channel. Kanban (A) is decoration, rate limits meter volume not latency (D), and signatures (C) are not alerting.",
+    "explanation": "Correct answer: D. Alerts bind metric + condition + window + notification channel. Kanban (C) is decoration, rate limits meter volume not latency (A), and signatures (B) are not alerting.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -33981,7 +33981,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Application-level telemetry (heap, CPU, status) rounds out API-level metrics. Ad spend (C) and coffee (A) are jokes, and application alerts do exist (D).",
+    "explanation": "Correct answer: C. Application-level telemetry (heap, CPU, status) rounds out API-level metrics. Ad spend (A) and coffee (B) are jokes, and application alerts do exist (D).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -34037,7 +34037,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. The platform's log viewer exposes app logs with filtering. Worker SSH (D) is not the access path, faxes (C) are absurd, and logs exist (A).",
+    "explanation": "Correct answer: D. The platform's log viewer exposes app logs with filtering. Worker SSH (C) is not the access path, faxes (D) are absurd, and logs exist (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -34208,7 +34208,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Structure versus performance is the axis of separation. Identity (C), slides (B), and org charts (A) are wrong.",
+    "explanation": "Correct answer: B. Structure versus performance is the axis of separation. Identity (B), slides (A), and org charts (C) are wrong.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -34379,7 +34379,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Windowed conditions smooth transients so alerts fire on sustained problems. Under-alerting (B) is the opposite failure, cost (D) is irrelevant, and windows are semantic (A).",
+    "explanation": "Correct answer: D. Windowed conditions smooth transients so alerts fire on sustained problems. Under-alerting (B) is the opposite failure, cost (A) is irrelevant, and windows are semantic (C).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -34436,7 +34436,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Rejected requests are counted as policy violations and are alertable. Silence (A) would defeat governance, source reading (B) is impractical, and self-reports (D) are not telemetry.",
+    "explanation": "Correct answer: B. Rejected requests are counted as policy violations and are alertable. Silence (B) would defeat governance, source reading (A) is impractical, and self-reports (D) are not telemetry.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -34493,7 +34493,7 @@ window.MCPA_QUESTIONS = [
       "C",
       "D"
     ],
-    "explanation": "Correct answer: C and D. Monitoring dashboards quantify invocations; Visualizer shows their topology. Thread dumps (D) are debug artifacts, and backlogs (C) are planning tools.",
+    "explanation": "Correct answer: C and D. Monitoring dashboards quantify invocations; Visualizer shows their topology. Thread dumps (B) are debug artifacts, and backlogs (A) are planning tools.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -34605,7 +34605,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Throttling telemetry exposes consumer-side issues that latency and 5xx miss. 429 is a rejection, not success (B), latency is a different axis (C), and legal teams are not the audience (D).",
+    "explanation": "Correct answer: C. Throttling telemetry exposes consumer-side issues that latency and 5xx miss. 429 is a rejection, not success (D), latency is a different axis (C), and legal teams are not the audience (B).",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -34663,7 +34663,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. The edges show the canonical layer flow; nothing bypasses, and arrows point downward (Experience→Process→System). (B) contradicts the exhibit, (C) reverses the arrows, and (D) is false.",
+    "explanation": "Correct answer: B. The edges show the canonical layer flow; nothing bypasses, and arrows point downward (Experience→Process→System). (D) contradicts the exhibit, (A) reverses the arrows, and (C) is false.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -34837,7 +34837,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Tag filtering plus time-range selection is exactly the interaction shown. Highlighters (D), fixed ranges (A), and deleting apps (B) are absurd.",
+    "explanation": "Correct answer: D. Tag filtering plus time-range selection is exactly the interaction shown. Highlighters (D), fixed ranges (B), and deleting apps (C) are absurd.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -34894,7 +34894,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Peer contexts integrate via explicit boundary contracts; ownership is retained per context. Ownership by volume (D), silent renames (B), and CSV hope (C) all degrade one or both contexts.",
+    "explanation": "Correct answer: A. Peer contexts integrate via explicit boundary contracts; ownership is retained per context. Ownership by volume (C), silent renames (D), and CSV hope (B) all degrade one or both contexts.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -34915,8 +34915,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — Data Modeling Approaches",
-        "url": "https://docs.mulesoft.com/general/data-modeling"
+        "title": "Mule Data Types",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/mule-data-types"
       }
     }
   },
@@ -34971,8 +34971,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "MuleSoft — API-led Connectivity",
-        "url": "https://docs.mulesoft.com/general/api-led"
+        "title": "Tutorial: Build an API from Start to Finish",
+        "url": "https://docs.mulesoft.com/general/api-led-overview"
       }
     }
   },
@@ -35007,7 +35007,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "C"
     ],
-    "explanation": "Correct answer: C. Per-request gateway evaluation against the authoritative source is the only correct design. Nightly snapshots (C) lag up to 24h, client self-checks (B) are unenforceable, and monthly audits (A) are forensic, not preventive.",
+    "explanation": "Correct answer: C. Per-request gateway evaluation against the authoritative source is the only correct design. Nightly snapshots (A) lag up to 24h, client self-checks (C) are unenforceable, and monthly audits (B) are forensic, not preventive.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -35028,8 +35028,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager — Custom Policies",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/custom-policies"
+        "title": "Mule 4 Custom Policy Workflow",
+        "url": "https://docs.mulesoft.com/mule-gateway/policies-custom-getting-started"
       }
     }
   },
@@ -35063,7 +35063,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "B"
     ],
-    "explanation": "Correct answer: B. Flow choice follows client trust: machine-to-machine uses client credentials; public browser clients use authorization code + PKCE. Implicit (C) is discouraged, SPA secrets (B) are a breach, and human-per-run (A) is an anti-pattern.",
+    "explanation": "Correct answer: B. Flow choice follows client trust: machine-to-machine uses client credentials; public browser clients use authorization code + PKCE. Implicit (D) is discouraged, SPA secrets (A) are a breach, and human-per-run (C) is an anti-pattern.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -35120,7 +35120,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "D"
     ],
-    "explanation": "Correct answer: D. Scopes are contract data: declared in the security scheme and applied per operation. Chat pins (A) are not contracts, internals (D) break tooling, and consumer schemas (C) are irrelevant.",
+    "explanation": "Correct answer: D. Scopes are contract data: declared in the security scheme and applied per operation. Chat pins (C) are not contracts, internals (D) break tooling, and consumer schemas (B) are irrelevant.",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -35177,7 +35177,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. Property placeholder resolution per environment is the mechanism; one immutable artifact promotes. Per-env rebuilds (B) are the classic anti-pattern, JAR hot-edits (C) corrupt integrity, and three Studios (D) is fiction.",
+    "explanation": "Correct answer: A. Property placeholder resolution per environment is the mechanism; one immutable artifact promotes. Per-env rebuilds (D) are the classic anti-pattern, JAR hot-edits (C) corrupt integrity, and three Studios (B) is fiction.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -35198,8 +35198,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Mule — Property Placeholders",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/config-properties"
+        "title": "Configuring Properties",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/configuring-properties"
       }
     }
   },
@@ -35412,7 +35412,7 @@ window.MCPA_QUESTIONS = [
       "A",
       "D"
     ],
-    "explanation": "Correct answer: A and D. Deployment automation plus governance-as-code removes the human touchpoint. Meetings (C) are the opposite, and initials (D) are trivia.",
+    "explanation": "Correct answer: A and D. Deployment automation plus governance-as-code removes the human touchpoint. Meetings (C) are the opposite, and initials (B) are trivia.",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -35433,8 +35433,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Anypoint — ARM Templates",
-        "url": "https://docs.mulesoft.com/arm-templates/"
+        "title": "Anypoint Platform CLI 4.x Overview",
+        "url": "https://docs.mulesoft.com/anypoint-cli/latest/"
       }
     }
   },
@@ -35733,8 +35733,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "Mule — Caching Strategies",
-        "url": "https://docs.mulesoft.com/mule-runtime/4.4/caching"
+        "title": "Cache Scope",
+        "url": "https://docs.mulesoft.com/mule-runtime/latest/cache-scope"
       },
       "secondary": {
         "title": "RFC 9111 — HTTP Caching",
@@ -35897,7 +35897,7 @@ window.MCPA_QUESTIONS = [
       "C",
       "D"
     ],
-    "explanation": "Correct answer: D and C. Importable fragments and usable documentation/mocks are the reuse drivers. Auto-deletion (C) and renaming churn (D) are destructive. (Note: options D, C, B, A texts contain corrupted characters in this record; they should read as semantically described in the explanation.)",
+    "explanation": "Correct answer: D and C. Importable fragments and usable documentation/mocks are the reuse drivers. Auto-deletion (B) and renaming churn (A) are destructive. (Note: options D, C, B, A texts contain corrupted characters in this record; they should read as semantically described in the explanation.)",
     "rationales": {
       "A": {
         "type": "Incorrect",
@@ -35954,7 +35954,7 @@ window.MCPA_QUESTIONS = [
     "correctAnswers": [
       "A"
     ],
-    "explanation": "Correct answer: A. The four NFRs map exactly to client identification, payload threat defense, tiered quotas, and burst smoothing. Logging and CORS do not identify or bound (B), JWT validation authenticates but neither bounds payloads nor meters tiers (C), and ungoverned backends fail all four (D).",
+    "explanation": "Correct answer: A. The four NFRs map exactly to client identification, payload threat defense, tiered quotas, and burst smoothing. Logging and CORS do not identify or bound (B), JWT validation authenticates but neither bounds payloads nor meters tiers (D), and ungoverned backends fail all four (C).",
     "rationales": {
       "A": {
         "type": "Correct",
@@ -35975,8 +35975,8 @@ window.MCPA_QUESTIONS = [
     },
     "references": {
       "primary": {
-        "title": "API Manager - Policies",
-        "url": "https://docs.mulesoft.com/api-manager/2.x/policies-list"
+        "title": "Gateway Policies in API Manager",
+        "url": "https://docs.mulesoft.com/api-manager/latest/manage-policies-overview"
       }
     }
   }
