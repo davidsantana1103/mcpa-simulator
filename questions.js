@@ -7137,7 +7137,7 @@ window.MCPA_QUESTIONS = [
       },
       {
         "letter": "C",
-        "text": "Linking the Order type to the Product type"
+        "text": "Merging both Customer types into a single unified type"
       },
       {
         "letter": "D",
