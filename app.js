@@ -15,11 +15,13 @@
     filterStudy: 'all', // 'all' | 'studied' | 'unstudied'
     searchQuery: '',
     examAreaFilter: [], // array of domain names; empty = all areas
+    examNewQuestionsOnly: true, // prefer non-studied / failed questions in timed exams
 
     // Stored in localStorage
     userAnswers: {}, // { qId: selectedLetter | [letters] } — practice answers
     flagged: new Set(), // Set of qIds
     studied: new Set(), // Set of qIds the user has answered at least once (any mode)
+    questionResults: {}, // { qId: 'correct' | 'incorrect' } — latest answer result, any mode
     // { active: bool, submitted: bool, questions: [], questionCount, answers: {}, startTime, durationSec }
     examSession: null,
     theme: 'light',
@@ -31,9 +33,11 @@
     ANSWERS: 'mcpa_user_answers_v1',
     FLAGGED: 'mcpa_flagged_v1',
     STUDIED: 'mcpa_studied_v1',
+    RESULTS: 'mcpa_question_results_v1',
     EXAM: 'mcpa_exam_session_v1',
     EXAM_COUNT: 'mcpa_exam_count_v1',
     EXAM_AREAS: 'mcpa_exam_areas_v1',
+    EXAM_NEW_ONLY: 'mcpa_exam_new_only_v1',
     THEME: 'mcpa_theme_v1',
     LAST_INDEX: 'mcpa_last_index_v1',
     UPDATED_AT: 'mcpa_updated_at_v1'
@@ -90,6 +94,7 @@
     examAreaCountLabel: document.getElementById('exam-area-count-label'),
     examAreaAllBtn: document.getElementById('exam-area-all-btn'),
     examAreaClearBtn: document.getElementById('exam-area-clear-btn'),
+    examNewOnly: document.getElementById('exam-new-only'),
     
     // Modals
     confirmModal: document.getElementById('confirm-modal'),
@@ -123,11 +128,13 @@
   function init() {
     loadStorage();
     backfillStudied();
+    backfillResults();
     setupTheme();
     initializeQuestionCountPlaceholders();
     if (dom.examCountSelect) {
       dom.examCountSelect.value = state.examQuestionCount.toString();
     }
+    if (dom.examNewOnly) dom.examNewOnly.checked = state.examNewQuestionsOnly;
     updateExamBtnLabel();
     sanitizeExamAreaFilter();
     populateDomainFilter();
@@ -196,8 +203,17 @@
       const savedStudied = localStorage.getItem(STORAGE_KEYS.STUDIED);
       if (savedStudied) state.studied = new Set(JSON.parse(savedStudied));
 
+      const savedResults = localStorage.getItem(STORAGE_KEYS.RESULTS);
+      if (savedResults) {
+        const parsed = JSON.parse(savedResults);
+        if (parsed && typeof parsed === 'object') state.questionResults = parsed;
+      }
+
       const savedTheme = localStorage.getItem(STORAGE_KEYS.THEME);
       if (savedTheme) state.theme = savedTheme;
+
+      const savedNewOnly = localStorage.getItem(STORAGE_KEYS.EXAM_NEW_ONLY);
+      if (savedNewOnly !== null) state.examNewQuestionsOnly = savedNewOnly !== '0';
 
       const savedLastIndex = localStorage.getItem(STORAGE_KEYS.LAST_INDEX);
       if (savedLastIndex) state.currentIndex = parseInt(savedLastIndex, 10) || 0;
@@ -267,6 +283,38 @@
     return changed;
   }
 
+  // One-time migration: derive a latest result for questions answered before
+  // per-question results were tracked. The exam answer is the most recent
+  // discrete activity, so it wins over the practice answer.
+  function backfillResults() {
+    let changed = false;
+    const setResult = (qId, answer) => {
+      if (!hasAnswer(answer)) return;
+      const q = state.questions.find(item => item.id === qId);
+      if (!q) return;
+      state.questionResults[qId] = answersMatch(q, answer) ? 'correct' : 'incorrect';
+      changed = true;
+    };
+    Object.keys(state.userAnswers).forEach(qId => setResult(qId, state.userAnswers[qId]));
+    const examAnswers = state.examSession && state.examSession.answers;
+    if (examAnswers && typeof examAnswers === 'object') {
+      Object.keys(examAnswers).forEach(qId => setResult(qId, examAnswers[qId]));
+    }
+    if (changed) saveStorage();
+  }
+
+  // Record the outcome of the user's latest answer for a question.
+  function recordResult(qId, answer) {
+    if (!qId) return;
+    const q = state.questions.find(item => item.id === qId);
+    if (!q) return;
+    if (!hasAnswer(answer)) {
+      delete state.questionResults[qId];
+      return;
+    }
+    state.questionResults[qId] = answersMatch(q, answer) ? 'correct' : 'incorrect';
+  }
+
   // Mark a question as studied (it has been answered at least once, any mode).
   function markStudied(qId) {
     if (!qId || state.studied.has(qId)) return;
@@ -280,10 +328,12 @@
       localStorage.setItem(STORAGE_KEYS.ANSWERS, JSON.stringify(state.userAnswers));
       localStorage.setItem(STORAGE_KEYS.FLAGGED, JSON.stringify(Array.from(state.flagged)));
       localStorage.setItem(STORAGE_KEYS.STUDIED, JSON.stringify(Array.from(state.studied)));
+      localStorage.setItem(STORAGE_KEYS.RESULTS, JSON.stringify(state.questionResults));
       localStorage.setItem(STORAGE_KEYS.THEME, state.theme);
       localStorage.setItem(STORAGE_KEYS.LAST_INDEX, state.currentIndex.toString());
       localStorage.setItem(STORAGE_KEYS.EXAM_COUNT, state.examQuestionCount.toString());
       localStorage.setItem(STORAGE_KEYS.EXAM_AREAS, JSON.stringify(state.examAreaFilter));
+      localStorage.setItem(STORAGE_KEYS.EXAM_NEW_ONLY, state.examNewQuestionsOnly ? '1' : '0');
       localStorage.setItem(STORAGE_KEYS.UPDATED_AT, state.updatedAt.toString());
       if (state.examSession) {
         localStorage.setItem(STORAGE_KEYS.EXAM, JSON.stringify(state.examSession));
@@ -309,9 +359,11 @@
       userAnswers: state.userAnswers,
       flagged: Array.from(state.flagged),
       studied: Array.from(state.studied),
+      questionResults: state.questionResults,
       theme: state.theme,
       examQuestionCount: state.examQuestionCount,
       examAreaFilter: state.examAreaFilter,
+      examNewQuestionsOnly: state.examNewQuestionsOnly,
       examSession: state.examSession
     };
   }
@@ -321,8 +373,10 @@
       a: state.userAnswers,
       f: Array.from(state.flagged).sort(),
       d: Array.from(state.studied).sort(),
+      r: state.questionResults,
       c: state.examQuestionCount,
       e: state.examAreaFilter,
+      n: state.examNewQuestionsOnly,
       s: state.examSession
     });
   }
@@ -343,12 +397,23 @@
       state.studied = new Set();
       backfillStudiedFromAnswers();
     }
+    if (payload.questionResults && typeof payload.questionResults === 'object') {
+      state.questionResults = payload.questionResults;
+    } else {
+      // Older snapshots had no per-question results: rebuild from saved answers.
+      state.questionResults = {};
+      backfillResults();
+    }
     if (typeof payload.examQuestionCount === 'number' && [20, 40, 60, 80, 100].includes(payload.examQuestionCount)) {
       state.examQuestionCount = payload.examQuestionCount;
     }
     if (Array.isArray(payload.examAreaFilter)) {
       state.examAreaFilter = payload.examAreaFilter.filter(a => typeof a === 'string');
     }
+    if (typeof payload.examNewQuestionsOnly === 'boolean') {
+      state.examNewQuestionsOnly = payload.examNewQuestionsOnly;
+    }
+    if (dom.examNewOnly) dom.examNewOnly.checked = state.examNewQuestionsOnly;
     if (typeof payload.theme === 'string') {
       state.theme = payload.theme;
       setupTheme();
@@ -372,9 +437,11 @@
       localStorage.setItem(STORAGE_KEYS.ANSWERS, JSON.stringify(state.userAnswers));
       localStorage.setItem(STORAGE_KEYS.FLAGGED, JSON.stringify(Array.from(state.flagged)));
       localStorage.setItem(STORAGE_KEYS.STUDIED, JSON.stringify(Array.from(state.studied)));
+      localStorage.setItem(STORAGE_KEYS.RESULTS, JSON.stringify(state.questionResults));
       localStorage.setItem(STORAGE_KEYS.THEME, state.theme);
       localStorage.setItem(STORAGE_KEYS.EXAM_COUNT, state.examQuestionCount.toString());
       localStorage.setItem(STORAGE_KEYS.EXAM_AREAS, JSON.stringify(state.examAreaFilter));
+      localStorage.setItem(STORAGE_KEYS.EXAM_NEW_ONLY, state.examNewQuestionsOnly ? '1' : '0');
       localStorage.setItem(STORAGE_KEYS.UPDATED_AT, state.updatedAt.toString());
       if (state.examSession) {
         localStorage.setItem(STORAGE_KEYS.EXAM, JSON.stringify(state.examSession));
@@ -541,7 +608,10 @@
       const areaSuffix = areaCount > 0 ? ` · ${areaCount} Area${areaCount > 1 ? 's' : ''}` : '';
       dom.examModeBtn.textContent = `Timed Exam (${state.examQuestionCount}Q)${areaSuffix}`;
       const scope = areaCount > 0 ? ` drawn from ${areaCount} selected area${areaCount > 1 ? 's' : ''}` : '';
-      dom.examModeBtn.title = `${state.examQuestionCount}-question timed exam simulation (${state.examQuestionCount * 2} mins)${scope}`;
+      const eligibility = state.examNewQuestionsOnly
+        ? ` ${describeEligibility(getExamEligibility())}`
+        : '';
+      dom.examModeBtn.title = `${state.examQuestionCount}-question timed exam simulation (${state.examQuestionCount * 2} mins)${scope}.${eligibility}`;
     }
   }
 
@@ -664,6 +734,54 @@
     if (!state.examAreaFilter.length) return state.questions;
     const selected = new Set(state.examAreaFilter);
     return state.questions.filter(q => selected.has(q.domain));
+  }
+
+  // Priority tier for the "new questions only" exam selection:
+  //   1 = never answered (non-studied)
+  //   2 = answered but not currently correct (failed, or result unknown)
+  //   3 = answered correctly (last resort)
+  function examTier(q) {
+    if (!state.studied.has(q.id)) return 1;
+    if (state.questionResults[q.id] === 'correct') return 3;
+    return 2;
+  }
+
+  // Order questions so the highest-priority tier comes first, shuffled within
+  // each tier. When "new questions only" is off, this is a plain shuffle.
+  function tieredOrder(questions) {
+    if (!state.examNewQuestionsOnly) return shuffle(questions);
+    const tiers = { 1: [], 2: [], 3: [] };
+    questions.forEach(q => tiers[examTier(q)].push(q));
+    return [...shuffle(tiers[1]), ...shuffle(tiers[2]), ...shuffle(tiers[3])];
+  }
+
+  // Counts used to tell the user what the next exam will draw on.
+  function getExamEligibility() {
+    const pool = getExamPool();
+    let nonStudied = 0;
+    let failed = 0;
+    let correct = 0;
+    pool.forEach(q => {
+      const tier = examTier(q);
+      if (tier === 1) nonStudied++;
+      else if (tier === 2) failed++;
+      else correct++;
+    });
+    const target = Math.min(state.examQuestionCount, pool.length);
+    return { pool, nonStudied, failed, correct, target, newOnly: state.examNewQuestionsOnly };
+  }
+
+  // One-line summary of what the next exam will use.
+  function describeEligibility(e) {
+    if (!e.newOnly) {
+      return `${e.pool.length} questions available; the exam draws from all of them.`;
+    }
+    const fresh = e.nonStudied + e.failed;
+    let msg = `${e.nonStudied} not studied + ${e.failed} failed`;
+    if (e.target > fresh && e.correct > 0) {
+      msg += `; topped up with ${Math.min(e.target - fresh, e.correct)} already-correct`;
+    }
+    return `${msg}.`;
   }
 
   // Apply filters
@@ -930,6 +1048,7 @@
       store[qId] = letter;
     }
     markStudied(qId);
+    recordResult(qId, store[qId]);
     
     // Update selected styling in UI
     const optionItems = dom.optionsList.querySelectorAll('.option-item');
@@ -1021,10 +1140,12 @@
 
   // Stats bar update
   function updateStats() {
-    const isExamActive = isExamInProgress();
-    const activeQuestions = isExamActive ? state.examSession.questions : state.questions;
+    // In exam mode (in progress or review) the exam's own questions and answers
+    // are authoritative; otherwise the practice answers are.
+    const inExam = state.mode === 'exam' && !!state.examSession;
+    const activeQuestions = inExam ? state.examSession.questions : state.questions;
     const total = activeQuestions.length;
-    const answers = isExamActive ? (state.examSession.answers || {}) : state.userAnswers;
+    const answers = getActiveAnswerMap();
 
     let answeredCount = 0;
     let correctCount = 0;
@@ -1122,15 +1243,19 @@
     if (newMode === 'exam') {
       const pool = getExamPool();
       if (!pool.length) return;
-      const count = Math.min(state.examQuestionCount, pool.length);
+      const e = getExamEligibility();
+      const count = e.target;
       const durationMin = count * 2;
       const areaCount = state.examAreaFilter.length;
       const scope = areaCount > 0
         ? ` drawn only from your ${areaCount} selected area${areaCount > 1 ? 's' : ''}`
         : '';
+      const newNote = state.examNewQuestionsOnly
+        ? `New questions only is ON — the draw prefers questions you have not studied or have answered incorrectly. `
+        : `New questions only is OFF — the draw uses any question. `;
       showConfirmModal(
         `Start ${count}-Question Timed Exam`,
-        `This will start a timed ${durationMin}-minute exam simulation with ${count} randomized questions${scope}. Answers and explanations will be hidden until you submit.`,
+        `${newNote}${describeEligibility(e)} This will start a timed ${durationMin}-minute exam simulation with ${count} randomized questions${scope}. Answers and explanations will be hidden until you submit.`,
         () => startExamMode()
       );
     } else {
@@ -1158,7 +1283,6 @@
     // Never ask for more questions than the selected area(s) can supply.
     const count = Math.min(state.examQuestionCount, pool.length);
     const examQuestions = buildWeightedExam(count);
-
     // The exam keeps its own answers so it always starts clean and never
     // inherits (or overwrites) practice-mode answers.
     state.examSession = {
@@ -1214,6 +1338,11 @@
   // Draw a `count`-question exam that mirrors the official domain weights.
   // When the user has selected specific areas, the draw is limited to those areas
   // and re-normalizes the official weights across the selected subset.
+  //
+  // With "new questions only" enabled, each domain's quota is filled from the
+  // highest-priority tier first (non-studied, then failed, then already-correct),
+  // and the top-up pool is tier-ordered the same way so the exam prefers new
+  // questions and only falls back to studied ones when it has to.
   function buildWeightedExam(count) {
     const pool = getExamPool();
     const byDomain = {};
@@ -1242,7 +1371,7 @@
     const picked = [];
     const pickedIds = new Set();
     quotas.forEach(({ domain, base }) => {
-      shuffle(byDomain[domain]).slice(0, base).forEach(q => {
+      tieredOrder(byDomain[domain]).slice(0, base).forEach(q => {
         picked.push(q);
         pickedIds.add(q.id);
       });
@@ -1250,7 +1379,7 @@
 
     // Top up if a domain had fewer questions than its quota.
     if (picked.length < count) {
-      shuffle(pool).forEach(q => {
+      tieredOrder(pool).forEach(q => {
         if (picked.length < count && !pickedIds.has(q.id)) {
           picked.push(q);
           pickedIds.add(q.id);
@@ -1318,6 +1447,10 @@
       session.submitted = true;
     }
     saveStorage();
+    // Re-render the grid so the summary page shows each question flagged
+    // correct (green) or incorrect (red) instead of the in-progress blue.
+    renderGrid();
+    updateStats();
     renderExamResult(examQuestions, correct, domainScores);
   }
 
@@ -1455,6 +1588,7 @@
         state.userAnswers = {};
         state.flagged.clear();
         state.studied.clear();
+        state.questionResults = {};
         state.currentIndex = 0;
         state.examSession = null;
         state.mode = 'practice';
@@ -1595,6 +1729,13 @@
     // Timed Exam area filter
     dom.examAreaAllBtn?.addEventListener('click', () => setAllExamAreas(true));
     dom.examAreaClearBtn?.addEventListener('click', () => setAllExamAreas(false));
+
+    // Timed Exam: new questions only toggle
+    dom.examNewOnly?.addEventListener('change', (e) => {
+      state.examNewQuestionsOnly = e.target.checked;
+      saveStorage();
+      updateExamBtnLabel();
+    });
 
     // Keyboard Shortcuts
     window.addEventListener('keydown', handleKeyDown);
